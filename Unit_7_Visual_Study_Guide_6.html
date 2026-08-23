@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 7 Visual Study Guide — Postpartum & Newborn Nutrition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F8FA;
+    --panel:#FFFFFF;
+    --ink:#1F2933;
+    --ink-soft:#5A6472;
+    --line:#E2E6EB;
+
+    --rose:#C2255C;
+    --rose-tint:#FDECF2;
+    --rose-deep:#8E1A44;
+
+    --amber:#B4750B;
+    --amber-tint:#FDF3E2;
+    --amber-deep:#7A4E05;
+
+    --plum:#6B3FA0;
+    --plum-tint:#F1EAFA;
+    --plum-deep:#4A2A72;
+
+    --teal:#0E7C7B;
+    --teal-tint:#E4F5F4;
+    --teal-deep:#0A5958;
+
+    --slate:#3B4656;
+    --slate-tint:#EEF1F4;
+
+    --indigo:#3A5BA0;
+    --indigo-tint:#E9EEFA;
+    --indigo-deep:#28417A;
+
+    --coral:#C2542B;
+    --coral-tint:#FCEBE2;
+    --coral-deep:#8C3A1B;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif; margin:0 0 .4em 0; color:var(--ink);}
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background: linear-gradient(135deg, var(--rose-deep) 0%, var(--rose) 55%, #E85D8A 100%);
+    color:#fff;
+    padding:56px 24px 44px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute; right:-60px; top:-60px; width:280px; height:280px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), rgba(255,255,255,0) 70%);
+  }
+  .hero-inner{max-width:1080px; margin:0 auto; position:relative; z-index:1;}
+  .eyebrow{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:.78rem;
+    letter-spacing:.14em; text-transform:uppercase; background:rgba(255,255,255,.16);
+    padding:5px 12px; border-radius:20px; margin-bottom:16px;
+  }
+  header.hero h1{font-size:clamp(2rem,4.4vw,3.1rem); font-weight:700; max-width:16ch;}
+  header.hero p.lede{font-size:1.05rem; max-width:62ch; color:rgba(255,255,255,.92); margin-top:8px;}
+  .hero-meta{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;}
+  .hero-meta span{
+    background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.3);
+    padding:6px 13px; border-radius:20px; font-size:.85rem;
+  }
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,.92); backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:10px 24px;
+  }
+  nav.toc .toc-inner{
+    max-width:1080px; margin:0 auto; display:flex; gap:6px; flex-wrap:wrap;
+  }
+  nav.toc a{
+    font-size:.82rem; font-weight:600; color:var(--ink-soft); text-decoration:none;
+    padding:7px 12px; border-radius:8px; white-space:nowrap;
+  }
+  nav.toc a:hover{background:var(--slate-tint); color:var(--ink);}
+
+  main{max-width:1080px; margin:0 auto; padding:40px 24px 100px;}
+  section{margin-bottom:64px; scroll-margin-top:64px;}
+
+  .section-head{display:flex; align-items:baseline; gap:14px; margin-bottom:22px; flex-wrap:wrap;}
+  .section-head h2{font-size:1.7rem;}
+  .section-tag{
+    font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.1em;
+    text-transform:uppercase; padding:4px 10px; border-radius:6px; font-weight:600;
+  }
+  .tag-rose{background:var(--rose-tint); color:var(--rose-deep);}
+  .tag-amber{background:var(--amber-tint); color:var(--amber-deep);}
+  .tag-plum{background:var(--plum-tint); color:var(--plum-deep);}
+  .tag-teal{background:var(--teal-tint); color:var(--teal-deep);}
+  .tag-slate{background:var(--slate-tint); color:var(--slate);}
+  .tag-indigo{background:var(--indigo-tint); color:var(--indigo-deep);}
+  .tag-coral{background:var(--coral-tint); color:var(--coral-deep);}
+
+  p.section-note{color:var(--ink-soft); font-size:.95rem; max-width:74ch;}
+
+  /* ---------- FLAG BOX ---------- */
+  .flag{
+    background:var(--slate-tint); border:1px solid #D6DBE1; border-radius:12px;
+    padding:16px 20px; font-size:.92rem; color:var(--slate); margin:18px 0;
+  }
+  .flag strong{color:var(--ink);}
+
+  /* ---------- USLO CARD ---------- */
+  .uslo-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px;}
+  .uslo-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 20px;
+  }
+  .uslo-card .num{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:50%; background:var(--rose); color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:.78rem; font-weight:700; margin-right:8px;
+  }
+  .uslo-card p{margin:8px 0 0; font-size:.92rem;}
+  .cslo-pill{
+    display:inline-block; margin-top:10px; font-family:'JetBrains Mono',monospace;
+    font-size:.72rem; background:var(--rose-tint); color:var(--rose-deep);
+    padding:3px 9px; border-radius:6px;
+  }
+
+  /* ---------- ASSESSMENT MINI CARDS (BUBBLE-HE) ---------- */
+  .bubble-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px;}
+  .bubble-card{
+    background:var(--panel); border-radius:14px; border:1px solid var(--line); overflow:hidden;
+  }
+  .bubble-card .letterhead{
+    display:flex; align-items:center; gap:10px; padding:12px 16px;
+    background:var(--teal-tint); color:var(--teal-deep); font-weight:700;
+  }
+  .bubble-card .letterhead .letter{
+    font-family:'Fraunces',serif; font-size:1.5rem; font-weight:900; color:var(--teal);
+  }
+  .bubble-card .body{padding:14px 16px;}
+  .bubble-card .body .ok{color:var(--teal-deep); font-size:.86rem; margin:0 0 6px;}
+  .bubble-card .body .flagline{color:var(--rose-deep); font-size:.86rem; margin:0;}
+  .bubble-card .body b{display:block; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:2px;}
+  .letterhead.lh-indigo{background:var(--indigo-tint); color:var(--indigo-deep);}
+  .letterhead.lh-indigo .letter{color:var(--indigo);}
+  .letterhead.lh-coral{background:var(--coral-tint); color:var(--coral-deep);}
+  .letterhead.lh-coral .letter{color:var(--coral);}
+  .bubble-card .body ul{margin:0; padding-left:18px; font-size:.86rem;}
+  .bubble-card .body ul li{margin-bottom:4px;}
+
+  /* ---------- COMPARE TABLE ---------- */
+  .table-wrap{overflow-x:auto; border-radius:14px; border:1px solid var(--line);}
+  table.compare{border-collapse:collapse; width:100%; background:var(--panel); font-size:.92rem;}
+  table.compare th, table.compare td{padding:12px 16px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.compare thead th{background:var(--slate-tint); font-family:'Fraunces',serif; font-size:1rem; color:var(--ink);}
+  table.compare tr:last-child td{border-bottom:none;}
+  table.compare td.flagcell{color:var(--rose-deep); font-weight:600;}
+  .swatch{display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px;}
+
+  /* ---------- CONDITION CARD ---------- */
+  .condition{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px; overflow:hidden; margin-bottom:28px;
+  }
+  .condition .chead{
+    padding:20px 26px; color:#fff;
+  }
+  .condition .chead h3{color:#fff; font-size:1.4rem; margin-bottom:4px;}
+  .condition .chead .sub{font-size:.88rem; opacity:.92;}
+  .condition.rose .chead{background:linear-gradient(120deg,var(--rose-deep),var(--rose));}
+  .condition.amber .chead{background:linear-gradient(120deg,var(--amber-deep),var(--amber));}
+  .condition.plum .chead{background:linear-gradient(120deg,var(--plum-deep),var(--plum));}
+
+  .cbody{padding:22px 26px 26px;}
+  .cgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
+  .cblock h4{
+    font-family:'Inter',sans-serif; font-size:.76rem; font-weight:800; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-soft); margin-bottom:8px; display:flex; align-items:center; gap:6px;
+  }
+  .cblock ul{margin:0; padding-left:18px; font-size:.9rem;}
+  .cblock li{margin-bottom:5px;}
+  .cblock p{font-size:.9rem; margin:0;}
+  .dot{width:8px; height:8px; border-radius:50%; display:inline-block;}
+  .full-span{grid-column:1/-1;}
+
+  .priority-box{
+    background:var(--rose-tint); border-left:none; border-radius:10px; padding:14px 16px; margin-top:4px;
+  }
+  .priority-box.amber-box{background:var(--amber-tint);}
+  .priority-box.plum-box{background:var(--plum-tint);}
+  .priority-box h4{color:inherit; margin-bottom:6px;}
+  .priority-box.rose-box h4{color:var(--rose-deep);}
+  .priority-box.amber-box h4{color:var(--amber-deep);}
+  .priority-box.plum-box h4{color:var(--plum-deep);}
+
+  /* ---------- MNEMONIC CHIPS ---------- */
+  .mnemonic-wrap{display:flex; flex-wrap:wrap; gap:12px;}
+  .mnemonic{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px; flex:1 1 260px;
+  }
+  .mnemonic .word{font-family:'Fraunces',serif; font-weight:700; font-size:1.05rem; color:var(--rose-deep); margin-bottom:6px;}
+  .mnemonic p{font-size:.86rem; color:var(--ink-soft); margin:0;}
+
+  /* ---------- LACTOGENESIS FLOW ---------- */
+  .flow{display:flex; flex-wrap:wrap; gap:0; align-items:stretch; margin-top:8px;}
+  .flow .step{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 18px;
+    flex:1 1 170px; position:relative;
+  }
+  .flow .step .stepnum{
+    font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--teal-deep); font-weight:700;
+  }
+  .flow .step h4{font-size:.95rem; margin:6px 0 4px; font-family:'Inter',sans-serif; font-weight:700;}
+  .flow .step p{font-size:.84rem; color:var(--ink-soft); margin:0;}
+  .flow .arrow{align-self:center; padding:0 8px; color:var(--teal); font-size:1.3rem; display:flex; align-items:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--slate); color:#fff; padding:32px 24px; font-size:.85rem;
+  }
+  footer .footer-inner{max-width:1080px; margin:0 auto; color:rgba(255,255,255,.85);}
+  footer a{color:#fff;}
+
+  @media print{
+    nav.toc{display:none;}
+    header.hero{background:var(--rose-deep) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    section{break-inside:avoid-page;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">NSG 3500 · Maternal Health</span>
+    <h1>Unit 7 Visual Study Guide</h1>
+    <p class="lede">Postpartum Nursing Care &amp; Newborn Nutrition — organized around the NCJMM, mapped to your verified USLOs/CSLOs, with full condition breakdowns for exam review.</p>
+    <div class="hero-meta">
+      <span>Source: Unit 7 lecture decks</span>
+      <span>Perry et al. (2023), Ch. 18–20</span>
+      <span>Syllabus v8.5 — verified USLOs</span>
+      <span>Exam 3 · Unit 7 (Postpartum Part I)</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="toc-inner">
+    <a href="#assessment">BUBBLE-HE</a>
+    <a href="#psychosocial">Psychosocial Status</a>
+    <a href="#lochia">Lochia</a>
+    <a href="#systemic">Physiological Adaptations</a>
+    <a href="#recovery">Recovery &amp; Self-Care</a>
+    <a href="#nursing-care">Nursing Care</a>
+    <a href="#conditions">Conditions</a>
+    <a href="#parenting">Parenting Process</a>
+    <a href="#attachment">Attachment</a>
+    <a href="#rubin">Rubin's Tasks</a>
+    <a href="#lactation">Lactation Physiology</a>
+    <a href="#newborn-feeding">Newborn Feeding</a>
+    <a href="#medications">Medications</a>
+    <a href="#mnemonics">Mnemonics</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ================= ASSESSMENT ================= -->
+  <section id="assessment">
+    <div class="section-head">
+      <h2>BUBBLE-HE Postpartum Assessment</h2>
+      <span class="section-tag tag-teal">Recognize Cues</span>
+    </div>
+    <p class="section-note">Your systematic 8-point head-to-toe for every postpartum patient. Green = expected normal finding. Rose = red flag to escalate.</p>
+    <div class="bubble-grid">
+      <div class="bubble-card"><div class="letterhead"><span class="letter">B</span> Breasts</div>
+        <div class="body"><b>Normal</b><p class="ok">Soft → filling → firm progression; nipples flat/everted/inverted are variants of normal</p><b>Red flag</b><p class="flagline">Hot, red, wedge-shaped area; cracked/bleeding nipples</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">U</span> Uterus</div>
+        <div class="body"><b>Normal</b><p class="ok">Firm, midline, descending 1–2 cm/day</p><b>Red flag</b><p class="flagline">Boggy, deviated, not descending on schedule</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">B</span> Bladder</div>
+        <div class="body"><b>Normal</b><p class="ok">Voiding within 6–8 hrs, adequate amounts</p><b>Red flag</b><p class="flagline">Distension displacing/atonizing the uterus</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">B</span> Bowel</div>
+        <div class="body"><b>Normal</b><p class="ok">Active bowel sounds, return of function in days</p><b>Red flag</b><p class="flagline">Absent sounds, no BM by day 3</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">L</span> Lochia</div>
+        <div class="body"><b>Normal</b><p class="ok">Progresses rubra → serosa → alba on schedule</p><b>Red flag</b><p class="flagline">Pad saturated &lt;1 hr, large clots, foul odor, reversal to rubra</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">E</span> Episiotomy</div>
+        <div class="body"><b>Normal</b><p class="ok">REEDA: edges approximated, minimal edema</p><b>Red flag</b><p class="flagline">Increasing pain, hematoma, purulent drainage</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">H</span> Hemorrhoids</div>
+        <div class="body"><b>Normal</b><p class="ok">Small, non-tender</p><b>Red flag</b><p class="flagline">Large, thrombosed, very painful</p></div></div>
+      <div class="bubble-card"><div class="letterhead"><span class="letter">E</span> Emotional</div>
+        <div class="body"><b>Normal</b><p class="ok">Appropriate fatigue, engaging with infant</p><b>Red flag</b><p class="flagline">Flat affect, disinterest in infant, hopelessness</p></div></div>
+    </div>
+  </section>
+
+  <!-- ================= PSYCHOSOCIAL STATUS ================= -->
+  <section id="psychosocial">
+    <div class="section-head">
+      <h2>Psychosocial Status Assessment</h2>
+      <span class="section-tag tag-plum">USLO 1 · Recognize &amp; Analyze Cues</span>
+    </div>
+    <p class="section-note">USLO 1 asks you to examine <i>physiological and psychosocial</i> status together — the "E" in BUBBLE-HE is only a start. The first 3 months postpartum are the most emotionally vulnerable window for any mother, shaped by birth experience, parity, age, marital status, and financial/family stability. Differentiating the three puerperal mood presentations is a high-yield NCLEX distinction.</p>
+
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Feature</th><th><span class="swatch" style="background:#0E7C7B"></span>Postpartum ("Baby") Blues</th><th><span class="swatch" style="background:#B4750B"></span>Postpartum Depression</th><th><span class="swatch" style="background:#8E1A44"></span>Postpartum Psychosis</th></tr></thead>
+        <tbody>
+          <tr><td><b>Incidence</b></td><td>Very common — most new mothers to some degree</td><td>10–13% of women</td><td>Rare — 1–2 per 1,000 births</td></tr>
+          <tr><td><b>Onset</b></td><td>First few postpartal days; <b>peaks day 5</b></td><td>Insidious onset, usually around <b>2 weeks</b> after birth</td><td>Unlikely in the very early postpartum period; can emerge later</td></tr>
+          <tr><td><b>Expected findings</b></td><td>Tearfulness, mood swings, insomnia, fatigue, anxiety, difficulty concentrating, irritability, poor appetite</td><td>Sleep disturbance, guilt, fatigue, hopelessness, worthlessness — <i>insidious</i>, easy to miss</td><td>Delusions, hallucinations, agitation, inability to sleep, bizarre/irrational behavior</td></tr>
+          <tr><td><b>Function</b></td><td class="flagcell">Does <b>NOT</b> impair ability to care for self or newborn</td><td class="flagcell">Impairs functioning; may include suicidal ideation in severe cases</td><td class="flagcell">Impaired reality testing — safety emergency</td></tr>
+          <tr><td><b>Course</b></td><td>Self-limited — subsides within several days after peaking</td><td>Persists; will not resolve without intervention</td><td>Requires immediate psychiatric intervention</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flag"><strong>Clinical judgment cue:</strong> Blues symptoms lasting <b>more than 10 days</b> is the specific pattern that should raise suspicion for postpartum depression rather than normal blues — this exact threshold is testable.</div>
+
+    <div class="cgrid" style="margin-top:22px;">
+      <div class="cblock"><h4><span class="dot" style="background:var(--teal)"></span>Priority Interventions — Blues</h4>
+        <ul><li>Support and reassurance — this is a normal, expected reaction to hormone withdrawal (estrogen, progesterone, cortisol) plus the demands of new motherhood</li><li>Proactively educate the woman and family <i>before</i> it happens so it isn't mistaken for failure or illness</li><li>Assess resources available at home: food, clothing, shelter, transportation, relationship support</li><li>Connect to community resources (church groups, Mother's Day Out, La Leche League) so she knows she isn't alone</li></ul>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Priority Interventions — Depression</h4>
+        <ul><li><b>Prompt referral</b> for evaluation and treatment — do not "wait and see"</li><li>Use a validated screening tool (e.g., Edinburgh Postnatal Depression Scale) at postpartum visits</li><li>Assess directly for suicidal ideation in severe presentations</li><li>Involve support system and schedule close follow-up</li></ul>
+      </div>
+      <div class="cblock full-span"><h4><span class="dot" style="background:var(--rose)"></span>Priority Interventions — Psychosis</h4>
+        <p>Psychiatric emergency. Ensure immediate safety of mother and infant, notify the provider/psychiatric team, do not leave the mother unsupervised with the infant if judgment is impaired. Any patient with a <b>history of mood disorder or prior depression</b> should be flagged for community mental-health referral and follow-up <i>before</i> hospital discharge — don't wait for symptoms to appear.</p>
+      </div>
+    </div>
+
+    <div class="cgrid" style="margin-top:18px;">
+      <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Fatigue — Expected Physiological/Psychological Response</h4>
+        <p>Postpartum tiredness is <i>not</i> something that simply resolves once home — the combined demands of infant care plus recovery from birth compound physical and mental exhaustion, and mothers still tend to carry the primary caregiving load even when partners are involved. This is a normal expected finding, but ongoing/worsening sleep disturbance should also prompt a mood-disorder screen — not just be dismissed as "new-parent tired."</p>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Patient Education — Psychosocial</h4>
+        <ul><li>Normalize the emotional rollercoaster; explain the difference between expected blues and reportable symptoms</li><li>Teach the family to recognize warning signs (persistent sadness beyond 10 days, hopelessness, disinterest in the infant, thoughts of self-harm) and report them</li><li>Encourage enlisting help from partner/family/friends for rest and household tasks</li><li>Provide contact information for follow-up and community/mental-health resources before discharge</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LOCHIA ================= -->
+  <section id="lochia">
+    <div class="section-head">
+      <h2>Lochia: Compare &amp; Contrast</h2>
+      <span class="section-tag tag-rose">Analyze Cues</span>
+    </div>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Feature</th><th><span class="swatch" style="background:#C2255C"></span>Lochia Rubra</th><th><span class="swatch" style="background:#E8A2B8"></span>Lochia Serosa</th><th><span class="swatch" style="background:#F3D2DE"></span>Lochia Alba</th></tr></thead>
+        <tbody>
+          <tr><td><b>Timing</b></td><td>Days 1–3</td><td>Days 4–10</td><td>Day 10 → 4–6 weeks</td></tr>
+          <tr><td><b>Color</b></td><td>Bright/dark red</td><td>Pink to brownish</td><td>Yellowish-white/cream</td></tr>
+          <tr><td><b>Composition</b></td><td>Blood, decidua, trophoblastic debris</td><td>Serous exudate, leukocytes, decidua</td><td>Leukocytes, decidua, epithelial cells</td></tr>
+          <tr><td><b>Expected amount</b></td><td>Scant to moderate</td><td>Decreasing</td><td>Minimal/scant</td></tr>
+          <tr><td><b>Red flag</b></td><td class="flagcell">Saturating 1 pad/2 hr, large clots</td><td class="flagcell">Foul odor, persistent heavy flow</td><td class="flagcell">Return to rubra color = abnormal, not normal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag"><strong>Pad-saturation scale:</strong> Scant &lt;2.5 cm stain · Light &lt;10 cm stain · Moderate &gt;10 cm stain · Heavy = one pad saturated within 2 hours.</div>
+  </section>
+
+  <!-- ================= SYSTEMIC PHYSIOLOGICAL ADAPTATIONS ================= -->
+  <section id="systemic">
+    <div class="section-head">
+      <h2>Physiological Adaptations — Transitioning to the Non-Pregnant State</h2>
+      <span class="section-tag tag-teal">USLO 2 · Analyze Cues</span>
+    </div>
+    <p class="section-note">Every body system that adapted for pregnancy has to reverse course postpartum. Knowing the <i>expected</i> timeline for each system is what lets you recognize when something is abnormal instead of just memorizing isolated facts.</p>
+
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>System</th><th>What Changes</th><th>Return to Prepregnant State</th></tr></thead>
+        <tbody>
+          <tr><td><b>Reproductive — Uterus</b></td><td>Involution via exfoliation (scaling off of dead tissue at the placental site); new endometrium regenerates from residual decidua glands/tissue</td><td>Endometrium regenerated by <b>day 16</b> (except placental site); placental site fully healed by <b>6–7 weeks</b></td></tr>
+          <tr><td><b>Reproductive — Ovulation/Menses</b></td><td>Anovulatory first cycle is common</td><td>Non-lactating: menses resumes <b>6–8 weeks</b> (75% by week 12). Lactating (exclusive): may be suppressed <b>3+ months</b>. <span class="flagcell">Breastfeeding is NOT reliable contraception</span> — ovulation can precede the first period</td></tr>
+          <tr><td><b>Hematologic</b></td><td>Blood volume ↓ with expected blood loss (500 mL vaginal / 1,000 mL cesarean → ~1g/2g Hgb drop); Hct may transiently <i>rise</i> from hemoconcentration as plasma is excreted; WBC elevated after labor; fibrinogen stays elevated (protective vs. hemorrhage, but ↑ thrombus risk)</td><td>Hct back to baseline by <b>4–6 weeks</b>; WBC normal within <b>6 days</b>; whole hematologic system by <b>3rd–4th week</b></td></tr>
+          <tr><td><b>Endocrine/Hormonal</b></td><td>Estrogen &amp; progesterone drop sharply after placental delivery → signals prolactin release; hPL, cortisol, growth hormone, insulinase also fall, reducing pregnancy's anti-insulin effect</td><td>Prolactin (non-lactating) back to baseline by <b>3rd–4th week</b>. <span class="flagcell">"Honeymoon phase":</span> insulin-dependent diabetics often need <i>less</i> insulin in the first few postpartum days</td></tr>
+          <tr><td><b>Cardiovascular</b></td><td>Heart returns from its pregnancy-displaced position (up/left) to normal as uterus involutes; cardiac output stays <b>elevated</b> for 48 hrs despite blood loss (fluid shift from extracellular → venous space)</td><td>Cardiac output ↓30% by <b>2 weeks</b>; prepregnant values by <b>6–12 weeks</b></td></tr>
+          <tr><td><b>Renal / Fluid &amp; Electrolyte</b></td><td>Marked diuresis (up to 3,000 mL/24 hr; a single void can be 500–1,000 mL) and natriuresis, most pronounced <b>postpartum days 2–5</b>, as pregnancy's fluid/sodium retention reverses. Average <b>10–12 lb (4.5–5.5 kg)</b> weight loss immediately, plus ~3 kg more over the first week from diuresis</td><td>GFR/creatinine/BUN by <b>2–3 months</b>; glucosuria resolves by end of <b>1st week</b>; fluid/electrolyte balance restored by <b>3rd week</b>; proteinuria resolves by <b>6 weeks</b></td></tr>
+          <tr><td><b>Respiratory</b></td><td>Respiratory alkalosis/compensated metabolic acidosis from labor may persist briefly; decreased intra-abdominal pressure after birth relieves pregnancy dyspnea</td><td>Prepregnant state by <b>3rd week</b></td></tr>
+          <tr><td><b>Gastrointestinal</b></td><td>Motility decreased (relaxin + progesterone effects, abdominal wall relaxation) → gaseous distention, constipation risk; straining can tear episiotomy sutures or cause hemorrhoids</td><td>Spontaneous BM typically resumes by <b>day 2–3</b></td></tr>
+          <tr><td><b>Musculoskeletal</b></td><td>Pelvic joint/ligament laxity (relaxin, progesterone) may cause pain; abdominal wall muscle tone decreased → <b>diastasis recti</b> (rectus muscle separation) possible; general fatigue/body aches from labor exertion</td><td>Advise correct posture/body mechanics for lifting/carrying for at least <b>12 weeks</b>; modified sit-ups can help rebuild tone</td></tr>
+          <tr><td><b>Integumentary</b></td><td>Pregnancy pigment changes (chloasma, linea nigra) fade; striae gravidarum (stretch marks) more pronounced right after birth</td><td>Most pigment changes resolve postpartum; striae fade over <b>~6 months</b> but may remain permanently (pink in light skin, lighter-than-surrounding in dark skin)</td></tr>
+          <tr><td><b>Neurological</b></td><td>Fatigue and altered sleep from newborn demands; anesthesia/analgesia may cause transient numbness, dizziness, or post-dural-puncture headache (CSF leak); pregnancy-related edema (incl. carpal tunnel) reverses with diuresis</td><td class="flagcell">Headache + visual changes, epigastric pain, or proteinuria = report immediately — think worsening/developing pre-eclampsia, not just a normal headache</td></tr>
+          <tr><td><b>Immune</b></td><td>WBC elevated from labor/birth, gradually declining</td><td>Normal by <b>4–7 days</b>. <span class="flagcell">Confirm rubella immunity and Rh status before discharge</span> — nonimmune → MMR (safe with breastfeeding, avoid pregnancy 1 month); Rh-negative mother/Rh-positive infant → RhoGAM 300 mcg within <b>72 hours</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flag"><strong>High-yield distinction:</strong> pain in the calf during postpartum recovery must be evaluated for thromboembolic disease (fibrinogen stays elevated → hypercoagulable state) — don't write it off as ordinary muscle fatigue.</div>
+  </section>
+
+  <!-- ================= POSTPARTUM RECOVERY & SELF-CARE ================= -->
+  <section id="recovery">
+    <div class="section-head">
+      <h2>Postpartum Recovery &amp; Self-Care</h2>
+      <span class="section-tag tag-indigo">Generate Solutions → Take Action</span>
+    </div>
+    <p class="section-note">USLO 4: holistic nursing care for the postpartum woman. These are the four pillars of promoting recovery, straight from the "Promoting Recovery and Self-Care" content in your deck.</p>
+    <div class="bubble-grid">
+      <div class="bubble-card">
+        <div class="letterhead lh-indigo"><span class="letter">1</span> Activity &amp; Rest</div>
+        <div class="body">
+          <ul>
+            <li>Balance early ambulation (reduces VTE risk) with adequate rest periods</li>
+            <li>Cluster care to protect uninterrupted rest windows</li>
+            <li>Encourage naps when the infant sleeps, especially during Taking-in</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-indigo"><span class="letter">2</span> Nourishment</div>
+        <div class="body">
+          <ul>
+            <li><b>Breastfeeding mother:</b> increased caloric and fluid needs to support milk production</li>
+            <li><b>Formula-feeding mother:</b> standard postpartum nutrition, no added lactation demands</li>
+            <li>Iron-rich foods to support recovery from blood loss</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-indigo"><span class="letter">3</span> Elimination</div>
+        <div class="body">
+          <ul>
+            <li><b>Voiding:</b> monitor pattern closely — a distended bladder displaces and inhibits uterine tone</li>
+            <li><b>Bowel:</b> monitor return of function; risk of constipation after perineal trauma or cesarean</li>
+            <li>Encourage fluids, fiber, and early ambulation to support both</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-indigo"><span class="letter">4</span> Perineal Care</div>
+        <div class="body">
+          <ul>
+            <li>Perineal hygiene: front-to-back cleansing, peri-bottle after toileting</li>
+            <li>Topical medications as ordered for pain/healing</li>
+            <li><b>Ice packs:</b> first 24 hours — reduces edema</li>
+            <li><b>Sitz baths:</b> after 24 hours — promotes healing and comfort</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POSTPARTUM NURSING CARE ================= -->
+  <section id="nursing-care">
+    <div class="section-head">
+      <h2>Postpartum Nursing Care — Cultural &amp; Special Populations</h2>
+      <span class="section-tag tag-coral">USLO 3, 4</span>
+    </div>
+    <p class="section-note">Holistic postpartum care means adapting the plan to the individual — cultural context and, for surgical patients, the added layer of post-op recovery on top of routine postpartum assessment.</p>
+
+    <h3 style="font-size:1.1rem;">Cultural Influences During Postpartum Recovery</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Domain</th><th>What Varies by Culture</th><th>Nursing Implication</th></tr></thead>
+        <tbody>
+          <tr><td><b>Rest</b></td><td>Some cultures observe structured "lying-in" periods (extended rest, limited activity) after birth</td><td>Assess and support the family's expected rest practices rather than imposing a single standard recovery timeline</td></tr>
+          <tr><td><b>Diet</b></td><td>Hot/cold food theory and specific postpartum diets (e.g., avoiding certain foods, prioritizing warming foods)</td><td>Incorporate cultural food preferences into the nutrition plan when safe to do so</td></tr>
+          <tr><td><b>Temperature</b></td><td>Practices around avoiding cold air/water exposure, or prioritizing warmth</td><td>Individualize bathing, room temperature, and clothing recommendations</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag">Nursing implication across all three: assess and incorporate cultural preferences into the plan of care rather than imposing a single "standard" recovery protocol — this directly supports USLO 3 and CSLO 1 (holistic, culturally competent care).</div>
+
+    <h3 style="margin-top:30px; font-size:1.1rem;">Care of the Postpartum Surgical Patient</h3>
+    <div class="bubble-grid">
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Cesarean Birth</div>
+        <div class="body">
+          <ul>
+            <li>Full BUBBLE-HE assessment still applies — surgical status adds to, not replaces, routine postpartum assessment</li>
+            <li>Incisional care: monitor REEDA at the incision site</li>
+            <li>Recovery from anesthesia: monitor level of consciousness, return of sensation/motor function (regional) or airway/respiratory status (general)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Tubal Ligation</div>
+        <div class="body">
+          <ul>
+            <li>Post-operative care principles apply on top of routine postpartum recovery</li>
+            <li>Monitor for typical minor-surgery complications (bleeding, infection at the site)</li>
+            <li>Provide clear counseling that the procedure is permanent</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Respiratory Care</div>
+        <div class="body">
+          <ul>
+            <li>Incentive spirometry to prevent atelectasis after anesthesia</li>
+            <li>Early ambulation as soon as cleared — reduces VTE and supports lung expansion</li>
+            <li>Pain control adequate enough to support deep breathing and mobility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="priority-box amber-box full-span" style="margin-top:18px;">
+      <h4>Patient Education — Holistic Discharge Teaching</h4>
+      <ul>
+        <li>Cover infant feeding and bathing, breastfeeding, perineal hygiene, physical activity, rest, and <i>expected</i> emotional changes before discharge — a self-assessment checklist helps identify gaps</li>
+        <li>Teach how to locate/palpate the fundus and explain that prone positioning postpartum is comfortable <i>and</i> beneficial (supports involution by tipping the uterus forward)</li>
+        <li>Nutrition: adequate protein for tissue repair, balanced diet with fruit/vegetables/whole grains for bowel regularity</li>
+        <li>Weight expectations: ~10–12 lb lost immediately, another ~5 lb from diuresis/diaphoresis over days 2–5; most women return to prepregnancy weight by 6–8 weeks</li>
+        <li>Exercise: start with Kegel exercises; modified sit-ups and knee/leg rolls once cleared (especially helpful with diastasis recti)</li>
+        <li>Early discharge (within 48 hrs) requires strict criteria be met (stable vitals, adequate voiding/ambulation, Hgb &gt;10, no significant bleeding) — reinforce follow-up visit timing and what to report at home</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= CONDITIONS ================= -->
+  <section id="conditions">
+    <div class="section-head">
+      <h2>Condition Deep Dives</h2>
+      <span class="section-tag tag-plum">Prioritize Hypotheses → Take Action</span>
+    </div>
+    <p class="section-note">These are the pathological conditions that actually appear in your Unit 7 material — uterine atony/early hemorrhage (tied directly to fundal assessment) and the breastfeeding-related complications (engorgement, mastitis, ineffective breastfeeding). Full-scope postpartum infections (endometritis, DVT, wound infection) are Unit 8 content per your exam blueprint (Ch. 21) — flagged separately at the bottom so this stays honestly scoped to what Unit 7 covers.</p>
+
+    <!-- Uterine Atony -->
+    <div class="condition rose">
+      <div class="chead"><h3>Uterine Atony (Early Postpartum Hemorrhage)</h3><div class="sub">Leading cause of early PPH · SBAR framing — acute complication</div></div>
+      <div class="cbody">
+        <div class="cgrid">
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Pathophysiology</h4>
+            <p>Failure of the uterine myometrium to contract/retract after birth. Normally, muscle fibers clamp down around the spiral arteries at the placental site (a "living ligature"). Without this contraction, the vessels stay open — no hemostasis, ongoing blood loss.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Etiology</h4>
+            <ul><li>Overdistended uterus (multiples, hydramnios, macrosomia)</li><li>Prolonged or precipitous labor</li><li>Retained placental fragments</li><li>Oxytocin induction/augmentation</li><li>Chorioamnionitis</li><li>Anesthetic agents that relax the uterus (halogenated agents, magnesium sulfate, nifedipine)</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Signs &amp; Symptoms</h4>
+            <ul><li>Soft, <b>boggy</b> uterus filled with clots/blood</li><li>Dark red blood, often with clots</li><li>Fundus may be difficult to locate or deviated</li><li>Excessive/continuous bleeding despite a delivered placenta</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Risk Factors</h4>
+            <ul><li>Grand multiparity (stretched musculature)</li><li>Previous atony/PPH history</li><li>Operative birth (forceps, vacuum, cesarean)</li><li>Prolonged/mismanaged 3rd stage</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Complications</h4>
+            <ul><li>Hemorrhagic shock</li><li>DIC</li><li>Need for transfusion / hysterectomy in severe cases</li><li>Postpartum anemia, fatigue impairing bonding/recovery</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Labs / Diagnostics</h4>
+            <ul><li>CBC (H&amp;H trend), coagulation panel (PT/PTT, fibrinogen)</li><li>Type &amp; crossmatch</li><li>Quantitative blood loss measurement (weighed pads/drapes)</li><li>Bimanual exam to distinguish atony (boggy) vs. laceration (firm, midline uterus with bright bleeding)</li></ul>
+          </div>
+        </div>
+        <div class="priority-box rose-box full-span" style="margin-top:18px;">
+          <h4>Priority Nursing Interventions (in order)</h4>
+          <ul>
+            <li><b>1. Fundal massage</b> — stimulate contraction first</li>
+            <li><b>2. Empty the bladder</b> — distension displaces/inhibits contraction</li>
+            <li><b>3. Reassess</b> — if still boggy, escalate</li>
+            <li><b>4. Uterotonic administration</b> — oxytocin first-line; methergine/hemabate/misoprostol per contraindications (e.g., avoid methergine in hypertension, avoid hemabate in asthma)</li>
+            <li><b>5. Notify provider</b> and prepare for possible bimanual compression or OR if refractory</li>
+          </ul>
+        </div>
+        <div class="cgrid" style="margin-top:18px;">
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Treatment</h4>
+            <p>Uterotonics, IV fluids, possible blood product transfusion, manual removal of retained fragments, surgical intervention (uterine artery ligation, B-Lynch suture, hysterectomy) if uncontrolled.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Patient Education</h4>
+            <ul><li>Report saturating a pad in under an hour</li><li>Report large clots or dizziness/lightheadedness</li><li>Rest and avoid overexertion during recovery</li><li>Follow up promptly if bleeding increases after discharge</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breast Engorgement -->
+    <div class="condition amber">
+      <div class="chead"><h3>Breast Engorgement</h3><div class="sub">Physiological — days 3–5 postpartum</div></div>
+      <div class="cbody">
+        <div class="cgrid">
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Pathophysiology</h4>
+            <p>Increased blood flow and milk production cause congestion/overdistention of the ductal system and obstruction of lymphatic drainage. Back-pressure on full milk glands inhibits further milk production.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Etiology</h4>
+            <ul><li>Infrequent feeding</li><li>Ineffective emptying of the breasts</li><li>Physiologic response to milk "coming in"</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Signs &amp; Symptoms</h4>
+            <ul><li>Mild: fullness, discomfort</li><li>Severe: pain, tenderness, hardness, warmth</li><li>Shiny, taut breast skin; swelling clavicle → axilla → lower ribs</li><li>Flattened nipples → latch difficulty</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Risk Factors</h4>
+            <ul><li>Delayed/infrequent breastfeeding</li><li>Poor latch/ineffective emptying</li><li>Abrupt weaning</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Complications</h4>
+            <ul><li>Decreased milk supply if unrelieved</li><li>Progression to mastitis (milk stasis)</li><li>Breastfeeding cessation from pain/frustration</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Labs / Diagnostics</h4>
+            <p>Clinical diagnosis — no labs typically needed. Rule out mastitis if fever/redness develop.</p>
+          </div>
+        </div>
+        <div class="priority-box amber-box full-span" style="margin-top:18px;">
+          <h4>Priority Nursing Interventions</h4>
+          <ul><li>Frequent feeding or pumping to relieve stasis (most important intervention)</li><li>Warm compress <i>before</i> feeding to encourage let-down; cold compress <i>between</i> feedings to reduce swelling</li><li>Encourage well-fitting, supportive (non-underwire) bra</li></ul>
+        </div>
+        <div class="cgrid" style="margin-top:18px;">
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Treatment</h4>
+            <p>Milk removal (breastfeeding/pumping) is the definitive treatment. NSAIDs (e.g., ibuprofen) for pain — most effective when taken before feeding in anticipation of post-feeding discomfort.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Patient Education</h4>
+            <ul><li>Typically resolves in ~24 hours with regular removal</li><li>Don't skip feedings to "rest" the breast — worsens engorgement</li><li>Wear supportive bra; avoid compressive/underwire bras</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ineffective Breastfeeding / Nipple issues -->
+    <div class="condition amber">
+      <div class="chead"><h3>Ineffective Breastfeeding (Sore, Cracked, Flat, or Inverted Nipples)</h3><div class="sub">SOAPIE framing — ongoing management</div></div>
+      <div class="cbody">
+        <div class="cgrid">
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Pathophysiology</h4>
+            <p>Improper latch (nipple-only, not areola) causes repetitive friction/trauma to the nipple tissue. Flat or inverted nipples reduce the infant's ability to draw tissue deep into the mouth for an effective seal.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Etiology</h4>
+            <ul><li>Poor positioning/latch technique</li><li>Anatomic nipple variant (flat/inverted)</li><li>Prolonged non-nutritive sucking</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Signs &amp; Symptoms</h4>
+            <ul><li>Nipple pain beyond initial latch</li><li>Cracks, fissures, bleeding</li><li>Infant fussy/unlatching frequently</li><li>Poor infant weight gain if intake inadequate</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Risk Factors</h4>
+            <ul><li>First-time breastfeeding mothers (primiparity)</li><li>No lactation support/education</li><li>Nipple anatomic variants</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Complications</h4>
+            <ul><li>Nipple trauma → portal of entry for infection (mastitis)</li><li>Early breastfeeding cessation</li><li>Inadequate infant intake</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Labs / Diagnostics</h4>
+            <p>Clinical/observational — direct observation of a feeding session is the primary "diagnostic" tool.</p>
+          </div>
+        </div>
+        <div class="priority-box amber-box full-span" style="margin-top:18px;">
+          <h4>Priority Nursing Interventions</h4>
+          <ul><li>Directly observe and correct latch (areola, not just nipple, in mouth)</li><li>Vary positioning to redistribute pressure points</li><li>Breast shells for flat/inverted nipples — help nipples become more protuberant and protect from clothing friction</li><li>Break suction with a clean finger before removing infant from breast</li></ul>
+        </div>
+        <div class="cgrid" style="margin-top:18px;">
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Treatment</h4>
+            <p>Lactation consultant referral, lanolin for cracked nipples after ensuring latch is corrected first (latch correction is the priority — creams alone don't fix the mechanical cause).</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Patient Education</h4>
+            <ul><li>Air-dry nipples after feeding</li><li>Avoid soap on nipples (dries skin, removes protective oils)</li><li>Call for help early — most latch problems are fixable with support</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mastitis -->
+    <div class="condition plum">
+      <div class="chead"><h3>Mastitis</h3><div class="sub">Infection of the mammary glands · ~2–4 weeks postpartum</div></div>
+      <div class="cbody">
+        <div class="cgrid">
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Pathophysiology</h4>
+            <p>Bacteria (most commonly <i>Staphylococcus aureus</i>) enter through a crack/fissure/abrasion in the nipple, invading the ductal system. Causes inflammatory edema, enlarged axillary lymph nodes, and engorgement with obstruction of milk flow. Usually unilateral.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Etiology</h4>
+            <ul><li>Milk stasis / plugged duct</li><li><i>S. aureus</i> most common organism (also <i>E. coli</i>, Strep, MRSA)</li><li>Entry via nipple trauma from poor latch</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Signs &amp; Symptoms</h4>
+            <ul><li>Fever, chills, malaise, generalized aches</li><li>Unilateral tender, hardened, warm, reddened area</li><li>Early sign: triangular flush under the affected breast</li><li>Cracked/fissured nipples, purulent nipple drainage possible</li><li>Enlarged axillary lymph nodes on affected side</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Risk Factors</h4>
+            <ul><li>Milk stasis, infrequent breastfeeding</li><li>Nipple trauma/cracks</li><li>Fatigue, primiparity</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Complications</h4>
+            <ul><li>Breast abscess (especially with MRSA — more likely to abscess)</li><li>Sepsis if untreated</li><li>Premature weaning</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Labs / Diagnostics</h4>
+            <ul><li>Usually clinical diagnosis (S/S based)</li><li>Breast milk culture if not responding to first-line therapy or MRSA suspected</li><li>CBC if systemic infection suspected</li></ul>
+          </div>
+        </div>
+        <div class="priority-box plum-box full-span" style="margin-top:18px;">
+          <h4>Priority Nursing Interventions</h4>
+          <ul><li><b>Continue breastfeeding/emptying the breast</b> — do not stop; start on the affected side first each feeding</li><li>Frequent feeding or pumping every 2–4 hours (2–3 hrs if too painful to nurse directly — express instead)</li><li>Vary infant positioning to drain all ducts/lobes evenly</li><li>Heat or cold application for comfort</li><li>Encourage rest and increased fluids</li></ul>
+        </div>
+        <div class="cgrid" style="margin-top:18px;">
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Treatment</h4>
+            <p>Antibiotics compatible with breastfeeding (e.g., cephalosporins). Complete the <b>full course</b> even after feeling better. MRSA-associated mastitis unresponsive to first-line therapy may need trimethoprim-sulfamethoxazole, clindamycin, or rifampin, ± incision and drainage of abscess. <b>Breastfeeding continues even with MRSA</b> — it's not transmitted through milk, only through direct contact with an open lesion/drainage.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>Patient Education</h4>
+            <ul><li>Complete the entire antibiotic course</li><li>Avoid breast creams — they block Montgomery tubercle secretions</li><li>Report signs early: fever, redness, hardened tender area</li><li>Dry the breast after feeding; change wet breast pads/bra promptly</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Episiotomy/Incision & Hemorrhoids -->
+    <div class="condition rose">
+      <div class="chead"><h3>Episiotomy / Incision &amp; Hemorrhoids</h3><div class="sub">Perineal trauma · REEDA framework · normal healing vs. hematoma</div></div>
+      <div class="cbody">
+        <div class="cgrid">
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Pathophysiology</h4>
+            <p>An episiotomy (surgical incision) or spontaneous laceration disrupts perineal tissue integrity during the second stage of labor. Normal healing proceeds by primary intention — edges fuse within the first 24 hours. Hemorrhoids are distended rectal veins that become engorged from the sustained pressure of the fetal head/pushing during second-stage labor.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Etiology</h4>
+            <ul><li>Episiotomy (midline or mediolateral) or spontaneous perineal/vaginal/cervical laceration</li><li>Operative birth (forceps, vacuum) increases laceration risk</li><li>Hemorrhoids: venous pressure from prolonged pushing in 2nd stage; pre-existing pregnancy hemorrhoids can worsen</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Signs &amp; Symptoms</h4>
+            <ul><li><b>Normal:</b> mild edema/bruising, edges fused by 24 hrs, minimal drainage</li><li>Pain with sitting, walking, bending, urinating, or defecating</li><li>Hemorrhoids: visible/palpable rectal swelling, tenderness, itching</li><li><b>Abnormal (REEDA-positive):</b> redness, edema, ecchymosis beyond expected, purulent discharge, edges not approximated</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Risk Factors</h4>
+            <ul><li>Operative/instrument-assisted birth</li><li>Large infant/prolonged 2nd stage (both laceration and hemorrhoid risk)</li><li>Poor perineal hygiene technique</li><li>Constipation/straining (worsens both episiotomy tension and hemorrhoids)</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Complications</h4>
+            <ul><li><b>Perineal/vulvar/vaginal/ischiorectal hematoma</b> — a blood-filled swelling from vessel damage; can cause severe hemorrhage</li><li>Wound infection/dehiscence</li><li>Painful defecation → stool withholding → constipation → further strain on the site</li></ul>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Labs / Diagnostics</h4>
+            <p>Primarily a visual/physical exam finding — Sims' (side-lying) position with adequate lighting; gently lift the buttock to visualize. No routine labs unless infection or significant hemorrhage is suspected (then CBC/H&amp;H as for any bleeding workup).</p>
+          </div>
+        </div>
+
+        <div class="cblock full-span" style="margin-top:18px;">
+          <h4><span class="dot" style="background:var(--rose)"></span>REEDA Scoring Reference (Perry, 2023)</h4>
+          <div class="table-wrap">
+            <table class="compare">
+              <thead><tr><th>Points</th><th>Redness</th><th>Edema</th><th>Ecchymosis</th><th>Discharge</th><th>Approximation</th></tr></thead>
+              <tbody>
+                <tr><td><b>0</b></td><td>None</td><td>None</td><td>None</td><td>None</td><td>Closed</td></tr>
+                <tr><td><b>1</b></td><td>Within 0.25 cm bilaterally</td><td>Less than 1 cm from incision</td><td>1–2 cm from incision</td><td>Serum</td><td>Skin separation ≤3 mm</td></tr>
+                <tr><td><b>2</b></td><td>Within 0.5 cm bilaterally</td><td>1–2 cm from incision</td><td>0.25–1 cm bilaterally or 0.5–2 cm unilaterally</td><td>Serosanguineous</td><td>Skin and subcutaneous fat separated</td></tr>
+                <tr><td><b>3</b></td><td class="flagcell">Beyond 0.5 cm bilaterally</td><td class="flagcell">Greater than 2 cm from incision</td><td class="flagcell">Greater than 1 cm bilaterally or 2 cm unilaterally</td><td class="flagcell">Bloody, purulent</td><td class="flagcell">Skin, subcutaneous fat, and fascial separation</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:8px; font-size:.85rem; color:var(--ink-soft);">Higher scores across categories = worse healing/more concerning finding. Score trends over time matter more than a single reading.</p>
+        </div>
+
+        <div class="priority-box rose-box full-span" style="margin-top:18px;">
+          <h4>Priority Nursing Interventions</h4>
+          <ul>
+            <li><b>Assess using REEDA</b> — Redness, Edema, Ecchymosis, Discharge, Approximation; document findings each shift</li>
+            <li><b>Clinical judgment alert — think hematoma</b> if the patient reports <i>excessive/severe perineal pain out of proportion to what's expected</i>: look for discoloration, listen for pain complaints and any sense of rectal pressure/need to defecate, don sterile gloves and gently palpate, then notify the provider immediately — bleeding causing a hematoma must be identified and stopped promptly</li>
+            <li>Ice pack to the perineum first 24–48 hours (local anesthesia, vasoconstriction, reduces edema/bleeding)</li>
+            <li>Moist heat (sitz bath, 100–105°F/37.8–40.5°C, 20 min, 3–4×/day) after 24–48 hours</li>
+            <li>For hemorrhoids: side-lying position, sit on flat/hard surfaces and tighten buttocks before sitting — avoid donut rings/soft cushions (they separate the buttocks and worsen venous pooling)</li>
+          </ul>
+        </div>
+
+        <div class="cgrid" style="margin-top:18px;">
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Treatment</h4>
+            <p>Topical anesthetic (e.g., lidocaine spray) after sitz bath; witch hazel pads (Tucks) for hemorrhoid comfort; stool softeners to prevent straining. Severe/refractory hemorrhoids may need manual repositioning (patient can be taught this) — most resolve within a few weeks postpartum. A confirmed hematoma requires prompt provider notification for possible incision/evacuation.</p>
+          </div>
+          <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Patient Education</h4>
+            <ul><li>Front-to-back peri-care after every void/BM; change pad front-to-back</li><li>Ice first 24–48 hrs, then sitz baths</li><li>Report pain that suddenly worsens or feels disproportionate — this is the hematoma red flag, not "normal" postpartum soreness</li><li>Stool softeners and fluids/fiber to avoid straining, which can tear sutures</li><li>Hemorrhoids from pregnancy typically resolve within a few weeks — reassurance is appropriate alongside comfort measures</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flag"><strong>Scope note:</strong> Endometritis, wound/surgical site infections, and postpartum DVT are covered in <b>Unit 8 (Postpartum Part II, Perry Ch. 21)</b> per your exam blueprint — not primary Unit 7 content. Ask me any time and I'll build a matching deep-dive guide for those when you're ready to study Unit 8.</div>
+  </section>
+
+  <!-- ================= PARENTING PROCESS ================= -->
+  <section id="parenting">
+    <div class="section-head">
+      <h2>Parenting Process, Parental Tasks &amp; Responsibility</h2>
+      <span class="section-tag tag-rose">USLO 5 · Take Action</span>
+    </div>
+    <p class="section-note">The transition to parenthood is a developmental process, not a single event. It can be especially difficult for first-time mothers with limited infant-care experience or those facing social isolation.</p>
+
+    <div class="cgrid" style="background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:22px 24px;">
+      <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Common Struggles in the Transition</h4>
+        <ul>
+          <li>Anxiety and feelings of inadequacy about parenting skills</li>
+          <li>Lack of knowledge/confidence in baby care</li>
+          <li>Emotional concerns, low mood, and detachment toward the infant</li>
+          <li>Social isolation, especially for primiparous mothers</li>
+        </ul>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Nursing Goal</h4>
+        <p>Create a supportive teaching environment that builds the parents' knowledge and confidence in caring for themselves <i>and</i> their infant — grounded in family-centered care.</p>
+      </div>
+    </div>
+
+    <div class="priority-box rose-box" style="margin-top:18px;">
+      <h4>How the Nurse Facilitates the Transition to Parenthood</h4>
+      <ul>
+        <li>Perform a needs assessment to identify the parents' knowledge/skill deficits</li>
+        <li>Use active listening and good communication skills to provide support</li>
+        <li><b>Empower</b> parents by helping them recognize their own strengths</li>
+        <li>Facilitate the parents' participation in decision-making</li>
+        <li>Provide learning opportunities that move parents from dependence → independence and self-reliance</li>
+      </ul>
+    </div>
+
+    <div class="table-wrap" style="margin-top:20px;">
+      <table class="compare">
+        <thead><tr><th>Parental Task</th><th>What It Looks Like</th></tr></thead>
+        <tbody>
+          <tr><td><b>Nurturing</b></td><td>Meeting the infant's physical and emotional needs through holding, feeding, touching, and interacting</td></tr>
+          <tr><td><b>Protecting</b></td><td>Building a foundation of safety and security; responding consistently to infant cues</td></tr>
+          <tr><td><b>Interpreting infant cues</b></td><td>Learning that crying is communication — recognizing distinguishable cries for hunger, pain, tiredness, fussiness, or attention-seeking</td></tr>
+          <tr><td><b>Fostering self-soothing</b></td><td>Understanding that newborns have a built-in capacity to console themselves (sucking, motion, distraction) and supporting that</td></tr>
+          <tr><td><b>Role assumption</b></td><td>Gradually moving from dependence on staff to independent, confident caregiving</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag"><strong>Reassurance point for teaching:</strong> it takes time to feel comfortable meeting a newborn's unique needs — normalize the learning curve rather than expecting instant competence.</div>
+  </section>
+
+  <!-- ================= ATTACHMENT INFLUENCES ================= -->
+  <section id="attachment">
+    <div class="section-head">
+      <h2>Attachment Influences</h2>
+      <span class="section-tag tag-amber">USLO 5 · Recognize &amp; Analyze Cues</span>
+    </div>
+    <p class="section-note"><b>Bonding</b> = the promotion of a unique, powerful relationship between parent and infant. <b>Attachment</b> = the reciprocal tie that exists between parent and infant, built through that bonding process. Both begin at pregnancy confirmation and continue through birth and beyond.</p>
+
+    <div class="bubble-grid">
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Maternal Attachment</div>
+        <div class="body">
+          <ul>
+            <li><b>En face position</b> — mother's and infant's faces ~8 inches apart, on the same plane, seeking eye-to-eye contact</li>
+            <li>Exploration pattern: fingertips → extremities → full trunk, with soft stroking</li>
+            <li>Early skin-to-skin and breastfeeding in the first 30 minutes support this window</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Paternal Attachment</div>
+        <div class="body">
+          <ul>
+            <li><b>Engrossment</b> — intense interest, absorption, and preoccupation with the newborn</li>
+            <li>Observed as prolonged, almost hypnotic gazing at the infant</li>
+            <li>Fostered by delivery-room presence, skin-to-skin, diapering, and bottle-feeding involvement</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Sibling Adjustment</div>
+        <div class="body">
+          <ul>
+            <li>Hurt, jealousy, sibling rivalry, and behavioral regression are common (e.g., a toilet-trained toddler asking for diapers again)</li>
+            <li>Sibling classes (ages 2–8) help ease the transition</li>
+            <li>Nurse-taught strategies: validate feelings, give the older child a "special job," praise age-appropriate behavior without criticizing regression</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bubble-card">
+        <div class="letterhead lh-coral">Grandparent Adjustment</div>
+        <div class="body">
+          <ul>
+            <li>Grandparents often exert strong influence on child-rearing practices</li>
+            <li>Grandparent classes focus on defining a <i>supportive</i> role (helping with siblings, cooking, household tasks) rather than a parenting role</li>
+            <li>Cover current recommendations on positioning, feeding, and responding to behavior cues</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="cgrid" style="margin-top:20px;">
+      <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Assessing Attachment</h4>
+        <ul>
+          <li>Does the mother seem eager to care for her infant?</li>
+          <li>Is she touching her baby, making skin-to-skin contact?</li>
+          <li>What is her response when the baby cries?</li>
+          <li>Does she make eye contact when holding/feeding?</li>
+          <li>Any warning signs of appearing dazed or detached?</li>
+        </ul>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--amber)"></span>Interruptions to the Bonding Process</h4>
+        <ul>
+          <li>Infant separation for medical/surgical reasons (e.g., NICU admission)</li>
+          <li>Financial stress, chaotic home life, lack of family support</li>
+          <li>Substance use, concerns about returning to work/childcare</li>
+        </ul>
+      </div>
+      <div class="cblock full-span"><h4><span class="dot" style="background:var(--amber)"></span>Promoting Attachment When Separation Occurs</h4>
+        <ul>
+          <li>Early and frequent access to the infant whenever medically possible</li>
+          <li>NICU staff encourage touching, speaking to, and skin-to-skin holding as soon as safe</li>
+          <li>Send photos and make frequent calls if the mother can't visit</li>
+          <li>Reassure the mother that bonding is ongoing — lack of early contact does not doom the relationship</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cgrid" style="margin-top:18px;">
+      <div class="cblock"><h4><span class="dot" style="background:var(--teal)"></span>Expected Attachment Findings</h4>
+        <ul><li>En face positioning, eye contact, soft voice ("baby talk"), progressive exploratory touch</li><li>Responds promptly and appropriately when the infant cries</li><li>Calls the infant by name; uses "we" language including the baby in the family</li></ul>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Unexpected Attachment Findings</h4>
+        <ul><li>Appearing dazed, detached, or disinterested when handling the infant</li><li>Avoiding eye contact or physical contact beyond what's required for care</li><li>Referring to the infant in impersonal terms ("it," "the baby") persistently, not just early exhaustion</li><li>Rough handling or a delayed/absent response to crying</li></ul>
+      </div>
+    </div>
+    <div class="priority-box amber-box full-span" style="margin-top:18px;">
+      <h4>Priority Interventions &amp; Patient Education</h4>
+      <ul>
+        <li>Facilitate early, uninterrupted skin-to-skin contact and rooming-in whenever safe</li>
+        <li>Model and narrate infant cues (hunger, tiredness) to build parental confidence in reading them</li>
+        <li>Include partner/siblings/grandparents in care tasks appropriate to their role rather than sidelining them</li>
+        <li>Document and report unexpected attachment findings — these warrant follow-up, not judgment, and may reflect fatigue, pain, or an emerging mood disorder rather than "not loving the baby"</li>
+        <li>Teach families in advance what normal attachment behaviors look like so they can recognize their own progress</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= RUBIN ================= -->
+  <section id="rubin">
+    <div class="section-head">
+      <h2>Rubin's Maternal Tasks in Pregnancy</h2>
+      <span class="section-tag tag-teal">USLO 6 · Rubin (1975)</span>
+    </div>
+    <p class="section-note">Rubin (1975) described three phases a woman moves through as she assumes the mothering role. Timing below reflects Rubin's original framework — note that with today's shortened hospital stays, women often move through these phases faster and phases can overlap.</p>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Phase</th><th>Timing</th><th>Maternal Focus / Behavior</th><th>Nursing Implication</th></tr></thead>
+        <tbody>
+          <tr><td><b>Taking-in</b></td><td>First 1–2 days</td><td>Dependent on others for physical needs; physical exhaustion; elation, excitement, and/or anxiety; reliving the labor/birth events verbally and mentally</td><td>Provide physical care, let her rest and process the birth — not yet the teaching window</td></tr>
+          <tr><td><b>Taking-hold</b></td><td>2nd–3rd day (through discharge)</td><td>Initiates action; asks for help with self-care, begins caring for the baby, may be anxious about her mothering abilities; eagerly wants infant-care information</td><td><b>Prime teaching window</b> — discharge teaching sticks best here; closely observe mother-infant interaction for poor bonding signs</td></tr>
+          <tr><td><b>Letting-go</b></td><td>First 2–6 weeks postpartum</td><td>Moves beyond mother-infant symbiosis, sees infant as an emerging individual; refocuses on partner, other children, and family issues</td><td>Support family role adjustment; watch for maladjustment (an overprotective mother who resists help or excludes her partner)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag"><strong>Sample-question logic:</strong> A mother frequently touching baby's fingers/toes, asking many questions about <i>her own</i> recovery, and relying on staff to bring the baby = <b>Taking-in</b> — self-focused, dependent, exploratory touch, but not yet independently initiating care (that shift is Taking-hold).</div>
+
+    <div class="cgrid" style="margin-top:20px;">
+      <div class="cblock"><h4><span class="dot" style="background:var(--teal)"></span>Expected Progression</h4>
+        <ul><li>Movement <b>Taking-in → Taking-hold → Letting-go</b> in sequence, at a pace roughly matching the timing ranges above</li><li>Increasing independence and confidence in infant care over the first days to weeks</li><li>Eventual reintegration of partner, other children, and outside roles into the family unit</li></ul>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--rose)"></span>Unexpected / Maladjustment Findings</h4>
+        <ul><li>Prolonged dependency — still in "Taking-in" behavior well past 2 days, avoiding infant care</li><li>Excessive anxiety about mothering ability that doesn't improve with teaching/support</li><li>Overprotectiveness that resists help or excludes the partner ("Letting-go" failure)</li><li>Flat affect, disinterest, or difficulty bonding at any phase — screen for a mood disorder (see Psychosocial Status section)</li></ul>
+      </div>
+    </div>
+    <div class="priority-box plum-box full-span" style="margin-top:18px;">
+      <h4>Priority Interventions &amp; Patient Education Across Phases</h4>
+      <ul>
+        <li><b>Taking-in:</b> Prioritize physical care and rest; let the mother process/re-tell the birth story without rushing her into infant-care teaching</li>
+        <li><b>Taking-hold:</b> This is your window — deliver discharge teaching here (feeding, bathing, cord/circumcision care, warning signs) while she's receptive and motivated; observe and gently coach mother-infant interaction</li>
+        <li><b>Letting-go:</b> Support the family's redefinition of roles; involve partner and siblings; educate that grief over the "fantasy birth" or loss of pre-baby identity/routine is a normal part of this phase, not a sign of poor bonding</li>
+        <li><b>Across all phases:</b> Educate the family in advance about what each phase looks like so slow independence in Taking-in isn't mistaken by the family for "not loving the baby enough"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= LACTATION PHYSIOLOGY ================= -->
+  <section id="lactation">
+    <div class="section-head">
+      <h2>Lactogenesis — Physiology Flow</h2>
+      <span class="section-tag tag-teal">Analyze Cues</span>
+    </div>
+    <div class="flow">
+      <div class="step"><span class="stepnum">01</span><h4>Placenta delivered</h4><p>Sudden drop in estrogen/progesterone, which had been suppressing prolactin's milk-producing effect</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="stepnum">02</span><h4>Prolactin release</h4><p>Anterior pituitary releases prolactin; highest levels in first 10 days postpartum</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="stepnum">03</span><h4>Suckling</h4><p>Infant suckling triggers further prolactin + oxytocin release; supply meets demand</p></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="stepnum">04</span><h4>Milk-ejection reflex</h4><p>Oxytocin (posterior pituitary) mediates let-down — can be triggered by cry, thought of infant; inhibited by stress</p></div>
+    </div>
+  </section>
+
+  <!-- ================= NEWBORN FEEDING ================= -->
+  <section id="newborn-feeding">
+    <div class="section-head">
+      <h2>Newborn Feeding Reference</h2>
+      <span class="section-tag tag-rose">Generate Solutions</span>
+    </div>
+
+    <h3 style="margin-top:0; font-size:1.1rem;">Formula Feeding Patterns</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Age</th><th>Amount per feed</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td>24–48 hours old</td><td>15–30 mL</td><td>Every 3–4 hrs; 6–8 feeds/24 hr</td></tr>
+          <tr><td>14 days old</td><td>90–150 mL</td><td>Every 3–4 hrs; patterns stabilize ~3–4 weeks</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag">Prepared formula is good for <b>48 hours</b> refrigerated after mixing. Always hold and interact with the infant during feedings regardless of feeding method.</div>
+
+    <h3 style="margin-top:34px; font-size:1.1rem;">Safe Breast Milk Storage (Perry, 2023)</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Milk type</th><th>Countertop (77°F/25°C)</th><th>Refrigerator (40°F/4°C)</th><th>Freezer (0°F/-18°C)</th></tr></thead>
+        <tbody>
+          <tr><td>Freshly expressed/pumped</td><td>Up to 4 hours</td><td>Up to 4 days</td><td>Best within 6 mo; acceptable up to 12 mo</td></tr>
+          <tr><td>Thawed, previously frozen</td><td>1–2 hours</td><td>Up to 1 day (24 hrs)</td><td>Never refreeze</td></tr>
+          <tr><td>Leftover from a feeding</td><td colspan="3">Use within 2 hours after the baby finishes feeding</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:34px; font-size:1.1rem;">Formula vs. Breastfeeding — Quick Compare</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Feature</th><th>Breastfeeding</th><th>Formula Feeding</th></tr></thead>
+        <tbody>
+          <tr><td>First milk</td><td>Colostrum — high IgA, protein</td><td>N/A — formula from birth</td></tr>
+          <tr><td>Regulation</td><td>Supply meets demand (suckling-driven)</td><td>Set volumes by age/weight</td></tr>
+          <tr><td>Special considerations</td><td>Latch/positioning, maternal medication compatibility</td><td>Specialized formulas for cleft lip/palate, congenital heart defects</td></tr>
+          <tr><td>Common concern</td><td>Engorgement, sore nipples, mastitis</td><td>Spitting up</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= MEDICATIONS ================= -->
+  <section id="medications">
+    <div class="section-head">
+      <h2>Medications to Know — Unit 7</h2>
+      <span class="section-tag tag-rose">Exam 3 · Generate Solutions</span>
+    </div>
+    <p class="section-note">Pulled from the medications that actually appear across the Unit 7 material — uterotonics for atony/PPH, maternal immune agents, perineal/breast comfort measures, mastitis antibiotics, and the newborn nutrition supplements. Grouped by purpose so you can attach each drug to the clinical picture it treats.</p>
+
+    <h3 style="font-size:1.1rem;">Uterotonics — Uterine Atony / Early PPH</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Medication</th><th>Role / Timing</th><th>Key Nursing Consideration</th></tr></thead>
+        <tbody>
+          <tr><td><b>Oxytocin</b> (Pitocin)</td><td>First-line uterotonic</td><td>Given after fundal massage/bladder emptying if still boggy; also used for labor induction/augmentation (already familiar from Unit 6)</td></tr>
+          <tr><td><b>Methylergonovine</b> (Methergine)</td><td>Second-line uterotonic</td><td class="flagcell">Contraindicated in hypertension — it's a vasoconstrictor</td></tr>
+          <tr><td><b>Carboprost tromethamine</b> (Hemabate)</td><td>Uterotonic (prostaglandin)</td><td class="flagcell">Contraindicated in asthma — can cause bronchospasm</td></tr>
+          <tr><td><b>Misoprostol</b> (Cytotec)</td><td>Uterotonic (prostaglandin analog)</td><td>Used per contraindications of the other agents; also used for labor induction/cervical ripening in other contexts</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag"><strong>Exam logic:</strong> know these as a set — if a question gives you a contraindication (asthma, hypertension) embedded in the stem, you're expected to eliminate the matching uterotonic.</div>
+
+    <h3 style="margin-top:30px; font-size:1.1rem;">Maternal Immune Agents</h3>
+    <div class="cgrid">
+      <div class="cblock"><h4><span class="dot" style="background:var(--teal)"></span>Rho(D) Immune Globulin (RhoGAM)</h4>
+        <p>300 mcg given within <b>72 hours</b> of birth to nonsensitized Rh-negative mothers who deliver an Rh-positive infant — regardless of whether RhoGAM was given antepartum. Larger doses may be needed with significant maternal-fetal hemorrhage.</p>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--teal)"></span>MMR Vaccine</h4>
+        <p>Given if the mother is rubella-nonimmune (titer &lt;1:8 or antibody-negative). <b>Safe with breastfeeding.</b> Counsel to avoid pregnancy for <b>1 month</b> after the vaccine due to teratogenic risk. May cause transient rubella-like symptoms (lymphadenopathy, muscle aches, low-grade fever).</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:30px; font-size:1.1rem;">Perineal &amp; Breast Comfort Measures</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Medication</th><th>Used For</th><th>Key Point</th></tr></thead>
+        <tbody>
+          <tr><td><b>Acetaminophen / Ibuprofen (NSAIDs)</b></td><td>Afterpains, engorgement pain, general postpartum discomfort</td><td>OTC options may be as effective as narcotic analgesics; for engorgement, most effective when taken <i>before</i> feeding in anticipation of discomfort</td></tr>
+          <tr><td><b>Topical lidocaine spray</b></td><td>Perineal/episiotomy pain</td><td>Applied after a sitz bath</td></tr>
+          <tr><td><b>Witch hazel pads</b> (Tucks)</td><td>Hemorrhoid and perineal comfort</td><td>Applied after sitz bath or perineal care</td></tr>
+          <tr><td><b>Stool softeners</b> (e.g., docusate)</td><td>Prevent straining/constipation</td><td>Routinely prescribed for 3rd/4th-degree episiotomies or lacerations — straining can tear sutures</td></tr>
+          <tr><td><b>Lanolin</b></td><td>Cracked/sore nipples</td><td>Apply only <i>after</i> latch has been corrected — creams don't fix the underlying mechanical cause</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:30px; font-size:1.1rem;">Mastitis Antibiotics</h3>
+    <div class="cgrid">
+      <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>First-line</h4>
+        <p><b>Cephalosporins</b> — compatible with breastfeeding, which continues throughout treatment. Emphasize completing the <b>full course</b> even after symptoms improve.</p>
+      </div>
+      <div class="cblock"><h4><span class="dot" style="background:var(--plum)"></span>MRSA / Refractory</h4>
+        <p><b>Trimethoprim-sulfamethoxazole, clindamycin, or rifampin</b>, ± incision and drainage if an abscess forms. Breastfeeding still continues — MRSA is not transmitted through milk, only through direct contact with an open lesion/drainage.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:30px; font-size:1.1rem;">Newborn Nutrition Supplements</h3>
+    <div class="table-wrap">
+      <table class="compare">
+        <thead><tr><th>Supplement</th><th>Who Needs It</th><th>Dose / Timing</th></tr></thead>
+        <tbody>
+          <tr><td><b>Vitamin D</b></td><td>All breastfed infants — human milk is deficient in vitamin D</td><td><b>400–800 IU/day</b>, starting in the first few days of life. Non-breastfed infants taking &lt;1 quart/day of fortified formula/milk also need <b>400 IU/day</b></td></tr>
+          <tr><td><b>Vitamin K</b> (phytonadione)</td><td>All newborns, regardless of feeding method</td><td>Injection at <b>birth</b> — the newborn gut is sterile and can't yet produce vitamin K via intestinal flora, so this prevents hemorrhagic disease of the newborn</td></tr>
+          <tr><td><b>Iron</b></td><td>Exclusively breastfed infants</td><td>No supplement needed until <b>4 months</b> (adequate stores from maternal iron in utero last ~6 months); formula-fed infants should be on <b>iron-fortified formula</b> instead</td></tr>
+          <tr><td><b>Vitamin B12</b></td><td>Infants of mothers on strict vegan diets, or with minimal dairy/egg/meat intake, or history of bariatric surgery</td><td>Breastfed infant's B12 status depends entirely on maternal intake/stores — supplement if maternal risk factors present</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="flag"><strong>High-yield distinction:</strong> Vitamin D is a <i>maternal-diet-independent</i> gap (breast milk is low in it no matter what the mother eats), while B12 is <i>maternal-diet-dependent</i> — don't mix these up on an exam question that gives you a maternal diet history.</div>
+  </section>
+
+  <!-- ================= MNEMONICS ================= -->
+  <section id="mnemonics">
+    <div class="section-head">
+      <h2>Mnemonics Recap</h2>
+      <span class="section-tag tag-slate">Retain &amp; Recall</span>
+    </div>
+    <div class="mnemonic-wrap">
+      <div class="mnemonic"><div class="word">BUBBLE-HE</div><p>Breasts, Uterus, Bladder, Bowel, Lochia, Episiotomy, Hemorrhoids, Emotional — the 8-point postpartum assessment.</p></div>
+      <div class="mnemonic"><div class="word">COLA</div><p>Color, Odor, Last void/BM, Amount — bladder/bowel elimination assessment.</p></div>
+      <div class="mnemonic"><div class="word">REEDA</div><p>Redness, Ecchymosis, Edema, Drainage, Approximation — perineal/incision healing check.</p></div>
+      <div class="mnemonic"><div class="word">Taking-in → Taking-hold → Letting-go</div><p>"Dependent → capable → integrated" — Rubin's phase progression.</p></div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    Sources: Unit 7 "Postpartum Recovery &amp; Nursing Care" and "Newborn Nutrition and Feeding" lecture decks · Perry, S.E. et al. (2023) <i>Maternal Child Nursing Care</i> (7th ed.), Elsevier · Galen College of Nursing NSG 3500 Syllabus v8.5.
+  </div>
+</footer>
+
+</body>
+</html>
