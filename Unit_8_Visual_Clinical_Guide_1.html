@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8 Clinical Guide — Postpartum Complications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F6F1;
+    --paper:#FFFFFF;
+    --ink:#1E2A22;
+    --ink-soft:#4B584E;
+    --line:#DDE3D8;
+
+    --hem:#AD2E3E;      --hem-tint:#FBEAEC;   --hem-deep:#7A1F2B;
+    --clot:#454A9E;     --clot-tint:#ECEDF8;  --clot-deep:#2F3270;
+    --inf:#C1741F;      --inf-tint:#FBF0DF;   --inf-deep:#8A5013;
+    --psy:#1F7A73;      --psy-tint:#E4F4F1;   --psy-deep:#155852;
+    --disc:#6B7A2A;     --disc-tint:#F0F3E0;  --disc-deep:#4A5620;
+    --contra:#7A4A9E;   --contra-tint:#F2ECF8; --contra-deep:#54326E;
+    --meds:#1F5C8A;     --meds-tint:#E7F0F7;   --meds-deep:#153F5E;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HEADER ---------- */
+  header.top{
+    background:linear-gradient(155deg,#1E2A22 0%,#2C3B2F 55%, #1E2A22 100%);
+    color:#F4F6F1;
+    padding:44px 0 34px;
+    border-bottom:6px solid #16201A;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#B9C7B7;
+    margin-bottom:10px;
+  }
+  h1.title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(30px,4.2vw,46px);
+    margin:0 0 8px;
+    line-height:1.05;
+  }
+  .subtitle{
+    color:#CBD6C8;
+    font-size:15.5px;
+    max-width:700px;
+    margin-bottom:22px;
+  }
+  .uslo-strip{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:10px;
+    margin-top:18px;
+  }
+  .uslo-chip{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:10px;
+    padding:11px 14px;
+    font-size:13px;
+    color:#DCE5D9;
+  }
+  .uslo-chip b{color:#fff;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.05em;}
+
+  /* ---------- TAB NAV ---------- */
+  nav.tabs{
+    position:sticky; top:0; z-index:50;
+    background:var(--bg);
+    border-bottom:2px solid var(--line);
+    padding-top:16px;
+  }
+  .tabbar{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:0;
+  }
+  .tabbtn{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    border:none;
+    background:#E9ECE4;
+    color:var(--ink-soft);
+    padding:12px 20px 13px;
+    border-radius:12px 12px 0 0;
+    cursor:pointer;
+    white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:background .15s, color .15s, transform .1s;
+    border-bottom:3px solid transparent;
+  }
+  .tabbtn:hover{transform:translateY(-1px);}
+  .tabbtn .cnt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    background:rgba(0,0,0,.08);
+    padding:1px 7px;
+    border-radius:20px;
+  }
+  .tabbtn[data-cat="hem"].active{background:var(--hem);color:#fff;}
+  .tabbtn[data-cat="clot"].active{background:var(--clot);color:#fff;}
+  .tabbtn[data-cat="inf"].active{background:var(--inf);color:#fff;}
+  .tabbtn[data-cat="psy"].active{background:var(--psy);color:#fff;}
+  .tabbtn[data-cat="disc"].active{background:var(--disc);color:#fff;}
+  .tabbtn[data-cat="contra"].active{background:var(--contra);color:#fff;}
+  .tabbtn[data-cat="meds"].active{background:var(--meds);color:#fff;}
+  .tabbtn.active .cnt{background:rgba(255,255,255,.25);color:#fff;}
+
+  /* ---------- SECTION INTRO ---------- */
+  .cat-intro{
+    padding:26px 0 6px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;
+  }
+  .cat-intro h2{
+    font-family:'Fraunces',serif;
+    font-size:28px;
+    margin:0 0 4px;
+    font-weight:600;
+  }
+  .cat-intro p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:560px;}
+  [data-panel="hem"] .cat-intro h2{color:var(--hem-deep);}
+  [data-panel="clot"] .cat-intro h2{color:var(--clot-deep);}
+  [data-panel="inf"] .cat-intro h2{color:var(--inf-deep);}
+  [data-panel="psy"] .cat-intro h2{color:var(--psy-deep);}
+  [data-panel="disc"] .cat-intro h2{color:var(--disc-deep);}
+  [data-panel="contra"] .cat-intro h2{color:var(--contra-deep);}
+  [data-panel="meds"] .cat-intro h2{color:var(--meds-deep);}
+
+  .toolbtn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; letter-spacing:.04em;
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    padding:8px 14px;
+    cursor:pointer;
+    color:var(--ink-soft);
+  }
+  .toolbtn:hover{border-color:var(--ink-soft);}
+
+  /* ---------- CONDITION CARD ---------- */
+  .panel{display:none;padding-bottom:20px;}
+  .panel.active{display:block;}
+
+  .card{
+    background:var(--paper);
+    border-radius:16px;
+    border:1.5px solid var(--line);
+    margin-bottom:16px;
+    overflow:hidden;
+    box-shadow:0 1px 2px rgba(30,42,34,.04);
+  }
+  .card summary{
+    list-style:none;
+    cursor:pointer;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .card summary::-webkit-details-marker{display:none;}
+  .card summary:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;}
+
+  .sum-left{display:flex;align-items:center;gap:14px;min-width:0;}
+  .sum-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:#fff;
+    width:30px;height:30px;flex:0 0 30px;
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  [data-panel="hem"] .sum-num{background:var(--hem);}
+  [data-panel="clot"] .sum-num{background:var(--clot);}
+  [data-panel="inf"] .sum-num{background:var(--inf);}
+  [data-panel="psy"] .sum-num{background:var(--psy);}
+  [data-panel="disc"] .sum-num{background:var(--disc);}
+  [data-panel="contra"] .sum-num{background:var(--contra);}
+  [data-panel="meds"] .sum-num{background:var(--meds);}
+
+  .sum-text h3{
+    font-family:'Fraunces',serif;
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 2px;
+  }
+  .sum-text .hook{font-size:13px;color:var(--ink-soft);}
+  .chevron{
+    flex:0 0 auto;
+    font-size:18px;
+    transition:transform .2s;
+    color:var(--ink-soft);
+  }
+  details[open] .chevron{transform:rotate(180deg);}
+
+  .card-body{
+    padding:4px 22px 24px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  @media (max-width:860px){ .card-body{grid-template-columns:1fr;} }
+
+  .field{
+    border-radius:12px;
+    padding:14px 15px;
+  }
+  [data-panel="hem"] .field{background:var(--hem-tint);}
+  [data-panel="clot"] .field{background:var(--clot-tint);}
+  [data-panel="inf"] .field{background:var(--inf-tint);}
+  [data-panel="psy"] .field{background:var(--psy-tint);}
+  [data-panel="disc"] .field{background:var(--disc-tint);}
+  [data-panel="contra"] .field{background:var(--contra-tint);}
+  [data-panel="meds"] .field{background:var(--meds-tint);}
+
+  .field h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin:0 0 7px;
+    display:flex;align-items:center;gap:6px;
+  }
+  [data-panel="hem"] .field h4{color:var(--hem-deep);}
+  [data-panel="clot"] .field h4{color:var(--clot-deep);}
+  [data-panel="inf"] .field h4{color:var(--inf-deep);}
+  [data-panel="psy"] .field h4{color:var(--psy-deep);}
+  [data-panel="disc"] .field h4{color:var(--disc-deep);}
+  [data-panel="contra"] .field h4{color:var(--contra-deep);}
+  [data-panel="meds"] .field h4{color:var(--meds-deep);}
+
+  .field ul{margin:0;padding-left:16px;font-size:13.3px;color:var(--ink);}
+  .field ul li{margin-bottom:4px;}
+  .field p{margin:0;font-size:13.3px;color:var(--ink);}
+  .field b{font-weight:700;}
+
+  .field.wide{grid-column:1 / -1;}
+
+  /* priority flag emphasis */
+  .field.priority{
+    border:1.5px solid;
+  }
+  [data-panel="hem"] .field.priority{border-color:var(--hem);}
+  [data-panel="clot"] .field.priority{border-color:var(--clot);}
+  [data-panel="inf"] .field.priority{border-color:var(--inf);}
+  [data-panel="psy"] .field.priority{border-color:var(--psy);}
+  [data-panel="disc"] .field.priority{border-color:var(--disc);}
+  [data-panel="contra"] .field.priority{border-color:var(--contra);}
+  [data-panel="meds"] .field.priority{border-color:var(--meds);}
+
+  /* mnemonic banner */
+  .mnem{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    background:var(--ink);
+    color:#F4F6F1;
+    border-radius:10px;
+    padding:12px 16px;
+    margin-bottom:18px;
+    display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;
+  }
+  .mnem b{color:#fff;text-transform:uppercase;letter-spacing:.05em;}
+
+  footer.pagefoot{
+    max-width:1180px;margin:30px auto 0;padding:20px 24px;
+    color:var(--ink-soft);font-size:12.5px;
+    border-top:1.5px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">NSG 3500 · Maternal Health · Galen College of Nursing · Syllabus v8.5</div>
+    <h1 class="title">Unit 8 Clinical Guide</h1>
+    <div class="subtitle">Postpartum complications, tap a condition to expand the full clinical picture — pathophysiology through patient education — grounded in Perry (2023), Saunders Maternity (9th ed.), and your Unit 8 lecture slides.</div>
+    <div class="uslo-strip">
+      <div class="uslo-chip"><b>USLO 1</b> · Describe nursing care &amp; collaborative management of postpartum complications (CSLO 4, 6, 1)</div>
+      <div class="uslo-chip"><b>USLO 2</b> · Implement discharge teaching for the postpartum woman (CSLO 4, 6, 1)</div>
+      <div class="uslo-chip"><b>USLO 3</b> · Differentiate contraceptive methods for the postpartum woman (CSLO 4, 1, 2)</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <div class="tabbar">
+      <button class="tabbtn active" data-cat="hem" onclick="showTab('hem')">🩸 Hemorrhage &amp; Trauma <span class="cnt">8</span></button>
+      <button class="tabbtn" data-cat="clot" onclick="showTab('clot')">🫀 Thromboembolic <span class="cnt">2</span></button>
+      <button class="tabbtn" data-cat="inf" onclick="showTab('inf')">🦠 Infections <span class="cnt">4</span></button>
+      <button class="tabbtn" data-cat="psy" onclick="showTab('psy')">🧠 Psychiatric <span class="cnt">3</span></button>
+      <button class="tabbtn" data-cat="disc" onclick="showTab('disc')">📋 Discharge Teaching <span class="cnt">12</span></button>
+      <button class="tabbtn" data-cat="contra" onclick="showTab('contra')">💊 Contraception Planning <span class="cnt">8</span></button>
+      <button class="tabbtn" data-cat="meds" onclick="showTab('meds')">💉 Medications <span class="cnt">5</span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ===================== HEMORRHAGE & TRAUMA ===================== -->
+  <section class="panel active" data-panel="hem" id="panel-hem">
+    <div class="cat-intro">
+      <div>
+        <h2>Hemorrhage &amp; Trauma</h2>
+        <p>PPH = blood loss &gt;500 mL vaginal / &gt;1,000 mL cesarean, or a 10% Hct/Hgb drop. Early = first 24h (highest risk in the first hour). Late = 24h–12 weeks.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-hem')">Expand / collapse all</button>
+    </div>
+
+    <div class="mnem"><b>4 T's:</b> Tone (atony) · Trauma (lacerations/hematoma) · Tissue (retained placenta) · Thrombin (coagulopathy)</div>
+
+    <!-- Uterine Atony -->
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Uterine Atony</h3><div class="hook">Leading cause of EARLY postpartum hemorrhage — "Tone"</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Myometrium fails to contract/retract after birth. Normally, interlacing muscle fibers act as "living ligatures," compressing the spiral arteries at the placental site. Without firm contraction, vessels stay open and bleed freely.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Overdistended uterus, prolonged/precipitous labor, oxytocin induction/augmentation, chorioamnionitis, mismanaged 3rd stage.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Soft, <b>boggy</b> fundus, often displaced above umbilicus/off midline</li><li>Excessive bright red bleeding, large clots</li><li>↑ HR then ↓ BP (late sign)</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Macrosomia, multiples, polyhydramnios</li><li>High parity, previous atony/PPH</li><li>Forceps/vacuum/cesarean birth</li><li>Magnesium sulfate, halogenated anesthesia</li><li>Retained placental fragments</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Hypovolemic shock</li><li>DIC</li><li>Hysterectomy</li><li>Death if unrecognized</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Quantitative blood loss (weigh pads, graduated drapes; 1g=1mL)</li><li>Trending Hgb/Hct (10% drop = diagnostic)</li><li>Type &amp; crossmatch, coags if ongoing</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li><b>Fundal massage immediately</b></li><li>Empty bladder (full bladder worsens atony)</li><li>Continuous VS monitoring, 2nd IV access</li><li>Notify provider if unresolved with massage</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Uterotonics: oxytocin first-line; methylergonovine (avoid in HTN); carboprost (avoid in asthma); misoprostol</li><li>Bimanual compression</li><li>Surgical: D&amp;C, B-Lynch suture, uterine artery ligation, hysterectomy if refractory</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Teach self fundal massage before discharge (increases sense of control, decreases anxiety). Report a fundus that feels boggy, heavy bleeding (pad soaked &lt;1 hr), or passing large clots after discharge — this is a late-PPH warning sign.</p></div>
+      </div>
+    </details>
+
+    <!-- Lacerations -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Genital Tract Lacerations</h3><div class="hook">Firm uterus + continued bleeding — "Trauma"</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Soft tissue injury to cervix, vagina, or perineum during second stage. Unlike atony, the uterus itself remains firm and midline — bleeding is from a vascular tear, not a flaccid uterus.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Rapid/precipitous labor, operative vaginal birth, episiotomy, macrosomia, nulliparity.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li><b>Firm, midline fundus</b> with persistent bright red bleeding</li><li>Visible laceration on speculum exam</li><li>Steady trickle rather than atony's boggy gush</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Forceps/vacuum-assisted birth</li><li>Episiotomy</li><li>Precipitous birth, macrosomia</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Ongoing hemorrhage</li><li>Hematoma formation</li><li>Hemodynamic instability</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Direct visual/speculum inspection</li><li>Hgb/Hct trend</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Frequent VS</li><li>Notify provider promptly for repair</li><li>Monitor for evolving hematoma</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Suture repair</li><li>Direct pressure, ice</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Perineal hygiene (front to back), ice then sitz baths for comfort, increase dietary fiber/fluids and use stool softeners to avoid straining sutures, report signs of wound infection.</p></div>
+      </div>
+    </details>
+
+    <!-- Retained Tissue -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">3</div>
+          <div class="sum-text"><h3>Retained Placental Tissue / Subinvolution</h3><div class="hook">Most common cause of LATE postpartum hemorrhage — "Tissue"</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Placental or membrane fragments remain in the uterus after birth, preventing the myometrium from fully contracting. Subinvolution = failure of the uterus to return to its prepregnant size and position.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Incomplete placental separation, mismanaged third stage of labor, placenta accreta spectrum.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Boggy uterus</li><li>Prolonged or excessive lochia</li><li><b>Late PPH</b> (24h–12 weeks postpartum)</li><li>Possible fever if infected</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Placenta accreta spectrum</li><li>Prior uterine surgery</li><li>Manual placental removal, multiparity</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Late hemorrhage</li><li>Endometritis</li><li>Need for D&amp;C or hysterectomy</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Pelvic ultrasound (visualizes retained tissue)</li><li>Trending Hgb/Hct</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Monitor lochia amount/pattern each shift</li><li>Fundal height/tone assessment</li><li>Report <b>return to lochia rubra</b> after it has progressed — red flag</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Uterotonics</li><li>D&amp;C / curettage</li><li>Antibiotics if infected</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Call the provider immediately for heavy bleeding, foul odor, or lochia that reverts to bright red after already lightening — these signal retained tissue or infection, not a normal fluctuation.</p></div>
+      </div>
+    </details>
+
+    <!-- Coagulopathy -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">4</div>
+          <div class="sum-text"><h3>Coagulation Disorders (DIC, vW Disease, ITP)</h3><div class="hook">Bleeding without an obvious focal source — "Thrombin"</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>DIC: widespread clotting-factor consumption causes simultaneous microclotting and uncontrolled hemorrhage. Von Willebrand disease: inherited factor VIII deficiency (autosomal dominant). ITP: autoimmune platelet destruction.</p></div>
+        <div class="field"><h4>Etiology</h4><p>DIC is secondary to abruption, amniotic fluid embolism, HELLP, sepsis, or fetal demise. vW disease and ITP are pre-existing hereditary/autoimmune conditions.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Oozing from IV sites/gums, petechiae, bruising</li><li>Bleeding that won't clot</li><li>Hemorrhage with no clear anatomic source</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Abruption, AFE, severe preeclampsia/HELLP</li><li>Sepsis, fetal demise</li><li>Family/personal history of bleeding disorder</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Massive hemorrhage</li><li>Multi-organ failure</li><li>Death</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>↓ Platelets, ↓ fibrinogen</li><li>↑ PT/PTT, ↑ D-dimer</li><li>↓ Factor VIII (vW disease)</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Continuous hemodynamic monitoring</li><li>Minimize venipuncture/trauma</li><li>Prepare for rapid blood product administration</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Treat underlying cause</li><li>Blood component therapy: FFP, cryoprecipitate, platelets</li><li>Desmopressin (vW disease), TXA</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Acute management is inpatient-focused: explain the reason for frequent labs/monitoring. For women with a known hereditary bleeding disorder, counsel on long-term hematology follow-up and bleeding-risk awareness for up to 4 weeks postpartum.</p></div>
+      </div>
+    </details>
+
+    <!-- Hematoma -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">5</div>
+          <div class="sum-text"><h3>Hematoma</h3><div class="hook">Concealed bleeding — pain out of proportion is the hallmark</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Blood collects in perineal, vulvar, or vaginal soft tissue from an injured vessel without adequate external hemostasis — bleeding is trapped rather than visible.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Vessel injury during laceration repair, episiotomy, or operative vaginal birth.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li><b>Severe, unremitting perineal/rectal pain</b> out of proportion to exam (hallmark finding)</li><li>Discoloration, edema of perineum</li><li>Rectal pressure</li><li>Possible palpable bulging mass</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Genital tract laceration, episiotomy</li><li>Operative vaginal birth</li><li>Prolonged 2nd stage, nulliparity</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Hypovolemic shock (concealed blood loss)</li><li>Infection</li><li>Need for surgical evacuation</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Clinical exam (visual + palpation)</li><li>Trending Hgb/Hct if hematoma is large</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Treat pain complaints as a real finding, not "normal" postpartum soreness</li><li>Frequent VS</li><li>Notify provider promptly</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Ice x 12 hours, then sitz baths</li><li>Analgesics</li><li>Incision &amp; drainage if &gt;12 cm or symptomatic</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Report unrelieved or worsening perineal pain, especially pain that escalates rather than improves with routine comfort measures, and signs of infection at any drainage site.</p></div>
+      </div>
+    </details>
+
+    <!-- Uterine Inversion -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">6</div>
+          <div class="sum-text"><h3>Uterine Inversion</h3><div class="hook">Obstetric emergency — fundus not palpable abdominally</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>The uterine fundus collapses into the uterine cavity and turns inside out — can be incomplete (palpable through the cervix), complete (mass in the vagina), or prolapsed (mass protrudes outside the introitus).</p></div>
+        <div class="field"><h4>Etiology</h4><p>Excessive umbilical cord traction with a fundally attached placenta, or fundal pressure applied to an atonic uterus.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Sudden hemorrhage, shock, and severe pain</li><li><b>Fundus not palpable abdominally</b> — a depression is felt where the fundus should be</li><li>Large red mass may be visible at/outside the introitus</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Fundal placental implantation</li><li>Manual placental extraction</li><li>Short umbilical cord</li><li>Uterine atony, leiomyomas</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Severe hemorrhagic shock</li><li>Death if not rapidly corrected</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><p>Clinical/visual diagnosis — this is an emergency identified on exam, not by lab result.</p></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Call for immediate help — obstetric emergency</li><li><b>Do not attempt aggressive fundal massage</b> before repositioning</li><li>Prepare for fluid resuscitation and repositioning</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Tocolytics or halogenated anesthetics to relax the uterus before manual replacement</li><li>Oxytocics given <b>after</b> the uterus is repositioned</li><li>Broad-spectrum antibiotics; laparotomy if manual replacement fails</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>This is an acute inpatient emergency with no separate patient-teaching phase during the event; after stabilization, education focuses on the same PPH recovery and follow-up teaching as other hemorrhage causes.</p></div>
+      </div>
+    </details>
+
+    <!-- Uterine Rupture -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">7</div>
+          <div class="sum-text"><h3>Uterine Rupture</h3><div class="hook">Rigid abdomen + absent FHR = surgical emergency</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Complete or incomplete tearing of the uterine wall from the stress of labor. Complete rupture creates direct communication between the uterine and peritoneal cavities; incomplete rupture stays contained within the peritoneum covering the uterus.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Labor after a previous cesarean section, an overdistended uterus, or abdominal trauma.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Sudden abdominal pain/tenderness, possible chest pain</li><li>Contractions stop or fail to progress</li><li><b>Rigid abdomen</b></li><li><b>Absent fetal heart rate</b></li><li>Signs of maternal shock; fetus may be palpated outside the uterus (complete rupture)</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Labor after a previous cesarean section (VBAC)</li><li>Overdistended uterus (multiples, hydramnios)</li><li>Abdominal trauma</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Fetal demise</li><li>Massive hemorrhage/shock</li><li>Hysterectomy</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><p>Clinical presentation drives diagnosis; continuous FHR monitoring shows sudden loss of pattern.</p></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Monitor for and treat signs of shock: O2, IV fluids, blood products</li><li>Prepare immediately for emergency cesarean birth</li><li>Provide emotional support to client and partner</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Emergency cesarean delivery</li><li>Possible hysterectomy if repair is not feasible</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Post-event: counseling on the cause, implications for future pregnancies (repeat cesarean typically required), and emotional processing of an emergency birth experience.</p></div>
+      </div>
+    </details>
+
+    <!-- Hemorrhagic Shock -->
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">8</div>
+          <div class="sum-text"><h3>Hemorrhagic (Hypovolemic) Shock</h3><div class="hook">BP drop is a LATE sign — don't wait for it</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Any of the above hemorrhage causes can progress to inadequate organ perfusion. Compensatory catecholamine release constricts arterioles/venules in skin, lungs, GI tract, liver, and kidneys to protect the heart and brain — this is why skin and urine output change <i>before</i> blood pressure drops.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Any uncontrolled postpartum hemorrhage source: atony, laceration, retained tissue, coagulopathy, inversion, or rupture.</p></div>
+        <div class="field wide"><h4>Signs &amp; Symptoms — Staged Assessment</h4><ul><li><b>Respirations:</b> rapid and shallow</li><li><b>Pulse:</b> rapid, weak, irregular</li><li><b>Blood pressure:</b> decreasing — <b>this is a LATE sign</b>, don't wait for hypotension to act</li><li><b>Skin:</b> cool, pale, clammy</li><li><b>Urinary output:</b> decreasing</li><li><b>Level of consciousness / mental status:</b> lethargy → coma; anxiety → coma</li><li><b>Central venous pressure:</b> decreased</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><p>Same as any PPH risk factor (see Uterine Atony, Lacerations, Retained Tissue, Coagulopathy cards above) — shock is the downstream consequence, not an independent condition.</p></div>
+        <div class="field"><h4>Complications</h4><ul><li>Multi-organ failure</li><li>Death</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Continuous VS and O2 sat monitoring</li><li>Hgb/Hct, coags, type &amp; crossmatch</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Summon assistance/activate the hemorrhage protocol immediately</li><li>Two large-bore IV lines for fluid resuscitation</li><li>Ensure patent airway, administer oxygen</li><li>Continuous reassessment — don't wait for BP to drop to intervene</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Crystalloid infusion (3 mL infused per 1 mL estimated blood loss)</li><li>Packed RBCs if still actively bleeding after crystalloids</li><li>FFP if coagulation studies are abnormal</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Post-stabilization: explain the reason for close monitoring and repeated labs; support with lactation consultants and mental health referral, as PPH survivors are at higher risk for delayed lactogenesis and postpartum depression.</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== THROMBOEMBOLIC ===================== -->
+  <section class="panel" data-panel="clot" id="panel-clot">
+    <div class="cat-intro">
+      <div>
+        <h2>Thromboembolic Complications</h2>
+        <p>Pregnancy and the postpartum period are hypercoagulable states — venous stasis + vessel trauma from birth increase clot risk.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-clot')">Expand / collapse all</button>
+    </div>
+
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Thrombophlebitis / DVT</h3><div class="hook">Do NOT massage the affected leg</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Venous stasis plus the postpartum hypercoagulable state (and vessel wall injury from birth) allow clot formation, typically in a superficial or deep lower-extremity vein.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Postpartum hypercoagulability, immobility, venous stasis, vascular trauma from birth.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Unilateral calf tenderness</li><li>Leg pain, swelling</li><li>Redness, warmth (heat)</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Cesarean birth, immobility, obesity</li><li>Prior VTE history, smoking</li><li>Advanced maternal age, prolonged labor</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li><b>Pulmonary embolism</b></li><li>Chronic venous insufficiency</li><li>Recurrent VTE risk</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>D-dimer</li><li>Doppler ultrasound (first-line)</li><li>VQ scan, MRI</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Elevate affected extremity</li><li>Apply compression stockings</li><li><b>Never massage the affected leg</b></li><li>Monitor closely for signs of PE</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Anticoagulation: heparin acutely → oral anticoagulant</li><li>NSAIDs, moist warm packs</li><li>Rest, increased fluids</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Safe anticoagulant practices (soft toothbrush, electric razor, avoid injury), dietary consistency with vitamin K–containing foods if on warfarin, follow-up coagulation labs, breastfeeding is safe with heparin/warfarin, and <b>estrogen-containing contraceptives are contraindicated</b> — needs a non-estrogen method. Report calf pain/swelling or any sudden chest pain/shortness of breath immediately.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Pulmonary Embolism</h3><div class="hook">Medical emergency — sudden dyspnea + chest pain</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>A dislodged venous thrombus travels to the pulmonary vasculature, obstructing blood flow and causing V/Q mismatch and right heart strain.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Complication of an untreated or undetected DVT.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Sudden dyspnea, tachypnea</li><li>Chest pain, tachycardia</li><li>Anxiety/sense of impending doom</li><li>Hypoxia, possible hemoptysis</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><p>Same as DVT: cesarean birth, immobility, obesity, prior VTE, smoking.</p></div>
+        <div class="field"><h4>Complications</h4><ul><li>Cardiopulmonary arrest</li><li>Death</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>CT pulmonary angiogram, VQ scan</li><li>ABGs (hypoxemia)</li><li>D-dimer</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li><b>STAT provider notification / rapid response</b></li><li>High-Fowler's position, O2</li><li>Continuous cardiopulmonary monitoring, IV access</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Anticoagulation, thrombolytics if severe</li><li>Oxygen support, possible ICU care</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Post-acute: same anticoagulant safety teaching as DVT, emphasis on recognizing recurrence symptoms, and counseling on VTE risk for future pregnancies and contraceptive choice.</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== INFECTIONS ===================== -->
+  <section class="panel" data-panel="inf" id="panel-inf">
+    <div class="cat-intro">
+      <div>
+        <h2>Puerperal Infections</h2>
+        <p>Any infection of the reproductive tract within 28 days of birth. Diagnostic definition: temp ≥100.4°F (38°C) on 2 successive days of the first 10 postpartum days, excluding the first 24 hours.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-inf')">Expand / collapse all</button>
+    </div>
+
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Endometritis</h3><div class="hook">Most common puerperal infection</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Infection begins at the placental implantation site and spreads across the endometrial lining; can extend to tubes, ovaries, or pelvic connective tissue.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Ascending, often polymicrobial infection (streptococcal and anaerobic organisms).</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Temp &gt;100.4°F, tachycardia, chills</li><li>Pelvic pain, uterine tenderness</li><li>Foul-smelling, heavy lochia (or scant/odorless with strep)</li><li>Anorexia, malaise</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Cesarean birth (10–15% vs. 2% vaginal)</li><li>Prolonged labor/ROM, multiple vaginal exams</li><li>Retained placental fragments</li><li>Low socioeconomic status, poor nutrition</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Sepsis</li><li>Pelvic abscess</li><li>Septic pelvic thrombophlebitis</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>↑ WBC (leukocytosis), ↑ ESR</li><li>Blood/uterine cultures (limited clinical utility)</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Monitor fever curve/VS trend</li><li>Assess lochia amount, color, odor each shift</li><li>Initiate IV antibiotics promptly per order</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>IV broad-spectrum antibiotics (clindamycin + gentamicin, cephalosporins)</li><li>Hydration, rest, analgesia</li><li>D/C antibiotics ~24h after afebrile/asymptomatic</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Complete the full antibiotic course, perineal hygiene, signs of worsening infection to report, and support for maintaining breastfeeding/mother–infant interaction during treatment.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Wound Infection</h3><div class="hook">Cesarean incision or perineal repair site</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Bacterial invasion of the cesarean incision or perineal repair site disrupts normal wound healing.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Skin-flora contamination, poor hygiene, hematoma formation, impaired healing from obesity/diabetes.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Fever, erythema, edema, warmth</li><li>Pain, tenderness</li><li>Seropurulent drainage, wound separation/dehiscence</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Obesity, diabetes, hypertension, immunosuppression</li><li>Poor nutrition, anemia, hemorrhage</li><li>Prolonged labor/ROM, chorioamnionitis, hematoma</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Cellulitis, abscess</li><li>Dehiscence</li><li>Rectovaginal fistula (with infected 3rd/4th degree laceration)</li><li>Necrotizing fasciitis (rare, severe)</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Wound culture</li><li>↑ WBC</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Wound assessment every shift</li><li>Temp/VS monitoring</li><li>Comfort measures: sitz baths, analgesics</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>IV antibiotics</li><li>I&amp;D if purulent; irrigation/packing</li><li>Healing by secondary intention; wound VAC in select cases</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Hand hygiene, front-to-back perineal care, dressing-change technique, signs of worsening infection to report, and the importance of keeping follow-up wound-check appointments.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">3</div>
+          <div class="sum-text"><h3>Urinary Tract Infection</h3><div class="hook">Can be asymptomatic — screen proactively</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Bacterial colonization of the urinary tract, usually ascending from the urethra; postpartum bladder hypotonia and urinary retention raise risk.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Catheterization, birth trauma, epidural effects blunting bladder sensation.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Can be <b>asymptomatic</b></li><li>Dysuria, frequency, urgency</li><li>Flank pain, fever (suggests pyelonephritis)</li><li>Hematuria (catheter sample)</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Catheterization, multiple vaginal exams</li><li>Epidural/spinal anesthesia</li><li>Genital tract trauma, cesarean birth</li><li>History of UTI</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Pyelonephritis</li><li>Urosepsis</li><li>Recurrent UTI</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Urinalysis</li><li>Urine culture &amp; sensitivity (catheterized sample if needed)</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Encourage voiding q2–4h</li><li>Monitor I&amp;O</li><li>Assess for bladder distention (also worsens uterine atony)</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Antibiotics per culture/sensitivity</li><li>Increased fluid intake</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Complete the full antibiotic course, stay well hydrated, maintain proper perineal hygiene, void promptly rather than holding urine, and report flank pain or fever right away — signs of pyelonephritis.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">4</div>
+          <div class="sum-text"><h3>Mastitis</h3><div class="hook">Continue breastfeeding on the affected side</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Infection/inflammation of the mammary ductal system, usually unilateral, arising from milk stasis plus bacterial entry through a nipple fissure or crack.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Most commonly <i>Staphylococcus aureus</i> introduced from the infant's mouth via nipple trauma; MRSA is increasingly common.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Fever, chills, malaise, generalized aching</li><li><b>Unilateral</b> warm, tender, hard/reddened area</li><li>Triangular flush pattern (early sign)</li><li>Enlarged axillary lymph nodes</li><li>Cracked/fissured nipple, possible purulent discharge</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Milk stasis, plugged duct</li><li>Infrequent/incomplete emptying</li><li>Nipple trauma, fatigue, primiparity</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Breast abscess (especially MRSA)</li><li>Impaired breastfeeding</li><li>Recurrent mastitis</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Usually clinical diagnosis</li><li>Breast milk culture if not responding to first-line antibiotics</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Encourage continued breastfeeding/pumping on the <b>affected side</b></li><li>Frequent emptying q2–4h</li><li>Teach proper latch and positioning</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Antibiotics compatible with breastfeeding (cephalosporins; trimethoprim-sulfamethoxazole/clindamycin/rifampin if MRSA)</li><li>I&amp;D if abscess forms</li><li>Heat/cold for comfort</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Complete the full antibiotic course even after feeling better, avoid breast creams that block Montgomery gland secretion, practice good hand hygiene, start feeds on the affected breast, vary infant positioning to empty all ducts, change damp breast pads promptly. MRSA is not transmitted through milk — breastfeeding may continue, but avoid direct contact with any open lesion.</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== PSYCHIATRIC ===================== -->
+  <section class="panel" data-panel="psy" id="panel-psy">
+    <div class="cat-intro">
+      <div>
+        <h2>Postpartum Psychiatric Complications</h2>
+        <p>A spectrum, not three unrelated conditions — severity and safety risk escalate sharply from blues to psychosis.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-psy')">Expand / collapse all</button>
+    </div>
+
+    <div class="mnem"><b>Progression:</b> Blues <i>blows over</i> (self-limiting, &lt;2 wks) → Depression <i>drags on</i> (&gt;2 wks, impairs functioning) → Psychosis is a <i>panic-button</i> emergency (hospitalize now)</div>
+
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Postpartum Blues</h3><div class="hook">~70% of postpartum women (course slide figure; texts cite 50–80%) — self-limiting</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Transient mood lability attributed to the abrupt postpartum withdrawal of estrogen and progesterone, compounded by fatigue and adjustment stress. Not a psychiatric disorder.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Hormonal withdrawal, fatigue, role adjustment.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Tearfulness, mood swings, anxiety</li><li>Fatigue, sadness, insomnia</li><li>Forgetfulness — functioning remains intact</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><p>Nearly universal; not linked to psychiatric history specifically.</p></div>
+        <div class="field"><h4>Complications</h4><p>Usually none; can progress to PPD if it persists beyond 2 weeks or worsens.</p></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><p>None required — clinical/EPDS screening used to differentiate from PPD.</p></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Reassurance, therapeutic listening</li><li>Encourage extra rest</li><li>Monitor for progression beyond 2 weeks</li></ul></div>
+        <div class="field"><h4>Treatment</h4><p>No medical treatment typically needed — supportive care only.</p></div>
+        <div class="field wide"><h4>Patient Education</h4><p>Normalize the experience as common and self-limiting. Teach the warning signs that indicate progression to postpartum depression and when to seek help.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Postpartum Depression</h3><div class="hook">Lasts &gt;2 weeks — screen with EPDS</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Multifactorial — neuroendocrine shifts interacting with genetic/psychiatric vulnerability and psychosocial stress.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Strongest risk factor: personal/family history of psychiatric disorder (up to 70% recurrence). Possible contributors: vitamin D/B12/folate/omega-3 deficiency, thyroid disease (must be ruled out).</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Pervasive sadness, labile mood, lasts &gt;2 weeks</li><li>Fatigue, sleep/appetite disturbance, irritability, anxiety</li><li>Detachment/guilt toward infant</li><li>Intrusive thoughts of harm <b>without acting on them</b></li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Prior/family psychiatric history</li><li>Abuse/IPV, lack of social support</li><li>Low SES, financial hardship, unmarried status</li><li>Age &lt;24 or &gt;35, unintended pregnancy</li><li>Pregnancy complications (preeclampsia, cesarean, preterm birth)</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li>Impaired maternal–infant bonding/attachment</li><li>Chronic depression</li><li>Marital/family strain</li><li>Risk of self-harm in severe cases</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>EPDS (Edinburgh Postnatal Depression Scale) screening</li><li>Rule out thyroid disease and bipolar disorder</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li>Screen with EPDS</li><li><b>Ask directly about safety/suicidal or harm ideation</b></li><li>Nonjudgmental listening; involve support system</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>SSRIs/SNRIs, therapy/counseling</li><li>Social work/psych referral</li><li>Treat comorbid thyroid disease if present</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>PPD is common and treatable — not a reflection of being a "bad mother." Most SSRIs are compatible with breastfeeding (fluoxetine flagged by the FDA as not recommended for nursing mothers). Emphasize follow-up and involving partner/family in recognizing symptoms.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">3</div>
+          <div class="sum-text"><h3>Postpartum Psychosis</h3><div class="hook">Psychiatric EMERGENCY — hospitalize</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Pathophysiology</h4><p>Acute psychiatric emergency most commonly associated with underlying bipolar disorder; presents with mania, depression, or mixed features accompanied by psychosis.</p></div>
+        <div class="field"><h4>Etiology</h4><p>Strongest association: pre-existing bipolar disorder or psychosis. Rapid postpartum hormonal shifts are thought to trigger an episode in a vulnerable individual.</p></div>
+        <div class="field"><h4>Signs &amp; Symptoms</h4><ul><li>Acute onset, classically <b>days 3–6</b> postpartum, within first 6 months</li><li>Auditory/visual hallucinations (may command harm to infant)</li><li>Delusions, often about the infant</li><li>Disorientation, confusion, extreme impulsivity, rapid mood swings</li><li>May initially present as fatigue, insomnia, tearfulness before progressing</li></ul></div>
+        <div class="field"><h4>Risk Factors</h4><ul><li>Pre-existing bipolar disorder or psychosis</li><li>Primiparity</li><li>Family history</li></ul></div>
+        <div class="field"><h4>Complications</h4><ul><li><b>Suicide</b></li><li><b>Infanticide</b></li><li>Highest-acuity postpartum psychiatric emergency</li></ul></div>
+        <div class="field"><h4>Labs / Diagnostics</h4><ul><li>Emergent psychiatric evaluation</li><li>Rule out organic causes (thyroid, infection, substance-induced)</li><li>EPDS as an adjunct only</li></ul></div>
+        <div class="field priority"><h4>🎯 Priority Nursing Interventions</h4><ul><li><b>Ensure immediate safety — never leave mother and infant alone together unsupervised</b></li><li>Do not leave the patient alone</li><li>Obtain emergent psych consult; hospitalize</li></ul></div>
+        <div class="field"><h4>Treatment</h4><ul><li>Psychiatric hospitalization</li><li>Mood stabilizers (e.g., lithium), antipsychotics</li><li>Close inpatient monitoring</li></ul></div>
+        <div class="field wide"><h4>Patient Education</h4><p>To family, post-crisis: this is a medical emergency requiring treatment, not a moral failing. Discuss long-term pharmacotherapy needs, safety planning, and the elevated risk of recurrence in future pregnancies.</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== DISCHARGE TEACHING ===================== -->
+  <section class="panel" data-panel="disc" id="panel-disc">
+    <div class="cat-intro">
+      <div>
+        <h2>Discharge Teaching</h2>
+        <p>USLO 2 — organized around the same systems you assess with BUBBLE-HE/REEDA in CPE A. Each card: what's normal, what to teach, and what to report.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-disc')">Expand / collapse all</button>
+    </div>
+
+    <div class="mnem"><b>BUBBLE-HE:</b> Breasts · Uterus · Bladder · Bowel · Lochia · Episiotomy/perineum (assess with REEDA) · Homans'/legs (DVT) · Emotions (+ Bonding)</div>
+
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">0</div>
+          <div class="sum-text"><h3>Normal Postpartum Parameters — Quick Reference</h3><div class="hook">Know these exact numbers cold</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Temperature</h4><p>May rise to 100.4°F (38.0°C) in the <b>first 24h</b> from dehydration of labor — not automatically infection. Any higher, or persisting past 24h, must be reported.</p></div>
+        <div class="field"><h4>Pulse</h4><p><b>Normal puerperal bradycardia:</b> can drop to 50 bpm and still be normal. Pulse &gt;100 bpm may indicate excessive blood loss or infection.</p></div>
+        <div class="field"><h4>Blood Pressure</h4><p>Should remain at the woman's normal baseline. A decrease suggests hypovolemia — remember, BP drop is a <b>late</b> sign of hemorrhage.</p></div>
+        <div class="field"><h4>Respirations</h4><p>Rarely change. A significant increase should raise suspicion for pulmonary embolism, uterine atony, or hemorrhage.</p></div>
+        <div class="field wide"><h4>Lochia Amount Classification (per pad in 1 hour)</h4><p><b>Scant:</b> &lt;1 inch (2.5 cm) stain &nbsp;|&nbsp; <b>Light:</b> &lt;4 inches (10 cm) &nbsp;|&nbsp; <b>Moderate:</b> &lt;6 inches (15 cm) &nbsp;|&nbsp; <b>Heavy:</b> pad saturated in 1 hour &nbsp;|&nbsp; <b>Excessive:</b> pad saturated in <b>15 minutes</b> — report immediately.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Fundus &amp; Uterine Involution</h3><div class="hook">The "B" (Breast) is separate below — this is uterine tone</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Fundal height relative to umbilicus, consistency (firm vs. boggy), position (midline vs. deviated).</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Firm, midline; at the umbilicus on day 1, descending about 1 fingerbreadth (1 cm)/day, not palpable by ~2 weeks.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>How to palpate her own fundus and massage technique; empty the bladder before assessment since a full bladder displaces the uterus.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Boggy fundus unresponsive to massage, fundus above the umbilicus after day 1, or deviation to one side.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Assess fundus with every vital sign check in the early postpartum period; correlate findings with lochia amount.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>After cesarean birth, palpate gently near the incision and consider timing assessment with analgesia.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Lochia</h3><div class="hook">Rubra → Serosa → Alba</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Amount, color, odor, consistency, and progression pattern.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p><b>Rubra</b> (days 1–3, red) → <b>Serosa</b> (days 4–10, pink-brown) → <b>Alba</b> (day 10–14+, white/yellow); fleshy, non-offensive odor.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Expected progression pattern, pad counting, use peri-pads (not tampons).</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Foul odor, <b>return to rubra after progressing</b>, saturating a pad in under an hour, or passing large clots.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Quantify lochia (weigh pads if concerned) and correlate with fundal tone.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Lochia still occurs after cesarean birth — the uterine lining sheds regardless of birth route.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">3</div>
+          <div class="sum-text"><h3>Hygiene &amp; Incision Care</h3><div class="hook">REEDA: Redness, Edema, Ecchymosis, Discharge, Approximation</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Perineum or cesarean incision using REEDA; presence of drainage or separation.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Well-approximated edges, minimal edema/bruising, no purulent drainage.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Peri-bottle front-to-back, frequent pad changes, hand hygiene; ice first 24h then sitz baths for perineal comfort; keep cesarean incision clean and dry.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Increasing redness/warmth, foul drainage, wound separation, or fever.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Inspect the perineum or incision every shift.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Sitz baths TID/PRN for comfort; avoid tub baths/pools until cleared by the provider if sutures are present.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">4</div>
+          <div class="sum-text"><h3>Urination</h3><div class="hook">Watch for retention — it worsens uterine atony</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Voiding pattern, bladder distention, timing of first void.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Voids within 6–8 hours postpartum; brisk diuresis over the first few days as extra fluid mobilizes.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Void regularly and don't "hold it" — a full bladder can cause uterine atony; report burning or urgency.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Inability to void, dysuria, hematuria, or flank pain.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Palpate the bladder whenever the fundus is displaced or boggy.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Epidural anesthesia can delay bladder sensation — assess more closely in these patients.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">5</div>
+          <div class="sum-text"><h3>Bowel Function</h3><div class="hook">Fear of pain often delays the first BM</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>First bowel movement, bowel sounds, presence of hemorrhoids.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>First BM typically within 2–3 days postpartum.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Increase dietary fiber and fluids, use stool softeners as ordered (especially with lacerations/hemorrhoids), ambulate early.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>No bowel movement by day 3–4, severe constipation, or significant rectal pain.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Encourage ambulation and offer ordered stool softeners proactively.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Fear of pain with defecation is common after perineal trauma — reassure that stool softeners and proper support reduce strain on sutures.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">6</div>
+          <div class="sum-text"><h3>Nutrition &amp; Weight</h3><div class="hook">Needs shift based on feeding method</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Dietary intake and feeding method (breast vs. formula).</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Breastfeeding increases caloric needs by roughly 450–500 kcal/day and increases fluid needs.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Balanced diet with adequate protein and vitamin C to support healing; stay well hydrated, especially if breastfeeding.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Not typically a red-flag topic — educational focus.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Tailor nutrition teaching to feeding method chosen.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Gradual weight loss is expected over months — counsel against restrictive dieting while breastfeeding.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">7</div>
+          <div class="sum-text"><h3>Activity, Rest &amp; Exercise</h3><div class="hook">Longer restrictions after cesarean birth</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Fatigue level and activity tolerance.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Gradual return to normal activity over several weeks.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Rest when the infant rests; avoid heavy lifting (&gt;10 lb) and strenuous exercise until cleared (~6 weeks); pelvic floor/Kegel exercises can start early.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Fatigue severe enough to impair self-care or infant care.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Promote rest periods and involve the support system in planning help at home.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Cesarean birth requires a longer restriction on lifting and driving than vaginal birth — confirm the provider's specific timeline before discharge.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">8</div>
+          <div class="sum-text"><h3>Pain Management</h3><div class="hook">Afterpains are normal — pain out of proportion is not</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Pain location, type, and severity.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Afterpains (especially in multiparas and breastfeeding women, from oxytocin release), incisional or perineal soreness.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Non-pharmacologic measures (ice, sitz baths, positioning) plus ordered medications; safe medication use while breastfeeding.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Pain unrelieved by usual measures, or pain <b>out of proportion</b> to the exam — think hematoma.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Regular pain assessment and multimodal comfort measures.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Afterpains are more intense with breastfeeding and higher parity — this is normal and worth explaining proactively.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">9</div>
+          <div class="sum-text"><h3>Mood</h3><div class="hook">Screen before discharge — see Psychiatric tab for full detail</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Mood, bonding behaviors with the infant; screen with EPDS.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Some tearfulness/mood lability ("blues") resolving by about 2 weeks.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Differentiate blues vs. depression vs. psychosis warning signs; encourage involving the support system.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Symptoms lasting beyond 2 weeks, thoughts of harming self or infant, or any hallucinations.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Screen before discharge and provide a community resource list.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Partners can experience postpartum depression too — include them in teaching.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">10</div>
+          <div class="sum-text"><h3>Sexual Activity &amp; Contraception Readiness</h3><div class="hook">Ovulation can return before the first period</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Healing status and readiness to resume intercourse.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Resume once bleeding has stopped and the perineum/incision is healed — typically 4–6 weeks, after provider clearance.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Ovulation can return <b>before</b> the first postpartum period — a contraception plan is needed even before resuming intercourse; breastfeeding-related vaginal dryness may need lubrication.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>Pain with intercourse or unexpected bleeding.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Initiate contraception counseling <b>before</b> discharge, not at the 6-week visit.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Breastfeeding alone is not reliable contraception unless the strict lactational amenorrhea method criteria are met — see the Contraception Planning tab.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">11</div>
+          <div class="sum-text"><h3>Follow-up Care</h3><div class="hook">Confirm before the patient leaves the unit</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Patient's understanding of the follow-up plan.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Postpartum visit around 6 weeks (sooner — 1–2 weeks — if cesarean birth or complications); infant follow-up scheduled separately.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Keep all appointments; know who and when to call; lactation support resources if needed.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider</h4><p>N/A — this card is about confirming the plan itself.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Confirm the appointment is scheduled before discharge and provide written instructions.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Women with high-risk conditions during this admission (PPH, hypertensive disorders, diabetes) may need an earlier follow-up than the standard 6-week visit.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">12</div>
+          <div class="sum-text"><h3>Vulnerable Populations</h3><div class="hook">Adjust the discharge plan, not just the teaching script</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Nurse Assesses</h4><p>Barriers to safe discharge and follow-up: housing stability, immigration status concerns, history of abuse/IPV, substance use, support system, and health literacy/language needs.</p></div>
+        <div class="field"><h4>Normal / Expected</h4><p>Not applicable in the same way as a physical finding — the "normal" here is a thorough, nonjudgmental psychosocial assessment for every postpartum woman, not just those who disclose a concern.</p></div>
+        <div class="field"><h4>Patient Teaching</h4><p>Deliver all standard discharge teaching, but confirm it is understood and actionable given the woman's actual living situation and resources — written materials alone are not enough for every patient.</p></div>
+        <div class="field priority"><h4>🚩 Report to Provider / Escalate</h4><p>Disclosed or suspected abuse, unsafe home environment, inability to access follow-up care or medications, or signs of substance use affecting infant safety.</p></div>
+        <div class="field"><h4>Priority Nursing Actions</h4><p>Involve social services early; connect to community resources (shelters, interpreter services, transportation, WIC); document objectively and follow mandatory reporting requirements where applicable.</p></div>
+        <div class="field wide"><h4>Special Considerations</h4><p>Populations specifically flagged in your course materials: <b>victims of abuse, undocumented immigrants/minority populations, and homeless women</b>. Care must be holistic and culturally sensitive (CSLO 1) — these patients are often at higher risk for the very complications covered elsewhere in this guide (PPH, infection, psychiatric complications) due to delayed or limited prenatal/postpartum care access.</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== CONTRACEPTION PLANNING ===================== -->
+  <section class="panel" data-panel="contra" id="panel-contra">
+    <div class="cat-intro">
+      <div>
+        <h2>Contraception Planning</h2>
+        <p>USLO 3 — differentiate methods by mechanism, effectiveness, and postpartum/breastfeeding-specific considerations.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-contra')">Expand / collapse all</button>
+    </div>
+
+    <div class="mnem"><b>ACHES</b> (stop hormonal method, call provider): Abdominal pain · Chest pain/SOB · Headache (sudden/persistent) · Eye problems · Severe leg pain</div>
+
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Fertility Awareness Methods &amp; Withdrawal</h3><div class="hook">Nonhormonal, natural family planning</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Avoidance of intercourse during the fertile window, identified through cycle tracking (calendar rhythm, BBT, cervical mucus, symptothermal) or withdrawal before ejaculation.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>Daily monitoring/charting; no devices or hormones required.</p></div>
+        <div class="field"><h4>Advantages</h4><p>No cost, no hormones, acceptable for religious/personal preference, builds body awareness.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>High user-error failure rate, requires consistent daily tracking, no STI protection, less reliable postpartum while cycles are still irregular.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>Irregular menstrual cycles make the fertile window harder to predict; postpartum and lactational cycles are especially unpredictable.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Chart BBT daily before rising; note cervical mucus changes (thin, clear, stretchy = fertile); abstain or use a backup method during the fertile window. Counsel patients to wait until regular cycles resume postpartum before relying on these methods alone.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Barrier Methods</h3><div class="hook">Condom, diaphragm, cervical cap, sponge, spermicide</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Physical or chemical block preventing sperm from reaching the cervix.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>Condom with each act of intercourse; diaphragm/cervical cap fitted by a provider, used with spermicide, inserted before intercourse; sponge is OTC, moistened before insertion, effective up to 24 hours.</p></div>
+        <div class="field"><h4>Advantages</h4><p>OTC availability (condom, sponge), no hormones, <b>condoms are the only method besides abstinence that also protects against STIs</b>.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>User-dependent and can interrupt spontaneity; diaphragm/cap often need refitting after childbirth.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>Latex allergy (non-latex options available); risk of toxic shock syndrome (TSS) with prolonged sponge or diaphragm wear.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Diaphragm/cervical cap <b>must be refit postpartum</b> due to cervical and vaginal changes from birth. Sponge: leave in place at least 6 hours after intercourse, remove by 24–30 hours — longer wear raises TSS risk. Combine spermicide with other barrier methods for adequate efficacy.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">3</div>
+          <div class="sum-text"><h3>Combined Hormonal (COC / Patch / Ring)</h3><div class="hook">Estrogen + progestin — not first-line while breastfeeding</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Estrogen + progestin suppress FSH/LH to inhibit ovulation; thicken cervical mucus; alter the endometrium.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>COC: oral, daily, same time each day. Patch: applied weekly x 3 weeks, then 1 week off. Ring: worn 3 weeks, out 1 week.</p></div>
+        <div class="field"><h4>Advantages</h4><p>Highly effective when used correctly; regulates the cycle; reduces menstrual flow and cramping.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>Requires daily/weekly adherence; no STI protection; <b>estrogen can reduce milk supply</b>.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>&lt;6 weeks postpartum (especially if breastfeeding), history of VTE/thromboembolic disorder, smoker &gt;35 y/o, migraine with aura, HTN ≥160/100, breast cancer, diabetes &gt;20 years with vascular disease.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Teach the <b>ACHES</b> warning signs — stop the method and call the provider. Effectiveness is reduced by certain anticonvulsants, rifampin, and some antifungals. Not recommended for breastfeeding mothers due to the risk of reduced milk supply — progestin-only methods are preferred while nursing.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">4</div>
+          <div class="sum-text"><h3>Progestin-Only (Mini-pill, DMPA, Nexplanon)</h3><div class="hook">Preferred while breastfeeding</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Thickens cervical mucus, thins the endometrium, and inhibits some (not all) ovulatory cycles.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>Mini-pill: oral, same time daily, within a strict 3-hour window. DMPA: IM/SQ injection every 11–13 weeks. Nexplanon: subdermal implant, effective up to 3 years.</p></div>
+        <div class="field"><h4>Advantages</h4><p>Safe during lactation (no estrogen); implant can be inserted immediately postpartum; long-acting options (DMPA, implant) reduce user error.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>Irregular bleeding is common; mini-pill is less effective than COCs and requires strict timing; DMPA is linked to bone density loss with prolonged use and delayed return to fertility (up to 18 months).</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>DMPA: do not massage the injection site — this hastens absorption and shortens the effective window.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Mini-pill must be taken at the same time daily — more than 3 hours late requires a backup method for 48 hours. DMPA is due every 11–13 weeks; counsel on calcium intake and weight-bearing exercise for bone health. Nexplanon does not affect milk supply and can be placed before discharge.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">5</div>
+          <div class="sum-text"><h3>Intrauterine Devices (Copper &amp; Levonorgestrel)</h3><div class="hook">Long-acting reversible contraception (LARC)</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Copper IUD: spermicidal/toxic to sperm, nonhormonal. Levonorgestrel IUD: thickens cervical mucus and thins the endometrium.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>Inserted by a provider. Copper IUD effective up to 10 years; levonorgestrel IUD per your course materials is listed as effective for 1 year — <b>confirm this figure with Dr. Morris</b>, as other references cite longer durations.</p></div>
+        <div class="field"><h4>Advantages</h4><p>Long-acting, reversible, highly effective; the copper IUD doubles as emergency contraception.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>Requires provider insertion/removal; possible cramping or spotting initially; risk of expulsion.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>Active pelvic infection, undiagnosed abnormal vaginal bleeding.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Teach the patient to check IUD strings periodically. Report severe pain, fever, or abnormal discharge — signs of infection or expulsion.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">6</div>
+          <div class="sum-text"><h3>Emergency Contraception</h3><div class="hook">Copper IUD is the most effective option</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Delays or prevents ovulation; does not disrupt an already-implanted pregnancy.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>Levonorgestrel (Plan B): within 72h (some efficacy to 120h). Ulipristal (Ella): up to 120h, prescription only. Copper IUD insertion: within 120h — most effective option and provides ongoing contraception.</p></div>
+        <div class="field"><h4>Advantages</h4><p>LNG available OTC (≥17 y/o with ID); copper IUD adds years of ongoing contraception.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>Less effective than routine contraception; nausea (especially with the Yuzpe combined-pill regimen); pill-based methods don't protect future acts of intercourse.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>No medical contraindications except confirmed pregnancy and undiagnosed abnormal bleeding.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Take as soon as possible after unprotected intercourse. If no period within 21 days, evaluate for pregnancy. Ulipristal is more effective than levonorgestrel in obese women; <b>copper IUD effectiveness is unaffected by body weight/BMI</b>.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">7</div>
+          <div class="sum-text"><h3>Sterilization</h3><div class="hook">Considered permanent</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Permanent surgical interruption of the fallopian tubes (tubal ligation) or vas deferens (vasectomy).</p></div>
+        <div class="field"><h4>How It's Used</h4><p>Tubal ligation is often done postpartum (within 24–48h of birth) or as an interval procedure; vasectomy is an outpatient male procedure.</p></div>
+        <div class="field"><h4>Advantages</h4><p>Permanent, highly effective, one-time procedure — no ongoing user action needed.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>Considered irreversible (reconstruction/reanastomosis is possible but not guaranteed to restore fertility); no STI protection.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>Should only be pursued with certainty about future fertility desires; requires full informed consent.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Discuss permanence thoroughly before consent. Vasectomy is <b>not</b> immediately effective — a backup method is needed until a semen analysis confirms sterility.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">8</div>
+          <div class="sum-text"><h3>Abortion</h3><div class="hook">Perry Ch. 5 — related reproductive planning content</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Mechanism</h4><p>Purposeful interruption of pregnancy before 20 weeks gestation.</p></div>
+        <div class="field"><h4>How It's Used</h4><p>First-trimester: surgical (aspiration/suction curettage) or medical (mifepristone + misoprostol, or methotrexate + misoprostol). Second-trimester: dilation and evacuation (D&amp;E) with cervical preparation using prostaglandins.</p></div>
+        <div class="field"><h4>Advantages</h4><p>N/A — this is a medical option rather than a contraceptive method.</p></div>
+        <div class="field"><h4>Disadvantages / Risks</h4><p>Bleeding, infection, and risk of incomplete evacuation are possible with any method.</p></div>
+        <div class="field"><h4>Contraindications / Precautions</h4><p>Gestational age limits and legal availability vary by method and by state.</p></div>
+        <div class="field priority wide"><h4>🎯 Patient Teaching</h4><p>Provide nonjudgmental, holistic care regardless of the reason for the procedure (CSLO 1). Address emotional considerations directly and ensure a clear follow-up care plan.</p></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ===================== MEDICATIONS ===================== -->
+  <section class="panel" data-panel="meds" id="panel-meds">
+    <div class="cat-intro">
+      <div>
+        <h2>Medications</h2>
+        <p>Grouped to match the tabs above — the drug, dose/route, contraindications, and the one nursing priority most likely to be tested.</p>
+      </div>
+      <button class="toolbtn" onclick="toggleAll('panel-meds')">Expand / collapse all</button>
+    </div>
+
+    <details class="card" open>
+      <summary>
+        <div class="sum-left"><div class="sum-num">1</div>
+          <div class="sum-text"><h3>Uterotonics — Postpartum Hemorrhage</h3><div class="hook">Oxytocin first-line, then escalate</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Oxytocin (Pitocin)</h4><p>10–40 units IV in 500–1,000 mL crystalloid, or 10–20 units IM. Contraindication: rare hypersensitivity. <b>Never give undiluted IV bolus</b> — causes hypotension/arrhythmias. Watch for water intoxication.</p></div>
+        <div class="field priority"><h4>Methylergonovine (Methergine)</h4><p>0.2 mg IM q2–4h, up to 5 doses. <b>Contraindicated in HTN, preeclampsia, cardiovascular disease.</b> Check BP before every dose. Keep refrigerated; never mix in syringe with other drugs.</p></div>
+        <div class="field"><h4>Carboprost (Hemabate)</h4><p>250 mcg IM or intrauterine q15–90 min, max 8 doses. <b>Contraindicated in asthma.</b> Don't give if patient is in shock — poor absorption.</p></div>
+        <div class="field"><h4>Misoprostol (Cytotec)</h4><p>600–1,000 mcg rectal, sublingual, or oral. Contraindication: hypersensitivity to prostaglandins. Stable at room temperature.</p></div>
+        <div class="field"><h4>Dinoprostone (Prostin E2)</h4><p>20 mg vaginal/rectal suppository q2h. Contraindicated in hypotension.</p></div>
+        <div class="field wide"><h4>Tranexamic Acid (TXA)</h4><p>1 g slow IV over 10 minutes. Contraindicated with history/risk of thromboembolic disease. Used when blood loss ≥1,500 mL or hemorrhage is refractory to other uterotonics; monitor for thromboembolic events.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">2</div>
+          <div class="sum-text"><h3>Anticoagulants — DVT / PE</h3><div class="hook">Antidote for heparin = protamine sulfate</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Unfractionated Heparin (UFH)</h4><p>IV bolus 5,000 units, then continuous infusion titrated to aPTT (1.5–2.5x control). Contraindicated with active bleeding/HIT. <b>Antidote: protamine sulfate.</b></p></div>
+        <div class="field"><h4>LMWH — Enoxaparin (Lovenox), Dalteparin</h4><p>Enoxaparin 1 mg/kg SQ BID or 1.5 mg/kg once daily. Self-injectable at home; monitor platelets/anti-Xa levels; teach injection site rotation.</p></div>
+        <div class="field priority"><h4>Warfarin (Coumadin)</h4><p>PO, dosed to INR (therapeutic range 2.0–3.5). Contraindicated in pregnancy (Category X) — <b>teratogenic, needs reliable non-estrogen contraception</b>. Overlaps with heparin until therapeutic. Teach vitamin K–consistent diet, soft toothbrush/electric razor, avoid NSAIDs/aspirin. Safe in breastfeeding.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">3</div>
+          <div class="sum-text"><h3>Antibiotics — Postpartum Infections</h3><div class="hook">Matched to the organism and site</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Endometritis</h4><p>IV <b>clindamycin + gentamicin</b>; cephalosporins/penicillins as alternatives. Continue 24h after afebrile/asymptomatic.</p></div>
+        <div class="field"><h4>Chorioamnionitis / Post-Cesarean Coverage</h4><p>Ampicillin (or penicillin) + gentamicin; add clindamycin or metronidazole (Flagyl) for anaerobic coverage after cesarean.</p></div>
+        <div class="field"><h4>Pyelonephritis</h4><p>IV ceftriaxone (Rocephin), or ampicillin + gentamicin. Outpatient completion: amoxicillin-clavulanate (Augmentin) or trimethoprim-sulfamethoxazole (Bactrim DS) for a 14-day course.</p></div>
+        <div class="field"><h4>Mastitis</h4><p>Dicloxacillin (Dynapen), cephalexin (Keflex), or clindamycin (Cleocin). Continue breastfeeding on the affected side; complete the full course.</p></div>
+        <div class="field wide"><h4>MRSA Mastitis</h4><p>Trimethoprim-sulfamethoxazole, clindamycin, or rifampin if no response to first-line therapy. May need I&amp;D of abscess + breast milk culture. MRSA is <b>not</b> transmitted through milk — avoid contact with any open lesion only.</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">4</div>
+          <div class="sum-text"><h3>Psychotropics — PPD &amp; Psychosis</h3><div class="hook">Sertraline/paroxetine preferred while breastfeeding</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>SSRIs (1st-line for PPD)</h4><p>Sertraline, escitalopram, fluoxetine, fluvoxamine, paroxetine, citalopram. Sertraline &amp; paroxetine preferred (lowest breast milk concentration). <b>FDA: fluoxetine not recommended for nursing mothers.</b></p></div>
+        <div class="field"><h4>SNRIs</h4><p>Venlafaxine, duloxetine, desvenlafaxine. Detected in most infant plasma but no proven adverse effects.</p></div>
+        <div class="field"><h4>TCAs</h4><p>Amitriptyline, nortriptyline, imipramine. Useful if sleep disturbance is prominent.</p></div>
+        <div class="field priority"><h4>Lithium</h4><p>Drug of choice for postpartum psychosis, often with underlying bipolar disorder. Present in breast milk — monitor infant for hypotonia, lethargy, feeding problems.</p></div>
+        <div class="field"><h4>Antipsychotics</h4><p>Quetiapine; chlorpromazine, thioridazine, trifluoperazine in acute psychosis. May cause infant sedation via milk.</p></div>
+        <div class="field"><h4>Benzodiazepines</h4><p>Short-acting preferred: lorazepam (Ativan), alprazolam (Xanax) — over longer-acting diazepam (Valium)/clonazepam (Klonopin).</p></div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary>
+        <div class="sum-left"><div class="sum-num">5</div>
+          <div class="sum-text"><h3>Contraceptive Medications</h3><div class="hook">See the Contraception Planning tab for full context</div></div>
+        </div>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="card-body">
+        <div class="field"><h4>Combined Hormonal</h4><p>Estrogen + progestin (COC, patch = Ortho Evra, ring = NuvaRing). Contraindicated with VTE history, smokers &gt;35, migraine with aura. Reduces milk supply — avoid while breastfeeding.</p></div>
+        <div class="field"><h4>Progestin-Only</h4><p>Mini-pill; DMPA (Depo-Provera); Nexplanon (etonogestrel implant). Safe during lactation. DMPA — do not massage the injection site.</p></div>
+        <div class="field priority"><h4>Emergency Contraception</h4><p>Levonorgestrel (Plan B) within 72h; ulipristal (Ella) within 120h; combined estrogen-progestin (Yuzpe); copper IUD within 120h (most effective, unaffected by weight).</p></div>
+        <div class="field wide"><h4>Abortion Medications</h4><p>Mifepristone + misoprostol, or methotrexate + misoprostol (1st-trimester medical); dilation &amp; evacuation with prostaglandin cervical prep (2nd trimester).</p></div>
+      </div>
+    </details>
+  </section>
+
+</div>
+
+<footer class="pagefoot">
+  Sources: Perry, S.E. et al. (2023). <i>Maternal Child Nursing Care</i> — Ch. 5 (p. 113–131), Ch. 19 (p. 461–475), Ch. 21. Saunders Maternity (9th ed.) — Ch. 27. Course slides: <i>Unit_8_Postpartum_Complications__discharge_student.pptx</i>, <i>Contraception_Unit_8_-_student.pptx</i>. Grounded to NSG 3500 Syllabus v8.5 Unit 8 USLOs/CSLOs (Morris) — all three USLOs (postpartum complications, discharge teaching, contraception planning) are covered directly in this guide.
+</footer>
+
+<script>
+function showTab(cat){
+  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.toggle('active', b.dataset.cat===cat));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active', p.dataset.panel===cat));
+  window.scrollTo({top: document.querySelector('nav.tabs').offsetTop - 4, behavior:'smooth'});
+}
+function toggleAll(panelId){
+  const panel = document.getElementById(panelId);
+  const cards = panel.querySelectorAll('details.card');
+  const anyClosed = Array.from(cards).some(c=>!c.open);
+  cards.forEach(c=>c.open = anyClosed);
+}
+</script>
+
+</body>
+</html>
