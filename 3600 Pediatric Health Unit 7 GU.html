@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 7 — Genitourinary Study Guide | NSG 3600</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#132A46;
+  --navy-2:#1C3A5E;
+  --paper:#F4F6F5;
+  --card:#FFFFFF;
+  --ink:#1A2430;
+  --ink-soft:#5B6672;
+  --line:#E1E6E7;
+  --gold:#C89B3C;
+
+  --agn:#2B6CB0;      --agn-t:#EAF2FB;
+  --neph:#0E8E7A;     --neph-t:#E7F7F3;
+  --uti:#D9752A;      --uti-t:#FCEEE2;
+  --vur:#B08900;      --vur-t:#FBF3D9;
+  --hus:#B3242C;      --hus-t:#FBEAEA;
+  --aki:#6A3FA0;      --aki-t:#F1EAFB;
+  --ckd:#8E3A6B;      --ckd-t:#FAEAF2;
+  --enu:#0E7C86;      --enu-t:#E4F5F6;
+  --hyp:#2F7A3D;      --hyp-t:#E9F5EA;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Manrope',sans-serif;
+  line-height:1.5;
+}
+.wrap{display:flex; max-width:1400px; margin:0 auto;}
+
+/* ---------- SIDEBAR ---------- */
+.side{
+  width:250px; flex-shrink:0;
+  position:sticky; top:0; height:100vh;
+  overflow-y:auto;
+  background:var(--navy);
+  padding:28px 18px 40px;
+  color:#EAF0F6;
+}
+.side-brand{font-family:'Fraunces',serif; font-weight:600; font-size:15px; letter-spacing:.04em; color:var(--gold); text-transform:uppercase;}
+.side-title{font-family:'Fraunces',serif; font-weight:700; font-size:22px; margin:6px 0 2px; line-height:1.2;}
+.side-sub{font-size:12.5px; color:#9FB2C6; margin-bottom:26px;}
+.side nav a{
+  display:flex; align-items:center; gap:10px;
+  color:#D6E1EC; text-decoration:none; font-size:13.5px; font-weight:600;
+  padding:8px 10px; border-radius:8px; margin-bottom:3px;
+  transition:background .15s;
+}
+.side nav a:hover{background:rgba(255,255,255,.08);}
+.dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
+.side-group-label{font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:#6E8299; margin:18px 0 6px 10px;}
+.print-btn{
+  margin-top:24px; width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,.25);
+  background:transparent; color:#EAF0F6; font-family:'Manrope',sans-serif; font-weight:700; font-size:12.5px;
+  cursor:pointer; letter-spacing:.03em;
+}
+.print-btn:hover{background:rgba(255,255,255,.1);}
+
+/* ---------- MAIN ---------- */
+main{flex:1; min-width:0; padding:44px 52px 90px;}
+
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%, var(--navy-2) 100%);
+  border-radius:18px; padding:40px 44px; color:#fff; margin-bottom:34px;
+  position:relative; overflow:hidden;
+}
+.hero::after{
+  content:""; position:absolute; right:-60px; top:-60px; width:260px; height:260px;
+  border-radius:50%; border:1.5px solid rgba(255,255,255,.08);
+}
+.hero::before{
+  content:""; position:absolute; right:30px; top:40px; width:150px; height:150px;
+  border-radius:50%; border:1.5px solid rgba(255,255,255,.08);
+}
+.hero-eyebrow{color:var(--gold); font-weight:700; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:10px;}
+.hero h1{font-family:'Fraunces',serif; font-weight:700; font-size:40px; margin:0 0 8px; letter-spacing:-.01em;}
+.hero p{color:#B9C8D8; font-size:15px; max-width:560px; margin:0;}
+
+.uslo-strip{display:flex; gap:14px; margin-top:26px; flex-wrap:wrap;}
+.uslo-chip{
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
+  border-radius:10px; padding:10px 14px; font-size:12px; color:#DCE6F0; max-width:220px;
+}
+.uslo-chip b{color:#fff; display:block; font-size:11px; margin-bottom:2px;}
+
+/* quick ref */
+.quickref{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:36px;}
+.qcard{background:var(--card); border-radius:16px; padding:22px 26px; border:1px solid var(--line);}
+.qcard h3{font-family:'Fraunces',serif; font-size:16px; margin:0 0 12px; color:var(--navy);}
+.qcard h3 .tag{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--gold); margin-right:8px;}
+.formula-row{display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:12.5px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+.formula-row b{color:var(--ink); font-weight:600;}
+.formula-row:last-child{border-bottom:none;}
+.example{margin-top:10px; font-size:12px; color:var(--ink-soft); font-style:italic;}
+.lab-grid{display:grid; grid-template-columns:1fr 1fr; gap:6px 18px;}
+.lab-item{display:flex; justify-content:space-between; font-size:12.5px; padding:5px 0; border-bottom:1px dashed var(--line);}
+.lab-item span:first-child{color:var(--ink-soft);}
+.lab-item b{font-family:'JetBrains Mono',monospace; font-weight:600; font-size:12px;}
+
+/* compare table */
+.compare-wrap{margin-bottom:44px;}
+.compare-wrap h2{font-family:'Fraunces',serif; font-size:22px; margin:0 0 4px; color:var(--navy);}
+.compare-wrap .sub{color:var(--ink-soft); font-size:13px; margin-bottom:16px;}
+table.compare{width:100%; border-collapse:collapse; background:var(--card); border-radius:14px; overflow:hidden; border:1px solid var(--line);}
+table.compare th{font-size:12px; text-transform:uppercase; letter-spacing:.04em; padding:12px 16px; text-align:left; color:#fff;}
+table.compare th.agn-h{background:var(--agn);}
+table.compare th.neph-h{background:var(--neph);}
+table.compare th.feat-h{background:var(--navy);}
+table.compare td{padding:11px 16px; font-size:13px; border-top:1px solid var(--line);}
+table.compare td.feat{font-weight:700; color:var(--navy); background:#FAFBFB;}
+table.compare tr:nth-child(even) td:not(.feat){background:#FCFDFD;}
+
+/* section header (jump target) */
+.section{margin-bottom:54px; scroll-margin-top:24px;}
+.cond-head{display:flex; align-items:center; gap:16px; margin-bottom:18px;}
+.cond-icon{
+  width:52px; height:52px; border-radius:14px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+}
+.cond-icon svg{width:28px; height:28px;}
+.cond-head h2{font-family:'Fraunces',serif; font-size:26px; margin:0; color:var(--navy); letter-spacing:-.01em;}
+.cond-head .subline{font-size:12.5px; color:var(--ink-soft); font-weight:600; text-transform:uppercase; letter-spacing:.05em;}
+
+.cardgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+.info-card{
+  background:var(--card); border-radius:14px; padding:18px 20px;
+  border:1px solid var(--line); border-left-width:4px; border-left-style:solid;
+}
+.info-card h4{
+  display:flex; align-items:center; gap:8px;
+  font-size:12.5px; text-transform:uppercase; letter-spacing:.05em; font-weight:800;
+  margin:0 0 10px; color:var(--ink);
+}
+.info-card h4 svg{width:16px; height:16px; flex-shrink:0;}
+.info-card ul{margin:0; padding-left:18px;}
+.info-card li{font-size:13.5px; margin-bottom:6px; color:var(--ink);}
+.info-card li:last-child{margin-bottom:0;}
+.info-card.full{grid-column:1 / -1;}
+
+.pearl{
+  margin-top:14px; border-radius:12px; padding:14px 18px;
+  display:flex; gap:12px; align-items:flex-start;
+  border:1px dashed;
+}
+.pearl svg{width:20px; height:20px; flex-shrink:0; margin-top:1px;}
+.pearl .plabel{font-weight:800; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:3px;}
+.pearl p{margin:0; font-size:13px;}
+
+/* mnemonic band */
+.mnem-section{background:var(--navy); border-radius:18px; padding:36px 40px; margin-top:20px; color:#fff;}
+.mnem-section h2{font-family:'Fraunces',serif; font-size:24px; margin:0 0 20px; color:var(--gold);}
+.mnem-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.mnem-card{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:12px; padding:16px 20px;}
+.mnem-card h4{margin:0 0 10px; font-size:13.5px; color:#fff;}
+.letters{display:flex; flex-wrap:wrap; gap:8px 0; margin-bottom:8px;}
+.letter-row{display:flex; align-items:baseline; gap:8px; width:100%; padding:3px 0; font-size:12.5px; color:#C9D6E4;}
+.letter-row b{
+  color:var(--gold); font-family:'Fraunces',serif; font-size:16px; width:18px; flex-shrink:0;
+}
+.mnem-card p{font-size:12.5px; color:#C9D6E4; margin:0;}
+
+footer{margin-top:50px; text-align:center; font-size:11.5px; color:var(--ink-soft); padding-bottom:20px;}
+
+@media(max-width:980px){
+  .side{display:none;}
+  main{padding:30px 22px;}
+  .quickref, .cardgrid, .mnem-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:30px;}
+}
+@media print{
+  .side{display:none;}
+  main{padding:0;}
+  .wrap{display:block;}
+  .section{page-break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<aside class="side">
+  <div class="side-brand">Galen College of Nursing</div>
+  <div class="side-title">Unit 7 Study Guide</div>
+  <div class="side-sub">Genitourinary Conditions · NSG 3600</div>
+  <nav>
+    <a href="#quickref"><span class="dot" style="background:var(--gold)"></span>Quick reference</a>
+    <a href="#compare"><span class="dot" style="background:var(--gold)"></span>AGN vs. nephrotic</a>
+    <div class="side-group-label">Glomerular</div>
+    <a href="#agn"><span class="dot" style="background:var(--agn)"></span>Acute glomerulonephritis</a>
+    <a href="#neph"><span class="dot" style="background:var(--neph)"></span>Nephrotic syndrome</a>
+    <div class="side-group-label">Infection / reflux</div>
+    <a href="#uti"><span class="dot" style="background:var(--uti)"></span>Urinary tract infection</a>
+    <a href="#vur"><span class="dot" style="background:var(--vur)"></span>Vesicoureteral reflux</a>
+    <div class="side-group-label">Renal failure</div>
+    <a href="#hus"><span class="dot" style="background:var(--hus)"></span>Hemolytic uremic syndrome</a>
+    <a href="#aki"><span class="dot" style="background:var(--aki)"></span>Acute kidney injury</a>
+    <a href="#ckd"><span class="dot" style="background:var(--ckd)"></span>Chronic kidney disease</a>
+    <a href="#dial"><span class="dot" style="background:var(--ckd)"></span>Dialysis (PD / HD)</a>
+    <div class="side-group-label">Elimination / structural</div>
+    <a href="#enu"><span class="dot" style="background:var(--enu)"></span>Enuresis</a>
+    <a href="#hyp"><span class="dot" style="background:var(--hyp)"></span>Hypospadias / epispadias</a>
+    <div class="side-group-label">Review</div>
+    <a href="#mnemonics"><span class="dot" style="background:var(--gold)"></span>Mnemonic recap</a>
+  </nav>
+  <button class="print-btn" onclick="window.print()">Print / save as PDF</button>
+</aside>
+
+<main>
+
+  <div class="hero">
+    <div class="hero-eyebrow">NSG 3600 · Children's Health</div>
+    <h1>Caring for the Child with a<br>Genitourinary Condition</h1>
+    <p>Visual review of pathophysiology, risk factors, findings, complications, diagnostics, priority interventions, treatment, and family teaching for every Unit 7 diagnosis.</p>
+    <div class="uslo-strip">
+      <div class="uslo-chip"><b>USLO 1</b>Safe, evidence-based GU care</div>
+      <div class="uslo-chip"><b>USLO 2</b>Development, prevention, early detection</div>
+      <div class="uslo-chip"><b>USLO 3</b>GU medications</div>
+      <div class="uslo-chip"><b>USLO 4</b>Caring & professional behaviors</div>
+      <div class="uslo-chip"><b>USLO 5</b>Communication & collaboration</div>
+    </div>
+  </div>
+
+  <div id="quickref" class="quickref">
+    <div class="qcard">
+      <h3><span class="tag"></span>24-hr maintenance fluid — Holliday-Segar</h3>
+      <div class="formula-row"><span>First 0–10 kg</span><b>100 mL/kg</b></div>
+      <div class="formula-row"><span>Next 10–20 kg</span><b>+ 50 mL/kg</b></div>
+      <div class="formula-row"><span>Every kg over 20 kg</span><b>+ 20 mL/kg</b></div>
+      <div class="example">Example — 26 kg: (10×100)+(10×50)+(6×20) = 1,620 mL/24 hr</div>
+    </div>
+    <div class="qcard">
+      <h3><span class="tag"></span>Key normal renal / GU labs</h3>
+      <div class="lab-grid">
+        <div class="lab-item"><span>BUN</span><b>5–18 mg/dL</b></div>
+        <div class="lab-item"><span>Creatinine</span><b>0.3–0.7 mg/dL</b></div>
+        <div class="lab-item"><span>Sodium</span><b>135–145 mEq/L</b></div>
+        <div class="lab-item"><span>Potassium</span><b>3.4–4.7 mEq/L</b></div>
+        <div class="lab-item"><span>Calcium</span><b>8.8–10.8 mg/dL</b></div>
+        <div class="lab-item"><span>Albumin</span><b>4.5–9 g/dL</b></div>
+        <div class="lab-item"><span>Total protein</span><b>6.2–8 g/dL</b></div>
+        <div class="lab-item"><span>Hgb (1–6 / 6–18 yr)</span><b>9.5–14 / 10–15.5</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="compare" class="compare-wrap">
+    <h2>AGN vs. nephrotic syndrome</h2>
+    <div class="sub">The single most-tested distinction in this unit — anchor on blood pressure and albumin.</div>
+    <table class="compare">
+      <tr><th class="feat-h">Feature</th><th class="agn-h">Acute glomerulonephritis</th><th class="neph-h">Nephrotic syndrome</th></tr>
+      <tr><td class="feat">Trigger</td><td>Post-strep, symptoms weeks later</td><td>Idiopathic — minimal change disease</td></tr>
+      <tr><td class="feat">Urine</td><td>Gross hematuria — tea / cola colored</td><td>Massive proteinuria; hematuria usually microscopic</td></tr>
+      <tr><td class="feat">Blood pressure</td><td><b>Hypertensive</b></td><td>Usually normal or low</td></tr>
+      <tr><td class="feat">Albumin</td><td>Roughly normal</td><td><b>Low</b> — drives the edema</td></tr>
+      <tr><td class="feat">Cholesterol</td><td>Normal</td><td><b>High</b></td></tr>
+      <tr><td class="feat">Edema mechanism</td><td>Fluid retention from ↓ filtration</td><td>Fluid shift from ↓ oncotic pressure</td></tr>
+    </table>
+  </div>
+
+  <!-- ================= CONDITIONS injected by JS ================= -->
+  <div id="conditions"></div>
+
+  <div id="mnemonics" class="mnem-section">
+    <h2>Mnemonic recap</h2>
+    <div class="mnem-grid">
+      <div class="mnem-card">
+        <h4>Acute glomerulonephritis — "H.A.D. S.T.R.E.P."</h4>
+        <div class="letters">
+          <div class="letter-row"><b>H</b>Hypertension</div>
+          <div class="letter-row"><b>A</b>+ ASO titer (antistreptolysin O)</div>
+          <div class="letter-row"><b>D</b>Decreased GFR</div>
+          <div class="letter-row"><b>S</b>Swelling — face / eyes</div>
+          <div class="letter-row"><b>T</b>Tea-colored urine</div>
+          <div class="letter-row"><b>R</b>Recent Group A strep infection</div>
+          <div class="letter-row"><b>E</b>Elevated BUN / Cr</div>
+          <div class="letter-row"><b>P</b>Proteinuria</div>
+        </div>
+      </div>
+      <div class="mnem-card">
+        <h4>Enuresis medication safety</h4>
+        <p><b style="color:var(--gold)">DDAVP</b> — first-line, works immediately. Watch dry mouth, headache, nausea.</p>
+        <p style="margin-top:10px;"><b style="color:var(--gold)">Tofranil (imipramine)</b> — second-line ONLY. TCA risk: cardiac arrhythmia, hypotension, hepatotoxicity.</p>
+      </div>
+      <div class="mnem-card">
+        <h4>Hypospadias / epispadias safety</h4>
+        <p>No circumcision before repair — foreskin may be needed for reconstruction.</p>
+        <p style="margin-top:8px;">No tub baths until stent / catheter is removed.</p>
+        <p style="margin-top:8px;">Oxybutynin → constipation risk → prevent with fluids / stool softener.</p>
+      </div>
+      <div class="mnem-card">
+        <h4>AKI electrolyte chain</h4>
+        <p>↓ H⁺/bicarb secretion → metabolic acidosis → worse hyperkalemia → Kussmaul respirations compensate → ↓ phosphate excretion → hyperphosphatemia → hypocalcemia → tremors / seizures.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>Sources: Unit 7 lecture slides · Perry et al., <i>Maternal Child Nursing Care</i>, 7th ed. (Ch. 45, pp. 1339–1356; Ch. 34, pp. 926–927) · Saunders NCLEX Pediatric, 9th ed. · NSG 3600 Syllabus v8.9</footer>
+
+</main>
+</div>
+
+<script>
+const ICONS = {
+  patho: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-3 3-5 6-5 10a5 5 0 0 0 10 0c0-4-2-7-5-10z"/></svg>',
+  risk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20L12 3z"/><line x1="12" y1="9" x2="12" y2="14"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg>',
+  signs: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v10a5 5 0 0 0 10 0V6"/><circle cx="18" cy="5" r="2.5"/><path d="M4 15a5 5 0 0 0 5 5"/></svg>',
+  comp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>',
+  labs: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6L4 20a1 1 0 0 0 1 2h14a1 1 0 0 0 1-2L15 8V2"/><line x1="8" y1="2" x2="16" y2="2"/><line x1="6.5" y1="15" x2="17.5" y2="15"/></svg>',
+  interv: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6v3H9z"/><path d="m9 13 2 2 4-4"/></svg>',
+  tx: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="9.5" width="17" height="7" rx="3.5" transform="rotate(-45 12 13)"/><line x1="9" y1="14.5" x2="14.5" y2="9" /></svg>',
+  edu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1z"/><line x1="12" y1="6" x2="12" y2="19"/></svg>',
+  pearl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></svg>'
+};
+const LABELS = {patho:"Pathophysiology & etiology", risk:"Risk factors", signs:"Signs & symptoms", comp:"Complications", labs:"Labs & diagnostics", interv:"Priority nursing interventions", tx:"Treatment & management", edu:"Patient & family education"};
+
+const DATA = [
+{id:"agn", color:"agn", title:"Acute glomerulonephritis", sub:"Glomerular — post-infectious",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c-3 3-5 6-5 10a5 5 0 0 0 10 0c0-4-2-7-5-10z"/></svg>',
+ patho:["Immune complexes deposit in the glomerular basement membrane 1–3 weeks AFTER a Group A beta-hemolytic strep infection — throat culture is often negative by the time symptoms appear","Glomeruli become edematous and infiltrated with leukocytes, occluding capillaries and decreasing GFR","Water and sodium are retained, causing circulatory congestion — hypertension plus edema"],
+ risk:["Recent strep throat, impetigo, or scarlet fever (Group A beta-hemolytic strep)","Most common in school-age children"],
+ signs:["Gross hematuria — cola or tea-colored urine (3–4+ on dipstick)","Proteinuria (3–4+ on dipstick)","Periorbital and possible peripheral edema, ascites","Hypertension, headache"],
+ comp:["Hypertensive encephalopathy or seizures","Circulatory congestion / heart failure","Acute kidney injury"],
+ labs:["Elevated ASO titer","Elevated BUN / creatinine, decreased GFR","Urinalysis — hematuria and proteinuria"],
+ interv:["1st — Strict I&O and daily weights (fluid volume status is the priority)","2nd — BP monitoring every 4 hours; watch for hypertensive crisis (headache, vision change, seizure)","3rd — Administer antibiotics / diuretics and enforce dietary Na⁺/fluid restriction","Priority diagnosis: excess fluid volume r/t decreased plasma filtration"],
+ tx:["Antibiotics for residual/underlying strep","Diuretics","Dietary sodium and fluid restriction as ordered","Prompt treatment of current impetigo/strep — complete the FULL course"],
+ edu:["Increased urinary output is the FIRST sign of improvement — before BP or labs normalize","Complete the entire antibiotic course even once the child feels better","Home BP monitoring and when to seek urgent care"],
+ pearl:"First sign AGN is improving = increased urinary output, not blood pressure or lab values."},
+
+{id:"neph", color:"neph", title:"Nephrotic syndrome", sub:"Glomerular — protein-losing",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/></svg>',
+ patho:["A disturbance causes the glomerular basement membrane to become abnormally permeable to protein","Massive protein loss leads to hypoalbuminemia and decreased plasma oncotic pressure, so fluid shifts into the tissues","The liver compensates by overproducing lipids, producing hyperlipidemia / hypercholesterolemia"],
+ risk:["Minimal change disease is the most common cause in children","Peak onset in preschool-age children"],
+ signs:["Massive proteinuria — cotton balls may be placed in the diaper to collect urine for testing","Generalized edema — periorbital, peripheral, ascites","Anorexia, irritability, lethargy"],
+ comp:["Infection risk from long-term steroid immunosuppression","Hypovolemia despite visible edema — fluid is trapped in tissue, not vasculature","Relapse occurs in about two-thirds of children"],
+ labs:["Massive proteinuria on urine dipstick","Hypoalbuminemia","Hypercholesterolemia / hyperlipidemia"],
+ interv:["1st — Strict I&O and daily weights","2nd — Urine dipstick for albumin/protein each shift","3rd — Monitor VS and edema; protect from infection exposure"],
+ tx:["Corticosteroids for 8–12 weeks — mainstay of therapy","Low-sodium diet","Diuretics","IV albumin administration as ordered"],
+ edu:["Teach home urine protein testing and relapse signs — edema, weight gain, foamy urine","Infection prevention while on steroids — handwashing, avoid sick contacts","Reinforce steroid adherence; never stop abruptly"],
+ pearl:"BP is usually normal, unlike AGN — the single biggest differentiator between the two."},
+
+{id:"uti", color:"uti", title:"Urinary tract infection", sub:"Infection — lower / upper tract",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+ patho:["A microorganism infiltrates the urinary tract and causes infection","E. coli is the most common causative organism","Urinary stasis is the single most important predisposing factor"],
+ risk:["Highest risk: white females and uncircumcised males","Infant females — shorter urethra","Uncircumcised males lack the protective effect of prostatic secretions","Constipation, VUR, neurogenic bladder, or voiding dysfunction causing stasis"],
+ signs:["New incontinence in a previously toilet-trained child","Urgency, hesitancy, frequency, dysuria, dribbling","Gross hematuria, malodorous urine","Infant — fever, poor feeding, vomiting/diarrhea, malaise","Pyelonephritis red flags: flank pain, N/V, fever"],
+ comp:["Pyelonephritis → renal scarring and decreased renal function","Recurrent infection from unaddressed stasis or VUR"],
+ labs:["Urine C&S — process within 1 hr at room temp or 4 hrs refrigerated","UA — nitrites take about 4 hrs to form; not all bacteria produce them, and infants void too frequently for reliable results","Suprapubic catheterization — MOST ACCURATE test for UTI in a child under 2 years","Ultrasound / VCUG if recurrent"],
+ interv:["1st — Obtain a properly collected urine specimen BEFORE starting antibiotics","2nd — Assess VS, perineal area, urine stream","3rd — Administer antibiotics per culture results"],
+ tx:["Antibiotics per C&S — penicillins, sulfonamides, cephalosporins","Nitrofurantoin treats the bladder but does NOT reach therapeutic levels in renal tissue — not for pyelonephritis"],
+ edu:["Handwashing, front-to-back wiping","Cotton underwear, loose-fitting clothes","Avoid bubble baths and prolonged wet swimsuit sitting","Manage constipation to reduce stasis","8 oz water per year of age until age 8","Cranberry juice is NOT evidence-supported for prevention"],
+ pearl:"Nitrofurantoin does NOT treat pyelonephritis — a classic exam trap."},
+
+{id:"vur", color:"vur", title:"Vesicoureteral reflux", sub:"Infection — structural cause",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></svg>',
+ patho:["Urine backflows from the bladder into the ureters and possibly up to the kidneys","Primary — congenital valve defect at the ureterovesical junction","Secondary — from obstruction, dysfunction, or elevated bladder pressure"],
+ risk:["Recurrent UTIs / pyelonephritis","Family history of VUR"],
+ signs:["Recurrent UTI symptoms","Flank or abdominal pain","Enuresis, fever, N/V","Enlarged kidneys on imaging"],
+ comp:["Recurrent pyelonephritis → renal scarring","Progressive renal damage if uncorrected"],
+ labs:["VCUG (voiding cystourethrogram) — confirms and grades reflux","IVP (intravenous pyelogram)"],
+ interv:["1st — Prevent and promptly treat UTIs / pyelonephritis","2nd — Prepare child and family for VCUG (pre-, during, and post-test teaching)","3rd — Administer prophylactic antibiotics as ordered"],
+ tx:["Antibiotic prophylaxis","Surgical correction — approach varies by reflux grade"],
+ edu:["Teach signs/symptoms of UTI to report immediately","Reinforce medication adherence for prophylaxis","Importance of follow-up imaging to track resolution"]},
+
+{id:"hus", color:"hus", title:"Hemolytic uremic syndrome", sub:"Renal failure — acute, foodborne",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-4 7-7.5 7-11a7 7 0 0 0-14 0c0 3.5 3 7 7 11z"/></svg>',
+ patho:["A cause of acute renal failure","Associated with ingesting undercooked ground beef (E. coli) or other contaminated food/water","Core pattern: hemolytic anemia + thrombocytopenia + acute kidney injury, following a GI prodrome"],
+ risk:["Undercooked ground beef","Unpasteurized milk, juice, or deli meats","Swimming in or drinking sewage-contaminated water"],
+ signs:["GI prodrome — abdominal pain, vomiting, bloody diarrhea","Upper respiratory infection symptoms","Hematuria, proteinuria","Pallor, lethargy or irritability","Decreasing urine output","Hepatosplenomegaly, dehydration","Seizures, altered LOC in severe cases"],
+ comp:["Acute kidney injury / renal failure","Increased ICP","CHF, bleeding, hypertension"],
+ labs:["Elevated BUN and creatinine","Elevated potassium and glucose","Decreased calcium, elevated phosphorus","LOW platelet count"],
+ interv:["1st — Monitor LOC and signs of increased ICP","2nd — Strict I&O, daily weights, electrolyte and ABG monitoring","3rd — Cardiac monitoring (ECG); watch for CHF, bleeding, HTN"],
+ tx:["Dialysis","Electrolyte correction","Nephrology / renal replacement therapy referral"],
+ edu:["Cook ground beef thoroughly","Wash fruits and vegetables","Use pasteurized dairy, juice, and deli products","Avoid sewage-contaminated water","Holistic family support, nutrition counseling, dietitian referral"],
+ pearl:"TTP (thrombotic thrombocytopenic purpura) is a related but distinct adult-predominant condition — know the name, don't confuse it with HUS."},
+
+{id:"aki", color:"aki", title:"Acute kidney injury", sub:"Renal failure — sudden onset",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8z"/></svg>',
+ patho:["Sudden decreased capacity of the kidneys to eliminate waste, causing inability to maintain fluid, electrolyte, and acid-base balance","May be treatable or life-threatening","Chain reaction: impaired H⁺/bicarb secretion → metabolic acidosis → worsened hyperkalemia → compensatory Kussmaul respirations → impaired phosphate excretion → hyperphosphatemia → hypocalcemia → tremors/seizures"],
+ risk:["Pre-renal — hemorrhage, hypovolemia, sepsis","Intrarenal — glomerulonephritis, ischemia, nephrotoxic drugs (NSAIDs, chemo, contrast dye, penicillin, PPIs)","Post-renal — stones, tumor, blood clots, neurogenic bladder"],
+ signs:["Decreased urine output (oliguria/anuria)","Edema, hypertension","Tachypnea / Kussmaul respirations","Tremors or seizures from hypocalcemia"],
+ comp:["Metabolic acidosis","Hyperkalemia — dysrhythmia risk","Hyperphosphatemia / hypocalcemia","Fluid overload"],
+ labs:["Elevated BUN/creatinine","Hyperkalemia — peaked T waves, shortened QT","Hyperphosphatemia, hypocalcemia"],
+ interv:["1st — Identify and treat the underlying category: pre-, intra-, or post-renal","2nd — Monitor labs closely; support renal perfusion and prevent further imbalance","3rd — Administer/monitor meds (steroids, diuretics, antibiotics); track peak/trough and daily weight/BMI"],
+ tx:["Renal replacement therapy if criteria met","Correct the underlying cause","Collaborate with dietitian on renal diet"],
+ edu:["Nephrology referral","Explain renal replacement therapy if indicated","Holistic family support — nutrition, home I&O/VS monitoring"],
+ pearl:"Hyperkalemia + metabolic acidosis + hypocalcemia is the classic AKI trio — know why each happens, not just that it does."},
+
+{id:"ckd", color:"ckd", title:"Chronic kidney disease", sub:"Renal failure — progressive",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>',
+ patho:["Occurs in children over 2 years old; GFR progressively deteriorates through 4 stages","At risk for progression to end-stage renal disease"],
+ risk:["Congenital renal anomalies, prior AKI, genetic conditions","Family history — genetic counseling and family planning are part of prevention"],
+ signs:["Failure to thrive / anorexia, nausea/vomiting","Lethargy, headaches, hypertension","Reduced urine output OR polyuria/polydipsia depending on stage","Bed wetting"],
+ comp:["Hypertension, anemia","Metabolic bone disease","Growth failure — hallmark pediatric-specific complication"],
+ labs:["Urinalysis","Fluid, electrolyte, and acid-base abnormalities","Radiographs, bone films, renal ultrasound, ECG"],
+ interv:["1st — Monitor growth parameters and lab trends over time","2nd — Coordinate dietitian and pastoral care consults","3rd — Prepare family for renal replacement criteria: volume overload, hyperkalemia, metabolic acidosis, rising BUN, neuro symptoms, Ca/phos imbalance, uremic mental changes, pericarditis"],
+ tx:["Renal replacement therapy — for ESRD and AKI/CKD stage 4","Hemodialysis or peritoneal dialysis"],
+ edu:["Genetic counseling and family planning where relevant","Nutrition and good prenatal care as prevention","Monitor growth at every visit; early referral"]},
+
+{id:"dial", color:"ckd", title:"Peritoneal dialysis & hemodialysis", sub:"Renal replacement therapy",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>',
+ patho:["Peritoneal dialysis — dialysis solution instilled via abdominal catheter, exchange occurs across the peritoneal membrane, then drained; continuous ambulatory PD or continuous cycling PD","Hemodialysis — prevents fluid/toxin accumulation via extracorporeal circulation through a dialyzer; requires vascular access, performed 3x/week"],
+ risk:["Candidacy determined by GFR and intractable AKI/CKD complications"],
+ signs:["Not a disease state — procedural; monitor response during/after each session"],
+ comp:["PD — peritonitis, catheter dysfunction/obstruction, pain, pulmonary complications, fluid/electrolyte imbalance","HD — hypotension, hypovolemia, anemia, infection, muscle cramps, bleeding, fluid shifts"],
+ labs:["Labs, VS, and I&O checked BEFORE each session to confirm it is safe to proceed"],
+ interv:["1st (PD) — confirm safety to start: I&O, labs, VS","1st (HD) — ensure vascular access is clean and functioning","Ongoing — monitor for hypotension/cramping during HD; watch for peritonitis signs (cloudy effluent, abdominal pain, fever) during PD"],
+ tx:["Fluid and dietary restrictions","Monitor potassium and renal-friendly food choices"],
+ edu:["Emotional support — isolation and psychosocial impact are significant for children and families","Counseling referral","Access-site care and infection prevention"]},
+
+{id:"enu", color:"enu", title:"Enuresis", sub:"Elimination — voiding dysfunction",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 7 8.5 7 12.5A7 7 0 0 1 5 15.5C5 11.5 9 7 12 3z"/></svg>',
+ patho:["Involuntary discharge of urine into bed or clothing at least 2x/week for at least 3 months, with no UTI symptoms and not on diuretics","Primary — child has never achieved dryness","Secondary — wetting resumes after a period of established dryness; should prompt work-up for an underlying cause","Can persist into adulthood in 1–3% of cases"],
+ risk:["Constipation, diabetes mellitus, ADD","Anxiety / psychological stress","Sleep apnea, disordered breathing, unusually deep sleep","Developmental delay, decreased nighttime ADH secretion"],
+ signs:["Urgency, leg jiggling, foul-smelling urine — suspect UTI, not just enuresis","Otherwise: nighttime wetting with no daytime UTI symptoms"],
+ comp:["Psychological stress and self-esteem impact on the child","Missed underlying cause if not properly worked up"],
+ labs:["Urinalysis to rule out UTI or glucosuria before assuming primary enuresis"],
+ interv:["1st — Rule out UTI, DM, constipation, sleep apnea as underlying causes","2nd — Bladder/bed alarm, first-line treatment (may take up to 2 weeks to show effect)","3rd — Behavioral measures: restrict evening fluids, no caffeine/sugar after 4pm, avoid high protein/salty foods, scheduled night voiding, motivational therapy"],
+ tx:["DDAVP (desmopressin) — increases water reabsorption, decreases urine production, works immediately; SE: dry mouth, headache, nausea","Tofranil (imipramine) — NOT first-line; secondary treatment only due to cardiac arrhythmia, hypotension, hepatotoxicity risk","Manage constipation — untreated constipation increases UTI risk"],
+ edu:["Reassure the family this is common and usually not psychological in origin","Explain the bladder alarm technique and its ~2 week trial period","Teach evening fluid/diet modifications","Avoid shaming the child; support coping"],
+ pearl:"Tofranil is a TCA — cardiac and hepatic toxicity make it second-line only. DDAVP is first-line pharmacologic therapy."},
+
+{id:"hyp", color:"hyp", title:"Hypospadias / epispadias", sub:"Structural — congenital anomaly",
+ icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="14" rx="3"/><path d="M9 16c0 3 1.5 5 3 6 1.5-1 3-3 3-6"/></svg>',
+ patho:["Hypospadias — urethral opening on the ventral (underside) surface, anywhere from behind the glans down the penile shaft","Epispadias — urethral opening on the dorsal (top) surface of the penis","Both may be associated with chordee, a ventral curvature of the penis"],
+ risk:["Congenital anomaly","Associated cryptorchidism in about 10% of affected infants"],
+ signs:["Urethral opening in an abnormal location","Chordee — curvature of the penis, usually ventral","Urinary incontinence"],
+ comp:["Undescended testicle (cryptorchidism) in ~10%","Post-op — bladder spasms, UTI, bleeding, skin adherence to diaper"],
+ labs:["Diagnosis is primarily clinical/visual on newborn exam"],
+ interv:["1st — DO NOT circumcise before repair; foreskin may be needed for the surgical reconstruction","2nd (post-op) — manage pain for 48–72 hours","3rd (post-op) — monitor for UTI, maintain stent/catheter patency, no tub baths until removed"],
+ tx:["Surgical repair after 6 months of age; may require a second surgery about 6 months later","Stent or feeding tube may stay in the bladder 5–10 days post-op; older children may get a urinary catheter instead","Oxybutynin (anticholinergic) for post-op bladder spasms — causes constipation, prevent with fluids/stool softener/laxative","Prophylactic antibiotics given after catheter/stent removal"],
+ edu:["No circumcision prior to repair","Prepare parents — the penis will look swollen, bruised, and discolored after surgery; this is expected","No tub baths until the stent/catheter is removed","If no stent is placed, parents may remove the dressing in 1–2 days, typically during a bath by day 3","Once the dressing is off, apply K-Y jelly to the diaper area to prevent sticking, bleeding, and improve comfort","Watch for and report signs of UTI"],
+ pearl:"No circumcision before hypospadias/epispadias repair — the foreskin is often used in the reconstruction."}
+];
+
+function card(key, items, accentVar){
+  if(!items || !items.length) return "";
+  const isFull = key==="patho" || key==="interv" || key==="edu";
+  return `<div class="info-card ${isFull?'full':''}" style="border-left-color:var(${accentVar})">
+    <h4 style="color:var(${accentVar})">${ICONS[key]}${LABELS[key]}</h4>
+    <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
+  </div>`;
+}
+
+const root = document.getElementById("conditions");
+DATA.forEach(c=>{
+  const t = `--${c.color}-t`, base = `--${c.color}`;
+  const section = document.createElement("div");
+  section.className = "section";
+  section.id = c.id;
+  section.innerHTML = `
+    <div class="cond-head">
+      <div class="cond-icon" style="background:var(${base})">${c.icon}</div>
+      <div>
+        <div class="subline" style="color:var(${base})">${c.sub}</div>
+        <h2>${c.title}</h2>
+      </div>
+    </div>
+    <div class="cardgrid">
+      ${card("patho", c.patho, base)}
+      ${card("risk", c.risk, base)}
+      ${card("signs", c.signs, base)}
+      ${card("comp", c.comp, base)}
+      ${card("labs", c.labs, base)}
+      ${card("interv", c.interv, base)}
+      ${card("tx", c.tx, base)}
+      ${card("edu", c.edu, base)}
+    </div>
+    ${c.pearl ? `<div class="pearl" style="background:var(${t});border-color:var(${base});color:var(${base})">
+      ${ICONS.pearl}
+      <div><div class="plabel">Safety pearl</div><p style="color:#1A2430">${c.pearl}</p></div>
+    </div>` : ""}
+  `;
+  root.appendChild(section);
+});
+</script>
+</body>
+</html>
