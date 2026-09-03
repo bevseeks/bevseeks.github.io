@@ -167,6 +167,12 @@
   .letterhead.lh-indigo .letter{color:var(--indigo);}
   .letterhead.lh-coral{background:var(--coral-tint); color:var(--coral-deep);}
   .letterhead.lh-coral .letter{color:var(--coral);}
+  .letterhead.lh-amber{background:var(--amber-tint); color:var(--amber-deep);}
+  .letterhead.lh-amber .letter{color:var(--amber);}
+  .letterhead.lh-plum{background:var(--plum-tint); color:var(--plum-deep);}
+  .letterhead.lh-plum .letter{color:var(--plum);}
+  .letterhead.lh-rose{background:var(--rose-tint); color:var(--rose-deep);}
+  .letterhead.lh-rose .letter{color:var(--rose);}
   .bubble-card .body ul{margin:0; padding-left:18px; font-size:.86rem;}
   .bubble-card .body ul li{margin-bottom:4px;}
 
@@ -631,29 +637,79 @@ header.masthead .mast-badges span{
 }
 .print-btn:hover{ background:#FFCA33; }
 
-/* ---------- MASTER TOC ---------- */
-nav.master-toc{
-  position:sticky; top:0; z-index:80;
-  background:rgba(255,255,255,.97); backdrop-filter:blur(6px);
-  border-bottom:2px solid #E2E6EB;
-  padding:10px 16px;
+/* ---------- SIDEBAR TABLE OF CONTENTS ---------- */
+:root{
+  --sidebar-w: 272px;
 }
-nav.master-toc .mtoc-inner{ max-width:1180px; margin:0 auto; }
-nav.master-toc .mtoc-row{
-  display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:4px 0;
+
+.sidebar-toc{
+  position:fixed; top:0; left:0; bottom:0; width:var(--sidebar-w);
+  background:#12141A; color:#EDEEF2;
+  overflow-y:auto; z-index:120;
+  padding-bottom:24px;
+  border-right:1px solid rgba(255,255,255,.08);
 }
-nav.master-toc .mtoc-label{
-  font-family:'JetBrains Mono','IBM Plex Mono',monospace; font-size:.7rem;
+.sidebar-head{
+  position:sticky; top:0; z-index:2;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 18px; background:#12141A; border-bottom:1px solid rgba(255,255,255,.1);
+}
+.sidebar-head-title{
+  font-family:'JetBrains Mono','IBM Plex Mono',monospace; font-size:.72rem;
+  letter-spacing:.12em; text-transform:uppercase; color:#8A93A1;
+}
+.sidebar-close{
+  display:none; background:none; border:none; color:#EDEEF2; font-size:1.4rem;
+  line-height:1; cursor:pointer; padding:2px 6px;
+}
+
+.mtoc-inner{ padding:14px 10px 6px; }
+.mtoc-row{ margin-bottom:18px; }
+.mtoc-label{
+  display:block; font-family:'JetBrains Mono','IBM Plex Mono',monospace; font-size:.68rem;
   text-transform:uppercase; letter-spacing:.08em; font-weight:700;
-  padding:4px 8px; border-radius:6px; white-space:nowrap;
+  padding:5px 10px; border-radius:6px; margin:0 0 6px;
 }
-nav.master-toc .mtoc-row.p7 .mtoc-label{ background:#FDECF2; color:#8E1A44; }
-nav.master-toc .mtoc-row.p8 .mtoc-label{ background:#E4F4F1; color:#155852; }
-nav.master-toc a{
-  font-size:.78rem; font-weight:600; color:#3B4656; text-decoration:none;
-  padding:5px 10px; border-radius:7px; white-space:nowrap; font-family:'Inter',sans-serif;
+.mtoc-row.p7 .mtoc-label{ background:rgba(194,37,92,.22); color:#F5A9C4; }
+.mtoc-row.p8 .mtoc-label{ background:rgba(31,122,115,.25); color:#7FD9CF; }
+.mtoc-row.p3 .mtoc-label{ background:rgba(31,92,138,.28); color:#8FC2E8; }
+
+.mtoc-row a{
+  display:block; font-size:.82rem; font-weight:500; color:#C7CAD1; text-decoration:none;
+  padding:7px 12px; border-radius:7px; font-family:'Inter',sans-serif;
+  margin-bottom:1px;
 }
-nav.master-toc a:hover{ background:#EEF1F4; color:#111; }
+.mtoc-row a:hover, .mtoc-row a:focus-visible{ background:rgba(255,255,255,.08); color:#fff; }
+
+.sidebar-toggle{
+  display:none; position:fixed; top:14px; left:14px; z-index:130;
+  background:#12141A; color:#fff; border:none; border-radius:10px;
+  width:42px; height:42px; align-items:center; justify-content:center;
+  font-size:1.3rem; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.sidebar-toggle.hidden{ display:none !important; }
+.sidebar-overlay{
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:110;
+}
+
+.page-content{ margin-left:var(--sidebar-w); }
+
+/* ---------- Responsive: sidebar becomes an off-canvas drawer ---------- */
+@media (max-width:900px){
+  .sidebar-toc{
+    transform:translateX(-100%);
+    transition:transform .22s ease;
+    box-shadow:2px 0 16px rgba(0,0,0,.25);
+  }
+  .sidebar-toc.open{ transform:translateX(0); }
+  .sidebar-close{ display:block; }
+  .sidebar-toggle{ display:flex; }
+  .sidebar-overlay.open{ display:block; }
+  .page-content{ margin-left:0; }
+  /* Give the fixed hamburger button clearance so it doesn't sit on top
+     of the centered masthead text */
+  header.masthead{ padding-top:64px; }
+}
 
 /* ---------- PART DIVIDERS ---------- */
 section.part{ position:relative; }
@@ -689,7 +745,8 @@ footer.master-footer .fine{ color:#8A8F99; font-size:.78rem; margin-top:18px; }
     color-adjust: exact !important;
   }
   html, body{ background:#fff !important; }
-  .skip-link, nav.master-toc, .print-btn, .part-divider{ display:none !important; }
+  .skip-link, .sidebar-toc, .sidebar-toggle, .sidebar-overlay, .print-btn, .part-divider{ display:none !important; }
+  .page-content{ margin-left:0 !important; }
 
   header.masthead{ padding:18px 16px; border-bottom:3px solid #F2B705; }
   header.masthead h1{ font-size:20pt; }
@@ -752,9 +809,8 @@ footer.master-footer .fine{ color:#8A8F99; font-size:.78rem; margin-top:18px; }
 /* ---------- SMALL-SCREEN / MOBILE ---------- */
 @media (max-width:520px){
   header.masthead h1{ font-size:1.4rem; }
-  nav.master-toc .mtoc-row{ gap:5px; }
-  nav.master-toc a{ font-size:.74rem; padding:5px 8px; }
 }
+
 
 /* ==================================================================
    COLLAPSIBLE TOP-LEVEL SECTIONS (topsec) — closed by default so the
@@ -1346,26 +1402,14 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
 
 <a class="skip-link" href="#main-content">Skip to study guide content</a>
 
-<header class="masthead">
-  <div class="mast-inner">
-    <div class="kicker">NSG 3500 · Maternal Health · Galen College of Nursing</div>
-    <h1>Exam 3 Study Guide</h1>
-    <p>Unit 7 (Postpartum Recovery &amp; Newborn Nutrition), Unit 8 (Postpartum Complications, Discharge Teaching &amp; Contraception), and a dedicated Medications reference — 29 short, collapsible sections. Everything starts closed: click any heading to open just what you need, or use the controls below.</p>
-    <div class="mast-badges">
-      <span>29 sections, all collapsed</span>
-      <span>Click to expand</span>
-      <span>Letter-size printable</span>
-      <span>Screen reader &amp; keyboard accessible</span>
-    </div>
-    <button class="print-btn" type="button" onclick="printGuide()" aria-label="Print or save this study guide as a PDF">🖨️ Print / Save as PDF</button>
-    <div class="bulk-controls">
-      <button class="bulk-btn" type="button" onclick="expandAllSections()">Expand everything</button>
-      <button class="bulk-btn" type="button" onclick="collapseAllSections()">Collapse everything</button>
-    </div>
-  </div>
-</header>
+<button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Open table of contents" aria-expanded="false" aria-controls="sidebarToc"><span class="sidebar-toggle-icon">&#9776;</span></button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<nav class="master-toc" aria-label="Table of contents">
+<nav class="sidebar-toc" id="sidebarToc" aria-label="Table of contents">
+  <div class="sidebar-head">
+    <span class="sidebar-head-title">Contents</span>
+    <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close table of contents">&times;</button>
+  </div>
   <div class="mtoc-inner">
     <div class="mtoc-row p7">
       <span class="mtoc-label">Part 1 · Unit 7</span>
@@ -1380,6 +1424,7 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
       <a href="#attachment">Attachment</a>
       <a href="#rubin">Rubin's Tasks</a>
       <a href="#lactation">Lactogenesis</a>
+      <a href="#feeding-education">Feeding Education</a>
       <a href="#newborn-feeding">Newborn Feeding</a>
       <a href="#mnemonics">Mnemonics</a>
     </div>
@@ -1408,6 +1453,27 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
   </div>
 </nav>
 
+<div class="page-content" id="pageContent">
+
+<header class="masthead">
+  <div class="mast-inner">
+    <div class="kicker">NSG 3500 · Maternal Health · Galen College of Nursing</div>
+    <h1>Exam 3 Study Guide</h1>
+    <p>Unit 7 (Postpartum Recovery &amp; Newborn Nutrition), Unit 8 (Postpartum Complications, Discharge Teaching &amp; Contraception), and a dedicated Medications reference — 30 short, collapsible sections. Everything starts closed: click any heading to open just what you need, or use the controls below.</p>
+    <div class="mast-badges">
+      <span>30 sections, all collapsed</span>
+      <span>Click to expand</span>
+      <span>Letter-size printable</span>
+      <span>Screen reader &amp; keyboard accessible</span>
+    </div>
+    <button class="print-btn" type="button" onclick="printGuide()" aria-label="Print or save this study guide as a PDF">🖨️ Print / Save as PDF</button>
+    <div class="bulk-controls">
+      <button class="bulk-btn" type="button" onclick="expandAllSections()">Expand everything</button>
+      <button class="bulk-btn" type="button" onclick="collapseAllSections()">Collapse everything</button>
+    </div>
+  </div>
+</header>
+
 <main id="main-content">
 
   <section class="part part7" aria-labelledby="part7-heading">
@@ -1426,7 +1492,7 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
 </div>
 </header>
     <div id="part7-heading" class="visually-hidden">Part 1: Unit 7 — Postpartum Recovery and Newborn Nutrition</div>
-    <p class="part-hint">13 sections below — every heading is a button. Click one to open it, click again to close it. All medications now live in their own Part 3 section.</p>
+    <p class="part-hint">14 sections below — every heading is a button. Click one to open it, click again to close it. All medications now live in their own Part 3 section.</p>
     <div class="u7-main-wrap">
 
 <details class="topsec" id="assessment"><summary class="topsec-summary"><div class="section-head">
@@ -2079,6 +2145,110 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
 <div class="step"><span class="stepnum">03</span><h5>Suckling</h5><p>Infant suckling triggers further prolactin + oxytocin release; supply meets demand</p></div>
 <div class="arrow">→</div>
 <div class="step"><span class="stepnum">04</span><h5>Milk-ejection reflex</h5><p>Oxytocin (posterior pituitary) mediates let-down — can be triggered by cry, thought of infant; inhibited by stress</p></div>
+</div>
+</div></details><details class="topsec" id="feeding-education"><summary class="topsec-summary"><div class="section-head">
+<h3>Breastfeeding &amp; Formula Feeding Education</h3>
+<span class="section-tag tag-indigo">USLO 4 · Generate Solutions → Take Action</span>
+</div><span aria-hidden="true" class="topsec-chevron">▾</span></summary><div class="topsec-body">
+<p class="section-note">What to actually <i>teach</i> the family, regardless of which method they choose — technique, safety, and how to tell feeding is going well. Pairs with Lactogenesis (physiology) and Newborn Feeding Reference (amounts/storage) above.</p>
+<div class="bubble-grid">
+<div class="bubble-card">
+<div class="letterhead"><span class="letter">1</span> Latch &amp; Positioning</div>
+<div class="body">
+<ul>
+<li><b>Good latch signs:</b> wide-open mouth, lips flanged outward, more areola visible above the lip than below, chin touching the breast, audible rhythmic suck-swallow-breathe, no clicking, no pain after the first 30 seconds</li>
+<li><b>Cradle hold:</b> classic, baby's head in the crook of the elbow</li>
+<li><b>Cross-cradle:</b> more head control — good for early feeds or a preterm infant</li>
+<li><b>Football/clutch hold:</b> baby tucked under the arm — keeps weight off a cesarean incision</li>
+<li><b>Side-lying:</b> good for nighttime feeds or a mother who needs to stay reclined</li>
+<li>To break suction, insert a clean finger into the corner of the mouth first — never pull the baby off</li>
+</ul>
+</div>
+</div>
+<div class="bubble-card">
+<div class="letterhead lh-indigo"><span class="letter">2</span> Feeding Cues &amp; Frequency</div>
+<div class="body">
+<ul>
+<li><b>Early hunger cues (feed now):</b> rooting, hand-to-mouth, lip smacking, stirring/stretching</li>
+<li><b>Crying is a LATE cue</b> — calm the baby before latching; a frantic baby latches poorly</li>
+<li><b>Breastfeeding:</b> 8–12 times/24 hr, on demand; offer both breasts, starting on the one nursed last</li>
+<li><b>Formula:</b> age-based amount/frequency — see the Newborn Feeding Reference table below</li>
+<li><b>Satiety cues:</b> releases the breast/bottle on its own, relaxed hands, falls asleep, turns away</li>
+</ul>
+</div>
+</div>
+<div class="bubble-card">
+<div class="letterhead lh-coral"><span class="letter">3</span> Is Baby Getting Enough?</div>
+<div class="body">
+<ul>
+<li><b>Wet diapers should roughly match the day of life</b> for the first week (Day 1 → 1 wet diaper, Day 3 → 3, Day 6+ → 6 or more) — see the table below</li>
+<li>Stools shift from thick tarry meconium → greenish transitional → soft seedy yellow by about day 4–5</li>
+<li>Expected weight loss up to 7–10% of birth weight in the first days — regained by <b>10–14 days</b></li>
+<li>Audible swallowing during a feed is reassuring</li>
+</ul>
+</div>
+</div>
+<div class="bubble-card">
+<div class="letterhead lh-rose"><span class="letter">4</span> Breastfeeding Contraindications</div>
+<div class="body">
+<ul>
+<li>Untreated active tuberculosis (mother)</li>
+<li>HIV-positive (per current U.S. guidance)</li>
+<li>Active herpetic lesion <i>directly on the breast</i></li>
+<li>Galactosemia (in the infant)</li>
+<li>Active illicit drug use</li>
+<li>Active chemotherapy or radioactive isotope therapy</li>
+</ul>
+<div class="flag" style="margin-top:8px;">Most maternal medications are actually compatible with breastfeeding — check a lactation-safe drug reference (e.g., LactMed) before advising a mother to stop.</div>
+</div>
+</div>
+<div class="bubble-card">
+<div class="letterhead lh-amber"><span class="letter">5</span> Formula Preparation &amp; Safety</div>
+<div class="body">
+<ul>
+<li><b>Ready-to-feed:</b> no mixing, most expensive, most convenient</li>
+<li><b>Concentrate:</b> dilute with water per label</li>
+<li><b>Powder:</b> mix with water, least expensive — <i>not sterile</i>, avoid for immunocompromised/preterm infants unless directed otherwise</li>
+<li>Use a safe water source; if unsure, boil and cool before mixing</li>
+<li><b>Never microwave</b> — uneven heating causes burns; warm under running warm water or in a bowl of warm water instead</li>
+<li>Mix exactly to manufacturer instructions — over- or under-diluting risks electrolyte imbalance or inadequate nutrition</li>
+<li>Discard any bottle not finished within 1 hour of starting the feed</li>
+</ul>
+</div>
+</div>
+<div class="bubble-card">
+<div class="letterhead lh-plum"><span class="letter">6</span> Paced Bottle Feeding &amp; Burping</div>
+<div class="body">
+<ul>
+<li><b>Paced feeding:</b> hold the bottle horizontally (not tipped up) and let the baby control the flow with breaks — mimics breastfeeding pace, reduces overfeeding and reflux</li>
+<li>Always hold the baby semi-upright — <b>never prop the bottle</b> (choking and ear-infection risk)</li>
+<li>Burp after every ½–1 oz early on, or when switching breasts / halfway and at the end of a bottle</li>
+<li><b>Positions:</b> over the shoulder; sitting upright supporting the chin/jaw; face-down across the lap</li>
+</ul>
+</div>
+</div>
+<div class="bubble-card">
+<div class="letterhead"><span class="letter">7</span> Weaning Basics</div>
+<div class="body">
+<ul>
+<li>AAP/WHO: exclusive breastfeeding recommended for about the first 6 months, continued with complementary foods per the family's goals</li>
+<li>Wean gradually — drop one feeding at a time over days to weeks to reduce engorgement risk and let supply adjust</li>
+<li>No universal "must-stop" age — this is a family-driven decision</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="table-wrap" style="margin-top:14px;">
+<table class="compare">
+<thead><tr><th scope="col">Day</th><th scope="col">Wet diapers (min.)</th><th scope="col">Stools</th></tr></thead>
+<tbody>
+<tr><td>Day 1</td><td>1</td><td>Meconium — thick, tarry, black</td></tr>
+<tr><td>Day 2</td><td>2</td><td>Transitioning — greenish-black</td></tr>
+<tr><td>Day 3</td><td>3</td><td>Transitional — greenish-yellow</td></tr>
+<tr><td>Day 4–5</td><td>4–6</td><td>Soft, seedy, yellow</td></tr>
+<tr><td>Day 6+</td><td>6+</td><td>Seedy, mustard-yellow (breastfed)</td></tr>
+</tbody>
+</table>
 </div>
 </div></details>
 <details class="topsec" id="newborn-feeding"><summary class="topsec-summary"><div class="section-head">
@@ -3114,6 +3284,8 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
   </div>
 </footer>
 
+</div>
+
 <script>
 // ===================================================================
 // Combined Exam 3 Study Guide — navigation behavior
@@ -3154,11 +3326,39 @@ header.hero.meds-hero .uslo-chip b{ color:#fff; }
 
   // Table-of-contents links: open the target section, then let the browser
   // handle the actual scroll via the normal hash navigation.
-  document.querySelectorAll('nav.master-toc a[href^="#"]').forEach(function (a) {
+  document.querySelectorAll('.sidebar-toc a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function () {
       var id = a.getAttribute('href').slice(1);
       revealTarget(id);
+      closeSidebar();
     });
+  });
+
+  // ---------------------------------------------------------------
+  // Sidebar open/close (off-canvas on narrow screens)
+  // ---------------------------------------------------------------
+  var sidebar = document.getElementById('sidebarToc');
+  var toggleBtn = document.getElementById('sidebarToggle');
+  var closeBtn = document.getElementById('sidebarClose');
+  var overlay = document.getElementById('sidebarOverlay');
+
+  function openSidebar() {
+    if (!sidebar) return;
+    sidebar.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    if (toggleBtn) { toggleBtn.setAttribute('aria-expanded', 'true'); toggleBtn.classList.add('hidden'); }
+  }
+  function closeSidebar() {
+    if (!sidebar) return;
+    sidebar.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    if (toggleBtn) { toggleBtn.setAttribute('aria-expanded', 'false'); toggleBtn.classList.remove('hidden'); }
+  }
+  if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+  if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+  if (overlay) overlay.addEventListener('click', closeSidebar);
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSidebar();
   });
 
   window.addEventListener('hashchange', handleHash);
