@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8 — Integumentary | NSG 3600 Study Atlas</title>
+<style>
+  :root{
+    --navy:#132039; --navy-2:#1c2f52; --navy-3:#24365a; --gold:#c9a227; --gold-light:#e6c65c;
+    --paper:#faf8f2; --card:#ffffff; --ink:#1d2230; --ink-soft:#5b6270; --line:#e7e2d4;
+    --acne:#c2185b; --inflame:#00838f; --bact:#c62828; --fungal:#6a3fa0; --infest:#e07b00; --vector:#2e7d32; --burn:#d84315;
+    --red:#c62828; --green:#2e7d32;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; line-height:1.5; }
+  ::selection{ background: var(--gold-light); }
+
+  .app{ display:flex; align-items:flex-start; min-height:100vh; }
+  @media (max-width: 900px){ .app{ flex-direction:column; } }
+
+  .sidebar{
+    background: linear-gradient(180deg, var(--navy) 0%, #0d1526 100%);
+    color:#fff; position:sticky; top:0; height:100vh; overflow-y:auto;
+    padding:22px 16px 40px; border-right: 3px solid var(--gold);
+    flex:0 0 300px; width:300px;
+  }
+  @media (max-width: 900px){ .sidebar{ position:relative; height:auto; width:100%; flex:none; border-right:none; border-bottom:3px solid var(--gold);} }
+  main{ flex:1 1 auto; min-width:0; width:100%; }
+
+  .brand{ text-align:center; margin-bottom:18px; }
+  .brand .eyebrow{ font-size:10px; letter-spacing:3px; color:var(--gold); font-weight:700; }
+  .brand h1{ font-size:19px; margin:6px 0 2px; color:#fff; }
+  .brand .sub{ font-size:12px; color:#b9c2d6; }
+  .exam-chip{ display:block; margin:14px auto 0; text-align:center; background:rgba(201,162,39,.15); border:1px solid var(--gold); color:var(--gold-light); font-size:11.5px; font-weight:700; padding:6px 10px; border-radius:20px; }
+
+  .filters{ margin:20px 0 14px; }
+  .filters-label{ font-size:11px; letter-spacing:1.5px; color:#8b96ad; text-transform:uppercase; margin-bottom:8px; font-weight:700;}
+  .chip-row{ display:flex; flex-wrap:wrap; gap:6px; }
+  .chip{ font-size:11.5px; padding:5px 10px; border-radius:20px; cursor:pointer; user-select:none; border:1px solid rgba(255,255,255,.18); color:#d8dee9; background:rgba(255,255,255,.04); transition:.15s; }
+  .chip:hover{ background:rgba(255,255,255,.1); }
+  .chip.active{ background:var(--gold); color:#1a1a1a; border-color:var(--gold); font-weight:700; }
+
+  .navlist{ list-style:none; margin:10px 0 0; padding:0; }
+  .navlist li{ margin:2px 0; }
+  .navlist a{ display:flex; align-items:center; gap:9px; color:#cfd6e6; text-decoration:none; font-size:13.5px; padding:7px 8px; border-radius:8px; transition:.15s; }
+  .navlist a:hover{ background:rgba(255,255,255,.07); color:#fff; }
+  .dot{ width:9px; height:9px; border-radius:50%; flex:none; }
+  .navlist .grp-label{ font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin:16px 0 4px 8px; font-weight:700; }
+
+  .hero{ background: radial-gradient(circle at 85% 15%, rgba(201,162,39,.25), transparent 45%), linear-gradient(120deg, var(--navy) 0%, var(--navy-2) 60%, var(--navy-3) 100%); color:#fff; padding:42px 44px 34px; position:relative; overflow:hidden; }
+  .hero h2{ font-size:32px; margin:0 0 6px; }
+  .hero p.lead{ color:#c7cfe0; max-width:700px; font-size:14.5px; margin:0 0 18px; }
+  .uslo-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .uslo-chip{ background:rgba(255,255,255,.08); border:1px solid rgba(201,162,39,.5); padding:8px 14px; border-radius:10px; font-size:12.5px; max-width:320px; color:#e9edf5; }
+  .uslo-chip b{ color:var(--gold-light); display:block; font-size:11px; letter-spacing:1px; margin-bottom:2px;}
+
+  .section-wrap{ padding: 30px 40px; }
+  @media (max-width:600px){ .section-wrap{ padding:22px 16px; } .hero{padding:28px 20px 24px;} }
+
+  .section-head{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .section-head h3{ font-size:22px; margin:0; color:var(--navy); }
+  .section-head .bar{ width:5px; height:26px; background:var(--gold); border-radius:3px; }
+
+  .ncjmm{ display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; }
+  .ncjmm-step{ flex:1 0 150px; background:var(--card); border:1px solid var(--line); border-top:4px solid var(--gold); border-radius:10px; padding:12px 14px; font-size:12.3px; color:var(--ink-soft); }
+  .ncjmm-step b{ display:block; color:var(--navy); font-size:13.5px; margin-bottom:4px; }
+
+  .pearl{ background: linear-gradient(180deg,#fdf8e8,#fbf2d6); border:1px solid var(--gold); border-left:6px solid var(--gold); border-radius:10px; padding:14px 18px; margin:14px 0; }
+  .pearl .pearl-title{ font-weight:800; color:#8a6c10; font-size:13px; margin-bottom:6px; display:flex; align-items:center; gap:6px;}
+  .pearl ul{ margin:0; padding-left:18px; }
+  .pearl li{ font-size:13.3px; margin-bottom:4px; color:#4c3f10;}
+
+  .disclaimer{ background:#eef1f8; border:1px dashed var(--navy); border-radius:10px; padding:12px 16px; font-size:12.3px; color:var(--navy); margin-bottom:18px; }
+
+  .grid{ display:flex; flex-wrap:wrap; gap:18px; }
+  .grid > *{ flex: 1 1 300px; min-width:300px; }
+
+  .cond-card{ background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 1px 3px rgba(20,20,30,.05); scroll-margin-top:16px; flex: 1 1 620px; min-width:340px; }
+  .cond-head{ display:flex; align-items:center; gap:12px; padding:14px 16px; border-bottom:2px solid var(--line); }
+  .cond-icon{ width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex:none;}
+  .cond-icon svg{ width:22px; height:22px; }
+  .cond-title{ flex:1; }
+  .cond-title h4{ margin:0; font-size:17px; color:var(--ink); }
+  .cond-title .tag{ font-size:10.5px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+  .cond-note{ font-size:11.7px; font-style:italic; padding:6px 16px 0; color:var(--ink-soft); }
+
+  .cond-body-inner{ padding:12px 14px 16px; }
+  .zone{ margin-bottom:14px; }
+  .zone-title{ font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.8px; color:#fff; padding:5px 10px; border-radius:6px 6px 0 0; display:inline-block; }
+  .zone-body{ border:1px solid var(--line); border-top:none; border-radius:0 8px 8px 8px; padding:10px 12px; }
+  .subgrid{ display:flex; flex-wrap:wrap; gap:10px; }
+  .subblock{ border-radius:8px; padding:8px 10px; flex:1 1 260px; min-width:220px; }
+  .subblock .lbl{ font-size:10.7px; font-weight:800; text-transform:uppercase; letter-spacing:.5px; margin-bottom:5px; }
+  .subblock ul{ margin:0; padding-left:15px; }
+  .subblock li{ font-size:12.4px; margin-bottom:4px; color:var(--ink); }
+
+  .notify-box{ background:#fdeceb; border:1.5px solid var(--red); border-radius:8px; padding:9px 12px; margin-top:8px; }
+  .notify-box .lbl{ color:var(--red); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; display:flex; align-items:center; gap:5px;}
+  .notify-box ul{ margin:0; padding-left:15px; }
+  .notify-box li{ font-size:12.4px; margin-bottom:3px; color:#7a1f1f; }
+
+  .diet-cols{ display:flex; gap:10px; flex-wrap:wrap; }
+  .diet-col{ flex:1 1 200px; border-radius:8px; padding:8px 10px; }
+  .diet-col.avoid{ background:#fdeceb; border:1px solid #e6b3b0; }
+  .diet-col.include{ background:#eaf5ea; border:1px solid #b7d9b7; }
+  .diet-col .lbl{ font-size:10.7px; font-weight:800; text-transform:uppercase; margin-bottom:5px; }
+  .diet-col.avoid .lbl{ color:var(--red); }
+  .diet-col.include .lbl{ color:var(--green); }
+  .diet-col ul{ margin:0; padding-left:15px; }
+  .diet-col li{ font-size:12.2px; margin-bottom:3px; }
+
+  .edu-cols{ display:flex; gap:10px; flex-wrap:wrap; }
+  .edu-col{ flex:1 1 260px; border-radius:8px; padding:8px 10px; }
+  .edu-col .lbl{ font-size:10.7px; font-weight:800; text-transform:uppercase; margin-bottom:5px; }
+  .edu-col ul{ margin:0; padding-left:15px; }
+  .edu-col li{ font-size:12.3px; margin-bottom:4px; }
+
+  .qtable{ width:100%; border-collapse:collapse; background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(20,20,30,.05);}
+  .qtable th{ background:var(--navy); color:#fff; text-align:left; font-size:12.5px; padding:10px 12px; }
+  .qtable td{ font-size:13px; padding:10px 12px; border-top:1px solid var(--line); vertical-align:top; }
+  .qtable tr:nth-child(even) td{ background:#f7f5ee; }
+
+  .mnem-card{ border-radius:12px; padding:14px 16px; border:1.5px solid; }
+  .mnem-card h5{ margin:0 0 6px; font-size:14.5px; }
+  .mnem-card p{ margin:0; font-size:13px; color:var(--ink); }
+
+  .stat-row{ display:flex; flex-wrap:wrap; gap:12px; margin:14px 0; }
+  .stat-row .stat{ flex:1 1 180px; min-width:160px; background:var(--card); border:1px solid var(--line); border-top:4px solid var(--burn); border-radius:10px; padding:12px 14px;}
+  .stat .num{ font-size:20px; font-weight:800; color:var(--burn); }
+  .stat .lab{ font-size:11.5px; color:var(--ink-soft); }
+
+  .priority-block{ border:1.5px solid var(--burn); border-radius:12px; padding:14px 16px; background:#fff6f2; margin-bottom:12px;}
+  .priority-block h5{ margin:0 0 8px; color:var(--burn); font-size:14px; }
+  .priority-block ul{ margin:0; padding-left:18px; }
+  .priority-block li{ font-size:13.2px; margin-bottom:5px; }
+
+  .footer-note{ text-align:center; font-size:12px; color:var(--ink-soft); padding:30px 20px 10px; }
+  .toc-back{ position:fixed; bottom:18px; right:18px; background:var(--navy); color:#fff; border:2px solid var(--gold); border-radius:50%; width:42px; height:42px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.25); text-decoration:none; font-size:16px; }
+  .verify-box{ background:#eef1f8; border:1.5px dashed var(--navy); border-radius:12px; padding:16px 18px;}
+  .verify-box h5{ margin:0 0 8px; color:var(--navy); }
+  .verify-box li{ font-size:13px; margin-bottom:6px; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <nav class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="eyebrow">GALEN COLLEGE OF NURSING</div>
+      <h1>Unit 8 Study Atlas</h1>
+      <div class="sub">Integumentary Conditions — NSG 3600</div>
+      <span class="exam-chip">Exam 3 · 16–17 questions</span>
+    </div>
+    <div class="filters">
+      <div class="filters-label">Filter by category</div>
+      <div class="chip-row" id="chipRow">
+        <span class="chip active" data-cat="all">All</span>
+        <span class="chip" data-cat="acne" style="border-color:#c2185b">Acne</span>
+        <span class="chip" data-cat="inflame" style="border-color:#00838f">Inflammatory</span>
+        <span class="chip" data-cat="bact" style="border-color:#c62828">Bacterial</span>
+        <span class="chip" data-cat="fungal" style="border-color:#6a3fa0">Fungal</span>
+        <span class="chip" data-cat="infest" style="border-color:#e07b00">Infestation</span>
+        <span class="chip" data-cat="vector" style="border-color:#2e7d32">Bites/Vector</span>
+        <span class="chip" data-cat="burn" style="border-color:#d84315">Burns</span>
+      </div>
+    </div>
+    <div class="grp-label">Jump to</div>
+    <ul class="navlist" id="navList"></ul>
+  </nav>
+
+  <main>
+    <section class="hero" id="top">
+      <h2>Caring for the Child with an Integumentary Condition</h2>
+      <p class="lead">A colorful, always-expanded review of every condition in Unit 8 — pathophysiology, expected/unexpected findings, labs with interventions, true-priority nursing care, contraindications, diet, self-care, and separate parent vs. pediatric patient teaching.</p>
+      <div class="uslo-row">
+        <div class="uslo-chip"><b>USLO 1</b>Examine integumentary conditions common in children (CSLO 3,1,4)</div>
+        <div class="uslo-chip"><b>USLO 2</b>Discuss collaborative care in diagnosis, treatment &amp; prevention (CSLO 6,4)</div>
+        <div class="uslo-chip"><b>USLO 3</b>Describe how child development increases burn risk &amp; impacts treatment (CSLO 3,2,4)</div>
+      </div>
+    </section>
+
+    <div class="section-wrap">
+      <div class="section-head"><div class="bar"></div><h3>NCJMM Lens for This Unit</h3></div>
+      <div class="ncjmm">
+        <div class="ncjmm-step"><b>Recognize Cues</b>Lesion look/location, onset, exposure history, pruritus vs. pain, systemic signs</div>
+        <div class="ncjmm-step"><b>Analyze Cues</b>Infectious vs. inflammatory vs. traumatic; contagious?; superficial vs. deep</div>
+        <div class="ncjmm-step"><b>Prioritize Hypotheses</b>ABC first — what could kill or cause permanent harm fastest?</div>
+        <div class="ncjmm-step"><b>Generate Solutions</b>Topical vs. systemic tx, isolation, fluid resuscitation, wound care</div>
+        <div class="ncjmm-step"><b>Take Action</b>Implement in true priority order — airway/circulation before comfort/teaching</div>
+        <div class="ncjmm-step"><b>Evaluate Outcomes</b>Lesion resolution, no 2° infection, adequate UOP/perfusion, teach-back</div>
+      </div>
+      <div class="disclaimer">📌 <b>A note on sourcing:</b> Pathophysiology, signs/symptoms, and nursing priorities below are drawn from your course slides, Saunders NCLEX Pediatric 9e, and Perry Ch. 50. Specific <b>lab reference ranges, drug-food interactions, and dietary guidance</b> reflect standard pediatric clinical knowledge (Davis's Drug Guide, Abrams' Clinical Drug Therapy) used to fill gaps the slides didn't spell out numerically — cross-check exact values your instructor wants memorized.</div>
+    </div>
+
+    <div class="section-wrap" id="conditions-wrap">
+      <div class="section-head"><div class="bar"></div><h3>Skin Infections, Inflammations &amp; Infestations</h3></div>
+      <div class="grid" id="cardGrid"></div>
+    </div>
+
+    <!-- ============ BURNS DEDICATED SECTION ============ -->
+    <div class="section-wrap" id="burns-section">
+      <div class="section-head"><div class="bar" style="background:var(--burn)"></div><h3 style="color:var(--burn)">🔥 Burns — Priority Topic for USLO 3</h3></div>
+
+      <div class="pearl">
+        <div class="pearl-title">⚠ Why burns are worse in children</div>
+        <ul>
+          <li>Thinner skin → lower temp/shorter exposure causes a MORE severe burn than in an adult</li>
+          <li>Higher mortality with severe burns vs. older children/adults with comparable injury</li>
+          <li>Harder to communicate pain accurately</li>
+          <li>↑ risk of fluid/heat loss, dehydration, metabolic acidosis</li>
+          <li>Higher body-fluid-to-body-mass ratio → greater cardiovascular risk</li>
+          <li>Immature immune system → ↑ infection risk</li>
+          <li>Less muscle mass/body fat → protein-calorie deficiency risk</li>
+          <li>Scarring is MORE severe than in adults; growth delay may follow a significant burn</li>
+        </ul>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="num">10% TBSA</div><div class="lab">= life-threatening in school-age or younger children</div></div>
+        <div class="stat"><div class="num">&gt;10% TBSA</div><div class="lab">generally requires fluid resuscitation</div></div>
+        <div class="stat"><div class="num">&lt;30 kg</div><div class="lab">target UOP 0.5–1 mL/kg/hr</div></div>
+        <div class="stat"><div class="num">&gt;30 kg</div><div class="lab">target UOP 30 mL/hr</div></div>
+      </div>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Depth of Burn Injury — with Depth-Specific Interventions</h4>
+      <table class="qtable">
+        <tr><th>Depth</th><th>Key Features</th><th>Specific Interventions</th></tr>
+        <tr><td><b>Superficial (1st°)</b></td><td>Erythema + pain 2–3 days (sunburn). Intact epidermis, no blisters. Peels, heals WITHOUT scarring.</td><td>Cool compresses, aloe/moisturizer, oral NSAIDs/acetaminophen for pain, oral hydration. No dressing usually needed. Outpatient management.</td></tr>
+        <tr><td><b>Partial-thickness (2nd°)</b></td><td>Erythema + blisters (may burst/weep). Bleeds easily, very painful. Epidermis + outer dermis. Heals in ~3 wks. Scarring WILL occur.</td><td>Do NOT break intact blisters (natural barrier). Gentle cleansing, topical antimicrobial (e.g., silver sulfadiazine per order), non-adherent dressing, pain control BEFORE dressing changes, monitor for infection.</td></tr>
+        <tr><td><b>Full-thickness (3rd°)</b></td><td>Variable color; dry, stiff, leathery; NO blanching; NO pain (nerve destruction). Needs excision + grafting.</td><td>Airway/fluid priorities (see below), surgical referral for excision/grafting, strict infection prevention, monitor circulation if circumferential (compartment syndrome risk).</td></tr>
+        <tr><td><b>Deep full-thickness (4th°)</b></td><td>Extends into muscle/bone. No sensation. Amputation likely if digits affected.</td><td>Same as 3rd° plus urgent surgical consult; monitor for rhabdomyolysis/myoglobinuria if muscle involved; assess neurovascular status frequently.</td></tr>
+      </table>
+      <div class="pearl" style="margin-top:14px;">
+        <div class="pearl-title">🎯 High-yield: pain pattern is counterintuitive</div>
+        <ul><li><b>MORE</b> pain = shallower burn (1st/2nd° — nerves intact) · <b>NO</b> pain = deeper burn (3rd/4th° — nerves destroyed). A burn that doesn't hurt is not a mild burn.</li></ul>
+      </div>
+
+      <h4 style="color:var(--navy); margin:24px 0 8px;">Differentiating Burn TYPES &amp; Their Specific Interventions</h4>
+      <div id="burnTypeGrid" class="grid"></div>
+
+      <h4 style="color:var(--navy); margin:24px 0 8px;">Extent — Total Body Surface Area (TBSA)</h4>
+      <div class="pearl">
+        <ul>
+          <li>Adult "rule of nines" is INACCURATE in children — different body proportions (larger head, smaller legs)</li>
+          <li>Use age-specific charts (Lund and Browder) for pediatric TBSA estimation</li>
+        </ul>
+      </div>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Three Phases of Burn Care</h4>
+      <table class="qtable">
+        <tr><th>Phase</th><th>Focus</th></tr>
+        <tr><td><b>1. Burn shock / resuscitative</b></td><td>First 24–48 hrs; characterized by shock — airway &amp; fluid resuscitation are priorities</td></tr>
+        <tr><td><b>2. Recovery / wound healing</b></td><td>Close the wound ASAP; infection prevention, nutrition, pain control</td></tr>
+        <tr><td><b>3. Rehabilitative</b></td><td>Prevent scar contractures; reintegrate child into social environment</td></tr>
+      </table>
+
+      <h4 style="color:var(--burn); margin:24px 0 10px;">TRUE Priority Order — What Kills First (ABC Framework)</h4>
+      <div class="priority-block">
+        <h5>#1 PRIORITY — AIRWAY (kills within minutes)</h5>
+        <ul>
+          <li>Inhalation injury red flags: enclosed-space burn, singed nasal hairs/eyebrows, hoarse voice, soot on face, burned facial hair, burns to torso/face, swollen lips, hypoxia</li>
+          <li>SOB/dyspnea worse lying down, wheezing, gasping = acute pulmonary edema — EMERGENCY</li>
+          <li><b>Action:</b> early intubation &amp; ventilation; 100% oxygen</li>
+          <li><b>Notify provider immediately if:</b> stridor, drooling, voice change, O2 sat dropping, retractions</li>
+        </ul>
+      </div>
+      <div class="priority-block">
+        <h5>#2 PRIORITY — CIRCULATION / fluid resuscitation (kills within hours)</h5>
+        <ul>
+          <li>Third-spacing from ↑ capillary permeability, evaporative loss (no skin barrier), cell rupture → massive fluid needs</li>
+          <li>Monitor <b>hourly urine output</b> — the key indicator of resuscitation adequacy</li>
+          <li>Adequacy also judged by vital signs (especially HR), capillary refill, and sensorium/LOC — <b>NOT</b> skin turgor or edema level</li>
+          <li><b>Notify provider immediately if:</b> UOP below target for 2 consecutive hours, HR rising with falling BP, altered LOC, cap refill &gt;3 sec</li>
+        </ul>
+      </div>
+      <div class="priority-block">
+        <h5>#3 PRIORITY — Compartment syndrome / circulation to extremities (kills the limb within hours)</h5>
+        <ul>
+          <li>Highest risk: circumferential 3rd-degree burns (arm/leg/torso)</li>
+          <li>Leathery, non-stretching skin + edema compresses nerves/vessels</li>
+          <li>Assess the 6 P's: Pain (out of proportion), Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia (cool limb)</li>
+          <li><b>Action:</b> elevate extremity, loosen constrictive dressings, notify provider — fasciotomy/escharotomy may be needed</li>
+          <li><b>Notify provider immediately if:</b> any of the 6 P's develop, especially loss of pulse or worsening pain despite analgesia</li>
+        </ul>
+      </div>
+      <div class="priority-block">
+        <h5>#4 PRIORITY — Infection / sepsis prevention (kills over days)</h5>
+        <ul>
+          <li>Immature immune system + open wound = high infection risk</li>
+          <li><b>Early</b> sepsis signs: ↓LOC/lethargy, fever, restlessness, cap refill &gt;5 sec — act on these, don't wait</li>
+          <li><b>Late</b> sepsis sign: ↓BP — by this point the child is decompensating</li>
+          <li><b>Notify provider immediately if:</b> new fever, increasing lethargy/irritability, wound odor/purulent drainage, rising WBC</li>
+        </ul>
+      </div>
+      <div class="priority-block">
+        <h5>#5 PRIORITY — Nutrition, pain, and psychosocial (matters for recovery, not immediate survival)</h5>
+        <ul>
+          <li>NG to suction during burn shock phase; resume feeds after diuresis begins</li>
+          <li>↑ protein/calorie needs during wound healing — see diet section below</li>
+          <li>Pain medication BEFORE dressing changes; diversional activities; encourage participation in care</li>
+        </ul>
+      </div>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Labs &amp; Diagnostics — Expected vs. Unexpected, with Interventions</h4>
+      <table class="qtable">
+        <tr><th>Lab/Parameter</th><th>Expected in Burn Shock Phase</th><th>Unexpected / Concerning → Intervention</th></tr>
+        <tr><td><b>Hematocrit (H&amp;H)</b></td><td>Initially ↑ (hemoconcentration from fluid shift into tissues)</td><td>Persistently rising H&amp;H despite fluids → notify provider, reassess fluid resuscitation rate</td></tr>
+        <tr><td><b>Potassium (K⁺)</b></td><td>May be mildly elevated early from cell lysis releasing intracellular K⁺</td><td>Marked hyperkalemia (peaked T waves, arrhythmia) → notify provider immediately, cardiac monitoring</td></tr>
+        <tr><td><b>Sodium (Na⁺)</b></td><td>Hyponatremia common from fluid shifts/resuscitation fluids</td><td>Severe hyponatremia with seizures/lethargy → notify provider, may need fluid adjustment</td></tr>
+        <tr><td><b>Albumin/total protein</b></td><td>Decreases from capillary leak of protein into tissues</td><td>Very low albumin with worsening edema → notify provider; may need colloid replacement</td></tr>
+        <tr><td><b>Glucose</b></td><td>Stress hyperglycemia is common and often expected</td><td>Very high or trending glucose with lethargy → notify provider, monitor for metabolic complications</td></tr>
+        <tr><td><b>WBC count</b></td><td>Mild leukocytosis expected from the stress/inflammatory response</td><td>Markedly rising WBC with fever/wound changes → notify provider, suspect infection</td></tr>
+        <tr><td><b>Urine output (hourly)</b></td><td>&lt;30 kg: 0.5–1 mL/kg/hr &nbsp;|&nbsp; &gt;30 kg: 30 mL/hr</td><td>Below target x2 hrs → notify provider (under-resuscitation); myoglobinuria (tea-colored) in electrical/deep burns → notify provider, ↑ fluids to protect kidneys</td></tr>
+      </table>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Dietary Needs During Wound Healing (Recovery Phase)</h4>
+      <div class="diet-cols">
+        <div class="diet-col include">
+          <div class="lbl">Encourage — High Protein / High Calorie</div>
+          <ul>
+            <li>Eggs, chicken, lean beef, fish, Greek yogurt, cheese, milk</li>
+            <li>Peanut butter, beans/legumes, protein shakes/supplements (e.g., PediaSure for younger children)</li>
+            <li>Calorie-dense additions: avocado, olive oil, nut butters, whole milk products</li>
+            <li>Vitamin C– and zinc-rich foods to support wound healing (citrus, berries, lean meats, nuts)</li>
+            <li>Frequent small meals/snacks — total caloric needs are significantly increased</li>
+          </ul>
+        </div>
+        <div class="diet-col avoid">
+          <div class="lbl">Limit — Low Nutritional Value</div>
+          <ul>
+            <li>Empty-calorie snacks/sugary drinks that fill the child up without protein</li>
+            <li>Excessive plain water before meals in young children (can blunt appetite/intake)</li>
+            <li>NPO status during the acute burn shock phase per provider order — NG to suction until bowel sounds/diuresis return</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Contraindications &amp; Restrictions</h4>
+      <div class="notify-box" style="border-color:var(--navy); background:#eef1f8;">
+        <div class="lbl" style="color:var(--navy);">⚠ Restrictions During Care</div>
+        <ul style="color:var(--navy);">
+          <li>Do NOT apply ice directly to a burn — causes vasoconstriction and can worsen tissue damage/hypothermia; use cool (not cold) running water only in the first few minutes</li>
+          <li>Do NOT break intact blisters — they are a natural infection barrier</li>
+          <li>Do NOT apply butter, oil, or home remedies to a burn</li>
+          <li>Grafted skin: NO sun exposure without protection — no functioning sweat glands, high overheating/burn risk</li>
+          <li>Activity restrictions per provider/PT during contracture-prevention splinting — do not skip prescribed positioning</li>
+          <li>Chemical burns: do NOT attempt to "neutralize" the chemical with another substance</li>
+        </ul>
+      </div>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Self-Care Strategies (Recovery &amp; Rehab Phase)</h4>
+      <div class="pearl">
+        <ul>
+          <li>Perform prescribed range-of-motion exercises daily even when uncomfortable — prevents contractures</li>
+          <li>Wear compression/pressure garments as directed to minimize scarring</li>
+          <li>Moisturize healed/grafted skin regularly to reduce itching and dryness</li>
+          <li>Manage pruritus with prescribed antihistamines and by keeping skin cool rather than scratching</li>
+          <li>Protect grafted/healing skin from sun with clothing and provider-approved sunscreen once skin is healed enough</li>
+          <li>Attend all follow-up, PT, and OT appointments — missed sessions increase contracture risk</li>
+        </ul>
+      </div>
+
+      <h4 style="color:var(--navy); margin:22px 0 8px;">Patient &amp; Family Education</h4>
+      <div class="edu-cols">
+        <div class="edu-col" style="background:#eef4f6; border:1px solid #bcd6dc;">
+          <div class="lbl" style="color:#0d5c6b;">Parent / Caregiver Education</div>
+          <ul>
+            <li>Understand the extended timeline — healing, scarring, and rehab can take months</li>
+            <li>Learn dressing change technique and pain premedication timing for home care</li>
+            <li>Know the signs of infection or complications that require an immediate call to the provider</li>
+            <li>Arrange home health, PT/OT, and follow-up visits before discharge</li>
+            <li>Understand grafted skin has no sweat glands — supervise activity in heat and ensure hydration</li>
+            <li>Prepare for the child's emotional response to appearance changes; consider counseling resources</li>
+          </ul>
+        </div>
+        <div class="edu-col" style="background:#f6f0e8; border:1px solid #dfc9a3;">
+          <div class="lbl" style="color:#8a5a10;">Pediatric / Age-Appropriate Education</div>
+          <ul>
+            <li><b>Toddler/preschool:</b> Use simple, concrete words ("the doctor is making a hurt-spot boo-boo better"); allow choice when possible (which bandage sticker); use a comfort object during dressing changes</li>
+            <li><b>School-age:</b> Explain what happened and why the skin needs special care in simple medical terms; let the child help with simple parts of care to build a sense of control</li>
+            <li><b>Adolescent:</b> Address body image and scarring honestly; involve them in decisions about their care; connect with peer support if available; respect privacy during dressing changes</li>
+            <li>All ages: prepare the child before a dressing change ("first this, then this") rather than surprising them — reduces fear and improves cooperation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pearl" style="margin-top:18px; border-color:#8b0000;">
+        <div class="pearl-title">🚩 Red flag: burns suggestive of abuse</div>
+        <ul>
+          <li><b>Stocking/glove pattern</b> — sharp, uniform immersion line = suspicious for deliberate dipping</li>
+          <li><b>Splash/splatter pattern</b> with irregular borders = more consistent with accidental burn</li>
+        </ul>
+      </div>
+
+      <h4 style="color:var(--navy); margin:24px 0 8px;">Development &amp; Burn Risk by Age (USLO 3)</h4>
+      <table class="qtable">
+        <tr><th>Age/Stage</th><th>Why at risk</th></tr>
+        <tr><td><b>Infant</b></td><td>↑ gross motor skills → scalds reaching for stove items, chewing cords, flame/inhalation from house fire</td></tr>
+        <tr><td><b>Toddler</b></td><td>Exploring/independence → scalds (stove/hot water), lighters/matches, hot appliances, cords in mouth, house fire</td></tr>
+        <tr><td><b>Preschool</b></td><td>↑ mobility/independence → running into kitchen while cooking, hot appliances, cords, lighters/matches, house fire</td></tr>
+        <tr><td><b>School-age/Adolescent</b></td><td>More freedom/access → cooking scalds, lighters/matches, chemical experimentation, power-line proximity while climbing</td></tr>
+      </table>
+    </div>
+
+    <!-- ============ QUICK COMPARE ============ -->
+    <div class="section-wrap">
+      <div class="section-head"><div class="bar"></div><h3>Quick-Compare: Distinguishing Look-Alike Rashes</h3></div>
+      <table class="qtable">
+        <tr><th>Finding</th><th>Think…</th></tr>
+        <tr><td>Honey-colored crusts over ulcerated base</td><td>Impetigo (bacterial — GAS/Staph)</td></tr>
+        <tr><td>Ring-shaped lesion with central clearing</td><td>Tinea corporis ("ringworm")</td></tr>
+        <tr><td>Whitish-gray oral plaques that will NOT wipe off</td><td>Oral candidiasis (thrush)</td></tr>
+        <tr><td>Well-demarcated diaper rash + satellite lesions</td><td>Diaper dermatitis + Candida superinfection</td></tr>
+        <tr><td>Weeping vesicles/crusting in flexural creases; uncommon in groin/axilla</td><td>Atopic dermatitis/eczema</td></tr>
+        <tr><td>Vesicles/bullae in a linear streak after outdoor exposure</td><td>Contact dermatitis (poison ivy/oak/sumac)</td></tr>
+        <tr><td>Bull's-eye/target lesion at a bite site</td><td>Lyme disease (early/stage 1)</td></tr>
+        <tr><td>Painless papule at scratch site + tender regional lymphadenopathy</td><td>Cat scratch disease</td></tr>
+        <tr><td>Pearlescent teardrop nits firmly attached to hair shaft; fluoresce under Wood's lamp</td><td>Pediculosis capitis (head lice)</td></tr>
+        <tr><td>Dry, leathery, non-blanching skin with NO pain</td><td>Full-thickness (3rd°) burn</td></tr>
+      </table>
+    </div>
+
+    <div class="section-wrap" id="mnemonics">
+      <div class="section-head"><div class="bar" style="background:var(--gold)"></div><h3>Memory Anchors &amp; Mnemonics</h3></div>
+      <div class="grid" id="mnemGrid"></div>
+    </div>
+
+    <div class="section-wrap">
+      <div class="verify-box">
+        <h5>📌 Verify with instructor / full textbook</h5>
+        <ul>
+          <li>Lyme disease causative organism (<i>Borrelia burgdorferi</i>) and whether serologic testing (ELISA/Western blot) is testable</li>
+          <li>Cat scratch disease causative organism (<i>Bartonella henselae</i>) and whether culture/serology is testable</li>
+          <li>The "6 C's" of minor burn management — the slide names the concept but doesn't list the 6 items</li>
+          <li>Exact lab reference ranges and dietary specifics above — standard clinical knowledge added to supplement slides; confirm what your instructor expects you to know precisely</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-note">Sources: Course PowerPoint (2026) · Saunders NCLEX Pediatric 9e, Ch. 30 · Perry et al., Maternal Child Nursing Care 7e, Ch. 50 (pp. 1527–1537, 1540–1558) · Abrams' Clinical Drug Therapy, Ch. 24 &amp; 61 · Davis's Drug Guide · NSG 3600 Syllabus v8.9</div>
+  </main>
+</div>
+
+<a href="#top" class="toc-back">↑</a>
+
+<script>
+const CAT_META = {
+  acne:{color:"#c2185b",label:"Acne"}, inflame:{color:"#00838f",label:"Inflammatory"},
+  bact:{color:"#c62828",label:"Bacterial"}, fungal:{color:"#6a3fa0",label:"Fungal"},
+  infest:{color:"#e07b00",label:"Infestation"}, vector:{color:"#2e7d32",label:"Bites/Vector"},
+  burn:{color:"#d84315",label:"Burns"}
+};
+const ICONS = {
+  sparkle:`<path d="M12 2 L14 9 L21 11 L14 13 L12 20 L10 13 L3 11 L10 9 Z" fill="currentColor"/>`,
+  droplet:`<path d="M12 2 C12 2 5 11 5 15.5 A7 7 0 0 0 19 15.5 C19 11 12 2 12 2 Z" fill="currentColor"/>`,
+  bacteria:`<circle cx="12" cy="12" r="5" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.6" y2="6.6"/><line x1="17.4" y1="17.4" x2="19.5" y2="19.5"/><line x1="4.5" y1="19.5" x2="6.6" y2="17.4"/><line x1="17.4" y1="6.6" x2="19.5" y2="4.5"/></g>`,
+  fungus:`<path d="M4 11 C4 6 8 3 12 3 C16 3 20 6 20 11 C20 12.5 18.7 12.8 17 12.3 C17 17 15 21 12 21 C9 21 7 17 7 12.3 C5.3 12.8 4 12.5 4 11 Z" fill="currentColor"/>`,
+  bug:`<ellipse cx="12" cy="13" rx="5" ry="7" fill="currentColor"/><circle cx="12" cy="5.5" r="2.6" fill="currentColor"/><g stroke="currentColor" stroke-width="1.4"><line x1="7" y1="10" x2="3" y2="8"/><line x1="7" y1="14" x2="2.5" y2="14"/><line x1="7" y1="18" x2="3" y2="20"/><line x1="17" y1="10" x2="21" y2="8"/><line x1="17" y1="14" x2="21.5" y2="14"/><line x1="17" y1="18" x2="21" y2="20"/></g>`,
+  paw:`<circle cx="12" cy="15" r="5" fill="currentColor"/><circle cx="5" cy="8" r="2.3" fill="currentColor"/><circle cx="10" cy="4.5" r="2.3" fill="currentColor"/><circle cx="14" cy="4.5" r="2.3" fill="currentColor"/><circle cx="19" cy="8" r="2.3" fill="currentColor"/>`,
+  flame:`<path d="M12 2 C7 7 6 10 6 13.5 A6 6 0 0 0 18 13.5 C18 11.5 17 10 16 9 C16.3 11 15.3 11.5 14.7 10.7 C15.2 8 13.8 5 12 2 Z" fill="currentColor"/>`,
+  spider:`<circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="1.4"><line x1="9" y1="9" x2="3" y2="4"/><line x1="8" y1="12" x2="1.5" y2="11"/><line x1="9" y1="15" x2="3" y2="19"/><line x1="15" y1="9" x2="21" y2="4"/><line x1="16" y1="12" x2="22.5" y2="11"/><line x1="15" y1="15" x2="21" y2="19"/></g>`,
+  sun:`<circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="1.6"><line x1="12" y1="1.5" x2="12" y2="4.3"/><line x1="12" y1="19.7" x2="12" y2="22.5"/><line x1="1.5" y1="12" x2="4.3" y2="12"/><line x1="19.7" y1="12" x2="22.5" y2="12"/><line x1="4.4" y1="4.4" x2="6.4" y2="6.4"/><line x1="17.6" y1="17.6" x2="19.6" y2="19.6"/><line x1="4.4" y1="19.6" x2="6.4" y2="17.6"/><line x1="17.6" y1="6.4" x2="19.6" y2="4.4"/></g>`,
+  bolt:`<path d="M13 2 L4 14 H11 L9 22 L20 9 H13 Z" fill="currentColor"/>`,
+  vial:`<path d="M9 2 H15 V4 L15 9 L19 19 A2 2 0 0 1 17 22 H7 A2 2 0 0 1 5 19 L9 9 Z" fill="none" stroke="currentColor" stroke-width="1.6"/><line x1="9" y1="2" x2="15" y2="2" stroke="currentColor" stroke-width="1.6"/>`
+};
+function icon(name){ return `<svg viewBox="0 0 24 24">${ICONS[name]}</svg>`; }
+function hexA(hex,a){ const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16); return `rgba(${r},${g},${b},${a})`; }
+
+const CLINICAL_SUBS = [["patho","Pathophysiology / Etiology"],["ss","Expected Findings (S&S)"],["risk","Risk Factors"],["complications","Unexpected Findings / Complications"]];
+
+function renderZone(title, color, bodyHtml){
+  return `<div class="zone">
+    <div class="zone-title" style="background:${color}">${title}</div>
+    <div class="zone-body" style="border-color:${hexA(color,0.4)}">${bodyHtml}</div>
+  </div>`;
+}
+function subblockHtml(items, color, label){
+  return `<div class="subblock" style="background:${hexA(color,0.07)}; border:1px solid ${hexA(color,0.25)}">
+    <div class="lbl" style="color:${color}">${label}</div>
+    <ul>${(items||[]).map(i=>`<li>${i}</li>`).join("")}</ul>
+  </div>`;
+}
+
+function conditionCardHTML(c){
+  const meta = CAT_META[c.cat];
+  const color = meta.color;
+
+  const clinicalHtml = `<div class="subgrid">${CLINICAL_SUBS.map(([k,l])=>subblockHtml(c[k],color,l)).join("")}</div>`;
+
+  const labsHtml = `<div class="subgrid">
+    ${subblockHtml(c.labs && c.labs.normal, color, "Expected / Normal")}
+    ${subblockHtml(c.labs && c.labs.abnormal, color, "Unexpected → Intervention")}
+  </div>`;
+
+  const nursingHtml = `<div class="subgrid">${subblockHtml(c.nursing,color,"Ordered by True Priority")}</div>
+    <div class="notify-box"><div class="lbl">🚩 Notify Provider If</div><ul>${(c.notify||[]).map(i=>`<li>${i}</li>`).join("")}</ul></div>`;
+
+  const treatHtml = `<div class="subgrid">
+    ${subblockHtml(c.treatment,color,"Treatment / Medications")}
+    ${subblockHtml(c.contraindications,color,"Contraindications / Restrictions")}
+  </div>`;
+
+  const dietHtml = c.diet ? `<div class="diet-cols">
+    <div class="diet-col include"><div class="lbl">Can Eat / Encourage</div><ul>${(c.diet.include||[]).map(i=>`<li>${i}</li>`).join("")}</ul></div>
+    <div class="diet-col avoid"><div class="lbl">Avoid / Limit</div><ul>${(c.diet.avoid||[]).map(i=>`<li>${i}</li>`).join("")}</ul></div>
+  </div>` : `<p style="font-size:12.4px; color:var(--ink-soft); margin:0;">No specific dietary restriction for this condition.</p>`;
+
+  const selfcareHtml = `<ul style="margin:0; padding-left:18px;">${(c.selfcare||[]).map(i=>`<li style="font-size:12.4px; margin-bottom:4px;">${i}</li>`).join("")}</ul>`;
+
+  const eduHtml = `<div class="edu-cols">
+    <div class="edu-col" style="background:#eef4f6; border:1px solid #bcd6dc;"><div class="lbl" style="color:#0d5c6b;">Parent / Caregiver</div><ul>${(c.eduParent||[]).map(i=>`<li>${i}</li>`).join("")}</ul></div>
+    <div class="edu-col" style="background:#f6f0e8; border:1px solid #dfc9a3;"><div class="lbl" style="color:#8a5a10;">Pediatric / Age-Appropriate</div><ul>${(c.eduChild||[]).map(i=>`<li>${i}</li>`).join("")}</ul></div>
+  </div>`;
+
+  const body = renderZone("Clinical Picture", color, clinicalHtml)
+    + renderZone("Labs &amp; Diagnostics", color, labsHtml)
+    + renderZone("Priority Nursing Care", "#c62828", nursingHtml)
+    + renderZone("Treatment &amp; Safety", color, treatHtml)
+    + renderZone("Dietary Considerations", "#2e7d32", dietHtml)
+    + renderZone("Self-Care Strategies", "#8a6c10", `<div style="background:${hexA("#c9a227",0.1)}; border-radius:8px; padding:4px 8px;">${selfcareHtml}</div>`)
+    + renderZone("Patient &amp; Family Education", "#132039", eduHtml);
+
+  return `<div class="cond-card" data-cat="${c.cat}" id="${c.id}">
+    <div class="cond-head">
+      <div class="cond-icon" style="background:${color}; color:#fff;">${icon(c.icon)}</div>
+      <div class="cond-title"><h4>${c.title}</h4><span class="tag" style="color:${color}">${meta.label}</span></div>
+    </div>
+    ${c.subtitle ? `<div class="cond-note">${c.subtitle}</div>` : ""}
+    <div class="cond-body-inner">${body}</div>
+  </div>`;
+}
+
+const CONDITIONS = [
+{id:"acne", title:"Acne", cat:"acne", icon:"sparkle",
+ patho:["Caused by Propionibacterium acnes colonizing the pilosebaceous follicle","Triggered by onset of adrenal androgenic hormones (puberty)","4 pathologic factors: excess sebum, altered follicular keratinization, P. acnes colonization, inflammatory response","More common in boys; premenstrual flares in girls","Dirt/oil on skin do NOT cause acne — myth to correct"],
+ ss:["Mild, moderate, or severe classification","Increased sebum production","Papules, pustules, or nodules"],
+ risk:["Adolescence/androgen surge","Male sex, family history","Occupational oil exposure","Dairy & high-glycemic foods (may worsen hormonal acne)","Mechanical irritation — helmet/chin straps"],
+ complications:["Scarring, post-inflammatory hyperpigmentation","Psychosocial/self-esteem impact","Isotretinoin: teratogenicity, mood changes, depression/suicidal ideation, rare pancreatitis, rare intracranial hypertension"],
+ labs:{normal:["Baseline LFTs and lipid panel WNL before starting isotretinoin","Negative pregnancy test x2, ≥19 days apart, before starting isotretinoin"],
+   abnormal:["↑ Triglycerides/cholesterol on isotretinoin → notify provider, may need dose reduction","↑ ALT/AST → hold isotretinoin, notify provider, recheck LFTs","ANY positive pregnancy test → STOP isotretinoin immediately, notify provider same day"]},
+ nursing:["1) Screen mood/behavior and suicidal ideation at every visit if on isotretinoin — this is the highest-acuity risk in acne care","2) Verify iPLEDGE enrollment + 2 forms of contraception BEFORE isotretinoin is dispensed","3) Assess severity and psychosocial impact","4) Teach correct topical technique/timing and sunscreen use"],
+ notify:["Expressed thoughts of self-harm, hopelessness, or significant mood change on isotretinoin","Severe abdominal pain (possible pancreatitis)","Vision changes or severe headache (possible intracranial hypertension)","Any pregnancy while on isotretinoin"],
+ treatment:["1) Tretinoin (Retin-A): interrupts abnormal keratinization; pea-sized amt nightly, 20–30 min after washing; photosensitizing","2) Benzoyl peroxide: 1st-line; bleaches fabric NOT skin","3) Topical antibacterials (clindamycin, erythromycin, azelaic acid): combine w/ retinoids","4) Systemic antibiotics (tetracycline, minocycline, doxycycline) for moderate/severe","5) Isotretinoin: SEVERE cystic acne; iPLEDGE required; 1-month supply, pick up within 7 days"],
+ contraindications:["Isotretinoin contraindicated in pregnancy (teratogenic) — 2 forms of contraception mandatory","Avoid vitamin A supplements with isotretinoin (additive toxicity)","No blood donation while on isotretinoin (fetal exposure risk if donated blood used in a pregnant recipient)","Avoid tanning beds/excess sun with tretinoin or tetracycline-class antibiotics (photosensitivity)","Tetracyclines contraindicated in children with developing teeth (staining) — generally avoided under age 8"],
+ diet:{include:["Balanced diet; no required special diet"], avoid:["Vitamin A supplements while on isotretinoin","Consider limiting dairy/high-glycemic foods if flares seem diet-related (evidence is mixed but often taught)"]},
+ selfcare:["Wash face gently 2x/day with a non-abrasive cleanser — over-washing worsens irritation","Apply medication as directed, not more often","Use oil-free, non-comedogenic moisturizer and daily sunscreen","Avoid picking/popping lesions — increases scarring risk"],
+ eduParent:["Acne is a medical condition, not a hygiene failure — avoid shaming language","Understand isotretinoin's serious risks and required monthly monitoring (labs, pregnancy tests, REMS)","Watch for and report mood/behavior changes promptly","Support consistent sunscreen use"],
+ eduChild:["Improvement takes 6–8 weeks — stick with the routine even if it seems slow","Picking or popping pimples can cause scarring, so try to leave them alone","Tell a parent or your provider right away if you feel really down, hopeless, or have thoughts of hurting yourself while on Accutane","Use sunscreen every day, even when it's cloudy"]},
+
+{id:"eczema", title:"Atopic Dermatitis / Eczema", cat:"inflame", icon:"droplet",
+ patho:["Superficial inflammatory process of the epidermis; NOT contagious","Strongly associated with personal/family history of allergies, asthma, allergic rhinitis (atopic triad)","Goals: relieve pruritus, hydrate skin, reduce inflammation, prevent 2° infection"],
+ ss:["Itching (hallmark, drives itch–scratch cycle)","Redness, scaliness","Minute papules and vesicles","Weeping, oozing, crusting","Distribution: scalp, face, elbow/knee creases, neck, wrists, ankles — uncommon in axilla/groin"],
+ risk:["Family history of atopy","Irritant exposure: harsh soaps, detergents, wool, latex","Heat, excessive bathing, wet diapers"],
+ complications:["2° bacterial infection — honey-colored crusts = superimposed impetigo","Sleep disruption from pruritus","Lichenification from chronic scratching"],
+ labs:{normal:["Clinical diagnosis — no lab required to confirm"], abnormal:["If lesions become purulent/crusted with fever → culture may be obtained, notify provider for possible antibiotic need","Eosinophilia may be seen on CBC if drawn (reflects atopic/allergic process) — not routinely needed"]},
+ nursing:["1) Assess/address itching first — breaking the itch-scratch cycle prevents the #1 complication (secondary infection)","2) Bathe tepid water 5–10 min, mild non-soap cleanser","3) Apply topical medication within 3 min post-bath, THEN moisturizer","4) Monitor for and immediately report signs of 2° infection"],
+ notify:["Honey-colored crusts or purulent drainage (secondary infection)","Fever with worsening skin lesions","Signs of eczema herpeticum: clustered painful vesicles, fever, malaise — a dermatologic emergency"],
+ treatment:["Oatmeal baths (soothing/emollient)","Thick moisturizer/petroleum jelly immediately post-bath","Topical corticosteroids — thin layer, before emollient","Antihistamines for itch","Antibiotics only if 2° infection develops","Cool wet compresses for acute flares"],
+ contraindications:["Avoid high-potency topical steroids on the face/skin folds for prolonged periods — risk of skin thinning/atrophy","Avoid hot baths/showers — worsens dryness and itching","Avoid wool and harsh fragranced products"],
+ diet:null,
+ selfcare:["Moisturize at least 2x/day even when skin looks clear — maintenance prevents flares","Identify and avoid personal triggers (keep a flare diary if patterns are unclear)","Keep nails short and use cotton gloves/socks at night to limit scratching damage","Choose fragrance-free laundry detergent and double-rinse clothing"],
+ eduParent:["Apply emollients immediately after bathing, medication first then moisturizer","Dress the child in soft, breathable fabrics; avoid wool","Recognize and report signs of secondary infection right away","Understand this is a chronic, relapsing condition — the goal is control, not permanent cure"],
+ eduChild:["Scratching feels good for a second but makes the itch worse later — try patting instead","Your lotion is part of your treatment, not just for dry skin — use it every day even when your skin looks better","Tell a grown-up if a patch starts to look yellow/crusty or hurts instead of just itching"]},
+
+{id:"impetigo", title:"Impetigo Contagiosa", cat:"bact", icon:"bacteria",
+ patho:["Contagious bacterial infection — Group A Strep (S. pyogenes) and/or S. aureus","Most common around nose/mouth; peaks in hot, humid months","Primary or secondary (site of prior injury/bite/eczema)","Progresses vesicles/pustules → exudative/crusting → honey-colored crust"],
+ ss:["Vesicles/pustules with surrounding erythema/edema","Classic honey-colored crusts over ulcerated bases","Pruritus, burning","Possible regional lymph node involvement"],
+ risk:["Poor hygiene","Hot, humid climate","Broken skin (bite, eczema, poison ivy/oak)","Close-contact settings (daycare/school)"],
+ complications:["Highly contagious — autoinoculation & spread to others","Rare: post-strep glomerulonephritis (PSGN) with GAS strains","Cellulitis if untreated"],
+ labs:{normal:["Clinical/visual diagnosis is usually sufficient"], abnormal:["Culture confirms organism if resistant/atypical","If PSGN suspected (dark/tea-colored urine, periorbital edema, hypertension 1–3 weeks after infection): urinalysis shows hematuria/proteinuria → notify provider immediately, this is a kidney complication"]},
+ nursing:["1) Institute contact isolation/standard precautions if hospitalized — prevents spread, the top priority with a contagious infection","2) Apply topical antibiotic w/ clean/sterile cotton swab — never touch tube to skin","3) Cover lesions with gauze/tape to prevent spread","4) Reinforce strict hand hygiene","5) Keep home from school 24h AFTER antibiotics start"],
+ notify:["Dark/tea-colored urine, facial/periorbital swelling, or high blood pressure 1–3 weeks after infection (possible PSGN)","Spreading redness/warmth beyond the lesion (possible cellulitis)","Fever development"],
+ treatment:["Topical antibiotic ointment (e.g., mupirocin)","Oral antibiotics for extensive/resistant disease","Change pillowcase nightly"],
+ contraindications:["Do not apply topical antibiotic to broken skin beyond the lesion without provider guidance","Avoid sharing towels, razors, or linens until lesions are resolved"],
+ diet:null,
+ selfcare:["Wash hands frequently, especially after touching lesions","Keep lesions covered with gauze when possible to prevent spread to other body areas or people","Avoid picking at crusts","Use a fresh towel/washcloth for the affected area, laundered separately"],
+ eduParent:["Keep the child home 24 hours after starting antibiotics — still contagious until then","Change pillowcases nightly, wash bedding/linens in hot water","Complete the full antibiotic course even if lesions look healed","Watch for and report dark urine or swelling in the weeks after infection"],
+ eduChild:["Try not to touch or pick at the crusty spots — it can spread the germs to other parts of your body","Wash your hands a lot, especially before you eat","You can go back to school once you've had your medicine for a full day"]},
+
+{id:"candidiasis", title:"Cutaneous Candidiasis", cat:"fungal", icon:"fungus",
+ patho:["Fungal infection — Candida albicans","Occurs in infants (diaper area) or children using corticosteroid inhalers without rinsing"],
+ ss:["Oral: whitish-gray plaques on tongue/mucosa that will NOT wipe off","Skin: fine, red/pink papules with scalloped, well-demarcated borders + satellite lesions"],
+ risk:["Infancy","Corticosteroid inhaler use w/o rinsing","Recent antibiotic therapy","Diaper occlusion/moisture","Immunosuppression"],
+ complications:["2° bacterial infection of excoriated skin","Infant feeding difficulty (oral thrush)","Spread to/worsening diaper dermatitis"],
+ labs:{normal:["Clinical diagnosis via visualization typically sufficient"], abnormal:["Fungal culture/KOH prep if uncertain or recurrent → confirms Candida, guides therapy duration"]},
+ nursing:["1) Visualize/differentiate oral vs. skin involvement","2) Give oral antifungal on INSIDE of BOTH cheeks w/ cotton-tip applicator — correct technique is essential for efficacy","3) Apply topical antifungal to skin lesions","4) Educate on prevention to avoid recurrence"],
+ notify:["Feeding refusal or dehydration signs in an infant with oral thrush","Rash spreading despite treatment","Signs of invasive/systemic candidiasis in an immunocompromised child (fever, lethargy) — rare but urgent"],
+ treatment:["Nystatin, clotrimazole, or miconazole (topical/oral)","Fluconazole or griseofulvin for resistant disease"],
+ contraindications:["Do not stop antifungal early even if lesions improve — recurrence is common","Avoid reusing unwashed pacifiers/bottle nipples during treatment"],
+ diet:null,
+ selfcare:["Clean bottle nipples/pacifiers with soap and water daily during treatment","Keep the diaper area clean and dry; change diapers promptly","Rinse the mouth after corticosteroid inhaler use — the key prevention step"],
+ eduParent:["Give oral antifungal correctly — swab inside both cheeks, not just the tongue","Complete the full course even after plaques/rash improve","Sterilize or replace pacifiers/bottle nipples during and after treatment"],
+ eduChild:["The medicine needs to touch the white patches in your mouth to work, so try to let it sit there a little before swallowing","Keep using your cream even when the rash looks better"]},
+
+{id:"tineacapitis", title:"Tinea Capitis (Scalp Ringworm)", cat:"fungal", icon:"fungus",
+ subtitle:"Location: scalp — the only tinea type treated with an ORAL antifungal, not just topical.",
+ patho:["Dermatophyte infection of the scalp and hair shafts","Invades the hair follicle itself, unlike other tinea types"],
+ ss:["Scaly, pruritic patches on the scalp","Possible localized hair loss/broken-off hairs within the patch","Fluoresces under Wood's lamp for certain species"],
+ risk:["Contact with infected people or pets (cats/dogs are common reservoirs)","Sharing combs, hats, pillows, or hair accessories","Common in school-age children"],
+ complications:["Kerion — boggy, inflamed, pus-filled swelling from intense immune reaction; can cause PERMANENT hair loss/scarring if untreated","2° bacterial infection from scratching","Spread to other household members"],
+ labs:{normal:["Wood's lamp exam supports diagnosis"], abnormal:["Baseline/periodic CBC on griseofulvin: watch for leukopenia → notify provider, may need to hold drug","Baseline/periodic ALT/AST: elevation → notify provider, possible hepatotoxicity","BUN/creatinine: elevation → notify provider, possible nephrotoxicity"]},
+ nursing:["1) Confirm diagnosis with visual/Wood's lamp exam","2) Educate that ALL household members should be screened","3) Reinforce completing the FULL oral course — 6–8+ weeks, much longer than skin-only tinea","4) Teach scalp hygiene to prevent spread/reinfection"],
+ notify:["Boggy, painful, draining scalp swelling (possible kerion) — needs prompt provider evaluation to prevent permanent hair loss","New bruising, unusual fatigue, or jaundice while on griseofulvin (possible hepatotoxicity/blood dyscrasia)","No improvement after 4 weeks of therapy"],
+ treatment:["ORAL griseofulvin required — topical alone cannot penetrate the hair follicle","PLUS ketoconazole or selenium sulfide shampoo 5–10 min, 3x/week to reduce spore shedding","Take griseofulvin WITH high-fat food to boost absorption","Side effects: headache, GI upset, fatigue, photosensitivity, insomnia"],
+ contraindications:["Griseofulvin contraindicated in hepatic failure and porphyria","Griseofulvin reduces effectiveness of oral contraceptives — counsel adolescents on backup contraception","Griseofulvin can potentiate warfarin (increased bleeding risk) — flag if on anticoagulants","Avoid alcohol while on griseofulvin (can cause tachycardia/flushing reaction)","Photosensitizing — avoid prolonged sun exposure, use sunscreen"],
+ diet:{include:["High-fat foods (whole milk, cheese, peanut butter, avocado, eggs) taken WITH each griseofulvin dose to significantly boost absorption"], avoid:["Alcohol during treatment"]},
+ selfcare:["Take griseofulvin at the same time each day with a fatty food or snack to build a routine","Use the prescribed medicated shampoo consistently, not just when remembered","Avoid sharing hats, combs, and pillows until treatment is complete"],
+ eduParent:["Give griseofulvin WITH a fatty food/meal every dose — this is not optional, it significantly changes how well the drug is absorbed","This treatment course is long (6–8+ weeks) — set reminders, don't stop early even if the patch looks better","Check household pets for hair loss/scaly patches and have them evaluated","Watch for bruising, unusual tiredness, or yellowing of skin/eyes and report it"],
+ eduChild:["You'll need to take this medicine with a snack that has some fat in it, like milk or peanut butter, every single time","Don't share your hat, comb, or pillow with anyone else until your doctor says it's okay","It can take a couple months to fully clear up — that's normal for this type of infection"]},
+
+{id:"tineacorporis", title:"Tinea Corporis (Ringworm of the Body)", cat:"fungal", icon:"fungus",
+ subtitle:"Location: trunk/limbs — the classic \"ringworm\" lesion.",
+ patho:["Dermatophyte infection of the smooth skin of the body"],
+ ss:["Round-to-oval lesion with a raised, scaly, maculopapular border","Hallmark: CENTRAL CLEARING as the lesion expands — the classic ring shape","Mild pruritus"],
+ risk:["Contact with infected people or pets","Warm, humid environments; sweating","Sharing towels or athletic equipment"],
+ complications:["2° bacterial infection from scratching","Spread to other body sites via autoinoculation"],
+ labs:{normal:["Clinical/Wood's lamp diagnosis usually sufficient"], abnormal:["KOH prep if uncertain — confirms fungal hyphae; if negative but lesion persists, consider other diagnoses and notify provider"]},
+ nursing:["1) Confirm diagnosis on visual exam","2) Teach correct topical application technique and duration","3) Reinforce completing the FULL course even after the ring fades","4) Screen close contacts and pets"],
+ notify:["No improvement after 2 weeks of topical therapy","Lesion spreading rapidly or becoming painful/purulent"],
+ treatment:["Topical antifungal (clotrimazole, terbinafine, miconazole) to lesion + surrounding margin","Continue 1–2 weeks AFTER visible clearing to prevent recurrence","Oral therapy reserved for widespread/resistant cases"],
+ contraindications:["Avoid occlusive dressings over the area — traps moisture and worsens fungal growth","Do not stop treatment as soon as the ring fades"],
+ diet:null,
+ selfcare:["Keep the area clean and dry; change out of sweaty clothing promptly","Avoid sharing towels, clothing, or sports gear","Check household pets for hair loss/scaly patches"],
+ eduParent:["Apply topical medication past the visible edge of the ring, not just the center","Continue treatment for 1–2 weeks after the rash appears gone","Wash bedding/clothing that contacted the area"],
+ eduChild:["The cream needs to go a little bit past the edge of the ring, not just in the middle","Keep using it even after the ring looks like it's gone — that helps it not come back"]},
+
+{id:"tineacruris", title:"Tinea Cruris (Jock Itch)", cat:"fungal", icon:"fungus",
+ subtitle:"Location: groin/inner thighs — more common in adolescent males, especially athletes.",
+ patho:["Dermatophyte infection of the groin, inner thighs, and perineal region"],
+ ss:["Red, scaly rash of the inner thighs, inguinal creases, and perineal area","Well-demarcated border; usually spares the scrotum (helps distinguish from candidal intertrigo)","Pruritus, sometimes burning"],
+ risk:["Adolescent/male athletes","Excessive sweating, tight or occlusive clothing/gear","Often spreads from a pre-existing tinea pedis (same fungus, autoinoculation)"],
+ complications:["2° bacterial infection from scratching","Chronic/recurrent infection if moisture/friction aren't addressed"],
+ labs:{normal:["Visual diagnosis usually sufficient"], abnormal:["KOH prep if uncertain or to rule out candidal intertrigo — Candida typically involves the scrotum with satellite lesions, tinea cruris typically does not"]},
+ nursing:["1) Confirm diagnosis and distinguish from candidal intertrigo","2) Teach correct topical application","3) Reinforce keeping the area clean and DRY","4) Address any coexisting tinea pedis as the likely source"],
+ notify:["Scrotal involvement or satellite lesions (suggests Candida instead, needs different treatment)","No improvement after 2 weeks"],
+ treatment:["Topical antifungal (clotrimazole, terbinafine, miconazole) to affected area and slightly beyond border","Continue 1–2 weeks after clearing","Treat any coexisting tinea pedis at the same time"],
+ contraindications:["Avoid tight, non-breathable underwear/athletic gear during treatment","Do not apply combination steroid-antifungal creams long-term without provider guidance (can mask/worsen fungal infection)"],
+ diet:null,
+ selfcare:["Dry the groin area thoroughly after bathing/sweating — dry this area BEFORE the feet if tinea pedis is also present, to avoid spreading spores","Wear loose-fitting, breathable cotton underwear","Change out of sweaty athletic clothing promptly"],
+ eduParent:["Treat any athlete's foot at the same time to prevent this from recurring","Teach proper drying order after showers (groin before feet) to avoid spreading the fungus"],
+ eduChild:["Dry off your groin area first after a shower, before your feet — that keeps the itch from spreading","Change out of sweaty gym clothes as soon as you can"]},
+
+{id:"tineapedis", title:"Tinea Pedis (Athlete's Foot)", cat:"fungal", icon:"fungus",
+ subtitle:"Location: feet, especially the webbed toe spaces.",
+ patho:["Dermatophyte infection of the feet, favoring warm, moist, occlusive environments (shoes/socks)"],
+ ss:["Red, scaly, pruritic rash, classically in webbed toe spaces","May weep, crack, or macerate in severe cases","Possible foul odor if secondarily infected"],
+ risk:["Sweating, occlusive/non-breathable footwear","Locker rooms, communal showers, pool decks (barefoot)","Sharing shoes or socks"],
+ complications:["2° bacterial infection through cracked/macerated skin","Can spread to the groin (tinea cruris) via hands/towel","Can spread to toenails (onychomycosis) — much harder to treat"],
+ labs:{normal:["Visual diagnosis usually sufficient"], abnormal:["KOH prep if uncertain; culture if unresponsive to standard therapy"]},
+ nursing:["1) Confirm diagnosis on visual exam of toe webs/soles","2) Teach correct topical application technique","3) Reinforce foot hygiene and footwear changes","4) Watch for signs of 2° bacterial infection"],
+ notify:["Increasing redness, odor, or drainage (possible secondary bacterial infection/cellulitis)","Spread to toenails (thickened, discolored nails)","No improvement after 2–4 weeks"],
+ treatment:["Topical antifungal (clotrimazole, terbinafine, miconazole) to affected areas including between toes","Continue 1–2 weeks after clearing","Antifungal foot powder can help prevent recurrence in shoes"],
+ contraindications:["Avoid occlusive, non-breathable shoes during treatment","Do not share shoes, socks, or towels while infected"],
+ diet:null,
+ selfcare:["Wear lightweight, dry, moisture-wicking socks; change if feet sweat","Choose breathable shoes; alternate pairs to let them dry fully between wears","Wear sandals/shower shoes in locker rooms and communal showers","Dry feet thoroughly after bathing, especially between toes"],
+ eduParent:["Buy an extra pair of shoes to rotate so each pair fully dries between wears","Provide shower shoes for locker rooms/pool decks","Reinforce drying between the toes after every bath/shower"],
+ eduChild:["Always wear your flip-flops or shower shoes at the pool or locker room","Dry really well between your toes after a shower — that's where the fungus likes to hide"]},
+
+{id:"contactderm", title:"Contact Dermatitis (incl. Poison Ivy/Oak/Sumac)", cat:"inflame", icon:"droplet",
+ patho:["Occurs when skin contacts an allergen/irritant: diaper (feces), jewelry (nickel), plants (urushiol oil), animals, synthetic fabrics/dyes/cosmetics","Urushiol transfers via animals, objects (shoes, golf balls), or smoke from burning the plant","Full reaction in ~2 days; self-limiting in 10–14 days"],
+ ss:["Irritated, inflamed, pruritic rash","Vesicles/bullae may form and weep serous fluid"],
+ risk:["Outdoor/plant exposure","Jewelry/nickel sensitivity","Occlusive diapering","New detergents/soaps/fabrics","Contaminated objects/smoke"],
+ complications:["2° infection from scratching","Rule out impetigo & varicella","Severe facial/genital/airway involvement — can compromise breathing if severe enough"],
+ labs:{normal:["Clinical diagnosis based on exposure history"], abnormal:["Biopsy of vesicles if diagnosis unclear — rules out impetigo/varicella"]},
+ nursing:["1) Assess airway/face/throat involvement FIRST if severe swelling present — this is the only life-threatening presentation of contact dermatitis","2) Identify and remove the offending allergen","3) Assess extent/severity of the rash","4) Apply prescribed topical treatment"],
+ notify:["Facial, throat, or genital swelling","Difficulty breathing or swallowing","Signs of secondary infection (increasing warmth, pus, fever)"],
+ treatment:["Calamine lotion","Burow solution compresses","Aveeno (oatmeal) baths","Topical corticosteroids","Oral corticosteroids — SEVERE cases only (face/throat/genital)","Diphenhydramine (Benadryl) for sedation/itch"],
+ contraindications:["Avoid re-exposure to the identified allergen","Oral corticosteroids require a tapering course if used for more than a few days — do not stop abruptly","Avoid occlusive dressings over weeping lesions"],
+ diet:null,
+ selfcare:["Wash exposed skin promptly after suspected contact with an allergen","Use cool compresses and oatmeal baths for symptomatic relief","Avoid scratching to reduce infection risk"],
+ eduParent:["Long sleeves/pants/socks in wooded/plant-heavy areas","Wash potentially contaminated clothing/shoes separately","Watch closely for face/throat swelling and seek immediate care if it occurs","Use diaper rash creams preventively"],
+ eduChild:["If you touch a plant that looks like poison ivy, wash the spot with soap and water as soon as you can","Try not to scratch, even though it's itchy — it can make it worse and can spread the rash"]},
+
+{id:"diaperderm", title:"Diaper Dermatitis", cat:"inflame", icon:"droplet",
+ patho:["Caused by prolonged exposure to urine, feces, or diaper chemicals/friction"],
+ ss:["Sharply demarcated erythema on convex surfaces and skin folds"],
+ risk:["Infrequent diaper changes","Diarrhea","Antibiotic therapy","Occlusive diapers, friction"],
+ complications:["2° Candida infection — suspect with satellite lesions beyond primary rash"],
+ labs:{normal:["Visual assessment sufficient in typical cases"], abnormal:["Persistent rash with satellite lesions → consider Candida, may warrant antifungal trial; notify provider if no improvement in 2–3 days with routine care"]},
+ nursing:["1) Keep area clean and DRY — addresses the root cause","2) Change diapers frequently/promptly","3) Avoid further irritation — gentle cleaning, avoid harsh wipes","4) Apply zinc oxide barrier every change"],
+ notify:["Satellite lesions beyond the rash border (possible Candida)","Rash not improving after 2–3 days of consistent barrier care","Signs of skin breakdown/bleeding or fever"],
+ treatment:["Zinc oxide barrier ointment","Topical antifungal if Candida confirmed","Diaper-free air time"],
+ contraindications:["Avoid alcohol- or fragrance-containing wipes on irritated skin","Avoid powders with talc near an infant's face (inhalation risk)"],
+ diet:null,
+ selfcare:["Change diapers frequently and promptly after soiling","Apply zinc oxide liberally at each change","Allow diaper-free air-drying time when possible"],
+ eduParent:["Avoid harsh fragranced wipes if the skin is already irritated — use water and a soft cloth instead","Watch for satellite lesions suggesting a yeast infection that needs antifungal treatment","Complete any prescribed antifungal course fully"],
+ eduChild:["(Preverbal population — education is directed to caregiver)"]},
+
+{id:"lice", title:"Pediculosis Capitis (Head Lice)", cat:"infest", icon:"bug",
+ patho:["Common childhood infestation of scalp/body/pubic area","Lice pierce skin and feed on blood"],
+ ss:["Live lice visible","Nits hatch in 7–10 days; pearlescent, teardrop, attached near hair shaft base; fluoresce blue-white under Wood's lamp","Persistent scalp itching"],
+ risk:["Close head-to-head contact","Sharing hats/combs/pillows/headbands","School/daycare","Occurs regardless of hygiene, race, gender, or SES"],
+ complications:["2° bacterial infection from scratching","Social/school stigma"],
+ labs:{normal:["Clinical visualization of live louse or nit is diagnostic"], abnormal:["Persistent live lice after 2 full treatment cycles → notify provider, consider resistant strain or alternate agent"]},
+ nursing:["1) Confirm live lice/nits on exam","2) Apply pediculicide correctly per instructions — technique errors are the most common cause of treatment failure","3) Manually remove nits with fine-tooth comb","4) Educate on environmental decontamination","5) Recheck in 7–10 days"],
+ notify:["Signs of secondary bacterial infection (weeping, crusting, spreading redness)","Live lice persisting after 2 correctly-done treatment cycles"],
+ treatment:["Permethrin 1% cream rinse (Nix/RID) — approved ≥2 months old","SECOND treatment required 7–10 days later","Lindane: contraindicated/extreme caution <2 yrs (CNS toxicity/seizure risk)"],
+ contraindications:["Lindane contraindicated in infants, children with seizure history, and those with extensive skin breakdown (increased systemic absorption)","Permethrin: use caution with ragweed allergy (cross-reactivity possible)","Do NOT use extra amounts or apply more frequently than directed — does not improve efficacy and increases toxicity risk"],
+ diet:null,
+ selfcare:["Recomb hair with a fine-tooth nit comb daily for 1–2 weeks after treatment","Wash bedding/clothing worn in the last 48 hours in water >130°F, dry on high heat 20 min","Bag non-washable items for 14 days or seal in plastic","Soak combs/brushes in hot water 10 minutes"],
+ eduParent:["Lice do NOT jump or fly · pets do NOT carry lice · home remedies (mayo, vinegar, petroleum jelly) do NOT work — avoid delaying effective treatment with these","Treat the whole household simultaneously","Recheck in 7–10 days and repeat treatment as directed","Notify the school per their policy, but understand exclusion-until-nit-free policies are outdated per current guidance"],
+ eduChild:["Try not to share hats, combs, brushes, or headbands with friends","It's okay — lots of kids get head lice, it's not because you did anything wrong or are dirty"]},
+
+{id:"insectbites", title:"Insect Bites & Stings", cat:"vector", icon:"bug",
+ patho:["Local reaction to insect venom/saliva; can escalate to systemic allergic response"],
+ ss:["Localized redness, swelling, pain, pruritus","Systemic allergic reaction possible — anaphylaxis"],
+ risk:["Outdoor activity","Scented products, bright clothing","Playing in dead foliage"],
+ complications:["Anaphylaxis — the only immediately life-threatening complication in this unit outside of burns","2° infection","Vector-borne disease (Lyme, RMSF)"],
+ labs:{normal:["No labs needed for a routine local reaction"], abnormal:["Tryptase level may be drawn after a severe systemic reaction to confirm anaphylaxis (specialty setting) — not routine ED/office testing"]},
+ nursing:["1) Assess for signs of anaphylaxis FIRST (airway swelling, wheezing, hypotension, widespread hives) — this is the true priority, not the local bite site","2) If anaphylaxis: epinephrine IM immediately, call for emergency help, position supine, prepare for advanced airway support","3) If local reaction only: remove stinger/tick promptly and correctly, clean site with soap/water","4) Monitor for delayed infection or evolving reaction"],
+ notify:["Any signs of systemic reaction: hives spreading beyond the bite, facial/lip/tongue swelling, difficulty breathing, dizziness — this requires emergency action, not just a notification","Increasing local redness/warmth/drainage days later (infection)"],
+ treatment:["Epinephrine IM for anaphylaxis (first-line, given immediately, not delayed for antihistamines)","Antihistamines for itching/mild local reaction","Monitor for 2° infection"],
+ contraindications:["Do not delay epinephrine administration in suspected anaphylaxis to try antihistamines first","Avoid scratching to reduce infection risk"],
+ diet:null,
+ selfcare:["Apply a cold compress to reduce local swelling/pain","Keep the bite site clean; avoid scratching","Know the location of the epinephrine auto-injector at all times if a known allergy exists"],
+ eduParent:["Recognize early signs of a systemic allergic reaction and know when to use an epinephrine auto-injector without delay","Wear light-colored clothing with minimal scent when outdoors; use insect repellent","Know how to remove a bee stinger (scrape, don't squeeze) and a tick (tweezers, steady pull)"],
+ eduChild:["Tell a grown-up right away if a bite feels different than usual — itchy all over, trouble breathing, or feeling dizzy","Try not to scratch bug bites — it can make them get infected"]},
+
+{id:"lyme", title:"Tick-Related Disease: Lyme Disease", cat:"vector", icon:"spider",
+ subtitle:"Causative organism (Borrelia burgdorferi) and serologic testing not detailed in the course slide — verify specifics with your instructor.",
+ patho:["Transmitted by tick bite; progresses through 3 clinical stages if untreated"],
+ ss:["Stage 1 (3–30 days): erythema migrans — bull's-eye/target lesion, warm, may itch","Stage 2 (next 3–4 wks): more lesions (not palms/soles), headache, malaise, fatigue, anorexia, stiff neck, lymphadenopathy, splenomegaly, conjunctivitis, sore throat, abd pain, cough; possible nerve palsy/optic neuritis","Stage 3 — MOST SERIOUS (2–12 mo): painful/swollen joints (esp. knees), meningitis/encephalitis/polyneuritis, pericarditis, AV conduction abnormalities, mild LV dysfunction"],
+ risk:["Outdoor/wooded activity in tick-endemic areas", "Inadequate tick checks"],
+ complications:["Chronic arthritis","Cardiac conduction abnormalities — can progress to heart block, the most acute Stage 3 danger","Neurologic sequelae"],
+ labs:{normal:["Early Stage 1 diagnosis is clinical (rash + exposure history) — serology may be falsely negative this early"], abnormal:["ELISA/Western blot positive in later stages → confirms diagnosis, notify provider to initiate/adjust therapy","New ECG changes (heart block) in Stage 3 → notify provider immediately, needs cardiology involvement"]},
+ nursing:["1) Recognize/report bull's-eye rash with recent tick exposure — early treatment prevents progression to the dangerous later stages","2) Initiate antibiotics promptly once prescribed","3) Monitor for systemic (joint/cardiac/neuro) progression, especially if diagnosis was delayed","4) Educate on prevention and proper tick removal"],
+ notify:["New cardiac symptoms — palpitations, dizziness, syncope (possible AV block)","New neurologic symptoms — facial droop, severe headache, neck stiffness (possible meningitis)","Joint swelling/pain not improving with treatment"],
+ treatment:["Doxycycline if ≥8 yrs — 14–21 days","Amoxicillin if <8 yrs — 14–21 days (doxycycline avoided — tooth staining)"],
+ contraindications:["Doxycycline contraindicated in children under 8 (permanent tooth discoloration) — amoxicillin used instead","Doxycycline: avoid dairy, calcium, iron, or antacids within 1–2 hours of dosing — these chelate the drug and reduce absorption","Doxycycline is photosensitizing — sun precautions needed"],
+ diet:{avoid:["Dairy products, calcium-fortified foods, iron supplements, and antacids within 1–2 hours of a doxycycline dose — significantly reduces drug absorption"], include:["Take doxycycline with a full glass of water and a small amount of food if stomach upset occurs (non-dairy)"]},
+ selfcare:["Take the full antibiotic course exactly as prescribed, even once feeling better","Time doxycycline doses away from milk, cheese, yogurt, or vitamins with calcium/iron","Perform daily tick checks during peak season, focusing on the scalp, armpits, groin, and behind the knees"],
+ eduParent:["Space doxycycline doses away from dairy and calcium/iron supplements by 1–2 hours","Complete the entire antibiotic course even after the rash and symptoms resolve","Know the signs of progression (joint pain, palpitations, neuro symptoms) that need prompt evaluation","Reinforce tick-prevention habits for future outdoor activity"],
+ eduChild:["Don't drink milk or eat yogurt right around the time you take your medicine — wait a bit so it works right","Check yourself for ticks after playing outside, especially in your hair and behind your knees"]},
+
+{id:"animalbites", title:"Animal Bites", cat:"vector", icon:"paw",
+ patho:["Dog bites most common; boys > girls; highest incidence ages 5–9","Often from interfering with feeding or taunting the animal"],
+ ss:["Puncture wounds, lacerations, or crush injury depending on force","Localized swelling, bruising, pain"],
+ risk:["Unsupervised child-animal interaction","Taunting/feeding interference","Non-neutered/spayed animals"],
+ complications:["High infection risk","Disfigurement","Possible need for surgical repair","Rabies exposure risk depending on animal/region"],
+ labs:{normal:["No labs needed for a minor, clean bite"], abnormal:["Wound culture if signs of infection develop → guides antibiotic choice","X-ray if fracture or retained tooth fragment suspected"]},
+ nursing:["1) Assess for major bleeding/deep tissue or vascular injury FIRST","2) Obtain bite/animal history — including rabies vaccination status of the animal if known","3) Clean thoroughly with soap and water","4) Apply topical antibiotic + clean dressing","5) Assess/administer tetanus booster","6) Assess need for antibiotics/suturing"],
+ notify:["Signs of infection: increasing redness, warmth, swelling, purulent drainage, fever","Unknown or wild animal involved (rabies risk assessment needed)","Deep wound, facial involvement, or suspected fracture"],
+ treatment:["Antibiotics as prescribed (prophylactic or treatment)","Suturing of larger wounds (often delayed/left open for high-risk bites due to infection risk)","Tetanus booster if not up to date"],
+ contraindications:["Bite wounds are often NOT sutured immediately due to high infection risk — follow provider judgment rather than closing the wound at home","Avoid home remedies/ointments not prescribed by the provider"],
+ diet:null,
+ selfcare:["Keep the wound clean and covered as directed","Watch for and report early signs of infection","Complete the full course of any prescribed antibiotics"],
+ eduParent:["Supervise children around animals at all times","Teach animal safety — don't taunt, disturb eating/sleeping animals","Spay/neuter household animals (↓ aggression)","Know the rabies vaccination status of household pets"],
+ eduChild:["Always ask before petting a dog you don't know","Don't bother animals while they're eating or sleeping","Tell a grown-up right away if an animal bites or scratches you"]},
+
+{id:"humanbites", title:"Human Bites", cat:"vector", icon:"paw",
+ patho:["Common, especially in toddlers/young children","HIGHER infection risk than animal bites (oral flora)"],
+ ss:["Teeth marks with/without skin penetration","Cutting/piercing of skin","Bruising, swelling, tenderness","Erythema, pain, possible fever"],
+ risk:["Toddler age (biting behavior, poor impulse control)","Peer conflict"],
+ complications:["High infection risk — polymicrobial oral flora"],
+ labs:{normal:["No labs needed for a minor, superficial bite"], abnormal:["Wound culture if infection develops → guides antibiotic selection"]},
+ nursing:["1) Assess wound depth/penetration — deeper wounds carry higher infection risk and may need prophylactic antibiotics","2) Clean thoroughly","3) Monitor closely for infection — higher risk than an animal bite","4) Address behavioral cause with child/family"],
+ notify:["Increasing redness, warmth, swelling, or drainage (infection)","Fever","Wound involving a joint or deep structures"],
+ treatment:["Wound care as above; antibiotics often needed given high infection risk"],
+ contraindications:["Avoid closing/suturing deep human bite wounds without provider evaluation — high infection risk"],
+ diet:null,
+ selfcare:["Keep the wound clean and monitor daily for signs of infection","Complete any prescribed antibiotic course fully"],
+ eduParent:["Monitor children closely during play, especially toddlers","Provide swift, consistent behavioral intervention for biting","Use positive reinforcement for appropriate behavior","Seek prompt care for any bite that breaks the skin"],
+ eduChild:["Biting hurts other people — use your words instead when you're upset","If you get bitten, tell a grown-up so they can clean it properly"]},
+
+{id:"catscratch", title:"Cat Scratch Disease", cat:"vector", icon:"paw",
+ subtitle:"Causative organism (Bartonella henselae) not named in the course slide — verify with your instructor if tested by name.",
+ patho:["Self-limiting illness, lasting 6–12 weeks"],
+ ss:["Painless, non-itchy papule at scratch/bite site, appears 3–10 days after injury","Tender lymphadenopathy of head, neck, and/or upper limbs","General malaise, low-grade fever, headache"],
+ risk:["Cat exposure, especially scratches/bites from kittens"],
+ complications:["Immunocompromised child: may progress to suppurative lymphadenitis","Adenitis may cause encephalitis, hepatitis, or Parinaud oculoglandular syndrome"],
+ labs:{normal:["Typically a clinical diagnosis based on exposure history + exam"], abnormal:["Serology or lymph node biopsy in atypical/severe/immunocompromised cases → notify provider if fever persists or node becomes fluctuant/draining"]},
+ nursing:["1) Obtain cat contact history","2) Assess lymph nodes and monitor for developing complications, especially in immunocompromised children","3) Monitor immunocompromised children closely for suppurative progression","4) Provide supportive care/reassurance"],
+ notify:["High or persistent fever","Lymph node becoming fluctuant, draining, or rapidly enlarging","Neurologic symptoms (headache, confusion, vision changes) — possible encephalitis, though rare"],
+ treatment:["Largely supportive care; monitor/treat complications if they arise"],
+ contraindications:["Avoid rough play with cats/kittens during recovery","No specific medication restrictions in typical self-limited cases"],
+ diet:null,
+ selfcare:["Rest and supportive care (fluids, fever management) during the illness","Apply warm compresses to tender lymph nodes for comfort if recommended"],
+ eduParent:["Reassure — self-limiting (6–12 wks) in an immunocompetent child","Teach safe pet handling/hygiene after scratches — wash the area promptly with soap and water","Seek care if fever worsens or nodes enlarge significantly"],
+ eduChild:["It's okay to still like your cat — just wash any scratch right away with soap and water","This should get better on its own, but tell your parents if you start feeling worse"]}
+];
+
+const groupOrder = [
+  {cat:"acne",label:"Acne"},{cat:"inflame",label:"Inflammatory"},{cat:"bact",label:"Bacterial"},
+  {cat:"fungal",label:"Fungal"},{cat:"infest",label:"Infestation"},{cat:"vector",label:"Bites & Vector"}
+];
+const navList = document.getElementById("navList");
+groupOrder.forEach(g=>{
+  const items = CONDITIONS.filter(c=>c.cat===g.cat);
+  if(!items.length) return;
+  const label = document.createElement("li"); label.innerHTML = `<div class="grp-label">${g.label}</div>`; navList.appendChild(label);
+  items.forEach(c=>{ const li=document.createElement("li"); li.innerHTML=`<a href="#${c.id}"><span class="dot" style="background:${CAT_META[c.cat].color}"></span>${c.title}</a>`; navList.appendChild(li); });
+});
+const burnLabel=document.createElement("li"); burnLabel.innerHTML=`<div class="grp-label">Burns</div>`; navList.appendChild(burnLabel);
+const burnLi=document.createElement("li"); burnLi.innerHTML=`<a href="#burns-section"><span class="dot" style="background:${CAT_META.burn.color}"></span>Burns Deep-Dive</a>`; navList.appendChild(burnLi);
+
+document.getElementById("cardGrid").innerHTML = CONDITIONS.map(conditionCardHTML).join("");
+
+// ---------- BURN TYPES ----------
+const BURN_TYPES = [
+{title:"Thermal Burns (Flame, Flash, Scald, Contact)", icon:"flame",
+ desc:["Most common pediatric burn type — flame (fire, highest inhalation-injury risk), flash (explosion), scald (hot liquid/steam, most common in toddlers), contact (touching a hot object, often a well-demarcated pattern)"],
+ interventions:["Stop the burning process first — stop/drop/roll or remove from the heat source","Remove smoldering clothing and jewelry UNLESS stuck to the skin","Cool the burn with cool (not ice-cold) running water for a few minutes — ice causes vasoconstriction and worsens tissue damage/hypothermia","Cover with a clean, dry, non-adherent dressing","Assess airway immediately if the burn involved an enclosed space or flame","Estimate TBSA and depth to guide fluid resuscitation needs"]},
+{title:"Radiation Burns (Sunburn)", icon:"sun",
+ desc:["Caused by UV overexposure (sunburn is by far the most common pediatric example) or radiation therapy","Usually superficial to superficial partial-thickness in depth"],
+ interventions:["Cool compresses and lukewarm baths for comfort","Aloe vera gel or fragrance-free moisturizer","Oral NSAIDs or acetaminophen for pain/inflammation","Encourage oral hydration","Topical or short-course oral corticosteroids may be used for severe reactions per provider order","Move out of direct sun immediately; monitor for blistering (indicates a deeper/2nd-degree sunburn)"]},
+{title:"Chemical Burns", icon:"vial",
+ desc:["Caused by corrosive agents — acids, alkalis (lye), ammonia, and other household/industrial chemicals","Burning continues until the chemical is physically removed"],
+ interventions:["PRIORITY — remove the chemical: brush off dry chemical first, then irrigate/dilute with copious water","Do NOT apply another chemical to try to \"neutralize\" it — can generate heat and worsen injury","Remove contaminated clothing to prevent ongoing exposure","Monitor for renal failure and hypotension","Otherwise manage like a thermal burn once the chemical is removed"]},
+{title:"Electrical Burns", icon:"bolt",
+ desc:["Caused by contact with electrical current — outlets, cords, high-voltage lines","Current follows the path of least resistance through the body (nerves, blood vessels, muscle) — internal damage can be far worse than the visible entry/exit wound suggests"],
+ interventions:["Continuous cardiac monitoring/ECG — high risk for arrhythmias, including v-fib, from the current's path through the heart","Assess for both entry AND exit wounds","Monitor urine for myoglobinuria (tea-colored/dark urine = rhabdomyolysis) — increase IV fluids to protect the kidneys from myoglobin-related injury","Monitor closely for compartment syndrome — deep muscle injury may be present despite a small-looking skin wound","Assess for associated trauma (falls, being thrown from the current)"]}
+];
+document.getElementById("burnTypeGrid").innerHTML = BURN_TYPES.map(bt=>{
+  const items = bt.interventions.map(i=>`<li>${i}</li>`).join("");
+  const descItems = bt.desc.map(i=>`<li>${i}</li>`).join("");
+  return `<div class="cond-card" data-cat="burn">
+    <div class="cond-head">
+      <div class="cond-icon" style="background:${CAT_META.burn.color}; color:#fff;">${icon(bt.icon)}</div>
+      <div class="cond-title"><h4>${bt.title}</h4></div>
+    </div>
+    <div class="cond-body-inner">
+      <div class="zone"><div class="zone-title" style="background:${CAT_META.burn.color}">Overview</div>
+        <div class="zone-body" style="border-color:${hexA(CAT_META.burn.color,0.4)}"><ul style="margin:0;padding-left:16px;">${descItems}</ul></div></div>
+      <div class="zone"><div class="zone-title" style="background:#c62828">Specific Interventions</div>
+        <div class="zone-body" style="border-color:#e6b3b0"><ul style="margin:0;padding-left:16px;">${items}</ul></div></div>
+    </div>
+  </div>`;
+}).join("");
+
+// ---------- MNEMONICS ----------
+const MNEMONICS = [
+ {title:"Acne meds — \"TBTSA\"", cat:"acne", text:"Tretinoin → Benzoyl peroxide → Topical antibacterial → Systemic antibacterial → Accutane. Escalating from mild to severe, least to most systemic."},
+ {title:"Eczema care — \"BATHE\"", cat:"inflame", text:"Bathe lukewarm, short (5–10 min) → Apply medication first (within 3 min post-bath) → Thick emollient next → Handle nails/clothing gently → Eliminate irritants."},
+ {title:"Impetigo — \"HONEY\"", cat:"bact", text:"Honey-colored crusts → Order contact/standard precautions → No school 24h after antibiotics start → Exudative-to-crusting progression → Yields to topical/oral antibiotics."},
+ {title:"Tinea locations", cat:"fungal", text:"Capitis = Cranium (scalp) · Corporis = Circle (ringworm) · Cruris = Crotch (groin) · Pedis = Paws/feet. Griseofulvin = the \"Fatty Food Friend\" — take with high-fat food."},
+ {title:"Lice facts — \"Lice Lie\"", cat:"infest", text:"Lice do NOT jump or fly · do NOT come from pets · home remedies (mayo, vinegar, petroleum jelly) LIE — they don't work."},
+ {title:"Burn priority — \"ACID\"", cat:"burn", text:"Airway → Circulation/fluids → Infection watch → Diet/nutrition needs. Compartment syndrome check happens inside the Circulation step for any circumferential burn."},
+ {title:"Burn depth pain pattern", cat:"burn", text:"MORE pain = shallower burn (1st/2nd° — nerves intact) · NO pain = deeper burn (3rd/4th° — nerves destroyed). A burn that doesn't hurt is not a mild burn."},
+ {title:"Doxycycline + dairy = don't", cat:"vector", text:"Dairy, calcium, iron, and antacids chelate doxycycline and block absorption — separate doses by 1–2 hours. Also remember: doxycycline is avoided under age 8 (tooth staining) — amoxicillin instead."}
+];
+const mnemGrid = document.getElementById("mnemGrid");
+mnemGrid.innerHTML = MNEMONICS.map(m=>{
+  const color = CAT_META[m.cat].color;
+  return `<div class="mnem-card" style="border-color:${color}; background:${hexA(color,0.06)}"><h5 style="color:${color}">${m.title}</h5><p>${m.text}</p></div>`;
+}).join("");
+
+// ---------- FILTER CHIPS ----------
+document.getElementById("chipRow").addEventListener("click",(e)=>{
+  if(!e.target.classList.contains("chip")) return;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+  e.target.classList.add("active");
+  const cat = e.target.dataset.cat;
+  document.querySelectorAll(".cond-card").forEach(card=>{
+    card.style.display = (cat==="all" || card.dataset.cat===cat) ? "" : "none";
+  });
+  const burnsSection = document.getElementById("burns-section");
+  burnsSection.style.display = (cat==="all" || cat==="burn") ? "" : "none";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 6 — Pediatric GI Study Atlas | NSG 3600</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy-deep:#0B1730; --navy:#132747; --navy-mid:#1D3A63;
+  --gold:#C9A227; --gold-light:#F3E2A6; --gold-pale:#FBF3DA;
+  --paper:#FAF9F6; --card:#FFFFFF; --ink:#1D2430; --ink-soft:#4B5568; --line:#E6E2D8;
+
+  --c-path:#4C5D8A;   --c-path-bg:#EEF0F8;   --c-path-ln:#D7DCEE;
+  --c-risk:#B9791F;   --c-risk-bg:#FBF1DD;   --c-risk-ln:#F0DFB3;
+  --c-ss:#B7423A;     --c-ss-bg:#FBEAE8;     --c-ss-ln:#F0CCC8;
+  --c-comp:#8A3E8E;   --c-comp-bg:#F5EAF6;   --c-comp-ln:#E5CFE8;
+  --c-labs:#1D7E93;   --c-labs-bg:#E7F4F6;   --c-labs-ln:#C3E3E8;
+  --c-nurse:#2C7A46;  --c-nurse-bg:#E9F5EC;  --c-nurse-ln:#C7E5D0;
+  --c-tx:#1F5FA0;     --c-tx-bg:#E9F1FA;     --c-tx-ln:#C6D9EF;
+  --c-contra:#9B1C31; --c-contra-bg:#FBE7EA; --c-contra-ln:#F0C4CB;
+  --c-selfcare:#178067;--c-selfcare-bg:#E4F5F1;--c-selfcare-ln:#BCE3DA;
+  --c-eduP:#96652E;   --c-eduP-bg:#F5ECDE;   --c-eduP-ln:#E2CCA8;
+  --c-eduC:#B33E7D;   --c-eduC-bg:#FAEAF2;   --c-eduC-ln:#EFC6DE;
+
+  --red:#9B1C31; --red-bg:#FBE7EA; --red-line:#F0C4CB;
+  --green:#178067; --green-bg:#E4F5F1;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Source Sans 3', sans-serif; font-size:15.5px; line-height:1.5;
+}
+h1,h2,h3,h4{font-family:'Fraunces', serif; margin:0;}
+.eyebrow{
+  font-family:'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase;
+  font-size:11.5px; font-weight:600;
+}
+
+/* ---------- LAYOUT ---------- */
+.app{ display:flex; min-height:100vh; }
+
+/* SIDEBAR */
+.sidebar{
+  width:272px; flex-shrink:0; background:var(--navy-deep); color:#EDEFF5;
+  position:sticky; top:0; height:100vh; overflow-y:auto; padding:24px 18px 40px;
+  border-right:1px solid rgba(201,162,39,.25);
+}
+.sidebar::-webkit-scrollbar{width:8px;}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(201,162,39,.35); border-radius:4px;}
+
+.brand{ display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+.brand-mark{
+  width:38px; height:38px; border-radius:9px;
+  background:linear-gradient(155deg, var(--gold) 0%, #8f6f13 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Fraunces', serif; font-weight:700; color:var(--navy-deep); font-size:16px;
+  flex-shrink:0;
+}
+.brand-text{ line-height:1.15; }
+.brand-text .l1{ font-size:11px; letter-spacing:.09em; color:var(--gold-light); text-transform:uppercase; font-weight:600;}
+.brand-text .l2{ font-size:14.5px; font-weight:700; color:#fff; font-family:'Fraunces',serif; }
+
+.sidebar-title{ margin-top:18px; margin-bottom:14px; font-size:20px; font-weight:700; color:#fff; line-height:1.25; }
+.sidebar-sub{ color:#9FB0CC; font-size:12.5px; margin-bottom:20px; }
+
+.search-box{
+  width:100%; padding:9px 12px; border-radius:9px; border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06); color:#fff; font-size:13.5px; margin-bottom:22px; outline:none;
+  font-family:'Source Sans 3',sans-serif;
+}
+.search-box::placeholder{ color:#7E8CA8; }
+.search-box:focus{ border-color:var(--gold); background:rgba(255,255,255,.09); }
+
+.nav-cluster{ margin-bottom:6px; }
+.nav-cluster-label{
+  font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#7E8CA8; font-weight:700;
+  margin:18px 0 8px 4px; font-family:'JetBrains Mono',monospace;
+}
+.nav-link{
+  display:flex; align-items:center; gap:9px; padding:7px 9px; border-radius:7px;
+  color:#C9D2E4; text-decoration:none; font-size:13.5px; cursor:pointer; transition:background .15s;
+}
+.nav-link:hover{ background:rgba(255,255,255,.08); color:#fff; }
+.nav-link .dot{ width:9px; height:9px; border-radius:50%; flex-shrink:0; box-shadow:0 0 0 3px rgba(255,255,255,.06); }
+.nav-link.hidden{ display:none; }
+
+.sidebar-foot{ margin-top:26px; padding-top:16px; border-top:1px solid rgba(255,255,255,.12); font-size:11.5px; color:#7E8CA8; line-height:1.5; }
+
+/* MAIN */
+.main{ flex:1; min-width:0; }
+
+.hero{
+  background:
+    radial-gradient(1100px 380px at 85% -60px, rgba(201,162,39,.30), transparent 60%),
+    linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-mid) 100%);
+  color:#fff; padding:52px 48px 40px; position:relative; overflow:hidden;
+}
+.hero::after{ content:""; position:absolute; right:-60px; top:-60px; width:320px; height:320px; border-radius:50%; border:1px solid rgba(201,162,39,.18);}
+.hero::before{ content:""; position:absolute; right:20px; top:40px; width:200px; height:200px; border-radius:50%; border:1px solid rgba(201,162,39,.14);}
+.hero-eyebrow{ color:var(--gold-light); margin-bottom:14px; display:block;}
+.hero h1{ font-size:38px; font-weight:700; max-width:660px; line-height:1.1; margin-bottom:12px;}
+.hero p.lead{ color:#B9C4DC; max-width:620px; font-size:15px; margin-bottom:24px;}
+
+.uslo-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px; position:relative; z-index:1;}
+.uslo-chip{
+  background:rgba(255,255,255,.07); border:1px solid rgba(201,162,39,.35); color:#EDE6C8;
+  padding:6px 12px; border-radius:20px; font-size:12px; font-family:'JetBrains Mono',monospace;
+}
+
+.stat-row{ display:flex; gap:0; position:relative; z-index:1; flex-wrap:wrap; }
+.stat{ padding:0 22px 0 0; margin-right:22px; border-right:1px solid rgba(255,255,255,.14);}
+.stat:last-child{ border-right:none;}
+.stat .num{ font-family:'Fraunces',serif; font-size:26px; font-weight:700; color:var(--gold); line-height:1;}
+.stat .lbl{ font-size:11px; color:#9FB0CC; margin-top:4px; text-transform:uppercase; letter-spacing:.05em;}
+
+/* CONTROLS BAR */
+.controls{
+  position:sticky; top:0; z-index:20; background:rgba(250,249,246,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line); padding:14px 48px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.chip{
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft); padding:7px 14px; border-radius:20px;
+  font-size:13px; font-weight:600; cursor:pointer; transition:.15s; white-space:nowrap;
+}
+.chip:hover{ border-color:var(--navy-mid); color:var(--navy); }
+.chip.active{ background:var(--navy); border-color:var(--navy); color:#fff; }
+.controls-spacer{flex:1;}
+.toggle-all{
+  border:1px solid var(--gold); background:var(--gold-pale); color:#7A5E14; padding:7px 14px; border-radius:20px;
+  font-size:12.5px; font-weight:700; cursor:pointer;
+}
+.toggle-all:hover{ background:var(--gold-light); }
+
+/* CONTENT */
+.content{ padding:36px 48px 90px; max-width:1180px; }
+
+.section-block{ margin-bottom:52px; }
+.section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:6px; }
+.section-head h2{ font-size:26px; color:var(--navy); }
+.section-badge{
+  font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; color:var(--gold);
+  background:var(--navy); padding:4px 10px; border-radius:6px; letter-spacing:.05em;
+}
+.section-desc{ color:var(--ink-soft); font-size:13.5px; margin:6px 0 22px; max-width:760px;}
+
+.gi-basics{
+  background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px 26px; margin-bottom:36px;
+  box-shadow:0 1px 2px rgba(20,30,50,.04);
+}
+.gi-basics h2{ font-size:20px; color:var(--navy); margin-bottom:14px;}
+.basics-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px 28px;}
+.basics-grid li{ font-size:13.8px; color:var(--ink); padding:5px 0 5px 22px; position:relative; list-style:none;}
+.basics-grid li::before{ content:"›"; position:absolute; left:2px; color:var(--gold); font-weight:700; font-size:16px;}
+
+/* CONDITION CARD */
+.condition{
+  background:var(--card); border:1px solid var(--line); border-radius:16px; margin-bottom:22px; overflow:hidden;
+  box-shadow:0 1px 3px rgba(20,30,50,.05); scroll-margin-top:78px;
+}
+.condition-head{
+  display:flex; align-items:center; gap:14px; padding:16px 22px; cursor:pointer; user-select:none;
+  border-left:6px solid var(--accent, var(--gold));
+}
+.condition-icon{
+  width:38px; height:38px; border-radius:10px; flex-shrink:0; background:var(--accent-bg, var(--gold-pale));
+  display:flex; align-items:center; justify-content:center;
+}
+.condition-icon svg{ width:20px; height:20px; stroke:var(--accent, var(--navy)); fill:none; stroke-width:1.8;}
+.condition-titles{ flex:1; min-width:0;}
+.condition-titles h3{ font-size:19px; color:var(--navy); margin-bottom:2px;}
+.condition-titles .src{ font-size:11.5px; color:var(--ink-soft); font-style:italic;}
+.condition-chev{
+  width:26px; height:26px; border-radius:50%; border:1px solid var(--line); display:flex; align-items:center;
+  justify-content:center; flex-shrink:0; transition:transform .25s;
+}
+.condition-chev svg{ width:13px; height:13px; stroke:var(--ink-soft); fill:none; stroke-width:2.2;}
+.condition.collapsed .condition-chev{ transform:rotate(-90deg);}
+.condition.collapsed .condition-body{ display:none;}
+
+.condition-body{ padding:4px 22px 22px; }
+
+/* TOP PRIORITY strip */
+.top-priority{
+  display:flex; gap:11px; align-items:flex-start; background:var(--navy-deep); color:#fff;
+  border-radius:11px; padding:12px 16px; margin-bottom:14px;
+}
+.top-priority svg{ width:19px; height:19px; stroke:var(--gold); fill:none; stroke-width:2.1; flex-shrink:0; margin-top:1px;}
+.top-priority .tp-label{ font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--gold); font-weight:700; letter-spacing:.05em; display:block; margin-bottom:2px;}
+.top-priority .tp-text{ font-size:13.6px; color:#EDEFF5; line-height:1.5;}
+
+/* ESCALATE / notify provider box */
+.escalate{
+  margin-top:14px; background:var(--red-bg); border:1.5px solid var(--red-line); border-radius:12px; padding:14px 17px;
+}
+.escalate-head{ display:flex; align-items:center; gap:9px; margin-bottom:8px;}
+.escalate-head svg{ width:18px; height:18px; stroke:var(--red); fill:none; stroke-width:2.1;}
+.escalate-head span{ font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--red); font-family:'JetBrains Mono',monospace;}
+.escalate ul{ margin:0; padding-left:18px;}
+.escalate li{ font-size:13.4px; margin-bottom:4px; color:#611321; }
+.escalate li::marker{ color:var(--red); }
+
+/* TILES */
+.tiles{ display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-top:12px; }
+.tile{ border-radius:11px; padding:14px 16px; background:var(--tbg); border:1px solid var(--tline); }
+.tile-head{ display:flex; align-items:center; gap:8px; margin-bottom:8px;}
+.tile-head svg{ width:15px; height:15px; stroke:var(--tcol); fill:none; stroke-width:2;}
+.tile-head span{ font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--tcol); font-family:'JetBrains Mono',monospace;}
+.tile ul{ margin:0; padding-left:16px; }
+.tile li{ font-size:13.6px; margin-bottom:4px; color:#2A3040;}
+.tile li::marker{ color:var(--tcol); }
+.tile.wide{ grid-column:1/-1; }
+.tile .subhead{ font-size:11px; font-weight:700; color:var(--tcol); margin:8px 0 4px; text-transform:uppercase; letter-spacing:.03em;}
+.tile .subhead:first-child{ margin-top:0;}
+
+/* PEARL */
+.pearl{
+  margin-top:14px; display:flex; gap:12px; align-items:flex-start; background:var(--gold-pale);
+  border:1px solid var(--gold-light); border-radius:11px; padding:13px 16px;
+}
+.pearl svg{ width:19px; height:19px; stroke:#8A6D1A; fill:none; stroke-width:2; flex-shrink:0; margin-top:1px;}
+.pearl-text{ font-size:13.4px; color:#5C4A11; line-height:1.5;}
+.pearl-text b{ color:#4A3B0C; }
+
+/* DIET SPLIT BOX */
+.diet-box{ margin-top:14px; border-radius:12px; overflow:hidden; border:1px solid var(--line); }
+.diet-label{ background:var(--navy); color:var(--gold-light); font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:8px 16px; font-family:'JetBrains Mono',monospace;}
+.diet-grid{ display:grid; grid-template-columns:1fr 1fr; }
+.diet-col{ padding:13px 16px; }
+.diet-col.allow{ background:var(--green-bg); }
+.diet-col.avoid{ background:var(--red-bg); border-left:1px solid var(--line);}
+.diet-head{ display:flex; align-items:center; gap:7px; margin-bottom:8px; font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; font-family:'JetBrains Mono',monospace;}
+.diet-col.allow .diet-head{ color:var(--green);}
+.diet-col.avoid .diet-head{ color:var(--red);}
+.diet-col ul{ margin:0; padding-left:16px;}
+.diet-col.allow li{ color:#0E4A3E; font-size:13.4px; margin-bottom:4px;}
+.diet-col.avoid li{ color:#611321; font-size:13.4px; margin-bottom:4px;}
+.diet-col.allow li::marker{ color:var(--green);}
+.diet-col.avoid li::marker{ color:var(--red);}
+
+/* EDUCATION SPLIT BOX */
+.edu-box{ margin-top:14px; border-radius:12px; overflow:hidden; border:1px solid var(--line); }
+.edu-grid{ display:grid; grid-template-columns:1fr 1fr; }
+.edu-col{ padding:14px 16px; }
+.edu-col.parent{ background:var(--c-eduP-bg); border-right:1px solid var(--line); }
+.edu-col.child{ background:var(--c-eduC-bg); }
+.edu-head{ display:flex; align-items:center; gap:8px; margin-bottom:4px;}
+.edu-head svg{ width:16px; height:16px; stroke-width:2; fill:none;}
+.edu-col.parent .edu-head svg{ stroke:var(--c-eduP);}
+.edu-col.child .edu-head svg{ stroke:var(--c-eduC);}
+.edu-head span{ font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; font-family:'JetBrains Mono',monospace;}
+.edu-col.parent .edu-head span{ color:var(--c-eduP);}
+.edu-col.child .edu-head span{ color:var(--c-eduC);}
+.edu-col .age-tag{ display:block; font-size:10.5px; font-style:italic; color:var(--ink-soft); margin-bottom:8px;}
+.edu-col ul{ margin:0; padding-left:16px;}
+.edu-col li{ font-size:13.3px; margin-bottom:5px; color:#2A3040;}
+.edu-col.parent li::marker{ color:var(--c-eduP);}
+.edu-col.child li::marker{ color:var(--c-eduC);}
+
+/* MNEMONIC GRID */
+.mnem-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px;}
+.mnem-card{ background:linear-gradient(180deg,#FFFDF6,#FFF9EA); border:1.5px solid var(--gold-light); border-radius:14px; padding:18px 20px;}
+.mnem-top{ display:flex; align-items:center; gap:9px; margin-bottom:10px;}
+.mnem-top svg{ width:18px; height:18px; stroke:var(--gold); fill:none; stroke-width:2;}
+.mnem-top h4{ font-size:14.5px; color:#6E5610; font-family:'Source Sans 3',sans-serif; font-weight:700;}
+.mnem-card p{ margin:0 0 6px; font-size:13.4px; color:#4A3D14; line-height:1.5;}
+.mnem-card p b{ color:#2E2606; }
+
+/* COMPARE TABLE */
+.compare-wrap{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; }
+table.compare{ width:100%; border-collapse:collapse; background:#fff; font-size:13.4px;}
+table.compare th{
+  background:var(--navy); color:var(--gold-light); text-align:left; padding:11px 16px; font-size:11.5px;
+  letter-spacing:.05em; text-transform:uppercase; font-family:'JetBrains Mono',monospace; font-weight:600;
+}
+table.compare td{ padding:11px 16px; border-top:1px solid var(--line); vertical-align:top;}
+table.compare tr td:first-child{ font-weight:700; color:var(--navy); white-space:nowrap;}
+table.compare tbody tr:hover{ background:#FAF7EF; }
+
+/* FLUID FORMULA CARD */
+.formula-card{ background:linear-gradient(155deg, var(--navy-deep), var(--navy)); color:#fff; border-radius:16px; padding:26px 30px; margin-bottom:22px;}
+.formula-card h3{ color:#fff; font-size:19px; margin-bottom:4px;}
+.formula-card .sub{ color:#9FB0CC; font-size:12.5px; margin-bottom:18px;}
+.formula-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px;}
+.formula-box{ background:rgba(255,255,255,.06); border:1px solid rgba(201,162,39,.3); border-radius:11px; padding:14px 16px;}
+.formula-box .wt{ font-family:'JetBrains Mono',monospace; color:var(--gold); font-size:12px; margin-bottom:6px; font-weight:600;}
+.formula-box .val{ font-size:15px; font-weight:600; color:#fff; line-height:1.4;}
+.formula-out{ display:flex; gap:14px; flex-wrap:wrap;}
+.formula-out .item{ font-size:13px; color:#DCE3F0; background:rgba(255,255,255,.05); padding:8px 14px; border-radius:9px; flex:1; min-width:200px;}
+.formula-out .item b{ color:var(--gold-light); }
+
+/* LEGEND */
+.legend-wrap{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+.legend-chip{ font-size:12px; font-weight:700; padding:6px 12px; border-radius:8px; }
+
+/* FOOTER NOTE */
+.footnote{ margin-top:40px; padding:18px 22px; border:1px dashed var(--line); border-radius:12px; color:var(--ink-soft); font-size:13px; font-style:italic; background:#fff;}
+
+.no-results{ text-align:center; padding:60px 20px; color:var(--ink-soft); display:none;}
+.no-results.show{ display:block; }
+
+@media (max-width: 980px){
+  .app{ flex-direction:column;}
+  .sidebar{ position:relative; width:100%; height:auto; }
+  .content, .hero, .controls{ padding-left:22px; padding-right:22px;}
+  .tiles{ grid-template-columns:1fr;}
+  .basics-grid{ grid-template-columns:1fr;}
+  .formula-grid{ grid-template-columns:1fr;}
+  .diet-grid, .edu-grid{ grid-template-columns:1fr;}
+  .edu-col.parent{ border-right:none; border-bottom:1px solid var(--line);}
+  .diet-col.avoid{ border-left:none; border-top:1px solid var(--line);}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <nav class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark">GC</div>
+      <div class="brand-text">
+        <div class="l1">Galen College of Nursing</div>
+        <div class="l2">NSG 3600</div>
+      </div>
+    </div>
+    <div class="sidebar-title">Unit 6 GI<br>Study Atlas</div>
+    <div class="sidebar-sub">15 conditions · NCJMM-framed · Exam 3 review</div>
+
+    <input class="search-box" id="searchBox" type="text" placeholder="Search conditions or keywords…">
+
+    <div id="navContainer"></div>
+
+    <div class="sidebar-foot">
+      Sources: Perry <i>Maternal Child Nursing Care</i> 7e (Ch. 31, 32, 41) · Saunders NCLEX Pediatric 9e · NSG 3600 Unit 6 slides · Syllabus v8.9
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+
+    <header class="hero">
+      <span class="eyebrow hero-eyebrow">Children's Health — Unit 6</span>
+      <h1>Caring for the Child with a Gastrointestinal Condition</h1>
+      <p class="lead">A color-coded reference built around true clinical priority — what threatens the child first — plus self-care, diet, contraindications, labs, and education split for parents vs. the child.</p>
+
+      <div class="uslo-row">
+        <span class="uslo-chip">USLO 1 · Congenital anomaly care</span>
+        <span class="uslo-chip">USLO 2 · GI clinical reasoning</span>
+        <span class="uslo-chip">USLO 3 · Standards-based practice</span>
+        <span class="uslo-chip">USLO 4 · Communication &amp; collaboration</span>
+        <span class="uslo-chip">USLO 5 · Leadership in GI care</span>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="num">15</div><div class="lbl">Conditions</div></div>
+        <div class="stat"><div class="num">12</div><div class="lbl">Domains each</div></div>
+        <div class="stat"><div class="num">6</div><div class="lbl">Mnemonics</div></div>
+        <div class="stat"><div class="num">5</div><div class="lbl">Clusters</div></div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <span class="chip active" data-filter="all">All Clusters</span>
+      <span class="chip" data-filter="fluid">Fluid &amp; Elimination</span>
+      <span class="chip" data-filter="congenital">Congenital Anomalies</span>
+      <span class="chip" data-filter="obstructive">Obstructive / Inflammatory</span>
+      <span class="chip" data-filter="malabsorption">Malabsorption / Reflux / Growth</span>
+      <span class="chip" data-filter="toxicology">Toxicology</span>
+      <div class="controls-spacer"></div>
+      <button class="toggle-all" id="toggleAllBtn">Collapse all</button>
+    </div>
+
+    <div class="content">
+
+      <!-- GENERAL PEDS GI CONSIDERATIONS -->
+      <div class="gi-basics">
+        <h2>General Pediatric GI Considerations</h2>
+        <ul class="basics-grid">
+          <li>Infants' stomachs empty in 2–3 hrs → require frequent feeds</li>
+          <li>Liver &amp; pancreas immature until ~6 months; no solids before 4 months</li>
+          <li>Pancreatic lipase inadequate until age 1 → can't fully absorb fats (e.g., cow's milk)</li>
+          <li>Birth weight should double by 6 months, triple by 1 year</li>
+          <li>Infants strain with stooling from immature muscle coordination — not always constipation</li>
+          <li>Breastfed infants: watery/seedy stools; formula-fed: soft/"seedy" stools</li>
+          <li>Toddlers: decreased appetite &amp; metabolic rate vs. infants; food "jags" are normal</li>
+          <li>Preschoolers fluctuate overeating/refusal — never force feeding</li>
+          <li>Assessment order: LEAST → MOST invasive (inspect/auscultate before palpate)</li>
+          <li>Children are ticklish — palpate through clothing or lead with the stethoscope bell</li>
+        </ul>
+      </div>
+
+      <!-- LEGEND -->
+      <div class="gi-basics">
+        <h2>How This Guide Is Color-Coded</h2>
+        <div class="legend-wrap" id="legendMount"></div>
+        <p style="color:var(--ink-soft); font-size:13px; margin-top:10px; margin-bottom:0;">
+          Every condition follows the same layout: a navy <b>Top Priority</b> strip (what threatens the child first), a red <b>Notify Provider Immediately</b> box, then color-coded domain tiles, a green/red <b>Diet</b> split where relevant, and a two-column <b>Parent vs. Child</b> education box.
+        </p>
+      </div>
+
+      <!-- ============ CLUSTER: FLUID ============ -->
+      <section class="section-block" data-cluster="fluid" id="cluster-fluid">
+        <div class="section-head">
+          <h2>Fluid, Electrolytes &amp; Elimination</h2>
+          <span class="section-badge">USLO 2</span>
+        </div>
+        <p class="section-desc">Foundational for every condition in this unit — nearly all GI disorders below put the child at risk for one of these.</p>
+
+        <div class="formula-card">
+          <h3>Holliday-Segar Fluid Maintenance Formula</h3>
+          <div class="sub">Weight-based daily intake — high-yield dosage math</div>
+          <div class="formula-grid">
+            <div class="formula-box"><div class="wt">0–10 kg</div><div class="val">100 mL/kg/day</div></div>
+            <div class="formula-box"><div class="wt">11–20 kg</div><div class="val">1000 mL + 50 mL/kg for each kg &gt; 10</div></div>
+            <div class="formula-box"><div class="wt">&gt; 20 kg</div><div class="val">1500 mL + 20 mL/kg for each kg &gt; 20</div></div>
+          </div>
+          <div class="formula-out">
+            <div class="item"><b>Expected urine output &lt;30 kg:</b> 1–3 mL/kg/hr</div>
+            <div class="item"><b>Expected urine output &gt;30 kg:</b> 30–60 mL/hr</div>
+          </div>
+        </div>
+
+        <div id="mount-fluid"></div>
+      </section>
+
+      <!-- ============ CLUSTER: CONGENITAL ============ -->
+      <section class="section-block" data-cluster="congenital" id="cluster-congenital">
+        <div class="section-head">
+          <h2>Congenital Anomalies of the Newborn</h2>
+          <span class="section-badge">USLO 1</span>
+        </div>
+        <p class="section-desc">Developmentally appropriate care for structural defects present at birth.</p>
+        <div id="mount-congenital"></div>
+      </section>
+
+      <!-- ============ CLUSTER: OBSTRUCTIVE ============ -->
+      <section class="section-block" data-cluster="obstructive" id="cluster-obstructive">
+        <div class="section-head">
+          <h2>Obstructive &amp; Inflammatory Disorders</h2>
+          <span class="section-badge">USLO 2 · 3</span>
+        </div>
+        <p class="section-desc">The classic "look-alikes" — see the compare table below to keep them straight.</p>
+        <div id="mount-obstructive"></div>
+      </section>
+
+      <!-- ============ CLUSTER: MALABSORPTION ============ -->
+      <section class="section-block" data-cluster="malabsorption" id="cluster-malabsorption">
+        <div class="section-head">
+          <h2>Malabsorption, Reflux &amp; Growth Disorders</h2>
+          <span class="section-badge">USLO 2</span>
+        </div>
+        <div id="mount-malabsorption"></div>
+      </section>
+
+      <!-- ============ CLUSTER: TOXICOLOGY ============ -->
+      <section class="section-block" data-cluster="toxicology" id="cluster-toxicology">
+        <div class="section-head">
+          <h2>Ingestions &amp; Heavy Metal Poisoning</h2>
+          <span class="section-badge">USLO 4 · 5</span>
+        </div>
+        <div id="mount-toxicology"></div>
+      </section>
+
+      <div class="no-results" id="noResults">No conditions match your search. Try a different term.</div>
+
+      <!-- ============ COMPARE TABLE ============ -->
+      <section class="section-block">
+        <div class="section-head"><h2>Quick-Compare: Classic Presentations</h2></div>
+        <p class="section-desc">The four obstructive disorders students mix up most often, side by side.</p>
+        <div class="compare-wrap">
+          <table class="compare">
+            <thead><tr><th>Condition</th><th>Peak Age</th><th>Vomiting</th><th>Stool Pattern</th><th>Hallmark Finding</th></tr></thead>
+            <tbody>
+              <tr><td>Pyloric Stenosis</td><td>2–8 wks</td><td>Projectile, NON-bilious</td><td>Constipation (hungry after vomiting)</td><td>Olive-shaped mass, visible peristalsis</td></tr>
+              <tr><td>Hirschsprung's</td><td>Birth (or later, milder)</td><td>Bilious (if obstructed)</td><td>No meconium 24–48h; ribbon stools</td><td>Failure to pass meconium</td></tr>
+              <tr><td>Intussusception</td><td>3 mo–6 yr (peak &lt;2yr)</td><td>Bile-stained → fecal</td><td>Currant jelly (blood + mucus)</td><td>Sausage-shaped RUQ mass, knees-to-chest pain</td></tr>
+              <tr><td>Appendicitis</td><td>12–18 yr</td><td>AFTER pain starts</td><td>Constipation or diarrhea</td><td>McBurney point tenderness, migrating pain</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ MNEMONICS ============ -->
+      <section class="section-block">
+        <div class="section-head"><h2>Memory Aids</h2></div>
+        <div class="mnem-grid" id="mnemGrid"></div>
+      </section>
+
+      <div class="footnote">
+        Next step: work through the practice questions embedded in this unit's slides and send me your answers — I'll hold the rationales until you respond. Let me know if you'd like this turned into a self-quiz or flashcard set.
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ICONS (minimal inline line-icon set)
+============================================================ */
+const ICONS = {
+  path:  `<path d="M6 3v18M18 3v18M6 8c4 0 4-3 6-3s2 3 6 3M6 16c4 0 4 3 6 3s2-3 6-3"/>`,
+  risk:  `<path d="M12 2 1 21h22L12 2z"/><path d="M12 9v5"/><circle cx="12" cy="17.5" r=".6" fill="currentColor" stroke="none"/>`,
+  ss:    `<path d="M3 12h4l2 7 4-14 2 7h6"/>`,
+  comp:  `<circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="15.8" r=".6" fill="currentColor" stroke="none"/>`,
+  labs:  `<path d="M9 2v6L4 20a2 2 0 0 0 2 3h12a2 2 0 0 0 2-3L15 8V2"/><path d="M9 2h6"/><path d="M6.5 15h11"/>`,
+  nurse: `<path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M9 4V2h6v2"/>`,
+  tx:    `<path d="M10.5 20.5 3.5 13.5a5 5 0 1 1 7-7l1 1 1-1a5 5 0 1 1 7 7l-9 9-1.5-1.5"/><path d="M8 12h3l1.5-3L14 15l1-3h2"/>`,
+  contra:`<circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/>`,
+  selfcare:`<path d="M12 21s-7-4.5-9.5-9C.7 8.4 2 4.5 6 4c2-.3 3.7.8 6 3 2.3-2.2 4-3.3 6-3 4 .5 5.3 4.4 3.5 8-2.5 4.5-9.5 9-9.5 9Z"/>`,
+  eduP:  `<path d="M2 5.5 12 2l10 3.5-10 3.5-10-3.5Z"/><path d="M6 9.5V16c0 1.5 3 3 6 3s6-1.5 6-3V9.5"/>`,
+  eduC:  `<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>`,
+  chev:  `<path d="M6 9l6 6 6-6"/>`,
+  bulb:  `<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2Z"/>`,
+  drop:  `<path d="M12 2s7 8.5 7 13a7 7 0 1 1-14 0c0-4.5 7-13 7-13Z"/>`,
+  bond:  `<path d="M9 12h.01M15 12h.01M8 16s1.5 2 4 2 4-2 4-2"/><circle cx="12" cy="12" r="9"/>`,
+  knot:  `<path d="M4 12c0-3 2-5 4-5s3 2 4 5-1 5-4 5-4-2-4-5Z"/><path d="M20 12c0-3-2-5-4-5s-3 2-4 5"/>`,
+  lung:  `<path d="M12 3v6"/><path d="M12 9c-2 0-4 2-4 6 0 3 1 6 3 6s2-2 2-4"/><path d="M12 9c2 0 4 2 4 6 0 3-1 6-3 6s-2-2-2-4"/>`,
+  scale: `<path d="M12 3v18M7 8h10M4 8l3-3 3 3M14 8l3-3 3 3M4 8c0 3 1.5 5 3 5s3-2 3-5M14 8c0 3 1.5 5 3 5s3-2 3-5"/>`,
+  skull: `<path d="M12 2C7 2 4 6 4 10c0 3 1.5 4.5 2 6v3h2v-2h2v2h4v-2h2v2h2v-3c.5-1.5 2-3 2-6 0-4-3-8-8-8Z"/><circle cx="9" cy="10" r="1"/><circle cx="15" cy="10" r="1"/>`,
+  alert: `<path d="M12 9v5"/><path d="M10.3 3.6 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0Z"/><circle cx="12" cy="17" r=".7" fill="currentColor" stroke="none"/>`,
+  target:`<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>`,
+};
+function icon(name, extra=''){ return `<svg viewBox="0 0 24 24" ${extra}>${ICONS[name]}</svg>`; }
+
+const CATS = [
+  {key:'path',  label:'Pathophysiology & Etiology'},
+  {key:'risk',  label:'Risk Factors'},
+  {key:'ss',    label:'Signs & Symptoms'},
+  {key:'comp',  label:'Complications'},
+  {key:'tx',    label:'Treatment / Management'},
+  {key:'contra',label:'Contraindications & Restrictions'},
+  {key:'selfcare',label:'Patient Self-Care Strategies'},
+];
+
+/* ============================================================
+   CLUSTER THEME COLORS (accent per cluster)
+============================================================ */
+const CLUSTERS = {
+  fluid:         { label:'Fluid & Elimination',        accent:'#1F5FA0', bg:'#E9F1FA', icon:'drop' },
+  congenital:    { label:'Congenital Anomalies',        accent:'#8A3E8E', bg:'#F5EAF6', icon:'bond' },
+  obstructive:   { label:'Obstructive / Inflammatory',  accent:'#B7423A', bg:'#FBEAE8', icon:'knot' },
+  malabsorption: { label:'Malabsorption / Reflux / Growth', accent:'#2C7A46', bg:'#E9F5EC', icon:'lung' },
+  toxicology:    { label:'Toxicology',                  accent:'#96652E', bg:'#F5ECDE', icon:'skull' },
+};
+
+/* ============================================================
+   CONDITION DATA
+============================================================ */
+const CONDITIONS = [
+{
+  id:'diarrhea-acute', cluster:'fluid', name:'Acute Diarrhea', src:'Perry Ch. 41 · NSG 3600 slides',
+  priority:'Dehydration & hypovolemic shock — fluid/electrolyte loss outpaces intake faster in kids than adults and can decompensate within hours.',
+  path:['Increased frequency/water content of bowel movements from altered intestinal motility & absorption'],
+  risk:['Diet or food allergies','Toxic substance ingestion','Bacterial, viral, or parasitic infection','Medication side effect (e.g., antibiotics)'],
+  ss:['Frequent loose/watery stools','Vomiting, fever, abdominal pain','Signs of dehydration if prolonged'],
+  comp:['Dehydration','Metabolic acidosis (bicarbonate loss)','Perianal skin breakdown'],
+  labsExpected:['Stool culture negative if viral','Electrolytes within normal limits if well-hydrated'],
+  labsUnexpected:['Serum bicarbonate low, pH low — metabolic acidosis from bicarb loss → notify provider, prepare for IV correction','Stool culture positive for bacterial pathogen (Salmonella, Shigella, C. diff) → contact precautions, avoid antimotility agents','Sodium/potassium outside normal range → cardiac monitoring, notify provider before replacing'],
+  nurse:['<b>Recognize:</b> stool frequency/consistency, hydration status, associated fever/vomiting','<b>Analyze:</b> infectious vs. dietary vs. medication cause changes isolation & treatment needs','<b>Prioritize:</b> hydration status is priority #1 — dehydration risk outweighs the diarrhea itself','<b>Generate:</b> ORT first-line; IV fluids if unable to tolerate PO or severe dehydration','<b>Act:</b> strict I&O, daily weights, electrolyte monitoring, skin/perianal care, contact precautions until cause known','<b>Evaluate:</b> decreased stool frequency, improved hydration markers, intact perianal skin'],
+  escalate:['No urine output in 6–8 hours','Lethargy, weak cry, or difficulty arousing','Blood or mucus in stool','Heart rate rising while output stays flat (early shock)','Sunken fontanel or eyes, no tears'],
+  tx:['Metronidazole (Flagyl) if bacterial cause confirmed','Probiotics (Lactobacillus)','IV & PO fluids as needed','Daily weights, strict I&O'],
+  contra:['Avoid antimotility agents (e.g., loperamide) in suspected bacterial/invasive diarrhea — can prolong bacterial shedding and precipitate toxic megacolon','Avoid antibiotics unless bacterial cause confirmed','Do not use plain water, sports drinks, or soda as the sole rehydration fluid — inadequate/wrong electrolyte balance'],
+  selfcare:['Offer ORS in small, frequent sips rather than large volumes','Continue breastfeeding/regular diet as tolerated — do not withhold food','Track wet diapers/voids and stool frequency at home to gauge hydration','Wash hands thoroughly and disinfect surfaces to prevent household spread'],
+  diet:{allow:['Regular age-appropriate diet as tolerated','Bananas, rice, applesauce, toast (in moderation, not as sole diet)','Oral rehydration solution (ORS)','Breastmilk/formula, continued on schedule'],avoid:['Excess fruit juice or sugary drinks (osmotic effect worsens diarrhea)','Caffeinated or carbonated beverages','High-fat or greasy foods until stooling normalizes']},
+  eduParent:['Give ORS by teaspoon/syringe every few minutes if child refuses cups','Do not dilute formula or restrict food to "rest the gut" — resume regular diet','Keep a log of diaper changes/stool count to report at follow-up','Call the office or go to the ED for the escalation signs listed above'],
+  eduChild:['Toddler/preschool: use simple words — "tummy needs quiet time, drink your special water"; offer a preferred cup for ORS','School-age: explain in concrete terms why they need extra fluids ("your body is losing water, we are filling it back up")','Adolescent: give ownership — track own fluid intake, understand hand hygiene rationale to protect peers'],
+},
+{
+  id:'diarrhea-chronic', cluster:'fluid', name:'Chronic Diarrhea', src:'≥3 loose stools/day for 14+ days · NSG 3600 slides',
+  priority:'Cumulative dehydration/malnutrition and failure to thrive — the danger builds slowly rather than striking acutely.',
+  path:['3 or more loose stools passed per day for 14 days or longer'],
+  risk:['Underlying GI disease (celiac, IBD, malabsorption)','Chronic infection','Food intolerance / excess fruit juice intake'],
+  ss:['Abdominal distention','Hyperactive bowel sounds','Weight loss','Dehydration','Perineal irritation','Blood in stool'],
+  comp:['Failure to thrive','Chronic dehydration/electrolyte imbalance','Perianal skin breakdown'],
+  labsExpected:['Stool C&S negative if non-infectious','Growth parameters tracking along established curve'],
+  labsUnexpected:['Falling weight/growth percentile over serial visits → notify provider, initiate FTT workup','Stool positive for occult blood → notify provider, evaluate for IBD or invasive infection','Low albumin/protein → notify provider, nutrition consult'],
+  nurse:['<b>Recognize:</b> growth trend, stool pattern over time, dietary history (esp. juice intake)','<b>Analyze:</b> infectious, dietary, or malabsorptive process?','<b>Prioritize:</b> identify & treat underlying cause while preventing ongoing fluid/nutrient loss','<b>Generate:</b> reduce fruit juice, hydrate, identify cause, refer for workup if malabsorption suspected','<b>Act:</b> daily weights, strict I&O, dietary education, skin care','<b>Evaluate:</b> normalized stool pattern, weight gain resuming, intact skin'],
+  escalate:['Weight loss or crossing down 2+ percentile lines','Blood in stool','Signs of dehydration despite home management','New fever or severe abdominal pain'],
+  tx:['Educate on primary prevention','Hydrate','Identify & treat underlying cause','Reduce fruit juice intake','Daily weights, strict I&O'],
+  contra:['Avoid excessive fruit juice (fructose/sorbitol malabsorption worsens chronic diarrhea)','Avoid unnecessary dietary restriction that isn\'t evidence-based (e.g., prolonged BRAT-only diets)'],
+  selfcare:['Keep a simple food/stool diary to identify triggers','Limit juice to recommended daily amounts (or eliminate temporarily per provider)','Weigh the child at home on the same scale weekly if advised','Maintain consistent skin barrier cream use to prevent perianal breakdown'],
+  diet:{allow:['Regular balanced diet with adequate fat and fiber as tolerated','Water as primary beverage','Yogurt with active cultures if tolerated'],avoid:['Excess fruit juice (apple, pear, prune)','Sugary sports drinks','Highly processed, high-sugar snacks']},
+  eduParent:['Explain that eliminating excess juice is often the single most effective first step','Reinforce that growth is tracked over multiple visits, not one weight check','Teach proper perianal skin care (barrier cream, gentle cleansing)','Bring a stool/food diary to follow-up visits'],
+  eduChild:['Toddler: offer water in a favorite cup instead of juice, praise "big kid" drinking','School-age: explain simply that some drinks upset the belly and water helps it heal','Adolescent: involve in choosing lower-sugar beverage alternatives to build ownership'],
+},
+{
+  id:'dehydration', cluster:'fluid', name:'Dehydration', src:'Scannell & Ruggiero, 2022 · Perry Ch. 41',
+  priority:'Hypovolemic shock — inadequate circulating volume can rapidly compromise perfusion to vital organs in a small child.',
+  path:['Occurs when total fluid output exceeds intake','Infants/young children at higher risk: greater body surface area, higher metabolic rate, immature kidneys, higher % body water in extracellular space'],
+  risk:['Vomiting, diarrhea (most common pediatric cause)','Decreased oral intake (illness, refusal to feed)','Fever, increased insensible losses','DKA, burns, excessive sweating'],
+  ss:['Tachycardia','Hypotension (late sign)','Decreased/absent tears','Weight loss — best single indicator of severity','Thirst, irritability → lethargy as it worsens','Sunken eyes & sunken anterior fontanel (infants)','Dry mucous membranes, ↓ skin turgor, ↓ urine output'],
+  comp:['Hypovolemic shock (greatest concern with isotonic dehydration)','Seizures — from rapid correction of hypertonic dehydration','Electrolyte imbalance','Metabolic acidosis (diarrhea) or alkalosis (vomiting)'],
+  labsExpected:['Serum sodium 135–145 mEq/L (isotonic dehydration)','BUN and urine specific gravity mildly elevated with adequate response to fluids'],
+  labsUnexpected:['Sodium &lt;130 (hypotonic) or &gt;150 (hypertonic) → notify provider, correction rate must be carefully controlled, especially hypertonic (slow correction to prevent cerebral edema)','Rising BUN/creatinine despite fluids → notify provider, possible worsening renal perfusion','Urine output &lt;1 mL/kg/hr despite fluid bolus → notify provider immediately'],
+  nurse:['<b>Recognize:</b> weight loss %, VS trends, cap refill, fontanel, mucous membranes, urine output','<b>Analyze:</b> correlate weight loss with severity — mild &lt;5%, moderate 5–10%, severe &gt;10% (infants)','<b>Prioritize:</b> isotonic, hypotonic, or hypertonic? This determines fluid choice & correction rate','<b>Generate:</b> ORT for mild–moderate; IV isotonic fluids for severe/shock','<b>Act:</b> strict I&O, daily weights (same scale/time), monitor VS, initiate IV access if severe','<b>Evaluate:</b> improved urine output (1–2 mL/kg/hr), stable VS, moist mucous membranes, weight trending up'],
+  escalate:['Urine output &lt;1 mL/kg/hr after fluid bolus','Heart rate rising with BP falling (decompensating shock)','Altered level of consciousness or bulging/sunken fontanel changes','Seizure activity (especially during correction of hypertonic dehydration)'],
+  tx:['Fluid replacement (ORT preferred if tolerating PO)','IV isotonic fluids (LR or NS) for moderate–severe/shock','Electrolyte monitoring & replacement','Correct HYPERtonic dehydration SLOWLY (over 48 hrs) to prevent cerebral edema/seizures'],
+  contra:['Do not rapidly correct hypertonic dehydration — seizure/cerebral edema risk','Avoid hypotonic IV fluids as primary resuscitation fluid in shock','Do not rely on juice, soda, or plain water alone for moderate–severe dehydration'],
+  selfcare:['Offer ORS in small frequent amounts at home for mild dehydration','Monitor and log wet diapers/voids and energy level','Weigh the child periodically on the same scale if instructed','Keep the child cool and limit exertion during acute illness'],
+  diet:{allow:['Oral rehydration solution (ORS)','Breastmilk/formula on regular schedule','Regular diet as tolerated once rehydrating'],avoid:['Plain water as sole rehydration fluid in infants (electrolyte dilution risk)','Sports drinks/soda as substitutes for ORS','Undiluted fruit juice in large volumes']},
+  eduParent:['Teach how to mix/administer ORS correctly and how much is "enough"','Review specific signs that mean "come back now" (see escalation list)','Explain why breastfeeding should continue through illness, not pause','Show how to check skin turgor and cap refill at home'],
+  eduChild:['Infant/toddler: comfort-focused — calm voice, familiar caregiver holding during any IV start','Preschooler: use a doll to show "the water medicine goes in your arm to help you feel better"','School-age/adolescent: explain honestly what IV fluids do and how long it may take, allow questions'],
+},
+{
+  id:'cleft', cluster:'congenital', name:'Cleft Lip / Cleft Palate', src:'Perry Ch. 41 · Saunders Ch. 34',
+  priority:'Aspiration and inadequate nutrition/airway compromise during feeding — before surgery, feeding safety is the dominant threat.',
+  path:['Failure of the maxillary & premaxillary processes to fuse between weeks 4–10 of embryonic development','Cleft lip: primary palate fails to fuse by week 7','Cleft palate: secondary (hard/soft) palate fails to fuse weeks 7–10','Multifactorial: genetic + environmental (teratogens)'],
+  risk:['Male sex (cleft lip/palate together)','Native American / Asian ethnicity highest rates; female sex more common for isolated cleft palate','Family history','Maternal smoking, alcohol, anticonvulsants, steroids, retinoids','Folate deficiency'],
+  ss:['Unilateral or bilateral cleft lip, with or without cleft of hard/soft palate','May involve the uvula (bifid uvula = mildest cleft palate)','Visible at birth (lip); palate confirmed with gloved-finger oral exam'],
+  comp:['Feeding difficulty / inability to create suction (cleft palate)','Aspiration risk','Frequent otitis media → hearing loss','Speech/articulation delays','Dental malalignment'],
+  labsExpected:['Growth parameters tracking normally with specialized feeding technique','No signs of respiratory infection'],
+  labsUnexpected:['Poor weight gain despite specialized feeder → notify provider, reassess technique/caloric intake','Recurrent otitis media/fever → notify provider, ENT referral','Post-op: fever, purulent drainage from suture line → notify provider, possible infection'],
+  nurse:['<b>Recognize:</b> ability to suck/swallow, handle secretions, breathe without distress; daily weight trend','<b>Analyze:</b> cleft type determines feeding risk — cleft palate = highest aspiration/nutrition risk','<b>Prioritize:</b> nutrition & airway safety before cosmetic/surgical timeline','<b>Generate:</b> specialized nipple/feeder, upright positioning, ESSR technique','<b>Act (pre-op):</b> upright feeding position, direct formula to side/back of mouth, burp frequently, monitor weight/intake','<b>Act (post-op):</b> elbow restraints (release q1–2h for skin/circulation check), NO objects in mouth until healed, keep suture line clean','<b>Evaluate:</b> adequate weight gain, healing suture line, no aspiration events, parents demonstrate feeding technique'],
+  escalate:['Choking, cyanosis, or coughing with feeds','Weight gain stalls or declines over 2+ weigh-ins','Post-op: fever, foul drainage, or suture line separation','Signs of ear infection (fever, ear pulling, irritability)'],
+  tx:['Maintain nutrition — specialized feeder (Haberman/SpecialNeeds Feeder or Pigeon bottle)','ESSR method: Enlarge nipple, Stimulate suck reflex, Swallow, Rest','Lip repair ~3–6 months; palate repair ~12 months (before speech develops)','Multiple staged surgeries; multidisciplinary team: speech, dentistry, audiology, dietitian'],
+  contra:['No straws, pacifiers, hard spoons, or hard/crunchy foods until suture line fully healed post-op','Avoid prone positioning that puts pressure on the repair','No tongue depressors or oral thermometers until cleared by surgeon','Avoid unsupervised bottle propping — aspiration risk with poor suck coordination'],
+  selfcare:['Practice and demonstrate the ESSR feeding technique before discharge','Keep a feeding/weight log for follow-up visits','Clean the suture line as directed and inspect for redness/drainage daily','Use elbow restraints correctly and check skin under them regularly'],
+  diet:{allow:['Breastmilk or formula via specialized feeder','Pureed/soft foods once cleared post-repair, introduced per surgeon timeline'],avoid:['Hard, crunchy, or sticky foods that could damage the repair site (chips, toast, gummy candy)','Straws or hard-spouted cups until surgeon clears']},
+  eduParent:['Demonstrate specialized feeder use and upright positioning before discharge','Explain the elbow restraint purpose and safe release schedule','Review surgical timeline (lip ~3–6 mo, palate ~12 mo) and what each repair addresses','Encourage bonding activities (skin-to-skin, naming, talking) despite feeding challenges','Connect with cleft team resources: speech therapy, audiology, dental, support groups'],
+  eduChild:['Infant: comfort through touch, voice, and consistent caregiver presence during feeds','Toddler (post-op): use simple words — "no fingers or toys in your mouth so it can heal," offer alternative comfort items','School-age (older repairs/revisions): explain honestly what surgery will fix and normalize scars with age-appropriate language','Adolescent: address body image/speech concerns directly, involve in decisions about further revisions'],
+},
+{
+  id:'eatef', cluster:'congenital', name:'Esophageal Atresia & TEF', src:'Perry Ch. 41 · Saunders Ch. 34',
+  priority:'Aspiration and airway compromise — this can kill within minutes of an oral feeding attempt, faster than any nutritional concern.',
+  path:['Esophagus ends in a blind pouch and does not connect to the stomach','A fistula often forms between the esophagus/trachea, letting oral intake/air enter the lungs or stomach'],
+  risk:['Prematurity','VACTERL association (Vertebral, Anal, Cardiac, TE fistula, Renal, Limb) — assess for co-occurring defects'],
+  ss:['"3 Cs": Coughing, Choking, Cyanosis during feeding attempts','Excessive drooling/frothy secretions','Respiratory distress','Inability to pass an NG/OG tube (key bedside clue)','Abdominal distention (air via fistula)'],
+  comp:['Aspiration pneumonia','Severe respiratory distress/failure','Death without surgical repair'],
+  labsExpected:['Stable oxygen saturation on room air or minimal support pre-op with pouch decompressed'],
+  labsUnexpected:['Falling SpO2 or increasing work of breathing → notify provider immediately, possible aspiration/fistula complication','Chest x-ray showing infiltrate → notify provider, aspiration pneumonia workup','Post-op: fever, increased secretions, feeding intolerance → notify provider, evaluate for anastomotic leak/stricture'],
+  nurse:['<b>Recognize:</b> drooling/frothing, choking with feeds, cyanosis, inability to pass NG tube','<b>Analyze:</b> aspiration risk is immediate/life-threatening — airway is priority over feeding','<b>Prioritize:</b> airway/aspiration risk &gt; nutrition &gt; everything else','<b>Generate:</b> NPO, airway maintenance, gastric/pouch decompression','<b>Act:</b> maintain patent airway, NPO immediately, HOB ~30° upright, suction secretions, keep blind pouch empty via suction, prep for surgery','<b>Evaluate:</b> clear airway, no respiratory distress, stable oxygenation pending repair'],
+  escalate:['Any oral feeding attempt in a suspected case (stop immediately, notify provider)','Increasing respiratory distress, cyanosis, or falling SpO2','Inability to pass NG/OG tube — notify provider immediately, do not force the tube','Post-op fever, feeding intolerance, or increased secretions'],
+  tx:['Maintain patent airway (may need intubation)','NPO — high aspiration risk','Positioning to facilitate drainage & prevent aspiration','Gastric/pouch decompression via suction','Broad-spectrum antibiotics (aspiration pneumonia risk)','Surgical correction — definitive treatment'],
+  contra:['NPO is absolute until surgical repair is confirmed patent — no oral feeding attempts','Do not force an NG tube past resistance — risk of perforating the blind pouch','Avoid supine flat positioning — increases reflux/aspiration risk into the fistula'],
+  selfcare:['N/A prior to repair — infant is NPO and hospital-managed; caregiver role is comfort and presence, not feeding','Post-discharge: learn safe feeding pacing and signs of stricture to watch for at home'],
+  diet:{allow:['Post-repair, per surgeon: initially small, soft, well-chewed bites once swallow study clears'],avoid:['Any oral intake before surgical repair confirmed patent','Post-repair: foods that can lodge — hot dogs, large meat chunks, whole grapes, tough bread — due to stricture risk']},
+  eduParent:['Explain why the infant is NPO and what pouch/fistula decompression accomplishes','Teach signs of esophageal stricture to watch for after discharge: choking, drooling, food refusal, regurgitation','Review safe feeding pacing (small bites, thorough chewing) as solids are introduced later','Reinforce follow-up imaging/swallow study schedule'],
+  eduChild:['Infant: this condition is caregiver/team-managed; comfort measures (pacifier for non-nutritive sucking if allowed, swaddling, voice) support the infant through NPO status','Older child (post-repair, revisions): explain simply why chewing slowly and taking small bites matters for their "fixed food pipe"'],
+},
+{
+  id:'anorectal', cluster:'congenital', name:'Anorectal Malformations', src:'NSG 3600 slides · Saunders',
+  priority:'Bowel obstruction and perforation — an undiagnosed complete obstruction can progress to perforation and sepsis.',
+  path:['Abnormal or arrested development of anorectal GI structures during gestation; etiology largely unknown'],
+  risk:['Associated with other congenital anomalies (VACTERL)'],
+  ss:['Rectal atresia','Rectal stenosis','Imperforate anus','Failure to pass meconium within 24 hrs of birth — key newborn assessment finding'],
+  comp:['Bowel obstruction','Fecal incontinence after repair','Fistula formation (e.g., to urinary/genital tract)'],
+  labsExpected:['Stable abdominal exam, soft and non-distended pending surgical plan'],
+  labsUnexpected:['Progressive abdominal distention or bilious vomiting → notify provider immediately, possible obstruction/perforation','Fever or peritoneal signs → notify provider immediately','Post-op: stoma turns dusky/pale rather than red/moist → notify provider, possible ischemia'],
+  nurse:['<b>Recognize:</b> no meconium in first 24 hrs, absent/abnormal anal opening on newborn exam','<b>Analyze:</b> correlate with risk for VACTERL anomalies — assess spine, heart, kidneys, limbs','<b>Prioritize:</b> rule out obstruction, prep for surgical evaluation before feeding advancement','<b>Generate:</b> NPO pending surgical plan, IV fluids, pain control','<b>Act:</b> NPO pre-op, IV fluids, pain management, post-op colostomy/wound care as indicated','<b>Evaluate:</b> return of bowel function, healing stoma/wound, family demonstrates colostomy care'],
+  escalate:['Progressive abdominal distention or bilious emesis','No stool/gas output post-op beyond expected timeframe','Stoma appears dusky, pale, or retracted','Fever or signs of peritonitis'],
+  tx:['NPO prior to surgery, IV fluids, pain control','Surgical care: manual anal dilation or two-stage (colostomy then pull-through) repair depending on severity'],
+  contra:['NPO pre-op until surgical plan is confirmed','Avoid rectal temperature or rectal manipulation before surgical evaluation','Avoid inserting anything into a stenotic/atretic rectum without provider order'],
+  selfcare:['Learn and practice colostomy care (pouch changes, skin barrier) before discharge if applicable','Learn anal dilation technique/schedule if prescribed, and how to recognize resistance/bleeding to report','Track stooling pattern and stoma appearance at home'],
+  diet:{allow:['Regular age-appropriate diet once bowel function returns','High-fiber foods long-term to support regular stooling (once advised by provider)'],avoid:['Oral intake prior to surgical clearance']},
+  eduParent:['Demonstrate colostomy pouch care and skin protection technique','Teach anal dilation schedule and technique if prescribed, including what is normal vs. concerning','Review long-term expectations — some children need ongoing bowel management programs','Provide referral to pediatric surgery follow-up and ostomy support resources'],
+  eduChild:['Infant: caregiver-directed; comfort through routine, touch, voice','Toddler/preschool with colostomy: normalize the pouch as "part of your tummy that helps poop come out," use simple, non-frightening language','School-age: allow age-appropriate involvement in their own stoma care to build competence and reduce anxiety','Adolescent: address privacy and body-image concerns directly; involve in self-management planning'],
+},
+{
+  id:'pyloric', cluster:'obstructive', name:'Hypertrophic Pyloric Stenosis', src:'NSG 3600 slides · Perry Ch. 41 · Saunders Ch. 34',
+  priority:'Severe dehydration and metabolic alkalosis pre-op — this must be corrected before anesthesia, or it becomes the bigger threat, not the obstruction itself.',
+  path:['Hypertrophy of the circular pyloric sphincter muscle narrows/obstructs the canal between stomach & duodenum','Not congenital — etiology unclear, possibly related to local innervation','Usually develops in the first few weeks of life'],
+  risk:['Male sex (4–6× more common)','More common in white infants; less common in African American/Asian infants','Firstborn children'],
+  ss:['Projectile, NON-bilious vomiting after feeding (progresses from mild regurgitation)','Insatiable appetite / hungry & irritable right after vomiting','Weight loss, poor gain, FTT if undiagnosed','Olive-shaped mass palpable in the upper abdomen','Visible peristaltic waves L→R across the epigastrium during/after feeding','Signs of dehydration'],
+  comp:['Dehydration','Metabolic <b>ALKALOSIS</b> (loss of HCl via vomiting)','Failure to thrive if diagnosis delayed'],
+  labsExpected:['After correction: chloride normalized, bicarbonate/pH trending to normal, stable weight'],
+  labsUnexpected:['Serum chloride low, bicarbonate/pH high (metabolic alkalosis) → notify provider, IV correction required before surgery can proceed safely','Persistent vomiting beyond 48 hrs post-op → notify provider','Potassium low (from vomiting + alkalosis) → notify provider, replace cautiously with cardiac monitoring'],
+  nurse:['<b>Recognize:</b> projectile non-bilious vomiting pattern, weight trend, palpable olive mass, dehydration signs','<b>Analyze:</b> vomiting HCl-rich contents → expect metabolic ALKALOSIS, not acidosis','<b>Prioritize:</b> correct dehydration/electrolytes BEFORE surgery — surgery is not emergent, rehydration is','<b>Generate:</b> NPO, IV fluid/electrolyte correction pre-op, NG decompression if still vomiting','<b>Act (pre-op):</b> assess dehydration, NPO, IV rehydration/correct alkalosis (often delays surgery 24–48 hrs)','<b>Act (post-op):</b> monitor VS, pain control, prevent infection, follow pyloric feeding protocol','<b>Evaluate:</b> tolerating feeds without projectile vomiting, stable weight gain, normal electrolytes'],
+  escalate:['Signs of worsening dehydration despite IV fluids','Chloride/bicarbonate not trending toward normal before scheduled surgery','Vomiting persisting beyond 48 hrs post-op','Lethargy or poor feeding tolerance post-op'],
+  tx:['Surgical: pyloromyotomy (Fredet-Ramstedt), often laparoscopic — high success, low mortality','Pre-op: correct dehydration & metabolic alkalosis with IV fluids first','Post-op protocol: feeds begin ~4–6 hrs post-op; ORS first 24 hrs → formula/breastmilk by 48 hrs; small frequent feeds, advance as tolerated','Some vomiting right after surgery is expected — report if it persists beyond 48 hrs'],
+  contra:['Surgery should NOT proceed until dehydration and metabolic alkalosis are corrected — anesthesia risk with uncorrected alkalosis','Avoid overfeeding or rapid volume advancement post-op','NPO strictly maintained until surgical clearance to feed'],
+  selfcare:['Follow the stepwise post-op feeding advancement exactly as directed (small, frequent volumes)','Track number/character of feeds and any vomiting episodes at home','Watch incision site for redness, swelling, or drainage'],
+  diet:{allow:['Post-op: ORS first, then breastmilk/formula in small frequent volumes per protocol','Advance to regular formula/breastfeeding schedule as tolerated by 48 hrs'],avoid:['Large-volume feeds immediately post-op','Overfeeding in response to the infant\'s "hungry" cues before pyloromyotomy']},
+  eduParent:['Explain that correcting labs/hydration must happen before surgery — this is normal and expected, not a delay in care','Reassure that pyloromyotomy has an excellent success rate and low complication rate','Teach the post-op feeding schedule and that a little vomiting right after surgery is common','Review incision care and infection signs before discharge'],
+  eduChild:['Primarily an infant condition — education is caregiver-directed','Comfort measures: swaddling, pacifier per unit policy, calm consistent caregiver presence around IV starts and pre-op fasting'],
+  pearl:'Vomiting UP acid (HCl) → body loses acid → blood becomes more basic → metabolic <b>ALKALOSIS</b>. (Contrast: diarrhea loses bicarbonate → metabolic acidosis.)'
+},
+{
+  id:'hirschsprung', cluster:'obstructive', name:"Hirschsprung's Disease", src:'NSG 3600 slides · Saunders Ch. 34',
+  priority:'Enterocolitis with sepsis — this is the complication that actually kills in Hirschsprung\'s, not the constipation itself.',
+  path:['Absence of ganglion cells in a colon segment → that segment cannot relax → functional mechanical obstruction from inadequate motility'],
+  risk:['Familial/congenital','Associated with Down syndrome and other genitourinary anomalies'],
+  ss:['Failure to pass meconium within 24–48 hrs of birth (classic newborn finding)','Chronic constipation','Bilious vomiting','Abdominal distention/obstruction','Poor feeding, failure to thrive','Ribbon-like stools in older children'],
+  comp:['<b>Enterocolitis</b> — most serious: fever, severe prostration, GI bleeding, explosive watery diarrhea → report immediately','Short bowel syndrome (post-op)','Fecal incontinence, strictures, recurrent enterocolitis, prolapse, perianal abscess (post-op)'],
+  labsExpected:['Rectal biopsy confirms absence of ganglion cells (diagnostic, expected finding for diagnosis)','Post-op: return of bowel sounds/flatus within expected window, stoma red and moist'],
+  labsUnexpected:['Fever + explosive watery diarrhea + prostration → notify provider IMMEDIATELY, classic enterocolitis presentation','Rising WBC/CRP → notify provider, evaluate for enterocolitis or infection','Stoma dusky/pale, minimal output → notify provider, possible ischemia or obstruction'],
+  nurse:['<b>Recognize:</b> no meconium in first 24–48 hrs, chronic constipation, ribbon stools, distention','<b>Analyze:</b> distinguish simple constipation from Hirschsprung\'s — pattern since birth + no meconium is the red flag','<b>Prioritize:</b> watch for enterocolitis (fever + explosive diarrhea + prostration = emergency)','<b>Generate:</b> NG decompression, IV fluids/electrolytes, pain control, prepare for surgical resection','<b>Act (post-op):</b> monitor for return of bowel sounds/flatus before feeding, measure abdominal girth, AVOID rectal temps, assess stoma (should be red & moist), strict I&O, daily weights','<b>Evaluate:</b> return of normal bowel pattern/stoma output, no enterocolitis signs, adequate nutrition/growth'],
+  escalate:['Fever with explosive, foul watery diarrhea and lethargy — classic enterocolitis, notify immediately','Increasing abdominal distention or girth','Stoma color change (dusky/pale) or absent output','GI bleeding'],
+  tx:['NG tube, IV fluids & electrolytes, pain control','Surgical resection of aganglionic segment (may be staged with temporary colostomy)','Mild/moderate disease: stool softeners & rectal irrigations may be tried first'],
+  contra:['NO rectal temperatures or unguided rectal manipulation — perforation risk in the aganglionic segment','Avoid enemas or laxatives without a specific provider order','Avoid feeding advancement before bowel sounds/flatus return post-op'],
+  selfcare:['Learn colostomy care thoroughly before discharge if a stoma was created','Monitor stool pattern, abdominal girth, and stoma appearance daily at home','Know the specific enterocolitis warning signs and have a plan to seek care fast','Maintain any prescribed bowel regimen (irrigations, stool softeners) consistently'],
+  diet:{allow:['Regular age-appropriate diet once bowel function is confirmed post-op','High-fiber foods long term to support motility (per provider guidance)'],avoid:['Oral feeding before return of bowel sounds/flatus post-op']},
+  eduParent:['Teach colostomy care and skin protection if applicable','Review the enterocolitis red-flag symptoms in plain language and rehearse when to call vs. go to the ED','Reinforce not to take rectal temperatures — use axillary/temporal instead','Explain long-term bowel management may be needed even after successful surgery'],
+  eduChild:['Infant: caregiver-directed comfort care','Toddler/preschool with colostomy: normalize the pouch with simple, reassuring language and play-based teaching (doll with a "pouch")','School-age: give simple, honest explanations of why part of the bowel was removed and what the stoma does','Adolescent: address body image and privacy concerns; involve in self-care and decision-making about future reversal surgery if applicable'],
+  pearl:'<b>Red flag:</b> no meconium in the first 24–48 hours after birth = think Hirschsprung\'s until proven otherwise.'
+},
+{
+  id:'intussusception', cluster:'obstructive', name:'Intussusception', src:'NSG 3600 slides · Saunders Ch. 34',
+  priority:'Bowel ischemia progressing to perforation and shock — the telescoped segment can lose blood supply within hours.',
+  path:['One bowel segment telescopes into an adjacent segment, causing obstruction & compromised blood flow','Most common in children 3 months–6 years; leading cause of intestinal obstruction in this age group'],
+  risk:['Peak incidence 3 months–3 years','Recent viral illness (lymphoid hyperplasia as lead point)','Male sex'],
+  ss:['<b>Classic triad:</b> sudden colicky pain (draws knees to chest, screams), currant jelly stools (blood + mucus), sausage-shaped abdominal mass (often RUQ)','Pain relieved once abdomen relaxes — child may look well between episodes','Vomiting, fever, dehydration, lethargy','"Dance sign" — emptiness/retraction felt in the RLQ'],
+  comp:['Bowel perforation → peritonitis, shock (fever, extreme weakness/prostration) — report immediately','Bowel ischemia/necrosis if untreated'],
+  labsExpected:['Post-reduction: passage of a normal brown, soft stool (reassuring sign of successful reduction)'],
+  labsUnexpected:['Free air on abdominal x-ray → notify provider immediately, enema reduction contraindicated, surgical emergency','Rising HR with falling BP, fever, rigid abdomen → notify provider immediately, signs of perforation/shock','No stool passage or recurrent colicky pain after reduction → notify provider, possible recurrence'],
+  nurse:['<b>Recognize:</b> intermittent colicky pain + knees-to-chest + currant jelly stool = classic triad','<b>Analyze:</b> surgical emergency until reduced — monitor closely for perforation','<b>Prioritize:</b> watch for perforation/peritonitis/shock signs — report immediately','<b>Generate:</b> hydrostatic (barium/air) enema reduction if no perforation signs; surgery if reduction fails','<b>Act:</b> pain control, IV fluids, monitor VS, prepare for enema reduction, observe/document first BM post-reduction','<b>Evaluate:</b> passage of normal BROWN stool post-reduction confirms success; return of normal bowel sounds'],
+  escalate:['Rigid, board-like abdomen with worsening pain (perforation)','Fever with lethargy/prostration','Tachycardia with hypotension (shock)','No stool passage or recurrence of colicky pain after reduction'],
+  tx:['Barium/air enema reduction (diagnostic AND therapeutic) if no perforation/shock signs','Post-enema: observe for normal brown stool (confirms reduction), monitor VS','IV fluids','Surgical repair if enema reduction fails or perforation/peritonitis present'],
+  contra:['Enema reduction is contraindicated if there are signs of perforation, peritonitis, or shock — surgery is required instead','Avoid oral intake until reduction is confirmed successful','Avoid delaying escalation when pain recurs after apparent reduction'],
+  selfcare:['Watch for recurrence of colicky pain, vomiting, or bloody stool after discharge — intussusception can recur','Monitor incision site if surgical repair was needed','Resume feeding gradually as directed'],
+  diet:{allow:['NPO until reduction/surgery confirmed successful, then advance diet as tolerated per provider'],avoid:['Oral intake before reduction is confirmed successful']},
+  eduParent:['Explain that a normal brown stool after enema is a reassuring, expected sign','Teach the specific recurrence symptoms to watch for after discharge','Reinforce this is time-sensitive — early treatment has excellent outcomes','Review incision care if surgery was performed'],
+  eduChild:['Toddler-predominant age group: comfort through parent presence, familiar objects, simple reassuring words ("the doctors are helping your tummy feel better")','Preschooler (if applicable): use play/doll demonstration for the enema procedure to reduce fear','Avoid detailed medical explanations for this age group — focus on comfort and predictability of routine'],
+  pearl:'<b>Triad — "Cramp, Currant, Chunk":</b> Cramp (colicky pain, knees to chest) · Currant jelly stool · Chunk (sausage-shaped mass).'
+},
+{
+  id:'appendicitis', cluster:'obstructive', name:'Appendicitis', src:'NSG 3600 slides · Perry Ch. 41',
+  priority:'Perforation leading to peritonitis and septic shock — undiagnosed or delayed appendicitis kills through sepsis, not the appendix itself.',
+  path:['Inflammation of the vermiform appendix, usually from luminal obstruction (fecalith, swollen lymphoid tissue, rarely a parasite)','Obstruction → mucus buildup → pressure → ischemia → ulceration/bacterial invasion → necrosis → possible perforation'],
+  risk:['Peak incidence age 12–18 years','Slightly more common in boys','Perforation risk HIGHEST in children &lt;5 years (can\'t verbalize symptoms → delayed diagnosis)'],
+  ss:['Periumbilical pain migrating/localizing to RLQ','McBurney point tenderness (2/3 the distance from umbilicus to anterior superior iliac spine)','Focal abdominal tenderness = most important physical finding','Rebound tenderness (present but NOT specific/reliable in children)','Rovsing, psoas, obturator, Dunphy signs','Vomiting & anorexia typically AFTER pain starts','Low-grade fever, stooped/guarded posture, difficulty walking, right hip pain'],
+  comp:['Perforation → peritonitis, sepsis, septic shock, death','<b>Warning sign of perforation:</b> SUDDEN RELIEF of pain, then diffuse worsening pain + rigid guarding, progressive distention, tachycardia, tachypnea, pallor, chills, restlessness — report immediately'],
+  labsExpected:['WBC mildly elevated (10,000–15,000) with early/simple appendicitis, stable VS'],
+  labsUnexpected:['WBC markedly elevated with left shift, rising CRP → notify provider, concern for progression/perforation','Sudden pain relief followed by diffuse worsening pain and rigidity → notify provider immediately, classic perforation pattern','Rising HR/RR with falling BP, fever, pallor → notify provider immediately, evolving septic shock'],
+  nurse:['<b>Recognize:</b> pain migration pattern, McBurney tenderness, fever, anorexia/vomiting AFTER pain onset','<b>Analyze:</b> sudden relief of pain is NOT improvement — may signal rupture','<b>Prioritize:</b> rule out/monitor for perforation and peritonitis as top safety priority','<b>Generate:</b> NPO, IV fluids/antibiotics, prep for appendectomy; AVOID heat, laxatives, enemas (rupture risk)','<b>Act (pre-op):</b> NPO, IV fluids/electrolytes, monitor pain trend & bowel sounds, ice packs (not heat), position of comfort (right side-lying/low-semi-Fowler\'s, knees flexed), use stethoscope bell first in young children','<b>Act (post-op):</b> monitor temp closely, NPO until bowel sounds return, assess incision, monitor drain if perforated','<b>Evaluate:</b> stable/decreasing pain, return of bowel sounds, no infection/peritonitis signs, tolerating diet advancement'],
+  escalate:['Sudden pain relief followed by diffuse worsening pain and rigid guarding','Fever with tachycardia and tachypnea','Rigid, board-like, distended abdomen','Signs of shock: pallor, delayed cap refill, restlessness'],
+  tx:['Appendectomy (surgical removal)','Pre-op: NPO, IV fluids/electrolytes, IV antibiotics, pain control, AVOID laxatives/enemas','Post-op (perforated): NG decompression, prolonged IV antibiotics, possible open-wound irrigation, longer stay or home IV antibiotics'],
+  contra:['NO heat application to the abdomen — increases perforation risk','NO laxatives or enemas — increases perforation risk','Avoid delaying surgical evaluation to "wait and see" once appendicitis is suspected'],
+  selfcare:['Post-op: follow activity restrictions exactly (no heavy lifting, gradual return to sports/school)','Monitor incision daily for redness, warmth, swelling, or drainage','Track temperature at home for several days post-discharge','Advance diet gradually as directed, stopping if pain or nausea returns'],
+  diet:{allow:['NPO pre-op; post-op clear liquids advancing to regular diet as bowel sounds return and tolerated'],avoid:['Any oral intake before surgical evaluation is complete','Heavy, greasy, or large meals in the first days post-op']},
+  eduParent:['Teach the sudden-relief-then-worsening-pain red flag explicitly — it is often misread as improvement','Review incision care and specific infection signs to watch for','Explain activity restrictions and expected recovery timeline','Reinforce completing the full course of antibiotics if prescribed at home'],
+  eduChild:['School-age: give an honest, concrete explanation ("your appendix got infected and needs to come out") and involve them in reporting pain changes','Adolescent: respect privacy, involve directly in care decisions and post-op activity planning, address concerns about scarring or missing school/sports','Use a 0–10 or FACES pain scale appropriate to age so the child can actively participate in reporting pain trends'],
+},
+{
+  id:'celiac', cluster:'malabsorption', name:'Celiac Disease', src:'NSG 3600 slides · Saunders Ch. 34',
+  priority:'Celiac crisis — severe diarrhea/vomiting causing rapid dehydration and severe acidosis is the acute threat in an otherwise chronic disease.',
+  path:['Malabsorption syndrome triggered by gluten (wheat, barley, rye, oats) → autoimmune villous damage → malabsorption of nutrients/fats','Unknown exact etiology; inherited predisposition + environmental trigger'],
+  risk:['Family history of celiac disease','Other autoimmune conditions (type 1 diabetes, thyroid disease)'],
+  ss:['Anorexia, irritability, fatigue','Weight loss / poor growth','Diarrhea or constipation, abdominal distention/bloating','Steatorrhea (fatty, foul-smelling stools)','Secondary lactose intolerance — often resolves gluten-free'],
+  comp:['<b>Celiac crisis:</b> severe diarrhea/vomiting → rapid dehydration, electrolyte imbalance, severe acidosis','Malnutrition, growth failure','Long-term: osteoporosis, intestinal lymphoma, other autoimmune disease'],
+  labsExpected:['Tissue transglutaminase (tTG-IgA) antibodies elevated at diagnosis, trending down after starting gluten-free diet','Growth parameters improving once gluten-free diet is established'],
+  labsUnexpected:['tTG-IgA remains elevated/rising despite reported gluten-free diet → notify provider, evaluate for hidden gluten exposure or non-adherence','Severe electrolyte derangement or acidosis during a flare → notify provider immediately (celiac crisis)','Persistent growth failure despite adherence → notify provider, consider additional workup'],
+  nurse:['<b>Recognize:</b> chronic GI symptoms + growth faltering + steatorrhea pattern','<b>Analyze:</b> link symptoms to gluten exposure history','<b>Prioritize:</b> correct nutritional deficiency, prevent celiac crisis','<b>Generate:</b> strict lifelong gluten-free diet; vitamin/mineral supplementation during acute phase','<b>Act:</b> teach label-reading (BROW foods), give supplements (iron, folic acid, A/D/E/K), monitor growth/weight','<b>Evaluate:</b> symptom resolution, weight/growth normalizing, family demonstrates label reading'],
+  escalate:['Severe diarrhea/vomiting with signs of dehydration (celiac crisis)','Significant weight loss or growth arrest','Lethargy or altered mental status during a flare','New or worsening bone pain (possible metabolic bone disease from long-term malabsorption)'],
+  tx:['LIFELONG strict gluten-free diet — the only effective treatment','Vitamin/mineral supplementation during acute phase: iron, folic acid, vitamins A, D, E, K','Safe grains: rice, corn, millet'],
+  contra:['Gluten-free diet is not optional or symptom-triggered — it must be maintained lifelong even when asymptomatic','Avoid unnecessary dairy during an acute flare if secondary lactose intolerance is present','Watch for hidden gluten in medications, communion wafers, play-dough, and cross-contaminated shared kitchen surfaces'],
+  selfcare:['Read every food label carefully, every time — formulations change without notice','Designate gluten-free cookware/toaster/cutting boards to avoid cross-contamination at home','Carry safe snack options when away from home (school, travel, parties)','Keep a symptom diary to catch accidental exposures'],
+  diet:{allow:['Rice, corn, millet, quinoa, potatoes','Fresh fruits, vegetables, meats, and dairy in naturally gluten-free forms','Products specifically labeled "certified gluten-free"'],avoid:['Barley, Rye, Oats (unless certified gluten-free), Wheat — the "BROW" foods','Regular breads, pastas, cereals, and baked goods unless labeled gluten-free','Hidden gluten sources: soy sauce, some processed/canned soups, hydrolyzed vegetable protein, communion wafers, some medications']},
+  eduParent:['Teach systematic label reading and the BROW mnemonic','Explain this is a lifelong autoimmune condition, not a temporary intolerance','Discuss school/daycare coordination (cafeteria menus, classroom snacks/crafts with wheat like play-dough)','Refer to a dietitian and the Celiac Disease Foundation/Celiac Sprue Association for ongoing support'],
+  eduChild:['Preschool/school-age: teach in simple terms which foods are "safe" vs. "not safe for my tummy," use visual food cards','School-age: practice asking an adult before eating unfamiliar food at parties or school, build self-advocacy skills','Adolescent: address social challenges directly (eating out, peer pressure, dating) and support independent label-reading and self-management'],
+  pearl:'<b>BROW</b> foods to avoid: <b>B</b>arley, <b>R</b>ye, <b>O</b>ats (unless certified gluten-free), <b>W</b>heat. Safe: rice, corn, millet.'
+},
+{
+  id:'gerd', cluster:'malabsorption', name:'Gastroesophageal Reflux Disease', src:'NSG 3600 slides · Perry Ch. 41',
+  priority:'Aspiration pneumonia and apnea — recurrent reflux into the airway is the danger, not the reflux itself.',
+  path:['Transfer of gastric contents into the esophagus; termed GERD when it causes tissue damage/complications','Common onset ~4 months; most resolve by 12 months, nearly all by 24 months if uncomplicated'],
+  risk:['Prematurity, bronchopulmonary dysplasia (BPD)','Neurological impairment','Chronic respiratory disorders','Esophageal atresia history','Obesity'],
+  ss:['Irritability, fussiness with feeds','Dysphagia or feeding refusal','Choking, chronic cough, wheezing, apnea','Weight loss / poor gain','Recurrent respiratory infections','Halitosis'],
+  comp:['Reactive airway disease (RAD)','Recurrent stridor, chronic cough','Recurrent pneumonia — esp. infants & neurologically impaired','Esophagitis, esophageal stricture (long-term, untreated)'],
+  labsExpected:['Weight gain trending appropriately once positioning/feeding modifications are in place','pH probe within expected acid-exposure range if monitored'],
+  labsUnexpected:['Falling weight/growth percentile → notify provider, reassess treatment plan','New wheeze, stridor, or recurrent pneumonia on imaging → notify provider, possible aspiration','Apnea episode → notify provider immediately'],
+  nurse:['<b>Recognize:</b> feeding-related symptoms, respiratory symptoms, weight trend','<b>Analyze:</b> distinguish normal infant "spit up" from GERD causing FTT/respiratory complications','<b>Prioritize:</b> respiratory/aspiration risk and nutrition/growth first','<b>Generate:</b> positioning, thickened feeds, medication if indicated, surgery only for severe/refractory cases','<b>Act:</b> elevate HOB, upright ~20–30 min after feeds, thicken formula, frequent burping, diet mods for older children','<b>Evaluate:</b> decreased regurgitation/vomiting episodes, adequate weight gain, no respiratory complications'],
+  escalate:['Apnea, cyanosis, or choking episodes with feeds','New or worsening wheeze/stridor/chronic cough','Failure to gain weight despite treatment','Recurrent pneumonia'],
+  tx:['No treatment needed if thriving with no respiratory complications','Positioning: elevate HOB, upright after feeds (NOT infant seat — increases reflux); supine for sleep per AAP/SIDS guidance unless PHCP directs otherwise','Thicken formula (1–3 tsp rice cereal) or pre-thickened formula; cross-cut nipple as needed','Meds: PPIs (omeprazole, esomeprazole, lansoprazole) or H2 blockers (ranitidine, famotidine)','Severe: continuous NG feeding awaiting surgery, Nissen fundoplication, feeding jejunostomy'],
+  contra:['Avoid the infant seat/semi-supine position after feeds — paradoxically increases reflux','Avoid overfeeding — larger volumes increase reflux episodes','Long-term unsupervised PPI use is not recommended without provider follow-up (rebound acid hypersecretion, infection risk)','Avoid prone sleep positioning despite reflux — safe sleep guidance still takes priority unless directed otherwise by the provider'],
+  selfcare:['Keep the infant upright 20–30 minutes after every feed','Offer smaller, more frequent feeds rather than large volumes','Track feeding/vomiting episodes and weight at home','For older children: identify and avoid personal trigger foods'],
+  diet:{allow:['Thickened formula/breastmilk per provider instructions','Smaller, more frequent meals for older children','Lean proteins, non-citrus fruits, and non-fried foods for older children/adolescents'],avoid:['Caffeine, carbonated beverages','Citrus and tomato-based products','Peppermint, spicy, or fried/fatty foods','Large meals close to bedtime']},
+  eduParent:['Teach correct positioning technique and why the infant seat is discouraged','Show how to thicken feeds correctly if prescribed','Review medication administration timing (e.g., PPIs before feeds)','Teach signs of aspiration/respiratory distress that need immediate follow-up'],
+  eduChild:['Infant: caregiver-directed; comfort through upright holding and pacing feeds','School-age: explain simply why avoiding certain foods (spicy, soda) helps their "tummy acid stay where it belongs"','Adolescent: involve directly in identifying trigger foods and adjusting meal timing, especially around sports/school schedules'],
+},
+{
+  id:'ftt', cluster:'malabsorption', name:'Failure to Thrive (FTT)', src:'NSG 3600 slides · Perry Ch. 31, pp. 832–834',
+  priority:'Severe malnutrition with developmental/organ compromise — and ruling out abuse/neglect is a concurrent, non-negotiable safety priority.',
+  path:['Failure of an infant/child to meet age-appropriate weight gain/growth — inadequate intake, absorption, or utilization to meet growth demands'],
+  risk:['<b>Inadequate intake:</b> neglect/abuse, improper formula prep, excessive juice, poverty, breastfeeding problems','<b>Inadequate absorption:</b> CF, celiac, Crohn, cow\'s milk allergy, liver disease, vitamin/mineral deficiency','<b>Increased metabolism:</b> hyperthyroidism, congenital heart disease, chronic immunodeficiency','<b>Defective utilization:</b> genetic anomalies (trisomy 21, 18)'],
+  ss:['Drop &gt;2 percentile lines on growth chart from baseline','Persistently below 3rd–5th percentile for weight','Weight &lt;80th percentile of median weight-for-height','Diarrhea/constipation, vomiting, recurring infections, abdominal distention','Loss of subcutaneous fat/wasting, dehydration','Signs of abuse/neglect, scaling skin, edema, alopecia, spoon-shaped nails, labial fissures','Respiratory compromise, inability to be comforted / lack of caregiver preference'],
+  comp:['Developmental delay (cognitive & emotional)','Chronic malnutrition-related complications','Ongoing growth failure if cause not identified'],
+  labsExpected:['Weight gain resuming (catch-up growth) once adequate calories/underlying cause addressed'],
+  labsUnexpected:['Continued growth failure despite adequate documented intake → notify provider, broaden organic workup','Electrolyte or protein/albumin abnormalities → notify provider, nutrition consult','Any finding suggestive of abuse/neglect (unexplained bruising, inconsistent history) → notify provider AND social work immediately'],
+  nurse:['<b>Recognize:</b> growth trend across multiple visits (not one data point), feeding history, caregiver-infant interaction','<b>Analyze:</b> organic (medical) vs. non-organic (psychosocial/neglect) cause — both need thorough workup','<b>Prioritize:</b> safety screening (abuse/neglect) alongside nutritional correction — don\'t assume neglect without assessment','<b>Generate:</b> nutritional rehab plan, feeding education, psychosocial support, community referral','<b>Act:</b> monitor daily weights/intake, involve dietitian, assess bonding & feeding technique nonjudgmentally, involve social work/CPA if neglect suspected','<b>Evaluate:</b> growth trend improving, caregiver demonstrates appropriate feeding technique, family connected to resources'],
+  escalate:['Signs suggestive of abuse/neglect — notify provider and social work immediately','Severe wasting or signs of refeeding syndrome when nutrition is reintroduced','No response to adequate caloric intake over expected timeframe','New developmental regression'],
+  tx:['Nutritional rehabilitation individualized to cause','Address underlying organic cause if identified (e.g., treat celiac, CF)','Feeding education and caregiver support'],
+  contra:['Avoid forced feeding or punitive approaches to feeding refusal — worsens the feeding relationship','Do not assume neglect without a full, nonjudgmental assessment','Avoid rapid caloric reintroduction in severely malnourished children without monitoring — refeeding syndrome risk'],
+  selfcare:['Keep a feeding log (what, how much, how the child responded) to bring to visits','Create a calm, consistent, pressure-free mealtime routine','Attend all scheduled weight-check follow-ups — growth is tracked over time, not one visit','Accept referrals (dietitian, early intervention, social work) as part of the care team, not a judgment'],
+  diet:{allow:['High-calorie, nutrient-dense foods appropriate to age (per dietitian plan)','Regular scheduled meals/snacks in a low-pressure environment'],avoid:['Excessive juice or low-nutrient "filler" foods that displace calorie-dense intake','Skipping meals or inconsistent feeding schedules']},
+  eduParent:['Teach appropriate formula preparation/mixing ratios if that was a contributing factor','Model and coach a calm, responsive (not forceful) feeding approach','Explain growth is tracked over serial visits, not a single number, to reduce parental anxiety/blame','Connect family with WIC, dietitian, and other community nutrition resources as needed'],
+  eduChild:['Infant: caregiver-directed; consistent, responsive feeding and comforting routines','Toddler: offer structured meal/snack times with choices within limits to rebuild positive feeding associations, avoid pressure or bribery','School-age: involve in simple food choices and praise effort at meals, avoid shaming language around weight/eating'],
+},
+{
+  id:'ingestions', cluster:'toxicology', name:'Ingestions (General)', src:'NSG 3600 slides',
+  priority:'Airway compromise, cardiotoxicity, or CNS depression depending on substance — the specific agent determines what kills first, so identification and Poison Control contact are the immediate priority.',
+  nurse:['<b>Recognize:</b> unknown substance exposure, sudden onset of GI/neuro symptoms in a toddler-age child (highest-risk age for exploratory ingestion)','<b>Prioritize / Act:</b> call Poison Control IMMEDIATELY', 
+  '<b>Act:</b> assess airway/breathing/circulation first, bring the container/substance to the ED if possible'],
+  escalate:['Any decreased level of consciousness, seizure, or respiratory depression','Difficulty breathing or stridor (possible caustic ingestion/airway burn)','Irregular heart rate','Any ingestion of a substance identified as highly toxic by Poison Control'],
+  contra:['Do NOT induce vomiting — this is the single most important safety point','Avoid activated charcoal or any home remedy without direction from Poison Control/provider','Do not give the child anything by mouth until Poison Control/provider has weighed in'],
+  selfcare:['Have the Poison Control number (1-800-222-1222 in the U.S.) saved and posted at home','Keep the product container/label available to show responders','Poison-proof storage: locked cabinets for medications, cleaning products, batteries'],
+  eduParent:['Poison-proof the home: lock up medications, cleaning products, batteries, and cosmetics','Keep Poison Control number accessible on the fridge and in your phone','Never induce vomiting at home without direction from Poison Control/PHCP','Store all products in original, labeled containers — never in food/drink containers'],
+  eduChild:['Toddler/preschool: this age group is not developmentally able to understand danger — prevention is entirely environmental (locks, storage), not teaching-based','School-age: simple safety teaching — "only take medicine from a grown-up you trust," never taste unknown substances','Adolescent: address intentional ingestion risk directly and sensitively if clinically relevant; ensure a safety assessment is part of care'],
+},
+{
+  id:'heavymetal', cluster:'toxicology', name:'Heavy Metal Poisoning', src:'NSG 3600 slides, p. 869',
+  priority:'Seizures during chelation and permanent neurotoxicity — chelation itself transiently raises blood metal levels, creating an acute seizure risk during treatment.',
+  path:['Toxic accumulation of heavy metals (lead, mercury) disrupts neurologic, hematologic, and multi-system function'],
+  risk:['<b>Lead:</b> lead-based paint in older homes, pottery, imported toys/cosmetics/paint/jewelry, battery casings, playground equipment, artist paint, contaminated water/soil','<b>Mercury:</b> broken fluorescent bulbs, disk batteries, mercury thermometers','High-risk groups: children who cook with clay pottery, immigrant/internationally adopted children, poverty, age &lt;6 years, older home/rental','Universal lead screening at 1–2 years; repeat at 3–6 years if high risk'],
+  ss:['Seizures, aggression, hyperactivity, impulsivity','Delinquency, disinterest, withdrawal','Developmental delays, low IQ, reading deficits, visual problems, learning disabilities'],
+  comp:['Permanent neurodevelopmental impairment','During chelation: seizures (as metals are mobilized/released from tissue into blood), electrolyte disturbances'],
+  labsExpected:['Blood lead level declining on serial testing after chelation and source removal'],
+  labsUnexpected:['Blood lead level rising or not declining despite chelation → notify provider, evaluate for ongoing exposure source','Calcium, zinc, magnesium, or iron dropping significantly during chelation → notify provider before next dose','Any seizure activity during chelation → notify provider immediately, implement seizure precautions if not already in place'],
+  nurse:['<b>Recognize:</b> known/suspected exposure source, behavioral/developmental changes, screening results','<b>Analyze:</b> correlate blood lead level with need for chelation therapy','<b>Prioritize:</b> SAFETY — chelation temporarily INCREASES blood metal levels → seizure precautions required','<b>Generate:</b> chelation therapy, source identification/removal, nutritional support','<b>Act:</b> implement seizure precautions during chelation, monitor urine output closely, monitor zinc/magnesium/iron/calcium/electrolytes, coordinate environmental source removal','<b>Evaluate:</b> declining blood lead/metal levels, no seizures, stable electrolytes, safe home confirmed'],
+  escalate:['Any seizure activity during or after chelation','Urine output declining (renal stress from chelation)','Signs of significant electrolyte depletion (weakness, arrhythmia, tetany)','Blood lead level not improving despite treatment — ongoing exposure likely'],
+  tx:['Chelation therapy — common agents: Dimercaprol, Succimer, Deferoxamine, Penicillamine','Seizure precautions during chelation (metal levels rise in blood as it\'s mobilized)','Monitor for dehydration (esp. urine output) and depletion of zinc, magnesium, iron, calcium, and other electrolytes'],
+  contra:['Chelation is used cautiously or avoided with significant renal impairment (agent-dependent) — confirm renal function first','Avoid unsupervised or home-initiated chelation — requires monitoring for seizures and electrolyte shifts','Some chelating agents interact with iron supplementation — do not co-administer without provider guidance'],
+  selfcare:['Identify and remove lead sources in the home before/alongside treatment (paint, soil, imported items, pottery)','Keep all chelation follow-up lab appointments to track blood lead trend','Maintain adequate iron, calcium, and zinc intake — these nutrients help reduce lead absorption','Watch for and report any unusual behavior changes or seizure-like activity during treatment'],
+  diet:{allow:['Iron-rich foods (lean meats, fortified cereals)','Calcium-rich foods (dairy or fortified alternatives)','Zinc-rich foods (meat, beans, whole grains)'],avoid:['Foods/water from suspected contaminated sources until confirmed safe','Skipping meals — an empty stomach can increase lead absorption']},
+  eduParent:['Identify and remove lead sources in the home (paint, soil, imported items, pottery)','Explain purpose of universal screening at 1–2 years (repeat 3–6 years if high risk)','Explain chelation therapy process and the seizure-precaution rationale to reduce parental fear','Nutritional guidance: adequate iron, calcium, and zinc intake help REDUCE lead absorption'],
+  eduChild:['Young child: prevention is environmental, not education-based — focus on removing hazards, not teaching the child','School-age: simple safety teaching about not putting non-food items (paint chips, old toys) in their mouth','Adolescent: if involved in household renovation/hobbies (pottery, stained glass) near lead sources, direct safety teaching about exposure prevention is appropriate'],
+  pearl:'<b>Chelating agents — "Dr. Sam Doesn\'t Poison":</b> <b>D</b>imercaprol, <b>S</b>uccimer, <b>D</b>eferoxamine, <b>P</b>enicillamine.'
+},
+];
+
+/* ============================================================
+   MNEMONICS (standalone grid, mirrors condition pearls)
+============================================================ */
+const MNEMONICS = [
+  {title:'3 Types of Dehydration — "Sodium Tells the Story"', lines:[
+    '<b>ISO</b>tonic — water &amp; sodium lost equally. Na⁺ normal (130–150). Most common — biggest risk = hypovolemic shock.',
+    '<b>HYPO</b>tonic — more sodium lost than water. Na⁺ &lt;130. Severe symptoms with smaller fluid losses.',
+    '<b>HYPER</b>tonic — more water lost than sodium. Na⁺ &gt;150. Most dangerous — correct SLOWLY to avoid cerebral edema/seizures.']},
+  {title:'Pyloric Stenosis = Alkalosis, Not Acidosis', lines:[
+    'Vomiting UP acid (HCl) → body loses acid → blood becomes more basic → metabolic <b>ALKALOSIS</b>.',
+    'Contrast with diarrhea, which loses bicarbonate (base) → metabolic <b>ACIDOSIS</b>.']},
+  {title:"Hirschsprung's Red Flag", lines:[
+    'NO MECONIUM in the first 24–48 hours after birth = think Hirschsprung\'s disease until proven otherwise.']},
+  {title:'Intussusception Triad — "Cramp, Currant, Chunk"', lines:[
+    '<b>Cramp</b> — sudden colicky pain, knees to chest, screaming.',
+    '<b>Currant</b> — currant jelly stool (blood + mucus).',
+    '<b>Chunk</b> — sausage-shaped palpable abdominal mass.']},
+  {title:'Celiac Diet — "BROW" Foods to Avoid', lines:[
+    '<b>B</b>arley &nbsp; <b>R</b>ye &nbsp; <b>O</b>ats (unless certified gluten-free) &nbsp; <b>W</b>heat',
+    'Safe: rice, corn, millet, and naturally gluten-free proteins/produce.']},
+  {title:'Chelating Agents — "Dr. Sam Doesn\'t Poison"', lines:[
+    '<b>D</b>imercaprol &nbsp; <b>S</b>uccimer &nbsp; <b>D</b>eferoxamine &nbsp; <b>P</b>enicillamine',
+    'Safety: chelation releases metal from tissue INTO the blood before excretion → seizure precautions + monitor for hypocalcemia/electrolyte loss.']},
+];
+
+/* ============================================================
+   RENDER
+============================================================ */
+function bulletList(items, colorVar){
+  return `<ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+}
+
+function tile(catKey, items){
+  if(!items || !items.length) return '';
+  const cat = CATS.find(c=>c.key===catKey);
+  return `<div class="tile" style="--tbg:var(--c-${catKey}-bg);--tline:var(--c-${catKey}-ln);--tcol:var(--c-${catKey})">
+    <div class="tile-head">${icon(catKey)}<span>${cat.label}</span></div>
+    ${bulletList(items)}
+  </div>`;
+}
+
+function labsTile(expected, unexpected){
+  if((!expected || !expected.length) && (!unexpected || !unexpected.length)) return '';
+  let inner = `<div class="tile-head">${icon('labs')}<span>Labs &amp; Diagnostics</span></div>`;
+  if(expected && expected.length){
+    inner += `<div class="subhead">Expected / Baseline</div>${bulletList(expected)}`;
+  }
+  if(unexpected && unexpected.length){
+    inner += `<div class="subhead">Unexpected — Notify Provider &amp; Intervene</div>${bulletList(unexpected)}`;
+  }
+  return `<div class="tile wide" style="--tbg:var(--c-labs-bg);--tline:var(--c-labs-ln);--tcol:var(--c-labs)">${inner}</div>`;
+}
+
+function nurseTile(items){
+  if(!items || !items.length) return '';
+  return `<div class="tile wide" style="--tbg:var(--c-nurse-bg);--tline:var(--c-nurse-ln);--tcol:var(--c-nurse)">
+    <div class="tile-head">${icon('nurse')}<span>Priority Nursing Interventions (NCJMM)</span></div>
+    ${bulletList(items)}
+  </div>`;
+}
+
+function topPriorityBlock(text){
+  if(!text) return '';
+  return `<div class="top-priority">${icon('target')}<div><span class="tp-label">TOP PRIORITY — WHAT THREATENS THIS CHILD FIRST</span><span class="tp-text">${text}</span></div></div>`;
+}
+
+function escalateBlock(items){
+  if(!items || !items.length) return '';
+  return `<div class="escalate">
+    <div class="escalate-head">${icon('alert')}<span>Notify the Provider Immediately If</span></div>
+    ${bulletList(items)}
+  </div>`;
+}
+
+function dietBlock(diet){
+  if(!diet) return '';
+  const allow = diet.allow && diet.allow.length ? diet.allow : null;
+  const avoid = diet.avoid && diet.avoid.length ? diet.avoid : null;
+  if(!allow && !avoid) return '';
+  return `<div class="diet-box">
+    <div class="diet-label">Dietary Guidance</div>
+    <div class="diet-grid">
+      <div class="diet-col allow"><div class="diet-head">✓ Foods Allowed</div>${allow ? bulletList(allow) : '<p style="font-size:12.5px;color:var(--ink-soft);">No specific restrictions</p>'}</div>
+      <div class="diet-col avoid"><div class="diet-head">✕ Foods to Avoid</div>${avoid ? bulletList(avoid) : '<p style="font-size:12.5px;color:var(--ink-soft);">No specific restrictions</p>'}</div>
+    </div>
+  </div>`;
+}
+
+function eduBlock(eduParent, eduChild){
+  if((!eduParent || !eduParent.length) && (!eduChild || !eduChild.length)) return '';
+  return `<div class="edu-box">
+    <div class="edu-grid">
+      <div class="edu-col parent">
+        <div class="edu-head">${icon('eduP')}<span>For Parents / Caregivers</span></div>
+        ${eduParent && eduParent.length ? bulletList(eduParent) : ''}
+      </div>
+      <div class="edu-col child">
+        <div class="edu-head">${icon('eduC')}<span>For the Child</span></div>
+        ${eduChild && eduChild.length ? bulletList(eduChild) : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function conditionCard(c){
+  const cl = CLUSTERS[c.cluster];
+  const standardTiles = ['path','risk','ss','comp'].map(k => tile(k, c[k])).join('');
+  const labs = labsTile(c.labsExpected, c.labsUnexpected);
+  const nurse = nurseTile(c.nurse);
+  const tx = tile('tx', c.tx);
+  const contra = tile('contra', c.contra);
+  const selfcare = tile('selfcare', c.selfcare);
+  const pearl = c.pearl ? `<div class="pearl">${icon('bulb', 'style="stroke:#8A6D1A"')}<div class="pearl-text">${c.pearl}</div></div>` : '';
+
+  return `
+  <div class="condition" id="card-${c.id}" data-name="${c.name.toLowerCase()}" data-cluster="${c.cluster}" style="--accent:${cl.accent};--accent-bg:${cl.bg}">
+    <div class="condition-head" onclick="toggleCard('${c.id}')">
+      <div class="condition-icon">${icon(cl.icon)}</div>
+      <div class="condition-titles">
+        <h3>${c.name}</h3>
+        <div class="src">${c.src}</div>
+      </div>
+      <div class="condition-chev">${icon('chev')}</div>
+    </div>
+    <div class="condition-body">
+      ${topPriorityBlock(c.priority)}
+      ${escalateBlock(c.escalate)}
+      <div class="tiles">${standardTiles}${labs}${nurse}${tx}${contra}${selfcare}</div>
+      ${dietBlock(c.diet)}
+      ${eduBlock(c.eduParent, c.eduChild)}
+      ${pearl}
+    </div>
+  </div>`;
+}
+
+function renderAll(){
+  Object.keys(CLUSTERS).forEach(clusterKey=>{
+    const mount = document.getElementById('mount-'+clusterKey);
+    if(!mount) return;
+    const items = CONDITIONS.filter(c=>c.cluster===clusterKey);
+    mount.innerHTML = items.map(conditionCard).join('');
+  });
+}
+
+function renderNav(){
+  const container = document.getElementById('navContainer');
+  let html = '';
+  Object.entries(CLUSTERS).forEach(([key, cl])=>{
+    const items = CONDITIONS.filter(c=>c.cluster===key);
+    html += `<div class="nav-cluster" data-navcluster="${key}">
+      <div class="nav-cluster-label">${cl.label}</div>
+      ${items.map(c=>`<a class="nav-link" data-navitem="${c.id}" data-name="${c.name.toLowerCase()}" onclick="jumpTo('${c.id}')">
+        <span class="dot" style="background:${cl.accent}"></span>${c.name}
+      </a>`).join('')}
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function renderMnemonics(){
+  const grid = document.getElementById('mnemGrid');
+  grid.innerHTML = MNEMONICS.map(m=>`
+    <div class="mnem-card">
+      <div class="mnem-top">${icon('bulb')}<h4>${m.title}</h4></div>
+      ${m.lines.map(l=>`<p>${l}</p>`).join('')}
+    </div>`).join('');
+}
+
+function renderLegend(){
+  const mount = document.getElementById('legendMount');
+  const items = [
+    ['path','Pathophysiology & Etiology'], ['risk','Risk Factors'], ['ss','Signs & Symptoms'],
+    ['comp','Complications'], ['labs','Labs & Diagnostics'], ['nurse','Priority Nursing (NCJMM)'],
+    ['tx','Treatment / Management'], ['contra','Contraindications & Restrictions'],
+    ['selfcare','Patient Self-Care'], ['eduP','Parent/Caregiver Education'], ['eduC','Child Education'],
+  ];
+  mount.innerHTML = items.map(([key,label])=>{
+    const bgVar = key==='eduP' ? '--c-eduP-bg' : key==='eduC' ? '--c-eduC-bg' : `--c-${key}-bg`;
+    const colVar = key==='eduP' ? '--c-eduP' : key==='eduC' ? '--c-eduC' : `--c-${key}`;
+    return `<span class="legend-chip" style="background:var(${bgVar});color:var(${colVar})">${label}</span>`;
+  }).join('') + `<span class="legend-chip" style="background:var(--red-bg);color:var(--red)">Notify Provider Immediately</span><span class="legend-chip" style="background:var(--navy);color:var(--gold)">Top Priority</span>`;
+}
+
+function toggleCard(id){
+  document.getElementById('card-'+id).classList.toggle('collapsed');
+}
+function jumpTo(id){
+  const el = document.getElementById('card-'+id);
+  el.classList.remove('collapsed');
+  el.scrollIntoView({behavior:'smooth', block:'start'});
+  el.style.transition='box-shadow .3s';
+  el.style.boxShadow='0 0 0 3px rgba(201,162,39,.5)';
+  setTimeout(()=>{ el.style.boxShadow=''; }, 1200);
+}
+
+renderAll();
+renderNav();
+renderMnemonics();
+renderLegend();
+
+/* Cluster filter chips */
+document.querySelectorAll('.chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    const f = chip.dataset.filter;
+    document.querySelectorAll('.section-block[data-cluster]').forEach(sec=>{
+      sec.style.display = (f==='all' || sec.dataset.cluster===f) ? '' : 'none';
+    });
+    document.querySelectorAll('.nav-cluster').forEach(nc=>{
+      nc.style.display = (f==='all' || nc.dataset.navcluster===f) ? '' : 'none';
+    });
+  });
+});
+
+/* Collapse / expand all */
+let allCollapsed = false;
+document.getElementById('toggleAllBtn').addEventListener('click', function(){
+  allCollapsed = !allCollapsed;
+  document.querySelectorAll('.condition').forEach(c=>{
+    c.classList.toggle('collapsed', allCollapsed);
+  });
+  this.textContent = allCollapsed ? 'Expand all' : 'Collapse all';
+});
+
+/* Search */
+document.getElementById('searchBox').addEventListener('input', function(){
+  const q = this.value.trim().toLowerCase();
+  let anyVisible = false;
+  document.querySelectorAll('.condition').forEach(card=>{
+    const name = card.dataset.name;
+    const text = card.textContent.toLowerCase();
+    const match = !q || name.includes(q) || text.includes(q);
+    card.style.display = match ? '' : 'none';
+    if(match) anyVisible = true;
+    if(match && q) card.classList.remove('collapsed');
+  });
+  document.querySelectorAll('.nav-link').forEach(link=>{
+    const match = !q || link.dataset.name.includes(q);
+    link.classList.toggle('hidden', !match);
+  });
+  document.getElementById('noResults').classList.toggle('show', !anyVisible && q);
+  if(q){
+    document.querySelectorAll('.section-block[data-cluster]').forEach(sec=> sec.style.display = '');
+    document.querySelectorAll('.nav-cluster').forEach(nc=> nc.style.display = '');
+    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+    document.querySelector('.chip[data-filter="all"]').classList.add('active');
+  }
+});
+
+</script>
+</body>
+</html>
