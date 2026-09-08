@@ -1,0 +1,2193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unit 11: Neurological/Neurosensory — NSG 3600 Exam 4 Comprehensive Atlas</title>
+<style>
+  :root {
+    --navy: #0b2545;
+    --navy-deep: #071a33;
+    --navy-light: #1d4079;
+    --gold: #d4a72c;
+    --gold-light: #f3dfa0;
+    --paper: #f7f5ef;
+    --paper-card: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #62676f;
+    --ring: rgba(11,37,69,0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Georgia','Cambria',serif;
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(212,167,44,0.05) 0%, transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(29,64,121,0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    background:
+      linear-gradient(120deg, rgba(212,167,44,0.18) 0%, transparent 55%),
+      linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 55%, var(--navy-light) 100%);
+    color: white;
+    padding: 34px 28px 26px;
+    border-bottom: 7px solid var(--gold);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+  }
+  header .kicker {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 12px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  header h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: 0.2px; }
+  header .sub { font-family: Arial, sans-serif; font-size: 14.5px; color: #dbe3f2; max-width: 900px; }
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--navy-deep);
+    display: flex; flex-wrap: wrap; gap: 0;
+    font-family: Arial, sans-serif; font-size: 11.5px;
+    border-bottom: 3px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  nav a {
+    color: #dbe3f2; text-decoration: none; padding: 9px 11px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  nav a:hover { background: var(--gold); color: var(--navy-deep); font-weight: bold; }
+  main { max-width: 1040px; margin: 0 auto; padding: 30px 20px 90px; }
+  section.unit-block { margin-bottom: 54px; }
+  h2.section-title {
+    font-family: Arial, sans-serif;
+    color: var(--navy-deep);
+    position: relative;
+    padding: 10px 0 12px 18px;
+    font-size: 23px;
+    margin: 0 0 22px;
+    border-left: 6px solid var(--gold);
+    background: linear-gradient(90deg, var(--ring) 0%, transparent 65%);
+    border-radius: 0 8px 8px 0;
+  }
+  .card {
+    background: var(--paper-card);
+    border: 1px solid #e4e0d6;
+    border-radius: 10px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(11,37,69,0.09), 0 1px 3px rgba(11,37,69,0.06);
+  }
+  .card-header {
+    padding: 16px 22px;
+    color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-header::after {
+    content: "";
+    position: absolute; top: -30%; right: -8%;
+    width: 160px; height: 160px;
+    background: rgba(255,255,255,0.10);
+    border-radius: 50%;
+  }
+  .card-header h3 { margin: 0; font-size: 20px; position: relative; z-index: 1; }
+  .card-header .tag { font-size: 12.5px; opacity: 0.95; margin-top: 3px; position: relative; z-index: 1; }
+  .card-body { padding: 20px 22px 22px; }
+  .card-body h4 {
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.5px; color: var(--navy-deep);
+    margin: 22px 0 8px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--ring);
+  }
+  .card-body h4:first-child { margin-top: 0; }
+  .card-body h5 { font-family: Arial, sans-serif; font-size: 12.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.3px; margin: 14px 0 6px; font-weight: 700; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+  .four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: stretch; }
+  @media (max-width: 900px) { .four-col { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 550px) { .four-col { grid-template-columns: 1fr; } }
+  .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 700px) { .findings-grid { grid-template-columns: 1fr; } }
+  .expected, .unexpected {
+    border-radius: 8px; padding: 12px 14px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+  }
+  .expected { background: linear-gradient(160deg, #eef8f0 0%, #e3f3e7 100%); border: 1px solid #b9dfc4; }
+  .unexpected { background: linear-gradient(160deg, #fdeeee 0%, #fbe1e1 100%); border: 1px solid #eeb8b8; }
+  .expected .label, .unexpected .label {
+    font-family: Arial, sans-serif; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.3px;
+    display: flex; align-items: center; gap: 6px; margin-bottom: 6px;
+  }
+  .expected .label { color: #1e7a3e; }
+  .expected .label::before { content: "✓"; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: #1e7a3e; color: white; font-size: 11px; }
+  .unexpected .label { color: #b02a2a; }
+  .unexpected .label::before { content: "!"; display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: #b02a2a; color: white; font-size: 11px; font-weight: bold; }
+  ul { margin: 6px 0; padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  .priority-steps { list-style: none; padding-left: 0; counter-reset: step; }
+  .priority-steps li { counter-increment: step; position: relative; padding-left: 42px; margin-bottom: 14px; }
+  .priority-steps li::before {
+    content: counter(step);
+    position: absolute; left: 0; top: 0;
+    background: linear-gradient(135deg, var(--navy-light), var(--navy-deep));
+    color: white; width: 27px; height: 27px; border-radius: 50%;
+    font-family: Arial, sans-serif; font-size: 13px; font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 4px rgba(11,37,69,0.35);
+  }
+  .priority-steps .why { display: block; font-size: 12.5px; color: var(--muted); font-family: Arial, sans-serif; margin-top: 3px; font-style: italic; }
+  .acuity-tag { display: inline-block; font-family: Arial, sans-serif; font-size: 10.5px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.3px; padding: 3px 9px; border-radius: 10px; margin-left: 8px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .acuity-kill { background: linear-gradient(135deg, #d9463a, #a72c22); color: white; }
+  .acuity-urgent { background: linear-gradient(135deg, #e69a1f, #b9760f); color: white; }
+  .acuity-important { background: linear-gradient(135deg, #2377b8, #14588a); color: white; }
+  .ncjmm-box { background: linear-gradient(160deg, #f7f1e0, #f0e6c8); border: 1px dashed var(--gold); padding: 13px 17px; border-radius: 8px; font-size: 14px; margin: 12px 0; }
+  .ncjmm-box .step { font-family: Arial, sans-serif; font-weight: bold; color: var(--navy-deep); font-size: 12.5px; text-transform: uppercase; }
+  .alert-box { background: linear-gradient(160deg, #fff8e6, #fdefc7); border: 1px solid var(--gold); border-left: 6px solid var(--gold); padding: 12px 17px; margin: 12px 0; font-size: 14px; border-radius: 0 8px 8px 0; }
+  .alert-box .label { font-family: Arial, sans-serif; font-weight: bold; color: #8a6400; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
+  .danger-box { background: linear-gradient(160deg, #fdeeee, #fbdede); border-left: 6px solid #c0392b; padding: 12px 17px; margin: 12px 0; font-size: 14px; border-radius: 0 8px 8px 0; }
+  .danger-box .label { font-family: Arial, sans-serif; font-weight: bold; color: #c0392b; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
+  .call-provider { background: linear-gradient(160deg, #fff2f2, #ffe3e3); border: 2px solid #c0392b; border-radius: 10px; padding: 14px 18px; margin: 14px 0; box-shadow: 0 2px 10px rgba(192,57,43,0.12); }
+  .call-provider .label { font-family: Arial, sans-serif; font-weight: bold; color: #c0392b; display: block; margin-bottom: 7px; text-transform: uppercase; font-size: 13px; }
+  .call-provider .label::before { content: "☎ "; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13.5px; border-radius: 6px; overflow: hidden; }
+  th, td { border: 1px solid #e4e0d6; padding: 8px 11px; text-align: left; vertical-align: top; }
+  th { background: linear-gradient(135deg, var(--navy-light), var(--navy-deep)); color: white; font-family: Arial, sans-serif; font-size: 12.5px; }
+  tr:nth-child(even) { background: #f7f6f0; }
+  tr:nth-child(odd) td { background: #fffefb; }
+  .mnemonic {
+    background: linear-gradient(135deg, var(--navy-deep), var(--navy-light));
+    color: white; border-radius: 8px; padding: 13px 17px; margin: 12px 0;
+    font-family: Arial, sans-serif; font-size: 14px;
+    box-shadow: 0 3px 10px rgba(11,37,69,0.25);
+  }
+  .mnemonic strong { color: var(--gold-light); }
+  .source-tag { font-family: Arial, sans-serif; font-size: 11px; color: var(--muted); font-style: italic; margin-top: 5px; }
+  .calc-box { background: linear-gradient(160deg, #eef6fb, #dfeef8); border: 1px solid #a9cfe6; border-radius: 8px; padding: 15px 19px; margin: 12px 0; font-family: Arial, sans-serif; font-size: 14px; }
+  .calc-box .formula { font-family: 'Courier New', monospace; background: white; padding: 9px 11px; border-radius: 5px; margin: 7px 0; font-size: 14px; border: 1px solid #cfe0ec; }
+  .food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 700px) { .food-grid { grid-template-columns: 1fr; } }
+  .food-ok, .food-avoid { border-radius: 8px; padding: 12px 14px; }
+  .food-ok { background: linear-gradient(160deg, #eef8f0, #e3f3e7); border: 1px solid #b9dfc4; }
+  .food-avoid { background: linear-gradient(160deg, #fdeeee, #fbe1e1); border: 1px solid #eeb8b8; }
+  .food-ok .label, .food-avoid .label { font-family: Arial, sans-serif; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+  .food-ok .label { color: #1e7a3e; }
+  .food-avoid .label { color: #b02a2a; }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+  @media (max-width: 700px) { .edu-grid { grid-template-columns: 1fr; } }
+  .edu-parent, .edu-child { border-radius: 8px; padding: 14px 16px; }
+  .edu-parent { background: linear-gradient(160deg, #eef2fb, #e2e9f8); border: 1px solid #bccbf0; }
+  .edu-child { background: linear-gradient(160deg, #fff8ec, #fbeecb); border: 1px solid #edd9a0; }
+  .edu-parent .label, .edu-child .label { font-family: Arial, sans-serif; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 7px; }
+  .edu-parent .label { color: var(--navy-deep); }
+  .edu-child .label { color: #8a6400; }
+  .dev-tag { display: block; font-size: 11px; color: var(--muted); font-style: italic; margin-bottom: 9px; }
+  .selfcare-box { background: linear-gradient(160deg, #f2faf5, #e5f5eb); border: 1px solid #bfe3cc; border-radius: 8px; padding: 13px 17px; margin: 12px 0; }
+  .selfcare-box .label { font-family: Arial, sans-serif; font-weight: bold; color: #1e7a3e; display: block; margin-bottom: 7px; text-transform: uppercase; font-size: 12px; }
+  .lab-table th.hi { background: linear-gradient(135deg, #c96a2e, #a3521f); }
+  footer { background: linear-gradient(135deg, var(--navy-deep), var(--navy)); color: #c9d4e8; padding: 24px; text-align: center; font-family: Arial, sans-serif; font-size: 12px; }
+  .toc-legend { font-family: Arial, sans-serif; font-size: 12px; background: var(--paper-card); border: 1px solid #e4e0d6; padding: 12px 16px; border-radius: 8px; margin-bottom: 22px; box-shadow: 0 2px 8px rgba(11,37,69,0.06); }
+  .lecture-tag { display: inline-block; font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: linear-gradient(135deg, #6b4aa0, #4a2f7a); color: white; margin-left: 6px; vertical-align: middle; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .compare-table th { background: linear-gradient(135deg, var(--navy-light), var(--navy-deep)); }
+  .ngn-box { background: linear-gradient(160deg, #eef2fb, #e2e9f8); border: 1px solid #bccbf0; border-radius: 10px; padding: 16px 20px; margin: 16px 0; box-shadow: 0 2px 8px rgba(29,64,121,0.08); }
+  .ngn-box .label { font-family: Arial, sans-serif; font-weight: bold; color: var(--navy-deep); display: block; margin-bottom: 9px; text-transform: uppercase; font-size: 12px; }
+  .crisis-card { background: var(--paper-card); border: 1px solid #e4e0d6; border-radius: 8px; padding: 12px 14px; box-shadow: 0 2px 6px rgba(11,37,69,0.06); height: 100%; }
+  .crisis-card h5 { margin: 0 0 7px; font-family: Arial, sans-serif; font-size: 13px; }
+  .med-table th { background: linear-gradient(135deg, var(--navy-light), var(--navy-deep)); }
+  .stages-grief { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 16px 0; }
+  .stage-pill { color: white; font-family: Arial, sans-serif; font-weight: bold; padding: 11px 20px; border-radius: 22px; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .age-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  @media (max-width: 700px) { .age-grid { grid-template-columns: 1fr 1fr; } }
+  .age-card { background: var(--paper-card); border: 1px solid #e4e0d6; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(11,37,69,0.06); }
+  .age-card .age-head { color: white; padding: 8px 10px; font-family: Arial, sans-serif; font-weight: bold; font-size: 13px; text-align: center; }
+  .age-card .age-body { padding: 11px 12px; font-size: 13px; }
+  .hypo-hyper-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+  @media (max-width: 700px) { .hypo-hyper-grid { grid-template-columns: 1fr; } }
+  .hypo-box, .hyper-box { border-radius: 8px; padding: 12px 14px; }
+  .hypo-box { background: linear-gradient(160deg, #fdeeee, #fbe1e1); border: 1px solid #eeb8b8; }
+  .hyper-box { background: linear-gradient(160deg, #fff8e6, #fdefc7); border: 1px solid var(--gold); }
+  .hypo-box .label, .hyper-box .label { font-family: Arial, sans-serif; font-weight: bold; font-size: 12px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+  .hypo-box .label { color: #b02a2a; }
+  .hyper-box .label { color: #8a6400; }
+
+  /* Category-specific gradient headers */
+  .card.icp .card-header { background: linear-gradient(135deg, #d97a3d, #a3521f); }
+  .card.infect .card-header { background: linear-gradient(135deg, #a852a8, #7a2f7a); }
+  .card.structural .card-header { background: linear-gradient(135deg, #2f7fc4, #155a94); }
+  .card.devel .card-header { background: linear-gradient(135deg, #3fa377, #1f6b4c); }
+  .card.trauma .card-header { background: linear-gradient(135deg, #c65050, #8c2e2e); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Galen College of Nursing · NSG 3600 · Exam 4 Prep</div>
+  <h1>Unit 11 — The Child With Neurological or Neurosensory Dysfunction</h1>
+  <div class="sub">Increased ICP · Seizures · Meningitis · Encephalitis · Reye's Syndrome · Spina Bifida · Hydrocephalus · Cerebral Palsy · TBI · Abusive Head Trauma · ADHD · Down Syndrome · Autism · Child Maltreatment — NCJMM-Framed Comprehensive Atlas</div>
+</header>
+
+<nav>
+  <a href="#uslos">USLOs</a>
+  <a href="#icp">Increased ICP</a>
+  <a href="#seizures">Seizures</a>
+  <a href="#meningitis">Meningitis</a>
+  <a href="#encephalitis">Encephalitis</a>
+  <a href="#reyes">Reye's Syndrome</a>
+  <a href="#spina-bifida">Spina Bifida</a>
+  <a href="#hydrocephalus">Hydrocephalus</a>
+  <a href="#cp">Cerebral Palsy</a>
+  <a href="#tbi">TBI</a>
+  <a href="#aht">Abusive Head Trauma</a>
+  <a href="#maltreatment">Child Maltreatment</a>
+  <a href="#adhd">ADHD</a>
+  <a href="#downs">Down Syndrome</a>
+  <a href="#autism">Autism</a>
+  <a href="#meds">Medication Reference</a>
+</nav>
+
+<main>
+
+<section class="unit-block" id="uslos">
+<div class="toc-legend">
+    <strong>How priority acuity tags work in this guide:</strong>
+    <span class="acuity-tag acuity-kill">Will Kill First</span> = airway/breathing/circulation or brain-threatening — act immediately, no delay.
+    <span class="acuity-tag acuity-urgent">Urgent, Not Immediately Lethal</span> = needs prompt action to prevent deterioration.
+    <span class="acuity-tag acuity-important">Important, Sequenced Later</span> = necessary but only after the above are addressed.
+    <br><br><strong>Tag meaning:</strong> <span class="lecture-tag">Lecture</span> = content pulled directly from your Unit 11 instructor slide decks, layered onto the textbook/Saunders foundation.
+  </div>
+</section>
+
+<!-- ========================= INCREASED ICP ========================= -->
+<section class="unit-block" id="icp">
+<h2 class="section-title">Increased Intracranial Pressure (ICP)</h2>
+
+<div class="card icp">
+  <div class="card-header">
+    <h3>Increased Intracranial Pressure</h3>
+    <div class="tag">The pressure of CSF in the subarachnoid space — a final common pathway for many neuro conditions</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>ICP is the pressure of cerebrospinal fluid (CSF) in the subarachnoid space between the skull and the brain. <span class="lecture-tag">Lecture</span> The brain is tightly enclosed in the solid, non-expansile bony cranium. Total intracranial volume — brain (80%), CSF (10%), and blood (10%) — must remain constant. An increase in any one component (blood, CSF, or tissue mass from edema/tumor/bleeding) must be offset by a compensatory decrease in another. Children with open fontanels/unfused sutures can compensate somewhat via skull expansion, but this capacity is limited at any age. Once compensation is exhausted, any further volume increase causes a rapid, dangerous rise in ICP.</p>
+
+    <h5>Risk Factors / Causes</h5>
+    <ul>
+      <li>Tumors or other space-occupying lesions</li>
+      <li>Accumulation of fluid within the ventricular system (hydrocephalus)</li>
+      <li>Intracranial bleeding</li>
+      <li>Cerebral edema (from trauma, infection, hypoxia)</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="alert-box">
+      <span class="label">The single most important early sign — any age</span>
+      <strong>Change in level of consciousness (LOC) is the #1, earliest sign of increased ICP at any age.</strong> LOC provides the earliest indication of neurologic improvement or deterioration — watch this above all other parameters. <span class="lecture-tag">Lecture</span>
+    </div>
+
+    <div class="findings-grid">
+      <div class="expected">
+        <span class="label">Infants — Early Signs</span>
+        <ul>
+          <li>Irritability, poor feeding</li>
+          <li>High-pitched cry</li>
+          <li>Tense, bulging fontanels</li>
+          <li>Separated cranial sutures</li>
+          <li>Setting-sun sign (sclera visible above the iris)</li>
+          <li>Distended scalp veins</li>
+          <li>Macewen (cracked-pot) sign on skull percussion</li>
+          <li>Increased head circumference</li>
+        </ul>
+      </div>
+      <div class="expected">
+        <span class="label">Children — Early Signs</span>
+        <ul>
+          <li>Headache</li>
+          <li>Vomiting (with or without nausea, often forceful)</li>
+          <li>Seizures</li>
+          <li>Diplopia, blurred vision</li>
+          <li>Irritability, restlessness</li>
+          <li>Drowsiness, memory loss</li>
+          <li>Papilledema</li>
+          <li>Decline in school performance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="danger-box">
+      <span class="label">Late Signs — Ominous, Any Age</span>
+      <ul>
+        <li>Significant decrease in LOC</li>
+        <li><strong>Bradycardia</strong> (paired with rising BP = late Cushing's triad — rare in children but a grave sign when present)</li>
+        <li>Decreased motor/sensory response to painful stimuli</li>
+        <li>Altered pupil size and reactivity</li>
+        <li>Decorticate posturing (flexion — arms flexed to chest, legs extended) — cerebral cortex dysfunction</li>
+        <li>Decerebrate posturing (rigid extension of arms and legs) — midbrain dysfunction, more ominous than decorticate</li>
+        <li>Cheyne-Stokes respirations</li>
+        <li>Coma</li>
+      </ul>
+    </div>
+
+    <div class="mnemonic">
+      <strong>Decorticate vs. decerebrate:</strong> Decorticate = arms curl "toward the core" (flexed to chest) — cortex-level dysfunction, less severe. Decerebrate = rigid, straight-line extension — brainstem/midbrain-level dysfunction, more severe. Progression from decorticate to decerebrate posturing signals worsening injury.
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Herniation (brain tissue forced through structures within the skull) — can be rapidly fatal</li>
+      <li>Permanent neurologic damage from sustained cerebral hypoperfusion</li>
+      <li>Death if uncontrolled</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <table>
+      <tr><th>Assessment Tool</th><th>Purpose</th></tr>
+      <tr><td>Pediatric Glasgow Coma Scale (GCS)</td><td>Standardized eye-opening, verbal, and motor response scoring; pediatric version accounts for age-appropriate verbal/motor expectations (e.g., crying counts as "speech" in children under 5). Score ≤8 = coma; 15 = normal; 3 = deep coma/death. <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>CT/MRI</td><td>Identify structural cause (bleed, mass, edema)</td></tr>
+      <tr><td>ICP monitoring probe</td><td>Direct pressure measurement in critical cases, once child is sedated/paralyzed <span class="lecture-tag">Lecture</span></td></tr>
+    </table>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider Immediately If</span>
+      <ul>
+        <li>Any decline in LOC or GCS score, however small</li>
+        <li>New bradycardia, especially paired with rising blood pressure</li>
+        <li>New posturing (decorticate or decerebrate) or progression from one to the other</li>
+        <li>Pupillary changes (unequal, sluggish, or fixed/dilated)</li>
+        <li>New seizure activity</li>
+        <li>Cheyne-Stokes respirations or any respiratory pattern change</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Acuity Order</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Monitor airway, breathing, and LOC continuously; position head of bed 15–30 degrees with head/neck midline (avoid jugular vein compression, which itself raises ICP).
+      <span class="why">Why: Airway compromise and herniation from uncontrolled ICP are the most immediate threats to life; midline positioning and HOB elevation optimize venous drainage and reduce ICP directly.</span></li>
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Check for intact gag/swallow reflexes before oral intake; use caution with suctioning and avoid overstimulation.
+      <span class="why">Why: Suctioning and vigorous stimulation can transiently spike ICP further and risk aspiration in a child with impaired reflexes.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Avoid hypotonic IV solutions; monitor for fever and use a hypothermic blanket if indicated. <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: Hypotonic fluids can worsen cerebral edema by promoting fluid shift into brain tissue; fever increases metabolic demand and can worsen ICP.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Treat pain and agitation; maintain environmental control (dim lighting, reduced noise); institute seizure precautions and administer seizure/cerebral edema medications as ordered. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Support advanced management if critical: sedation (barbiturates), paralysis, and ICP probe monitoring. <span class="lecture-tag">Lecture</span></li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Monitor vital signs, LOC, reflexes, pupil reaction continuously <span class="lecture-tag">Lecture</span></li>
+      <li>Head of bed 15–30 degrees, head/neck midline <span class="lecture-tag">Lecture</span></li>
+      <li>Avoid hypotonic IV solutions <span class="lecture-tag">Lecture</span></li>
+      <li>Medications to decrease cerebral edema (e.g., hyperosmolar therapy per order)</li>
+      <li>Sedation (barbiturates) in critical cases; paralysis with ICP probe monitoring if severe <span class="lecture-tag">Lecture</span></li>
+      <li>Seizure precautions and antiepileptic medication if indicated <span class="lecture-tag">Lecture</span></li>
+    </ul>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Teach the early signs of worsening ICP specific to their child's age (infant vs. older child) so they can report changes promptly at home or during hospitalization</li>
+          <li>Explain why positioning, minimizing stimulation, and avoiding certain fluids matter — parents often want to comfort/pick up a fussy child, so explain gently why minimizing crying/stimulation is protective right now</li>
+          <li>Prepare families for the possibility of advanced interventions (sedation, ICP monitoring) if the child's condition is critical</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Adjust to developmental stage; a child with significantly altered LOC may not be able to participate in education at all</span>
+        <ul>
+          <li><strong>Infant:</strong> no verbal education possible; comfort via minimal handling, dim/quiet environment, and consistent caregiving</li>
+          <li><strong>School-age (if alert enough to participate):</strong> simple, concrete explanation of why they need to stay still/quiet and why bright lights or loud noise are being minimized right now</li>
+          <li><strong>Adolescent:</strong> more complete explanation of what's being monitored and why, respecting their capacity for abstract understanding if their LOC allows</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">For families managing chronic/recurring ICP risk (e.g., shunted hydrocephalus, tumor surveillance)</span>
+      <ul>
+        <li>Know the child's specific early-warning signs and have a clear plan for who to call</li>
+        <li>Keep all neuro follow-up appointments and imaging surveillance on schedule</li>
+        <li>Avoid activities that pose head injury risk when the child has a known condition affecting ICP compensation</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 2–5; Saunders 9th ed. Ch. 39 (Box, early/late signs, GCS); Perry Ch. 46, Box 46.1.</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= SEIZURES ========================= -->
+<section class="unit-block" id="seizures">
+<h2 class="section-title">Seizures</h2>
+
+<div class="card icp">
+  <div class="card-header">
+    <h3>Seizure Disorders</h3>
+    <div class="tag">Excessive, unorganized neuronal discharges</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>A seizure results from excessive and unorganized neuronal discharges in the brain that activate associated motor and sensory organs. Classified as generalized, partial (focal), or unclassified depending on the brain area involved. New-onset seizures always warrant a full workup, including consideration of an underlying malignant neoplasm. <span class="lecture-tag">Lecture</span></p>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Fever (febrile seizures — most common in children 6 months–5 years)</li>
+      <li>Family history of seizures</li>
+      <li>CNS infection, trauma, or structural lesion</li>
+      <li>Cognitive impairment and/or cerebral palsy (highest risk group for developing epilepsy)</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Clinical manifestations</span>
+      <ul>
+        <li>Loss of consciousness/awareness</li>
+        <li>Motor signs — stiffening of the body <span class="lecture-tag">Lecture</span></li>
+        <li>Automatisms (in complex partial seizures)</li>
+        <li>Aura preceding the event (in some seizure types)</li>
+        <li>Postictal state: confusion, drowsiness after the seizure ends</li>
+      </ul>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li><strong>Status epilepticus</strong> — a continuous seizure lasting more than 30 minutes, or a series of seizures without return to baseline LOC between them. "Impending status epilepticus" = 5–30 minutes, with treatment expected to start within 5 minutes. This is a <strong>medical emergency</strong> requiring immediate intervention to prevent brain injury or death.</li>
+      <li>Aspiration/airway occlusion during a tonic-clonic seizure (lost swallowing reflex, increased salivation)</li>
+      <li>Injury from falls or environmental hazards during the seizure</li>
+      <li>Sudden Unexpected Death in Epilepsy (SUDEP) — rare, but the major risk factor is uncontrolled generalized tonic-clonic seizures, particularly during sleep</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <table>
+      <tr><th>Test</th><th>Purpose</th></tr>
+      <tr><td>Neurological assessment &amp; testing</td><td>Baseline and ongoing evaluation <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>CT/MRI</td><td>Identify structural cause (tumor, lesion, bleed) <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>EEG</td><td>Detect abnormal electrical activity, classify seizure type <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>PET scan</td><td>Further functional imaging in select cases <span class="lecture-tag">Lecture</span></td></tr>
+    </table>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider / Call EMS If</span>
+      <ul>
+        <li>Child stops breathing</li>
+        <li>Evidence of injury, or the child is diabetic or pregnant</li>
+        <li>Seizure lasts more than 5 minutes (unless the child's seizures typically last longer, per a written medical order)</li>
+        <li>Status epilepticus occurs</li>
+        <li>Pupils are unequal after the seizure</li>
+        <li>Child vomits continuously 30 minutes after the seizure ends (possible sign of an acute problem)</li>
+        <li>Child cannot be awakened and is unresponsive to pain after the seizure</li>
+        <li>Seizure occurs in water</li>
+        <li>This is the child's <strong>first</strong> seizure</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — During a Seizure</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Protect the airway: ease the child to the floor if standing/seated (do not remove from a wheelchair), position on the side to facilitate drainage, and suction the oral cavity/posterior oropharynx if needed.
+      <span class="why">Why: Loss of the swallowing reflex and increased salivation during a tonic-clonic seizure create real aspiration and airway occlusion risk — this is the most immediate life threat during an active seizure.</span></li>
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Never restrain the child's movements and never place anything in the child's mouth.
+      <span class="why">Why: Restraint can cause fractures/injury without stopping the seizure; objects placed in the mouth can cause airway obstruction, aspiration, or dental/oral injury — the old "padded tongue blade" practice is outdated and dangerous.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Remove harmful objects from the area; do not attempt to stop the seizure — it is not possible and should not be attempted.
+      <span class="why">Why: Injury prevention without interference allows the seizure to run its natural, self-limited course safely.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Time the seizure and document characteristics observed (aura, motor effects, eye movements, alterations in consciousness, postictal state) — describe only what is observed, don't label the seizure type.
+      <span class="why">Why: Accurate documentation is essential for diagnosis and ongoing management, but comes after the immediate safety actions above.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Stay with the child and reassure until fully conscious after the seizure ends.</li>
+    </ol>
+
+    <h4>Treatment — Status Epilepticus (Escalating Medication Sequence)</h4>
+    <ol class="priority-steps">
+      <li><strong>Initial support:</strong> CAB of life support (circulation, airway, breathing), check blood glucose, administer oxygen, establish IV access.</li>
+      <li><strong>First-line (in-hospital):</strong> IV diazepam or lorazepam (Ativan). If no IV access: rectal diazepam or intramuscular/intranasal/buccal midazolam — the fastest-available route is more important than which specific drug is chosen.</li>
+      <li><strong>Second-line:</strong> IV phenytoin or fosphenytoin (fosphenytoin preferred for better tolerability), followed by phenobarbital if needed.</li>
+      <li><strong>Refractory:</strong> general anesthesia with continuous infusion of midazolam, propofol, or pentobarbital; intubation and continuous EEG monitoring required at this stage.</li>
+    </ol>
+    <div class="danger-box">
+      <span class="label">Medication Safety Alert</span>
+      The combination of benzodiazepines followed by phenytoin/phenobarbital places the child at <strong>high risk for respiratory depression and apnea</strong> — respiratory support must be readily available. Diazepam is incompatible with many other drugs — do not mix in the same line.
+    </div>
+
+    <h4>Foods/Substances — Special Diet Consideration</h4>
+    <div class="alert-box">
+      <span class="label">Ketogenic diet caution</span>
+      Children on a ketogenic diet (used for refractory epilepsy) or with certain metabolic disorders (e.g., pyruvate dehydrogenase deficiency) should receive <strong>normal saline rather than dextrose-containing IV fluids</strong> — dextrose can trigger seizures and worsen their condition in this specific population.
+    </div>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Teach seizure first aid: side-lying position, never put anything in the mouth, do not restrain, time the seizure</li>
+          <li>Teach exactly when to call EMS (see list above) vs. when to simply document and inform the provider at the next visit</li>
+          <li>Stress the importance of giving antiepileptic medication on schedule to prevent recurrence — a pill box can help prevent missed doses</li>
+          <li>For febrile seizures specifically: reassure that these are generally benign, with no difference in long-term intelligence, memory, or academic performance compared to peers; tepid sponge baths are NOT recommended (ineffective, cause shivering which increases metabolic rate, and cause discomfort)</li>
+          <li>Have the child wear medical identification</li>
+          <li>Sending a child with a chronic seizure disorder home from school after a seizure is not automatically necessary unless the parents request it</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Seizures occur across all pediatric ages; adjust explanation accordingly</span>
+        <ul>
+          <li><strong>School-age (concrete thinkers):</strong> simple explanation of what a seizure is ("sometimes the brain sends too many signals at once and your body reacts — it's not something you did wrong") and what classmates/teachers will do to help keep them safe</li>
+          <li><strong>Adolescent:</strong> more complete explanation of the condition, medication adherence rationale, and safety considerations (e.g., swimming supervision, driving restrictions per state law once old enough) — involve directly in self-management</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing management</span>
+      <ul>
+        <li>Take antiepileptic medication exactly as scheduled; use a pill organizer if helpful</li>
+        <li>Keep a seizure log (time, duration, characteristics) to share with the neurology team</li>
+        <li>Identify and avoid known personal seizure triggers where possible</li>
+        <li>Wear medical identification</li>
+        <li>Know the specific "call EMS now" criteria for this child</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 6–9; Saunders 9th ed. Ch. 39 (seizure first aid, febrile seizure education); Perry Ch. 46 (status epilepticus management, medication sequencing).</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= MENINGITIS ========================= -->
+<section class="unit-block" id="meningitis">
+<h2 class="section-title">Meningitis</h2>
+
+<div class="card infect">
+  <div class="card-header">
+    <h3>Meningitis</h3>
+    <div class="tag">Inflammation of CSF &amp; meninges — bacterial vs. viral</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>Inflammation of the CSF and meninges due to infection. <span class="lecture-tag">Lecture</span> Two major etiologic categories:</p>
+    <ul>
+      <li><strong>Septic/Bacterial:</strong> most commonly <em>Haemophilus influenzae</em> type b, <em>Streptococcus pneumoniae</em>, or <em>Neisseria meningitidis</em>. Meningococcal meningitis occurs in epidemic form and is transmitted by droplets from nasopharyngeal secretions.</li>
+      <li><strong>Aseptic/Viral:</strong> most commonly enterovirus; also mumps, herpesvirus, cytomegalovirus, arbovirus. Generally more self-limiting with a shorter course and fewer complications than bacterial meningitis.</li>
+    </ul>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Incomplete immunization status (Hib, pneumococcal, meningococcal vaccines all reduce risk)</li>
+      <li>Age under 2 months (highest mortality risk group)</li>
+      <li>Complications of neurosurgery, trauma, or sinus/ear infections</li>
+      <li>Systemic infections</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="findings-grid">
+      <div class="expected">
+        <span class="label">Infant (up to ~18 months)</span>
+        <ul>
+          <li>Tense, bulging fontanelle</li>
+          <li>Increasing head circumference</li>
+          <li>High-pitched cry</li>
+          <li>Poor feeding, vomiting, diarrhea</li>
+          <li>Fever, chills — but may be difficult to detect classic meningeal signs at this age</li>
+        </ul>
+      </div>
+      <div class="expected">
+        <span class="label">All Children</span>
+        <ul>
+          <li>Fever, headache</li>
+          <li>Stiff neck (nuchal rigidity)</li>
+          <li>Positive Brudzinski sign (neck flexion causes hip/knee flexion)</li>
+          <li>Positive Kernig sign (inability to extend the leg when hip is flexed)</li>
+          <li>Decreased LOC, photophobia, irritability, anorexia, emesis, seizures</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Communicating hydrocephalus (especially in infants — a major driver of residual deficits at this age)</li>
+      <li>Hearing loss — common; audiology evaluation needed shortly after discharge</li>
+      <li>Seizures during the first few days of treatment</li>
+      <li>SIADH, subdural effusions, cerebral edema and herniation</li>
+      <li>Waterhouse-Friderichsen syndrome (with meningococcemia): overwhelming septic shock, DIC, massive bilateral adrenal hemorrhage, purpura — a dramatic and serious complication</li>
+      <li>Long-term neurodevelopmental sequelae: up to half of survivors have some deficit, ranging from mild learning/behavioral issues to profound hearing impairment, intractable epilepsy, or significant intellectual disability</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics — CSF Analysis (Lumbar Puncture)</h4>
+    <table class="lab-table">
+      <tr><th>CSF Finding</th><th class="hi">Bacterial Meningitis</th><th class="hi">Viral (Aseptic) Meningitis</th></tr>
+      <tr><td>Color/appearance</td><td><strong>Cloudy/turbid</strong></td><td>Clear or slightly cloudy</td></tr>
+      <tr><td>Opening pressure</td><td>Elevated</td><td>Normal</td></tr>
+      <tr><td>White blood cell count</td><td>Elevated, increased neutrophils</td><td>Slightly elevated, increased lymphocytes</td></tr>
+      <tr><td>Protein</td><td>Elevated</td><td>Normal or slightly increased</td></tr>
+      <tr><td>Glucose</td><td><strong>Decreased</strong></td><td>Normal</td></tr>
+      <tr><td>Gram stain/culture</td><td>Positive</td><td>Negative</td></tr>
+    </table>
+    <div class="mnemonic">
+      <strong>Bacterial meningitis CSF, memorized as one phrase:</strong> "Cloudy, pressure UP, protein UP, glucose DOWN." This exact combination is the single most tested lab pattern in this unit.
+    </div>
+
+    <div class="danger-box">
+      <span class="label">Atraumatic Care Tip for Lumbar Puncture</span>
+      Apply a topical anesthetic (LMX 4% lidocaine or EMLA cream) over L3–L5 before the procedure if time allows — apply EMLA at least 1 hour, or LMX 30 minutes, before the LP for maximum effect. Draw a serum glucose sample about 30 minutes before the LP, since CSF glucose is interpreted relative to serum glucose.
+    </div>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider Immediately If</span>
+      <ul>
+        <li>Any signs of increased ICP developing (see ICP section) — cerebral edema is a feared complication</li>
+        <li>Signs of shock or petechial/purpuric rash (possible meningococcemia progressing to Waterhouse-Friderichsen syndrome)</li>
+        <li>New seizure activity</li>
+        <li>Signs of SIADH: decreased urine output with concurrent hyponatremia</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Acuity Order</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br><strong>Administer antibiotics as soon as they are ordered</strong> — this is the single highest-priority nursing action in suspected bacterial meningitis.
+      <span class="why">Why: Acute bacterial meningitis is a medical emergency; prognosis is directly tied to how quickly antibiotic therapy begins relative to symptom onset. Delay increases mortality and long-term neurologic sequelae risk.</span></li>
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Initiate <strong>respiratory (droplet) isolation precautions for at least 24 hours</strong> after starting antimicrobial therapy.
+      <span class="why">Why: Bacterial meningitis (particularly meningococcal and H. influenzae) is transmissible via respiratory droplets; it takes approximately 24 hours for antibiotics to reach a therapeutic level and render the child noninfectious.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Maintain hydration, ventilation, and manage systemic shock; control seizures and temperature; monitor closely for and treat increased ICP.
+      <span class="why">Why: These supportive measures address the major secondary complications that drive morbidity/mortality once antibiotics are underway.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Careful I&amp;O monitoring to detect early signs of cerebral edema/SIADH or impending shock; maintain IV access for the full antibiotic course (typically ~10 days).</li>
+    </ol>
+
+    <div class="alert-box">
+      <span class="label">Isolation Precaution Type — Common Exam Trap</span>
+      Bacterial meningitis requires <strong>respiratory/droplet isolation</strong>, NOT enteric precautions (transmission is not GI) and NOT neutropenic precautions (that's for low neutrophil counts, unrelated to this transmission route). This exact distractor pattern appears on NCLEX-style questions.
+    </div>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Empiric IV antibiotics started immediately, adjusted once organism identified (cephalosporins are often first-line; vancomycin added given rising antibiotic-resistant <em>S. pneumoniae</em>)</li>
+      <li>Respiratory isolation for at least 24 hours after starting antibiotics</li>
+      <li>IV fluids, antiepileptic drugs, and blood products as needed</li>
+      <li>ICU-level monitoring in many cases</li>
+      <li>Audiology evaluation after recovery given the high rate of associated hearing loss</li>
+    </ul>
+
+    <h4>Prevention</h4>
+    <div class="alert-box">
+      <span class="label">Vaccination is the foundation of prevention</span>
+      Vaccines exist for pneumococci, meningococci (types A, C, Y, W-135), and Hib. Routine meningococcal conjugate vaccination is recommended at age 11–12 years with a booster at 16, though it can be given earlier (age 2 months–10 years) in high-risk children. Given bacterial meningitis carries roughly a 10% mortality rate, on-schedule immunization is one of the most impactful things a nurse can encourage.
+    </div>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Emphasize on-schedule immunization (Hib, pneumococcal, meningococcal) as the primary prevention strategy</li>
+          <li>Explain the sudden nature of bacterial meningitis and reassure parents that they were not negligent — many parents feel guilty for not recognizing severity sooner; this guilt is common and should be addressed directly</li>
+          <li>Prepare families for a possible extended IV antibiotic course (~10 days) — some children go home with an intermittent infusion device and parents may be taught IV administration</li>
+          <li>Arrange audiology follow-up given the high incidence of associated hearing loss</li>
+          <li>Discuss possible long-term neurodevelopmental monitoring needs</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Acute illness often limits direct child education initially; scale up as the child recovers</span>
+        <ul>
+          <li><strong>Infant:</strong> caregiver-directed entirely; comfort through minimal handling and consistent caregivers</li>
+          <li><strong>School-age (once alert/recovering):</strong> simple explanation that "germs got into the fluid around your brain, and the medicine is fighting them" — reassure about isolation precautions so the child doesn't feel like something is wrong with them personally</li>
+          <li><strong>Adolescent:</strong> full explanation of diagnosis, treatment course, and any activity restrictions during recovery</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing/recovery management</span>
+      <ul>
+        <li>Complete the full antibiotic course exactly as prescribed, even after symptoms improve</li>
+        <li>Attend the scheduled audiology evaluation after discharge</li>
+        <li>Keep neurology follow-up appointments to monitor for developmental sequelae</li>
+        <li>Ensure any other household children/contacts are up to date on relevant vaccines and, if indicated, receive prophylactic antibiotics per public health guidance for close contacts</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 10–14; Perry Ch. 46 (CSF Table 46.2, therapeutic management, family support); Saunders 9th ed. Ch. 39.</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= ENCEPHALITIS ========================= -->
+<section class="unit-block" id="encephalitis">
+<h2 class="section-title">Encephalitis</h2>
+
+<div class="card infect">
+  <div class="card-header">
+    <h3>Encephalitis</h3>
+    <div class="tag">Inflammation of brain tissue itself, not just the meninges</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>Inflammation of brain tissue, as distinct from meningitis (which inflames the meninges/CSF). Most commonly caused by <strong>mosquito-borne viruses and herpes simplex virus type 1 (HSV-1)</strong>. <span class="lecture-tag">Lecture</span></p>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Mosquito exposure in endemic areas/seasons (arboviral encephalitis)</li>
+      <li>HSV-1 infection</li>
+      <li>Immunocompromised status</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Clinical manifestations</span>
+      <ul>
+        <li>Confusion</li>
+        <li>Headache</li>
+        <li>Nuchal rigidity</li>
+        <li>High fever</li>
+        <li>Photophobia</li>
+        <li>Lethargy</li>
+        <li>Seizures</li>
+        <li>Coma (in severe cases)</li>
+      </ul>
+    </div>
+
+    <div class="mnemonic">
+      <strong>Meningitis vs. encephalitis — the key distinction:</strong> Meningitis inflames the meninges/CSF (classic signs: nuchal rigidity, Kernig/Brudzinski). Encephalitis inflames brain tissue itself, so <strong>confusion, altered mental status, and coma are more prominent</strong> relative to meningeal signs. The two can overlap clinically and even coexist (meningoencephalitis).
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Coma</li>
+      <li>Permanent neurologic damage, especially with HSV encephalitis if treatment is delayed</li>
+      <li>Seizure disorder</li>
+      <li>Death in severe, untreated cases</li>
+    </ul>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider Immediately If</span>
+      <ul>
+        <li>Worsening confusion or declining LOC</li>
+        <li>New seizure activity</li>
+        <li>Signs of increased ICP developing</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Monitor LOC and neurologic status closely; protect airway if consciousness declines.
+      <span class="why">Why: Progression to coma and airway compromise are the most immediate threats; early recognition of decline allows faster escalation of care.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Institute seizure precautions and fever management; support antiviral therapy (e.g., acyclovir for HSV encephalitis) as ordered — timing matters significantly for HSV-specific treatment.
+      <span class="why">Why: Untreated HSV encephalitis carries a high risk of severe permanent damage or death; prompt antiviral therapy significantly improves outcomes.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Provide a quiet, low-stimulation environment; manage photophobia and headache.</li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Antiviral therapy (e.g., acyclovir) when HSV is suspected or confirmed — early initiation is critical</li>
+      <li>Supportive care: fever control, seizure management, ICP monitoring as needed</li>
+      <li>Quiet, low-stimulation environment for photophobia and headache</li>
+    </ul>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Explain the difference between encephalitis and meningitis if the family has heard both terms, to reduce confusion</li>
+          <li>Discuss mosquito-bite prevention strategies (repellent, protective clothing, eliminating standing water) if an arboviral cause is identified or suspected in the region</li>
+          <li>Prepare families for a potentially prolonged recovery and the possibility of lasting neurologic effects, especially with HSV encephalitis</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Acute confusion/altered LOC often limits direct education during the acute phase</span>
+        <ul>
+          <li><strong>During acute illness:</strong> education is minimal and caregiver-directed given confusion/lethargy; focus on comfort and orientation cues (familiar voices, simple reassurance)</li>
+          <li><strong>During recovery (school-age/adolescent):</strong> simple, honest explanation of what happened and what to expect during rehabilitation if any deficits are present</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing management</span>
+      <ul>
+        <li>Complete the full antiviral course as prescribed</li>
+        <li>Attend neurologic and developmental follow-up given the risk of lasting effects</li>
+        <li>Implement mosquito-bite prevention measures if an arboviral cause was identified</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 15–16; general pediatric neuro-infectious disease principles cross-referenced with Perry Ch. 46.</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= REYE'S SYNDROME ========================= -->
+<section class="unit-block" id="reyes">
+<h2 class="section-title">Reye's Syndrome</h2>
+
+<div class="card infect">
+  <div class="card-header">
+    <h3>Reye's Syndrome</h3>
+    <div class="tag">Post-viral encephalopathy linked to aspirin use — now largely preventable</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>An acute encephalopathy that follows a viral illness, causing <strong>cerebral edema and fatty changes/accumulation in internal organs (especially the liver)</strong>, along with fluid/electrolyte imbalance, acid-base imbalance, and coagulopathies. Results in increased ICP. <span class="lecture-tag">Lecture</span> The exact mechanism is unclear, but it is strongly linked to <strong>administration of acetylsalicylic acid (aspirin/ASA) during a viral illness</strong> — classically influenza or varicella (chickenpox). Primarily affects children ages 4–14 years. <span class="lecture-tag">Lecture</span></p>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Aspirin/ASA use during a viral illness (influenza, varicella) — the single most important modifiable risk factor</li>
+      <li>Age 4–14 years</li>
+      <li>Recent (4–7 days prior) systemic viral illness</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Clinical manifestations</span>
+      <ul>
+        <li>History of recent viral illness (4–7 days before symptom onset)</li>
+        <li>Fever</li>
+        <li>Restlessness</li>
+        <li>Vomiting, nausea</li>
+        <li>Drowsiness progressing to lethargy (signs of altered hepatic function)</li>
+        <li>Progressive neurological deterioration</li>
+        <li>Seizures</li>
+        <li>Loss of consciousness</li>
+      </ul>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Increased ICP and cerebral edema — can be fatal if unmanaged</li>
+      <li>Liver failure/altered hepatic function</li>
+      <li>Coagulopathy and bleeding tendency</li>
+      <li>Progressive coma</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <table class="lab-table">
+      <tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (Reye's Syndrome)</th></tr>
+      <tr><td>Liver enzymes (AST/ALT)</td><td>Normal range</td><td>Elevated (hepatic dysfunction)</td></tr>
+      <tr><td>Blood glucose</td><td>Normal range</td><td>May be decreased (impaired hepatic gluconeogenesis)</td></tr>
+      <tr><td>Serum ammonia</td><td>Normal range</td><td><strong>Increased</strong> — reflects impaired liver detoxification</td></tr>
+      <tr><td>Coagulation studies (PT/PTT)</td><td>Normal range</td><td>Prolonged (coagulopathy)</td></tr>
+      <tr><td>Liver biopsy</td><td>Normal architecture</td><td>Fatty changes/infiltration — confirmatory</td></tr>
+    </table>
+    <p>Diagnosis is based on history of recent viral illness plus ASA use, liver biopsy, and the serum test panel above.</p>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider Immediately If</span>
+      <ul>
+        <li>Progressive lethargy or decline in LOC in a child recovering from a viral illness who received ASA</li>
+        <li>New bleeding or bruising (coagulopathy)</li>
+        <li>Rising serum ammonia or liver enzymes on repeat labs</li>
+        <li>Signs of increased ICP (see ICP section)</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Acuity Order</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Assess airway; administer and monitor oxygen. <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: Progressive neurologic deterioration can compromise airway protection; oxygenation supports cerebral perfusion in the setting of rising ICP.</span></li>
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Perform frequent neuro assessments to catch early deterioration; institute seizure precautions. <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: Reye's syndrome causes increased ICP, and early detection of neurologic decline allows faster intervention before herniation risk escalates.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br><strong>Provide a quiet, dimly lit environment to decrease cerebral stimulation</strong> — this is the historically emphasized priority nursing intervention for Reye's syndrome specifically.
+      <span class="why">Why: Reducing environmental stimuli decreases stress on already-compromised cerebral tissue and reduces the likelihood of triggering increased ICP symptoms or seizures.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Monitor intake/output, liver function results, and coagulation status; watch for bleeding/bruising.</li>
+    </ol>
+
+    <div class="alert-box">
+      <span class="label">Classic NCLEX Priority Question</span>
+      When asked for the priority nursing intervention for a child with Reye's syndrome, the tested answer is typically <strong>"provide a quiet atmosphere with dimmed lighting"</strong> — this reflects the emphasis on minimizing cerebral stimulation given the ICP/cerebral edema pathophysiology, over interventions like repositioning every 2 hours (which addresses skin integrity, not the core threat here).
+    </div>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Supportive care: airway/oxygen management, neuro monitoring, seizure precautions</li>
+      <li>Treatment of increased ICP as needed</li>
+      <li>Correction of fluid/electrolyte and coagulation abnormalities</li>
+      <li>Goal: maintain effective cerebral perfusion and control rising ICP</li>
+    </ul>
+
+    <h4>Prevention</h4>
+    <div class="danger-box">
+      <span class="label">The single most important prevention message</span>
+      <strong>Avoid aspirin (ASA) and aspirin-containing products in children with a febrile or viral illness (including varicella and influenza).</strong> <strong>No ASA under age 19.</strong> <span class="lecture-tag">Lecture</span> Acetaminophen and ibuprofen are the medications of choice for fever/pain management in children with viral illness.
+    </div>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li><strong>Read all labels of over-the-counter medications and products</strong> — many combination products contain aspirin/salicylates without it being obvious from the product name (e.g., some stomach remedies, certain cold products) <span class="lecture-tag">Lecture</span></li>
+          <li>No aspirin-containing products for anyone under 19 years old, especially during a febrile or viral illness <span class="lecture-tag">Lecture</span></li>
+          <li>Use acetaminophen or ibuprofen instead for fever/pain during viral illness</li>
+          <li>Recognize the early warning signs (persistent vomiting, worsening lethargy after a viral illness seems to be resolving) and seek care immediately if they appear</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Primarily affects ages 4–14 (school-age through early adolescence)</span>
+        <ul>
+          <li><strong>School-age:</strong> simple language about why they're getting a different medicine than aspirin when they're sick, framed positively rather than scary</li>
+          <li><strong>Older school-age/early adolescent:</strong> can understand the basic aspirin-avoidance rule themselves, which supports self-advocacy as they get older and may self-medicate more independently</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Prevention-focused, ongoing</span>
+      <ul>
+        <li>Always check medication labels for aspirin/salicylates before giving any OTC product to a child, especially during a viral illness</li>
+        <li>Keep only acetaminophen and ibuprofen on hand as the go-to fever/pain relievers for children</li>
+        <li>Seek prompt medical evaluation for a child who seems to be recovering from a viral illness but then develops new vomiting, lethargy, or behavior change</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 17–19 (including NCLEX-style priority question with answer key); Saunders 9th ed. Ch. 39 (Reye's syndrome description, assessment, interventions).</p>
+  </div>
+</div>
+</section>
+<!-- ========================= SPINA BIFIDA ========================= -->
+<section class="unit-block" id="spina-bifida">
+<h2 class="section-title">Spina Bifida</h2>
+
+<div class="card structural">
+  <div class="card-header">
+    <h3>Spina Bifida</h3>
+    <div class="tag">Neural tube defect — failure of the neural tube to close</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>The neural tube fails to close early in fetal development (normally closes ~4 weeks post-conception). <span class="lecture-tag">Lecture</span> Multifactorial etiology involving both genetic and environmental risk factors — most notably, inadequate maternal folic acid intake. Severity and clinical presentation vary widely based on lesion location and how much neural tissue is involved.</p>
+
+    <h5>Types</h5>
+    <table>
+      <tr><th>Type</th><th>Description</th></tr>
+      <tr><td>Spina bifida occulta</td><td>Often no observable manifestations; may have a dimple, tuft of hair, port-wine nevus, or lipoma over the defect ("tethered cord" clue) <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>Meningocele</td><td>Protruding sac containing meninges and CSF only — spinal cord is not involved <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>Myelomeningocele</td><td>Protruding sac containing meninges, CSF, <strong>and spinal cord elements/nerve roots</strong> — the most severe and clinically significant form <span class="lecture-tag">Lecture</span></td></tr>
+    </table>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Inadequate maternal folic acid intake before and during early pregnancy</li>
+      <li>Family history / previous pregnancy affected by a neural tube defect (greatest risk factor — increases recommended folic acid dose to 4 mg daily, vs. 0.4 mg standard, starting at least 1 month before conception)</li>
+      <li>Certain maternal medications (e.g., some antiepileptics) and environmental exposures</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Clinical manifestations (myelomeningocele, most common presentation of concern)</span>
+      <ul>
+        <li>Visible sac on the back at the defect site</li>
+        <li>Neurologic deficits below the level of the lesion — flaccid paralysis, sensory deficits</li>
+        <li>Impaired bowel and bladder function (neurogenic bladder is nearly universal with lumbar/sacral lesions)</li>
+        <li>Possible orthopedic deformities: clubfoot, hip dislocation, scoliosis/kyphosis</li>
+      </ul>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Hydrocephalus (very commonly associated, especially with Chiari II malformation — see Hydrocephalus section)</li>
+      <li>Neurogenic bladder/bowel with risk of chronic UTIs, renal damage if unmanaged</li>
+      <li>Tethered cord — presents as a change in functional ability (especially lower extremities, bowel, or bladder), often after a growth spurt; detected via MRI, may be surgically repaired but can recur</li>
+      <li><strong>Latex allergy</strong> — children with spina bifida are at high risk due to repeated latex exposure during multiple surgeries/procedures; reactions range from urticaria to full anaphylaxis</li>
+      <li>Orthopedic deformities requiring ongoing management</li>
+    </ul>
+
+    <div class="danger-box">
+      <span class="label">Latex Allergy — Critical, Lifelong Safety Issue</span>
+      Because of repeated early and ongoing latex exposure, children with spina bifida should be managed in a <strong>latex-free environment from birth onward</strong>. Screen for latex sensitivity at every preoperative/preprocedural visit — ask about reactions to balloons, adhesive strips, rubber toys, and food cross-reactions (banana, avocado, kiwi, chestnut). Latex-hypersensitive children should carry medical identification.
+    </div>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <table>
+      <tr><th>Test</th><th>Purpose</th></tr>
+      <tr><td>Prenatal ultrasound (12–14 weeks gestation)</td><td>Can visualize the defect <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>Elevated maternal serum alpha-fetoprotein (AFP)</td><td>Screening marker suggestive of a neural tube defect <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>Postnatal MRI</td><td>Assesses for tethered cord if functional changes occur later</td></tr>
+    </table>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider Immediately If</span>
+      <ul>
+        <li>The sac appears to be leaking fluid, is torn, or shows signs of infection (redness, drainage, odor, fever) — pre-repair</li>
+        <li>New change in lower extremity function, or new bowel/bladder changes (possible tethered cord), especially after a growth spurt</li>
+        <li>Any suspected latex exposure reaction (hives, wheezing, swelling)</li>
+        <li>Signs of hydrocephalus developing (see Hydrocephalus section)</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Acuity Order (Newborn, Pre-Repair)</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Prevent infection and injury to the exposed sac: cover the defect with a sterile dressing moistened with sterile saline; position the infant prone; do not diaper.
+      <span class="why">Why: An open myelomeningocele sac is a direct route for CNS infection (meningitis) if it dries out, ruptures, or becomes contaminated — this is the most urgent physical safety priority before surgical closure.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Maintain a latex-free environment from the very first contact.
+      <span class="why">Why: Even a single early latex exposure can begin the sensitization process that leads to lifelong, potentially anaphylactic latex allergy — prevention starts immediately, not after diagnosis is "confirmed" as clinically significant.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Continuously assess the sac for signs of leakage, tearing, or infection; monitor neuro status and vital signs.</li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Prepare for surgical closure and coordinate the multidisciplinary team (neurosurgery, urology, orthopedics, PT/OT).</li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li><strong>Delivery method:</strong> cesarean section delivery is recommended to reduce trauma to the exposed sac <span class="lecture-tag">Lecture</span></li>
+      <li>Assess the sac; prevent infection and injury <span class="lecture-tag">Lecture</span></li>
+      <li>Cover defect with sterile saline-moistened dressing <span class="lecture-tag">Lecture</span></li>
+      <li>Position prone; no diaper until repair is complete <span class="lecture-tag">Lecture</span></li>
+      <li>Latex-free environment throughout care <span class="lecture-tag">Lecture</span></li>
+      <li>Surgical closure of the defect, typically within the first 24–72 hours of life</li>
+      <li>Ongoing multidisciplinary management: neurology, neurosurgery, urology, orthopedics, PT/OT, social work</li>
+      <li>Bladder management: clean intermittent catheterization is the standard long-term approach for neurogenic bladder (not sterile catheterization at home, and not indwelling Foley) — teach clean technique</li>
+      <li>Bowel management: dietary fiber, stool softeners, and/or suppositories/bowel programs as needed for neurogenic bowel</li>
+    </ul>
+
+    <h4>Foods — Bowel Management Consideration</h4>
+    <div class="food-grid">
+      <div class="food-ok">
+        <span class="label">Encouraged for Bowel Regularity</span>
+        <ul>
+          <li>High-fiber foods to support a bowel regimen alongside prescribed fiber supplements</li>
+          <li>Adequate fluid intake to prevent constipation and support urinary tract health</li>
+        </ul>
+      </div>
+      <div class="food-avoid">
+        <span class="label">Not a Dietary Restriction, But a Safety Note</span>
+        <ul>
+          <li>No specific food restriction, but be alert to <strong>latex cross-reactive foods</strong>: banana, avocado, kiwi, chestnut — these can trigger reactions in a latex-sensitized child even without direct latex contact</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li><strong>Positioning to promote healing:</strong> keep the infant prone/positioned to protect the surgical site as directed — the correct answer is NOT simply "keep on their back," since prone or side-lying is typically used to protect the repair site and prevent pressure on it</li>
+          <li><strong>Never touch the sac directly</strong> to prevent infection before repair</li>
+          <li>Recognize signs requiring a call to the provider: vomiting, excessive sleepiness/lethargy (possible hydrocephalus or shunt complication), fever, or new neurologic changes</li>
+          <li>Teach <strong>clean</strong> (not sterile) intermittent catheterization technique for home bladder management</li>
+          <li><strong>Reposition frequently</strong> to protect skin integrity, since sensory deficits below the lesion level increase pressure injury risk</li>
+          <li><strong>Early referral to physical therapy</strong> — do not wait until the child starts walking; early PT involvement supports optimal developmental outcomes from the start</li>
+          <li>Maintain a latex-free home environment and screen every new product/toy</li>
+          <li>Discuss folic acid supplementation for future pregnancies (4 mg daily under provider supervision, starting at least 1 month preconception) given elevated recurrence risk</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Diagnosed at birth; education scales dramatically as the child grows into self-management</span>
+        <ul>
+          <li><strong>Toddler/preschool:</strong> begin simple concrete language around body awareness and the daily catheterization/bowel routine as a normal part of their day, not something shameful</li>
+          <li><strong>School-age (concrete thinkers):</strong> begin teaching the child to participate in and eventually perform their own clean intermittent catheterization with supervision — self-help skills and independence in toileting management are major developmental goals at this stage, directly tied to school participation and self-esteem</li>
+          <li><strong>Adolescent:</strong> full independence in self-catheterization and bowel management where physically possible; address body image and social concerns directly, including how to manage these routines away from home (school, sleepovers, activities) — this is often a significant source of anxiety at this developmental stage</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing, lifelong management</span>
+      <ul>
+        <li>Perform clean intermittent catheterization on schedule to prevent UTIs and renal complications</li>
+        <li>Follow the prescribed bowel program consistently (fiber, fluids, timed toileting, suppositories as needed)</li>
+        <li>Inspect skin regularly for pressure injuries, especially in areas with decreased sensation</li>
+        <li>Maintain strict latex avoidance and carry medical identification noting the latex allergy</li>
+        <li>Attend regular multidisciplinary follow-up (urology, orthopedics, neurosurgery) even when feeling well, since complications like tethered cord can develop silently</li>
+        <li>Watch for and report new neurologic, bowel, or bladder changes, especially during growth spurts</li>
+      </ul>
+    </div>
+
+    <div class="ngn-box">
+      <span class="label">NGN Practice — From Lecture Slides <span class="lecture-tag">Lecture</span></span>
+      <p><strong>Task:</strong> Highlight the three caregiver statements reflecting correct discharge teaching understanding for a newborn with myelomeningocele.</p>
+      <p><strong>Correct statements:</strong></p>
+      <ul>
+        <li>"It's important to avoid touching the sac to prevent infection." ✓</li>
+        <li>"If our baby starts vomiting or seems very sleepy, we should call the doctor." ✓ (possible hydrocephalus/shunt complication warning signs)</li>
+        <li>"We need to change our baby's position often to protect the skin." ✓ (pressure injury prevention given sensory deficit)</li>
+      </ul>
+      <p><strong>Incorrect statements and why:</strong></p>
+      <ul>
+        <li>"We should keep our baby on their back so the area can heal faster" — incorrect; positioning should protect the sac/repair site (typically prone or side-lying), not supine directly on the defect</li>
+        <li>"We'll use clean technique when catheterizing at home" — this is actually correct home practice (clean, not sterile, technique is standard for home intermittent catheterization), so this statement reflects correct understanding, illustrating why each statement must be evaluated on its own clinical merit</li>
+        <li>"It's okay to cover the area with a diaper to keep it dry" — incorrect; no diaper directly over an unrepaired open defect due to contamination risk</li>
+        <li>"We'll wait until our child starts walking before we talk to a physical therapist" — incorrect; early PT referral is recommended, not delayed until walking age</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 20–21, 27; Perry Ch. 49 (Box 49.4, 49.5, latex allergy, tethered cord, NGN case study).</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= HYDROCEPHALUS ========================= -->
+<section class="unit-block" id="hydrocephalus">
+<h2 class="section-title">Hydrocephalus</h2>
+
+<div class="card structural">
+  <div class="card-header">
+    <h3>Hydrocephalus</h3>
+    <div class="tag">CSF accumulation — imbalance of production/absorption</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>Accumulation of CSF within the intracranial vault and spinal cord, from an imbalance of CSF absorption or production. <span class="lecture-tag">Lecture</span> Causes include congenital anomalies, tumors, hemorrhage, infections, or trauma; also commonly occurs <strong>after surgical closure of a myelomeningocele</strong> (Type II Chiari malformation obstructs CSF flow in most myelomeningocele cases). <span class="lecture-tag">Lecture</span></p>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Congenital anomalies (including Chiari II malformation)</li>
+      <li>Myelomeningocele (very high association)</li>
+      <li>Intraventricular hemorrhage, especially in preterm infants</li>
+      <li>CNS infection (meningitis) or tumor</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <p>Presentation depends on the child's age, the cause, and the rate of hydrocephalus development.</p>
+    <div class="findings-grid">
+      <div class="expected">
+        <span class="label">Infancy (before suture closure)</span>
+        <ul>
+          <li>Abnormal, rapid head growth (increasing OFC — the predominant early sign)</li>
+          <li>Bulging, tense, nonpulsatile anterior fontanel</li>
+          <li>Prominent forehead/frontal bossing</li>
+          <li>Setting-sun sign; sluggish, unequal pupil response</li>
+          <li>Dilated scalp veins, especially with crying</li>
+          <li>Macewen (cracked-pot) sign on percussion</li>
+          <li>Irritable, lethargic, poor feeding</li>
+          <li>Difficulty holding the head upright <span class="lecture-tag">Lecture</span></li>
+          <li>Shrill, brief, high-pitched cry if progressing</li>
+        </ul>
+      </div>
+      <div class="unexpected">
+        <span class="label">Later Childhood (after suture closure)</span>
+        <ul>
+          <li>Signs and symptoms are those of increased ICP (see ICP section) since the skull can no longer expand to compensate</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Increased ICP, herniation risk if untreated</li>
+      <li>Developmental delay from sustained pressure effects</li>
+      <li>Shunt-related complications (infection, malfunction — see VP Shunt content below)</li>
+      <li>Cranial nerve dysfunction from brainstem compression (in Chiari malformation): swallowing difficulty, stridor, apnea, aspiration</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <table>
+      <tr><th>Test</th><th>Purpose</th></tr>
+      <tr><td>CT, MRI, ultrasound</td><td>Visualize ventricular size and CSF accumulation <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>Serial head circumference measurement</td><td>Track rate of head growth — a simple, essential bedside tool <span class="lecture-tag">Lecture</span></td></tr>
+    </table>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider Immediately If</span>
+      <ul>
+        <li>Head circumference increasing faster than expected trajectory</li>
+        <li>New bulging fontanel, setting-sun sign, or downward eye deviation</li>
+        <li>Signs of shunt malfunction (see below) in a child with an existing shunt</li>
+        <li>Any signs of increased ICP</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Preoperative and Postoperative</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br><strong>Preoperatively: reposition the infant frequently</strong> rather than providing an overly stimulating environment; monitor closely for worsening ICP.
+      <span class="why">Why: A large, heavy hydrocephalic head increases pressure injury risk with immobility, and overstimulation can exacerbate irritability and ICP; frequent repositioning is the priority preoperative intervention per Saunders.</span></li>
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br><strong>Postoperatively: assess for increased ICP</strong> — monitor vital signs, head circumference, fontanels, and watch for seizures/lethargy.
+      <span class="why">Why: Shunt placement itself can be complicated by bleeding, infection, or malfunction in the immediate postoperative period, all of which can rapidly raise ICP again.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Position the child on the <strong>non-operative side</strong> and elevate the head no higher than 30 degrees per MD orders (unless otherwise specified). <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: This positioning protects the operative site while managing ICP; overly rapid CSF drainage from over-elevation can itself cause complications.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Administer preoperative antibiotics; monitor for postoperative signs of infection. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Monitor head circumference trends and document serially throughout the hospital stay.</li>
+    </ol>
+
+    <h4>Ventriculoperitoneal (VP) Shunt</h4>
+    <p>Relieves pressure by removing CSF from the head and draining it into the abdomen (peritoneal cavity). <span class="lecture-tag">Lecture</span></p>
+
+    <h5>Clinical Manifestations of Shunt Malfunction — By Age</h5>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>Infant:</strong> irritability, lethargy, poor feeding, high-shrill cry</li>
+          <li><strong>Toddler:</strong> headache and lack of appetite are the earliest common signs</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Older child:</strong> alteration in level of consciousness is a key indicator</li>
+          <li><strong>All ages:</strong> vomiting, swelling/redness along the shunt tract, decreased school performance, periods of confusion, seizures</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="danger-box">
+      <span class="label">Critical safety point</span>
+      Monitor for shunt presence/tract behind the ear during assessment — a high, shrill cry in an infant can be an early sign of increased ICP and shunt malfunction, and should never be dismissed as routine fussiness.
+    </div>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>VP shunt placement — the primary surgical treatment</li>
+      <li>Antibiotics for shunt infection</li>
+      <li>Shunt revision or removal/replacement for malfunction <span class="lecture-tag">Lecture</span></li>
+    </ul>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Teach recognition of infection and shunt malfunction signs specific to the child's age <span class="lecture-tag">Lecture</span></li>
+          <li><strong>No contact sports</strong> once a shunt is in place, given the risk of shunt damage/malfunction from head trauma <span class="lecture-tag">Lecture</span></li>
+          <li>Teach how to measure and track head circumference at home if instructed</li>
+          <li>Know that shunt malfunction is a lifelong risk requiring ongoing vigilance, not something that resolves after the initial surgery</li>
+          <li>Carry medical identification noting the presence of a VP shunt</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Often diagnosed in infancy; ongoing education scales with age as the child lives with a shunt long-term</span>
+        <ul>
+          <li><strong>Toddler/preschool:</strong> simple language about "the tube that helps your brain" without overwhelming detail; comfort through routine and consistent caregivers</li>
+          <li><strong>School-age:</strong> teach the child to recognize and report their own early symptoms (headache, feeling "foggy," nausea) so they become an active participant in catching shunt problems early</li>
+          <li><strong>Adolescent:</strong> discuss activity restrictions (no contact sports) in terms they can understand and accept, and address any frustration about being excluded from certain activities by helping identify safe alternatives</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing shunt management</span>
+      <ul>
+        <li>Know the child's individual early shunt-malfunction signs and have a clear action plan</li>
+        <li>Avoid contact sports and high head-injury-risk activities</li>
+        <li>Carry medical identification noting the shunt</li>
+        <li>Keep regular neurosurgery follow-up appointments even when the child seems well</li>
+        <li>Seek immediate evaluation for any of the malfunction signs above rather than waiting to see if they resolve</li>
+      </ul>
+    </div>
+
+    <div class="ngn-box">
+      <span class="label">NCLEX Application — From Lecture Slides <span class="lecture-tag">Lecture</span></span>
+      <p><strong>Postoperative VP shunt placement — appropriate interventions (select all that apply):</strong></p>
+      <p><strong>Appropriate:</strong> Observe closely for signs of infection; measure strict I&amp;O; monitor for abdominal distention (the distal catheter drains into the peritoneum, so abdominal changes matter).</p>
+      <p><strong>Inappropriate:</strong> "Pump the shunt reservoir to maintain patency" — this outdated practice is not standard nursing action without a specific provider order and specialized training; "Administer sedation to decrease irritability" — irritability post-shunt should be evaluated as a possible sign of complication, not simply sedated away; "Maintain Trendelenburg position" — this is not standard positioning for VP shunt patients and can affect ICP/CSF drainage inappropriately.</p>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 22–26, 28; Saunders 9th ed. Ch. 39 (shunt malfunction signs by age); Perry Ch. 46 (hydrocephalus pathophysiology, Chiari malformation).</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= CEREBRAL PALSY ========================= -->
+<section class="unit-block" id="cp">
+<h2 class="section-title">Cerebral Palsy</h2>
+
+<div class="card devel">
+  <div class="card-header">
+    <h3>Cerebral Palsy</h3>
+    <div class="tag">Most common physical disability of childhood — brain injury before development completes</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>The most common physical disability of childhood, resulting from brain injury occurring before development is complete (prenatally, perinatally, or postnatally). <span class="lecture-tag">Lecture</span> Caused by an abnormality in the extrapyramidal or pyramidal motor system. Represents a wide range of disability severity.</p>
+
+    <h5>Risk Factors — By Timing</h5>
+    <ul>
+      <li><strong>Prenatal:</strong> maternal infection, chemical exposure, trauma, medication, illicit drug use, metabolic insults during pregnancy <span class="lecture-tag">Lecture</span></li>
+      <li><strong>Perinatal:</strong> birth asphyxia, prematurity, birth trauma</li>
+      <li><strong>Postnatal:</strong> CNS infection, head trauma, hypoxic events after birth <span class="lecture-tag">Lecture</span></li>
+    </ul>
+
+    <h5>Four Types of Cerebral Palsy</h5>
+    <table>
+      <tr><th>Type</th><th>Features</th></tr>
+      <tr><td><strong>Spastic (pyramidal)</strong></td><td>Most common type (70–80% of cases). Persistent primitive reflexes, positive Babinski, ankle clonus, exaggerated stretch reflexes, eventual contractures. Subtypes: diplegia (lower &gt; upper extremities), hemiplegia (one side, upper &gt; lower), tetraplegia (all four limbs plus mouth/pharynx/tongue), monoplegia/triplegia.</td></tr>
+      <tr><td><strong>Athetoid (dyskinetic)</strong></td><td>Involuntary, irregular, jerking movements (chorea); slow, wormlike, writhing movements affecting extremities, trunk, neck, face, tongue. May include drooling and dysarthria.</td></tr>
+      <tr><td><strong>Ataxic</strong></td><td>Wide-based gait; poorly performed rapid, repetitive movements; disintegration of movement when reaching for objects.</td></tr>
+      <tr><td><strong>Mixed</strong></td><td>Combination of spastic and dyskinetic features; no single dominant motor pattern.</td></tr>
+    </table>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Clinical manifestations</span>
+      <ul>
+        <li>Extreme irritability and crying</li>
+        <li>Feeding difficulties</li>
+        <li>Abnormal motor performance — e.g., preferential unilateral hand use before the developmentally expected age (~6 months), asymmetric or "bunny hop" crawling patterns</li>
+        <li>Altered muscle tone — stiff, rigid arms/legs (or, conversely, hypotonia)</li>
+        <li><strong>Delayed gross motor development</strong> — a universal manifestation; the gap between motor ability and expected milestones widens as the child grows, especially notable when language/social development remains normal</li>
+      </ul>
+    </div>
+
+    <div class="mnemonic">
+      <strong>A key diagnostic clue:</strong> when language and social/personal development are progressing normally but gross motor milestones are significantly delayed and the gap widens over time, think CP rather than a global developmental delay or intellectual disability.
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Contractures and joint deformities over time if spasticity is unmanaged</li>
+      <li>Feeding/swallowing difficulties, aspiration risk</li>
+      <li>Increased risk of developing epilepsy (children with CP are among the highest-risk groups)</li>
+      <li>Communication impairment, especially with athetoid-type CP affecting oral/pharyngeal muscles</li>
+      <li>Psychosocial impact of visible physical disability</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <p>CP is a clinical diagnosis based on history and physical/motor exam findings over time — there is no single confirmatory lab test. Imaging (MRI) may identify an underlying structural cause but is not required for diagnosis.</p>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider If</span>
+      <ul>
+        <li>New feeding difficulty or signs of aspiration (coughing/choking with feeds, recurrent respiratory illness)</li>
+        <li>New seizure activity</li>
+        <li>Signs of infection, especially at any surgical/orthopedic intervention sites <span class="lecture-tag">Lecture</span></li>
+        <li>Rapid worsening of contractures or new joint pain</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Provide feeding supervision and support based on individual needs — assess swallow safety given aspiration risk. <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: Feeding difficulty and aspiration risk are ongoing, potentially serious threats in CP, more urgent day-to-day than the musculoskeletal aspects of care.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Support use of splints, braces, and assistive devices; encourage frequent rest periods to reduce muscle spasm. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Educate parents on maintaining a safe home environment tailored to the child's specific mobility and sensory profile. <span class="lecture-tag">Lecture</span></li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Splints and braces; assistive devices</li>
+      <li>Frequent rest periods to reduce muscle spasm <span class="lecture-tag">Lecture</span></li>
+      <li>School enrollment and early intervention services <span class="lecture-tag">Lecture</span></li>
+      <li>Feeding supervision and support tailored to individual needs <span class="lecture-tag">Lecture</span></li>
+      <li><strong>Medications to reduce skeletal muscle spasm:</strong>
+        <ul>
+          <li>Baclofen (Lioresal) — can be delivered intrathecally for severe spasticity <span class="lecture-tag">Lecture</span></li>
+          <li>Neurolytic agent nerve block injections (e.g., botulinum toxin) <span class="lecture-tag">Lecture</span></li>
+          <li>Antianxiety medications <span class="lecture-tag">Lecture</span></li>
+          <li>Antiseizure medications, given the elevated epilepsy risk in this population <span class="lecture-tag">Lecture</span></li>
+        </ul>
+      </li>
+      <li>Surgical care to improve joint stability and balance muscle power (e.g., tendon releases) <span class="lecture-tag">Lecture</span></li>
+    </ul>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Set realistic expectations for growth and development, celebrating individual progress rather than comparing to typical milestones <span class="lecture-tag">Lecture</span></li>
+          <li>Teach early detection of deterioration (new contractures, feeding changes, respiratory symptoms) and symptoms of infection at any surgical sites <span class="lecture-tag">Lecture</span></li>
+          <li>Support consistent use of splints/braces and adherence to PT/OT home exercise programs</li>
+          <li>Provide feeding technique training specific to the child's swallow safety profile</li>
+          <li>Connect families with early intervention services, school resources, and support groups</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">CP is a lifelong condition diagnosed in infancy/toddlerhood; education evolves across all developmental stages</span>
+        <ul>
+          <li><strong>Toddler/preschool:</strong> comfort and consistency-focused; begin simple participation in self-care tasks adapted to the child's ability level</li>
+          <li><strong>School-age (concrete thinkers):</strong> foster a sense of industry/mastery by allowing the child to complete adapted tasks independently wherever possible — this is a core developmental need at this stage and directly supports self-esteem despite physical limitations</li>
+          <li><strong>Adolescent:</strong> support growing independence in self-care and mobility decisions; address body image and peer relationship concerns; discuss transition planning for adult services as appropriate</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing management</span>
+      <ul>
+        <li>Consistent use of prescribed splints/braces and adherence to therapy schedules</li>
+        <li>Monitor for and report new contractures, feeding difficulty, or respiratory changes promptly</li>
+        <li>Maintain a safe, adapted home environment matched to the child's mobility level</li>
+        <li>Attend regular multidisciplinary follow-up (PT, OT, orthopedics, neurology)</li>
+        <li>Watch for signs of aspiration during feeding and adjust technique/consistency as recommended by speech-language pathology</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 29–31; Saunders 9th ed. Ch. 39 (Box 49.1, 49.2, CP classification and manifestations); Perry Ch. 49.</p>
+  </div>
+</div>
+</section>
+<!-- ========================= TRAUMATIC BRAIN INJURY ========================= -->
+<section class="unit-block" id="tbi">
+<h2 class="section-title">Traumatic Brain Injury (TBI)</h2>
+
+<div class="card trauma">
+  <div class="card-header">
+    <h3>Traumatic Brain Injury</h3>
+    <div class="tag">Mechanical force to skull, scalp, meninges, or brain</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>Head injury is the pathological result of any mechanical force applied to the skull, scalp, meninges, or brain.</p>
+    <ul>
+      <li><strong>Open head injury:</strong> occurs with a skull fracture or penetrating object.</li>
+      <li><strong>Closed head injury:</strong> results from blunt trauma. <strong>More serious than open injury</strong> because the "closed" cranial vault traps any resulting swelling/bleeding, increasing ICP risk. Can also result from shaken baby syndrome/abusive head trauma.</li>
+    </ul>
+
+    <h5>Risk Factors</h5>
+    <ul>
+      <li>Falls (most common mechanism in young children)</li>
+      <li>Motor vehicle/pedestrian/bicycle collisions</li>
+      <li>Sports-related impacts</li>
+      <li>Non-accidental trauma (see Abusive Head Trauma section)</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <p>Manifestations depend on injury type and resulting degree of increased ICP — refer to the Increased ICP section for the full early/late sign list, which applies directly to TBI assessment.</p>
+    <div class="expected">
+      <span class="label">Common post-concussive symptoms</span>
+      <ul>
+        <li>Headache</li>
+        <li>Difficulty concentrating</li>
+        <li>A few episodes of vomiting (can be expected/self-limited after concussion)</li>
+        <li>Dizziness, balance problems</li>
+        <li>Sleep pattern changes</li>
+      </ul>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Cerebral edema — peaks 24–72 hours post-injury; a major cause of secondary neurologic decline</li>
+      <li>Postconcussion syndrome (PCS): symptoms lasting more than 4 weeks — headaches, visual/balance problems, difficulty concentrating, irritability, sleep changes. Risk factors: personal/family history of mood disorders, migraines.</li>
+      <li>Posttraumatic seizures — often within 24 hours but can occur later</li>
+      <li>Posttraumatic headaches, often migraine-type, occurring 1 week to 3 months post-injury</li>
+      <li>Cervical/spinal cord injury if mechanism involved significant force</li>
+    </ul>
+
+    <div class="call-provider">
+      <span class="label">Notify the Provider / Seek Immediate Care If (Post-Concussion, at Home)</span>
+      <ul>
+        <li>Repeated or worsening vomiting</li>
+        <li>Worsening headache (rather than gradual improvement)</li>
+        <li>New double vision, confusion, or difficulty waking the child</li>
+        <li>Any seizure activity</li>
+        <li>Increasing lethargy or behavior change</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Acuity Order (Acute Injury Scene/ED)</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Assess airway, breathing, and circulation (ABCs) first, exactly as with any trauma.
+      <span class="why">Why: Airway and circulatory compromise kill faster than the head injury itself in the acute trauma setting — the neuro exam always comes after ABCs are secured.</span></li>
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br><strong>Immediately after ABCs: stabilize the neck and spine</strong> before any other action, particularly in a mechanism involving significant force (e.g., struck by a vehicle).
+      <span class="why">Why: An unstabilized cervical spine injury can be catastrophically worsened by movement — this must happen before repositioning, transport, or further assessment of other injuries.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Once spine is cleared or stabilized: assess for other injuries, check scalp and back for bleeding, monitor neuro status and vital signs closely.
+      <span class="why">Why: Secondary injury assessment matters but must follow, not precede, spinal precautions.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Position the head midline, HOB 15–30 degrees once spinal injury is ruled out, to promote venous drainage and reduce ICP (see ICP section for full detail).</li>
+    </ol>
+
+    <div class="ngn-box">
+      <span class="label">NCLEX Application — From Lecture Slides <span class="lecture-tag">Lecture</span></span>
+      <p><strong>Scenario:</strong> A 10-year-old is hit by a car while riding his bicycle. The school nurse has already assessed ABCs. What is the next nursing action?</p>
+      <p><strong>Correct answer: Stabilize the neck and spine.</strong> This comes before placing the child on their side, taking blood pressure, or checking for scalp/back bleeding — all reasonable actions, but sequenced after spinal stabilization given the high-force mechanism of injury.</p>
+    </div>
+
+    <div class="ngn-box">
+      <span class="label">NGN Practice — Increased ICP Assessment Findings <span class="lecture-tag">Lecture</span></span>
+      <table>
+        <tr><th>Assessment Finding</th><th>Expected / Requires Follow-Up</th></tr>
+        <tr><td>Pupils unequal, right larger than left</td><td><strong>Requires Follow-Up</strong> — anisocoria suggests unilateral pressure/herniation risk</td></tr>
+        <tr><td>GCS decreased from 13 to 9</td><td><strong>Requires Follow-Up</strong> — any downward trend in GCS signals neurologic deterioration</td></tr>
+        <tr><td>Periods of apnea while sleeping</td><td><strong>Requires Follow-Up</strong> — abnormal respiratory pattern can reflect brainstem involvement</td></tr>
+        <tr><td>Withdraws from painful stimulus</td><td><strong>Expected</strong> — a normal, purposeful response to pain; reassuring rather than concerning</td></tr>
+        <tr><td>BP 150/92, Pulse 50, Respirations 10</td><td><strong>Requires Follow-Up</strong> — this is <strong>Cushing's triad</strong> (widening pulse pressure/hypertension, bradycardia, irregular/depressed respirations) — a late, ominous sign of severely increased ICP and impending herniation</td></tr>
+      </table>
+    </div>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Cervical spine immobilization as indicated by mechanism</li>
+      <li>Neuro monitoring (serial GCS, pupil checks, vital signs)</li>
+      <li>Management of increased ICP if present (see ICP section)</li>
+      <li>Concussion management: cognitive and physical rest initially, with a gradual, individualized return to activity per current guidelines — prolonged strict rest beyond what's needed is no longer recommended, as early appropriate activity may actually reduce PCS risk</li>
+      <li>Follow-up for postconcussive symptoms lasting beyond the expected recovery window</li>
+    </ul>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Set realistic expectations after a concussion: <strong>some difficulty concentrating and a few episodes of vomiting can be expected</strong> and are not automatically alarming — but repeated/worsening vomiting, worsening (not improving) headache, or new double vision warrant immediate medical contact</li>
+          <li>Teach the specific home-monitoring signs that require calling the physician immediately versus signs that are part of expected recovery</li>
+          <li>Explain the gradual return-to-activity plan rather than prolonged strict rest</li>
+          <li>Discuss helmet use and other injury-prevention strategies relevant to the mechanism of injury (bike, sports)</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">TBI occurs across all pediatric ages; severity and mechanism vary by age group</span>
+        <ul>
+          <li><strong>School-age:</strong> simple explanation of why they need to rest their brain for a bit, using concrete comparisons ("like resting a sore muscle") and clear expectations about returning to school/activities gradually</li>
+          <li><strong>Adolescent:</strong> direct, honest conversation about the injury, expected recovery timeline, and specific return-to-play or return-to-school criteria; address any pressure they may feel from peers/coaches to return before medically cleared</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Post-concussion recovery</span>
+      <ul>
+        <li>Follow the individualized graduated return-to-activity/return-to-school plan provided by the care team</li>
+        <li>Track symptoms daily and report any worsening rather than improvement over the expected timeline</li>
+        <li>Avoid a second head injury during the recovery period — this carries disproportionate risk (second impact syndrome)</li>
+        <li>Get adequate sleep and manage screen time/cognitive load as tolerated during early recovery</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 32–36 (including NCLEX priority-action and NGN ICP-assessment questions); Saunders 9th ed. Ch. 39 (head injury description, ICP assessment); Perry Ch. 46 (postconcussion syndrome, cerebral edema timeline).</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= ABUSIVE HEAD TRAUMA ========================= -->
+<section class="unit-block" id="aht">
+<h2 class="section-title">Abusive Head Trauma (AHT)</h2>
+
+<div class="card trauma">
+  <div class="card-header">
+    <h3>Abusive Head Trauma</h3>
+    <div class="tag">"Abusive Head Trauma" is the preferred term (formerly "Shaken Baby Syndrome")</div>
+  </div>
+  <div class="card-body">
+
+    <div class="alert-box">
+      <span class="label">Terminology <span class="lecture-tag">Lecture</span></span>
+      "Abusive Head Trauma" (AHT) is the currently preferred clinical term. "Shaken Baby Syndrome" is an older term you may still hear, referring to the non-accidental mechanism. Kentucky mandates AHT training for nurses and foster parents, and requires new parents to view an educational video before hospital discharge.
+    </div>
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p><span class="lecture-tag">Lecture</span> When an infant is shaken forcefully, the brain and its bridging blood vessels move within the skull, but the <strong>superior sagittal sinus remains fixed</strong> (attached to the dura mater). This differential movement causes <strong>shearing and tearing of the bridging vessels</strong>, resulting in bleeding into the subdural spaces. Rotational forces and angular deceleration are the specific injury mechanisms — not a simple, direct impact.</p>
+
+    <h5>Why Infants Are at Higher Risk</h5>
+    <ul>
+      <li>Skull shape and proportionally large head size relative to body/neck strength <span class="lecture-tag">Lecture</span></li>
+      <li>Weak neck muscles unable to control head movement during shaking</li>
+      <li>Higher water content and less myelination of infant brain tissue, making it more susceptible to shearing injury</li>
+    </ul>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="alert-box">
+      <span class="label">Critical concept: absence of external trauma is common <span class="lecture-tag">Lecture</span></span>
+      AHT frequently presents with <strong>NO visible external signs of injury</strong> — this is precisely what makes it dangerous to miss. Presentation varies enormously depending on injury severity, and inconsistencies between the caregiver's history and the physical exam findings are a major red flag.
+    </div>
+
+    <h5>If Impact Occurred</h5>
+    <ul>
+      <li>Skull fracture, bruising, swelling <span class="lecture-tag">Lecture</span></li>
+    </ul>
+
+    <h5>Other Findings Sometimes Seen With AHT</h5>
+    <ul>
+      <li>Metaphyseal fractures (highly specific for abuse in a non-mobile infant)</li>
+      <li>Other fractures</li>
+      <li>Bruising of the skin</li>
+      <li>Internal abdominal injuries</li>
+      <li><strong>Or... nothing at all.</strong> Signs and symptoms may be entirely vague: fussiness, changes in behavior, lethargy <span class="lecture-tag">Lecture</span></li>
+    </ul>
+
+    <h5>Common Presenting Scenarios <span class="lecture-tag">Lecture</span></h5>
+    <ul>
+      <li>Infant with bruises in unusual/inconsistent locations</li>
+      <li>Vomiting without diarrhea</li>
+      <li>Apparent Life-Threatening Event (ALTE)</li>
+      <li>Sudden increase in head circumference</li>
+      <li>Developmental delays</li>
+      <li>Incidental fracture findings on imaging done for another reason</li>
+    </ul>
+
+    <h4>The TEN-4 Rule — Bruising Red Flags <span class="lecture-tag">Lecture</span></h4>
+    <div class="danger-box">
+      <span class="label">Be suspicious of ANY bruising on the:</span>
+      <ul>
+        <li><strong>T</strong>orso</li>
+        <li><strong>E</strong>ars</li>
+        <li><strong>N</strong>eck</li>
+      </ul>
+      <p>...of a child <strong>4 years or younger</strong></p>
+      <p><strong>— OR —</strong></p>
+      <p><strong>ANY bruising, anywhere, on a child 4 months or younger</strong> (a pre-mobile infant should have essentially no accidental bruising, since they cannot yet generate the mechanism for one).</p>
+    </div>
+
+    <h5>Bruising Pattern Discrimination <span class="lecture-tag">Lecture</span></h5>
+    <table>
+      <tr><th>Bruising Type</th><th>Typical Location</th></tr>
+      <tr><td><strong>Accidental</strong></td><td>Bony prominences, usually front of the body: shins, knees, elbows, forehead — consistent with a mobile child's typical falls</td></tr>
+      <tr><td><strong>Nonaccidental</strong></td><td>Soft parts of the body, can be front or back: cheeks, torso, buttocks, arms, legs — areas not typically struck in an accidental fall</td></tr>
+    </table>
+
+    <h4>Things That Will NOT Cause AHT <span class="lecture-tag">Lecture</span></h4>
+    <div class="alert-box">
+      <span class="label">Important for family education and clinical reasoning</span>
+      <ul>
+        <li>Bouncing (normal play)</li>
+        <li>Short falls</li>
+        <li>Rough play (normal, developmentally appropriate)</li>
+        <li>Immunizations</li>
+        <li>Toddlers or pets (a common but false caregiver explanation)</li>
+        <li>Birth trauma (with rare exception in specific circumstances)</li>
+      </ul>
+      <p>Knowing this list matters clinically: if a caregiver's explanation attributes significant intracranial injury to one of these mechanisms, that inconsistency is itself a red flag warranting further investigation.</p>
+    </div>
+
+    <h4>Complications / Outcomes</h4>
+    <div class="danger-box">
+      <span class="label">Sobering statistics <span class="lecture-tag">Lecture</span></span>
+      <ul>
+        <li>Approximately <strong>1,300 cases</strong> of AHT reported annually in the U.S.</li>
+        <li>Of those, approximately <strong>25% die</strong></li>
+        <li>Of survivors, up to <strong>80% suffer lifelong disabilities</strong> (ranging from mild to profound)</li>
+      </ul>
+      <p><strong>Disabilities include:</strong> learning disabilities, behavior issues, speech and language delays, vision/hearing issues, neuromotor and/or visual impairment.</p>
+    </div>
+
+    <h4>Labs &amp; Diagnostics — Medical Evaluation <span class="lecture-tag">Lecture</span></h4>
+    <table>
+      <tr><th>Test</th><th>Purpose</th></tr>
+      <tr><td>Head CT</td><td>Initial imaging for intracranial bleeding</td></tr>
+      <tr><td>Skeletal survey</td><td>Screen for occult fractures; <strong>repeat at 2 weeks</strong> — healing fractures not visible initially often become apparent on repeat imaging</td></tr>
+      <tr><td>Eye exam</td><td>Retinal hemorrhages are a classic, highly suggestive finding in AHT</td></tr>
+      <tr><td>Trauma &amp; bleeding labs</td><td>Rule out underlying bleeding disorders as an alternative explanation</td></tr>
+      <tr><td>MRI of brain</td><td>Performed if CT is abnormal, for further characterization</td></tr>
+      <tr><td>Photographs of all injuries</td><td>Essential forensic documentation</td></tr>
+    </table>
+
+    <h4>Risk Factors — Caregiver Characteristics <span class="lecture-tag">Lecture</span></h4>
+    <ul>
+      <li>Substance abuse</li>
+      <li>Criminal history or prior CPS involvement</li>
+      <li>Domestic violence in the home</li>
+      <li>Mental illness, especially undiagnosed/untreated</li>
+      <li>Low self-esteem, poor impulse control</li>
+      <li>Teenage parent or otherwise immature parent</li>
+      <li>Poor coping skills</li>
+      <li>Unrealistic expectations of the child (e.g., expecting an infant to stop crying "on command")</li>
+      <li>Caregiver was themselves abused as a child</li>
+    </ul>
+
+    <h5>Triggering Situations <span class="lecture-tag">Lecture</span></h5>
+    <ul>
+      <li>Crying baby (the single most common trigger)</li>
+      <li>Child misbehavior</li>
+      <li>Argument/conflict in the home</li>
+      <li>Toilet training frustration</li>
+      <li>General parental stressors</li>
+      <li>Discipline attempts that escalate</li>
+    </ul>
+
+    <div class="danger-box">
+      <span class="label">Critical bias to guard against — Most Likely to Be Overlooked <span class="lecture-tag">Lecture</span></span>
+      <ul>
+        <li>Caucasian families</li>
+        <li>"Intact" (two-parent) families</li>
+        <li>Middle-class, well-educated families</li>
+        <li>Families perceived to be "like our own"</li>
+        <li>Very young infants</li>
+        <li>Infants presenting with non-specific symptoms</li>
+      </ul>
+      <p>This is a crucial clinical judgment point: implicit bias about "what an abusive family looks like" is a documented cause of missed AHT diagnoses. Every infant with concerning findings deserves the same level of suspicion regardless of family appearance or socioeconomic status.</p>
+    </div>
+
+    <div class="call-provider">
+      <span class="label">Report / Escalate Immediately If</span>
+      <ul>
+        <li>Any bruising meeting the TEN-4 rule criteria</li>
+        <li>Inconsistency between the reported mechanism of injury and the clinical findings</li>
+        <li>Any suspected abuse — mandatory reporting applies regardless of the reporter's certainty level; suspicion alone is the legal and ethical threshold, not proof</li>
+      </ul>
+    </div>
+
+    <h4>Priority Nursing Interventions — Acuity Order</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Stabilize the child medically first: manage airway/ICP/any acute injury exactly as with any TBI (see ICP and TBI sections) — the medical emergency takes priority over the forensic/reporting process.
+      <span class="why">Why: A child with acute AHT may have life-threatening intracranial bleeding and increased ICP; this must be addressed immediately regardless of how the injury occurred.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Document objectively and thoroughly: signs/symptoms observed, caregiver statements verbatim when possible, and observations of parent-child interaction. Take photographs of any visible injuries per facility protocol. <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: Careful, objective, timely documentation is critical both for the child's ongoing medical care and for any subsequent legal/protective proceedings — and memory/details fade quickly.</span></li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br><strong>Report suspected abuse to the local child protective services (CPS) agency and/or follow facility-specific reporting guidelines.</strong> <span class="lecture-tag">Lecture</span>
+      <span class="why">Why: Nurses are mandated reporters; a delay in reporting can leave a child at continued risk of repeat, potentially fatal injury.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Provide nonjudgmental family education and support resources — see Prevention below.</li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Medical stabilization per the specific injury pattern (ICP management, seizure control, surgical intervention if indicated)</li>
+      <li>Ongoing developmental and rehabilitative support for survivors given the high rate of lasting disability</li>
+      <li>Coordinated care with CPS, forensic teams, and specialized child abuse pediatrics consultation</li>
+    </ul>
+
+    <h4>Prevention — This Is Where Nursing Education Has the Most Impact <span class="lecture-tag">Lecture</span></h4>
+    <ul>
+      <li>Help parents understand that it is <strong>normal for babies to cry</strong>, and normal for caregivers to feel frustrated and need help coping — normalizing these feelings reduces shame and opens the door to seeking help before a crisis</li>
+      <li>Be a resource for the family; talk openly about the dangers of shaking a baby</li>
+      <li><strong>Teach parents about the "Period of PURPLE Crying"</strong> — a research-based program framing the developmentally normal, unsoothable crying period in early infancy (peaks around 6–8 weeks) as a temporary, expected phase, not a sign of a problem with the baby or the parent's caregiving</li>
+      <li>Educate about crisis resources: <strong>1-800-4-A-CHILD</strong> (ChildHelp National Child Abuse Hotline)</li>
+      <li>Report to CPS if abuse is suspected; document thoroughly</li>
+    </ul>
+
+    <h4>Patient/Family Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education (Universal — All New Parents)</span>
+        <ul>
+          <li>It is <strong>never safe to shake an infant</strong>, under any circumstance or provocation, even briefly or in frustration</li>
+          <li>Teach concrete strategies for coping with an inconsolable crying baby: <strong>place the baby safely in the crib and step into another room for a few minutes to calm down</strong>, check on the baby periodically, and call someone for support/relief if needed</li>
+          <li>Teach the Period of PURPLE Crying concept — this normal developmental phase peaks and then resolves; it is not a reflection of parenting failure</li>
+          <li>Provide the ChildHelp hotline number (1-800-4-A-CHILD) and encourage saving it in their phone before it's ever needed</li>
+          <li>Discuss recognizing personal stress/frustration triggers and having a plan (a trusted family member, friend, or hotline to call) before reaching a breaking point</li>
+          <li>Encourage open conversation about the realistic challenges of newborn care without judgment, since isolation and shame increase risk</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">AHT occurs in infancy; the injured child cannot receive direct education — focus is entirely on caregiver prevention education and, for survivors, developmental support</span>
+        <ul>
+          <li>Not applicable for the infant victim directly; all preventive education is caregiver-directed</li>
+          <li>For older children in the household: age-appropriate education about safe touch and body safety is part of general child maltreatment prevention (see Child Maltreatment section)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care / Family Resources</h4>
+    <div class="selfcare-box">
+      <span class="label">Supporting new parents to prevent AHT</span>
+      <ul>
+        <li>Keep the ChildHelp hotline (1-800-4-A-CHILD) accessible</li>
+        <li>Build a support network before the baby's frustrating crying periods begin — identify who can provide a break</li>
+        <li>Use the "put baby down safely and step away" strategy whenever feeling overwhelmed by crying</li>
+        <li>Seek mental health support proactively if experiencing postpartum mood symptoms, since untreated maternal/paternal mental illness is a documented risk factor</li>
+        <li>Review Period of PURPLE Crying resources (purplecrying.info) for concrete coping strategies</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 Abusive Head Trauma lecture slides 1–21 (Currie, M., 2011, "Understanding Abusive Head Trauma: A Program for Nurses"; Dontshake.org, 2020); Unit 11 neuro lecture slide 37.</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= CHILD MALTREATMENT ========================= -->
+<section class="unit-block" id="maltreatment">
+<h2 class="section-title">Maltreatment of Children</h2>
+
+<div class="card trauma">
+  <div class="card-header">
+    <h3>Maltreatment of Children</h3>
+    <div class="tag">Abuse and neglect — broader category encompassing AHT</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Definition</h4>
+    <p>Includes abuse and neglect of a child less than 18 years of age by anyone in a caregiver or custodial role. <span class="lecture-tag">Lecture</span></p>
+
+    <h4>Nursing Care — Core Responsibilities <span class="lecture-tag">Lecture</span></h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Identify risk factors related to maltreatment during routine assessments — this is an ongoing surveillance responsibility for every pediatric nurse, not a specialized task.
+      <span class="why">Why: Early identification of risk factors (see Caregiver Characteristics under AHT) allows intervention before an injury occurs.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Teach parents and caregivers appropriate, non-violent discipline strategies; educate about the dangers of alcohol/drug use during pregnancy and discourage caregiver substance use generally.</li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Educate children and adolescents about their bodies and personal boundaries — an important preventive, protective education strategy.</li>
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br><strong>Report suspected child abuse to the local law enforcement/CPS agency and/or follow clinical agency guidelines for reporting.</strong> This is a mandatory, non-optional nursing responsibility.</li>
+    </ol>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Teach appropriate, developmentally-based discipline strategies as an alternative to physical punishment</li>
+          <li>Educate on the risks of alcohol/drug use during pregnancy and its lasting effects on the child</li>
+          <li>Discourage caregiver substance use and connect families struggling with substance use to treatment resources</li>
+          <li>Normalize seeking help for parenting stress before it escalates to harm (see AHT prevention content)</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Body safety education should be developmentally tailored and delivered consistently across childhood</span>
+        <ul>
+          <li><strong>Preschool/school-age:</strong> simple, concrete teaching about which parts of their body are private, the difference between safe and unsafe touch, and that they can always tell a trusted adult if something feels wrong — use clear, direct anatomical language rather than euphemisms, which supports clearer disclosure if something does happen</li>
+          <li><strong>Adolescent:</strong> more nuanced conversations about consent, healthy relationships, and recognizing coercive or abusive dynamics; ensure they know multiple trusted adults they could go to, since disclosure to a parent isn't always possible if the parent is the source of harm</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slide 39.</p>
+  </div>
+</div>
+</section>
+<!-- ========================= ADHD ========================= -->
+<section class="unit-block" id="adhd">
+<h2 class="section-title">Attention Deficit Hyperactivity Disorder (ADHD)</h2>
+
+<div class="card devel">
+  <div class="card-header">
+    <h3>ADHD</h3>
+    <div class="tag">Dopamine and norepinephrine dysregulation — exact cause unknown</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>Exact cause is unknown; however, the neurotransmitters <strong>dopamine (DA) and norepinephrine (NE)</strong> are thought to be involved in the underlying dysregulation. <span class="lecture-tag">Lecture</span></p>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Core symptom domains</span>
+      <ul>
+        <li><strong>Inattention</strong></li>
+        <li><strong>Hyperactivity</strong>-type behaviors</li>
+        <li><strong>Impulsivity</strong></li>
+      </ul>
+    </div>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <p>There is no single lab test for ADHD. Diagnosis relies on a comprehensive multi-source evaluation: <span class="lecture-tag">Lecture</span></p>
+    <ul>
+      <li>Medical and developmental histories</li>
+      <li>Physical examination</li>
+      <li>Vision and hearing assessment (to rule out sensory causes of inattention)</li>
+      <li>Detailed neurologic evaluation</li>
+      <li>Behavioral checklists (from parents, teachers, multiple settings)</li>
+    </ul>
+
+    <h4>Treatment — Three-Pronged Approach <span class="lecture-tag">Lecture</span></h4>
+    <div class="four-col">
+      <div class="crisis-card"><h5>Behavioral Therapy</h5><p>Structured behavior modification strategies at home and school</p></div>
+      <div class="crisis-card"><h5>Educational Support</h5><p>Individualized accommodations (IEP/504 plan) as needed</p></div>
+      <div class="crisis-card"><h5>Medication</h5><p>Stimulant and non-stimulant options — see Medication Reference section</p></div>
+    </div>
+
+    <h4>Priority Nursing Interventions</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-important">Important</span><br>Support a comprehensive, multi-source diagnostic evaluation rather than relying on a single observation or setting.</li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Coordinate the three-pronged treatment approach (behavioral, educational, medication) and monitor medication effects/side effects.</li>
+    </ol>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Explain that ADHD involves neurotransmitter-level brain differences, not poor parenting or a lack of discipline — this reframing reduces caregiver guilt and blame</li>
+          <li>Teach consistent behavioral strategies to use at home matching those used at school for continuity</li>
+          <li>If medication is prescribed, teach administration timing, expected effects, and monitoring for side effects (see Medication Reference)</li>
+          <li>Support collaboration with the school for educational accommodations</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Typically diagnosed in school-age children</span>
+        <ul>
+          <li><strong>School-age (concrete thinkers):</strong> simple, non-shaming language about how their brain works a little differently and that tools (like medication or classroom strategies) are there to help, not because something is "wrong" with them</li>
+          <li><strong>Adolescent:</strong> involve directly in understanding their own diagnosis and treatment, including medication self-administration responsibility as appropriate, and discuss any concerns about peer perception of taking medication at school</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing management</span>
+      <ul>
+        <li>Maintain consistent daily routines and structure</li>
+        <li>Take medication as prescribed and on schedule; report side effects rather than stopping independently</li>
+        <li>Use organizational tools/strategies taught through behavioral therapy consistently across home and school settings</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 40–41; Abrams Ch. 57 (ADHD medication nursing implications).</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= DOWN SYNDROME ========================= -->
+<section class="unit-block" id="downs">
+<h2 class="section-title">Down Syndrome</h2>
+
+<div class="card devel">
+  <div class="card-header">
+    <h3>Down Syndrome</h3>
+    <div class="tag">Trisomy 21 — most common chromosomal abnormality</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>The most common chromosomal abnormality: <strong>47 chromosomes present</strong>, usually as a full trisomy of the 21st pair (Trisomy 21). This changes the development of the body and brain broadly. <span class="lecture-tag">Lecture</span></p>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="expected">
+      <span class="label">Classic physical features</span>
+      <ul>
+        <li>Poor muscle tone (hypotonia)</li>
+        <li>Slanting eyes (upward palpebral fissures)</li>
+        <li>Hyperflexibility of the joints</li>
+        <li>Flat bridge of the nose</li>
+        <li>Short neck with extra folds of skin</li>
+        <li>Small stature</li>
+        <li>Low-set ears</li>
+        <li>Simian crease (single palmar crease)</li>
+        <li>Protruding tongue</li>
+      </ul>
+    </div>
+
+    <h4>Complications</h4>
+    <ul>
+      <li>Congenital heart defects (common comorbidity — screening is standard at diagnosis)</li>
+      <li>Hearing and vision problems</li>
+      <li>Hypothyroidism (higher incidence — periodic screening recommended)</li>
+      <li>Intellectual disability, ranging in severity</li>
+      <li>Increased risk of early-onset Alzheimer disease in adulthood</li>
+      <li>Higher risk of leukemia in childhood compared to the general population</li>
+    </ul>
+
+    <h4>Labs &amp; Diagnostics</h4>
+    <table>
+      <tr><th>Test</th><th>Purpose</th></tr>
+      <tr><td>Chromosomal blood test (karyotype)</td><td>Confirms trisomy 21 <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>Prenatal screening (cell-free DNA, ultrasound markers)</td><td>Can identify increased likelihood prenatally; diagnostic confirmation still requires karyotype/genetic testing</td></tr>
+    </table>
+
+    <h4>Priority Nursing Interventions</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-important">Important</span><br>Assist new parents with information and resources at the time of diagnosis — this is often a highly emotional moment requiring sensitive, factual, and hopeful communication. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Initiate early intervention services as soon as possible to optimize developmental outcomes. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Screen for and coordinate management of associated comorbidities (cardiac, thyroid, vision, hearing).</li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Assist new parents with information and resources <span class="lecture-tag">Lecture</span></li>
+      <li>Early intervention services <span class="lecture-tag">Lecture</span></li>
+      <li>Ongoing multidisciplinary management of associated conditions (cardiology, endocrinology, audiology, ophthalmology)</li>
+      <li>Educational support tailored to the individual child's cognitive profile</li>
+    </ul>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li>Provide accurate, current, hopeful information at diagnosis — avoid outdated stereotypes about capability and quality of life</li>
+          <li>Connect families with early intervention services immediately, as early support significantly improves developmental trajectory</li>
+          <li>Explain the need for ongoing screening: cardiac evaluation, thyroid function, vision, and hearing</li>
+          <li>Connect with Down syndrome-specific support organizations and other families for peer support</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Diagnosed at birth or prenatally; education is caregiver-directed in infancy, evolving as the child grows</span>
+        <ul>
+          <li><strong>Infant/toddler:</strong> caregiver-directed; focus on early intervention (PT/OT/speech) participation</li>
+          <li><strong>School-age:</strong> use concrete, simple teaching methods matched to the child's individual cognitive level — demonstration and repetition are often more effective than verbal explanation alone; break tasks into small sequential steps</li>
+          <li><strong>Adolescent:</strong> support growing independence in self-care and social skills to the extent of individual ability; address transition planning for education/vocational services</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing family management</span>
+      <ul>
+        <li>Keep all recommended screening appointments (cardiac, thyroid, vision, hearing) even when the child seems well</li>
+        <li>Engage consistently with early intervention and, later, educational support services</li>
+        <li>Break new skills into small, concrete steps with repetition and demonstration</li>
+        <li>Connect with support networks and Down syndrome-specific resources for ongoing guidance</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 42–43; general pediatric genetics principles cross-referenced with Perry Ch. 37.</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= AUTISM SPECTRUM DISORDER ========================= -->
+<section class="unit-block" id="autism">
+<h2 class="section-title">Autism Spectrum Disorder (ASD)</h2>
+
+<div class="card devel">
+  <div class="card-header">
+    <h3>Autism Spectrum Disorder</h3>
+    <div class="tag">A continuum of disorders — NOT caused by immunizations</div>
+  </div>
+  <div class="card-body">
+
+    <h4>Pathophysiology &amp; Etiology</h4>
+    <p>A continuum of disorders involving limitations in social relatedness, verbal and nonverbal communication, and a restricted range of interests and behaviors. <span class="lecture-tag">Lecture</span></p>
+    <div class="danger-box">
+      <span class="label">Etiology — a critical point to state explicitly</span>
+      Cause is <strong>unknown</strong>. <strong>NOT caused by immunizations</strong> — your lecture slide states this explicitly and directly, reflecting the strong scientific consensus rejecting the vaccine-autism link. <span class="lecture-tag">Lecture</span>
+    </div>
+
+    <h4>Signs &amp; Symptoms</h4>
+    <div class="findings-grid">
+      <div class="expected">
+        <span class="label">Social &amp; Communication</span>
+        <ul>
+          <li>Impairment in social reciprocity</li>
+          <li>Inability to maintain eye contact</li>
+          <li>Impaired communication (may include echolalia, monotone speech, or lack of gestures)</li>
+          <li>Lack of awareness of others' feelings or existence</li>
+          <li>Abnormal or absent comfort-seeking behaviors</li>
+          <li>Impaired peer relationships and social play</li>
+        </ul>
+      </div>
+      <div class="expected">
+        <span class="label">Behavior</span>
+        <ul>
+          <li>Restrictive or repetitive behaviors, interests, or activities</li>
+          <li>Lack of imaginative play</li>
+          <li>Persistent preoccupation/attachment to objects</li>
+          <li>Repetitive body movements (rocking, head banging)</li>
+          <li>Marked distress with any change in environment/routine</li>
+          <li>Possible self-injurious behaviors</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Diagnosis</h4>
+    <table>
+      <tr><th>Tool</th><th>Purpose</th></tr>
+      <tr><td>"First Signs" Program</td><td>Early screening/identification framework <span class="lecture-tag">Lecture</span></td></tr>
+      <tr><td>M-CHAT-R (Modified Checklist for Autism in Toddlers, Revised)</td><td>Standard toddler screening tool used in primary care</td></tr>
+    </table>
+
+    <div class="alert-box">
+      <span class="label">Safety priority</span>
+      <strong>Ensuring a safe environment for a child with autism is a priority</strong> — given the risk of self-injurious behaviors (head banging, etc.) and potential lack of awareness of environmental danger.
+    </div>
+
+    <h4>Priority Nursing Interventions</h4>
+    <ol class="priority-steps">
+      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Implement safety precautions as necessary for self-injurious behaviors (e.g., padding, close supervision).
+      <span class="why">Why: Self-injurious behaviors and reduced hazard awareness create real physical safety risks that must be proactively managed.</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Determine the child's routines, habits, and preferences and maintain consistency as much as possible; determine the child's specific communication methods and use them consistently. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br><strong>Be aware of the child's physical boundaries and possible reluctance to be touched by others</strong> — approach and physical contact should be adapted to the individual child's sensory profile. <span class="lecture-tag">Lecture</span></li>
+      <li><span class="acuity-tag acuity-important">Important</span><br>Avoid placing unnecessary demands on the child; initiate referrals to specialized programs; provide support to parents.</li>
+    </ol>
+
+    <h4>Treatment</h4>
+    <ul>
+      <li>Early intervention — the most impactful strategy for improving long-term outcomes <span class="lecture-tag">Lecture</span></li>
+      <li>Consistent routine — <strong>very important</strong> for these patients; unexpected change is a major source of distress <span class="lecture-tag">Lecture</span></li>
+      <li>Individualized behavioral, communication, and educational therapies</li>
+      <li>Referrals to specialized programs as needed</li>
+    </ul>
+
+    <h4>The CDC "ALARM" Acronym — Framework for Understanding &amp; Approaching Autism <span class="lecture-tag">Lecture</span></h4>
+    <div class="four-col">
+      <div class="crisis-card"><h5>A</h5><p>Autism is prevalent</p></div>
+      <div class="crisis-card"><h5>L</h5><p>Listen to patients/parents</p></div>
+      <div class="crisis-card"><h5>A</h5><p>Act early</p></div>
+      <div class="crisis-card"><h5>R</h5><p>Refer</p></div>
+    </div>
+    <div class="crisis-card" style="margin-top:10px;"><h5>M</h5><p>Monitor</p></div>
+
+    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+    <div class="edu-grid">
+      <div class="edu-parent">
+        <span class="label">Parent / Caregiver Education</span>
+        <ul>
+          <li><strong>Directly and explicitly correct the vaccine-autism myth</strong> if the family raises it — reassure with current evidence while validating that this is a common and understandable concern to have heard</li>
+          <li>Teach the ALARM framework concept: listen to their observations (parents are often the first to notice something is different), act early rather than adopting a "wait and see" approach, and pursue referrals promptly</li>
+          <li>Teach the importance of maintaining consistent routines at home and coordinating consistency with school/therapy settings</li>
+          <li>Teach recognition of the child's individual communication style and specific comfort/distress signals</li>
+          <li>Discuss safety measures for the home environment given self-injury and elopement risks documented in some children with ASD</li>
+        </ul>
+      </div>
+      <div class="edu-child">
+        <span class="label">Pediatric / Child-Directed Education</span>
+        <span class="dev-tag">Typically identified in toddlerhood; adapt all teaching to the individual child's communication style and cognitive profile, not just chronological age</span>
+        <ul>
+          <li><strong>Toddler/preschool:</strong> use the child's preferred communication method (which may not be verbal) consistently; visual schedules and consistent routines reduce anxiety and support understanding of what to expect</li>
+          <li><strong>School-age:</strong> continue routine-based, concrete teaching; respect sensory sensitivities and physical boundary preferences during any procedures or exams</li>
+          <li><strong>Adolescent:</strong> individualize based on communication ability and cognitive level; involve directly in self-advocacy skill-building where appropriate</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4>Self-Care Strategies</h4>
+    <div class="selfcare-box">
+      <span class="label">Ongoing family/patient management</span>
+      <ul>
+        <li>Maintain consistent daily routines; prepare the child in advance for any necessary changes</li>
+        <li>Use visual supports/schedules if helpful for the individual child</li>
+        <li>Engage consistently with early intervention and ongoing therapy services</li>
+        <li>Implement home safety measures tailored to the child's specific behaviors and risks</li>
+        <li>Respect the child's sensory preferences and physical boundary needs in daily caregiving</li>
+      </ul>
+    </div>
+
+    <p class="source-tag">Source: Unit 11 lecture slides 44–45; Saunders 9th ed. Ch. 39 (autism assessment/interventions, M-CHAT-R).</p>
+  </div>
+</div>
+</section>
+
+<!-- ========================= MEDICATION REFERENCE ========================= -->
+<section class="unit-block" id="meds">
+<h2 class="section-title">Medication Reference — Unit 11</h2>
+<div class="card structural">
+  <div class="card-header">
+    <h3>Neurological Medications — Nursing Implications</h3>
+    <div class="tag">From Abrams' Clinical Drug Therapy, Ch. 53, 54, 57</div>
+  </div>
+  <div class="card-body">
+    <h4>Seizure Disorders &amp; Spasticity (Abrams Ch. 53)</h4>
+    <table class="med-table">
+      <tr><th>Medication</th><th>Class/Use</th><th>Key Nursing Points</th></tr>
+      <tr><td>Phenytoin</td><td>Antiepileptic; also second-line for status epilepticus</td><td>Monitor for gingival hyperplasia with long-term use; narrow therapeutic index — monitor levels; IV must be given slowly and diluted only in normal saline (precipitates in dextrose)</td></tr>
+      <tr><td>Fosphenytoin</td><td>Antiepileptic — status epilepticus</td><td>Preferred over phenytoin for better tolerability/fewer infusion site reactions</td></tr>
+      <tr><td>Phenobarbital</td><td>Barbiturate antiepileptic; used in status epilepticus and for sedation in severe ICP management</td><td>Monitor for respiratory depression, especially when combined with benzodiazepines</td></tr>
+      <tr><td>Gabapentin</td><td>Antiepileptic/adjunct</td><td>Monitor for sedation, dizziness</td></tr>
+      <tr><td>Carbamazepine</td><td>Antiepileptic</td><td>Monitor CBC (risk of blood dyscrasias)</td></tr>
+      <tr><td>Acetazolamide</td><td>Used adjunctively for seizure control and to reduce CSF production in some hydrocephalus contexts</td><td>Monitor electrolytes (can cause metabolic acidosis)</td></tr>
+      <tr><td>Dantrolene sodium</td><td>Skeletal muscle relaxant for spasticity (e.g., in cerebral palsy)</td><td>Monitor liver function; hepatotoxicity risk</td></tr>
+    </table>
+    <p class="source-tag">"Use in Children" note from syllabus: Phenytoin specifically flagged for pediatric-specific considerations.</p>
+
+    <h4>Anxiety &amp; Insomnia — Benzodiazepines (Abrams Ch. 54)</h4>
+    <table class="med-table">
+      <tr><th>Medication</th><th>Class/Use</th><th>Key Nursing Points</th></tr>
+      <tr><td>Diazepam</td><td>Benzodiazepine — first-line IV for status epilepticus; rectal form for home/prehospital seizure management</td><td><strong>Incompatible with many drugs</strong> — do not mix in the same line; monitor for respiratory depression, especially with repeat dosing</td></tr>
+      <tr><td>Lorazepam (Ativan)</td><td>Benzodiazepine — first-line IV for status epilepticus</td><td>Monitor for respiratory depression; onset/duration differ slightly from diazepam but both are frontline options based on availability/fastest route</td></tr>
+    </table>
+
+    <h4>ADHD &amp; Narcolepsy (Abrams Ch. 57)</h4>
+    <table class="med-table">
+      <tr><th>Medication</th><th>Class/Use</th><th>Key Nursing Points</th></tr>
+      <tr><td>Methylphenidate</td><td>Stimulant — first-line ADHD treatment</td><td>Monitor growth (height/weight) given appetite suppression risk; monitor for insomnia if dosed too late in the day; assess cardiac history before starting</td></tr>
+      <tr><td>Dextroamphetamine &amp; amphetamine</td><td>Stimulant — ADHD treatment</td><td>Same monitoring as methylphenidate: growth, sleep, cardiac risk factors</td></tr>
+      <tr><td>Lisdexamfetamine</td><td>Stimulant prodrug — ADHD treatment</td><td>Longer-acting formulation; same general monitoring principles</td></tr>
+    </table>
+    <div class="alert-box">
+      <span class="label">Cross-cutting stimulant medication teaching point</span>
+      All ADHD stimulant medications require monitoring of growth trends over time (height and weight plotted on growth charts at each visit) due to appetite suppression, and screening for personal/family cardiac history before initiation given rare but serious cardiovascular risk.
+    </div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+  Built from Perry et al., <em>Maternal Child Nursing Care</em> 7th ed. (Ch. 34, Ch. 37, Ch. 46, Ch. 49) · Saunders NCLEX Pediatric 9th ed. (Ch. 39, Neurological and Cognitive Problems) · Abrams' <em>Clinical Drug Therapy</em> (Ch. 53, 54, 57) · Unit 11 instructor lecture slides ("Caring for the Child with a Neurological Condition" and "Pediatric Abusive Head Trauma," student decks) · NSG 3600 Syllabus v8.9 — all content grounded in Galen College of Nursing project materials and your uploaded course files. Content sourced from the lecture decks is marked <span class="lecture-tag">Lecture</span> throughout so you can tell textbook-grounded vs. instructor-added material apart. Verify against live class discussion; textbook page ranges reflect syllabus-assigned readings only.
+</footer>
+
+</body>
+</html>
