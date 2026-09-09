@@ -228,7 +228,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-bolt"></i>Quick Jump</h2>
   <div class="toc-grid">
     <div class="toc-item" data-jump="u9-adapt"><i class="ti ti-lungs"></i>Transition + CaMeTS</div>
-    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Apgar, Ballard, Vitals, Head-to-Toe</div>
+    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Respiratory, Apgar, Ballard, Head-to-Toe</div>
     <div class="toc-item" data-jump="u9-care"><i class="ti ti-heart-handshake"></i>Vit K, Thermoreg, Feeding</div>
     <div class="toc-item" data-jump="u9-pain"><i class="ti ti-injection"></i>Pain + Circumcision</div>
     <div class="toc-item" data-jump="u9-conditions"><i class="ti ti-droplet"></i>Jaundice, Hypoglycemia, Hypocalcemia</div>
@@ -366,7 +366,82 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 <div class="panel" id="u9-assess">
   <h2 class="section-title"><i class="ti ti-clipboard-check"></i>Newborn Assessment</h2>
   <div class="uslo-tag">USLO 4</div>
-  <p class="lead">Apgar, New Ballard gestational age scoring, growth classification, vital sign parameters with causes of deviation, and full head-to-toe assessment (integumentary/head, HEENT, musculoskeletal/reflexes/hips, GI, GU, cardiovascular/peripheral vascular) with expected vs. unexpected findings, plus required discharge education content.</p>
+  <p class="lead">Respiratory (priority #1 per NCJMM and the CPE checklist), Apgar, New Ballard gestational age scoring, growth classification, vital sign parameters with causes of deviation, and full head-to-toe assessment (integumentary/head, HEENT, musculoskeletal/reflexes/hips, GI, GU, cardiovascular/peripheral vascular) with expected vs. unexpected findings, plus required discharge education content.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-lungs"></i></span><span>Respiratory Assessment (Priority #1)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Why this comes first</b></span>Respiratory assessment is the literal first priority item on the CPE checklist and the first NCJMM "Recognize Cues" step for any newborn &mdash; airway/breathing is assessed before anything else in every newborn encounter, consistent with the priority-ranking logic used throughout this guide.</span></div>
+
+      <div class="field"><div class="field-label">Assessment sequence &amp; technique</div><ul>
+        <li>With the infant calm/at rest (ideally before other exam steps that might agitate the infant), <b>observe</b> respiratory rate, rhythm, and symmetry of chest rise and fall for a full 60 seconds &mdash; count the full minute given normal newborn irregularity.</li>
+        <li>Note whether breathing is abdominal in character (normal &mdash; newborn respiration is largely diaphragmatic) with the chest and abdomen rising <b>together</b>, not in a seesaw pattern.</li>
+        <li><b>Auscultate anterior and posterior lung fields</b>, moving the stethoscope systematically side-to-side and top-to-bottom for side-to-side comparison. The actual respiratory rate should be counted from auscultation, not just from watching abdominal movement.</li>
+        <li>Auscultate the nose separately to help distinguish upper airway congestion (mucus/amniotic fluid noise) from true lower airway congestion.</li>
+        <li>Determine the need for a bulb syringe based on excessive oral/nasal secretions, confirming nasal patency bilaterally (occlude one naris at a time with mouth closed; chest should still rise, confirming the other side is patent).</li>
+      </ul></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Respiratory rate</td><td class="normal">30-60/min; shallow, irregular; periodic breathing pauses &lt;20 sec normal (most common in REM sleep)</td><td class="abnormal">Tachypnea, persistent &gt;60-70/min at rest</td><td>RDS, TTN, congenital diaphragmatic hernia, sepsis, cardiac/metabolic/infectious illness</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Bradypnea &lt;30/min</td><td>Maternal narcosis from analgesics/anesthesia given during labor, birth trauma</td></tr>
+        <tr><td></td><td></td><td class="abnormal">True apnea &gt;20 sec (vs. normal periodic breathing pauses)</td><td>Rapid warming/cooling (preterm), CNS instability, hypoglycemia, sepsis</td></tr>
+        <tr><td>Chest movement</td><td class="normal">Chest and abdomen rise together (synchronized)</td><td class="abnormal">Seesaw/paradoxic respirations (abdomen rises as chest falls)</td><td>Respiratory distress &mdash; abnormal breathing mechanics, should be reported</td></tr>
+        <tr><td>Breath sounds</td><td class="normal">Bronchial, loud, clear, heard equally bilaterally; fine crackles in the first few hours are not unusual (retained lung fluid clearing)</td><td class="abnormal">Coarse crackles, rhonchi, wheezing</td><td>Fluid/secretions, infection, or aspiration</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Absent or diminished breath sounds (especially unilateral)</td><td>Pneumothorax</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Stridor</td><td>Upper airway obstruction/occlusion</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Expiratory grunt</td><td>Narrowing of the bronchi &mdash; the infant is auto-generating positive pressure to keep alveoli open, a compensatory sign of significant distress</td></tr>
+      </table>
+      </div>
+
+      <div class="field"><div class="field-label">Signs of respiratory distress &mdash; the full list</div><ul>
+        <li><b>Nasal flaring</b> &mdash; widening of the nostrils with each breath, increasing airflow</li>
+        <li><b>Retractions</b> &mdash; in-drawing of soft tissue as the infant works harder to breathe. Location matters: <b>suprasternal or subclavicular retractions with stridor/gasping</b> suggest upper airway obstruction, while intercostal/subcostal retractions are more general distress signs. Retraction depth correlates with severity &mdash; deeper retractions mean worsening disease, since newborn chest wall compliance/immaturity means any real respiratory effort shows up as visible retraction</li>
+        <li><b>Grunting</b> on expiration</li>
+        <li><b>Central cyanosis</b> (not just acrocyanosis)</li>
+        <li><b>Seesaw/paradoxic respirations</b></li>
+        <li><b>Use of accessory muscles</b></li>
+        <li><b>Lethargy or excessive sleepiness</b> &mdash; a subtler sign parents should also be taught to recognize</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label">The Silverman-Andersen Index</div><p>A structured tool that scores 5 components of respiratory effort &mdash; upper chest movement, lower chest (retractions), xiphoid retractions, nasal flaring, and expiratory grunt &mdash; each rated 0 (none), 1 (mild/just visible or audible with stethoscope only), or 2 (marked/audible to naked ear). Higher total scores indicate more severe respiratory distress. This gives you an objective, reproducible way to trend whether an infant's respiratory status is improving or worsening over time, rather than relying on a single subjective impression.</p></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing actions if distress is identified</b></span><ol>
+        <li>If bulb syringe suctioning clears the secretions and retractions resolve afterward &mdash; this confirms upper airway congestion was the cause and no further action is needed beyond continued observation.</li>
+        <li>If retractions and distress signs persist despite suctioning, this is a life-threatening event requiring immediate investigation &mdash; do not simply re-suction repeatedly and wait.</li>
+        <li>Correlate with skin color and capillary refill &mdash; both provide additional information about oxygenation status alongside the respiratory exam itself.</li>
+        <li>Continue cardiorespiratory monitoring and reassess trend, not just a single point-in-time finding.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>RR persistently &gt;60-70/min at rest; any true apneic episode &gt;20 seconds; nasal flaring, grunting, or retractions that do not resolve with bulb suctioning; stridor; central cyanosis; seesaw respirations; absent or markedly diminished breath sounds on one side.</span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby's breathing may be a little irregular at first, with brief pauses of a few seconds — that's normal. But call us or come in if you notice faster-than-normal breathing, pauses longer than 15 seconds, the chest and belly moving in opposite directions (like a seesaw), flaring nostrils, grunting sounds, or if your baby seems unusually sleepy or hard to wake.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Know what normal newborn breathing looks like (irregular, with brief pauses) versus true trouble breathing (fast, labored, grunting, flaring, or bluish color). If you see the concerning signs, contact the parents and seek care right away rather than waiting to see if it resolves.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-box-align-top"></i></span><span>Chest Assessment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Assessment technique</div><p>Inspect chest shape and symmetry, then determine nipple number, placement, and shape. Palpate both clavicles at the same time as the musculoskeletal exam to detect birth-trauma fractures (see Musculoskeletal card).</p></div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Shape</td><td class="normal">Symmetric; circular appearance (anteroposterior and lateral diameters roughly equal); mild sternal retraction or xiphoid prominence can be a normal finding that resolves with growth</td><td class="abnormal">Pectus excavatum (funnel chest) or pectus carinatum (pigeon chest)</td><td>Abnormal rib/sternum development; may interfere with lung expansion if severe</td></tr>
+        <tr><td>Symmetry during respiration</td><td class="normal">Even, symmetric rise and fall</td><td class="abnormal">Asymmetric chest wall movement</td><td>Possible rib fracture, or unilateral lung pathology (e.g., pneumothorax)</td></tr>
+        <tr><td>Nipples</td><td class="normal">Prominent, well-formed, symmetrically placed at the midclavicular line; nipple/breast tissue may be edematous with a milky discharge ("witch's milk") from maternal hormone withdrawal &mdash; normal and temporary</td><td class="abnormal">Supernumerary (extra) nipples along the milk line</td><td>Usually benign/familial, not associated with a syndrome on its own</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Widely spaced nipples (between the midclavicular line and lateral chest wall)</td><td>Can be associated with Down syndrome or other congenital syndromes &mdash; note in context of other findings</td></tr>
+      </table>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>It's normal for your baby's nipples to look a little swollen or even leak a small amount of milky fluid in the first days — this is from your hormones during pregnancy and will go away on its own.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Breast swelling or discharge in a newborn (of either sex) is a normal, temporary finding and not a sign of illness.</div>
+      </div>
+    </div>
+  </div>
 
   <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-list-numbers"></i></span><span>APGAR Scoring</span></div><span class="arrow">&#9656;</span></div>
