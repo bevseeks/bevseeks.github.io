@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSG 3500 | Unit 9: Newborn Care</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+<style>
+:root{
+  --purple:#534AB7; --purple-light:#EEEDFE; --purple-dark:#26215C; --purple-mid:#AFA9EC;
+  --teal:#0F6E56; --teal-light:#E1F5EE; --teal-dark:#04342C; --teal-mid:#5DCAA5;
+  --coral:#993C1D; --coral-light:#FAECE7; --coral-dark:#4A1B0C; --coral-mid:#F0997B;
+  --amber:#854F0B; --amber-light:#FAEEDA; --amber-dark:#412402; --amber-mid:#EF9F27;
+  --red:#A32D2D; --red-light:#FCEBEB; --red-dark:#501313; --red-mid:#F09595;
+  --blue:#185FA5; --blue-light:#E6F1FB; --blue-dark:#042C53; --blue-mid:#85B7EB;
+  --pink:#993556; --pink-light:#FBEAF0; --pink-dark:#4B1528; --pink-mid:#ED93B1;
+  --green:#3B6D11; --green-light:#EAF3DE; --green-dark:#173404; --green-mid:#97C459;
+  --gray:#5F5E5A; --gray-light:#F1EFE8; --gray-dark:#2C2C2A;
+  --ink:#22221f; --sub:#5c5c58; --line:#ddd9cf; --bg:#fdfcfa; --card:#ffffff;
+}
+*{box-sizing:border-box;}
+body{margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; font-size:16px;}
+.wrap{max-width:920px;margin:0 auto;padding:0 0 60px;}
+header{background:linear-gradient(120deg,var(--purple-dark) 0%,var(--purple) 55%,#7267D6 100%); color:#fff; padding:28px 20px 22px; position:relative; overflow:hidden;}
+header::before{content:""; position:absolute; top:-40px; right:-40px; width:160px; height:160px; border-radius:50%; background:rgba(255,255,255,.08);}
+header::after{content:""; position:absolute; bottom:-60px; right:60px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,.06);}
+header .htop{display:flex; align-items:center; gap:12px; position:relative; z-index:1;}
+header .hicon{width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.16); display:flex; align-items:center; justify-content:center; font-size:24px; flex:0 0 auto;}
+header h1{margin:0 0 4px; font-size:21px; font-weight:700;}
+header p{margin:0; font-size:13.5px; opacity:.9;}
+.badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; position:relative; z-index:1;}
+.badge{background:rgba(255,255,255,.18); padding:5px 11px; border-radius:999px; font-size:11.5px; font-weight:600; display:flex; align-items:center; gap:5px;}
+.badge i{font-size:13px;}
+
+nav.tabs{position:sticky; top:0; z-index:50; background:#fff; border-bottom:2px solid var(--line); display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+nav.tabs::-webkit-scrollbar{display:none;}
+nav.tabs button{flex:0 0 auto; padding:12px 14px; border:none; background:none; font-size:12.5px; font-weight:700; color:var(--sub); cursor:pointer; white-space:nowrap; border-bottom:3px solid transparent; display:flex; align-items:center; gap:6px;}
+nav.tabs button i{font-size:15px;}
+nav.tabs button.active{color:var(--purple); border-bottom-color:var(--purple); background:var(--purple-light);}
+
+.panel{display:none; padding:18px 16px 8px;}
+.panel.active{display:block;}
+
+h2.section-title{font-size:19px; margin:6px 0 4px; color:var(--purple-dark); font-weight:800; display:flex; align-items:center; gap:9px;}
+h2.section-title i{font-size:22px; background:var(--purple-light); color:var(--purple); width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:0 0 auto;}
+.uslo-tag{display:inline-block; background:var(--purple-light); color:var(--purple-dark); font-size:11.5px; font-weight:700; padding:2px 9px; border-radius:6px; margin:2px 6px 10px 0;}
+p.lead{color:var(--sub); margin:0 0 14px; font-size:14.5px;}
+
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,.04); border-top:3px solid var(--line);}
+.card h3{margin:0 0 8px; font-size:16.5px; color:var(--ink); display:flex; align-items:center; gap:10px;}
+.card h3 .icn{width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-size:16px; color:#fff;}
+.card p{margin:0 0 8px; font-size:14.5px;}
+.card ul{margin:6px 0 6px 18px; padding:0; font-size:14.5px;}
+.card li{margin-bottom:4px;}
+
+.mnemonic{background:linear-gradient(120deg,var(--amber-light),#fff4de); border:1px solid #f0d9a8; border-radius:10px; padding:10px 14px; margin:10px 0; font-size:14px; display:flex; gap:10px; align-items:flex-start;}
+.mnemonic i{color:var(--amber); font-size:18px; margin-top:1px;}
+.mnemonic b{color:var(--amber-dark);}
+
+.flag{background:var(--red-light); border-left:4px solid var(--red); border-radius:0 8px 8px 0; padding:8px 12px; margin:10px 0; font-size:13.5px; color:var(--red-dark); display:flex; gap:9px;}
+.flag i{color:var(--red); font-size:16px; margin-top:2px; flex:0 0 auto;}
+
+.priority-box{background:linear-gradient(120deg,var(--coral-light),#fef1ec); border:2px solid #e0a583; border-radius:10px; padding:12px 14px; margin:10px 0; font-size:13.5px; display:flex; gap:10px;}
+.priority-box i{color:var(--coral); font-size:18px; margin-top:1px; flex:0 0 auto;}
+.priority-box b{color:var(--coral-dark);}
+.priority-box ol{margin:6px 0 0; padding-left:20px;}
+.priority-box li{margin-bottom:6px;}
+
+.notify-box{background:linear-gradient(120deg,var(--pink-light),#fef0f6); border:2px solid #e8a8c1; border-radius:10px; padding:12px 14px; margin:10px 0; font-size:13.5px; display:flex; gap:10px;}
+.notify-box i{color:var(--pink); font-size:18px; margin-top:1px; flex:0 0 auto;}
+.notify-box b{color:var(--pink-dark);}
+.notify-box ul{margin:6px 0 0; padding-left:20px;}
+.notify-box li{margin-bottom:5px;}
+
+.teach-box{background:linear-gradient(120deg,var(--blue-light),#eef6fd); border:2px solid #a9cbf0; border-radius:10px; padding:12px 14px; margin:10px 0; font-size:13.5px; display:flex; gap:10px;}
+.teach-box i{color:var(--blue); font-size:18px; margin-top:1px; flex:0 0 auto;}
+.teach-box b{color:var(--blue-dark);}
+
+.selfcare-box{background:linear-gradient(120deg,var(--green-light),#f3faec); border:2px solid #bcdb95; border-radius:10px; padding:12px 14px; margin:10px 0; font-size:13.5px; display:flex; gap:10px;}
+.selfcare-box i{color:var(--green); font-size:18px; margin-top:1px; flex:0 0 auto;}
+.selfcare-box b{color:var(--green-dark);}
+.selfcare-box ul{margin:6px 0 0; padding-left:20px;}
+.selfcare-box li{margin-bottom:5px;}
+
+.box-heading{display:block; margin-bottom:6px;}
+
+.cond{background:var(--card); border:1px solid var(--line); border-radius:14px; margin-bottom:12px; overflow:hidden; box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.cond-head{padding:14px 16px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:700; font-size:15.5px; user-select:none; gap:10px;}
+.cond-head .htitle{display:flex; align-items:center; gap:11px; flex:1;}
+.cond-head .cicon{width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex:0 0 auto; font-size:19px; color:#fff;}
+.cond-head .arrow{transition:transform .2s; font-size:14px; color:var(--sub); flex:0 0 auto;}
+.cond.open .cond-head .arrow{transform:rotate(90deg);}
+.cond.open .cond-head{border-bottom:1px solid var(--line);}
+.cond-body{display:none; padding:14px 16px 16px;}
+.cond.open .cond-body{display:block;}
+.field{margin-bottom:12px;}
+.field-label{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--purple); margin-bottom:3px; display:flex; align-items:center; gap:5px;}
+.field-label i{font-size:13px;}
+.field p, .field ul{margin:0; font-size:14px;}
+.field ul{padding-left:18px;}
+.field li{margin-bottom:3px;}
+
+.subfield{margin:6px 0 6px 4px; padding-left:10px; border-left:2px solid var(--line);}
+.subfield-label{font-size:11px; font-weight:700; color:var(--gray-dark); margin-bottom:2px;}
+
+table.compare{width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; border-radius:10px; overflow:hidden;}
+table.compare th{background:linear-gradient(120deg,var(--purple),#6a5fd0); color:#fff; padding:8px 9px; text-align:left; font-weight:700;}
+table.compare td{padding:7px 9px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.compare tr:nth-child(even) td{background:#faf9f6;}
+.tbl-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:12px 0; border-radius:10px;}
+
+table.labs{width:100%; border-collapse:collapse; margin:10px 0; font-size:12.5px; border-radius:10px; overflow:hidden;}
+table.labs th{background:linear-gradient(120deg,var(--teal),#159172); color:#fff; padding:7px 8px; text-align:left; font-weight:700;}
+table.labs td{padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top;}
+table.labs tr:nth-child(even) td{background:#f6faf8;}
+td.abnormal{color:var(--red-dark); font-weight:700;}
+td.normal{color:var(--teal-dark);}
+
+.diet-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:10px 0;}
+.diet-col{border-radius:10px; padding:10px 12px; font-size:13px;}
+.diet-col.can{background:linear-gradient(160deg,var(--teal-light),#f2fbf7); border:1px solid #b7e5d3;}
+.diet-col.cannot{background:linear-gradient(160deg,var(--red-light),#fef4f4); border:1px solid #f0c3c3;}
+.diet-col b{display:flex; align-items:center; gap:5px; font-size:11.5px; text-transform:uppercase; margin-bottom:6px;}
+.diet-col.can b{color:var(--teal-dark);}
+.diet-col.cannot b{color:var(--red-dark);}
+.diet-col ul{margin:0; padding-left:16px;}
+
+.quiz-card{background:var(--card); border:2px solid var(--purple-light); border-radius:14px; padding:18px; margin-bottom:16px; position:relative;}
+.quiz-card::before{content:"\ea5d"; font-family:"tabler-icons"; position:absolute; top:14px; right:16px; font-size:20px; color:var(--purple-mid);}
+.quiz-q{font-weight:700; font-size:15px; margin-bottom:12px; padding-right:26px;}
+.quiz-opts{display:flex; flex-direction:column; gap:8px;}
+.quiz-opt{background:#fff; border:1.5px solid var(--line); border-radius:10px; padding:10px 14px; font-size:14px; cursor:pointer; text-align:left;}
+.quiz-opt:hover{border-color:var(--purple);}
+.quiz-opt.correct{background:var(--teal-light); border-color:var(--teal); color:var(--teal-dark); font-weight:700;}
+.quiz-opt.incorrect{background:var(--red-light); border-color:var(--red); color:var(--red-dark); font-weight:700;}
+.quiz-rationale{display:none; margin-top:12px; padding:12px 14px; background:var(--gray-light); border-radius:10px; font-size:13.5px;}
+.quiz-rationale.show{display:block;}
+
+.ncjmm-flow{display:flex; flex-wrap:wrap; gap:6px; margin:12px 0;}
+.ncjmm-step{flex:1 1 140px; background:linear-gradient(120deg,var(--purple-light),#f4f3fe); color:var(--purple-dark); border-radius:8px; padding:9px 10px; font-size:12px; font-weight:700; text-align:center; border:1px solid var(--purple-mid);}
+
+.pill-row{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0;}
+.pill{background:var(--blue-light); color:var(--blue-dark); font-size:12px; font-weight:700; padding:5px 11px; border-radius:999px; display:inline-flex; align-items:center; gap:5px;}
+.pill i{font-size:13px;}
+
+.toc-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:14px 0;}
+.toc-item{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font-size:12.5px; font-weight:700; cursor:pointer; color:var(--purple-dark); display:flex; align-items:center; gap:8px;}
+.toc-item i{font-size:16px; color:var(--purple); flex:0 0 auto;}
+.toc-item:active{background:var(--purple-light);}
+
+.svg-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px; margin:12px 0; text-align:center;}
+.svg-card svg{max-width:100%; height:auto;}
+.svg-caption{font-size:12px; color:var(--sub); margin-top:6px;}
+
+.edu-grid{display:grid; grid-template-columns:1fr; gap:10px; margin:10px 0;}
+@media(min-width:640px){.edu-grid{grid-template-columns:1fr 1fr;}}
+.edu-col{border-radius:10px; padding:12px 14px; font-size:13.5px;}
+.edu-col.parent{background:linear-gradient(160deg,var(--blue-light),#f3f9fe); border:1px solid #a9cbf0;}
+.edu-col.caregiver{background:linear-gradient(160deg,var(--pink-light),#fdf3f7); border:1px solid #e8a8c1;}
+.edu-col b{display:flex; align-items:center; gap:6px; font-size:11.5px; text-transform:uppercase; margin-bottom:6px;}
+.edu-col.parent b{color:var(--blue-dark);}
+.edu-col.caregiver b{color:var(--pink-dark);}
+
+footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="htop">
+    <div class="hicon"><i class="ti ti-baby-carriage"></i></div>
+    <div>
+      <h1>Unit 9: Newborn Care</h1>
+      <p>NSG 3500 &middot; Maternal Health &middot; Galen College of Nursing</p>
+    </div>
+  </div>
+  <div class="badges">
+    <span class="badge"><i class="ti ti-brain"></i>NCJMM Framework</span>
+    <span class="badge"><i class="ti ti-book"></i>Perry Ch. 22-24</span>
+    <span class="badge"><i class="ti ti-list-check"></i>Full 9-Field Condition Cards</span>
+    <span class="badge"><i class="ti ti-alert-triangle"></i>Priority-Ranked Interventions</span>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs">
+  <button class="active" data-tab="overview"><i class="ti ti-layout-grid"></i>Overview</button>
+  <button data-tab="u9-adapt"><i class="ti ti-lungs"></i>Transition</button>
+  <button data-tab="u9-assess"><i class="ti ti-clipboard-check"></i>Assessment</button>
+  <button data-tab="u9-care"><i class="ti ti-heart-handshake"></i>Immediate Care</button>
+  <button data-tab="u9-pain"><i class="ti ti-injection"></i>Pain &amp; Circumcision</button>
+  <button data-tab="u9-conditions"><i class="ti ti-droplet"></i>Newborn Conditions</button>
+  <button data-tab="compare"><i class="ti ti-columns-3"></i>Compare</button>
+  <button data-tab="quiz"><i class="ti ti-checkbox"></i>Quiz</button>
+</nav>
+
+<div class="wrap">
+
+<!-- OVERVIEW -->
+<div class="panel active" id="overview">
+  <h2 class="section-title"><i class="ti ti-map-2"></i>Unit 9 Roadmap</h2>
+  <p class="lead">Every condition below follows the full 9-field format: pathophysiology, etiology, S/S, risk factors, complications, labs/diagnostics, priority nursing interventions, treatment, and patient/family education.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-baby-carriage"></i></span><span>Unit 9 &mdash; Newborn Care</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p style="color:var(--sub); font-size:13px; margin-bottom:8px;">Perry Ch. 22 (Physiologic &amp; Behavioral Adaptations), Ch. 23 (Nursing Care), Ch. 24 (Nutrition)</p>
+    <ul>
+      <li><b>USLO 1:</b> Factors initiating respirations (CSLO 4)</li>
+      <li><b>USLO 2:</b> Physical &amp; psychosocial adaptations (CSLO 4,2,1)</li>
+      <li><b>USLO 3:</b> Normal transition to extrauterine life (CSLO 4)</li>
+      <li><b>USLO 4:</b> Newborn assessment (CSLO 4,1)</li>
+      <li><b>USLO 5:</b> Fostering early infant attachment (CSLO 4,1)</li>
+    </ul>
+  </div>
+  </div>
+
+  <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-help-circle"></i>How to Read a Condition Card</h2>
+  <div class="card">
+    <ul>
+      <li><span class="priority-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-flag-3"></i><b>Coral box</b></span> = priority nursing interventions, ranked by what will harm the patient FASTEST if missed</li>
+      <li><span class="notify-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-phone-call"></i><b>Pink box</b></span> = specific findings/lab changes that require immediate provider notification</li>
+      <li><span class="selfcare-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-heart"></i><b>Green box</b></span> = maternal/postpartum self-care strategies tied to this condition</li>
+      <li><span class="teach-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-message-2"></i><b>Blue box</b></span> = parent/primary caregiver education (plain language, health-literacy adjusted)</li>
+    </ul>
+    <p style="margin-top:8px; font-size:13px; color:var(--sub);">Education sections are split into <b>Parent/Primary Caregiver</b> and <b>Other Caregiver</b> (grandparents, daycare, babysitters) columns where the information a secondary caregiver needs differs from what a parent needs long-term.</p>
+  </div>
+
+  <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-bolt"></i>Quick Jump</h2>
+  <div class="toc-grid">
+    <div class="toc-item" data-jump="u9-adapt"><i class="ti ti-lungs"></i>Transition + CaMeTS</div>
+    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Apgar + Ballard + Growth</div>
+    <div class="toc-item" data-jump="u9-care"><i class="ti ti-heart-handshake"></i>Vit K, Thermoreg, Feeding</div>
+    <div class="toc-item" data-jump="u9-pain"><i class="ti ti-injection"></i>Pain + Circumcision</div>
+    <div class="toc-item" data-jump="u9-conditions"><i class="ti ti-droplet"></i>Jaundice, Hypoglycemia, Hypocalcemia</div>
+    <div class="toc-item" data-jump="quiz"><i class="ti ti-checkbox"></i>Practice Questions</div>
+  </div>
+
+  <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>NCJMM applied to every newborn scenario:</b> Recognize Cues &rarr; Analyze Cues &rarr; Prioritize Hypotheses &rarr; Generate Solutions &rarr; Take Action &rarr; Evaluate Outcomes.</span></div>
+</div>
+
+<!-- TRANSITION -->
+<div class="panel" id="u9-adapt">
+  <h2 class="section-title"><i class="ti ti-lungs"></i>Transition to Extrauterine Life</h2>
+  <div class="uslo-tag">USLO 1</div><div class="uslo-tag">USLO 2</div><div class="uslo-tag">USLO 3</div>
+  <p class="lead">Perry Ch. 22. The physiologic foundation for everything else in Unit 9.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-wind"></i></span><span>Factors Initiating the First Breath</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Mnemonic:</b> "CaMeTS breathes" &mdash; <b>Ca</b>hemical, <b>Me</b>chanical, <b>T</b>hermal, <b>S</b>ensory</span></div>
+    <ul>
+      <li><b>Chemical:</b> Labor contractions &rarr; transient fetal hypoxia/hypercarbia &rarr; cumulative &darr;PO2, &uarr;PCO2, &darr;pH &rarr; stimulates medulla respiratory center. Cord clamping also drops an inhibitory prostaglandin.</li>
+      <li><b>Mechanical:</b> Chest compression through birth canal, then release &rarr; negative intrathoracic pressure draws air in. Crying creates positive pressure keeping alveoli open.</li>
+      <li><b>Thermal:</b> Drop in environmental temperature stimulates skin thermoreceptors &rarr; respiratory center.</li>
+      <li><b>Sensory:</b> Handling, suctioning, drying, light/sound/smell stimulate the respiratory center.</li>
+    </ul>
+    <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Key application point</b></span>Scheduled cesarean birth (no labor) skips the pre-labor catecholamine surge that normally clears lung fluid &rarr; increased risk for Transient Tachypnea of the Newborn (TTN).</span></div>
+  </div>
+  </div>
+
+  <div class="svg-card">
+    <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CaMeTS diagram showing four factors that initiate the newborn's first breath">
+      <g>
+        <rect x="10" y="60" width="150" height="100" rx="14" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+        <text x="85" y="90" text-anchor="middle" font-size="26" font-weight="700" fill="#042C53">Ca</text>
+        <text x="85" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#0C447C">Chemical</text>
+        <text x="85" y="130" text-anchor="middle" font-size="10" fill="#185FA5">&#8595;O2 &#8593;CO2</text>
+        <text x="85" y="145" text-anchor="middle" font-size="10" fill="#185FA5">stimulates medulla</text>
+      </g>
+      <g>
+        <rect x="180" y="60" width="150" height="100" rx="14" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+        <text x="255" y="90" text-anchor="middle" font-size="26" font-weight="700" fill="#173404">Me</text>
+        <text x="255" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#27500A">Mechanical</text>
+        <text x="255" y="130" text-anchor="middle" font-size="10" fill="#3B6D11">Chest compression</text>
+        <text x="255" y="145" text-anchor="middle" font-size="10" fill="#3B6D11">+ release at birth</text>
+      </g>
+      <g>
+        <rect x="350" y="60" width="150" height="100" rx="14" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.5"/>
+        <text x="425" y="90" text-anchor="middle" font-size="26" font-weight="700" fill="#412402">T</text>
+        <text x="425" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#633806">Thermal</text>
+        <text x="425" y="130" text-anchor="middle" font-size="10" fill="#854F0B">Cold room stimulates</text>
+        <text x="425" y="145" text-anchor="middle" font-size="10" fill="#854F0B">skin thermoreceptors</text>
+      </g>
+      <g>
+        <rect x="520" y="60" width="150" height="100" rx="14" fill="#FBEAF0" stroke="#993556" stroke-width="1.5"/>
+        <text x="595" y="90" text-anchor="middle" font-size="26" font-weight="700" fill="#4B1528">S</text>
+        <text x="595" y="112" text-anchor="middle" font-size="12" font-weight="700" fill="#72243E">Sensory</text>
+        <text x="595" y="130" text-anchor="middle" font-size="10" fill="#993556">Handling, drying,</text>
+        <text x="595" y="145" text-anchor="middle" font-size="10" fill="#993556">light, sound</text>
+      </g>
+      <text x="350" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#26215C">CaMeTS breathes &mdash; four factors triggering the first breath</text>
+      <path d="M160 110 L180 110" stroke="#888780" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M330 110 L350 110" stroke="#888780" stroke-width="2" marker-end="url(#arrow)"/>
+      <path d="M500 110 L520 110" stroke="#888780" stroke-width="2" marker-end="url(#arrow)"/>
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#888780"/>
+        </marker>
+      </defs>
+      <rect x="230" y="190" width="240" height="24" rx="12" fill="#EEEDFE" stroke="#534AB7"/>
+      <text x="350" y="206" text-anchor="middle" font-size="12" font-weight="700" fill="#26215C">All four converge &rarr; first breath</text>
+    </svg>
+    <div class="svg-caption">The four categories of stimuli that trigger the respiratory center in the medulla</div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-wind"></i></span><span>Surfactant &amp; Lung Maturity</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Mechanism</div><p>Type II alveolar cells produce surfactant, which lowers surface tension and prevents alveolar collapse on exhalation, maintaining lung compliance.</p></div>
+      <div class="field"><div class="field-label">Maturity marker</div><p>L/S (lecithin/sphingomyelin) ratio of 2:1 indicates mature lungs, typically by 35 weeks gestation.</p></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-arrows-shuffle"></i></span><span>Three Stages of Transition</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p style="font-size:13px; color:var(--sub);">Occur over the first 6-8 hours after birth, mediated by the sympathetic nervous system.</p>
+    <ul>
+      <li><b>1st Period of Reactivity</b> (birth &ndash; 30 min): HR rapidly rises to 160-180, falls to baseline 100-120. RR irregular 60-80. Fine crackles, possible grunting/nasal flaring/retractions (should resolve within 1st hour).</li>
+      <li><b>Period of Decreased Responsiveness</b> (60-100 min): Infant sleeps or has &darr; motor activity. Pink, RR up to 60.</li>
+      <li><b>2nd Period of Reactivity</b> (2-8 hrs post-birth): Brief tachycardia/tachypnea, &uarr; muscle tone, mucus production. Meconium commonly passed. Very preterm infants do not experience this stage.</li>
+    </ul>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-droplet-half-2"></i></span><span>Acrocyanosis</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p>Bluish discoloration of hands/feet seen in most newborns &mdash; normal finding, distinct from central cyanosis (mucous membranes, trunk), which is abnormal.</p>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-heartbeat"></i></span><span>Cardiovascular Transition</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p style="font-size:13px; color:var(--sub); margin-bottom:8px;">Five major circulatory changes must happen for successful transition &mdash; this is one of the most heavily tested mechanisms in Unit 9.</p>
+    <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Five major changes at birth:</b> &uarr;aortic pressure/&darr;venous pressure &middot; &uarr;systemic pressure/&darr;pulmonary pressure &middot; closure of foramen ovale &middot; closure of ductus arteriosus &middot; closure of ductus venosus</span></div>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Fetal Structure</th><th>Trigger for Closure</th><th>Becomes (postnatal structure)</th><th>Timing</th></tr>
+      <tr><td><b>Foramen ovale</b> (flap between right/left atria, bypasses lungs)</td><td>First breaths &uarr; pulmonary blood flow &rarr; &uarr;left atrial pressure &gt; right atrial pressure &rarr; flap closes</td><td>Fossa ovalis</td><td>Functional closure within 1-2 hrs; permanent by 6 months. <b>Crying can transiently reopen it</b> &rarr; mild cyanosis in first few days is possible.</td></tr>
+      <tr><td><b>Ductus arteriosus</b> (connects pulmonary artery to aorta, bypasses lungs)</td><td>&uarr;PaO2 (from ~20-30 to ~50 mmHg) + &darr;prostaglandin E2 &rarr; smooth muscle constricts</td><td>Ligamentum arteriosum</td><td>Functional closure within 24-72 hrs (term); permanent 2-4 weeks/2-3 months. Can reopen with hypoxia, asphyxia, prematurity &rarr; PDA.</td></tr>
+      <tr><td><b>Ductus venosus</b> (connects umbilical vein to inferior vena cava, bypasses liver)</td><td>Umbilical cord clamped &rarr; cessation of umbilical venous flow + mechanical pressure changes</td><td>Ligamentum venosum</td><td>Usually closes by end of first week; forces enhanced blood flow to the liver.</td></tr>
+    </table>
+    </div>
+    <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>High-yield application point</b></span>If the infant experiences asphyxia, acidosis, or cold stress during transition, the foramen ovale or ductus arteriosus can <b>reopen</b>, allowing right-to-left shunting to resume &mdash; this is why a compromised transition can present with cyanosis or a new murmur days after birth, not just at delivery.</span></div>
+    <div class="field-label" style="margin-top:10px;">Expected heart rate/sounds</div>
+    <ul style="font-size:14px; margin:4px 0 0 18px;">
+      <li>Term newborn HR: <b>120-160 bpm</b> awake; can be 80-100 in deep sleep, up to 180 with crying</li>
+      <li>HR persistently &gt;160 or &lt;100 should be reevaluated within 30-60 min or with a change in infant activity</li>
+      <li>PMI (point of maximal impulse) at the <b>4th intercostal space, left of midclavicular line</b> &mdash; often visible given thin chest wall</li>
+      <li>A soft murmur at the left sternal border, 2nd intercostal space, in the first 72 hours can reflect a not-yet-fully-closed ductus arteriosus &mdash; not automatically pathologic, but should be documented and monitored</li>
+      <li>Irregular heart rate/sinus dysrhythmia is common in the first few hours but should be evaluated if it persists</li>
+    </ul>
+    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+      <li>Decreased strength of femoral pulses compared to brachial pulses (possible coarctation of the aorta)</li>
+      <li>Capillary refill &gt;3 seconds (possible peripheral shunting/poor perfusion)</li>
+      <li>Central cyanosis (not acrocyanosis) at any point</li>
+      <li>A new or persistent murmur beyond the expected early-transition window</li>
+    </ul></span></div>
+  </div>
+  </div>
+</div>
+
+<!-- ASSESSMENT -->
+<div class="panel" id="u9-assess">
+  <h2 class="section-title"><i class="ti ti-clipboard-check"></i>Newborn Assessment</h2>
+  <div class="uslo-tag">USLO 4</div>
+  <p class="lead">Apgar, gestational age assessment, growth classification, and normal parameters.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-list-numbers"></i></span><span>APGAR Scoring</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p style="font-size:13px; color:var(--sub); margin-bottom:8px;">Scored at 1 and 5 minutes; repeat at 10 min if 5-min score &lt;7.</p>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th></th><th>0</th><th>1</th><th>2</th></tr>
+      <tr><td><b>A</b>ppearance/Color</td><td>Blue, pale</td><td>Acrocyanosis</td><td>Pink</td></tr>
+      <tr><td><b>P</b>ulse</td><td>0</td><td>&lt;100</td><td>&gt;100</td></tr>
+      <tr><td><b>G</b>rimace/Irritability</td><td>No response</td><td>Grimace</td><td>Full cry</td></tr>
+      <tr><td><b>A</b>ctivity/Tone</td><td>Limp</td><td>Some flexion</td><td>Well flexed</td></tr>
+      <tr><td><b>R</b>espiration</td><td>0</td><td>Weak/sporadic/gasping</td><td>Easy, irregular OK, or strong cry</td></tr>
+    </table>
+    </div>
+    <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Priority sequencing</b></span>Newborn resuscitation always precedes Apgar scoring.</span></div>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-ruler-2"></i></span><span>Gestational Age &amp; Growth Assessment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <ul>
+      <li>Gestational age (New Ballard Score) assessed within <b>first 2 hours</b> of age.</li>
+      <li><b>AGA:</b> 10th-90th percentile &nbsp; <b>LGA:</b> &gt;90th percentile &nbsp; <b>SGA:</b> &lt;10th percentile</li>
+    </ul>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-chart-line"></i></span><span>Normal Newborn Parameters</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <ul>
+      <li><b>Weight:</b> average 2500-4000 g (5 lb 8 oz &ndash; 8 lb 8 oz)</li>
+      <li><b>Length:</b> average 50 cm (45-55 cm)</li>
+      <li><b>Head circumference:</b> 33-35 cm</li>
+      <li><b>Temperature:</b> 36.5-37.5&deg;C (97.6-99.5&deg;F) axillary</li>
+      <li><b>Sleep:</b> 16-18 hrs/day; ~50% REM</li>
+    </ul>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-fingerprint"></i></span><span>Integumentary &amp; Head Findings</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Normal transient findings</div><ul>
+        <li><b>Vernix caseosa:</b> protective white/cheesy coating</li>
+        <li><b>Lanugo:</b> fine downy hair</li>
+        <li><b>Milia:</b> firm white papules, usually facial</li>
+        <li><b>Erythema toxicum:</b> rash with eosinophils in lesions &mdash; benign</li>
+        <li><b>Congenital Dermal Melanocytosis (Slate Gray Nevi)</b> &mdash; current terminology</li>
+        <li><b>Port wine stain (Nevus flammeus)</b> &mdash; does not fade</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Caput succedaneum vs. Cephalhematoma</div><p>Caput: edema crosses suture lines, resolves in days. Cephalhematoma: subperiosteal bleeding, does NOT cross suture lines, resolves in weeks, increases jaundice risk.</p></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-activity"></i></span><span>Reflexes, Hips, GI/GU Progression</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Newborn reflexes</div><p>Rooting, sucking, Moro (startle), tonic neck, plantar, Babinski</p></div>
+      <div class="field"><div class="field-label">Hip assessment</div><p>Screen for developmental dysplasia of the hip (DDH); asymmetric thigh/gluteal folds, limited abduction warrant further evaluation.</p></div>
+      <div class="field"><div class="field-label">Stomach capacity</div><ul><li>Day 1: 5-7 mL</li><li>Day 3: 22-27 mL</li><li>Week 1: 45-60 mL</li><li>Week 2: 80-150 mL</li></ul></div>
+      <div class="field"><div class="field-label">Stool progression</div><p>Meconium (dark green-black, thick, sticky, first ~24 hrs) &rarr; Transitional stool &rarr; Yellow, seedy breastfed stool. <b>Meconium ileus is suggestive of cystic fibrosis.</b></p></div>
+      <div class="field"><div class="field-label">Urogenital</div><ul>
+        <li>"Brick dust" urine (uric acid crystals) &mdash; normal</li>
+        <li>1 wet diaper/day through day 4, then 6-8 wet/day</li>
+        <li>Males: ~90% testicles descended at birth</li>
+        <li>Females: thick mucous vaginal discharge, may be pink/bloody (pseudomenstruation)</li>
+      </ul></div>
+    </div>
+  </div>
+</div>
+
+<!-- IMMEDIATE CARE -->
+<div class="panel" id="u9-care">
+  <h2 class="section-title"><i class="ti ti-heart-handshake"></i>Immediate &amp; Ongoing Newborn Care</h2>
+  <div class="uslo-tag">USLO 4</div><div class="uslo-tag">USLO 5</div>
+  <p class="lead">First 2 hours of life, thermoregulation, feeding, discharge prep.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-first-aid-kit"></i></span><span>Newborn Resuscitation Sequence</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>The sequence:</b> Stimulate &rarr; Warm &rarr; Dry &rarr; Position &rarr; Suction &rarr; Oxygen &rarr; Bag-mask ventilation &rarr; Intubation &rarr; Chest compressions &rarr; Medications</span></div>
+      <div class="field"><div class="field-label">Initial rapid assessment (within seconds of birth)</div><p>Three questions asked simultaneously: <b>Term gestation? Breathing or crying? Good tone?</b> If yes to all three &rarr; routine care (warmth, clear airway if needed, dry, ongoing evaluation) and the infant stays with the mother.</p></div>
+      <div class="field"><div class="field-label">If any answer is "no"</div><ul>
+        <li>Warm, clear airway if necessary, dry, stimulate (rubbing the back, flicking the feet)</li>
+        <li>Reassess: HR below 100, gasping, or apnea? &rarr; begin positive pressure ventilation (PPV) with SpO2 monitoring</li>
+        <li>Labored breathing or persistent cyanosis? &rarr; clear airway, SpO2 monitoring, consider CPAP</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Escalation if HR remains below 100 or drops below 60</div><ul>
+        <li>Take ventilation corrective steps; intubate if no chest rise is seen with PPV</li>
+        <li><b>HR below 60 despite adequate PPV</b> &rarr; begin chest compressions, coordinated with PPV; consider intubation; consider hypovolemia or pneumothorax</li>
+        <li>If HR remains below 60 &rarr; IV epinephrine</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Targeted preductal SpO2 after birth (do NOT rush to 100%)</div><ul>
+        <li>1 min: 60-65%</li>
+        <li>2 min: 65-70%</li>
+        <li>3 min: 70-75%</li>
+        <li>4 min: 75-80%</li>
+        <li>5 min: 80-85%</li>
+        <li>10 min: 85-95%</li>
+      </ul></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Critical point</b></span>Resuscitation begins with <b>room air (21% O2)</b>, not 100% oxygen &mdash; current guidelines specifically discourage starting with 100% O2 due to oxidative stress risk. Oxygen is titrated up only if the infant fails to improve.</span></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority sequencing rule</b></span>Newborn resuscitation ALWAYS takes priority over obtaining the Apgar score &mdash; you treat what you see in real time; the Apgar is a retrospective documentation tool, not a trigger to wait before acting.</span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-wind"></i></span><span>Airway Maintenance &amp; Bulb Syringe Technique</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Normal airway clearance</div><p>A healthy term infant born vaginally usually clears the airway on their own &mdash; gravity and the cough reflex move most secretions to the oropharynx to be drained, swallowed, or wiped away.</p></div>
+      <div class="field"><div class="field-label">Bulb syringe technique</div><ul>
+        <li><b>Mouth before nose</b> &mdash; always suction the mouth first, then the nose. Suctioning the nose first can stimulate a gasp reflex that draws oral secretions into the airway.</li>
+        <li>Compress the bulb BEFORE inserting it into the mouth/nose, then release slowly to draw secretions in</li>
+        <li>Avoid vigorous or deep suctioning &mdash; it can cause trauma to fragile tissue and can trigger vagally-mediated bradycardia</li>
+        <li>Routine chest percussion and suctioning of healthy term/late-preterm infants should be avoided; gentle naso/oropharyngeal suctioning is only for an actually obstructed airway</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Auscultation findings</div><p>Fine crackles may be heard for several hours after birth, especially in infants born by cesarean (retained lung fluid) &mdash; this is expected and should clear as fluid is reabsorbed, typically within a few hours, occasionally up to 24 hours.</p></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Bulb syringe suctioning does not clear mucus interfering with respiratory effort (deeper mechanical suction may be needed, but only after weighing bradycardia risk); inspiratory stridor is present; crackles persist beyond 24 hours or are accompanied by other distress signs.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>We'll show you how to use the bulb syringe: squeeze it first, then place it gently in the mouth before the nose, and release slowly. You'll want to keep one at home for the first few weeks in case your baby has extra mucus, especially after feeding or with a cold.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If shown how to use a bulb syringe by the parents, always suction the mouth first, then the nose &mdash; never the reverse. Never suction forcefully or repeatedly; if the baby seems to be struggling to breathe despite suctioning, call the parents and seek emergency care.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-clock-hour-2"></i></span><span>First 2 Hours of Life &mdash; True Acuity Order</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Ranked by what would kill/harm the infant fastest if missed</b></span><ol>
+      <li><b>Airway/breathing</b> &mdash; hypoxia kills fastest of anything on this list; always assessed and secured first, before any other intervention.</li>
+      <li><b>Circulation/perfusion</b> &mdash; assess heart rate, color, capillary refill alongside airway; poor perfusion compounds hypoxia risk.</li>
+      <li><b>Thermoregulation</b> &mdash; cold stress rapidly increases oxygen and glucose demand, which can destabilize a marginal respiratory status within the first hour.</li>
+      <li><b>Glucose stability</b> &mdash; particularly for at-risk infants (LGA, SGA, IDM); hypoglycemia can cause seizure/neuro injury if missed.</li>
+      <li><b>Eye prophylaxis, Vitamin K</b> &mdash; time-sensitive but not immediately life-threatening if delayed briefly for a higher-acuity need.</li>
+      <li><b>Parent-infant interaction, breastfeeding initiation</b> &mdash; once physiologic stability across the above is confirmed.</li>
+    </ol></span></div>
+  </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-droplet"></i></span><span>Phytonadione (Vitamin K) &mdash; AquaMEPHYTON</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Therapeutic: vitamin/antidote. Pharmacologic: fat-soluble vitamin.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Required for hepatic synthesis of clotting factors <b>II, VII, IX, and X</b>. Prevents and treats <b>vitamin K deficiency bleeding (hemorrhagic disease of the newborn)</b>. Newborns are deficient because vitamin K requires intestinal bacteria to synthesize, and the newborn gut is sterile at birth &mdash; the gut isn't colonized enough to produce adequate vitamin K until around day 8.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Dosage / Route</div><ul>
+        <li><b>&le;1500 g: 0.5 mg (0.25 mL) IM</b></li>
+        <li><b>&gt;1500 g: 1 mg (0.5 mL) IM</b></li>
+        <li>Given soon after birth, within 1-2 hours; may be delayed until after the first breastfeeding to support bonding</li>
+        <li>Site: vastus lateralis (preferred) &mdash; middle third, lateral aspect. The anterior thigh is avoided due to neurovascular structures</li>
+        <li>Needle: 25-gauge, 5/8 to 7/8 inch, inserted at a 90-degree angle</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Expected/common effects</div><p>Injection-site discomfort, local erythema, edema.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Adverse effects &amp; critical safety point</b></span>Rarely: hemolysis, jaundice, hyperbilirubinemia (especially in preterm infants). <b>IV administration is reserved for emergencies only</b> &mdash; rapid IV push can cause severe reactions including <b>cardiac arrest</b>. If IV is required (e.g., preterm infant with minimal muscle mass), the dose is diluted and given slowly over 10-15 minutes with continuous cardiorespiratory monitoring.</span></div>
+      <div class="field"><div class="field-label">Contraindications</div><p>Hypersensitivity to phytonadione or components (including benzyl alcohol in the injectable formulation). Use cautiously with impaired liver function.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations</b></span><ol>
+        <li>Protect the medication from light.</li>
+        <li>Administer IM using proper neonatal injection technique; use comfort measures (skin-to-skin, sucrose, swaddling) before/during/after.</li>
+        <li>Monitor the injection site for bruising and monitor the umbilical cord for bleeding.</li>
+        <li>Report unusual bleeding/bruising (bleeding gums, nosebleed, black tarry stools, hematuria, bleeding from the cord base) &mdash; may indicate the dose was ineffective and more vitamin K is needed.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Any unexplained bleeding or bruising after administration; a drop in hemoglobin/hematocrit; jaundice appearing in the first 24 hours (may signal hemolysis from the medication in rare cases, though far more likely another cause &mdash; still must be reported).</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>This shot is not a vaccine &mdash; it's a vitamin. Newborns are naturally low on vitamin K because their gut doesn't yet have the bacteria needed to make it. This shot prevents serious, sometimes life-threatening bleeding, including bleeding inside the brain. It's a single dose given once, soon after birth.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you notice any unusual bruising, bleeding from the injection site, or blood in the stool/vomit in the days after birth, tell the parents and pediatrician promptly.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Vitamin K &rarr; Koagulation &rarr; factors II, VII, IX, X. It does NOT prevent jaundice and does NOT provide immunity &mdash; a common wrong-answer trap.</span></div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-eye"></i></span><span>Erythromycin Ophthalmic Ointment 0.5%</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Macrolide antibiotic; anti-infective.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Bacteriostatic and bactericidal against <b><i>Neisseria gonorrhoeae</i></b>. Prevents <b>ophthalmia neonatorum</b> (gonococcal conjunctivitis), which can cause blindness without prompt treatment. Required by law in most U.S. states regardless of mode of birth.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Critical distinction</b></span>Topical erythromycin does <b>NOT</b> prevent or treat chlamydial conjunctivitis. Chlamydial conjunctivitis requires oral erythromycin or azithromycin if it occurs. Do not select "chlamydia" if an exam question asks what routine newborn eye ointment prevents.</span></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Dosage / Route</div><ul>
+        <li>1-2 cm ribbon of ointment into the lower conjunctival sac of <b>each eye</b></li>
+        <li>Administered within 1-2 hours after birth; may be delayed up to 2 hours to allow eye contact and bonding during the first breastfeeding</li>
+        <li>In some states, parents may legally decline by signing a refusal form</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Expected/common effects</div><p>Temporary blurred vision, mild eye irritation.</p></div>
+      <div class="field"><div class="field-label">Adverse effects</div><p>Chemical conjunctivitis, typically lasting 24-48 hours.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations</b></span><ol>
+        <li>Wear gloves; clean eyelids with a sterile cotton ball before instilling.</li>
+        <li>Open the eye by placing thumb/finger at the corner of the lid and gently pressing the periorbital ridges.</li>
+        <li>Apply from the <b>inner canthus to the outer canthus</b>; do not touch the tube tip to the eye.</li>
+        <li>Gently massage the closed eyelids to disperse the ointment; excess may be wiped away after about 1 minute.</li>
+        <li>Do NOT flush/irrigate the eyes after instillation &mdash; this washes the medication away.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Eye irritation, drainage, or redness persists beyond the expected 24-48 hour chemical conjunctivitis window &mdash; could indicate true infection rather than the expected medication reaction.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>This ointment prevents a serious eye infection your baby could be exposed to during birth, which can cause blindness if untreated. Your baby's eyes may look a little blurry or irritated for a day or two afterward &mdash; that's expected and will resolve on its own.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Mild eye irritation or blurriness in the first day or two after birth is expected from this medication and is not a sign of a problem. Report any drainage, redness, or irritation that lasts longer than 2 days.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Erythromycin eyes &rarr; gonorrhea &rarr; prevents ophthalmia neonatorum. Both eyes, inner to outer canthus, no irrigation afterward.</span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-temperature"></i></span><span>Thermoregulation</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p><b>Cold stress increases oxygen and glucose needs</b> &mdash; this is why thermoregulation ranks high in priority order: a cold-stressed newborn can develop respiratory distress and hypoglycemia as secondary effects.</p>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Preventing Heat Loss</th><th>Cold-Stressed Newborn</th></tr>
+      <tr><td>Dry and stimulate immediately after birth</td><td>Place under radiant warmer</td></tr>
+      <tr><td>Place a hat on the newborn's head</td><td>Check blood glucose level</td></tr>
+      <tr><td>Encourage skin-to-skin contact</td><td>Monitor for signs of respiratory distress</td></tr>
+      <tr><td>Maintain a neutral thermal environment</td><td>Rewarm gradually &mdash; not on max warmer setting (rapid rewarming can cause apnea/hypotension)</td></tr>
+    </table>
+    </div>
+    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+      <li>Axillary temp &lt;97.7&deg;F (36.5&deg;C) despite active warming measures</li>
+      <li>Temp &gt;99.5&deg;F (37.5&deg;C)</li>
+      <li>Temperature instability accompanied by feeding intolerance or lethargy (possible sepsis presentation, not just cold stress)</li>
+    </ul></span></div>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--green)"><i class="ti ti-shield"></i></span><span>Hepatic &amp; Immune System Function</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Hepatic system</div><ul><li>Iron storage (up to 5 months)</li><li>Coagulation factor production</li><li>Bilirubin processing &rarr; risk for jaundice</li></ul></div>
+      <div class="field"><div class="field-label">Immunoglobulins</div><ul>
+        <li><b>IgG:</b> crosses placenta; passive immunity for first 3 months; adult levels by 4-6 yrs</li>
+        <li><b>IgM:</b> low at birth (&lt;10% adult); major Ig in first month</li>
+        <li><b>IgA:</b> missing from mucosal tracts unless breastfed</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Infection risk factors</div><p>Prematurity (greatest risk), PROM, chorioamnionitis, maternal fever, antenatal/intrapartal asphyxia, invasive procedures</p></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Temperature instability (hypothermia more concerning than fever in a neonate), lethargy/poor feeding, apnea, tachypnea, grunting, pale/mottled skin &mdash; classic sepsis picture.</span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-bottle"></i></span><span>Newborn Feeding &mdash; Breastfeeding</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Feeding-readiness cues</div><ul>
+        <li>Sucking or mouthing motions</li>
+        <li>Hand-to-mouth or hand-to-hand movements</li>
+        <li><b>Rooting reflex</b></li>
+      </ul></div>
+      <div class="field"><div class="field-label">Frequency</div><p>At least <b>8-12 times per 24 hours</b>. Wake to feed at least every 3 hrs during the day, every 4 hrs at night during first 24-48 hrs.</p></div>
+      <div class="field"><div class="field-label">Milk ejection (let-down) signs</div><ul>
+        <li>Tingling sensation in nipple/breast</li>
+        <li>Suck changes from quick/shallow to slower, drawing pattern</li>
+        <li>Audible swallowing</li>
+        <li>Uterine cramping / increased lochia during feeding (early days)</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Expected weight loss</div><p>Breastfed: 5-7% loss in week 1, regain birth weight by day 14. Formula-fed: 3-5% loss.</p></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+        <li>&gt;7% weight loss in a breastfed infant during first 3 days</li>
+        <li>Minimal urine/stool output</li>
+        <li>Constant feeding without satisfaction, or infant falling asleep after only a few sucks (ineffective breastfeeding pattern)</li>
+      </ul></span></div>
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care strategies</b></span><ul>
+        <li>Air-dry nipples after feeding; apply expressed breast milk or lanolin to sore/cracked nipples</li>
+        <li>Vary feeding positions to reduce pressure on any one area of the nipple</li>
+        <li>Stay hydrated and maintain adequate caloric intake (~450-500 extra kcal/day) to support supply</li>
+        <li>Rest when possible; fatigue can reduce let-down response</li>
+        <li>Contact a lactation consultant early for latch difficulty rather than waiting for pain to worsen</li>
+      </ul></span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Feed at the first hunger cues (rooting, hand-to-mouth) rather than waiting for crying, which is a late hunger sign. Expect 8-12 feeds a day. Track wet/dirty diapers as a feeding-adequacy indicator. Learn proper latch technique and know who to call (lactation consultant/pediatrician) if pain or poor latch continues past the first few days.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you'll be feeding expressed breast milk: know safe storage (up to 4 hours room temp, 4 days refrigerated), proper bottle warming (never microwave), and paced feeding technique to avoid overfeeding. Always place baby on their back for feeding, never prop a bottle, and know the family's plan for hunger/feeding cues before you're left alone with the baby.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-bottle"></i></span><span>Newborn Feeding &mdash; Formula &amp; General</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Formula feeding pattern</div><p>First 24-48 hrs: 15-30 mL per feeding. By end of week 2: 90-150 mL per feeding. Most newborns need <b>6-8 feedings/24 hrs</b>.</p></div>
+      <div class="field"><div class="field-label">Technique</div><p>Hold for all feedings, semi-upright position. Never prop a bottle &mdash; choking risk and nursing-bottle caries risk.</p></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Vomiting &ge;1/3 of feeding at most sessions, or projectile vomiting.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Prepare formula exactly per label instructions &mdash; do not dilute to stretch supply or over-concentrate; both can seriously harm the infant. Discard unused prepared formula after 24 hours refrigerated, or 1 hour once started at room temperature. Do not switch formula types without consulting the pediatrician.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Confirm which formula/dilution the family uses before preparing a bottle. Always test temperature on your wrist before feeding. Hold baby semi-upright, never prop the bottle and walk away, and burp halfway through and after the feeding.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-heart"></i></span><span>Fostering Early Infant Attachment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Bonding vs. attachment &mdash; key distinction</div><p><b>Bonding</b> refers to the parent's early process of becoming acquainted with, identifying, and claiming the infant as a family member; it occurs through mutually satisfying experiences (e.g., a mother feeling her infant's grasp reflex). <b>Attachment</b> is the broader, ongoing tie that develops between parent and child over time through repeated positive interactions. The terms are often used interchangeably in practice, but bonding is the earlier/faster process and attachment is the durable relationship it builds toward.</p></div>
+      <div class="field"><div class="field-label">Key concepts from attachment theory</div><ul>
+        <li>There is no strict "critical period" that must occur in the first minutes/hours &mdash; human parents are adaptable, and attachment can still form successfully after separation (e.g., NICU admission), though early contact is beneficial when possible</li>
+        <li>For secure attachment, the parent must provide a "secure base" for exploration and a "safe haven" during distress &mdash; meaning consistent proximity and consistent response to the infant's cues</li>
+        <li>The "fantasy/dream child" imagined during pregnancy is compared, consciously or not, to the "real" infant at birth; how closely they match affects the bonding process</li>
+      </ul></div>
+      <div class="field"><div class="field-label">The en face position</div><p>Parent's face and infant's face are held approximately 8 inches apart, on the same plane, making direct eye contact. Parents instinctively move the infant into this position. This is one of the clearest observable bonding behaviors the nurse can assess for.</p></div>
+      <div class="field"><div class="field-label">Engrossment (paternal bonding)</div><p>New fathers/partners often show intense absorption and preoccupation with the newborn &mdash; prolonged gazing, described as almost trance-like. This is a recognized, healthy bonding behavior distinct from but parallel to maternal bonding.</p></div>
+      <div class="field"><div class="field-label">Progression of parental exploration behavior</div><p>Parents typically begin by examining fingertips, then explore the extremities, then view/stroke the trunk &mdash; progressing from fingertip touch to full palmar contact and holding. <b>Failure to progress past fingertip touch</b> is a facilitating-vs-inhibiting behavior the nurse should note.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Facilitating (Positive) Attachment Behaviors</th><th>Inhibiting (Concerning) Behaviors</th></tr>
+        <tr><td>Looks, gazes, assumes en face position, eye contact</td><td>Turns away from infant; ignores infant's presence</td></tr>
+        <tr><td>Hovers, maintains proximity, points to/directs attention to infant</td><td>Avoids infant; refuses to hold when given the opportunity</td></tr>
+        <tr><td>Identifies infant as a unique individual; claims infant as family member; names infant</td><td>Identifies infant with someone the parent dislikes; difficulty naming</td></tr>
+        <tr><td>Touch progresses from fingertip &rarr; fingers &rarr; palms &rarr; full holding</td><td>Fails to progress beyond fingertip touch</td></tr>
+        <tr><td>Smiles, talks/coos/sings to infant</td><td>Bland/frowning expression; hurries feeding; handles roughly</td></tr>
+        <tr><td>Expresses pride; interprets infant's needs sensitively</td><td>Expresses disappointment/displeasure; makes no effort to interpret needs</td></tr>
+      </table>
+      </div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing activities to foster attachment (USLO 5)</b></span><ol>
+        <li>Place the newborn skin-to-skin with the parent immediately after birth (delay unnecessary procedures like weighing/measuring to allow this).</li>
+        <li>Provide privacy and uninterrupted time for the family in the first hours after birth.</li>
+        <li>Encourage early breastfeeding initiation and eye contact within the first 30 minutes, when both mother and infant are typically most alert.</li>
+        <li>Support rooming-in and liberal visiting for partner/siblings/grandparents to maximize observation and bonding opportunities.</li>
+        <li>Teach parents to recognize infant behavioral cues (rooting, hand-to-mouth, crying types) and how to respond &mdash; this builds parental confidence and responsiveness, which strengthens attachment.</li>
+        <li>Discuss culture-based expressions of attachment with the family rather than assuming a single "normal" pattern &mdash; cultural variation is expected and should not be misread as poor bonding.</li>
+      </ol></span></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Assessment caution</b></span>Attachment assessment relies on skillful observation and interviewing, not a checklist with concrete pass/fail criteria like a physical exam. Avoid premature judgments about "poor bonding" without considering fatigue, a long/difficult labor, sedation, cultural norms, or temporary separation &mdash; all of which can delay positive attachment behaviors without indicating a lasting problem.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Bonding takes time and doesn't have to happen instantly &mdash; it's a process, not a single moment. Holding your baby skin-to-skin, making eye contact, and responding to their cues (crying, rooting) all build this relationship. It's normal to feel exhausted or unsure at first; this doesn't mean you're bonding "incorrectly."</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>You can support bonding too, even as a secondary caregiver &mdash; talk to and make eye contact with the baby during care, and follow the parents' cues about how they want you involved. Give the parents space for their own bonding time when possible.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-microscope"></i></span><span>Newborn Screening &amp; Diagnostics (Expanded)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <ul>
+      <li><b>Universal newborn (metabolic/genetic) screening:</b> heel-stick blood spot on filter paper ("Guthrie card"); all circles must be filled completely for accurate lab processing</li>
+      <li><b>Bilirubin screening:</b> transcutaneous or serum, per hour-of-life nomogram</li>
+    </ul>
+    <div class="field-label" style="margin-top:8px;">Newborn hearing screening</div>
+    <ul>
+      <li><b>Evoked otoacoustic emissions (EOAE):</b> soft earpiece makes a clicking sound; a healthy ear "echoes" it back to a microphone in the earpiece</li>
+      <li><b>Auditory brainstem response (ABR):</b> sensors on forehead and behind each ear measure the acoustic nerve's response to sounds played through an earphone while the infant sleeps</li>
+      <li>Neither test diagnoses hearing loss definitively &mdash; both determine whether further audiologic evaluation is needed. If the infant doesn't pass initially, retest before discharge; if still not passing, refer for comprehensive audiologic evaluation by 3 months of age</li>
+    </ul>
+    <div class="field-label" style="margin-top:8px;">Critical Congenital Heart Disease (CCHD) screening</div>
+    <ul>
+      <li>Performed via pulse oximetry at <b>24-48 hours of age</b> &mdash; detects hypoxemia that may be the only sign of a critical heart defect before other symptoms appear</li>
+      <li>Oxygen saturation measured in the <b>right hand and one foot</b></li>
+      <li><b>Passing result:</b> SpO2 &gt;95% in both extremities AND &lt;3% absolute difference between them</li>
+      <li><b>Failing/concerning result:</b> SpO2 &lt;90% in either extremity (needs immediate evaluation), OR SpO2 90-95%, OR a &ge;3% difference between hand and foot &mdash; repeat up to 2 more times within the hour; if still concerning, obtain echocardiogram and cardiology evaluation</li>
+    </ul>
+    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>CCHD screen shows SpO2 &lt;90% on first attempt (immediate evaluation, don't wait to repeat); repeat screens remain in the concerning range after 3 attempts within the hour.</span></div>
+  </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-home-check"></i></span><span>Discharge Preparation</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <ul>
+      <li>Car seat safety, umbilical cord care (keep clean/dry, fold diaper below stump)</li>
+      <li>Bathing, nonnutritive sucking</li>
+      <li>Infant follow-up care, CPR education, infant abduction prevention</li>
+      <li>Hepatitis B vaccination (first dose typically given before discharge) &mdash; see full medication cards below</li>
+    </ul>
+  </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-vaccine"></i></span><span>Hepatitis B Vaccine (Recombinant)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Recombinant vaccine; active immunizing agent.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Active immunization against all known subtypes of hepatitis B virus (HBV). Recommended for <b>all</b> newborns as routine universal prophylaxis, not just those with known maternal exposure.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Dosage / Route &amp; Timing Rules</div><ul>
+        <li><b>Recombivax HB:</b> 5 mcg/0.5 mL IM &nbsp; | &nbsp; <b>Engerix-B:</b> 10 mcg/0.5 mL IM</li>
+        <li>IM injection site: vastus lateralis, middle third, lateral aspect (same site logic as Vitamin K)</li>
+        <li><b>Mother HBsAg-negative, infant &ge;2000 g:</b> vaccine within first 24 hours</li>
+        <li><b>Mother HBsAg-negative, infant &lt;2000 g:</b> vaccine at 1 month of age or hospital discharge, whichever comes first</li>
+        <li><b>Mother HBsAg-positive:</b> vaccine + HBIG within 12 hours of birth, regardless of any maternal antiviral therapy during pregnancy (see HBIG card below)</li>
+        <li><b>Mother's status unknown, infant &ge;2000 g:</b> vaccine within 12 hours; give HBIG by 7 days of age or discharge (whichever first) if maternal results return positive or remain unknown</li>
+        <li>Subsequent doses at 1-2 months and 6-18 months to complete the series</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Expected/common effects</div><p>Injection-site pain, redness, swelling; fever; rash.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Rare serious adverse effect</b></span>Anaphylaxis. Contraindicated with a severe allergic/anaphylactic reaction to a previous dose or vaccine component.</span></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations</b></span><ol>
+        <li>Verify the mother's HBsAg status before determining the exact timing/co-administration protocol.</li>
+        <li>Obtain parental consent.</li>
+        <li>If HBIG is also needed, administer at a <b>separate injection site</b> from the vaccine.</li>
+        <li>Use nonpharmacologic comfort measures during injection.</li>
+        <li>Document date, time, site, lot number, and expiration date per facility policy.</li>
+      </ol></span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>This is the first dose in a series that protects your baby long-term against hepatitis B, a liver infection. Your baby will need more doses on a set schedule to complete full protection &mdash; we'll give you a vaccination record card to track this.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Mild fever, fussiness, or soreness at the injection site is expected for a day or two after a vaccine dose. Keep track of which vaccines this baby has had and when the next one is due if you're involved in ongoing care.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> HepB vaccine = active immunity (the baby's own body learns to fight the virus). Don't confuse with HBIG below.</span></div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-shield-check"></i></span><span>Hepatitis B Immune Globulin (HBIG)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Human immune globulin; passive immunizing agent.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Provides immediate, temporary <b>passive</b> immunity against hepatitis B. Given specifically to infants born to <b>HBsAg-positive mothers</b> (or mothers with unknown/indeterminate status per the escalation protocol above).</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Dosage / Route</div><p>Approximately 0.5 mL IM, within <b>12 hours of birth</b>, given together with (but at a separate site from) the HepB vaccine.</p></div>
+      <div class="field"><div class="field-label">Expected/common effects</div><p>Injection-site pain/tenderness, mild erythema, occasional fever.</p></div>
+      <div class="field"><div class="field-label">Adverse effects / precautions</div><p>Rare hypersensitivity/anaphylaxis. Use appropriate precautions in infants with severe IgA deficiency.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Critical nursing rule</b></span>Give HepB vaccine and HBIG at <b>different injection sites</b> (e.g., opposite thighs) &mdash; combining them at one site is a medication administration error. Verify and document maternal HBsAg status clearly in the chart.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Because of your hepatitis B status, your baby is getting two shots: one gives immediate, short-term protection (HBIG) while the other (vaccine) builds your baby's own long-term immunity. Both are needed together and are given in different legs.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby received two separate injections shortly after birth for hepatitis B protection &mdash; this is expected and appropriate given the mother's status; no cause for concern.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> HBIG = passive/immediate/temporary protection. HBsAg-positive mother &rarr; baby gets HepB vaccine + HBIG, both within 12 hours, separate sites.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN/CIRCUMCISION -->
+<div class="panel" id="u9-pain">
+  <h2 class="section-title"><i class="ti ti-injection"></i>Neonatal Pain &amp; Circumcision</h2>
+  <div class="uslo-tag">USLO 4</div>
+  <p class="lead">Perry Ch. 23. Newborns feel pain &mdash; this drives a formal assessment/management standard.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-mood-cry"></i></span><span>Neonatal Pain Response</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Why newborns feel pain &mdash; the neurodevelopmental basis</div><p>Older clinical thinking assumed that an immature nervous system prevented or blunted pain sensation in newborns and that they couldn't remember painful experiences. This has been disproven by research. The neurodevelopment timeline: the <b>CNS is well developed by 24 weeks gestation</b>; the peripheral and spinal structures that transmit pain signals are present and functional between the first and second trimesters; and the <b>pituitary-adrenal axis is also well developed</b> by this point, producing a genuine fight-or-flight (catecholamine) response to painful/stressful stimuli. In short &mdash; even a preterm infant has the anatomic wiring needed to feel and respond to pain.</p></div>
+      <div class="field"><div class="field-label">What influences the pain response</div><p>Pain response varies with the characteristics of the stimulus (source, location, timing &mdash; acute vs. prolonged/recurrent pain produce different responses), gestational age, genetic differences in available neurotransmitters/receptors, and the infant's behavioral state at the time (a more awake infant typically shows a more robust pain response than one in a sleep state).</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>The physiologic stress cascade</div><p>Pain triggers release of <b>epinephrine, norepinephrine, glucagon, cortisol, corticosterone, and other stress hormones</b>, along with rises in lactate, pyruvate, and glucose. This is not a trivial response &mdash; the physiologic cost of unmanaged pain can affect the cardiovascular, respiratory, endocrine, metabolic, immunologic, and coagulation systems, both acutely and with lasting effect if pain is repeated/prolonged (as in a NICU stay).</p></div>
+      <div class="field-label" style="margin-top:2px;">Physiologic signs</div>
+      <ul><li>Tachycardia, tachypnea, elevated (or sometimes decreased) blood pressure</li><li>Desaturation/cyanosis, pallor, flushing</li><li>Changes in intracranial pressure and vagal tone</li><li>Muscle tremors, hypertonia or hypotonia</li><li>Sleep/wake cycle changes &mdash; more wakeful OR more lethargic</li><li>Feeding difficulties</li></ul>
+      <div class="field-label">Behavioral signs</div>
+      <ul><li>Crying (whimper to high-pitched, shrill cry) &mdash; the most common behavioral sign of pain</li><li>Facial expression: grimace, eye squeeze, brow bulge, nasolabial furrow, widespread/open mouth</li><li>Flexion/adduction of limbs (a withdrawal posture)</li><li>Fussy, irritable, or listless affect</li></ul>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Critical assessment point</b></span>Severely compromised or preterm neonates may be unable to generate a visible pain response despite genuinely experiencing pain. Absence of overt crying or facial grimacing does NOT mean absence of pain &mdash; this is a common wrong-answer trap on exam questions.</span></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Professional standard</b></span>The National Association of Neonatal Nurses (NANN) states that <b>every newborn nurse should have education and competency validation in pain assessment</b>. Every neonate should receive an initial pain assessment plus a pain management plan, with pain assessed and documented on a regular basis &mdash; not just when a painful procedure is performed. Even healthy, low-risk term newborns should be assessed for discomfort during routine care and especially during/after procedures like heel sticks, injections, and circumcision.</span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-clipboard-list"></i></span><span>Pain Assessment Tools</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">What these tools measure</div><p>Because newborns cannot verbalize pain, every tool scores a combination of <b>behavioral components</b> (facial expression, cry, state of arousal, body activity/movement) and <b>physiologic components</b> (heart rate, blood pressure, respiratory rate/pattern, oxygen saturation). The nurse must consider the infant's <b>gestational age</b> when selecting and interpreting a tool &mdash; some scales are built for term infants, others specifically for preterm infants, and some focus on a particular context like postoperative or procedural pain.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Tool</th><th>Full Name</th><th>Best Used For</th><th>What It Measures</th></tr>
+        <tr><td><b>NIPS</b></td><td>Neonatal Infant Pain Scale</td><td>Term and preterm infants; general/procedural pain</td><td>Facial expression, cry, breathing pattern, arm/leg movement, and state of arousal &mdash; purely behavioral, no physiologic component</td></tr>
+        <tr><td><b>PIPP</b></td><td>Premature Infant Pain Profile</td><td>Preterm infants specifically &mdash; the most gestational-age-sensitive tool of the four</td><td>Gestational age, behavioral state, heart rate increase, O2 saturation decrease, brow bulge, eye squeeze, and nasolabial furrow &mdash; each scored 0-3 and <b>adjusted for how premature the infant is</b>, since a very preterm infant's expected physiologic swings differ from a near-term infant's</td></tr>
+        <tr><td><b>NPASS</b></td><td>Neonatal Pain, Agitation and Sedation Scale</td><td>Both pain AND sedation level &mdash; useful for ventilated/critically ill infants who may also be receiving sedating medications</td><td>Crying/irritability, behavioral state, facial expression, extremity tone, and vital signs; uniquely scores in <b>both directions</b> (too much pain/agitation vs. too much sedation), which the other three tools do not do</td></tr>
+        <tr><td><b>CRIES</b></td><td><b>C</b>rying, <b>R</b>equires O2 for SaO2 &gt;95%, <b>I</b>ncreased vital signs, <b>E</b>xpression, <b>S</b>leeplessness</td><td>Postoperative pain specifically (e.g., after circumcision)</td><td>Each letter of the name is literally a scored category &mdash; developed and validated specifically for the surgical/postoperative neonatal population</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>How to choose</b></span>There is no single "best" tool for every situation &mdash; the nurse selects the tool appropriate to the infant's gestational age and clinical context (e.g., PIPP for a 28-week preterm infant during a heel stick; CRIES for a term infant recovering from circumcision; NPASS for a ventilated NICU infant also receiving sedation). Facilities typically standardize on one or two tools per unit, but knowing why each exists helps you reason through an NGN scenario that asks you to pick the most appropriate one.</span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing use of these tools</b></span><ol>
+        <li>Assess and document pain on a regular schedule, not only when pain is suspected &mdash; consistent use of a scale is what allows the nurse to detect a rising pain trend and treat early, before pain becomes severe.</li>
+        <li>Reassess after any intervention (pharmacologic or nonpharmacologic) to confirm effectiveness, using the same tool for a valid before/after comparison.</li>
+        <li>Match the tool to the population: use a preterm-specific tool (PIPP) for preterm infants rather than a term-oriented tool, since expected physiologic responses differ by gestational age.</li>
+      </ol></span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-first-aid-kit"></i></span><span>Pain Management &mdash; Nonpharmacologic Methods</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">General principle</div><p>Despite decades of evidence, policies, and standards, acute infant pain remains <b>undermanaged</b> in practice. Combining <b>two or more nonpharmacologic methods produces more effective pain reduction</b> than any single method alone &mdash; this "stacking" approach is a recurring theme across all the strategies below.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-baby-carriage"></i>Swaddling</div><p>Snugly wrapping the infant in a lightweight blanket. Limits the newborn's boundaries, aids self-regulation, and reduces both physiologic and behavioral stress from acute pain. Also commonly used simply to calm a fussy baby and promote sleep.</p>
+      <div class="flag" style="margin-top:6px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Safe swaddling technique &mdash; DDH safety alert</b></span>Arms extended (or flexed, in the very early newborn period), <b>legs flexed, hips in neutral position without rotation, with slight flexion and abduction</b> allowing free knee movement. <b>Swaddling with legs extended straight increases the risk of hip dislocation (DDH)</b> &mdash; this is a frequently tested safety point. Leave room for 2-3 adult fingers between the infant's chest and the swaddle to prevent overheating/respiratory compromise. Infant should be swaddled lying on the back, and swaddling should stop by about 2 months of age once the infant can roll.</span></div></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-hand-stop"></i>Facilitated Tucking / Containment</div><p>A hand-swaddling technique where the caregiver holds the neonate in a flexed, side-lying position using their hands (rather than a blanket). Effective for reducing pain and distress specifically in <b>preterm infants</b>. Often used just before an invasive procedure like a heel stick. Related concept: <b>"nesting"</b> &mdash; blanket rolls placed under the sheet to help the infant maintain a flexed position when prone or side-lying, which decreases physiologic/behavioral stress during routine care like bathing or weighing.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-heart"></i>Skin-to-Skin Care (SSC) / Kangaroo Care</div><p>The undressed infant (diaper only) is placed prone, vertically, directly on the parent's bare chest. Safe and effective for a single painful procedure such as a heel stick, reducing pain by both behavioral and physiologic measures. Also benefits thermoregulation, and for preterm/VLBW infants specifically, may support maternal psychological healing after a high-risk pregnancy and help the mother reclaim the mothering role.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-bottle"></i>Breastfeeding / Breast Milk &amp; Non-Nutritive Sucking (NNS)</div><p>Breastfeeding or expressed breast milk reduces pain during minor procedures like heel sticks. NNS on a pacifier is a common comfort measure, frequently <b>combined with oral sucrose</b> during painful procedures for a stronger combined effect.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-sparkles"></i>Sensorial Stimulation</div><p>Uses multiple senses at once to diminish minor pain &mdash; speaking softly to the infant, gently massaging the face, and providing oral sucrose on the tongue, all simultaneously. Distraction with visual, oral, auditory, or tactile stimulation can also help, particularly in term neonates.</p></div>
+
+      <div class="field"><div class="field-label">Other supportive measures</div><p>Touch, gentle massage, rocking, holding, and environmental modification (low noise and dim lighting) all contribute to reducing neonatal stress and pain perception.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Evidence-based finding</th><th>Practical takeaway</th></tr>
+        <tr><td>Sucrose is effective for single painful procedures, especially paired with sucking &mdash; but was NOT effective for peripheral IV insertion pain</td><td>Don't assume sucrose works for every procedure type; IV starts may need a different combination</td></tr>
+        <tr><td>SSC combined with breastfeeding or oral sucrose may enhance pain reduction beyond either alone</td><td>Stack methods together for procedures like heel sticks</td></tr>
+        <tr><td>NNS + swaddling + holding/rocking significantly improved pain reactivity and regulation in preterm infants (up to age 3)</td><td>These three methods have some of the strongest evidence specifically for preterm populations</td></tr>
+        <tr><td>Music therapy + sucrose was more effective than either alone</td><td>Reinforces the general "combine methods" principle</td></tr>
+        <tr><td>Nonpharmacologic methods (music, massage, breast milk, SSC) are somewhat effective but generally NOT as effective as pharmacologic methods</td><td>For moderate/severe pain, nonpharmacologic alone is not sufficient &mdash; escalate to pharmacologic management</td></tr>
+      </table>
+      </div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Practical application tips</b></span><ol>
+        <li>Initiate comfort measures a few minutes <b>before</b> the procedure begins, giving the newborn time to relax and reorganize &mdash; don't wait until the procedure has already started.</li>
+        <li>Combine methods whenever possible (e.g., SSC + breastfeeding, or NNS + oral sucrose) rather than relying on one technique alone.</li>
+        <li>Teach parents these techniques so they can be active participants in their newborn's procedural care &mdash; but clarify that <b>sucrose is not an appropriate long-term home strategy</b>, only a facility-based procedural tool.</li>
+      </ol></span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>You can help comfort your baby during quick procedures like shots or blood draws by holding them skin-to-skin, breastfeeding, or offering a pacifier right before and during the procedure. Swaddling snugly (with hips and knees able to move, not straight legs) also helps calm your baby. These techniques work well in the hospital, but sugar water isn't something to use regularly at home.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you need to comfort a fussy baby, swaddling with the hips loose (not legs straight), gentle rocking, and a pacifier are safe go-to options. Never swaddle with the legs pulled straight and bound tightly &mdash; this can injure the hips.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-injection"></i></span><span>Pain Management &mdash; Pharmacologic Methods</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-droplet"></i>Local / Topical Anesthesia</div><p>Routinely used for procedures like circumcision and lumbar puncture, and sometimes for venipuncture/heel sticks.</p>
+      <ul>
+        <li><b>EMLA</b> (eutectic mixture of local anesthetic &mdash; prilocaine-lidocaine) or <b>LMX4</b> (4% lidocaine): topical creams applied before the procedure</li>
+        <li><b>Dorsal penile nerve block (DPNB)</b> and <b>ring block</b>: injected local anesthetic specifically for circumcision</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Nonopioid Analgesia</div><p>Oral liquid <b>acetaminophen</b> is effective for mild-to-moderate pain, particularly from inflammatory conditions.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Opioid Analgesia</div><p><b>Morphine and fentanyl</b> are the most widely used opioids for moderate-to-severe neonatal pain. Given as continuous or bolus IV infusion for effective, safe pain control in this context.</p>
+      <div class="flag" style="margin-top:6px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Priority safety monitoring</b></span>Any neonate receiving opioid-level pain control must be closely monitored for <b>respiratory depression</b> &mdash; this is the adverse effect that outranks all others in priority, consistent with opioid monitoring principles covered elsewhere in this guide.</span></div></div>
+
+      <div class="field"><div class="field-label">Other pharmacologic methods</div><p>Epidural infusion, regional/local nerve blocks, and intradermal or topical anesthetics round out the available options for specific procedural contexts.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-scissors"></i>Circumcision-Specific Pain Management</div><p>This is the clearest real-world example of <b>combining pharmacologic and nonpharmacologic methods</b> for maximum effect: DPNB or topical EMLA/LMX4 <b>plus</b> nonnutritive sucking (NNS) and concentrated oral sucrose together produce better pain control than any single method alone.</p></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Key exam principle</b></span>Pharmacologic and nonpharmacologic methods are not either/or &mdash; <b>combining them is the evidence-based standard</b> for procedures like circumcision. An NGN question describing only one method being used for a significant procedure (like circumcision with no analgesia at all) should be recognized as a gap in care.</span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>For procedures like circumcision, your baby will receive numbing medicine (either a cream or a small injection) along with comfort measures like sucrose and a pacifier &mdash; using both together works better than either alone. For babies needing stronger pain medicine (like morphine), the team watches breathing very closely since that's the main risk with these medications.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If this baby is on a stronger pain medication after a procedure or surgery, expect more sedation than usual and know that breathing is being closely monitored by the care team as a safety precaution.</div>
+      </div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-candy"></i></span><span>Oral Sucrose</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Carbohydrate solution; neonatal procedural analgesic adjunct / nonopioid comfort measure.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Reduces the behavioral pain response during brief, minor procedures &mdash; heel sticks, venipuncture, IM injections (including Vitamin K/HepB above), and as an adjunct during circumcision alongside other analgesia.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Route / Timing</div><p>Small amount given orally, typically about 2 minutes before the procedure, often followed immediately by a pacifier (nonnutritive sucking) for combined effect. Per facility protocol.</p></div>
+      <div class="field"><div class="field-label">Expected effects</div><p>Minimal when used appropriately in a stable infant.</p></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Choking, coughing, aspiration, or oxygen desaturation/bradycardia occurs with administration &mdash; more relevant in a compromised or very preterm infant, where oral coordination may be unsafe.</span></div>
+      <div class="field"><div class="field-label">Combine with (best practice)</div><ul>
+        <li>Nonnutritive sucking / pacifier</li>
+        <li>Swaddling</li>
+        <li>Skin-to-skin contact (kangaroo care)</li>
+        <li>Breastfeeding during the procedure, when feasible</li>
+      </ul></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>A small amount of sugar water can help comfort your baby during quick, mildly painful procedures like a heel stick or shot. It's used just for that moment, not as a feeding or nutrition source, and works even better combined with sucking on a pacifier or holding your baby skin-to-skin.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If staff offer a small amount of sugar water before a procedure, this is a standard comfort measure, not feeding &mdash; it's normal and evidence-based practice.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Newborn procedural pain &rarr; sucrose + pacifier + swaddling/skin-to-skin = appropriate nonpharmacologic strategy, not a substitute for pharmacologic pain relief in major procedures.</span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-scissors"></i></span><span>Circumcision</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Procedure/devices</div><ul>
+        <li><b>Gomco (Yellen) clamp:</b> remove adhesions &rarr; protect glans &rarr; clamp foreskin &rarr; excise</li>
+        <li><b>PlastiBell:</b> ring falls off ~7 days (notify if still on after 8 days, or if it migrates onto the shaft)</li>
+      </ul></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority post-procedure interventions (ranked)</b></span><ol>
+        <li>Assess for active bleeding every 15-30 min for first hour, then hourly for 4-6 hrs &mdash; hemorrhage is the acute life-threatening risk here.</li>
+        <li>Monitor for first voiding within 6-8 hrs &mdash; rules out urinary obstruction from injury/edema.</li>
+        <li>If bleeding occurs: gentle pressure with folded sterile gauze first, before any other intervention.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+        <li>Bleeding doesn't stop with gentle pressure</li>
+        <li>No void within 6-8 hrs post-procedure</li>
+        <li>Redness, swelling, discharge, or odor (infection)</li>
+        <li>PlastiBell ring still in place after 8 days or has moved onto the shaft</li>
+      </ul></span></div>
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care note</b></span>If circumcision is delayed for maternal or family decision-making reasons, this is normal &mdash; take the time needed to weigh the decision with your partner/support person and pediatrician before signing consent.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>The tip will look dark red, then get a yellow coating after a day or two &mdash; that's normal healing, not infection, so don't wipe it off. Clean with water only for the first few days, no wipes. Apply petrolatum with diaper changes if directed (days 4-7). Check every diaper change for bleeding for the first 24 hours.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Know that the yellowish coating on the tip is normal healing tissue, not something to clean off or be alarmed by. Diaper snugly but not tightly over the area. If you notice fresh bleeding, apply gentle pressure with clean gauze/cloth and call the parents and pediatrician immediately &mdash; don't wait.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWBORN CONDITIONS -->
+<div class="panel" id="u9-conditions">
+  <h2 class="section-title"><i class="ti ti-droplet"></i>Common Newborn Conditions</h2>
+  <div class="uslo-tag">USLO 4</div>
+  <p class="lead">Perry Ch. 22-23. The three metabolic/hematologic issues nearly every newborn nurse manages.</p>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-sun"></i></span><span>Hyperbilirubinemia (Jaundice)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Bilirubin is a byproduct of RBC breakdown (heme). The newborn liver is immature and cannot conjugate (process for excretion) bilirubin quickly, so unconjugated bilirubin accumulates. It can cross the blood-brain barrier and deposit in brain tissue.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology</div>
+        <div class="subfield"><div class="subfield-label">Physiologic jaundice (benign)</div><p>Appears AFTER 24 hours of age, peaks day 3-5 in term infants, resolves in 1-2 weeks. Caused by normal newborn RBC turnover + immature liver conjugation.</p></div>
+        <div class="subfield"><div class="subfield-label">Pathologic jaundice</div><p>Appears WITHIN the first 24 hours of life &mdash; at any bilirubin level, jaundice in the first 24 hrs is considered pathologic and requires workup. Causes: hemolytic disease (Rh/ABO incompatibility), sepsis, polycythemia, cephalhematoma resorption, G6PD deficiency.</p></div>
+        <div class="subfield"><div class="subfield-label">Breastfeeding-associated (early) jaundice</div><p>First week of life; caused by insufficient milk intake &rarr; fewer stools &rarr; bilirubin reabsorbed from gut.</p></div>
+        <div class="subfield"><div class="subfield-label">Breast milk jaundice (late)</div><p>Onset 5-10 days; substances in breast milk affect bilirubin conjugation. Usually benign; breastfeeding is continued.</p></div>
+      </div>
+
+      <div class="svg-card">
+        <svg viewBox="0 0 640 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline showing onset windows for pathologic, physiologic, breastfeeding-associated, and breast milk jaundice across the first two weeks of life">
+          <text x="320" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#26215C">Jaundice onset timeline &mdash; type by day of life</text>
+          <line x1="40" y1="140" x2="600" y2="140" stroke="#888787" stroke-width="2"/>
+          <text x="40" y="158" text-anchor="middle" font-size="9" fill="#5c5c58">Day 0</text>
+          <text x="150" y="158" text-anchor="middle" font-size="9" fill="#5c5c58">Day 1</text>
+          <text x="260" y="158" text-anchor="middle" font-size="9" fill="#5c5c58">Day 3</text>
+          <text x="370" y="158" text-anchor="middle" font-size="9" fill="#5c5c58">Day 5</text>
+          <text x="480" y="158" text-anchor="middle" font-size="9" fill="#5c5c58">Day 10</text>
+          <text x="600" y="158" text-anchor="middle" font-size="9" fill="#5c5c58">Day 14</text>
+          <rect x="40" y="42" width="70" height="26" rx="6" fill="#F09595" stroke="#A32D2D" stroke-width="1.5"/>
+          <text x="75" y="60" text-anchor="middle" font-size="9.5" font-weight="700" fill="#501313">Pathologic</text>
+          <text x="75" y="34" text-anchor="middle" font-size="8.5" fill="#791F1F">first 24 hrs = red flag</text>
+          <rect x="150" y="76" width="220" height="26" rx="6" fill="#FAC775" stroke="#854F0B" stroke-width="1.5"/>
+          <text x="260" y="94" text-anchor="middle" font-size="9.5" font-weight="700" fill="#412402">Physiologic (peaks day 3-5)</text>
+          <rect x="150" y="110" width="150" height="26" rx="6" fill="#B5D4F4" stroke="#185FA5" stroke-width="1.5"/>
+          <text x="225" y="128" text-anchor="middle" font-size="9.5" font-weight="700" fill="#042C53">Breastfeeding-assoc.</text>
+          <rect x="400" y="42" width="150" height="26" rx="6" fill="#C0DD97" stroke="#3B6D11" stroke-width="1.5"/>
+          <text x="475" y="60" text-anchor="middle" font-size="9.5" font-weight="700" fill="#173404">Breast milk jaundice</text>
+          <text x="475" y="34" text-anchor="middle" font-size="8.5" fill="#27500A">onset 5-10 days, benign</text>
+        </svg>
+        <div class="svg-caption">Onset timing is the single fastest way to sort jaundice type on an exam question</div>
+      </div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-stethoscope"></i>Signs &amp; symptoms</div><ul>
+        <li>Yellowing that starts at the head and progresses caudally (head &rarr; chest &rarr; abdomen &rarr; extremities &mdash; hands/feet last)</li>
+        <li>Enlarged liver, poor muscle tone, lethargy, poor sucking reflex (as levels rise)</li>
+        <li>Dark gold/brown urine can occur with phototherapy dehydration</li>
+      </ul></div>
+
+      <div class="svg-card">
+        <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing jaundice progression from head to feet as bilirubin levels rise">
+          <text x="320" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#26215C">Cephalocaudal jaundice progression</text>
+          <g><circle cx="90" cy="90" r="34" fill="#FAEEDA" stroke="#854F0B" stroke-width="2"/>
+            <text x="90" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#412402">Head</text>
+            <text x="90" y="145" text-anchor="middle" font-size="10" fill="#5c5c58">Appears first</text></g>
+          <path d="M128 90 L192 90" stroke="#EF9F27" stroke-width="3" marker-end="url(#arrow2)"/>
+          <g><circle cx="230" cy="90" r="34" fill="#FAC775" stroke="#854F0B" stroke-width="2"/>
+            <text x="230" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#412402">Chest</text></g>
+          <path d="M268 90 L332 90" stroke="#EF9F27" stroke-width="3" marker-end="url(#arrow2)"/>
+          <g><circle cx="370" cy="90" r="34" fill="#EF9F27" stroke="#854F0B" stroke-width="2"/>
+            <text x="370" y="96" text-anchor="middle" font-size="11" font-weight="700" fill="#412402">Abdomen</text></g>
+          <path d="M408 90 L472 90" stroke="#EF9F27" stroke-width="3" marker-end="url(#arrow2)"/>
+          <g><circle cx="510" cy="90" r="34" fill="#BA7517" stroke="#412402" stroke-width="2"/>
+            <text x="510" y="90" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">Hands</text>
+            <text x="510" y="102" text-anchor="middle" font-size="10" font-weight="700" fill="#fff">&amp; feet</text>
+            <text x="510" y="145" text-anchor="middle" font-size="10" fill="#5c5c58">Appears last</text></g>
+          <defs><marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#EF9F27"/></marker></defs>
+          <text x="320" y="180" text-anchor="middle" font-size="11" fill="#5c5c58">Deeper, more widespread color = higher bilirubin level</text>
+        </svg>
+        <div class="svg-caption">Visual severity indicator taught in Perry Ch. 23 &mdash; assess in natural light</div>
+      </div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-alert-circle"></i>Risk factors</div><ul>
+        <li>Gestational age &lt;35-36 weeks (most common risk factor)</li>
+        <li>Rh/ABO incompatibility, bruising/cephalhematoma, polycythemia</li>
+        <li>Delayed or ineffective feeding, delayed meconium passage</li>
+        <li>East Asian ethnicity, exclusive breastfeeding with poor intake</li>
+      </ul></div>
+      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><p><b>Acute bilirubin encephalopathy:</b> lethargy, hypotonia, irritability, seizures, coma (early-weeks presentation). <b>Kernicterus:</b> irreversible long-term bilirubin toxicity &mdash; hypotonia, delayed motor skills, hearing loss, cerebral palsy, gaze abnormalities.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics &mdash; expected vs. unexpected</div>
+        <div class="tbl-wrap">
+        <table class="labs">
+          <tr><th>Test</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Nursing action</th></tr>
+          <tr><td>Total serum bilirubin (TSB)</td><td class="normal">Tracks below the hour-specific treatment line on the nomogram</td><td class="abnormal">Above the treatment line for age-in-hours; any visible jaundice in first 24 hrs</td><td>Plot on hour-specific nomogram; repeat per risk category; escalate if trending up rapidly</td></tr>
+          <tr><td>Transcutaneous bilirubin (TcB)</td><td class="normal">Low reading, screening tool</td><td class="abnormal">Elevated result</td><td>Confirm with serum TSB before treatment decisions &mdash; TcB is a screen, not a treatment-grade value</td></tr>
+          <tr><td>Direct antiglobulin test (DAT/Coombs)</td><td class="normal">Negative</td><td class="abnormal">Positive &mdash; suggests hemolytic disease</td><td>Send if Rh/ABO incompatibility suspected; anticipate faster-rising bilirubin</td></tr>
+        </table>
+        </div>
+      </div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked by acuity)</b></span><ol>
+        <li><b>Assess neuro status first</b> &mdash; lethargy, poor tone, or poor feeding in a jaundiced infant signals possible progression toward encephalopathy; this is the finding that could cause permanent harm if missed, so it outranks routine phototherapy checks.</li>
+        <li>Initiate/verify phototherapy per order; maximize skin exposure, eye shields.</li>
+        <li>Promote frequent feeding (8-12x/24h) to increase stooling and bilirubin excretion.</li>
+        <li>Monitor hydration status (urine output, weight) during phototherapy &mdash; insensible water loss risk.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+        <li>Jaundice appears in first 24 hours of life (always pathologic by definition)</li>
+        <li>Lethargy, poor feeding, high-pitched cry, or hypotonia develop in a jaundiced infant (possible encephalopathy)</li>
+        <li>TSB rising rapidly despite phototherapy (may need exchange transfusion)</li>
+        <li>Temperature instability under phototherapy</li>
+      </ul></span></div>
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Treatment</div><p><b>Phototherapy</b> (most common): converts unconjugated bilirubin to an excretable form using blue light spectrum. <b>Exchange transfusion:</b> for rapidly rising levels despite intensive phototherapy or severe hemolytic disease.</p>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Phototherapy safety essentials</b></span>No lotions/ointments on skin (absorb heat, cause burns). Eyes shielded (opaque mask, eyelids closed first) &mdash; remove at least once per shift to check for irritation and allow bonding. Cover genitals. Monitor temperature closely. Turn off lights before drawing blood specimens. Watch for <b>bronze baby syndrome</b> as a complication. Expect loose green stools &mdash; this is bilirubin excretion, not diarrhea.</span></div></div>
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care strategies</b></span><ul>
+        <li>Continue breastfeeding on schedule even during phototherapy &mdash; frequent feeding helps clear bilirubin, and breaks in treatment for feeding are appropriate</li>
+        <li>Rest when the infant is under lights and not being held, since bonding time is more limited during treatment</li>
+        <li>Ask staff to help arrange skin-to-skin time during phototherapy breaks to maintain bonding and milk supply</li>
+      </ul></span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby's skin may look a little yellow &mdash; this is common and usually goes away with frequent feeding. Feed at least 8 times a day. If the yellow color shows up in the first day of life, spreads down to the belly or legs, or your baby becomes hard to wake up or won't feed, call us right away. If bili lights are needed, you can still hold and feed your baby during treatment breaks.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If watching a baby under home phototherapy: don't remove the eye covers except during supervised breaks, keep the light source positioned as instructed, and know that loose green stool is expected, not a sign of illness. Call the parents immediately if the baby becomes unusually hard to wake or won't feed.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-droplet"></i></span><span>Hypoglycemia</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>In utero, fetal glucose is continuously supplied via placental transfer, maintained at 60-70% of maternal levels. After cord clamping, this supply stops abruptly. The newborn must rely on liver glycogen stores and adipose tissue, but gluconeogenesis/ketogenesis are underdeveloped. Glucose is the brain's main fuel; low levels trigger compensatory shunting of blood volume to the brain.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology / at-risk populations</div><ul>
+        <li>SGA, LGA, preterm/late preterm, low birth weight</li>
+        <li>Infant of a diabetic mother (fetal hyperinsulinemia continues after cord clamped)</li>
+        <li>Perinatal stress: asphyxia, cold stress, respiratory distress</li>
+      </ul></div>
+      <div class="field"><div class="field-label"><i class="ti ti-stethoscope"></i>Signs &amp; symptoms</div><p><b>Can be asymptomatic</b> &mdash; hypoglycemia may be present with no clinical signs. When present: jitteriness/tremor, lethargy, poor feeding, high-pitched or weak cry, cyanosis, apnea, tachypnea, hypotonia, temperature instability, seizures.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><p>Untreated/severe hypoglycemia &rarr; long-term neurological damage.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics &mdash; expected vs. unexpected</div>
+        <div class="tbl-wrap">
+        <table class="labs">
+          <tr><th>Timepoint/context</th><th>Expected</th><th>Unexpected &mdash; Hypoglycemia</th><th>Nursing action</th></tr>
+          <tr><td>1-2 hrs after birth (healthy term)</td><td class="normal">Can be as low as 30 mg/dL &mdash; not abnormal at this early point</td><td class="abnormal">&mdash;</td><td>Monitor per protocol if risk factors present</td></tr>
+          <tr><td>By 12 hrs of life</td><td class="normal">Stabilizes &gt;40-60 mg/dL</td><td class="abnormal">Persistently &lt;40-45 mg/dL by institutional protocol</td><td>Feed immediately; recheck 30 min after feeding</td></tr>
+          <tr><td>Point-of-care (reagent strip)</td><td class="normal">&mdash;</td><td class="abnormal">Any level &lt;45 mg/dL</td><td>Confirm with stat serum glucose per facility policy &mdash; do NOT delay treatment while awaiting confirmation</td></tr>
+        </table>
+        </div>
+      </div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked by acuity)</b></span><ol>
+        <li><b>Treat first, confirm second</b> &mdash; if point-of-care glucose is low and/or infant is symptomatic, begin treatment immediately; do not wait for serum confirmation, since ongoing hypoglycemia risks brain injury faster than any delay in confirmatory testing is worth.</li>
+        <li>If stable and able to feed: initiate oral/enteral feeding immediately, recheck glucose 30 min later.</li>
+        <li>If not responding to feeds, or infant cannot feed safely: prepare for IV dextrose per order.</li>
+        <li>Maintain thermoregulation and minimize stress/handling &mdash; both increase metabolic/glucose demand.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+        <li>Glucose remains low after feeding + 30-min recheck</li>
+        <li>Any seizure activity</li>
+        <li>Persistent symptoms (jitteriness, apnea, lethargy) regardless of glucose value</li>
+        <li>Infant unable to tolerate oral feeding</li>
+      </ul></span></div>
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Treatment</div><p>Early/frequent feeding is both prevention and first-line treatment. IV dextrose for infants not responding to enteral feeding or unable to feed safely.</p></div>
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care strategies</b></span>If you have diabetes, continue following your own glucose-management and dietary plan postpartum &mdash; your glucose control still affects your milk supply and recovery. Ask staff about early skin-to-skin and early first feeding, since this benefits your baby's glucose stability too.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Because of [prematurity/diabetes during pregnancy/baby's size], your baby's blood sugar needs extra checks in the first hours after birth. Feeding your baby early and often is one of the best ways to keep blood sugar stable. If we see shakiness, a weak cry, or trouble feeding, we'll check the blood sugar again right away.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If this baby has a history of blood sugar concerns, know the feeding schedule closely and don't skip or delay feeds. Watch for and report shakiness, unusual sleepiness, or poor feeding to the parents right away.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-bone"></i></span><span>Hypocalcemia</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>In utero, calcium is actively transported across the placenta, keeping fetal calcium levels higher than maternal levels. After birth, this active transfer stops, and the newborn's parathyroid function is not yet fully mature to compensate.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology / risk factors</div><p>Prematurity, infant of a diabetic mother, birth asphyxia, low maternal calcium/vitamin D status.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-stethoscope"></i>Signs &amp; symptoms</div><p>Tremor, jitteriness (overlaps with hypoglycemia presentation &mdash; both should be checked when tremor is seen), neuromuscular irritability, poor feeding.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics &mdash; expected vs. unexpected</div>
+        <div class="tbl-wrap">
+        <table class="labs">
+          <tr><th>Test</th><th>Expected</th><th>Unexpected</th><th>Nursing action</th></tr>
+          <tr><td>Serum calcium</td><td class="normal">Institution-specific normal range</td><td class="abnormal">Below normal range &mdash; hypocalcemia</td><td>Encourage early feeding; prepare for calcium supplementation if ordered</td></tr>
+          <tr><td>Serum magnesium</td><td class="normal">1.5-2.8 mg/dL</td><td class="abnormal">&lt;1.5 mg/dL &mdash; hypomagnesemia (often coexists)</td><td>Monitor both calcium and magnesium together, q24h until stable</td></tr>
+        </table>
+        </div>
+      </div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions</b></span><ol>
+        <li>Assess for and differentiate tremor source (glucose vs. calcium) &mdash; check glucose first since hypoglycemia is more immediately dangerous and more common.</li>
+        <li>Encourage early feeding to support normal calcium levels.</li>
+        <li>Administer calcium supplementation as ordered; severe cases may require 10% calcium gluconate.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Tremors/jitteriness do not resolve with a normal glucose result (suggests calcium as the cause); seizure activity; poor feeding persists.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Some babies have trouble keeping their calcium levels steady right after birth, especially if born early. This can cause some shakiness. We'll check blood levels and may give extra calcium if needed &mdash; feeding your baby regularly also helps.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Report any shaking, jitteriness, or unusual muscle stiffness to the parents; this is being monitored and treated but should be tracked closely at home too.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="panel" id="compare">
+  <h2 class="section-title"><i class="ti ti-columns-3"></i>Compare &amp; Contrast Tables</h2>
+  <p class="lead">Side-by-side distinctions that show up frequently as NGN "select the correct pairing" items.</p>
+
+  <div class="card">
+    <h3>Caput Succedaneum vs. Cephalhematoma</h3>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Feature</th><th>Caput Succedaneum</th><th>Cephalhematoma</th></tr>
+      <tr><td>Location of fluid</td><td>Above periosteum (edema)</td><td>Below periosteum (blood)</td></tr>
+      <tr><td>Crosses suture lines?</td><td>Yes</td><td>No</td></tr>
+      <tr><td>Resolution</td><td>Days</td><td>Weeks &mdash; watch for &uarr; jaundice risk</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Hypoglycemia vs. Hypocalcemia (Tremor Differentiation)</h3>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Feature</th><th>Hypoglycemia</th><th>Hypocalcemia</th></tr>
+      <tr><td>Cause</td><td>Abrupt loss of maternal glucose supply</td><td>Loss of active placental calcium transport</td></tr>
+      <tr><td>Key lab</td><td>Serum/POC glucose &lt;40-45 mg/dL</td><td>Serum calcium below normal range; often coexists with &darr;magnesium</td></tr>
+      <tr><td>First-line action</td><td>Feed immediately, recheck in 30 min</td><td>Feed; calcium supplementation if ordered</td></tr>
+      <tr><td>Clinical pearl</td><td>Check glucose FIRST when tremor seen &mdash; more common, more dangerous</td><td>Consider if tremor persists despite normal glucose</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Physiologic vs. Pathologic Jaundice</h3>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Feature</th><th>Physiologic</th><th>Pathologic</th></tr>
+      <tr><td>Onset</td><td>After 24 hours</td><td>Within first 24 hours (always a red flag)</td></tr>
+      <tr><td>Peak</td><td>Day 3-5</td><td>Can rise rapidly</td></tr>
+      <tr><td>Cause</td><td>Normal RBC turnover + immature conjugation</td><td>Hemolytic disease, sepsis, polycythemia</td></tr>
+      <tr><td>Action</td><td>Monitor, encourage feeding</td><td>Immediate workup and likely treatment</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Breastfeeding vs. Formula Feeding &mdash; Quick Reference</h3>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Feature</th><th>Breastfeeding</th><th>Formula</th></tr>
+      <tr><td>Frequency</td><td>8-12x/24h</td><td>6-8x/24h</td></tr>
+      <tr><td>Expected weight loss</td><td>5-7% in week 1</td><td>3-5% in week 1</td></tr>
+      <tr><td>Volume progression</td><td>Guided by let-down/satiety cues, not measured</td><td>15-30 mL early &rarr; 90-150 mL by week 2</td></tr>
+      <tr><td>Key safety point</td><td>Watch for ineffective latch, &gt;7% weight loss</td><td>Never prop bottle; exact preparation dilution</td></tr>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="panel" id="quiz">
+  <h2 class="section-title"><i class="ti ti-checkbox"></i>NCLEX-Style Practice Questions</h2>
+  <p class="lead">Modeled on your instructor's NGN format. Tap an answer to see if you're correct, then read the rationale.</p>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q1. A 2-day-old newborn is noted to have yellowing of the skin extending from the head to the chest. The infant is feeding well and has normal tone. What is the nurse's priority action?</div>
+    <div class="quiz-opts" data-answer="1">
+      <button class="quiz-opt">Immediately prepare the infant for exchange transfusion</button>
+      <button class="quiz-opt">Obtain a transcutaneous or serum bilirubin level and notify the provider of the result</button>
+      <button class="quiz-opt">Reassure the parents this is not concerning since the infant is 2 days old</button>
+      <button class="quiz-opt">Withhold all feedings until bilirubin is checked</button>
+    </div>
+    <div class="quiz-rationale">
+      <b>Correct: Obtain a bilirubin level and notify the provider.</b> Jaundice progressing from head toward the chest at day 2 is consistent with physiologic jaundice timing, but any degree of jaundice still requires objective bilirubin measurement to guide management. Feeding should be encouraged, not withheld, since it helps bilirubin excretion.
+    </div>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q2. A late preterm infant born at 35 weeks has a blood glucose of 38 mg/dL at 2 hours of life and is jittery. What is the nurse's priority action?</div>
+    <div class="quiz-opts" data-answer="0">
+      <button class="quiz-opt">Initiate oral feeding immediately and recheck glucose in 30 minutes</button>
+      <button class="quiz-opt">Wait for a confirmatory serum glucose before taking any action</button>
+      <button class="quiz-opt">Document the finding and reassess at the next scheduled check</button>
+      <button class="quiz-opt">Administer IV dextrose immediately without attempting oral feeding first</button>
+    </div>
+    <div class="quiz-rationale">
+      <b>Correct: Initiate oral feeding immediately, recheck in 30 min.</b> A symptomatic infant with glucose below the treatment threshold needs prompt action, not delay pending confirmatory labs. IV dextrose is reserved for infants who don't respond to feeding or cannot feed safely.
+    </div>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q3. In the first 2 hours after birth, which nursing action takes priority over all others?</div>
+    <div class="quiz-opts" data-answer="2">
+      <button class="quiz-opt">Administer Vitamin K injection</button>
+      <button class="quiz-opt">Initiate breastfeeding</button>
+      <button class="quiz-opt">Assess and secure the airway</button>
+      <button class="quiz-opt">Apply erythromycin eye ointment</button>
+    </div>
+    <div class="quiz-rationale">
+      <b>Correct: Assess and secure the airway.</b> Airway/breathing always precedes every other newborn intervention because hypoxia is the fastest-acting life threat. Vitamin K and eye prophylaxis are time-sensitive but can wait briefly if airway needs attention; breastfeeding initiation comes after physiologic stability is confirmed.
+    </div>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q4. Two days after a PlastiBell circumcision, the nurse notes the glans is dark red with a yellow coating over the surface. The parent asks if this needs to be cleaned off. What is the nurse's best response?</div>
+    <div class="quiz-opts" data-answer="1">
+      <button class="quiz-opt">"Yes, let's gently wipe that away with a wet washcloth now."</button>
+      <button class="quiz-opt">"That yellow coating is granulation tissue, a normal part of healing — it should not be removed."</button>
+      <button class="quiz-opt">"That indicates an infection; I'll notify the provider right away."</button>
+      <button class="quiz-opt">"We need to apply antibiotic ointment to that area immediately."</button>
+    </div>
+    <div class="quiz-rationale">
+      <b>Correct: "That yellow coating is granulation tissue..."</b> A dark red glans progressing to yellow exudate at 24-48 hours post-circumcision is the expected healing pattern. True infection would present with redness, swelling, discharge with odor, or worsening.
+    </div>
+  </div>
+
+  <div class="quiz-card">
+    <div class="quiz-q">Q5. A breastfeeding newborn has lost 8% of birth weight by day 3. What is the priority nursing action?</div>
+    <div class="quiz-opts" data-answer="0">
+      <button class="quiz-opt">Notify the provider and assess breastfeeding technique/latch</button>
+      <button class="quiz-opt">Reassure the parent this is normal and continue routine care</button>
+      <button class="quiz-opt">Recommend switching immediately to formula</button>
+      <button class="quiz-opt">Wait until day 5 to reassess weight</button>
+    </div>
+    <div class="quiz-rationale">
+      <b>Correct: Notify the provider and assess technique.</b> Expected breastfed weight loss is 5-7% in the first week; 8% by day 3 exceeds this threshold and warrants provider notification plus an in-depth feeding assessment (latch, frequency, transfer) before assuming formula is required.
+    </div>
+  </div>
+
+</div>
+
+</div>
+<footer>NSG 3500 Final Exam Prep &middot; Unit 9: Newborn Care &middot; Perry et al. (2023) &amp; Galen Lecture Content &middot; Always verify source conflicts with Professor Morris</footer>
+<script>
+document.getElementById('tabs').addEventListener('click', function(e){
+  var btn = e.target.closest('button');
+  if(!btn) return;
+  var tab = btn.getAttribute('data-tab');
+  document.querySelectorAll('nav.tabs button').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  document.getElementById(tab).classList.add('active');
+  window.scrollTo(0,0);
+});
+document.querySelectorAll('.toc-item').forEach(function(item){
+  item.addEventListener('click', function(){
+    var tab = item.getAttribute('data-jump');
+    document.querySelectorAll('nav.tabs button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-tab')===tab);
+    });
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+    document.getElementById(tab).classList.add('active');
+    window.scrollTo(0,0);
+  });
+});
+function toggleCond(headEl){ headEl.parentElement.classList.toggle('open'); }
+document.querySelectorAll('.quiz-opts').forEach(function(group){
+  var correctIdx = parseInt(group.getAttribute('data-answer'), 10);
+  var buttons = group.querySelectorAll('.quiz-opt');
+  var rationale = group.parentElement.querySelector('.quiz-rationale');
+  buttons.forEach(function(btn, idx){
+    btn.addEventListener('click', function(){
+      if(group.getAttribute('data-answered')) return;
+      group.setAttribute('data-answered','true');
+      buttons.forEach(function(b, i){
+        if(i === correctIdx) b.classList.add('correct');
+        else if(b === btn) b.classList.add('incorrect');
+      });
+      rationale.classList.add('show');
+    });
+  });
+});
+</script>
+</body>
+</html>
