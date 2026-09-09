@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8"/>
 <title>Unit 9: Endocrine — NSG 3600 Exam 4 Comprehensive Atlas</title>
 <style>
   :root {
@@ -62,7 +63,7 @@
     white-space: nowrap;
     transition: background 0.15s, color 0.15s;
   }
-  nav a:hover { background: var(--gold); color: var(--navy-deep); font-weight: bold; }
+  nav a:hover { background: rgba(255,255,255,0.08); }
   main { max-width: 1040px; margin: 0 auto; padding: 30px 20px 90px; }
   section.unit-block { margin-bottom: 54px; }
   h2.section-title {
@@ -224,1119 +225,1346 @@
   .card.puberty .card-header { background: linear-gradient(135deg, #a852a8, #7a2f7a); }
   .card.thyroid .card-header { background: linear-gradient(135deg, #d97a3d, #a3521f); }
   .card.pku .card-header { background: linear-gradient(135deg, #3fa377, #1f6b4c); }
+  .card.meds .card-header { background: linear-gradient(135deg, #4a7c8c, #2d5563); }
+  .med-drug { border: 1px solid #e4e0d6; border-radius: 8px; margin: 16px 0; overflow: hidden; background: #fffefb; }
+  .med-drug-name { background: linear-gradient(160deg, #eef2f3, #e2eaec); padding: 12px 16px; font-family: Arial, sans-serif; }
+  .med-drug-name h5 { margin: 0; font-size: 15px; color: var(--navy-deep); text-transform: none; letter-spacing: 0; }
+  .med-drug-name .generic { font-size: 12px; color: var(--muted); font-weight: normal; }
+  .med-drug-body { padding: 14px 16px; }
+  .med-spotlight { border: 2px solid #4a7c8c; border-radius: 10px; margin: 18px 0; overflow: hidden; background: #fffefb; box-shadow: 0 2px 8px rgba(45,85,99,0.1); }
+  .med-spotlight-header { background: linear-gradient(135deg, #4a7c8c, #2d5563); color: white; padding: 12px 18px; font-family: Arial, sans-serif; }
+  .med-spotlight-header h4 { margin: 0; border: none; padding: 0; color: white; font-size: 15px; text-transform: none; letter-spacing: 0; }
+  .med-spotlight-header .generic { font-size: 12px; opacity: 0.9; font-weight: normal; }
+  .med-spotlight-body { padding: 16px 18px; }
+
+  .card > summary {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+  }
+  .card > summary::-webkit-details-marker { display: none; }
+  .card > summary::marker { content: ""; }
+  .card > summary .card-header {
+    position: relative;
+    margin: -1px -1px 0 -1px;
+  }
+  .card > summary .card-header::before {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    z-index: 2;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 29px;
+    border: 2px solid rgba(255,255,255,0.65);
+    border-radius: 50%;
+  }
+  .card[open] > summary .card-header::before {
+    content: "\2212";
+  }
+  .card > summary .card-header:hover::before {
+    background: rgba(255,255,255,0.18);
+  }
+  .card > summary .card-header .tag {
+    padding-right: 46px;
+  }
 </style>
 </head>
 <body>
-
 <header>
-  <div class="kicker">Galen College of Nursing · NSG 3600 · Exam 4 Prep</div>
-  <h1>Unit 9 — The Child With Endocrine Dysfunction</h1>
-  <div class="sub">Diabetes Mellitus (Type 1 &amp; DKA) · Precocious Puberty · Hypothyroidism (Congenital &amp; Juvenile) · PKU — NCJMM-Framed Comprehensive Atlas</div>
+<div class="kicker">Galen College of Nursing · NSG 3600 · Exam 4 Prep</div>
+<h1>Unit 9 — The Child With Endocrine Dysfunction</h1>
+<div class="sub">Diabetes Mellitus (Type 1 &amp; DKA) · Precocious Puberty · Hypothyroidism (Congenital &amp; Juvenile) · PKU — NCJMM-Framed Comprehensive Atlas</div>
 </header>
-
 <nav>
-  <a href="#uslos">USLOs</a>
-  <a href="#dm">Type 1 DM</a>
-  <a href="#dka">DKA</a>
-  <a href="#t2dm">Type 2 DM</a>
-  <a href="#puberty">Precocious Puberty</a>
-  <a href="#thyroid-cong">Hypothyroidism (Congenital)</a>
-  <a href="#thyroid-juv">Hypothyroidism (Juvenile)</a>
-  <a href="#pku">PKU</a>
-  <a href="#calc">Med Math</a>
+<a href="#uslos">USLOs</a>
+<a href="#dm">Type 1 DM</a>
+<a href="#dka">DKA</a>
+<a href="#t2dm">Type 2 DM</a>
+<a href="#puberty">Precocious Puberty</a>
+<a href="#thyroid-cong">Hypothyroidism (Congenital)</a>
+<a href="#thyroid-juv">Hypothyroidism (Juvenile)</a>
+<a href="#pku">PKU</a>
+<a href="#calc">Med Math</a>
 </nav>
-
 <main>
-
 <section class="unit-block" id="uslos">
 <div class="toc-legend">
-    <strong>How priority acuity tags work in this guide:</strong>
-    <span class="acuity-tag acuity-kill">Will Kill First</span> = airway/breathing/circulation or brain-threatening — act immediately, no delay.
+<strong>How priority acuity tags work in this guide:</strong>
+<span class="acuity-tag acuity-kill">Will Kill First</span> = airway/breathing/circulation or brain-threatening — act immediately, no delay.
     <span class="acuity-tag acuity-urgent">Urgent, Not Immediately Lethal</span> = needs prompt action to prevent deterioration.
     <span class="acuity-tag acuity-important">Important, Sequenced Later</span> = necessary but only after the above are addressed.
-    <br><br><strong>Tag meaning:</strong> <span class="lecture-tag">Lecture</span> = content pulled directly from your Unit 9 instructor slide deck, layered onto the textbook/Saunders foundation already in this guide.
+    <br/><br/><strong>Tag meaning:</strong> <span class="lecture-tag">Lecture</span> = content pulled directly from your Unit 9 instructor slide deck, layered onto the textbook/Saunders foundation already in this guide.
   </div>
 </section>
-
 <!-- ========================= TYPE 1 DM ========================= -->
 <section class="unit-block" id="dm">
 <h2 class="section-title">Type 1 Diabetes Mellitus</h2>
+<details class="card diabetes"><summary><div class="card-header">
+<h3>Type 1 Diabetes Mellitus</h3>
+<div class="tag">Absolute insulin deficiency — autoimmune beta-cell destruction</div>
+</div></summary>
 
-<div class="card diabetes">
-  <div class="card-header">
-    <h3>Type 1 Diabetes Mellitus</h3>
-    <div class="tag">Absolute insulin deficiency — autoimmune beta-cell destruction</div>
-  </div>
-  <div class="card-body">
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>Autoimmune destruction of pancreatic beta cells → <strong>absolute</strong> insulin deficiency. Without insulin, glucose can't enter cells → hyperglycemia. Once blood glucose exceeds the renal threshold (~180 mg/dL), glucose spills into urine (glycosuria), dragging water with it osmotically (polyuria) → compensatory polydipsia. Cells are starved despite hyperglycemia, so the body breaks down fat and protein for fuel — weight loss occurs despite polyphagia. Etiology is autoimmune, with genetic predisposition (family history is a recognized risk factor) triggered by an environmental factor (often viral) in genetically susceptible children.</p>
-
-    <h5>Risk Factors</h5>
-    <ul>
-      <li>Family history of Type 1 DM (genetic susceptibility)</li>
-      <li>Autoimmune disease history in the child or family</li>
-      <li>Certain viral infections proposed as environmental triggers</li>
-      <li>Peak onset ages: 5–7 years and again at puberty</li>
-    </ul>
-
-    <div class="mnemonic">
-      <strong>The 3 P's + 1:</strong> Polyuria · Polydipsia · Polyphagia · Weight loss (despite eating more). Add: enuresis in a previously toilet-trained child, fatigue, blurred vision, slow wound healing, frequent infections (esp. Candida vaginitis in adolescent girls — hyperglycemic tissue is a great yeast environment).
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>Autoimmune destruction of pancreatic beta cells → <strong>absolute</strong> insulin deficiency. Without insulin, glucose can't enter cells → hyperglycemia. Once blood glucose exceeds the renal threshold (~180 mg/dL), glucose spills into urine (glycosuria), dragging water with it osmotically (polyuria) → compensatory polydipsia. Cells are starved despite hyperglycemia, so the body breaks down fat and protein for fuel — weight loss occurs despite polyphagia. Etiology is autoimmune, with genetic predisposition (family history is a recognized risk factor) triggered by an environmental factor (often viral) in genetically susceptible children.</p>
+<h5>Risk Factors</h5>
+<ul>
+<li>Family history of Type 1 DM (genetic susceptibility)</li>
+<li>Autoimmune disease history in the child or family</li>
+<li>Certain viral infections proposed as environmental triggers</li>
+<li>Peak onset ages: 5–7 years and again at puberty</li>
+</ul>
+<div class="mnemonic">
+<strong>The 3 P's + 1:</strong> Polyuria · Polydipsia · Polyphagia · Weight loss (despite eating more). Add: enuresis in a previously toilet-trained child, fatigue, blurred vision, slow wound healing, frequent infections (esp. Candida vaginitis in adolescent girls — hyperglycemic tissue is a great yeast environment).
     </div>
-
-    <h4>Hypoglycemia vs. Hyperglycemia — Symptom Discrimination <span class="lecture-tag">Lecture</span></h4>
-    <p>Your instructor's slides isolate this exact contrast as a stand-alone teaching point — expect it tested directly, since the interventions for the two states are opposite (treat hypoglycemia with fast sugar; treat hyperglycemia with insulin/fluids).</p>
-    <div class="hypo-hyper-grid">
-      <div class="hypo-box">
-        <span class="label">Hypoglycemia</span>
-        <ul>
-          <li>Irritable, nervous</li>
-          <li>Difficulty concentrating</li>
-          <li>Shaky feeling</li>
-          <li>Hunger</li>
-          <li>Pallor</li>
-          <li>Sweating</li>
-          <li>Headache</li>
-          <li>Tachycardia</li>
-          <li>Shallow respirations</li>
-        </ul>
-      </div>
-      <div class="hyper-box">
-        <span class="label">Hyperglycemia</span>
-        <ul>
-          <li>Lethargic</li>
-          <li>Confused</li>
-          <li>Double vision</li>
-          <li>Thirst</li>
-          <li>Weakness</li>
-          <li>Flushed, dry, crusty skin</li>
-          <li>Deep, rapid Kussmaul respirations</li>
-          <li>Fruity/acetone breath</li>
-          <li>Paresthesia</li>
-        </ul>
-      </div>
+<h4>Hypoglycemia vs. Hyperglycemia — Symptom Discrimination <span class="lecture-tag">Lecture</span></h4>
+<p>Your instructor's slides isolate this exact contrast as a stand-alone teaching point — expect it tested directly, since the interventions for the two states are opposite (treat hypoglycemia with fast sugar; treat hyperglycemia with insulin/fluids).</p>
+<div class="hypo-hyper-grid">
+<div class="hypo-box">
+<span class="label">Hypoglycemia</span>
+<ul>
+<li>Irritable, nervous</li>
+<li>Difficulty concentrating</li>
+<li>Shaky feeling</li>
+<li>Hunger</li>
+<li>Pallor</li>
+<li>Sweating</li>
+<li>Headache</li>
+<li>Tachycardia</li>
+<li>Shallow respirations</li>
+</ul>
+</div>
+<div class="hyper-box">
+<span class="label">Hyperglycemia</span>
+<ul>
+<li>Lethargic</li>
+<li>Confused</li>
+<li>Double vision</li>
+<li>Thirst</li>
+<li>Weakness</li>
+<li>Flushed, dry, crusty skin</li>
+<li>Deep, rapid Kussmaul respirations</li>
+<li>Fruity/acetone breath</li>
+<li>Paresthesia</li>
+</ul>
+</div>
+</div>
+<div class="mnemonic">
+<strong>Quick discriminator:</strong> Hypoglycemia = "cold and clammy, give them candy" (sweating, shaky, pale — treat with fast sugar). Hyperglycemia = "hot and dry, sugar's high" (flushed, dry skin, Kussmaul, fruity breath — needs insulin/fluids, not sugar).
     </div>
-    <div class="mnemonic">
-      <strong>Quick discriminator:</strong> Hypoglycemia = "cold and clammy, give them candy" (sweating, shaky, pale — treat with fast sugar). Hyperglycemia = "hot and dry, sugar's high" (flushed, dry skin, Kussmaul, fruity breath — needs insulin/fluids, not sugar).
-    </div>
-
-    <h4>Insulin Types <span class="lecture-tag">Lecture</span></h4>
-    <table>
-      <tr><th>Category</th><th>Example(s)</th></tr>
-      <tr><td>Rapid-acting</td><td>Humalog (lispro), Novolog (aspart)</td></tr>
-      <tr><td>Short-acting</td><td>Regular insulin — the <strong>only type given IV</strong> (see DKA section)</td></tr>
-      <tr><td>Intermediate-acting</td><td>NPH</td></tr>
-      <tr><td>Long-acting</td><td>Lantus (glargine)</td></tr>
-    </table>
-    <p class="source-tag">Refer to your textbook/Davis's Drug Guide for exact onset, peak, and duration times for each category — your instructor's slide flags this as something to look up rather than memorize from the slide alone.</p>
-
-    <h4>Signs &amp; Symptoms (Full List)</h4>
-    <div class="findings-grid">
-      <div class="expected">
-        <span class="label">Classic presenting findings</span>
-        <ul>
-          <li>Polyuria, polydipsia, polyphagia</li>
-          <li>Weight loss despite increased appetite</li>
-          <li>Enuresis/nocturia in a previously continent child</li>
-          <li>Fatigue, irritability, "not himself/herself"</li>
-          <li>Shortened attention span, lowered frustration tolerance</li>
-          <li>Blurred vision, headache</li>
-          <li>Dry/flushed skin, poor wound healing</li>
-          <li>Frequent infections (candidal vaginitis in adolescents)</li>
-        </ul>
-      </div>
-      <div class="unexpected">
-        <span class="label">Escalating — think DKA is developing</span>
-        <ul>
-          <li>Kussmaul respirations (deep, rapid)</li>
-          <li>Fruity (acetone) breath</li>
-          <li>Nausea, vomiting, abdominal pain</li>
-          <li>Dehydration signs</li>
-          <li>Change in level of consciousness → coma</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Complications</h4>
-    <div class="two-col">
-      <div>
-        <h5>Acute</h5>
-        <ul>
-          <li>Hypoglycemia</li>
-          <li>Hyperglycemia</li>
-          <li>Diabetic ketoacidosis (DKA)</li>
-          <li>Coma</li>
-          <li>Hypokalemia / hyperkalemia</li>
-        </ul>
-      </div>
-      <div>
-        <h5>Long-Term (after years of disease)</h5>
-        <ul>
-          <li><strong>Microvascular:</strong> nephropathy, retinopathy, neuropathy (onset 10–15 yrs post-puberty)</li>
-          <li><strong>Macrovascular:</strong> atherosclerosis, hypertension (after ~25 yrs of disease)</li>
-          <li>Failure to grow at normal rate, delayed maturation</li>
-          <li>Recurrent infections</li>
-          <li>Limited joint mobility (small joints of hand, ~30% of adolescents) from glycosylation changes</li>
-        </ul>
-      </div>
-    </div>
-    <p class="source-tag">Good glycemic control can postpone vascular changes 20+ years; poor control can produce changes in as little as 2.5–3 years.</p>
-
-    <h4>Labs &amp; Diagnostics</h4>
-    <table class="lab-table">
-      <tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (Diagnostic of DM)</th></tr>
-      <tr><td>Fasting blood glucose</td><td>70–99 mg/dL</td><td>≥ 126 mg/dL</td></tr>
-      <tr><td>Random blood glucose</td><td>70–99 mg/dL</td><td>≥ 200 mg/dL + classic symptoms</td></tr>
-      <tr><td>Oral glucose tolerance test (2-hr sample)</td><td>&lt; 140 mg/dL</td><td>≥ 200 mg/dL</td></tr>
-      <tr><td>Hemoglobin A1c</td><td>&lt; 5.7%</td><td>≥ 6.5%</td></tr>
-      <tr><td>Urine glucose/ketones</td><td>Negative</td><td>Glycosuria ± ketonuria</td></tr>
-    </table>
-    <p>Glycosuria alone is not diagnostic — other conditions (infection, stress, other sugars in urine) can cause a false-positive picture. Diagnosis requires one of the four criteria above.</p>
-
-    <div class="call-provider">
-      <span class="label">Notify the Provider Immediately If</span>
-      <ul>
-        <li>Blood glucose &gt; 300 mg/dL with ketones present</li>
-        <li>Any Kussmaul respirations, fruity breath, or vomiting in a known diabetic (possible DKA onset)</li>
-        <li>Blood glucose &lt; 70 mg/dL not resolving with oral glucose (hypoglycemia unresponsive to initial treatment)</li>
-        <li>New change in level of consciousness</li>
-      </ul>
-    </div>
-
-    <h4>Priority Nursing Interventions — Ranked by What Kills First</h4>
-    <ol class="priority-steps">
-      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br>Obtain blood glucose and urine ketones immediately in any child with new hyperglycemic symptoms — <strong>do not administer insulin until both are known.</strong>
-      <span class="why">Why: Insulin given blindly could cause dangerous hypoglycemia if the true picture is different than assumed, and DKA changes the entire treatment approach.</span></li>
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Assess for signs of DKA (Kussmaul respirations, fruity breath, dehydration, altered LOC) before assuming this is uncomplicated new-onset diabetes.
+<h4>Insulin Types — Exact Timing <span class="lecture-tag">Lecture</span></h4>
+<table>
+<tr><th>Category</th><th>Example(s)</th><th>Onset</th><th>Peak</th><th>Duration</th></tr>
+<tr><td>Rapid-acting</td><td>Humalog, Novolog (lispro)</td><td>15 min</td><td>30–90 min</td><td>~5 hrs</td></tr>
+<tr><td>Short-acting</td><td>Regular (Novolin R) — the <strong>only type given IV</strong> (see DKA section)</td><td>30 min</td><td>2–4 hrs</td><td>4–8 hrs</td></tr>
+<tr><td>Intermediate-acting</td><td>NPH</td><td>2–6 hrs</td><td>4–14 hrs</td><td>14–20 hrs</td></tr>
+<tr><td>Long-acting</td><td>Lantus (glargine)</td><td>6–14 hrs</td><td>10–16 hrs</td><td>20–24 hrs</td></tr>
+</table>
+<p class="source-tag">Source: Unit 9 lecture, Perry Box 47.14, p. 1437.</p>
+<h4>Glycemic Goals &amp; Monitoring — Exact Targets <span class="lecture-tag">Lecture</span></h4>
+<div class="calc-box">
+<ul>
+<li><strong>Blood glucose goal:</strong> 80–120 mg/dL</li>
+<li><strong>Hemoglobin A1C goal:</strong> less than 7.5%</li>
+<li><strong>Ketone monitoring:</strong> only needed if there is concern for ketonuria (not a routine daily check for every child)</li>
+<li><strong>Food restrictions should NOT be used for diabetes control</strong> in growing children unless the child is overweight — nutritional needs for normal growth take priority over rigid dietary restriction</li>
+</ul>
+</div>
+<h4>Managing a Hypoglycemic Crisis — Exact Treatment <span class="lecture-tag">Lecture</span></h4>
+<div class="alert-box">
+<span class="label">If blood glucose &lt; 70 mg/dL</span>
+<p>Rapidly give one of the following sources of fast-acting carbohydrate (about 10–15 grams each):</p>
+<ul>
+<li>½ to ¾ cup of orange or grape juice (a juice box works well away from home)</li>
+<li>2 glucose tablets or 2 doses of glucose gel</li>
+<li>2–4 pieces of hard candy</li>
+<li>5 gumdrops</li>
+<li>1–2 tablespoons of honey</li>
+<li>1 small box of raisins</li>
+<li>6 oz regular (not diet) soda — about half a can</li>
+<li>2 tablespoons of cake icing</li>
+</ul>
+</div>
+<h4>Exercise &amp; Sick-Day Management <span class="lecture-tag">Lecture</span></h4>
+<div class="two-col">
+<div>
+<h5>Exercise</h5>
+<ul>
+<li>Exercise is encouraged, not restricted</li>
+<li>Risk of hypoglycemia if exercise is prolonged — give an extra snack before/during</li>
+<li>Exercise often reduces overall insulin requirements</li>
+</ul>
+</div>
+<div>
+<h5>Sick-Day Rules</h5>
+<ul>
+<li><strong>Do not hold or stop insulin</strong> when the child is sick — this is the single most important sick-day rule</li>
+<li>Manage fever and/or nausea/vomiting</li>
+<li>Provide calories via sweetened oral rehydration solution, Gatorade, or Jell-O if the child can't tolerate regular food</li>
+<li>Test urine for ketones every 3 hours on sick days, or whenever blood sugar exceeds 240 mg/dL and ketonuria is a concern</li>
+</ul>
+<p class="source-tag">Note from lecture: sick-day management is NOT covered in the textbook — this is instructor-added content specific to this exam.</p>
+</div>
+</div>
+<h4>Signs &amp; Symptoms (Full List)</h4>
+<div class="findings-grid">
+<div class="expected">
+<span class="label">Classic presenting findings</span>
+<ul>
+<li>Polyuria, polydipsia, polyphagia</li>
+<li>Weight loss despite increased appetite</li>
+<li>Enuresis/nocturia in a previously continent child</li>
+<li>Fatigue, irritability, "not himself/herself"</li>
+<li>Shortened attention span, lowered frustration tolerance</li>
+<li>Blurred vision, headache</li>
+<li>Dry/flushed skin, poor wound healing</li>
+<li>Frequent infections (candidal vaginitis in adolescents)</li>
+</ul>
+</div>
+<div class="unexpected">
+<span class="label">Escalating — think DKA is developing</span>
+<ul>
+<li>Kussmaul respirations (deep, rapid)</li>
+<li>Fruity (acetone) breath</li>
+<li>Nausea, vomiting, abdominal pain</li>
+<li>Dehydration signs</li>
+<li>Change in level of consciousness → coma</li>
+</ul>
+</div>
+</div>
+<h4>Complications</h4>
+<div class="two-col">
+<div>
+<h5>Acute</h5>
+<ul>
+<li>Hypoglycemia</li>
+<li>Hyperglycemia</li>
+<li>Diabetic ketoacidosis (DKA)</li>
+<li>Coma</li>
+<li>Hypokalemia / hyperkalemia</li>
+</ul>
+</div>
+<div>
+<h5>Long-Term (after years of disease)</h5>
+<ul>
+<li><strong>Microvascular:</strong> nephropathy, retinopathy, neuropathy (onset 10–15 yrs post-puberty)</li>
+<li><strong>Macrovascular:</strong> atherosclerosis, hypertension (after ~25 yrs of disease)</li>
+<li>Failure to grow at normal rate, delayed maturation</li>
+<li>Recurrent infections</li>
+<li>Limited joint mobility (small joints of hand, ~30% of adolescents) from glycosylation changes</li>
+</ul>
+</div>
+</div>
+<p class="source-tag">Good glycemic control can postpone vascular changes 20+ years; poor control can produce changes in as little as 2.5–3 years.</p>
+<h4>Labs &amp; Diagnostics</h4>
+<table class="lab-table">
+<tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (Diagnostic of DM)</th></tr>
+<tr><td>Fasting blood glucose</td><td>70–99 mg/dL</td><td>≥ 126 mg/dL</td></tr>
+<tr><td>Random blood glucose</td><td>70–99 mg/dL</td><td>≥ 200 mg/dL + classic symptoms</td></tr>
+<tr><td>Oral glucose tolerance test (2-hr sample)</td><td>&lt; 140 mg/dL</td><td>≥ 200 mg/dL</td></tr>
+<tr><td>Hemoglobin A1c</td><td>&lt; 5.7%</td><td>≥ 6.5%</td></tr>
+<tr><td>Urine glucose/ketones</td><td>Negative</td><td>Glycosuria ± ketonuria</td></tr>
+</table>
+<p>Glycosuria alone is not diagnostic — other conditions (infection, stress, other sugars in urine) can cause a false-positive picture. Diagnosis requires one of the four criteria above.</p>
+<div class="call-provider">
+<span class="label">Notify the Provider Immediately If</span>
+<ul>
+<li>Blood glucose &gt; 300 mg/dL with ketones present</li>
+<li>Any Kussmaul respirations, fruity breath, or vomiting in a known diabetic (possible DKA onset)</li>
+<li>Blood glucose &lt; 70 mg/dL not resolving with oral glucose (hypoglycemia unresponsive to initial treatment)</li>
+<li>New change in level of consciousness</li>
+</ul>
+</div>
+<h4>Priority Nursing Interventions — Ranked by What Kills First</h4>
+<ol class="priority-steps">
+<li><span class="acuity-tag acuity-kill">Will Kill First</span><br/>Obtain blood glucose and urine ketones immediately in any child with new hyperglycemic symptoms — <strong>do not administer insulin until both are known.</strong>
+<span class="why">Why: Insulin given blindly could cause dangerous hypoglycemia if the true picture is different than assumed, and DKA changes the entire treatment approach.</span></li>
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Assess for signs of DKA (Kussmaul respirations, fruity breath, dehydration, altered LOC) before assuming this is uncomplicated new-onset diabetes.
       <span class="why">Why: DKA requires emergency stabilization (fluids/insulin drip), not routine outpatient diabetes teaching.</span></li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>Initiate multidisciplinary involvement (endocrinologist, diabetes educator, nutritionist) and begin family/child education on insulin administration, glucose monitoring, sick-day rules.
+<li><span class="acuity-tag acuity-important">Important</span><br/>Initiate multidisciplinary involvement (endocrinologist, diabetes educator, nutritionist) and begin family/child education on insulin administration, glucose monitoring, sick-day rules.
       <span class="why">Why: Long-term safety and glycemic control depend on this teaching, but it follows physiologic stabilization.</span></li>
-    </ol>
-
-    <h4>Treatment</h4>
-    <ul>
-      <li>Insulin replacement — cornerstone of management; 2+ injections/day or continuous SubQ pump infusion</li>
-      <li>Insulin needs fluctuate with emotions, nutrition, activity, illness, puberty</li>
-      <li>Goal: near-normal glucose while avoiding frequent hypoglycemia</li>
-      <li>No special "diabetic food" required — normal healthy nutrition individualized to age/growth, with consistent carbohydrate counting matched to insulin dosing</li>
-    </ul>
-    <div class="danger-box">
-      <span class="label">Medication Safety Alert</span>
+</ol>
+<h4>Treatment</h4>
+<ul>
+<li>Insulin replacement — cornerstone of management; 2+ injections/day or continuous SubQ pump infusion</li>
+<li>Insulin needs fluctuate with emotions, nutrition, activity, illness, puberty</li>
+<li>Goal: near-normal glucose while avoiding frequent hypoglycemia</li>
+<li>No special "diabetic food" required — normal healthy nutrition individualized to age/growth, with consistent carbohydrate counting matched to insulin dosing</li>
+</ul>
+<div class="danger-box">
+<span class="label">Medication Safety Alert</span>
       Insulin is a <strong>high-alert medication</strong>. Independent double-check of dose before administration. Rotate injection sites to prevent lipohypertrophy, which alters absorption.
     </div>
 
-    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
-    <div class="edu-grid">
-      <div class="edu-parent">
-        <span class="label">Parent / Caregiver Education</span>
-        <ul>
-          <li>Teach insulin drawing/injection technique and glucose meter use with return demonstration</li>
-          <li>Sick-day management rules — insulin is <em>never</em> stopped during illness, even with poor appetite; check glucose/ketones more frequently</li>
-          <li>Recognize hypoglycemia (shaky, sweaty, confused, irritable) vs. hyperglycemia (thirsty, urinating more, fatigued) — treatments are opposite, so accurate recognition matters</li>
-          <li>Carbohydrate counting and matching to insulin dose</li>
-          <li>Coordinate care with school nurse, teacher, coach — child will need glucose checks and possible treatment during school hours</li>
-          <li>Understand that insulin needs change with growth spurts, puberty, activity level — this is not a static prescription</li>
-        </ul>
-      </div>
-      <div class="edu-child">
-        <span class="label">Pediatric / Child-Directed Education</span>
-        <span class="dev-tag">Adapt to developmental stage — Type 1 DM most often diagnosed in school-age children (concrete operational thinkers, ages 7–11) or adolescents (formal operational)</span>
-        <ul>
-          <li><strong>School-age (concrete thinkers):</strong> use simple, concrete demonstration rather than abstract explanation — "this button gives you the medicine your body needs" rather than a lecture on insulin physiology. Use dolls or diabetic teaching kits for injection practice. Involve the child in simple tasks (choosing injection site, pressing the meter button) to build a sense of industry/mastery appropriate to this stage.</li>
-          <li><strong>Adolescent (formal operational thinkers):</strong> can understand abstract cause-and-effect and long-term consequences — appropriate to discuss why tight control matters for future complications. Respect the drive for independence: let the adolescent take a lead role in their own care, but watch for rebellion/non-adherence, which is common at this stage and often tied to body image or fitting in with peers.</li>
-          <li>All ages: normalize needing to test/inject at school — frame it factually, not as something to hide or feel ashamed of.</li>
-        </ul>
-      </div>
-    </div>
+<h4>Medications for Type 1 DM — Insulin, All Types</h4>
+<p>Teaching is split into <strong>Parent/Caregiver Teaching</strong> and <strong>Pediatric Patient Teaching</strong> for each insulin type, with the patient side further broken out by developmental stage.</p>
 
-    <h4>Self-Care Strategies</h4>
-    <div class="selfcare-box">
-      <span class="label">What the child/family does day to day</span>
-      <ul>
-        <li>Check blood glucose per schedule (before meals, at bedtime, per provider orders)</li>
-        <li>Rotate injection sites; inspect sites for lipohypertrophy</li>
-        <li>Keep fast-acting glucose source (juice, glucose tabs) available at all times for hypoglycemia</li>
-        <li>Wear medical identification (bracelet/necklace)</li>
-        <li>Keep a log of glucose readings, insulin doses, and carb intake for provider visits</li>
-        <li>Know personal sick-day plan in advance, before illness strikes</li>
-      </ul>
-    </div>
-
-    <p class="source-tag">Sources: Perry Ch. 47 (pp. 1435–1447), Box 47.13; Saunders 9th ed. Ch. 33.</p>
-  </div>
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>Insulin Lispro <span class="generic">— Humalog</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Check the child's blood glucose as prescribed and understand the child's individualized insulin schedule</li>
+<li><strong>Make sure the child has access to food when rapid-acting insulin is administered</strong> — this is rapid-onset insulin, so a delayed or skipped meal risks hypoglycemia quickly</li>
+<li>Know the signs of hypoglycemia: sweating, shakiness, hunger, pallor, headache, tachycardia, irritability, difficulty concentrating</li>
+<li>Keep a rapid source of glucose available at all times</li>
+<li>Teach sick-day rules, glucose monitoring, ketone monitoring, injection technique, storage, and sharps disposal</li>
+<li>Rotate injection sites to prevent lipohypertrophy</li>
+<li>Never change insulin type or dose without following the prescribed plan</li>
+<li>Keep an updated diabetes care plan available for school/daycare</li>
+</ul>
 </div>
-</section>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<span class="dev-tag">By developmental stage</span>
+<ul>
+<li><strong>Infant/toddler:</strong> no independent medication teaching; use simple language and comfort while the caregiver administers</li>
+<li><strong>Preschooler:</strong> "This medicine helps your body use sugar." Let the child choose between two safe injection-site options when appropriate</li>
+<li><strong>School-age:</strong> teach the child to recognize "low sugar" symptoms and tell an adult immediately; begin supervised participation in glucose checks and logging</li>
+<li><strong>Adolescent:</strong> teach independent glucose checking, carbohydrate awareness, insulin administration, hypoglycemia treatment, sick-day management, and carrying diabetes supplies. Reinforce not skipping insulin just because they feel well.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>Insulin Aspart <span class="generic">— NovoLog</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Same core insulin education as lispro, with special attention to timing it <strong>5–10 minutes before meals</strong></li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<span class="dev-tag">Meal-timing concept in concrete terms</span>
+<ul>
+<li><strong>Preschool:</strong> "We give this insulin right before you eat"</li>
+<li><strong>School-age:</strong> recognize symptoms of hypoglycemia and notify an adult</li>
+<li><strong>Adolescent:</strong> independently coordinate insulin, meals, glucose checks, and activities under the prescribed diabetes plan</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>NPH <span class="generic">— Humulin N / Novolin N</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Recognize NPH as <strong>cloudy</strong> intermediate-acting insulin — a visual identifier distinguishing it from clear insulins</li>
+<li>Roll gently between the hands; <strong>do not vigorously shake</strong></li>
+<li>Know the prescribed timing and expected glucose coverage window</li>
+<li>Rotate sites and watch for hypoglycemia during the peak window</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<ul>
+<li><strong>School-age:</strong> learn the difference between "cloudy" NPH and clear insulins as a basic safety check</li>
+<li><strong>Adolescent:</strong> participate in preparing/administering insulin if developmentally and clinically appropriate and properly trained</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>Insulin Glargine <span class="generic">— Lantus</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Explain that glargine provides <strong>long-acting basal insulin</strong> — a steady background dose, not a mealtime dose</li>
+<li><strong>Do not mix in the same syringe</strong> with other insulins</li>
+<li>Give consistently according to the prescribed schedule, same time each day</li>
+<li>Monitor for hypoglycemia even though it's long-acting — it still lowers glucose steadily throughout the day</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<ul>
+<li><strong>School-age:</strong> "This insulin works in the background to help keep your sugar steady"</li>
+<li><strong>Adolescent:</strong> understand the distinction between basal insulin and mealtime insulin, and the importance of maintaining the scheduled basal dose even on days when routines change</li>
+</ul>
+</div>
+</div>
+<p class="source-tag">Source: Davis's Drug Guide for Nurses — insulin technique, injection-site rotation, storage/disposal, glucose/ketone monitoring, and hypo/hyperglycemia recognition.</p>
+</div>
+</div>
+
+<h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Education</span>
+<ul>
+<li>Teach insulin drawing/injection technique and glucose meter use with return demonstration</li>
+<li>Sick-day management rules — insulin is <em>never</em> stopped during illness, even with poor appetite; check glucose/ketones more frequently</li>
+<li>Recognize hypoglycemia (shaky, sweaty, confused, irritable) vs. hyperglycemia (thirsty, urinating more, fatigued) — treatments are opposite, so accurate recognition matters</li>
+<li>Carbohydrate counting and matching to insulin dose</li>
+<li>Coordinate care with school nurse, teacher, coach — child will need glucose checks and possible treatment during school hours</li>
+<li>Understand that insulin needs change with growth spurts, puberty, activity level — this is not a static prescription</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric / Child-Directed Education</span>
+<span class="dev-tag">Adapt to developmental stage — Type 1 DM most often diagnosed in school-age children (concrete operational thinkers, ages 7–11) or adolescents (formal operational)</span>
+<ul>
+<li><strong>School-age (concrete thinkers):</strong> use simple, concrete demonstration rather than abstract explanation — "this button gives you the medicine your body needs" rather than a lecture on insulin physiology. Use dolls or diabetic teaching kits for injection practice. Involve the child in simple tasks (choosing injection site, pressing the meter button) to build a sense of industry/mastery appropriate to this stage.</li>
+<li><strong>Adolescent (formal operational thinkers):</strong> can understand abstract cause-and-effect and long-term consequences — appropriate to discuss why tight control matters for future complications. Respect the drive for independence: let the adolescent take a lead role in their own care, but watch for rebellion/non-adherence, which is common at this stage and often tied to body image or fitting in with peers.</li>
+<li>All ages: normalize needing to test/inject at school — frame it factually, not as something to hide or feel ashamed of.</li>
+</ul>
+</div>
+</div>
+<h4>Self-Care Strategies</h4>
+<div class="selfcare-box">
+<span class="label">What the child/family does day to day</span>
+<ul>
+<li>Check blood glucose per schedule (before meals, at bedtime, per provider orders)</li>
+<li>Rotate injection sites; inspect sites for lipohypertrophy</li>
+<li>Keep fast-acting glucose source (juice, glucose tabs) available at all times for hypoglycemia</li>
+<li>Wear medical identification (bracelet/necklace)</li>
+<li>Keep a log of glucose readings, insulin doses, and carb intake for provider visits</li>
+<li>Know personal sick-day plan in advance, before illness strikes</li>
+</ul>
+</div>
+<p class="source-tag">Sources: Perry Ch. 47 (pp. 1435–1447), Box 47.13; Saunders 9th ed. Ch. 33.</p>
+</div>
+</details>
+</section>
 <!-- ========================= DKA ========================= -->
 <section class="unit-block" id="dka">
 <h2 class="section-title">Diabetic Ketoacidosis (DKA)</h2>
+<details class="card diabetes"><summary><div class="card-header">
+<h3>Diabetic Ketoacidosis</h3>
+<div class="tag">Medical emergency — insulin insufficiency, ketosis, and acidosis</div>
+</div></summary>
 
-<div class="card diabetes">
-  <div class="card-header">
-    <h3>Diabetic Ketoacidosis</h3>
-    <div class="tag">Medical emergency — insulin insufficiency, ketosis, and acidosis</div>
-  </div>
-  <div class="card-body">
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>Without insulin, cells can't use glucose, so the body burns fat for fuel. Fat breakdown produces ketone bodies (beta-hydroxybutyric acid, acetoacetic acid, acetone) — strong acids that lower serum pH → ketoacidosis. The respiratory system compensates with Kussmaul respirations to blow off CO₂. Osmotic diuresis causes severe dehydration and depletes total body potassium — even though <strong>serum</strong> potassium may look normal or high initially (acidosis shifts K+ out of cells), total body K+ is low. As insulin corrects acidosis, potassium shifts back into cells and serum levels can crash — a major reason for close monitoring during treatment. Untreated, this progresses to dehydration, electrolyte imbalance, acidosis, coma, and death.</p>
-
-    <h5>Risk Factors / Common Precipitants</h5>
-    <ul>
-      <li>New-onset undiagnosed Type 1 DM (often the presenting event)</li>
-      <li>Missed or inadequate insulin doses</li>
-      <li>Illness, infection, or physiologic stress increasing insulin needs</li>
-      <li>Emotional stress (catecholamine release promotes fat breakdown → ketonemia)</li>
-      <li>Growth/puberty-related insulin resistance</li>
-    </ul>
-
-    <h5>Prevention <span class="lecture-tag">Lecture</span></h5>
-    <ul>
-      <li>Consistent monitoring and control of blood sugars</li>
-      <li>Infection prevention</li>
-    </ul>
-
-    <h4>Signs &amp; Symptoms</h4>
-    <div class="findings-grid">
-      <div class="expected">
-        <span class="label">Expected in DKA</span>
-        <ul>
-          <li>Kussmaul respirations</li>
-          <li>Fruity/acetone breath odor</li>
-          <li>Hyperglycemia, glycosuria, ketonuria</li>
-          <li>Dehydration (poor turgor, dry mucous membranes)</li>
-          <li>Hypotension (contracted blood volume)</li>
-          <li>Nausea, vomiting, abdominal pain</li>
-        </ul>
-      </div>
-      <div class="unexpected">
-        <span class="label">Red flags — escalate immediately</span>
-        <ul>
-          <li>Decreasing level of consciousness</li>
-          <li><strong>Cerebral edema signs:</strong> headache, bradycardia, altered LOC, widening pulse pressure — feared complication of overly rapid correction</li>
-          <li>Cardiac dysrhythmias (from potassium shifts)</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Complications</h4>
-    <ul>
-      <li><strong>Cerebral edema</strong> — the most feared complication; linked to overly rapid fluid/glucose correction and sodium bicarbonate use</li>
-      <li>Hypokalemia (as acidosis corrects and K+ shifts intracellularly) → cardiac arrhythmia, cardiac arrest</li>
-      <li>Hypoglycemia (if glucose falls too fast once insulin drip starts and dextrose isn't added in time)</li>
-      <li>Progression to coma and death if untreated</li>
-    </ul>
-
-    <h4>Labs &amp; Diagnostics</h4>
-    <table class="lab-table">
-      <tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (DKA-Diagnostic)</th></tr>
-      <tr><td>Blood glucose</td><td>70–99 mg/dL</td><td>&gt; 200 mg/dL</td></tr>
-      <tr><td>Arterial/venous pH</td><td>7.35–7.45</td><td>&lt; 7.30</td></tr>
-      <tr><td>Serum bicarbonate</td><td>22–26 mEq/L</td><td>&lt; 15 mmol/L</td></tr>
-      <tr><td>Serum/urine ketones</td><td>Negative</td><td>Strongly positive</td></tr>
-      <tr><td>Serum potassium</td><td>3.5–5.0 mEq/L</td><td>May appear normal/elevated at presentation despite total-body depletion — watch it fall as treatment starts</td></tr>
-      <tr><td>Urine glucose</td><td>Negative</td><td>Positive (glycosuria)</td></tr>
-    </table>
-
-    <div class="call-provider">
-      <span class="label">Notify the Provider Immediately If</span>
-      <ul>
-        <li>Any new headache, bradycardia, or change in LOC during DKA treatment — possible cerebral edema, a true emergency</li>
-        <li>Potassium dropping rapidly or falling below normal range during insulin therapy</li>
-        <li>Blood glucose not falling within the expected 50–100 mg/dL/hr range, or falling too fast</li>
-        <li>pH not improving despite treatment</li>
-        <li>New cardiac dysrhythmia</li>
-      </ul>
-    </div>
-
-    <h4>Priority Nursing Interventions — True Acuity Order (What Kills First)</h4>
-    <ol class="priority-steps">
-      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br><strong>IV fluid rehydration with normal saline</strong> — the first action, before insulin.
-      <span class="why">Why: The child is in a state of severe volume depletion; hypotension and shock from dehydration is the most immediately life-threatening issue. Correct gradually — rapid correction risks cerebral edema.</span></li>
-      <li><span class="acuity-tag acuity-kill">Will Kill First</span><br><strong>Continuous IV regular insulin infusion at 0.1 units/kg/hr</strong>, started only <em>after</em> the initial fluid bolus.
-      <span class="why">Why: This reverses the ketoacidosis itself (the acid-base derangement that can cause cardiac arrest via hyperkalemia/hypokalemia and cellular dysfunction). Given after fluids because glucose falls rapidly once volume is restored — giving insulin too early/fast on top of fluids risks precipitous glucose drop and contributes to cerebral edema risk.</span></li>
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Monitor and adjust — add dextrose to IV fluids once glucose reaches 250–300 mg/dL while continuing the insulin infusion to keep resolving ketoacidosis; monitor potassium closely and replace as needed.
-      <span class="why">Why: Once volume and insulin therapy are underway, the danger shifts to hypoglycemia and hypokalemia from treatment itself — these can cause cardiac arrhythmia if unmonitored.</span></li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>Frequent neuro checks, strict I&amp;O, diabetic flowsheet documentation, monitor for infection (fever should be reported — common DKA precipitant).
-      <span class="why">Why: Necessary ongoing safety monitoring, but sequenced after the immediate physiologic threats are addressed.</span></li>
-    </ol>
-
-    <h5>Monitoring Frequency <span class="lecture-tag">Lecture</span></h5>
-    <ul>
-      <li><strong>Blood glucose:</strong> monitored hourly during active DKA treatment</li>
-      <li><strong>Potassium:</strong> monitored every 2–4 hours — reflects how quickly K+ can shift once insulin therapy begins</li>
-      <li>Ongoing respiratory and neurologic assessment throughout treatment</li>
-    </ul>
-
-    <div class="danger-box">
-      <span class="label">Critical Safety Points</span>
-      <ul>
-        <li>NPH insulin is <strong>never</strong> given IV — only <strong>regular</strong> insulin is given IV.</li>
-        <li>Insulin is withheld until blood glucose AND urine ketones are obtained.</li>
-        <li>Sodium bicarbonate used <strong>conservatively</strong> — only for pH &lt; 7.0, severe hyperkalemia, or cardiac instability — linked to increased cerebral edema risk. Monitor LOC closely if given.</li>
-        <li>Target glucose decline: 50–100 mg/dL/hr — not faster.</li>
-      </ul>
-    </div>
-
-    <h4>Treatment Summary</h4>
-    <ol class="priority-steps">
-      <li>Isotonic IV fluids (normal saline) to correct dehydration</li>
-      <li>Continuous IV regular insulin infusion (0.1 units/kg/hr) after initial fluid bolus</li>
-      <li>Add dextrose to IVF when glucose reaches 250–300 mg/dL; maintain glucose 120–240 mg/dL</li>
-      <li>Cautious sodium bicarbonate only for severe acidosis/hyperkalemia/cardiac instability</li>
-      <li>Electrolyte replacement (especially potassium) guided by frequent labs</li>
-    </ol>
-
-    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
-    <div class="edu-grid">
-      <div class="edu-parent">
-        <span class="label">Parent / Caregiver Education</span>
-        <ul>
-          <li>Teach recognition of early DKA warning signs (fruity breath, rapid breathing, vomiting, extreme thirst) so future episodes are caught before hospitalization is needed</li>
-          <li>Sick-day rules: never stop insulin during illness, check glucose and ketones more frequently, know when to call the provider vs. go to ED</li>
-          <li>Explain that this event does not mean they failed at managing the disease — DKA can be the first sign of diabetes</li>
-        </ul>
-      </div>
-      <div class="edu-child">
-        <span class="label">Pediatric / Child-Directed Education</span>
-        <span class="dev-tag">Most DKA patients are recovering from an acute illness — during acute treatment, education is minimal/supportive; teaching ramps up once stable</span>
-        <ul>
-          <li><strong>Once stable, school-age child:</strong> simple, concrete reassurance about what happened ("your body needed help using sugar, and now the medicine and fluids are fixing that") — avoid overwhelming detail during the acute recovery period</li>
-          <li><strong>Adolescent:</strong> can process a more complete explanation of what precipitated the episode (missed doses, illness, etc.) and participate in problem-solving to prevent recurrence — but avoid a shaming tone, since non-adherence in teens is often tied to normal developmental drives, not defiance</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Self-Care Strategies (Post-DKA, Prevention Focus)</h4>
-    <div class="selfcare-box">
-      <span class="label">Preventing recurrence</span>
-      <ul>
-        <li>Never skip or stop insulin, even when sick or not eating well — insulin needs often increase with illness</li>
-        <li>Check urine/blood ketones during any illness or when glucose is unexpectedly high</li>
-        <li>Have a written sick-day plan from the endocrinology team, reviewed before it's needed</li>
-        <li>Know the specific signs that mean "go to the ED now" vs. "call the provider"</li>
-      </ul>
-    </div>
-
-    <p class="source-tag">Sources: Perry Ch. 47 (DKA pathophysiology, hospital management); Saunders 9th ed. Ch. 33 (diagnostic criteria, complications).</p>
-  </div>
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>Without insulin, cells can't use glucose, so the body burns fat for fuel. Fat breakdown produces ketone bodies (beta-hydroxybutyric acid, acetoacetic acid, acetone) — strong acids that lower serum pH → ketoacidosis. The respiratory system compensates with Kussmaul respirations to blow off CO₂. Osmotic diuresis causes severe dehydration and depletes total body potassium — even though <strong>serum</strong> potassium may look normal or high initially (acidosis shifts K+ out of cells), total body K+ is low. As insulin corrects acidosis, potassium shifts back into cells and serum levels can crash — a major reason for close monitoring during treatment. Untreated, this progresses to dehydration, electrolyte imbalance, acidosis, coma, and death.</p>
+<h5>Risk Factors / Common Precipitants</h5>
+<ul>
+<li>New-onset undiagnosed Type 1 DM (often the presenting event)</li>
+<li>Missed or inadequate insulin doses</li>
+<li>Illness, infection, or physiologic stress increasing insulin needs</li>
+<li>Emotional stress (catecholamine release promotes fat breakdown → ketonemia)</li>
+<li>Growth/puberty-related insulin resistance</li>
+</ul>
+<h5>Prevention <span class="lecture-tag">Lecture</span></h5>
+<ul>
+<li>Consistent monitoring and control of blood sugars</li>
+<li>Infection prevention</li>
+</ul>
+<h4>Signs &amp; Symptoms</h4>
+<div class="findings-grid">
+<div class="expected">
+<span class="label">Expected in DKA</span>
+<ul>
+<li>Kussmaul respirations</li>
+<li>Fruity/acetone breath odor</li>
+<li>Hyperglycemia, glycosuria, ketonuria</li>
+<li>Dehydration (poor turgor, dry mucous membranes)</li>
+<li>Hypotension (contracted blood volume)</li>
+<li>Nausea, vomiting, abdominal pain</li>
+</ul>
 </div>
-</section>
+<div class="unexpected">
+<span class="label">Red flags — escalate immediately</span>
+<ul>
+<li>Decreasing level of consciousness</li>
+<li><strong>Cerebral edema signs:</strong> headache, bradycardia, altered LOC, widening pulse pressure — feared complication of overly rapid correction</li>
+<li>Cardiac dysrhythmias (from potassium shifts)</li>
+</ul>
+</div>
+</div>
+<h4>Complications</h4>
+<ul>
+<li><strong>Cerebral edema</strong> — the most feared complication; linked to overly rapid fluid/glucose correction and sodium bicarbonate use</li>
+<li>Hypokalemia (as acidosis corrects and K+ shifts intracellularly) → cardiac arrhythmia, cardiac arrest</li>
+<li>Hypoglycemia (if glucose falls too fast once insulin drip starts and dextrose isn't added in time)</li>
+<li>Progression to coma and death if untreated</li>
+</ul>
+<h4>Labs &amp; Diagnostics</h4>
+<table class="lab-table">
+<tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (DKA-Diagnostic)</th></tr>
+<tr><td>Blood glucose</td><td>70–99 mg/dL</td><td>&gt; 200 mg/dL (Saunders/textbook threshold)</td></tr>
+<tr><td>Arterial/venous pH</td><td>7.35–7.45</td><td>&lt; 7.30</td></tr>
+<tr><td>Serum bicarbonate</td><td>22–26 mEq/L</td><td>&lt; 15 mmol/L (Saunders/textbook threshold)</td></tr>
+<tr><td>Serum/urine ketones</td><td>Negative</td><td>Strongly positive</td></tr>
+<tr><td>Serum potassium</td><td>3.5–5.0 mEq/L</td><td>May appear normal/elevated at presentation despite total-body depletion — watch it fall as treatment starts</td></tr>
+<tr><td>Urine glucose</td><td>Negative</td><td>Positive (glycosuria)</td></tr>
+</table>
+<div class="alert-box">
+<span class="label">Two threshold sets you may see — know which one your exam question is drawing from</span>
+<p>Saunders/the textbook define DKA as blood glucose &gt; 200 mg/dL and bicarbonate &lt; 15 mEq/L (used in the table above). <strong>Your instructor's Unit 9 presentation instead uses blood glucose &gt; 250 mg/dL and bicarbonate &lt; 18 mEq/L</strong> as the diagnostic cutoffs, alongside ketonuria, Kussmaul respirations, fruity breath, nausea/vomiting, and dehydration. Both number sets are clinically legitimate (different institutions/sources draw the line slightly differently) — if a question references your class slides specifically, use the &gt;250 / &lt;18 numbers; if it's a general NCLEX-style question, either textbook threshold is fair game. The clinical picture and priority actions (fluids → insulin → potassium monitoring) are identical either way.</p>
+</div>
+<div class="call-provider">
+<span class="label">Notify the Provider Immediately If</span>
+<ul>
+<li>Any new headache, bradycardia, or change in LOC during DKA treatment — possible cerebral edema, a true emergency</li>
+<li>Potassium dropping rapidly or falling below normal range during insulin therapy</li>
+<li>Blood glucose not falling within the expected 50–100 mg/dL/hr range, or falling too fast</li>
+<li>pH not improving despite treatment</li>
+<li>New cardiac dysrhythmia</li>
+</ul>
+</div>
+<h4>Priority Nursing Interventions — True Acuity Order (What Kills First)</h4>
+<ol class="priority-steps">
+<li><span class="acuity-tag acuity-kill">Will Kill First</span><br/><strong>IV fluid rehydration with normal saline</strong> — the first action, before insulin.
+      <span class="why">Why: The child is in a state of severe volume depletion; hypotension and shock from dehydration is the most immediately life-threatening issue. Correct gradually — rapid correction risks cerebral edema.</span></li>
+<li><span class="acuity-tag acuity-kill">Will Kill First</span><br/><strong>Continuous IV regular insulin infusion at 0.1 units/kg/hr</strong>, started only <em>after</em> the initial fluid bolus.
+      <span class="why">Why: This reverses the ketoacidosis itself (the acid-base derangement that can cause cardiac arrest via hyperkalemia/hypokalemia and cellular dysfunction). Given after fluids because glucose falls rapidly once volume is restored — giving insulin too early/fast on top of fluids risks precipitous glucose drop and contributes to cerebral edema risk.</span></li>
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Monitor and adjust — add dextrose to IV fluids once glucose reaches 250–300 mg/dL while continuing the insulin infusion to keep resolving ketoacidosis; monitor potassium closely and replace as needed.
+      <span class="why">Why: Once volume and insulin therapy are underway, the danger shifts to hypoglycemia and hypokalemia from treatment itself — these can cause cardiac arrhythmia if unmonitored.</span></li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>Frequent neuro checks, strict I&amp;O, diabetic flowsheet documentation, monitor for infection (fever should be reported — common DKA precipitant).
+      <span class="why">Why: Necessary ongoing safety monitoring, but sequenced after the immediate physiologic threats are addressed.</span></li>
+</ol>
+<h5>Monitoring Frequency <span class="lecture-tag">Lecture</span></h5>
+<ul>
+<li><strong>Blood glucose:</strong> monitored hourly during active DKA treatment</li>
+<li><strong>Potassium:</strong> monitored every 2–4 hours — reflects how quickly K+ can shift once insulin therapy begins</li>
+<li>Ongoing respiratory and neurologic assessment throughout treatment</li>
+</ul>
+<div class="calc-box">
+<strong>Potassium Replacement — Exact Dosing <span class="lecture-tag">Lecture</span></strong>
+<div class="formula">Potassium usually given 20–40 mEq/L (added to IV fluids)</div>
+<p>Place the child on a continuous <strong>EKG monitor</strong> during potassium replacement — this is a specific, testable safety step from lecture, since both hypokalemia and hyperkalemia during correction can cause dangerous cardiac dysrhythmias.</p>
+</div>
+<h5>Prevention <span class="lecture-tag">Lecture</span></h5>
+<ul>
+<li>Consistent monitoring and control of blood sugars</li>
+<li>Infection prevention — since infection is a common precipitant of DKA</li>
+</ul>
+<div class="danger-box">
+<span class="label">Critical Safety Points</span>
+<ul>
+<li>NPH insulin is <strong>never</strong> given IV — only <strong>regular</strong> insulin is given IV.</li>
+<li>Insulin is withheld until blood glucose AND urine ketones are obtained.</li>
+<li>Sodium bicarbonate used <strong>conservatively</strong> — only for pH &lt; 7.0, severe hyperkalemia, or cardiac instability — linked to increased cerebral edema risk. Monitor LOC closely if given.</li>
+<li>Target glucose decline: 50–100 mg/dL/hr — not faster.</li>
+</ul>
+</div>
+<div class="alert-box">
+<span class="label">Important teaching point — DKA can be the first sign of diabetes</span>
+      Many children go into DKA <strong>before</strong> they are ever diagnosed with Type 1 diabetes — this is not a failure of care or parenting, and families should be reassured of this directly. <span class="lecture-tag">Lecture</span>
+</div>
+<h4>Treatment Summary</h4>
+<ol class="priority-steps">
+<li>Isotonic IV fluids (normal saline) to correct dehydration</li>
+<li>Continuous IV regular insulin infusion (0.1 units/kg/hr) after initial fluid bolus</li>
+<li>Add dextrose to IVF when glucose reaches 250–300 mg/dL; maintain glucose 120–240 mg/dL</li>
+<li>Cautious sodium bicarbonate only for severe acidosis/hyperkalemia/cardiac instability</li>
+<li>Electrolyte replacement — potassium typically 20–40 mEq/L, with continuous EKG monitoring, guided by frequent labs</li>
+</ol>
 
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>Medication Spotlight: Regular Insulin <span class="generic">— Novolin R</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Know that regular insulin is short-acting and is the <strong>only insulin given IV</strong>, including in DKA</li>
+<li>During DKA, expect frequent glucose and potassium monitoring</li>
+<li>Understand that DKA treatment includes fluids, electrolyte replacement, and insulin together, not insulin alone</li>
+<li>Never independently stop insulin during illness without following the child's sick-day plan</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<ul>
+<li><strong>School-age/adolescent:</strong> understand that insulin helps lower blood glucose and is especially important during DKA treatment</li>
+<li><strong>Adolescents</strong> should understand why glucose, ketones, potassium, and hydration are all monitored together during treatment</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+<h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Education</span>
+<ul>
+<li>Teach recognition of early DKA warning signs (fruity breath, rapid breathing, vomiting, extreme thirst) so future episodes are caught before hospitalization is needed</li>
+<li>Sick-day rules: never stop insulin during illness, check glucose and ketones more frequently, know when to call the provider vs. go to ED</li>
+<li>Explain that this event does not mean they failed at managing the disease — DKA can be the first sign of diabetes</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric / Child-Directed Education</span>
+<span class="dev-tag">Most DKA patients are recovering from an acute illness — during acute treatment, education is minimal/supportive; teaching ramps up once stable</span>
+<ul>
+<li><strong>Once stable, school-age child:</strong> simple, concrete reassurance about what happened ("your body needed help using sugar, and now the medicine and fluids are fixing that") — avoid overwhelming detail during the acute recovery period</li>
+<li><strong>Adolescent:</strong> can process a more complete explanation of what precipitated the episode (missed doses, illness, etc.) and participate in problem-solving to prevent recurrence — but avoid a shaming tone, since non-adherence in teens is often tied to normal developmental drives, not defiance</li>
+</ul>
+</div>
+</div>
+<h4>Self-Care Strategies (Post-DKA, Prevention Focus)</h4>
+<div class="selfcare-box">
+<span class="label">Preventing recurrence</span>
+<ul>
+<li>Never skip or stop insulin, even when sick or not eating well — insulin needs often increase with illness</li>
+<li>Check urine/blood ketones during any illness or when glucose is unexpectedly high</li>
+<li>Have a written sick-day plan from the endocrinology team, reviewed before it's needed</li>
+<li>Know the specific signs that mean "go to the ED now" vs. "call the provider"</li>
+</ul>
+</div>
+<p class="source-tag">Sources: Perry Ch. 47 (DKA pathophysiology, hospital management); Saunders 9th ed. Ch. 33 (diagnostic criteria, complications).</p>
+</div>
+</details>
+</section>
 <!-- ========================= TYPE 2 DM ========================= -->
 <section class="unit-block" id="t2dm">
 <h2 class="section-title">Type 2 Diabetes Mellitus <span class="lecture-tag">Lecture</span></h2>
+<details class="card diabetes"><summary><div class="card-header">
+<h3>Type 2 Diabetes Mellitus</h3>
+<div class="tag">Insulin resistance, not absolute deficiency — not in your syllabus reading list, but covered live in lecture</div>
+</div></summary>
 
-<div class="card diabetes">
-  <div class="card-header">
-    <h3>Type 2 Diabetes Mellitus</h3>
-    <div class="tag">Insulin resistance, not absolute deficiency — not in your syllabus reading list, but covered live in lecture</div>
-  </div>
-  <div class="card-body">
-    <div class="alert-box">
-      <span class="label">Why this is here</span>
-      Type 2 DM is not listed in the Unit 9 syllabus reading assignment, but your instructor's slide deck teaches it directly alongside Type 1 as a contrast case. Know the distinction — NCLEX loves compare/contrast questions between the two.
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>The body's cells become <strong>resistant</strong> to insulin and fail to use it properly, rather than the pancreas failing to produce it (as in Type 1). This is a <strong>relative</strong>, not absolute, insulin deficiency. <span class="lecture-tag">Lecture</span></p>
+<h4>Type 1 vs. Type 2 — Quick Comparison</h4>
+<table class="compare-table">
+<tr><th>Feature</th><th>Type 1 DM</th><th>Type 2 DM</th></tr>
+<tr><td>Core problem</td><td>Absolute insulin deficiency (beta-cell destruction)</td><td>Insulin resistance / relative deficiency</td></tr>
+<tr><td>Typical body habitus</td><td>Often normal weight or underweight at diagnosis</td><td>Obesity is the number one risk factor</td></tr>
+<tr><td>Onset</td><td>Often abrupt, with clear symptoms</td><td>May have no signs at all — insidious</td></tr>
+<tr><td>Classic symptoms</td><td>3 P's prominent</td><td>May or may not have 3 P's; fatigue, frequent infections more common presenting complaints</td></tr>
+</table>
+<h4>Signs &amp; Symptoms</h4>
+<ul>
+<li>May have <strong>no signs at all</strong> — this is the key distinguishing feature from Type 1</li>
+<li>Obesity</li>
+<li>Fatigue</li>
+<li>Frequent infections, including <strong>recurrent vaginal/Candida albicans and urinary tract infections</strong> <span class="lecture-tag">Lecture</span></li>
+<li>Can also present with the classic 3 P's, but less reliably than Type 1</li>
+</ul>
+<h4>Diagnosis</h4>
+<p>Obesity &gt; 85th percentile for age/sex/weight <strong>PLUS two additional risk factors</strong>:</p>
+<ul>
+<li>Family history (1st or 2nd degree relative)</li>
+<li>Race/ethnicity — Native American, African American, Latino, Asian, Pacific Islander</li>
+<li>Insulin resistance markers: acanthosis nigricans, hypertension, dyslipidemia, PCOS, small for gestational age (SGA) at birth</li>
+<li>Maternal history of diabetes or gestational diabetes</li>
+</ul>
+<div class="alert-box">
+<span class="label">Lab diagnostic criterion <span class="lecture-tag">Lecture</span></span>
+<strong>Two random blood glucose values greater than 200 mg/dL</strong> support the diagnosis, in the context of the risk factors above.
     </div>
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>The body's cells become <strong>resistant</strong> to insulin and fail to use it properly, rather than the pancreas failing to produce it (as in Type 1). This is a <strong>relative</strong>, not absolute, insulin deficiency.</p>
-
-    <h4>Type 1 vs. Type 2 — Quick Comparison</h4>
-    <table class="compare-table">
-      <tr><th>Feature</th><th>Type 1 DM</th><th>Type 2 DM</th></tr>
-      <tr><td>Core problem</td><td>Absolute insulin deficiency (beta-cell destruction)</td><td>Insulin resistance / relative deficiency</td></tr>
-      <tr><td>Typical body habitus</td><td>Often normal weight or underweight at diagnosis</td><td>Obesity is the number one risk factor</td></tr>
-      <tr><td>Onset</td><td>Often abrupt, with clear symptoms</td><td>May have no signs at all — insidious</td></tr>
-      <tr><td>Classic symptoms</td><td>3 P's prominent</td><td>May or may not have 3 P's; fatigue, frequent infections more common presenting complaints</td></tr>
-    </table>
-
-    <h4>Signs &amp; Symptoms</h4>
-    <ul>
-      <li>May have <strong>no signs at all</strong> — this is the key distinguishing feature from Type 1</li>
-      <li>Obesity</li>
-      <li>Fatigue</li>
-      <li>Frequent infections</li>
-      <li>Can also present with the classic 3 P's, but less reliably than Type 1</li>
-    </ul>
-
-    <h4>Diagnosis</h4>
-    <p>Obesity &gt; 85th percentile for age/sex/weight <strong>PLUS two additional risk factors</strong>:</p>
-    <ul>
-      <li>Family history (1st or 2nd degree relative)</li>
-      <li>Race/ethnicity — Native American, African American, Latino, Asian, Pacific Islander</li>
-      <li>Insulin resistance markers: acanthosis nigricans, hypertension, dyslipidemia, PCOS, small for gestational age (SGA) at birth</li>
-      <li>Maternal history of diabetes or gestational diabetes</li>
-    </ul>
-
-    <div class="ncjmm-box">
-      <span class="step">Analyze Cues →</span> An obese 13-year-old with acanthosis nigricans and a mother with gestational diabetes history, presenting with fatigue and no classic 3 P's, fits the Type 2 risk profile far better than Type 1 — recognizing this pattern is the clinical judgment skill being tested.
+<div class="ncjmm-box">
+<span class="step">Analyze Cues →</span> An obese 13-year-old with acanthosis nigricans and a mother with gestational diabetes history, presenting with fatigue and no classic 3 P's, fits the Type 2 risk profile far better than Type 1 — recognizing this pattern is the clinical judgment skill being tested.
     </div>
+<h4>Complications of Type 2 DM <span class="lecture-tag">Lecture</span></h4>
+<ul>
+<li>Growth failure</li>
+<li>Delayed puberty</li>
+<li>Menstrual disturbances</li>
+<li>Emotional disturbances</li>
+<li>Cataracts</li>
+<li>Impaired cognitive function</li>
+<li>Hyperlipidemia</li>
+<li>Breakdown or buildup of subcutaneous tissue at the injection site (lipohypertrophy/lipoatrophy, same concept as Type 1)</li>
+</ul>
+<h4>Treatment &amp; Patient Education Considerations</h4>
+<ul>
+<li>Lifestyle modification (nutrition, physical activity, healthy weight) is central and is the primary <strong>prevention</strong> strategy <span class="lecture-tag">Lecture</span></li>
+<li>Blood glucose monitoring and Hemoglobin A1c tracking, same as Type 1 <span class="lecture-tag">Lecture</span></li>
+<li>Insulin (rapid, short, intermediate, or long-acting) may be required depending on severity <span class="lecture-tag">Lecture</span></li>
+<li><strong>Oral hypoglycemic agent: Metformin</strong> — a first-line oral medication distinct from Type 1 management, which relies on insulin alone <span class="lecture-tag">Lecture</span></li>
+<li>Carbohydrate counting and nutritional education <span class="lecture-tag">Lecture</span></li>
+<li>Family-centered approach is essential — habits usually need to change household-wide, not just for the affected child</li>
+<li>Screen for and address comorbidities (hypertension, dyslipidemia, PCOS) as part of the full picture</li>
+</ul>
 
-    <h4>Treatment &amp; Patient Education Considerations</h4>
-    <ul>
-      <li>Lifestyle modification (nutrition, physical activity) is central, alongside possible oral antidiabetic agents or insulin depending on severity</li>
-      <li>Family-centered approach is essential — habits usually need to change household-wide, not just for the affected child</li>
-      <li>Screen for and address comorbidities (hypertension, dyslipidemia, PCOS) as part of the full picture</li>
-    </ul>
-
-    <p class="source-tag">Source: Unit 9 instructor lecture slides (student deck), slides 8–9. Cross-reference with Perry/Saunders general DM content for supporting pathophysiology.</p>
-  </div>
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>Medication Spotlight: Metformin <span class="generic">— Glucophage</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Give <strong>with meals</strong> to reduce GI side effects</li>
+<li>Monitor glucose/HbA1c and renal function per the follow-up schedule</li>
+<li><strong>Know that severe illness, dehydration, severe diarrhea, surgery, and iodinated contrast dye may require temporarily stopping the medication</strong> per the medical plan, due to lactic acidosis risk — this is a specific safety teaching point from Davis's Drug Guide</li>
+<li>Never double a missed dose</li>
+<li>Reinforce diet, exercise, and weight-management recommendations as part of the whole treatment picture, not medication alone</li>
+</ul>
 </div>
-</section>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<span class="dev-tag">Type 2 DM is typically diagnosed in school-age/adolescent patients</span>
+<ul>
+<li><strong>School-age:</strong> explain that it helps the body use its own insulin better; emphasize taking it with meals</li>
+<li><strong>Adolescent:</strong> teach medication adherence, healthy eating, exercise, glucose monitoring, and symptoms requiring medical attention such as persistent vomiting, dehydration, or unusual weakness</li>
+<li>Encourage the adolescent to understand that the medication <strong>controls</strong> diabetes — it does not cure it, and stopping it does not mean the diabetes is gone</li>
+</ul>
+</div>
+</div>
+<p class="source-tag">Source: Davis's Drug Guide for Nurses (Metformin — lactic acidosis precautions, hold-for-contrast teaching).</p>
+</div>
+</div>
 
+<p class="source-tag">Source: Unit 9 instructor lecture slides (2026 student deck, slides 16–18); cross-referenced with Perry/Saunders general DM content for supporting pathophysiology.</p>
+</div>
+</details>
+</section>
 <!-- ========================= PRECOCIOUS PUBERTY ========================= -->
 <section class="unit-block" id="puberty">
 <h2 class="section-title">Precocious Puberty</h2>
+<details class="card puberty"><summary><div class="card-header">
+<h3>Precocious Puberty (Central &amp; Peripheral)</h3>
+<div class="tag">Premature activation of the hypothalamic-pituitary-gonadal axis</div>
+</div></summary>
 
-<div class="card puberty">
-  <div class="card-header">
-    <h3>Precocious Puberty (Central &amp; Peripheral)</h3>
-    <div class="tag">Premature activation of the hypothalamic-pituitary-gonadal axis</div>
-  </div>
-  <div class="card-body">
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>Puberty before <strong>8 years old in girls</strong> or <strong>9 years old in boys</strong> is precocious (newer guidelines: before 7 in Caucasian girls, before 6 in African-American girls).</p>
-    <ul>
-      <li><strong>Central precocious puberty (CPP):</strong> hypothalamic GnRH prematurely activates the pituitary-gonadal axis, following the normal sequence just too early. 90–95% idiopathic; more common in girls. Organic causes: congenital CNS anomalies, infection (encephalitis, meningitis), trauma, or CNS tumors.</li>
-      <li><strong>Peripheral precocious puberty (PPP):</strong> sex hormone excess from gonads/adrenal glands <em>without</em> hypothalamic-pituitary activation — e.g., congenital adrenal hyperplasia, gonadal tumors, primary hypothyroidism, exogenous hormone exposure.</li>
-    </ul>
-
-    <h5>Risk Factors</h5>
-    <ul>
-      <li>Female sex (CPP more common in girls)</li>
-      <li>CNS congenital anomalies, prior CNS infection, trauma, or tumor</li>
-      <li>Untreated primary hypothyroidism (a PPP cause)</li>
-      <li>Congenital adrenal hyperplasia or gonadal/adrenal tumor</li>
-      <li>Exogenous sex hormone exposure</li>
-    </ul>
-
-    <h4>Signs &amp; Symptoms — By Sex <span class="lecture-tag">Lecture</span></h4>
-    <div class="two-col">
-      <div>
-        <h5>Boys</h5>
-        <ul>
-          <li>Facial hair</li>
-          <li>Penile growth</li>
-          <li>Increased masculinity</li>
-          <li>Testicular enlargement</li>
-          <li>Voice changes</li>
-        </ul>
-      </div>
-      <div>
-        <h5>Girls</h5>
-        <ul>
-          <li>Breast development</li>
-          <li>Onset of menarche</li>
-          <li>Ovary enlargement</li>
-          <li>Ovarian cysts</li>
-        </ul>
-      </div>
-    </div>
-    <h5>Both sexes</h5>
-    <ul>
-      <li>Axillary and pubic hair</li>
-      <li>Body odor, acne</li>
-      <li>Emotional lability, mood swings</li>
-      <li>Growth spurts</li>
-    </ul>
-
-    <div class="findings-grid">
-      <div class="expected">
-        <span class="label">Expected clinical picture</span>
-        <ul>
-          <li>Advanced bone age on x-ray</li>
-          <li>Chronologic age and mental/cognitive age remain <strong>congruent</strong> — the child thinks and acts their actual age</li>
-        </ul>
-      </div>
-      <div class="unexpected">
-        <span class="label">Findings warranting urgent CNS workup</span>
-        <ul>
-          <li>Headache, visual changes (possible CNS tumor)</li>
-          <li>Neurologic signs suggesting hypothalamic lesion or brain injury</li>
-          <li>Very young age of onset (higher likelihood of organic cause)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="alert-box">
-      <span class="label">Etiology emphasis from lecture</span>
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>Puberty before <strong>8 years old in girls</strong> or <strong>9 years old in boys</strong> is precocious (newer guidelines: before 7 in Caucasian girls, before 6 in African-American girls).</p>
+<ul>
+<li><strong>Central precocious puberty (CPP):</strong> hypothalamic GnRH prematurely activates the pituitary-gonadal axis, following the normal sequence just too early. 90–95% idiopathic; more common in girls. Organic causes: congenital CNS anomalies, infection (encephalitis, meningitis), trauma, or CNS tumors.</li>
+<li><strong>Peripheral precocious puberty (PPP):</strong> sex hormone excess from gonads/adrenal glands <em>without</em> hypothalamic-pituitary activation — e.g., congenital adrenal hyperplasia, gonadal tumors, primary hypothyroidism, exogenous hormone exposure.</li>
+</ul>
+<h5>Risk Factors</h5>
+<ul>
+<li>Female sex (CPP more common in girls)</li>
+<li>CNS congenital anomalies, prior CNS infection, trauma, or tumor</li>
+<li>Untreated primary hypothyroidism (a PPP cause)</li>
+<li>Congenital adrenal hyperplasia or gonadal/adrenal tumor</li>
+<li>Exogenous sex hormone exposure</li>
+</ul>
+<h4>Signs &amp; Symptoms — By Sex <span class="lecture-tag">Lecture</span></h4>
+<div class="two-col">
+<div>
+<h5>Boys</h5>
+<ul>
+<li>Facial hair</li>
+<li>Penile growth</li>
+<li>Increased masculinity</li>
+<li>Testicular enlargement</li>
+<li>Voice changes</li>
+</ul>
+</div>
+<div>
+<h5>Girls</h5>
+<ul>
+<li>Breast development</li>
+<li>Onset of menarche</li>
+<li>Ovary enlargement</li>
+<li>Ovarian cysts</li>
+</ul>
+</div>
+</div>
+<h5>Both sexes</h5>
+<ul>
+<li>Axillary and pubic hair</li>
+<li>Body odor, acne</li>
+<li>Emotional lability, mood swings</li>
+<li>Growth spurts</li>
+</ul>
+<div class="findings-grid">
+<div class="expected">
+<span class="label">Expected clinical picture</span>
+<ul>
+<li>Advanced bone age on x-ray</li>
+<li>Chronologic age and mental/cognitive age remain <strong>congruent</strong> — the child thinks and acts their actual age</li>
+</ul>
+</div>
+<div class="unexpected">
+<span class="label">Findings warranting urgent CNS workup</span>
+<ul>
+<li>Headache, visual changes (possible CNS tumor)</li>
+<li>Neurologic signs suggesting hypothalamic lesion or brain injury</li>
+<li>Very young age of onset (higher likelihood of organic cause)</li>
+</ul>
+</div>
+</div>
+<div class="alert-box">
+<span class="label">Etiology emphasis from lecture</span>
       Instructor slides frame precocious puberty specifically as <strong>overactivity of the pituitary gland</strong>, caused by CNS abnormalities, lesions/tumors, or brain injury — a slightly narrower framing than the textbook's central-vs-peripheral breakdown above. Know both framings: the textbook distinction (central vs. peripheral) for pathophysiology depth, and this pituitary-overactivity framing for how your instructor is likely to phrase exam questions.
     </div>
-
-    <h4>Complications / Adverse Consequences Linked to Early Puberty <span class="lecture-tag">Lecture</span></h4>
-    <ul>
-      <li><strong>Short adult stature</strong> from premature epiphyseal closure — the central long-term physical risk, even though the child is tall for age initially</li>
-      <li>Psychosocial distress — child looks older than peers, may face inappropriate social expectations from adults and peers who react to physical appearance rather than actual age</li>
-      <li>Increased risk of mismatched social/emotional expectations, since physical maturity outpaces cognitive/emotional maturity</li>
-      <li>If organic (CNS tumor, CAH): complications tied to the underlying cause itself</li>
-    </ul>
-
-    <h4>Labs &amp; Diagnostics</h4>
-    <table>
-      <tr><th>Test</th><th>Purpose</th></tr>
-      <tr><td>Blood tests (hormone panel: LH, FSH, estradiol/testosterone)</td><td>Elevated in CPP; pattern helps distinguish central vs. peripheral cause <span class="lecture-tag">Lecture</span></td></tr>
-      <tr><td>Bone age x-ray (hand/wrist)</td><td>Assess epiphyseal maturation vs. chronologic age — advanced bone age supports diagnosis</td></tr>
-      <tr><td>GnRH stimulation test</td><td>Differentiates central (pubertal LH response) from peripheral precocious puberty</td></tr>
-      <tr><td>CT or MRI</td><td>Ordered specifically <strong>if CNS involvement is suspected</strong> — per lecture, this is not routine for every case but targeted when history/exam suggests a CNS cause <span class="lecture-tag">Lecture</span></td></tr>
-    </table>
-
-    <div class="call-provider">
-      <span class="label">Notify the Provider If</span>
-      <ul>
-        <li>New headache or visual disturbance in a child being evaluated/treated for precocious puberty (possible CNS lesion)</li>
-        <li>Rapid, unexplained acceleration in growth or pubertal signs</li>
-      </ul>
-    </div>
-
-    <h4>Priority Nursing Interventions</h4>
-    <ol class="priority-steps">
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Refer to pediatric endocrinology for full workup (bone age, hormone levels, possible MRI) — don't delay based on an assumption of idiopathic cause.
-      <span class="why">Why: A CNS tumor is a possible underlying cause and needs to be identified promptly, even though most CPP is idiopathic.</span></li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>Prepare child/family for diagnostic testing; begin psychological support.
-      <span class="why">Why: Not immediately life-threatening, but emotional impact on the family is significant and ongoing.</span></li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>If GnRH agonist therapy is started, teach injection technique and administration schedule.</li>
-    </ol>
-
-    <h4>Treatment</h4>
-    <table>
-      <tr><th>Drug</th><th>Mechanism</th><th>Schedule</th><th>Key Side Effects</th></tr>
-      <tr><td>Leuprolide acetate (Lupron Depot)</td><td>Synthetic GnRH analog — suppresses the axis</td><td>IM injection every 4–12 weeks depending on preparation</td><td>Headache, emotional lability, vasodilation/hot flashes</td></tr>
-      <tr><td>Histrelin implant</td><td>GnRH analog</td><td>Subcutaneous implant in upper arm; suppresses LH/testosterone 1–2 years</td><td>Same class effects as above</td></tr>
-    </table>
-    <p>~50% of cases regress or stop progressing without treatment. Treatment targets the underlying cause when identified and is discontinued at a chronologically appropriate time to allow normal puberty to resume.</p>
-
-    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
-    <div class="edu-grid">
-      <div class="edu-parent">
-        <span class="label">Parent / Caregiver Education</span>
-        <ul>
-          <li>Return-demonstrate injection technique if GnRH therapy prescribed</li>
-          <li><strong>Critical teaching point:</strong> dress and activities should match the child's chronologic age, not physical appearance — resist the urge to treat the child as older because they look older</li>
-          <li>Sexual interest is not advanced beyond chronologic age — the child's mental/emotional development matches their actual age</li>
-          <li>Provide anticipatory guidance about how other adults/peers may react to the child's advanced physical development, and coach the family on responding</li>
-        </ul>
-      </div>
-      <div class="edu-child">
-        <span class="label">Pediatric / Child-Directed Education</span>
-        <span class="dev-tag">Typically preschool through school-age (preoperational to concrete operational thinkers)</span>
-        <ul>
-          <li><strong>Preoperational (2–7 yrs):</strong> keep explanations extremely simple and concrete — "the doctor gives you medicine to help your body grow at the right speed." Avoid abstract hormone talk; this age group cannot process it.</li>
-          <li><strong>School-age (7–11 yrs):</strong> can understand simple concrete cause-effect ("this shot tells your body to slow down growing up too fast") — use direct, matter-of-fact language, avoid shame or embarrassment framing around body changes</li>
-          <li>For any age: normalize the body changes without over-explaining; reassure the child there is nothing "wrong" with them</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Self-Care / Family Strategies</h4>
-    <div class="selfcare-box">
-      <span class="label">Ongoing management</span>
-      <ul>
-        <li>Keep injection/implant schedule consistent — missed doses reduce treatment effectiveness</li>
-        <li>Track growth (height) at home between visits to share trend data with the endocrinologist</li>
-        <li>Watch for and report emotional/behavioral changes possibly related to hormone therapy side effects</li>
-        <li>Connect with support resources — psychosocial support is a core part of management, not an afterthought</li>
-      </ul>
-    </div>
-
-    <p class="source-tag">Source: Perry Ch. 47, "Precocious Puberty" section (pp. 1423–1424 range).</p>
-  </div>
+<h4>Complications / Adverse Consequences Linked to Early Puberty <span class="lecture-tag">Lecture</span></h4>
+<ul>
+<li><strong>Short adult stature</strong> from premature epiphyseal closure — the central long-term physical risk, even though the child is tall for age initially</li>
+<li>Psychosocial distress — child looks older than peers, may face inappropriate social expectations from adults and peers who react to physical appearance rather than actual age</li>
+<li>Increased risk of mismatched social/emotional expectations, since physical maturity outpaces cognitive/emotional maturity</li>
+<li>If organic (CNS tumor, CAH): complications tied to the underlying cause itself</li>
+</ul>
+<h4>Labs &amp; Diagnostics</h4>
+<table>
+<tr><th>Test</th><th>Purpose</th></tr>
+<tr><td>Blood tests (hormone panel: LH, FSH, estradiol/testosterone)</td><td>Elevated in CPP; pattern helps distinguish central vs. peripheral cause <span class="lecture-tag">Lecture</span></td></tr>
+<tr><td>Bone age x-ray (hand/wrist)</td><td>Assess epiphyseal maturation vs. chronologic age — advanced bone age supports diagnosis</td></tr>
+<tr><td>GnRH stimulation test</td><td>Differentiates central (pubertal LH response) from peripheral precocious puberty</td></tr>
+<tr><td>CT or MRI</td><td>Ordered specifically <strong>if CNS involvement is suspected</strong> — per lecture, this is not routine for every case but targeted when history/exam suggests a CNS cause <span class="lecture-tag">Lecture</span></td></tr>
+</table>
+<div class="call-provider">
+<span class="label">Notify the Provider If</span>
+<ul>
+<li>New headache or visual disturbance in a child being evaluated/treated for precocious puberty (possible CNS lesion)</li>
+<li>Rapid, unexplained acceleration in growth or pubertal signs</li>
+</ul>
 </div>
-</section>
+<h4>Priority Nursing Interventions</h4>
+<ol class="priority-steps">
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Refer to pediatric endocrinology for full workup (bone age, hormone levels, possible MRI) — don't delay based on an assumption of idiopathic cause.
+      <span class="why">Why: A CNS tumor is a possible underlying cause and needs to be identified promptly, even though most CPP is idiopathic.</span></li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>Prepare child/family for diagnostic testing; begin psychological support.
+      <span class="why">Why: Not immediately life-threatening, but emotional impact on the family is significant and ongoing.</span></li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>If GnRH agonist therapy is started, teach injection technique and administration schedule.</li>
+</ol>
+<h4>Treatment</h4>
+<div class="alert-box">
+<span class="label">Prevention <span class="lecture-tag">Lecture</span></span>
+      There is no true prevention for precocious puberty, but families should <strong>avoid any products containing external sources of estrogen or testosterone</strong> (certain topical hormone creams, some supplements) — exogenous hormone exposure is a recognized peripheral precocious puberty trigger.
+    </div>
+<table>
+<tr><th>Drug</th><th>Mechanism</th><th>Schedule</th><th>Key Side Effects</th></tr>
+<tr><td>GnRH agonist injections (e.g., Leuprolide/Lupron Depot)</td><td>Synthetic GnRH analog — suppresses the axis</td><td>Daily, every 3–4 weeks, or every 3 months depending on preparation <span class="lecture-tag">Lecture</span></td><td>Headache, emotional lability, vasodilation/hot flashes</td></tr>
+<tr><td>Histrelin implant (Supprelin LA)</td><td>GnRH analog</td><td><strong>Permanent implant device</strong> that automatically releases the inhibitor continuously over the course of a year; the child returns annually for a new implant <span class="lecture-tag">Lecture</span></td><td>Same class effects as above</td></tr>
+</table>
+<p>~50% of cases regress or stop progressing without treatment. Treatment targets the underlying cause when identified and is discontinued at a chronologically appropriate time to allow normal puberty to resume. Ongoing management includes tracking growth charts, monitoring hormone blood levels, and follow-up with a pediatric endocrinologist. <span class="lecture-tag">Lecture</span></p>
 
+<div class="med-spotlight">
+<div class="med-spotlight-header"><h4>Medication Spotlight: Histrelin <span class="generic">— Supprelin LA / GnRH Therapy</span></h4></div>
+<div class="med-spotlight-body">
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Keep endocrine follow-up appointments</li>
+<li>Monitor growth and pubertal changes over time</li>
+<li>Understand that treatment is intended to slow or reverse progression of <strong>central precocious puberty</strong>, not cure the underlying cause</li>
+<li><strong>Reinforce that the child's chronological age — not physical maturity — should guide expectations and social interactions</strong>, a core teaching point from lecture</li>
+<li>Support body-image and emotional concerns proactively, not just when the child brings them up</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<span class="dev-tag">By developmental stage</span>
+<ul>
+<li><strong>Young child:</strong> explain treatment using simple, concrete language without unnecessary adult sexual detail</li>
+<li><strong>School-age:</strong> explain why the medication is being given and encourage questions about body changes</li>
+<li><strong>Adolescent:</strong> provide private, respectful discussion of body image, puberty, emotional effects, and medication adherence</li>
+</ul>
+</div>
+</div>
+<p class="source-tag">Source: Unit 9 lecture — psychosocial/body-image emphasis, chronological-vs-developmental-age teaching point.</p>
+</div>
+</div>
+
+<h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Education</span>
+<ul>
+<li>Return-demonstrate injection technique if GnRH therapy prescribed</li>
+<li><strong>Critical teaching point:</strong> dress and activities should match the child's chronologic age, not physical appearance — resist the urge to treat the child as older because they look older</li>
+<li>Sexual interest is not advanced beyond chronologic age — the child's mental/emotional development matches their actual age</li>
+<li>Provide anticipatory guidance about how other adults/peers may react to the child's advanced physical development, and coach the family on responding</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric / Child-Directed Education</span>
+<span class="dev-tag">Typically preschool through school-age (preoperational to concrete operational thinkers)</span>
+<ul>
+<li><strong>Preoperational (2–7 yrs):</strong> keep explanations extremely simple and concrete — "the doctor gives you medicine to help your body grow at the right speed." Avoid abstract hormone talk; this age group cannot process it.</li>
+<li><strong>School-age (7–11 yrs):</strong> can understand simple concrete cause-effect ("this shot tells your body to slow down growing up too fast") — use direct, matter-of-fact language, avoid shame or embarrassment framing around body changes</li>
+<li>For any age: normalize the body changes without over-explaining; reassure the child there is nothing "wrong" with them</li>
+</ul>
+</div>
+</div>
+<h4>Self-Care / Family Strategies</h4>
+<div class="selfcare-box">
+<span class="label">Ongoing management</span>
+<ul>
+<li>Keep injection/implant schedule consistent — missed doses reduce treatment effectiveness</li>
+<li>Track growth (height) at home between visits to share trend data with the endocrinologist</li>
+<li>Watch for and report emotional/behavioral changes possibly related to hormone therapy side effects</li>
+<li>Connect with support resources — psychosocial support is a core part of management, not an afterthought</li>
+</ul>
+</div>
+<p class="source-tag">Source: Perry Ch. 47, "Precocious Puberty" section (pp. 1423–1424 range).</p>
+</div>
+</details>
+</section>
 <!-- ========================= CONGENITAL HYPOTHYROIDISM ========================= -->
 <section class="unit-block" id="thyroid-cong">
 <h2 class="section-title">Hypothyroidism — Congenital</h2>
+<details class="card thyroid"><summary><div class="card-header">
+<h3>Congenital Hypothyroidism</h3>
+<div class="tag">Present at birth — time-critical for neurodevelopment</div>
+</div></summary>
 
-<div class="card thyroid">
-  <div class="card-header">
-    <h3>Congenital Hypothyroidism</h3>
-    <div class="tag">Present at birth — time-critical for neurodevelopment</div>
-  </div>
-  <div class="card-body">
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>Low circulating thyroid hormone (T4/T3) with elevated TSH at birth, from thyroid gland dysgenesis, hormone synthesis defects, or (rarely) maternal factors. TH regulates basal metabolic rate and is essential for growth and tissue differentiation — deficiency has a <strong>more profound effect on growth than GH deficiency</strong> because TH touches more systems. <strong>Untreated congenital hypothyroidism causes severe, irreversible neurocognitive dysfunction</strong> because brain growth is nearly complete by age 2–3 — this is why newborn screening exists and treatment cannot wait.</p>
-
-    <h5>Risk Factors</h5>
-    <ul>
-      <li>Thyroid gland dysgenesis or agenesis (congenital)</li>
-      <li>Inborn errors of thyroid hormone synthesis</li>
-      <li>Maternal antithyroid drug use or iodine deficiency/excess during pregnancy</li>
-      <li>Family history of thyroid disease</li>
-    </ul>
-
-    <h4>Signs &amp; Symptoms</h4>
-    <div class="alert-box">
-      <span class="label">Key point from lecture</span>
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>Low circulating thyroid hormone (T4/T3) with elevated TSH at birth, from thyroid gland dysgenesis, hormone synthesis defects, or (rarely) maternal factors. TH regulates basal metabolic rate and is essential for growth and tissue differentiation — deficiency has a <strong>more profound effect on growth than GH deficiency</strong> because TH touches more systems. <strong>Untreated congenital hypothyroidism causes severe, irreversible neurocognitive dysfunction</strong> because brain growth is nearly complete by age 2–3 — this is why newborn screening exists and treatment cannot wait.</p>
+<h5>Risk Factors</h5>
+<ul>
+<li>Thyroid gland dysgenesis or agenesis (congenital)</li>
+<li>Inborn errors of thyroid hormone synthesis</li>
+<li>Maternal antithyroid drug use or iodine deficiency/excess during pregnancy</li>
+<li>Family history of thyroid disease</li>
+</ul>
+<h4>Signs &amp; Symptoms</h4>
+<div class="alert-box">
+<span class="label">Key point from lecture</span>
       Clinical manifestations are <strong>subtle at birth</strong> — this is exactly why universal newborn screening exists rather than relying on physical exam alone. By the time symptoms are obvious, the window for preventing neurologic damage has already started closing.
     </div>
-    <div class="findings-grid">
-      <div class="expected">
-        <span class="label">Newborn screening findings</span>
-        <ul>
-          <li>Universal newborn screening detects this before symptoms appear in most cases</li>
-          <li>Low T4, elevated TSH on screen</li>
-        </ul>
-      </div>
-      <div class="unexpected">
-        <span class="label">Infant, if untreated / late-recognized <span class="lecture-tag">Lecture</span></span>
-        <ul>
-          <li>Prolonged jaundice</li>
-          <li>Poor feeding</li>
-          <li>Constipation</li>
-          <li>Cool, mottled skin</li>
-          <li>Hypotonia</li>
-          <li>Sleepiness, decreased crying</li>
-          <li>Larger fontanels</li>
-          <li>Large, thick tongue</li>
-          <li>Enlarged thyroid (goiter) — can cause severe respiratory distress</li>
-        </ul>
-      </div>
+<div class="findings-grid">
+<div class="expected">
+<span class="label">Newborn screening findings</span>
+<ul>
+<li>Universal newborn screening detects this before symptoms appear in most cases</li>
+<li>Low T4, elevated TSH on screen</li>
+</ul>
+</div>
+<div class="unexpected">
+<span class="label">Infant, if untreated / late-recognized <span class="lecture-tag">Lecture</span></span>
+<ul>
+<li>Prolonged jaundice</li>
+<li>Poor feeding</li>
+<li>Constipation</li>
+<li>Cool, mottled skin</li>
+<li>Hypotonia</li>
+<li>Sleepiness, decreased crying</li>
+<li>Larger fontanels</li>
+<li>Large, thick tongue</li>
+<li>Enlarged thyroid (goiter) — can cause severe respiratory distress</li>
+</ul>
+</div>
+</div>
+<div class="mnemonic">
+<strong>Congenital hypothyroidism infant picture:</strong> think "the slow, puffy, quiet baby" — everything is sluggish (constipation, sleepiness, poor feeding) and everything looks puffy/large (fontanels, tongue). This contrasts sharply with a hyperthyroid infant, who would be irritable, tachycardic, and hyperactive.
     </div>
-    <div class="mnemonic">
-      <strong>Congenital hypothyroidism infant picture:</strong> think "the slow, puffy, quiet baby" — everything is sluggish (constipation, sleepiness, poor feeding) and everything looks puffy/large (fontanels, tongue). This contrasts sharply with a hyperthyroid infant, who would be irritable, tachycardic, and hyperactive.
-    </div>
-
-    <h5>If Missed Beyond Infancy — Child Presentation <span class="lecture-tag">Lecture</span></h5>
-    <p>If congenital hypothyroidism is not caught by newborn screening and progresses untreated into childhood, the picture evolves to include:</p>
-    <ul>
-      <li>Short stature</li>
-      <li>Delays in developmental milestones</li>
-      <li>Weight gain</li>
-      <li>Hypotonia</li>
-      <li>Puffy facial features</li>
-      <li>Intellectual disability</li>
-      <li>Protruding abdomen</li>
-      <li>Sparse, coarse, dry, or brittle hair</li>
-    </ul>
-
-    <h4>Complications</h4>
-    <ul>
-      <li><strong>Irreversible intellectual disability</strong> if treatment is delayed — the central complication</li>
-      <li>Growth failure</li>
-      <li>Airway obstruction if goiter present at birth</li>
-    </ul>
-
-    <h4>Labs &amp; Diagnostics</h4>
-    <table class="lab-table">
-      <tr><th>Test</th><th class="hi">Expected (Normal Newborn)</th><th class="hi">Unexpected (Congenital Hypothyroidism)</th></tr>
-      <tr><td>TSH (newborn screening)</td><td>Normal range for age</td><td>Abnormally <strong>high</strong> TSH</td></tr>
-      <tr><td>T4 (thyroxine)</td><td>Normal range for age</td><td>Abnormally <strong>low</strong> T4</td></tr>
-    </table>
-
-    <h5>Follow-Up Lab Schedule Once Treatment Starts <span class="lecture-tag">Lecture</span></h5>
-    <table>
-      <tr><th>Timeframe</th><th>Frequency of serum thyroid level checks</th></tr>
-      <tr><td>First year of life</td><td>Every 4–6 months</td></tr>
-      <tr><td>After the first year</td><td>Every 2–4 months</td></tr>
-    </table>
-    <p>This is a specific, testable detail from your instructor's slides — expect a question asking you to identify the correct monitoring interval.</p>
-
-    <div class="danger-box">
-      <span class="label">Airway Safety Alert — Congenital Goiter</span>
+<h5>If Missed Beyond Infancy — Child Presentation <span class="lecture-tag">Lecture</span></h5>
+<p>If congenital hypothyroidism is not caught by newborn screening and progresses untreated into childhood, the picture evolves to include:</p>
+<ul>
+<li>Short stature</li>
+<li>Delays in developmental milestones</li>
+<li>Weight gain</li>
+<li>Hypotonia</li>
+<li>Puffy facial features</li>
+<li>Intellectual disability</li>
+<li>Protruding abdomen</li>
+<li>Sparse, coarse, dry, or brittle hair</li>
+</ul>
+<h4>Complications</h4>
+<ul>
+<li><strong>Irreversible intellectual disability</strong> if treatment is delayed — the central complication</li>
+<li>Growth failure</li>
+<li>Airway obstruction if goiter present at birth</li>
+</ul>
+<h4>Labs &amp; Diagnostics</h4>
+<table class="lab-table">
+<tr><th>Test</th><th class="hi">Expected (Normal Newborn)</th><th class="hi">Unexpected (Congenital Hypothyroidism)</th></tr>
+<tr><td>TSH (newborn screening)</td><td>Normal range for age</td><td>Abnormally <strong>high</strong> TSH</td></tr>
+<tr><td>T4 (thyroxine)</td><td>Normal range for age</td><td>Abnormally <strong>low</strong> T4</td></tr>
+</table>
+<h5>Follow-Up Lab Schedule Once Treatment Starts <span class="lecture-tag">Lecture</span></h5>
+<table>
+<tr><th>Timeframe</th><th>Frequency of serum thyroid level checks</th></tr>
+<tr><td>First year of life</td><td>Every 4–6 months</td></tr>
+<tr><td>After the first year</td><td>Every 2–4 months</td></tr>
+</table>
+<p>This is a specific, testable detail from your instructor's slides — expect a question asking you to identify the correct monitoring interval.</p>
+<div class="danger-box">
+<span class="label">Airway Safety Alert — Congenital Goiter</span>
       If an infant is born with a goiter: keep emergency ventilation equipment (supplemental O2, tracheostomy set) at bedside. Hyperextension of the neck often facilitates breathing. Immediate surgery to remove part of the gland may be life-saving.
     </div>
-
-    <div class="call-provider">
-      <span class="label">Notify the Provider Immediately If</span>
-      <ul>
-        <li>Newborn screening result is abnormal and not yet followed up</li>
-        <li>Any signs of respiratory distress in an infant with a visible/palpable goiter</li>
-      </ul>
-    </div>
-
-    <h4>Priority Nursing Interventions — Acuity Order</h4>
-    <ol class="priority-steps">
-      <li><span class="acuity-tag acuity-kill">Will Kill First (if goiter present)</span><br>Assess and protect the airway if a goiter is present at birth — have emergency ventilation equipment ready.
-      <span class="why">Why: A large congenital goiter can cause airway obstruction, an immediate life threat, though this is uncommon.</span></li>
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Ensure newborn screening is completed and results followed up promptly; if diagnosis is confirmed, start thyroid hormone replacement as soon as possible.
-      <span class="why">Why: Every week of delay in starting levothyroxine increases the risk of permanent neurocognitive damage — this is the single most time-sensitive teaching point in the whole unit.</span></li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>Educate family on lifelong daily compliance and need for periodic serum thyroid level monitoring.</li>
-    </ol>
-
-    <h4>Treatment</h4>
-    <ul>
-      <li>Levothyroxine (thyroid hormone replacement) started as soon as diagnosis confirmed — <strong>prompt</strong> treatment in infants, unlike the more gradual approach used in older children</li>
-      <li>Lifelong therapy with periodic dose adjustment as the child grows</li>
-    </ul>
-
-    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
-    <div class="edu-grid">
-      <div class="edu-parent">
-        <span class="label">Parent / Caregiver Education</span>
-        <ul>
-          <li>Explain why immediate treatment matters — this is the single most important message: delay risks permanent intellectual disability</li>
-          <li>Teach correct daily administration of levothyroxine (crushed tablet in small amount of liquid/formula — not mixed into a full bottle, since if the infant doesn't finish the bottle, the dose is missed)</li>
-          <li>Teach signs of both under- and over-treatment to watch for as the child grows</li>
-          <li>Explain the need for lifelong therapy and periodic labs — this is not a medication that will be discontinued</li>
-        </ul>
-      </div>
-      <div class="edu-child">
-        <span class="label">Pediatric / Child-Directed Education</span>
-        <span class="dev-tag">Diagnosed in infancy — direct child education isn't applicable yet; education is aimed entirely at caregivers until the child is old enough to participate</span>
-        <ul>
-          <li>As the child grows into toddler/preschool years, begin very simple language: "this medicine helps your body every day" — building toward eventual self-management education</li>
-          <li>By school age, begin involving the child in simple parts of their care (e.g., helping remember the daily dose) as a foundation for future independence</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Self-Care Strategies</h4>
-    <div class="selfcare-box">
-      <span class="label">Ongoing family management</span>
-      <ul>
-        <li>Give levothyroxine at the same time every day, consistently, ideally on an empty stomach for reliable absorption</li>
-        <li>Keep a written log of doses given, especially in infancy when a caregiver may not be the same person every day</li>
-        <li>Attend all scheduled lab draws — dose changes with growth are expected and normal</li>
-        <li>Never stop the medication without provider guidance, even if the child seems "fine"</li>
-      </ul>
-    </div>
-
-    <p class="source-tag">Source: Perry Ch. 47, congenital hypothyroidism section (cross-referenced with Ch. 25/46, newborn screening).</p>
-  </div>
+<div class="call-provider">
+<span class="label">Notify the Provider Immediately If</span>
+<ul>
+<li>Newborn screening result is abnormal and not yet followed up</li>
+<li>Any signs of respiratory distress in an infant with a visible/palpable goiter</li>
+</ul>
 </div>
+<h4>Priority Nursing Interventions — Acuity Order</h4>
+<ol class="priority-steps">
+<li><span class="acuity-tag acuity-kill">Will Kill First (if goiter present)</span><br/>Assess and protect the airway if a goiter is present at birth — have emergency ventilation equipment ready.
+      <span class="why">Why: A large congenital goiter can cause airway obstruction, an immediate life threat, though this is uncommon.</span></li>
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Ensure newborn screening is completed and results followed up promptly; if diagnosis is confirmed, start thyroid hormone replacement as soon as possible.
+      <span class="why">Why: Every week of delay in starting levothyroxine increases the risk of permanent neurocognitive damage — this is the single most time-sensitive teaching point in the whole unit.</span></li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>Educate family on lifelong daily compliance and need for periodic serum thyroid level monitoring.</li>
+</ol>
+<h4>Treatment</h4>
+<ul>
+<li>Levothyroxine (thyroid hormone replacement) started as soon as diagnosis confirmed — <strong>prompt</strong> treatment in infants, unlike the more gradual approach used in older children</li>
+<li>Lifelong therapy with periodic dose adjustment as the child grows</li>
+</ul>
+<div class="alert-box">
+<span class="label">Full Levothyroxine medication teaching</span>
+See the <strong>Medication Spotlight: Levothyroxine</strong> in the Juvenile Hypothyroidism card below for the complete administration teaching (empty-stomach timing, iron/calcium spacing, missed-dose rules) — the same medication and teaching points apply here, with the added urgency that delay in infants risks irreversible neurocognitive damage.
+</div>
+<h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Education</span>
+<ul>
+<li>Explain why immediate treatment matters — this is the single most important message: delay risks permanent intellectual disability</li>
+<li>Teach correct daily administration of levothyroxine (crushed tablet in small amount of liquid/formula — not mixed into a full bottle, since if the infant doesn't finish the bottle, the dose is missed)</li>
+<li>Teach signs of both under- and over-treatment to watch for as the child grows</li>
+<li>Explain the need for lifelong therapy and periodic labs — this is not a medication that will be discontinued</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric / Child-Directed Education</span>
+<span class="dev-tag">Diagnosed in infancy — direct child education isn't applicable yet; education is aimed entirely at caregivers until the child is old enough to participate</span>
+<ul>
+<li>As the child grows into toddler/preschool years, begin very simple language: "this medicine helps your body every day" — building toward eventual self-management education</li>
+<li>By school age, begin involving the child in simple parts of their care (e.g., helping remember the daily dose) as a foundation for future independence</li>
+</ul>
+</div>
+</div>
+<h4>Self-Care Strategies</h4>
+<div class="selfcare-box">
+<span class="label">Ongoing family management</span>
+<ul>
+<li>Give levothyroxine at the same time every day, consistently, ideally on an empty stomach for reliable absorption</li>
+<li>Keep a written log of doses given, especially in infancy when a caregiver may not be the same person every day</li>
+<li>Attend all scheduled lab draws — dose changes with growth are expected and normal</li>
+<li>Never stop the medication without provider guidance, even if the child seems "fine"</li>
+</ul>
+</div>
+<p class="source-tag">Source: Perry Ch. 47, congenital hypothyroidism section (cross-referenced with Ch. 25/46, newborn screening).</p>
+</div>
+</details>
 </section>
-
 <!-- ========================= JUVENILE HYPOTHYROIDISM ========================= -->
 <section class="unit-block" id="thyroid-juv">
 <h2 class="section-title">Hypothyroidism — Juvenile (Acquired)</h2>
+<details class="card thyroid"><summary><div class="card-header">
+<h3>Juvenile (Acquired) Hypothyroidism</h3>
+<div class="tag">Onset after the newborn period — less neuro-urgent, still needs treatment</div>
+</div></summary>
 
-<div class="card thyroid">
-  <div class="card-header">
-    <h3>Juvenile (Acquired) Hypothyroidism</h3>
-    <div class="tag">Onset after the newborn period — less neuro-urgent, still needs treatment</div>
-  </div>
-  <div class="card-body">
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>Occurs after infancy from: congenital hypoplastic thyroid becoming inadequate with growth demands, thyroidectomy, radiotherapy (e.g., after Hodgkin lymphoma treatment), infectious/autoimmune processes (Hashimoto/lymphocytic thyroiditis is the most common cause), or iodine deficiency (rare in the U.S. due to iodized salt). Because brain growth is nearly complete by age 2–3, <strong>intellectual disability and neurologic sequelae are NOT associated with juvenile-onset hypothyroidism</strong> — the key distinction from the congenital form and a favorite NCLEX contrast point.</p>
-
-    <h5>Risk Factors</h5>
-    <ul>
-      <li>Autoimmune thyroiditis (Hashimoto disease) — most common cause in children/adolescents, peak incidence in adolescence</li>
-      <li>History of thyroidectomy or head/neck radiotherapy</li>
-      <li>Family history of autoimmune thyroid disease</li>
-      <li>Dietary iodine deficiency (rare in U.S.)</li>
-    </ul>
-
-    <h4>Signs &amp; Symptoms</h4>
-    <div class="expected">
-      <span class="label">Clinical picture</span>
-      <ul>
-        <li>Decelerated growth/growth cessation in a previously normally-growing child</li>
-        <li>Myxedematous skin changes: dry skin, puffiness around eyes, sparse hair</li>
-        <li>Constipation, sleepiness/lethargy, mental decline (slowed cognition that improves with treatment — not permanent intellectual disability)</li>
-        <li>Possible thyromegaly (goiter) — firm, freely movable, nontender, symmetric enlargement</li>
-        <li>Possible tracheal compression symptoms: sense of fullness, hoarseness, dysphagia</li>
-      </ul>
-    </div>
-
-    <h4>Complications</h4>
-    <ul>
-      <li>Growth delay if prolonged untreated</li>
-      <li>Progressive myxedema symptoms</li>
-      <li>Rarely: airway compromise from significant goiter</li>
-    </ul>
-
-    <h4>Labs &amp; Diagnostics</h4>
-    <table class="lab-table">
-      <tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (Hypothyroidism)</th></tr>
-      <tr><td>TSH</td><td>Normal range for age</td><td>Elevated</td></tr>
-      <tr><td>Free T4</td><td>Normal range for age</td><td>Low (or low-normal in subclinical disease)</td></tr>
-      <tr><td>Thyroid peroxidase / thyroglobulin antibodies</td><td>Negative</td><td>Positive — supports autoimmune (Hashimoto) thyroiditis</td></tr>
-    </table>
-
-    <div class="call-provider">
-      <span class="label">Notify the Provider If</span>
-      <ul>
-        <li>Significant growth deceleration noted in a child with previously normal growth trajectory</li>
-        <li>New signs of tracheal compression (hoarseness, dysphagia, sense of fullness) with a growing goiter</li>
-      </ul>
-    </div>
-
-    <h4>Priority Nursing Interventions</h4>
-    <ol class="priority-steps">
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Recognize growth deceleration in a child with previously normal growth as a red flag prompting thyroid workup.
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>Occurs after infancy from: congenital hypoplastic thyroid becoming inadequate with growth demands, thyroidectomy, radiotherapy (e.g., after Hodgkin lymphoma treatment), infectious/autoimmune processes (Hashimoto/lymphocytic thyroiditis is the most common cause), or iodine deficiency (rare in the U.S. due to iodized salt). Because brain growth is nearly complete by age 2–3, <strong>intellectual disability and neurologic sequelae are NOT associated with juvenile-onset hypothyroidism</strong> — the key distinction from the congenital form and a favorite NCLEX contrast point.</p>
+<h5>Risk Factors</h5>
+<ul>
+<li>Autoimmune thyroiditis (Hashimoto disease) — most common cause in children/adolescents, peak incidence in adolescence</li>
+<li>History of thyroidectomy or head/neck radiotherapy</li>
+<li>Family history of autoimmune thyroid disease</li>
+<li>Dietary iodine deficiency (rare in U.S.)</li>
+</ul>
+<h4>Signs &amp; Symptoms</h4>
+<div class="expected">
+<span class="label">Clinical picture</span>
+<ul>
+<li>Decelerated growth/growth cessation in a previously normally-growing child</li>
+<li>Myxedematous skin changes: dry skin, puffiness around eyes, sparse hair</li>
+<li>Constipation, sleepiness/lethargy, mental decline (slowed cognition that improves with treatment — not permanent intellectual disability)</li>
+<li>Possible thyromegaly (goiter) — firm, freely movable, nontender, symmetric enlargement</li>
+<li>Possible tracheal compression symptoms: sense of fullness, hoarseness, dysphagia</li>
+</ul>
+</div>
+<h4>Complications</h4>
+<ul>
+<li>Growth delay if prolonged untreated</li>
+<li>Progressive myxedema symptoms</li>
+<li>Rarely: airway compromise from significant goiter</li>
+</ul>
+<h4>Labs &amp; Diagnostics</h4>
+<table class="lab-table">
+<tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (Hypothyroidism)</th></tr>
+<tr><td>TSH</td><td>Normal range for age</td><td>Elevated</td></tr>
+<tr><td>Free T4</td><td>Normal range for age</td><td>Low (or low-normal in subclinical disease)</td></tr>
+<tr><td>Thyroid peroxidase / thyroglobulin antibodies</td><td>Negative</td><td>Positive — supports autoimmune (Hashimoto) thyroiditis</td></tr>
+</table>
+<div class="call-provider">
+<span class="label">Notify the Provider If</span>
+<ul>
+<li>Significant growth deceleration noted in a child with previously normal growth trajectory</li>
+<li>New signs of tracheal compression (hoarseness, dysphagia, sense of fullness) with a growing goiter</li>
+</ul>
+</div>
+<h4>Priority Nursing Interventions</h4>
+<ol class="priority-steps">
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Recognize growth deceleration in a child with previously normal growth as a red flag prompting thyroid workup.
       <span class="why">Why: Earlier identification means earlier treatment and less time spent in a hypothyroid state affecting growth and metabolism.</span></li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>Initiate daily oral thyroid hormone replacement (levothyroxine).</li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>Stress importance of daily compliance and periodic monitoring — unlike infants, treatment doesn't need to be as emergently prompt, but consistency matters long-term.</li>
-    </ol>
-
-    <h4>Treatment — Levothyroxine</h4>
-    <table>
-      <tr><th>Point</th><th>Detail</th></tr>
-      <tr><td>Administration in older children</td><td>Given gradually over 4–8 weeks to reach full replacement dose — avoids precipitating symptoms of hyperthyroidism</td></tr>
-      <tr><td>Monitoring</td><td>Periodic serum TSH/T4 checks; track growth and development trends over time</td></tr>
-      <tr><td>Signs of overdose (iatrogenic hyperthyroidism)</td><td>Tachycardia, irritability, insomnia, weight loss, heat intolerance, tremor</td></tr>
-      <tr><td>Compliance</td><td>Lifelong daily therapy — missed doses cause return of hypothyroid symptoms</td></tr>
-    </table>
-
-    <div class="alert-box">
-      <span class="label">NCLEX distinction to memorize</span>
+<li><span class="acuity-tag acuity-important">Important</span><br/>Initiate daily oral thyroid hormone replacement (levothyroxine).</li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>Stress importance of daily compliance and periodic monitoring — unlike infants, treatment doesn't need to be as emergently prompt, but consistency matters long-term.</li>
+</ol>
+<h4>Treatment — Levothyroxine</h4>
+<table>
+<tr><th>Point</th><th>Detail</th></tr>
+<tr><td>Administration in older children</td><td>Given gradually over 4–8 weeks to reach full replacement dose — avoids precipitating symptoms of hyperthyroidism</td></tr>
+<tr><td>Monitoring</td><td>Periodic serum TSH/T4 checks; track growth and development trends over time</td></tr>
+<tr><td>Signs of overdose (iatrogenic hyperthyroidism)</td><td>Tachycardia, irritability, insomnia, weight loss, heat intolerance, tremor</td></tr>
+<tr><td>Compliance</td><td>Lifelong daily therapy — missed doses cause return of hypothyroid symptoms</td></tr>
+</table>
+<div class="alert-box">
+<span class="label">NCLEX distinction to memorize</span>
       Congenital hypothyroidism untreated → intellectual disability risk (time-critical). Juvenile/acquired hypothyroidism untreated → growth delay and metabolic symptoms, but NOT associated with intellectual disability, because the brain has already completed its critical early growth period.
     </div>
-
-    <h4>Levothyroxine — Exact Administration Teaching Points <span class="lecture-tag">Lecture</span></h4>
-    <p>Your instructor's slide deck includes an NGN-style matrix question testing exactly these points — treat this table as a direct study target, not just background information.</p>
-    <table>
-      <tr><th>Teaching Point</th><th>Correct or Incorrect?</th></tr>
-      <tr><td>Take the medication first thing in the morning on an empty stomach.</td><td><strong>Correct</strong> — empty stomach maximizes and standardizes absorption</td></tr>
-      <tr><td>It is okay to stop the medication when symptoms improve.</td><td><strong>Incorrect</strong> — this is lifelong therapy; stopping causes symptoms to return, and in infants risks neurologic harm</td></tr>
-      <tr><td>Avoid taking iron or calcium supplements within 4 hours of the dose.</td><td><strong>Correct</strong> — iron and calcium bind levothyroxine and reduce absorption; separate dosing times</td></tr>
-      <tr><td>You may not feel improvement for several weeks.</td><td><strong>Correct</strong> — thyroid hormone effects build gradually; don't expect immediate symptom relief</td></tr>
-      <tr><td>Double the dose if one is missed.</td><td><strong>Incorrect</strong> — never double a dose; take as soon as remembered or follow provider-specific missed-dose instructions, and never stack two doses together</td></tr>
-    </table>
-
-    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
-    <div class="edu-grid">
-      <div class="edu-parent">
-        <span class="label">Parent / Caregiver Education</span>
-        <ul>
-          <li>Explain that treatment is gradual (4–8 weeks to full dose) — unlike the infant form, and why this pacing matters</li>
-          <li>Teach signs of both under-treatment (persistent fatigue, constipation, growth delay) and over-treatment (tachycardia, insomnia, weight loss)</li>
-          <li>Reinforce daily compliance and periodic lab monitoring for the child's lifetime</li>
-          <li><strong>Give first thing in the morning on an empty stomach</strong> for consistent absorption <span class="lecture-tag">Lecture</span></li>
-          <li><strong>Separate iron or calcium supplements by at least 4 hours</strong> from the levothyroxine dose — these bind the medication and block absorption <span class="lecture-tag">Lecture</span></li>
-          <li>Set realistic expectations: symptom improvement may take <strong>several weeks</strong> — don't assume the medication "isn't working" right away <span class="lecture-tag">Lecture</span></li>
-          <li><strong>Never double a dose</strong> if one is missed <span class="lecture-tag">Lecture</span></li>
-        </ul>
-      </div>
-      <div class="edu-child">
-        <span class="label">Pediatric / Child-Directed Education</span>
-        <span class="dev-tag">Typically diagnosed school-age through adolescence</span>
-        <ul>
-          <li><strong>School-age (concrete thinkers):</strong> explain simply and concretely — "this pill helps your body have enough energy to grow" — use visuals like growth charts the child can see and understand</li>
-          <li><strong>Adolescent (formal operational thinkers):</strong> can understand the autoimmune process at a basic level and the rationale for lifelong therapy; involve them directly in medication self-administration and appointment scheduling to build independence</li>
-          <li>Address self-image concerns directly — myxedematous changes (dry skin, hair changes) and weight gain can be distressing to a school-age or adolescent patient; reassure that these resolve with treatment</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Self-Care Strategies</h4>
-    <div class="selfcare-box">
-      <span class="label">Ongoing management</span>
-      <ul>
-        <li>Take levothyroxine at the same time each day, consistently, ideally on an empty stomach</li>
-        <li>Attend scheduled follow-up labs to monitor for dose adjustment as the child grows</li>
-        <li>Track and report any new symptoms of over- or under-treatment between visits</li>
-        <li>Do not stop medication independently even if symptoms improve</li>
-      </ul>
-    </div>
-
-    <div class="ngn-box">
-      <span class="label">NGN Practice — From Lecture Slides <span class="lecture-tag">Lecture</span></span>
-      <p><strong>Scenario:</strong> The nurse is reviewing the EHR of a 4-year-old whose caregivers have concerns about growth and behavior: more tired than usual, less active in play, constipation for several weeks, weight gain despite decreased appetite, no height increase in 6 months, skin cool and dry on assessment. The caregiver also notes the child has been "speaking more clearly and seems more alert than usual."</p>
-      <p><strong>Task:</strong> Identify which findings are consistent with pediatric hypothyroidism.</p>
-      <p><strong>Findings consistent with hypothyroidism:</strong> tired/decreased activity, constipation, weight gain with decreased appetite, no height gain in 6 months, cool and dry skin.</p>
-      <p><strong>The distractor to catch:</strong> "speaking more clearly and seems more alert" is the <em>opposite</em> of what hypothyroidism causes (which is lethargy and mental decline, not increased alertness) — this detail does NOT support the diagnosis and is designed to test whether you can discriminate real findings from a plausible-sounding but contradictory one.</p>
-    </div>
-
-    <p class="source-tag">Source: Perry Ch. 47, Juvenile Hypothyroidism &amp; Box 47.5; Abrams Ch. 42, Levothyroxine nursing implications; Unit 9 lecture slides 11–12, 17–18.</p>
-  </div>
+<h4>Medication Spotlight: Levothyroxine <span class="generic">— Synthroid</span></h4>
+<p>This is a <strong>very high-priority medication</strong> because your Unit 9 presentation specifically tests its teaching via an NGN-style matrix question. Applies to both congenital and juvenile hypothyroidism (see Congenital Hypothyroidism card above).</p>
+<div class="med-spotlight">
+<div class="med-spotlight-body">
+<p>Your instructor's slide deck includes an NGN-style matrix question testing exactly these points — treat this table as a direct study target, not just background information.</p>
+<table>
+<tr><th>Teaching Point</th><th>Correct or Incorrect?</th></tr>
+<tr><td>Take the medication first thing in the morning on an empty stomach.</td><td><strong>Correct</strong> — empty stomach maximizes and standardizes absorption</td></tr>
+<tr><td>It is okay to stop the medication when symptoms improve.</td><td><strong>Incorrect</strong> — this is lifelong therapy; stopping causes symptoms to return, and in infants risks neurologic harm</td></tr>
+<tr><td>Avoid taking iron or calcium supplements within 4 hours of the dose.</td><td><strong>Correct</strong> — iron and calcium bind levothyroxine and reduce absorption; separate dosing times</td></tr>
+<tr><td>You may not feel improvement for several weeks.</td><td><strong>Correct</strong> — thyroid hormone effects build gradually; don't expect immediate symptom relief</td></tr>
+<tr><td>Double the dose if one is missed.</td><td><strong>Incorrect</strong> — never double a dose; take as soon as remembered or follow provider-specific missed-dose instructions, and never stack two doses together</td></tr>
+</table>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Teaching</span>
+<ul>
+<li>Give <strong>first thing in the morning on an empty stomach</strong></li>
+<li>Give consistently at the same time every day</li>
+<li><strong>Separate iron and calcium supplements by 4 hours</strong> — both bind levothyroxine and block absorption</li>
+<li><strong>Do not stop</strong> when the child seems better — this is lifelong therapy in most cases</li>
+<li><strong>Do not double</strong> a missed dose</li>
+<li>Keep all thyroid laboratory appointments — TSH/T4 and growth are monitored on an ongoing basis</li>
+<li><strong>Infants specifically:</strong> crush the tablet into a small amount of liquid/formula, not a full bottle — if the infant doesn't finish the bottle, the dose is missed</li>
+</ul>
 </div>
-</section>
+<div class="edu-child">
+<span class="label">Pediatric Patient Teaching</span>
+<span class="dev-tag">By developmental stage</span>
+<ul>
+<li><strong>Infant:</strong> caregiver performs all administration; establish a consistent morning routine from the start</li>
+<li><strong>Toddler/preschooler:</strong> "This medicine gives your body the thyroid hormone it needs to grow and have energy"</li>
+<li><strong>School-age:</strong> involve the child in remembering the morning dose and explaining why it's taken before breakfast</li>
+<li><strong>Adolescent:</strong> teach independent medication organization, lab follow-up scheduling, and the importance of continuing therapy even when feeling completely well</li>
+</ul>
+</div>
+</div>
+<p class="source-tag">Source: Unit 9 lecture NGN practice question; Abrams Ch. 42.</p>
+</div>
+</div>
 
+<h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Education</span>
+<ul>
+<li>Explain that treatment is gradual (4–8 weeks to full dose) — unlike the infant form, and why this pacing matters</li>
+<li>Teach signs of both under-treatment (persistent fatigue, constipation, growth delay) and over-treatment (tachycardia, insomnia, weight loss)</li>
+<li>Reinforce daily compliance and periodic lab monitoring for the child's lifetime</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric / Child-Directed Education</span>
+<span class="dev-tag">Typically diagnosed school-age through adolescence</span>
+<ul>
+<li><strong>School-age (concrete thinkers):</strong> explain simply and concretely — "this pill helps your body have enough energy to grow" — use visuals like growth charts the child can see and understand</li>
+<li><strong>Adolescent (formal operational thinkers):</strong> can understand the autoimmune process at a basic level and the rationale for lifelong therapy; involve them directly in medication self-administration and appointment scheduling to build independence</li>
+<li>Address self-image concerns directly — myxedematous changes (dry skin, hair changes) and weight gain can be distressing to a school-age or adolescent patient; reassure that these resolve with treatment</li>
+</ul>
+</div>
+</div>
+<h4>Self-Care Strategies</h4>
+<div class="selfcare-box">
+<span class="label">Ongoing management</span>
+<ul>
+<li>Take levothyroxine at the same time each day, consistently, ideally on an empty stomach</li>
+<li>Attend scheduled follow-up labs to monitor for dose adjustment as the child grows</li>
+<li>Track and report any new symptoms of over- or under-treatment between visits</li>
+<li>Do not stop medication independently even if symptoms improve</li>
+</ul>
+</div>
+<div class="ngn-box">
+<span class="label">NGN Practice — From Lecture Slides <span class="lecture-tag">Lecture</span></span>
+<p><strong>Scenario:</strong> The nurse is reviewing the EHR of a 4-year-old whose caregivers have concerns about growth and behavior: more tired than usual, less active in play, constipation for several weeks, weight gain despite decreased appetite, no height increase in 6 months, skin cool and dry on assessment. The caregiver also notes the child has been "speaking more clearly and seems more alert than usual."</p>
+<p><strong>Task:</strong> Identify which findings are consistent with pediatric hypothyroidism.</p>
+<p><strong>Findings consistent with hypothyroidism:</strong> tired/decreased activity, constipation, weight gain with decreased appetite, no height gain in 6 months, cool and dry skin.</p>
+<p><strong>The distractor to catch:</strong> "speaking more clearly and seems more alert" is the <em>opposite</em> of what hypothyroidism causes (which is lethargy and mental decline, not increased alertness) — this detail does NOT support the diagnosis and is designed to test whether you can discriminate real findings from a plausible-sounding but contradictory one.</p>
+</div>
+<p class="source-tag">Source: Perry Ch. 47, Juvenile Hypothyroidism &amp; Box 47.5; Abrams Ch. 42, Levothyroxine nursing implications; Unit 9 lecture slides 11–12, 17–18.</p>
+</div>
+</details>
+</section>
 <!-- ========================= PKU ========================= -->
 <section class="unit-block" id="pku">
 <h2 class="section-title">Phenylketonuria (PKU) / Phenylalanine Hydroxylase Deficiency</h2>
+<details class="card pku"><summary><div class="card-header">
+<h3>PKU (PAH Deficiency)</h3>
+<div class="tag">Autosomal recessive metabolic disorder — dietary management is treatment</div>
+</div></summary>
 
-<div class="card pku">
-  <div class="card-header">
-    <h3>PKU (PAH Deficiency)</h3>
-    <div class="tag">Autosomal recessive metabolic disorder — dietary management is treatment</div>
-  </div>
-  <div class="card-body">
-
-    <div class="alert-box">
-      <span class="label">Terminology update from lecture <span class="lecture-tag">Lecture</span></span>
-      Your instructor's slides present this condition under its updated clinical name: <strong>Phenylalanine Hydroxylase Deficiency (PAH)</strong>, noting it was formerly known as PKU. Both terms refer to the same disorder — expect either name on the exam, but "PAH deficiency" may signal a lecture-sourced question versus a textbook-sourced one labeled "PKU."
-    </div>
-
-    <h4>Pathophysiology &amp; Etiology</h4>
-    <p>PKU/PAH deficiency is an <strong>autosomal recessive</strong> disorder — an inherited error of metabolism resulting from absence/deficiency of the enzyme (phenylalanine hydroxylase) that metabolizes the amino acid phenylalanine, an amino acid found in proteins. Without this enzyme, phenylalanine accumulates to toxic levels in the blood, causing <strong>central nervous system damage</strong>. Classic example of gene-environment interaction: the enzyme defect is genetic, but damage only occurs after the infant ingests phenylalanine-containing substances (breast milk or standard formula) — the "environmental trigger." <strong>There is no prevention</strong> for the underlying genetic defect itself <span class="lecture-tag">Lecture</span> — the only intervention is early detection and dietary management to prevent the toxic buildup.</p>
-
-    <h5>Risk Factors</h5>
-    <ul>
-      <li>Both parents are carriers of the recessive gene (25% recurrence risk in future pregnancies if both parents are carriers)</li>
-      <li>Family history of PKU</li>
-      <li>Consanguinity (increases odds both parents carry the same recessive allele)</li>
-    </ul>
-
-    <div class="calc-box">
-      <strong>Lab values to know:</strong>
-      <div class="formula">Normal phenylalanine: 0–2 mg/dL (0–121 mcmol/L)<br>PKU diagnostic threshold: &gt; 20 mg/dL (1210 mcmol/L)</div>
+<div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
+<p>PKU/PAH deficiency is an <strong>autosomal recessive</strong> disorder — an inherited error of metabolism resulting from absence/deficiency of the enzyme (phenylalanine hydroxylase) that metabolizes the amino acid phenylalanine, an amino acid found in proteins. Without this enzyme, phenylalanine accumulates to toxic levels in the blood, causing <strong>central nervous system damage</strong>. Classic example of gene-environment interaction: the enzyme defect is genetic, but damage only occurs after the infant ingests phenylalanine-containing substances (breast milk or standard formula) — the "environmental trigger." <strong>There is no prevention</strong> for the underlying genetic defect itself <span class="lecture-tag">Lecture</span> — the only intervention is early detection and dietary management to prevent the toxic buildup.</p>
+<h5>Risk Factors</h5>
+<ul>
+<li>Both parents are carriers of the recessive gene (25% recurrence risk in future pregnancies if both parents are carriers)</li>
+<li>Family history of PKU</li>
+<li>Consanguinity (increases odds both parents carry the same recessive allele)</li>
+</ul>
+<div class="calc-box">
+<strong>Lab values to know:</strong>
+<div class="formula">Normal phenylalanine: 0–2 mg/dL (0–121 mcmol/L)<br/>PKU diagnostic threshold: &gt; 20 mg/dL (1210 mcmol/L)</div>
       A result of 1 mg/dL is a <em>negative</em> screen — don't be tricked by a low-looking number; compare against the actual normal range.
     </div>
-
-    <div class="alert-box">
-      <span class="label">Key point from lecture <span class="lecture-tag">Lecture</span></span>
-      <strong>No signs or symptoms are present at birth.</strong> This is why the disorder is picked up exclusively through the metabolic newborn screen — a newborn with PKU looks completely normal on physical exam. Symptoms only emerge after ongoing phenylalanine exposure causes cumulative toxicity.
+<div class="alert-box">
+<span class="label">Key point from lecture <span class="lecture-tag">Lecture</span></span>
+<strong>No signs or symptoms are present at birth.</strong> This is why the disorder is picked up exclusively through the metabolic newborn screen — a newborn with PKU looks completely normal on physical exam. Symptoms only emerge after ongoing phenylalanine exposure causes cumulative toxicity.
     </div>
-
-    <h4>Signs &amp; Symptoms</h4>
-    <div class="findings-grid">
-      <div class="expected">
-        <span class="label">In all children (untreated, over time)</span>
-        <ul>
-          <li>Digestive problems, vomiting</li>
-          <li>Seizures</li>
-          <li>Musty odor of urine</li>
-          <li>Developmental delays</li>
-          <li>Intellectual disability if untreated</li>
-        </ul>
-      </div>
-      <div class="unexpected">
-        <span class="label">Older children if undiagnosed/untreated</span>
-        <ul>
-          <li>Eczema</li>
-          <li>Hypertonia</li>
-          <li>Hypopigmentation of hair, skin, irises</li>
-          <li>Behavioral abnormalities — hyperactivity, bizarre/schizoid behavior</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="mnemonic">
-      <strong>Musty urine + fair skin/hair/eyes that don't match family coloring + developmental concerns</strong> → think PKU. The classic clue combination on NCLEX questions.
-    </div>
-
-    <h4>Complications</h4>
-    <ul>
-      <li><strong>Irreversible intellectual disability</strong> if phenylalanine restriction is not maintained — the central risk</li>
-      <li>Seizures</li>
-      <li>Behavioral and psychiatric symptoms if diet is not followed</li>
-      <li>Maternal PKU syndrome risk: if a woman with PKU does not follow the diet during her own pregnancy (regardless of the fetus's genotype), her elevated phenylalanine can cause fetal intellectual disability, microcephaly, and congenital heart defects — an important teaching point for adolescent females with PKU</li>
-    </ul>
-
-    <h4>Labs &amp; Diagnostics</h4>
-    <table class="lab-table">
-      <tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (PKU)</th></tr>
-      <tr><td>Serum phenylalanine</td><td>0–2 mg/dL (0–121 mcmol/L)</td><td>&gt; 20 mg/dL (1210 mcmol/L)</td></tr>
-      <tr><td>Newborn screen timing</td><td>After feeding has started (formula or breast milk)</td><td>Rescreen by 14 days of age if initial screen was done before 24 hours of life</td></tr>
-    </table>
-    <p><strong>Diagnostic method, per lecture:</strong> confirmed via the standard <strong>metabolic newborn screening</strong> panel — same screening blood spot used for congenital hypothyroidism and other inborn errors of metabolism. <span class="lecture-tag">Lecture</span></p>
-
-    <div class="call-provider">
-      <span class="label">Notify the Provider If</span>
-      <ul>
-        <li>Initial newborn screen is positive — repeat testing and further diagnostic evaluation must be arranged promptly</li>
-        <li>A diagnosed child shows new seizure activity, behavioral changes, or developmental regression (possible diet non-adherence)</li>
-      </ul>
-    </div>
-
-    <h4>Priority Nursing Interventions — Acuity Order</h4>
-    <ol class="priority-steps">
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>Ensure universal newborn screening is completed — the infant must have started formula or breast milk feeding before specimen collection (protein intake is required to unmask the defect on the test).
-      <span class="why">Why: Missing or mistiming this screen delays diagnosis, and every week of delayed dietary treatment adds cumulative, irreversible neurologic risk.</span></li>
-      <li><span class="acuity-tag acuity-urgent">Urgent</span><br>If initial screening is positive, arrange repeat testing and further diagnostic evaluation; rescreen by 14 days of age if the first screen was done before 24 hours of life.</li>
-      <li><span class="acuity-tag acuity-important">Important</span><br>If confirmed, immediately restrict phenylalanine intake and begin monitoring physical, neurological, and intellectual development.</li>
-    </ol>
-
-    <h4>Treatment — Dietary Management</h4>
-    <div class="alert-box">
-      <span class="label">The treatment IS the diet</span>
-      There is no drug cure — dietary phenylalanine restriction is the primary, lifelong treatment. Your instructor's slides summarize this simply as a <strong>"phenylalanine-free diet"</strong> that eliminates proteins — the detailed food breakdown below from Saunders gives you the specifics behind that summary. <span class="lecture-tag">Lecture</span>
-    </div>
-
-    <h4>Foods Patients Can and Cannot Eat</h4>
-    <div class="food-grid">
-      <div class="food-avoid">
-        <span class="label">Avoid — High Phenylalanine</span>
-        <ul>
-          <li>Meat, poultry, fish</li>
-          <li>Dairy products (milk, cheese, yogurt)</li>
-          <li>Eggs</li>
-          <li>Nuts and legumes (dried beans)</li>
-          <li>Regular wheat-based bread, pasta (standard, not low-protein versions)</li>
-          <li><strong>Aspartame</strong> (artificial sweetener, e.g., some diet sodas, sugar-free gum) — contains phenylalanine; read all labels closely</li>
-        </ul>
-      </div>
-      <div class="food-ok">
-        <span class="label">Generally OK / Encouraged</span>
-        <ul>
-          <li>Fruits</li>
-          <li>Vegetables</li>
-          <li>Cereals, rice, and pastas (in moderation/measured amounts as guided by the metabolic dietitian)</li>
-          <li>Special medical low-phenylalanine formula (essential in infancy and often continued in some form long-term)</li>
-          <li>Specially formulated low-protein food products designed for PKU management</li>
-        </ul>
-      </div>
-    </div>
-    <p class="source-tag">Exact allowable phenylalanine gram amounts are individualized by the metabolic dietitian based on age, growth, and lab trends — this list reflects general categories, not a prescriptive meal plan.</p>
-
-    <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
-    <div class="edu-grid">
-      <div class="edu-parent">
-        <span class="label">Parent / Caregiver Education</span>
-        <ul>
-          <li>Correct diet is the primary treatment — this is lifelong, not a temporary intervention</li>
-          <li>Specifically teach: avoid meats/dairy/eggs (high phenylalanine) and aspartame-containing products; cereals/pasta/rice/fruits/vegetables in appropriate amounts are the foundation</li>
-          <li>Teach careful food label reading — phenylalanine and aspartame can appear in unexpected processed foods</li>
-          <li>Stress consistent follow-up appointments to monitor phenylalanine levels and developmental progress</li>
-          <li>Encourage parents to express feelings about the diagnosis; discuss autosomal recessive inheritance and recurrence risk in future pregnancies — refer for genetic counseling</li>
-          <li>Educate on special low-phenylalanine formula use; connect family with social services for the financial burden of specialized formula and foods, which are often not fully covered by insurance</li>
-          <li><strong>If the child is or will become a female of childbearing age:</strong> she will need to understand maternal PKU risk and the importance of resuming/maintaining strict dietary control before and during any future pregnancy</li>
-        </ul>
-      </div>
-      <div class="edu-child">
-        <span class="label">Pediatric / Child-Directed Education</span>
-        <span class="dev-tag">Lifelong condition — education evolves from caregiver-only to increasing child self-management with age</span>
-        <ul>
-          <li><strong>Toddler/preschool (preoperational, 2–7 yrs):</strong> education is caregiver-directed; begin very simple concrete language around "safe foods" vs. "foods that aren't safe for your body" as the child starts to eat independently</li>
-          <li><strong>School-age (concrete operational, 7–11 yrs):</strong> can begin learning to read simple food labels and identify safe snacks with supervision; use concrete tools like color-coded food lists or picture charts rather than abstract explanations of phenylalanine metabolism</li>
-          <li><strong>Adolescent (formal operational, 11+ yrs):</strong> can understand the metabolic rationale behind the diet and increasingly manage their own choices — this is also the highest-risk period for diet non-adherence due to social pressure (wanting to eat what peers eat); acknowledge this directly rather than only lecturing about compliance, and involve the adolescent in problem-solving around school lunches, parties, and eating out</li>
-        </ul>
-      </div>
-    </div>
-
-    <h4>Self-Care Strategies</h4>
-    <div class="selfcare-box">
-      <span class="label">Ongoing family/patient management</span>
-      <ul>
-        <li>Keep a running food/phenylalanine log if directed by the metabolic dietitian</li>
-        <li>Read every food label before introducing a new product — formulations change</li>
-        <li>Maintain a supply of approved low-protein specialty foods and medical formula</li>
-        <li>Attend all scheduled phenylalanine level checks — frequency is higher in infancy and decreases with age but never stops entirely</li>
-        <li>Plan ahead for school lunches, parties, and travel to avoid accidental high-phenylalanine intake</li>
-        <li>For adolescent/adult females: plan pregnancies in coordination with the metabolic team to ensure strict dietary control before conception</li>
-      </ul>
-    </div>
-
-    <div class="ncjmm-box">
-      <span class="step">Evaluate Outcomes →</span> Teaching is successful when the family can state: "we avoid high-protein foods and aspartame," "diet is the primary treatment," and "follow-up appointments matter" — these are the exact statements Saunders uses to test understanding in its evaluate-outcomes item.
-    </div>
-
-    <p class="source-tag">Source: Saunders 9th ed., Ch. 33 "Metabolic and Endocrine Problems," PKU section, including the Evaluate Outcomes clinical judgment box. Cross-referenced with Unit 9 lecture slide 10 (PAH deficiency terminology, no-S/S-at-birth point, no-prevention point).</p>
-  </div>
+<h4>Signs &amp; Symptoms</h4>
+<div class="findings-grid">
+<div class="expected">
+<span class="label">In all children (untreated, over time)</span>
+<ul>
+<li>Digestive problems, vomiting</li>
+<li>Seizures</li>
+<li>Musty odor of urine</li>
+<li>Developmental delays</li>
+<li>Intellectual disability if untreated</li>
+</ul>
 </div>
+<div class="unexpected">
+<span class="label">Older children if undiagnosed/untreated</span>
+<ul>
+<li>Eczema</li>
+<li>Hypertonia</li>
+<li>Hypopigmentation of hair, skin, irises</li>
+<li>Behavioral abnormalities — hyperactivity, bizarre/schizoid behavior</li>
+</ul>
+</div>
+</div>
+<div class="mnemonic">
+<strong>Musty urine + fair skin/hair/eyes that don't match family coloring + developmental concerns</strong> → think PKU. The classic clue combination on NCLEX questions.
+    </div>
+<h4>Complications</h4>
+<ul>
+<li><strong>Irreversible intellectual disability</strong> if phenylalanine restriction is not maintained — the central risk</li>
+<li>Seizures</li>
+<li>Behavioral and psychiatric symptoms if diet is not followed</li>
+<li>Maternal PKU syndrome risk: if a woman with PKU does not follow the diet during her own pregnancy (regardless of the fetus's genotype), her elevated phenylalanine can cause fetal intellectual disability, microcephaly, and congenital heart defects — an important teaching point for adolescent females with PKU</li>
+</ul>
+<h4>Labs &amp; Diagnostics</h4>
+<table class="lab-table">
+<tr><th>Test</th><th class="hi">Expected (Normal)</th><th class="hi">Unexpected (PKU)</th></tr>
+<tr><td>Serum phenylalanine</td><td>0–2 mg/dL (0–121 mcmol/L)</td><td>&gt; 20 mg/dL (1210 mcmol/L)</td></tr>
+<tr><td>Newborn screen timing</td><td>After feeding has started (formula or breast milk)</td><td>Rescreen by 14 days of age if initial screen was done before 24 hours of life</td></tr>
+</table>
+<p><strong>Diagnostic method, per lecture:</strong> confirmed via the standard <strong>metabolic newborn screening</strong> panel — same screening blood spot used for congenital hypothyroidism and other inborn errors of metabolism. <span class="lecture-tag">Lecture</span></p>
+<div class="call-provider">
+<span class="label">Notify the Provider If</span>
+<ul>
+<li>Initial newborn screen is positive — repeat testing and further diagnostic evaluation must be arranged promptly</li>
+<li>A diagnosed child shows new seizure activity, behavioral changes, or developmental regression (possible diet non-adherence)</li>
+</ul>
+</div>
+<h4>Priority Nursing Interventions — Acuity Order</h4>
+<ol class="priority-steps">
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Ensure universal newborn screening is completed — the infant must have started formula or breast milk feeding before specimen collection (protein intake is required to unmask the defect on the test).
+      <span class="why">Why: Missing or mistiming this screen delays diagnosis, and every week of delayed dietary treatment adds cumulative, irreversible neurologic risk.</span></li>
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>If initial screening is positive, arrange repeat testing and further diagnostic evaluation; rescreen by 14 days of age if the first screen was done before 24 hours of life.</li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>If confirmed, immediately restrict phenylalanine intake and begin monitoring physical, neurological, and intellectual development.</li>
+</ol>
+<h4>Treatment — Dietary Management</h4>
+<div class="alert-box">
+<span class="label">The treatment IS the diet</span>
+      There is no drug cure — dietary phenylalanine restriction is the primary, lifelong treatment. Your instructor's slides summarize this simply as a <strong>"phenylalanine-free diet"</strong> that eliminates proteins — the detailed food breakdown below from Saunders gives you the specifics behind that summary. <span class="lecture-tag">Lecture</span>
+</div>
+<h4>Foods Patients Can and Cannot Eat <span class="lecture-tag">Lecture</span></h4>
+<p>Phe = phenylalanine, the amino acid that must be restricted.</p>
+<div class="food-grid">
+<div class="food-ok">
+<span class="label">Can Eat in Moderation</span>
+<ul>
+<li><strong>Fruits and vegetables</strong> naturally low in Phe: apples, bananas, berries, cabbage, carrots, tomatoes</li>
+<li><strong>Low-protein foods:</strong> low-protein bread and pasta, cornstarch, tapioca, arrowroot</li>
+<li><strong>Fats:</strong> butter, margarine, vegetable oil, coconut oil, ghee</li>
+<li><strong>Sweeteners:</strong> sugar, honey, maple syrup, molasses</li>
+<li><strong>Drinks:</strong> coffee, green or black tea, fruit juice</li>
+<li>Medical foods, shakes, and powders specifically designed for PKU</li>
+</ul>
+</div>
+<div class="food-avoid">
+<span class="label">Must Avoid</span>
+<ul>
+<li><strong>High-protein foods:</strong> meat, fish, poultry, eggs, beans, nuts</li>
+<li><strong>Dairy</strong> (milk, cheese, yogurt)</li>
+<li><strong>Certain grains:</strong> wheat, oats, rye, barley, quinoa</li>
+<li><strong>Foods and drinks containing aspartame</strong> — a hidden Phe source in many "diet" or "sugar-free" products; label-reading is essential</li>
+</ul>
+</div>
+</div>
+<p class="source-tag">Exact allowable phenylalanine gram amounts are individualized by the metabolic dietitian based on age, growth, and lab trends — this list reflects general categories confirmed directly by your instructor's lecture, not a prescriptive meal plan.</p>
+<h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">Parent / Caregiver Education</span>
+<ul>
+<li>Correct diet is the primary treatment — this is lifelong, not a temporary intervention</li>
+<li>Specifically teach: avoid meats/dairy/eggs (high phenylalanine) and aspartame-containing products; cereals/pasta/rice/fruits/vegetables in appropriate amounts are the foundation</li>
+<li>Teach careful food label reading — phenylalanine and aspartame can appear in unexpected processed foods</li>
+<li>Stress consistent follow-up appointments to monitor phenylalanine levels and developmental progress</li>
+<li>Encourage parents to express feelings about the diagnosis; discuss autosomal recessive inheritance and recurrence risk in future pregnancies — refer for genetic counseling</li>
+<li>Educate on special low-phenylalanine formula use; connect family with social services for the financial burden of specialized formula and foods, which are often not fully covered by insurance</li>
+<li><strong>If the child is or will become a female of childbearing age:</strong> she will need to understand maternal PKU risk and the importance of resuming/maintaining strict dietary control before and during any future pregnancy</li>
+</ul>
+</div>
+<div class="edu-child">
+<span class="label">Pediatric / Child-Directed Education</span>
+<span class="dev-tag">Lifelong condition — education evolves from caregiver-only to increasing child self-management with age</span>
+<ul>
+<li><strong>Toddler/preschool (preoperational, 2–7 yrs):</strong> education is caregiver-directed; begin very simple concrete language around "safe foods" vs. "foods that aren't safe for your body" as the child starts to eat independently</li>
+<li><strong>School-age (concrete operational, 7–11 yrs):</strong> can begin learning to read simple food labels and identify safe snacks with supervision; use concrete tools like color-coded food lists or picture charts rather than abstract explanations of phenylalanine metabolism</li>
+<li><strong>Adolescent (formal operational, 11+ yrs):</strong> can understand the metabolic rationale behind the diet and increasingly manage their own choices — this is also the highest-risk period for diet non-adherence due to social pressure (wanting to eat what peers eat); acknowledge this directly rather than only lecturing about compliance, and involve the adolescent in problem-solving around school lunches, parties, and eating out</li>
+</ul>
+</div>
+</div>
+<h4>Self-Care Strategies</h4>
+<div class="selfcare-box">
+<span class="label">Ongoing family/patient management</span>
+<ul>
+<li>Keep a running food/phenylalanine log if directed by the metabolic dietitian</li>
+<li>Read every food label before introducing a new product — formulations change</li>
+<li>Maintain a supply of approved low-protein specialty foods and medical formula</li>
+<li>Attend all scheduled phenylalanine level checks — frequency is higher in infancy and decreases with age but never stops entirely</li>
+<li>Plan ahead for school lunches, parties, and travel to avoid accidental high-phenylalanine intake</li>
+<li>For adolescent/adult females: plan pregnancies in coordination with the metabolic team to ensure strict dietary control before conception</li>
+</ul>
+</div>
+<div class="ncjmm-box">
+<span class="step">Evaluate Outcomes →</span> Teaching is successful when the family can state: "we avoid high-protein foods and aspartame," "diet is the primary treatment," and "follow-up appointments matter" — these are the exact statements Saunders uses to test understanding in its evaluate-outcomes item.
+    </div>
+<p class="source-tag">Source: Saunders 9th ed., Ch. 33 "Metabolic and Endocrine Problems," PKU section, including the Evaluate Outcomes clinical judgment box. Cross-referenced with Unit 9 lecture slide 10 (PAH deficiency terminology, no-S/S-at-birth point, no-prevention point).</p>
+</div>
+</details>
 </section>
-
 <!-- ========================= MED MATH ========================= -->
 <section class="unit-block" id="calc">
 <h2 class="section-title">Medication Math You Must Be Able to Do Cold</h2>
 <div class="calc-box">
-  <strong>DKA Insulin Drip Rate</strong>
-  <div class="formula">Regular insulin IV infusion = 0.1 units/kg/hr</div>
-  <p>Example: 30 kg child → 0.1 × 30 = <strong>3 units/hr</strong> continuous IV regular insulin.</p>
-  <p>Remember: insulin starts <em>after</em> the initial fluid bolus, not simultaneously — glucose falls rapidly once volume is restored.</p>
+<strong>DKA Insulin Drip Rate</strong>
+<div class="formula">Regular insulin IV infusion = 0.1 units/kg/hr</div>
+<p>Example: 30 kg child → 0.1 × 30 = <strong>3 units/hr</strong> continuous IV regular insulin.</p>
+<p>Remember: insulin starts <em>after</em> the initial fluid bolus, not simultaneously — glucose falls rapidly once volume is restored.</p>
 </div>
 <div class="calc-box">
-  <strong>Expected Glucose Correction Rate in DKA</strong>
-  <div class="formula">Target decline: 50–100 mg/dL per hour</div>
-  <p>Add dextrose to IV fluids once glucose falls to 250–300 mg/dL, while continuing insulin — goal is resolving acidosis, not just normalizing the number. Maintain glucose 120–240 mg/dL during this phase.</p>
+<strong>Expected Glucose Correction Rate in DKA</strong>
+<div class="formula">Target decline: 50–100 mg/dL per hour</div>
+<p>Add dextrose to IV fluids once glucose falls to 250–300 mg/dL, while continuing insulin — goal is resolving acidosis, not just normalizing the number. Maintain glucose 120–240 mg/dL during this phase.</p>
 </div>
 <div class="calc-box">
-  <strong>Decimal-point safety habit (applies to insulin too)</strong>
-  <p><strong>0.1 mg is 10x the dose of 0.01 mg.</strong> Always have insulin doses independently double-checked — a decimal error here is catastrophic given insulin's narrow safety margin.</p>
+<strong>Decimal-point safety habit (applies to insulin too)</strong>
+<p><strong>0.1 mg is 10x the dose of 0.01 mg.</strong> Always have insulin doses independently double-checked — a decimal error here is catastrophic given insulin's narrow safety margin.</p>
 </div>
 </section>
 
 </main>
-
 <footer>
   Built from Perry et al., <em>Maternal Child Nursing Care</em> 7th ed. (Ch. 47, Ch. 25/46, Ch. 28/34/35 growth &amp; development) · Saunders NCLEX Pediatric 9th ed. (Ch. 33) · Abrams' <em>Clinical Drug Therapy</em> (Ch. 42) · Unit 9 instructor lecture slides ("Caring for the Child with an Endocrine Condition," student deck) · NSG 3600 Syllabus v8.9 — all content grounded in Galen College of Nursing project materials and your uploaded course files. Content sourced from the lecture deck is marked <span class="lecture-tag">Lecture</span> throughout so you can tell textbook-grounded vs. instructor-added material apart. Verify against live class discussion; textbook page ranges reflect syllabus-assigned readings only. Dietary lists reflect general categories — individualized meal planning should always involve the metabolic dietitian/care team.
 </footer>
-
 </body>
 </html>
