@@ -185,8 +185,11 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 <nav class="tabs" id="tabs">
   <button class="active" data-tab="overview"><i class="ti ti-layout-grid"></i>Overview</button>
   <button data-tab="u9-adapt"><i class="ti ti-lungs"></i>Transition</button>
-  <button data-tab="u9-assess"><i class="ti ti-clipboard-check"></i>Assessment</button>
-  <button data-tab="u9-care"><i class="ti ti-heart-handshake"></i>Immediate Care</button>
+  <button data-tab="u9-assess"><i class="ti ti-clipboard-check"></i>Vitals &amp; Scoring</button>
+  <button data-tab="u9-assess2"><i class="ti ti-stethoscope"></i>Head-to-Toe Exam</button>
+  <button data-tab="u9-resus"><i class="ti ti-first-aid-kit"></i>Resuscitation</button>
+  <button data-tab="u9-feedmeds"><i class="ti ti-pill"></i>Feeding &amp; Meds</button>
+  <button data-tab="u9-attach"><i class="ti ti-heart"></i>Attachment &amp; Discharge</button>
   <button data-tab="u9-pain"><i class="ti ti-injection"></i>Pain &amp; Circumcision</button>
   <button data-tab="u9-conditions"><i class="ti ti-droplet"></i>Newborn Conditions</button>
   <button data-tab="compare"><i class="ti ti-columns-3"></i>Compare</button>
@@ -228,8 +231,11 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-bolt"></i>Quick Jump</h2>
   <div class="toc-grid">
     <div class="toc-item" data-jump="u9-adapt"><i class="ti ti-lungs"></i>Transition + CaMeTS</div>
-    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Respiratory, Apgar, Ballard, Head-to-Toe</div>
-    <div class="toc-item" data-jump="u9-care"><i class="ti ti-heart-handshake"></i>Vit K, Thermoreg, Feeding</div>
+    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Respiratory, Apgar, Ballard</div>
+    <div class="toc-item" data-jump="u9-assess2"><i class="ti ti-stethoscope"></i>Head-to-Toe Exam (HEENT, MSK, GI, GU, CV)</div>
+    <div class="toc-item" data-jump="u9-resus"><i class="ti ti-first-aid-kit"></i>Resuscitation + Thermoreg</div>
+    <div class="toc-item" data-jump="u9-feedmeds"><i class="ti ti-pill"></i>Vit K, Erythromycin, Feeding, HepB/HBIG</div>
+    <div class="toc-item" data-jump="u9-attach"><i class="ti ti-heart"></i>Attachment + Screening + Discharge</div>
     <div class="toc-item" data-jump="u9-pain"><i class="ti ti-injection"></i>Pain + Circumcision</div>
     <div class="toc-item" data-jump="u9-conditions"><i class="ti ti-droplet"></i>Jaundice, Hypoglycemia, Hypocalcemia</div>
     <div class="toc-item" data-jump="quiz"><i class="ti ti-checkbox"></i>Practice Questions</div>
@@ -314,13 +320,54 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-arrows-shuffle"></i></span><span>Three Stages of Transition</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-    <p style="font-size:13px; color:var(--sub);">Occur over the first 6-8 hours after birth, mediated by the sympathetic nervous system.</p>
-    <ul>
-      <li><b>1st Period of Reactivity</b> (birth &ndash; 30 min): HR rapidly rises to 160-180, falls to baseline 100-120. RR irregular 60-80. Fine crackles, possible grunting/nasal flaring/retractions (should resolve within 1st hour).</li>
-      <li><b>Period of Decreased Responsiveness</b> (60-100 min): Infant sleeps or has &darr; motor activity. Pink, RR up to 60.</li>
-      <li><b>2nd Period of Reactivity</b> (2-8 hrs post-birth): Brief tachycardia/tachypnea, &uarr; muscle tone, mucus production. Meconium commonly passed. Very preterm infants do not experience this stage.</li>
-    </ul>
-  </div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Overview &amp; significance</div><p>The major adaptations from intrauterine to extrauterine life occur during the first <b>6-8 hours after birth</b>, following a predictable sequence first described by Desmond, Rudolph, and Phitaksphraiwan (1966) that is still considered valid today. This sequence is mediated by the <b>sympathetic nervous system</b> and produces changes in heart rate, respirations, temperature, and GI function. <b>This entire window represents a period of vulnerability</b> &mdash; nurses must know what's normal at each stage in order to recognize what's abnormal and warrants intervention.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Stage</th><th>Timing</th><th>Cardiorespiratory Findings</th><th>Behavior &amp; Other Findings</th></tr>
+        <tr><td><b>1st Period of Reactivity</b></td><td>Birth &ndash; ~30 min</td><td>HR rapidly rises to <b>160-180 bpm</b>, then gradually falls after ~30 min to a baseline of <b>100-120 bpm</b>. RR irregular, <b>60-80/min</b>. Fine crackles audible. Grunting, nasal flaring, and chest retractions can be present but <b>should cease within the first hour</b></td><td>Infant is alert, active, and energetically exploring the environment. Spontaneous startles, tremors, crying, and side-to-side head movement are common. Bowel sounds audible; meconium may be passed. <b>Rooting, sucking, and lip-smacking often appear here</b> &mdash; this is the prime window to initiate breastfeeding</td></tr>
+        <tr><td><b>Period of Decreased Responsiveness</b> (sleep phase)</td><td>~60-100 min (may last a few minutes up to 2-4 hrs)</td><td>RR rapid (up to 60/min), shallow, but <b>unlabored</b>. Central perfusion/coloring should be excellent; acrocyanosis is not unusual. HR and respirations return to normal baseline</td><td>Infant sleeps or shows markedly decreased motor activity; difficult to arouse. This is a genuine recovery/rest period from the stress of birth &mdash; not a sign anything is wrong. Bowel sounds audible, peristaltic waves may be visible over the rounded abdomen</td></tr>
+        <tr><td><b>2nd Period of Reactivity</b></td><td>~2-8 hrs after birth; lasts 10 min to several hours</td><td>Brief periods of <b>tachycardia and tachypnea</b>. Rapid, labile changes in color and muscle tone can occur as the infant becomes more responsive to stimuli</td><td>Infant awakens and becomes alert again. Increased muscle tone, mucus production, and meconium passage are common here. <b>Most healthy newborns experience this stage regardless of gestational age or birth type &mdash; but very preterm infants do NOT, due to physiologic immaturity</b></td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Nursing implication: increased vigilance during the 2nd period</b></span>Because the heart rate can become labile with brief tachycardia/tachypnea during the 2nd period of reactivity, the nurse must be able to distinguish this <b>expected physiologic lability</b> from true developing distress. Rapid color/tone changes alone, without other red flags (central cyanosis, true apnea, worsening retractions), are consistent with normal transition at this stage.</span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Clinical/teaching application</b></span><ol>
+        <li>Use the <b>1st period of reactivity</b> as the priority window to initiate breastfeeding &mdash; the infant is alert and showing feeding-readiness cues (rooting, sucking) right when a mother is often also most alert following delivery.</li>
+        <li>Do NOT interpret the <b>period of decreased responsiveness</b> as lethargy or a concerning finding &mdash; a normal, difficult-to-arouse sleep state at this specific timepoint is expected, not a red flag on its own.</li>
+        <li>During the <b>2nd period of reactivity</b>, anticipate and watch for meconium passage and transient vital sign swings; use this window to complete any remaining assessments while the infant is naturally more alert again.</li>
+        <li>Remember that a <b>very preterm infant will not show a typical 2nd period of reactivity</b> &mdash; its absence in an extremely preterm infant is expected due to immaturity, not itself a warning sign, but should be interpreted in the context of the infant's overall gestational age.</li>
+      </ol></span></div>
+
+      <div class="field"><div class="field-label">Behavioral states underlying these stages</div><p>Newborn behavior fluctuates through six recognized states, and understanding them helps explain what's happening during each transition stage:</p>
+      <ul>
+        <li><b>Deep/quiet sleep:</b> eyes closed, no eye movement, regular/even breathing; difficult to arouse, delayed response to stimuli</li>
+        <li><b>Active REM sleep:</b> irregular respirations, REM visible through closed eyelids, irregular sucking motions; minimal activity but stimuli can trigger a startle/state change</li>
+        <li><b>Drowsy:</b> transitional between sleep and awake; fluttering eyelids, semi-dozing appearance, slow extremity movement; delayed response to stimuli</li>
+        <li><b>Quiet alert:</b> infant fixates/follows faces or objects, intense gaze &mdash; <b>the optimal time to feed and to promote bonding</b></li>
+        <li><b>Active alert:</b> eyes open but less fixated, intense motor activity, thrusting limb movements; environmental stimuli increase activity further</li>
+        <li><b>Crying:</b> often follows active alert when needs go unmet; jerky motor movements with intense, continuous crying</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label">Signs of stability/engagement vs. distress/disengagement</div>
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Stability / Engagement Cues</th><th>Distress / Disengagement Cues</th></tr>
+        <tr><td>Alertness, eye-to-eye contact, facial gaze</td><td>Facial grimace or worried expression</td></tr>
+        <tr><td>Smiling, vocalization</td><td>Splaying of fingers</td></tr>
+        <tr><td>Smooth movements, flexion of arms/legs</td><td>Gaze aversion, staring</td></tr>
+        <tr><td>&mdash;</td><td>Regurgitation or vomiting</td></tr>
+        <tr><td>&mdash;</td><td>Jitteriness</td></tr>
+      </table>
+      </div>
+      <p style="font-size:13px; color:var(--sub); margin-top:6px;">Infants also use purposeful self-regulating behaviors to manage overstimulation: increasing physical distance, pushing away with hands/feet, breaking eye contact/falling asleep, or signaling via fussing/crying. Preterm infants have much more difficulty with this self-regulation and become overstimulated/autonomically unstable more easily than term infants.</p></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Right after birth, your baby will likely be very alert for about the first 30 minutes &mdash; this is a great time to start breastfeeding if that's your plan, since your baby may show rooting and sucking cues. After that, your baby will likely fall into a deep sleep that's hard to wake from &mdash; this is normal recovery from birth, not a concern. A few hours later, your baby often wakes up alert again and may pass their first stool.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Know that newborns move through predictable alert and sleep phases in the first several hours &mdash; a hard-to-wake sleep period an hour or so after birth is expected, not worrisome. The "quiet alert" state, when baby is calm with eyes open and focused, is the best time for feeding and bonding interactions.</div>
+      </div>
+    </div>
   </div>
 
   <div class="cond">
@@ -364,9 +411,9 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 
 <!-- ASSESSMENT -->
 <div class="panel" id="u9-assess">
-  <h2 class="section-title"><i class="ti ti-clipboard-check"></i>Newborn Assessment</h2>
+  <h2 class="section-title"><i class="ti ti-clipboard-check"></i>Newborn Assessment: Vitals &amp; Scoring</h2>
   <div class="uslo-tag">USLO 4</div>
-  <p class="lead">Respiratory (priority #1 per NCJMM and the CPE checklist), Apgar, New Ballard gestational age scoring, growth classification, vital sign parameters with causes of deviation, and full head-to-toe assessment (integumentary/head, HEENT, musculoskeletal/reflexes/hips, GI, GU, cardiovascular/peripheral vascular) with expected vs. unexpected findings, plus required discharge education content.</p>
+  <p class="lead">Respiratory (priority #1 per NCJMM and the CPE checklist), chest, Apgar, New Ballard gestational age scoring, growth classification, and vital sign parameters with causes of deviation. See the Head-to-Toe Systems tab for integumentary, HEENT, musculoskeletal, GI, GU, and cardiovascular exam findings.</p>
 
   <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-lungs"></i></span><span>Respiratory Assessment (Priority #1)</span></div><span class="arrow">&#9656;</span></div>
@@ -558,7 +605,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
         <tr><td><b>Respirations</b> (full 60 sec, observe abdominal movement)</td><td class="normal">30-60/min; shallow, irregular; periodic breathing pauses &lt;20 sec are normal</td><td class="abnormal">Tachypnea, persistent &gt;60/min</td><td>RDS, TTN, congenital diaphragmatic hernia, sepsis. <b>Withhold oral feeding if RR &gt;60</b> &mdash; aspiration risk</td></tr>
         <tr><td></td><td></td><td class="abnormal">Bradypnea &lt;30/min</td><td>Maternal narcosis from analgesics/anesthesia, birth trauma</td></tr>
         <tr><td></td><td></td><td class="abnormal">Apnea &gt;20 sec, or any duration with cyanosis/bradycardia</td><td>True apnea (vs. normal periodic breathing, which self-resolves in &lt;20 sec) &mdash; requires prompt evaluation</td></tr>
-        <tr><td><b>Blood pressure</b> (not routine unless cardiac concern)</td><td class="normal">~60-80/40-50 mmHg at birth</td><td class="abnormal">Difference between upper/lower extremities</td><td>Coarctation of the aorta</td></tr>
+        <tr><td><b>Blood pressure</b> (not routine unless cardiac concern)</td><td class="normal">~60-80/40-50 mmHg at birth</td><td class="abnormal">Systolic difference &gt;15-20 mmHg between upper and lower extremities</td><td>Coarctation of the aorta</td></tr>
         <tr><td></td><td></td><td class="abnormal">Hypotension</td><td>Sepsis, hypovolemia</td></tr>
         <tr><td></td><td></td><td class="abnormal">Hypertension</td><td>Coarctation of the aorta, renal involvement, thrombus</td></tr>
         <tr><td><b>Weight</b></td><td class="normal">Female term ~3400g (7.5 lb); Male term ~3500g (7.7 lb); range 2700-4000g (6-9 lb); acceptable loss 5-10% in first 3-5 days, regained by 2 weeks</td><td class="abnormal">&le;2700g</td><td>Preterm, SGA, congenital rubella syndrome</td></tr>
@@ -569,6 +616,26 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
         <tr><td></td><td></td><td class="abnormal">Large (macrocephaly)</td><td>Hydrocephalus, familial variant</td></tr>
       </table>
       </div>
+
+      <div class="field"><div class="field-label">Blood pressure &mdash; full technique and trend (not routinely measured in a healthy term infant)</div>
+      <p>BP is <b>not routinely assessed</b> in a normal, low-risk term newborn with no signs for concern &mdash; it becomes a priority measurement specifically for high-risk infants (where it's an indicator of fluid status, cardiovascular perfusion, endocrine function, and overall disease severity, e.g., sepsis) or when a murmur is auscultated.</p>
+      <ul>
+        <li><b>Cuff selection:</b> width should be approximately <b>0.5 (50%) of the extremity's circumference</b>, or a width-to-limb ratio of 0.45-0.70; many neonatal cuffs print the correct circumference range directly on the cuff. A cuff that's too narrow gives a falsely HIGH reading; too wide gives a falsely LOW reading.</li>
+        <li><b>Site:</b> right arm is standard unless contraindicated; the calf may be used in the first few days of life. Never place the cuff over an IV site, broken skin, or a joint.</li>
+        <li><b>Technique:</b> take the reading while the infant is at rest, ideally asleep or calmed with a pacifier &mdash; activity and crying can raise readings by 10-20 mmHg. An oscillometric monitor calibrated specifically for neonatal pressures is preferred over manual auscultation.</li>
+        <li><b>Normal expected trend over time:</b> BP is usually highest immediately after birth, <b>decreases over the next 3 hours</b> (a drop of roughly 15 mmHg systolic in the first hour is common), then rises steadily until reaching a plateau around <b>4-6 days</b> after birth.</li>
+      </ul>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Timepoint</th><th>Expected Systolic/Diastolic (mmHg)</th></tr>
+        <tr><td>At birth</td><td class="normal">75-95/37-55 (approximate ranges vary by source; ~60-80/40-50 is also commonly cited)</td></tr>
+        <tr><td>12 hours</td><td class="normal">50-70/25-45</td></tr>
+        <tr><td>96 hours</td><td class="normal">60-90/20-60</td></tr>
+        <tr><td>2 weeks</td><td class="normal">68-88/40-60</td></tr>
+      </table>
+      </div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Four-extremity BP and pulse pressure pearls</b></span>BP is normally slightly HIGHER in the lower extremities than the upper. If a murmur is heard, obtain four-extremity blood pressures: a systolic difference of <b>15-20 mmHg or more (upper &gt; lower)</b> suggests coarctation of the aorta. A <b>wide pulse pressure</b> can indicate a patent ductus arteriosus, AV malformation, or truncus arteriosus; a <b>narrowed pulse pressure</b> can indicate peripheral vasoconstriction or cardiac failure. As a rule of thumb, mean arterial pressure (MAP) should roughly equal the infant's gestational age in weeks (e.g., a 40-week infant should have a MAP of at least 40).</span></div>
+      </div>
       <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Safety alert</b></span>Rectal temperatures should NOT be routinely performed on a newborn due to perforation risk and vagal stimulation. Temporal and tympanic thermometers are not effective for newborns &mdash; axillary is the site of choice.</span></div>
       <div class="field"><div class="field-label">Additional expected findings</div><ul>
         <li><b>Sleep:</b> 16-18 hrs/day; approximately 50% REM sleep</li>
@@ -577,6 +644,13 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       </ul></div>
     </div>
   </div>
+</div>
+
+<!-- ASSESSMENT: HEAD-TO-TOE SYSTEMS -->
+<div class="panel" id="u9-assess2">
+  <h2 class="section-title"><i class="ti ti-stethoscope"></i>Newborn Assessment: Head-to-Toe Systems</h2>
+  <div class="uslo-tag">USLO 4</div>
+  <p class="lead">Full system-by-system exam: integumentary/head, HEENT, musculoskeletal/reflexes/hips, GI, GU, cardiovascular/peripheral vascular, plus required discharge education. See the Vitals &amp; Scoring tab for respiratory, chest, Apgar, Ballard, growth, and normal parameters.</p>
 
   <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-fingerprint"></i></span><span>Integumentary &amp; Head Findings</span></div><span class="arrow">&#9656;</span></div>
@@ -903,12 +977,12 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 </div>
 
 <!-- IMMEDIATE CARE -->
-<div class="panel" id="u9-care">
-  <h2 class="section-title"><i class="ti ti-heart-handshake"></i>Immediate &amp; Ongoing Newborn Care</h2>
+<div class="panel" id="u9-resus">
+  <h2 class="section-title"><i class="ti ti-first-aid-kit"></i>Resuscitation &amp; Stabilization</h2>
   <div class="uslo-tag">USLO 4</div><div class="uslo-tag">USLO 5</div>
-  <p class="lead">First 2 hours of life, thermoregulation, feeding, discharge prep.</p>
+  <p class="lead">The resuscitation sequence, airway/bulb syringe technique, priority ordering for the first 2 hours of life, thermoregulation, and hepatic/immune function.</p>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-first-aid-kit"></i></span><span>Newborn Resuscitation Sequence</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>The sequence:</b> Stimulate &rarr; Warm &rarr; Dry &rarr; Position &rarr; Suction &rarr; Oxygen &rarr; Bag-mask ventilation &rarr; Intubation &rarr; Chest compressions &rarr; Medications</span></div>
@@ -936,7 +1010,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-wind"></i></span><span>Airway Maintenance &amp; Bulb Syringe Technique</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Normal airway clearance</div><p>A healthy term infant born vaginally usually clears the airway on their own &mdash; gravity and the cough reflex move most secretions to the oropharynx to be drained, swallowed, or wiped away.</p></div>
@@ -955,7 +1029,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-clock-hour-2"></i></span><span>First 2 Hours of Life &mdash; True Acuity Order</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
     <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Ranked by what would kill/harm the infant fastest if missed</b></span><ol>
@@ -968,6 +1042,48 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </ol></span></div>
   </div>
   </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-temperature"></i></span><span>Thermoregulation</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <p><b>Cold stress increases oxygen and glucose needs</b> &mdash; this is why thermoregulation ranks high in priority order: a cold-stressed newborn can develop respiratory distress and hypoglycemia as secondary effects.</p>
+    <div class="tbl-wrap">
+    <table class="compare">
+      <tr><th>Preventing Heat Loss</th><th>Cold-Stressed Newborn</th></tr>
+      <tr><td>Dry and stimulate immediately after birth</td><td>Place under radiant warmer</td></tr>
+      <tr><td>Place a hat on the newborn's head</td><td>Check blood glucose level</td></tr>
+      <tr><td>Encourage skin-to-skin contact</td><td>Monitor for signs of respiratory distress</td></tr>
+      <tr><td>Maintain a neutral thermal environment</td><td>Rewarm gradually &mdash; not on max warmer setting (rapid rewarming can cause apnea/hypotension)</td></tr>
+    </table>
+    </div>
+    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+      <li>Axillary temp &lt;97.7&deg;F (36.5&deg;C) despite active warming measures</li>
+      <li>Temp &gt;99.5&deg;F (37.5&deg;C)</li>
+      <li>Temperature instability accompanied by feeding intolerance or lethargy (possible sepsis presentation, not just cold stress)</li>
+    </ul></span></div>
+  </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--green)"><i class="ti ti-shield"></i></span><span>Hepatic &amp; Immune System Function</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Hepatic system</div><ul><li>Iron storage (up to 5 months)</li><li>Coagulation factor production</li><li>Bilirubin processing &rarr; risk for jaundice</li></ul></div>
+      <div class="field"><div class="field-label">Immunoglobulins</div><ul>
+        <li><b>IgG:</b> crosses placenta; passive immunity for first 3 months; adult levels by 4-6 yrs</li>
+        <li><b>IgM:</b> low at birth (&lt;10% adult); major Ig in first month</li>
+        <li><b>IgA:</b> missing from mucosal tracts unless breastfed</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Infection risk factors</div><p>Prematurity (greatest risk), PROM, chorioamnionitis, maternal fever, antenatal/intrapartal asphyxia, invasive procedures</p></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Temperature instability (hypothermia more concerning than fever in a neonate), lethargy/poor feeding, apnea, tachypnea, grunting, pale/mottled skin &mdash; classic sepsis picture.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- FEEDING & MEDICATIONS -->
+<div class="panel" id="u9-feedmeds">
+  <h2 class="section-title"><i class="ti ti-pill"></i>Feeding &amp; Medications</h2>
+  <div class="uslo-tag">USLO 4</div>
+  <p class="lead">Vitamin K, erythromycin ophthalmic ointment, breastfeeding, formula feeding, Hepatitis B vaccine, and HBIG &mdash; the core prophylactic medications and feeding assessment for Unit 9.</p>
 
 <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-droplet"></i></span><span>Phytonadione (Vitamin K) &mdash; AquaMEPHYTON</span></div><span class="arrow">&#9656;</span></div>
@@ -1028,42 +1144,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-temperature"></i></span><span>Thermoregulation</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-    <p><b>Cold stress increases oxygen and glucose needs</b> &mdash; this is why thermoregulation ranks high in priority order: a cold-stressed newborn can develop respiratory distress and hypoglycemia as secondary effects.</p>
-    <div class="tbl-wrap">
-    <table class="compare">
-      <tr><th>Preventing Heat Loss</th><th>Cold-Stressed Newborn</th></tr>
-      <tr><td>Dry and stimulate immediately after birth</td><td>Place under radiant warmer</td></tr>
-      <tr><td>Place a hat on the newborn's head</td><td>Check blood glucose level</td></tr>
-      <tr><td>Encourage skin-to-skin contact</td><td>Monitor for signs of respiratory distress</td></tr>
-      <tr><td>Maintain a neutral thermal environment</td><td>Rewarm gradually &mdash; not on max warmer setting (rapid rewarming can cause apnea/hypotension)</td></tr>
-    </table>
-    </div>
-    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
-      <li>Axillary temp &lt;97.7&deg;F (36.5&deg;C) despite active warming measures</li>
-      <li>Temp &gt;99.5&deg;F (37.5&deg;C)</li>
-      <li>Temperature instability accompanied by feeding intolerance or lethargy (possible sepsis presentation, not just cold stress)</li>
-    </ul></span></div>
-  </div>
-  </div>
-
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--green)"><i class="ti ti-shield"></i></span><span>Hepatic &amp; Immune System Function</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-      <div class="field"><div class="field-label">Hepatic system</div><ul><li>Iron storage (up to 5 months)</li><li>Coagulation factor production</li><li>Bilirubin processing &rarr; risk for jaundice</li></ul></div>
-      <div class="field"><div class="field-label">Immunoglobulins</div><ul>
-        <li><b>IgG:</b> crosses placenta; passive immunity for first 3 months; adult levels by 4-6 yrs</li>
-        <li><b>IgM:</b> low at birth (&lt;10% adult); major Ig in first month</li>
-        <li><b>IgA:</b> missing from mucosal tracts unless breastfed</li>
-      </ul></div>
-      <div class="field"><div class="field-label">Infection risk factors</div><p>Prematurity (greatest risk), PROM, chorioamnionitis, maternal fever, antenatal/intrapartal asphyxia, invasive procedures</p></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Temperature instability (hypothermia more concerning than fever in a neonate), lethargy/poor feeding, apnea, tachypnea, grunting, pale/mottled skin &mdash; classic sepsis picture.</span></div>
-    </div>
-  </div>
-
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-bottle"></i></span><span>Newborn Feeding &mdash; Breastfeeding</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Feeding-readiness cues</div><ul>
@@ -1098,7 +1179,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-bottle"></i></span><span>Newborn Feeding &mdash; Formula &amp; General</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Formula feeding pattern</div><p>First 24-48 hrs: 15-30 mL per feeding. By end of week 2: 90-150 mL per feeding. Most newborns need <b>6-8 feedings/24 hrs</b>.</p></div>
@@ -1109,83 +1190,6 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
         <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Confirm which formula/dilution the family uses before preparing a bottle. Always test temperature on your wrist before feeding. Hold baby semi-upright, never prop the bottle and walk away, and burp halfway through and after the feeding.</div>
       </div>
     </div>
-  </div>
-
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-heart"></i></span><span>Fostering Early Infant Attachment</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-      <div class="field"><div class="field-label">Bonding vs. attachment &mdash; key distinction</div><p><b>Bonding</b> refers to the parent's early process of becoming acquainted with, identifying, and claiming the infant as a family member; it occurs through mutually satisfying experiences (e.g., a mother feeling her infant's grasp reflex). <b>Attachment</b> is the broader, ongoing tie that develops between parent and child over time through repeated positive interactions. The terms are often used interchangeably in practice, but bonding is the earlier/faster process and attachment is the durable relationship it builds toward.</p></div>
-      <div class="field"><div class="field-label">Key concepts from attachment theory</div><ul>
-        <li>There is no strict "critical period" that must occur in the first minutes/hours &mdash; human parents are adaptable, and attachment can still form successfully after separation (e.g., NICU admission), though early contact is beneficial when possible</li>
-        <li>For secure attachment, the parent must provide a "secure base" for exploration and a "safe haven" during distress &mdash; meaning consistent proximity and consistent response to the infant's cues</li>
-        <li>The "fantasy/dream child" imagined during pregnancy is compared, consciously or not, to the "real" infant at birth; how closely they match affects the bonding process</li>
-      </ul></div>
-      <div class="field"><div class="field-label">The en face position</div><p>Parent's face and infant's face are held approximately 8 inches apart, on the same plane, making direct eye contact. Parents instinctively move the infant into this position. This is one of the clearest observable bonding behaviors the nurse can assess for.</p></div>
-      <div class="field"><div class="field-label">Engrossment (paternal bonding)</div><p>New fathers/partners often show intense absorption and preoccupation with the newborn &mdash; prolonged gazing, described as almost trance-like. This is a recognized, healthy bonding behavior distinct from but parallel to maternal bonding.</p></div>
-      <div class="field"><div class="field-label">Progression of parental exploration behavior</div><p>Parents typically begin by examining fingertips, then explore the extremities, then view/stroke the trunk &mdash; progressing from fingertip touch to full palmar contact and holding. <b>Failure to progress past fingertip touch</b> is a facilitating-vs-inhibiting behavior the nurse should note.</p></div>
-
-      <div class="tbl-wrap">
-      <table class="compare">
-        <tr><th>Facilitating (Positive) Attachment Behaviors</th><th>Inhibiting (Concerning) Behaviors</th></tr>
-        <tr><td>Looks, gazes, assumes en face position, eye contact</td><td>Turns away from infant; ignores infant's presence</td></tr>
-        <tr><td>Hovers, maintains proximity, points to/directs attention to infant</td><td>Avoids infant; refuses to hold when given the opportunity</td></tr>
-        <tr><td>Identifies infant as a unique individual; claims infant as family member; names infant</td><td>Identifies infant with someone the parent dislikes; difficulty naming</td></tr>
-        <tr><td>Touch progresses from fingertip &rarr; fingers &rarr; palms &rarr; full holding</td><td>Fails to progress beyond fingertip touch</td></tr>
-        <tr><td>Smiles, talks/coos/sings to infant</td><td>Bland/frowning expression; hurries feeding; handles roughly</td></tr>
-        <tr><td>Expresses pride; interprets infant's needs sensitively</td><td>Expresses disappointment/displeasure; makes no effort to interpret needs</td></tr>
-      </table>
-      </div>
-
-      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing activities to foster attachment (USLO 5)</b></span><ol>
-        <li>Place the newborn skin-to-skin with the parent immediately after birth (delay unnecessary procedures like weighing/measuring to allow this).</li>
-        <li>Provide privacy and uninterrupted time for the family in the first hours after birth.</li>
-        <li>Encourage early breastfeeding initiation and eye contact within the first 30 minutes, when both mother and infant are typically most alert.</li>
-        <li>Support rooming-in and liberal visiting for partner/siblings/grandparents to maximize observation and bonding opportunities.</li>
-        <li>Teach parents to recognize infant behavioral cues (rooting, hand-to-mouth, crying types) and how to respond &mdash; this builds parental confidence and responsiveness, which strengthens attachment.</li>
-        <li>Discuss culture-based expressions of attachment with the family rather than assuming a single "normal" pattern &mdash; cultural variation is expected and should not be misread as poor bonding.</li>
-      </ol></span></div>
-      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Assessment caution</b></span>Attachment assessment relies on skillful observation and interviewing, not a checklist with concrete pass/fail criteria like a physical exam. Avoid premature judgments about "poor bonding" without considering fatigue, a long/difficult labor, sedation, cultural norms, or temporary separation &mdash; all of which can delay positive attachment behaviors without indicating a lasting problem.</span></div>
-      <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Bonding takes time and doesn't have to happen instantly &mdash; it's a process, not a single moment. Holding your baby skin-to-skin, making eye contact, and responding to their cues (crying, rooting) all build this relationship. It's normal to feel exhausted or unsure at first; this doesn't mean you're bonding "incorrectly."</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>You can support bonding too, even as a secondary caregiver &mdash; talk to and make eye contact with the baby during care, and follow the parents' cues about how they want you involved. Give the parents space for their own bonding time when possible.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-microscope"></i></span><span>Newborn Screening &amp; Diagnostics (Expanded)</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-    <ul>
-      <li><b>Universal newborn (metabolic/genetic) screening:</b> heel-stick blood spot on filter paper ("Guthrie card"); all circles must be filled completely for accurate lab processing</li>
-      <li><b>Bilirubin screening:</b> transcutaneous or serum, per hour-of-life nomogram</li>
-    </ul>
-    <div class="field-label" style="margin-top:8px;">Newborn hearing screening</div>
-    <ul>
-      <li><b>Evoked otoacoustic emissions (EOAE):</b> soft earpiece makes a clicking sound; a healthy ear "echoes" it back to a microphone in the earpiece</li>
-      <li><b>Auditory brainstem response (ABR):</b> sensors on forehead and behind each ear measure the acoustic nerve's response to sounds played through an earphone while the infant sleeps</li>
-      <li>Neither test diagnoses hearing loss definitively &mdash; both determine whether further audiologic evaluation is needed. If the infant doesn't pass initially, retest before discharge; if still not passing, refer for comprehensive audiologic evaluation by 3 months of age</li>
-    </ul>
-    <div class="field-label" style="margin-top:8px;">Critical Congenital Heart Disease (CCHD) screening</div>
-    <ul>
-      <li>Performed via pulse oximetry at <b>24-48 hours of age</b> &mdash; detects hypoxemia that may be the only sign of a critical heart defect before other symptoms appear</li>
-      <li>Oxygen saturation measured in the <b>right hand and one foot</b></li>
-      <li><b>Passing result:</b> SpO2 &gt;95% in both extremities AND &lt;3% absolute difference between them</li>
-      <li><b>Failing/concerning result:</b> SpO2 &lt;90% in either extremity (needs immediate evaluation), OR SpO2 90-95%, OR a &ge;3% difference between hand and foot &mdash; repeat up to 2 more times within the hour; if still concerning, obtain echocardiogram and cardiology evaluation</li>
-    </ul>
-    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>CCHD screen shows SpO2 &lt;90% on first attempt (immediate evaluation, don't wait to repeat); repeat screens remain in the concerning range after 3 attempts within the hour.</span></div>
-  </div>
-  </div>
-
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-home-check"></i></span><span>Discharge Preparation</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-    <ul>
-      <li>Car seat safety, umbilical cord care (keep clean/dry, fold diaper below stump)</li>
-      <li>Bathing, nonnutritive sucking</li>
-      <li>Infant follow-up care, CPR education, infant abduction prevention</li>
-      <li>Hepatitis B vaccination (first dose typically given before discharge) &mdash; see full medication cards below</li>
-    </ul>
-  </div>
   </div>
 
 <div class="cond">
@@ -1233,6 +1237,176 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
         <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby received two separate injections shortly after birth for hepatitis B protection &mdash; this is expected and appropriate given the mother's status; no cause for concern.</div>
       </div>
       <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> HBIG = passive/immediate/temporary protection. HBsAg-positive mother &rarr; baby gets HepB vaccine + HBIG, both within 12 hours, separate sites.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ATTACHMENT & DISCHARGE -->
+<div class="panel" id="u9-attach">
+  <h2 class="section-title"><i class="ti ti-heart"></i>Attachment &amp; Discharge</h2>
+  <div class="uslo-tag">USLO 5</div>
+  <p class="lead">Fostering early infant attachment, newborn screening/diagnostics, and discharge preparation.</p>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-heart"></i></span><span>Fostering Early Infant Attachment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Bonding vs. attachment &mdash; key distinction</div><p><b>Bonding</b> refers to the parent's early process of becoming acquainted with, identifying, and claiming the infant as a family member; it occurs through mutually satisfying experiences (e.g., a mother feeling her infant's grasp reflex). <b>Attachment</b> is the broader, ongoing tie that develops between parent and child over time through repeated positive interactions. The terms are often used interchangeably in practice, but bonding is the earlier/faster process and attachment is the durable relationship it builds toward.</p></div>
+      <div class="field"><div class="field-label">Key concepts from attachment theory</div><ul>
+        <li>There is no strict "critical period" that must occur in the first minutes/hours &mdash; human parents are adaptable, and attachment can still form successfully after separation (e.g., NICU admission), though early contact is beneficial when possible</li>
+        <li>For secure attachment, the parent must provide a "secure base" for exploration and a "safe haven" during distress &mdash; meaning consistent proximity and consistent response to the infant's cues</li>
+        <li>The "fantasy/dream child" imagined during pregnancy is compared, consciously or not, to the "real" infant at birth; how closely they match affects the bonding process</li>
+      </ul></div>
+      <div class="field"><div class="field-label">The en face position</div><p>Parent's face and infant's face are held approximately 8 inches apart, on the same plane, making direct eye contact. Parents instinctively move the infant into this position. This is one of the clearest observable bonding behaviors the nurse can assess for.</p></div>
+      <div class="field"><div class="field-label">Engrossment (paternal bonding)</div><p>New fathers/partners often show intense absorption and preoccupation with the newborn &mdash; prolonged gazing, described as almost trance-like. This is a recognized, healthy bonding behavior distinct from but parallel to maternal bonding.</p></div>
+      <div class="field"><div class="field-label">Progression of parental exploration behavior</div><p>Parents typically begin by examining fingertips, then explore the extremities, then view/stroke the trunk &mdash; progressing from fingertip touch to full palmar contact and holding. <b>Failure to progress past fingertip touch</b> is a facilitating-vs-inhibiting behavior the nurse should note.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Facilitating (Positive) Attachment Behaviors</th><th>Inhibiting (Concerning) Behaviors</th></tr>
+        <tr><td>Looks, gazes, assumes en face position, eye contact</td><td>Turns away from infant; ignores infant's presence</td></tr>
+        <tr><td>Hovers, maintains proximity, points to/directs attention to infant</td><td>Avoids infant; refuses to hold when given the opportunity</td></tr>
+        <tr><td>Identifies infant as a unique individual; claims infant as family member; names infant</td><td>Identifies infant with someone the parent dislikes; difficulty naming</td></tr>
+        <tr><td>Touch progresses from fingertip &rarr; fingers &rarr; palms &rarr; full holding</td><td>Fails to progress beyond fingertip touch</td></tr>
+        <tr><td>Smiles, talks/coos/sings to infant</td><td>Bland/frowning expression; hurries feeding; handles roughly</td></tr>
+        <tr><td>Expresses pride; interprets infant's needs sensitively</td><td>Expresses disappointment/displeasure; makes no effort to interpret needs</td></tr>
+      </table>
+      </div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing activities to foster attachment (USLO 5)</b></span><ol>
+        <li>Place the newborn skin-to-skin with the parent immediately after birth (delay unnecessary procedures like weighing/measuring to allow this).</li>
+        <li>Provide privacy and uninterrupted time for the family in the first hours after birth.</li>
+        <li>Encourage early breastfeeding initiation and eye contact within the first 30 minutes, when both mother and infant are typically most alert.</li>
+        <li>Support rooming-in and liberal visiting for partner/siblings/grandparents to maximize observation and bonding opportunities.</li>
+        <li>Teach parents to recognize infant behavioral cues (rooting, hand-to-mouth, crying types) and how to respond &mdash; this builds parental confidence and responsiveness, which strengthens attachment.</li>
+        <li>Discuss culture-based expressions of attachment with the family rather than assuming a single "normal" pattern &mdash; cultural variation is expected and should not be misread as poor bonding.</li>
+      </ol></span></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Assessment caution</b></span>Attachment assessment relies on skillful observation and interviewing, not a checklist with concrete pass/fail criteria like a physical exam. Avoid premature judgments about "poor bonding" without considering fatigue, a long/difficult labor, sedation, cultural norms, or temporary separation &mdash; all of which can delay positive attachment behaviors without indicating a lasting problem.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Bonding takes time and doesn't have to happen instantly &mdash; it's a process, not a single moment. Holding your baby skin-to-skin, making eye contact, and responding to their cues (crying, rooting) all build this relationship. It's normal to feel exhausted or unsure at first; this doesn't mean you're bonding "incorrectly."</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>You can support bonding too, even as a secondary caregiver &mdash; talk to and make eye contact with the baby during care, and follow the parents' cues about how they want you involved. Give the parents space for their own bonding time when possible.</div>
+      </div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-microscope"></i></span><span>Newborn Screening &amp; Diagnostics (Expanded)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+    <ul>
+      <li><b>Universal newborn (metabolic/genetic) screening:</b> heel-stick blood spot on filter paper ("Guthrie card"); all circles must be filled completely for accurate lab processing</li>
+      <li><b>Bilirubin screening:</b> transcutaneous or serum, per hour-of-life nomogram</li>
+    </ul>
+    <div class="field-label" style="margin-top:8px;">Newborn hearing screening</div>
+    <ul>
+      <li><b>Evoked otoacoustic emissions (EOAE):</b> soft earpiece makes a clicking sound; a healthy ear "echoes" it back to a microphone in the earpiece</li>
+      <li><b>Auditory brainstem response (ABR):</b> sensors on forehead and behind each ear measure the acoustic nerve's response to sounds played through an earphone while the infant sleeps</li>
+      <li>Neither test diagnoses hearing loss definitively &mdash; both determine whether further audiologic evaluation is needed. If the infant doesn't pass initially, retest before discharge; if still not passing, refer for comprehensive audiologic evaluation by 3 months of age</li>
+    </ul>
+    <div class="field-label" style="margin-top:8px;">Critical Congenital Heart Disease (CCHD) screening</div>
+    <ul>
+      <li>Performed via pulse oximetry at <b>24-48 hours of age</b> &mdash; detects hypoxemia that may be the only sign of a critical heart defect before other symptoms appear</li>
+      <li>Oxygen saturation measured in the <b>right hand and one foot</b></li>
+      <li><b>Passing result:</b> SpO2 &gt;95% in both extremities AND &lt;3% absolute difference between them</li>
+      <li><b>Failing/concerning result:</b> SpO2 &lt;90% in either extremity (needs immediate evaluation), OR SpO2 90-95%, OR a &ge;3% difference between hand and foot &mdash; repeat up to 2 more times within the hour; if still concerning, obtain echocardiogram and cardiology evaluation</li>
+    </ul>
+    <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>CCHD screen shows SpO2 &lt;90% on first attempt (immediate evaluation, don't wait to repeat); repeat screens remain in the concerning range after 3 attempts within the hour.</span></div>
+  </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-home-check"></i></span><span>Discharge Preparation &amp; Teaching</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Why this matters</div><p>Discharge teaching should begin as early as possible, ideally starting prenatally, not crammed into the final hour before leaving. Parents are often tired, overwhelmed, and reluctant to ask questions after labor and birth &mdash; create a nonjudgmental space and use teach-back to confirm understanding rather than just asking "any questions?"</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-car"></i>Car Seat Safety</div>
+      <ul>
+        <li>All infants/toddlers ride <b>rear-facing</b> until age 2 or until they reach the seat manufacturer's maximum height/weight, whichever comes first &mdash; never in the front seat (airbag suffocation/injury risk)</li>
+        <li>Use a <b>five-point harness</b> over both shoulders and hips, buckling at the crotch; shoulder straps at or below shoulder level, retainer clip at armpit level (not abdomen or neck)</li>
+        <li>Position the infant at a <b>45-degree angle</b> to prevent slumping/airway obstruction; a tightly rolled blanket can be placed on either side if needed for support</li>
+        <li>Dress the infant in a single thin layer so the harness fits snugly against the body &mdash; avoid bulky clothing, sack sleepers, or heavy bundling, which can loosen the harness fit; blankets can be added on TOP of the harness for warmth</li>
+        <li>Never use a secondhand seat of unknown history, one involved in a moderate/severe crash, missing parts/instructions, without a model/manufacture label, or subject to a recall</li>
+        <li><b>Infant car seat challenge:</b> recommended by the AAP for infants born &lt;37 weeks &mdash; the infant is monitored in the car seat for 90-120 minutes (or the length of the ride home) for apnea, bradycardia, and desaturation before discharge is approved in a standard car seat</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-droplet"></i>Umbilical Cord Care</div>
+      <ul>
+        <li>Clean the stump with <b>plain water only</b> (gauze if needed to remove debris) &mdash; avoid soaps, lotions, alcohol, or antiseptic preparations; evidence does not support routine antimicrobial cord care in most settings</li>
+        <li>Fold the diaper <b>below</b> the cord stump to keep it dry and exposed to air; keep the area free of urine/stool contamination</li>
+        <li>Sponge bathe only (no full immersion bath) until the cord has completely fallen off</li>
+        <li><b>Expected timeline:</b> cord begins drying within 1-2 hours of birth; plastic clamp is removed once dried, typically 24-48 hours; cord darkens/shrivels by day 2-3; <b>average separation is 10-14 days, up to 3 weeks</b> is still normal; some dried blood at the separation site is expected</li>
+      </ul>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Bleeding from the stump, redness spreading beyond the base, purulent (pus) drainage, foul odor, moist/wet appearance that doesn't dry, or the infant develops lethargy or fever alongside any cord finding. A cord that is simply <b>moist with some discharge</b> (without redness, odor, or systemic symptoms) can often be monitored for another 24-48 hours per provider guidance rather than requiring an immediate visit &mdash; but any combination with fever, lethargy, or spreading redness needs prompt evaluation.</span></div>
+      </div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-bath"></i>Bathing</div>
+      <ul>
+        <li><b>Sponge bathe only</b> until the cord falls off; after that, immersion bathing (or swaddled immersion, where the infant is wrapped and one body part is unwrapped/washed at a time) may begin</li>
+        <li>Water temperature: warm, approximately <b>37.8-38.8&deg;C (100-102&deg;F)</b>; water depth should cover the shoulders in an immersion bath but not the head/neck</li>
+        <li><b>Frequency:</b> a daily bath is NOT necessary and can actually disrupt the skin's protective acid mantle; bathing <b>2-3 times a week</b> is adequate. Face, neck folds, and diaper area should be cleaned daily/as needed regardless</li>
+        <li>Use a mild, unscented, neutral-pH cleanser; avoid antimicrobial soaps</li>
+        <li>Wash head/hair with mild shampoo to remove maternal fluids and help prevent cradle cap; proceed head-to-toe</li>
+        <li>Check the infant's temperature before and after bathing to monitor for cold stress &mdash; a bath is safe as long as temperature stays within <b>97.7-99.3&deg;F (36.5-37.4&deg;C)</b></li>
+        <li>Dry and dress the infant immediately after to prevent evaporative heat loss</li>
+        <li>Bath time doubles as a bonding opportunity and a chance for the nurse/parent to observe the infant's tone, alertness, and overall condition</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-baby-bottle"></i>Nonnutritive Sucking (Pacifier Safety)</div>
+      <ul>
+        <li>Offer a pacifier for naps/bedtime once <b>breastfeeding is well established</b> &mdash; there is compelling evidence pacifier use helps reduce SIDS risk</li>
+        <li>Use only when placing the infant supine for sleep; do NOT reinsert once the infant has fallen asleep; never force a pacifier</li>
+        <li><b>Safe pacifier design:</b> one-piece construction with a shield/flange too large to enter the mouth and a graspable handle</li>
+        <li>Never hang a pacifier around the infant's neck (strangulation risk) or attach it to clothing; never coat it with a sweet solution; clean and replace regularly</li>
+        <li>Thumb/finger sucking generally does not need to be restricted unless it persists past age 4 or after permanent teeth erupt &mdash; discuss with the pediatric provider/dentist if parents are concerned</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-calendar-check"></i>Infant Follow-Up Care</div>
+      <ul>
+        <li>Standard follow-up: <b>3-5 days after birth, or 48-72 hours after hospital discharge</b>, with an additional visit around <b>2 weeks of age</b></li>
+        <li>If discharged at &lt;48 hours of age, the follow-up visit may be scheduled for the very next day</li>
+        <li>Early follow-up is especially important for <b>breastfed infants</b> to assess feeding adequacy, weight trends, and hydration status</li>
+        <li>If a follow-up appointment wasn't scheduled before discharge, parents should call the pediatric office/clinic promptly after arriving home rather than waiting</li>
+        <li>NICU graduates have additional discharge criteria: <b>respiratory stability, consistent weight gain, and successful oral feeding</b> are the standard benchmarks before discharge is considered; ongoing nursing follow-up calls after discharge reduce parental anxiety and improve follow-up compliance</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-heart-handshake"></i>Infant CPR &amp; Choking Response Education</div>
+      <p>All parents should receive instruction in infant CPR and relieving airway obstruction before discharge &mdash; this is especially critical for infants with a history of prematurity, or cardiac/respiratory problems. <b>All caregivers</b> (grandparents, babysitters, anyone who will care for the infant) should learn these basics, not just the primary parents.</p>
+      <ul>
+        <li><b>Pulse check location in an infant:</b> brachial artery (not carotid, as used in adults)</li>
+        <li><b>Mild airway obstruction</b> (good air exchange, forceful cough, wheezing between coughs): do not interfere with the infant's own attempts to clear it &mdash; stay close and continue monitoring; escalate only if it persists or worsens</li>
+        <li><b>Severe airway obstruction</b> (poor/no air exchange, weak or absent cough, high-pitched sound or no sound on inhalation, cyanosis, inability to cry): must be relieved immediately &mdash; activate emergency response if the obstruction does not clear</li>
+        <li>Formal classes are often available through the hospital, birthing center, or community organizations, ideally completed prenatally or very soon after birth</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-diaper"></i>Diaper Changes &amp; Perineal Care</div>
+      <ul>
+        <li><b>Frequency:</b> check the diaper often and change it as soon as the infant voids or stools &mdash; not on a fixed schedule. By day 4, expect roughly <b>6 wet diapers/24 hrs</b>, which parents can use as a rough gauge that feeding intake is adequate</li>
+        <li><b>Cleaning technique:</b> use plain warm water with a mild soap if needed, or unscented/alcohol-free baby wipes; always let the skin dry <b>completely</b> before putting on the next diaper</li>
+        <li><b>Female infants:</b> clean <b>front to back</b> (pubic area toward the anus) to avoid introducing stool organisms into the vagina/urethra</li>
+        <li><b>Uncircumcised male infants:</b> wash and rinse the penis with soap and warm water; <b>do NOT retract the foreskin</b> &mdash; it is normally non-retractable in infancy and may not fully retract until age 3 or later; forcing it can cause tearing and scarring</li>
+        <li><b>Circumcised male infants:</b> clean by gently squeezing warm water over the penis with each diaper change; a whitish-yellow film over the glans in the days after circumcision is normal healing tissue, not infection &mdash; do not scrub it off; once healed, no special care beyond routine cleaning is needed (see full Circumcision card, Pain &amp; Circumcision tab)</li>
+        <li><b>Diaper fit:</b> keep it loose enough to avoid friction/pressure on a circumcision site or the umbilical cord, but snug enough to contain stool/urine; fold diapers below the cord stump until it separates</li>
+        <li>Letting the infant go diaper-free for short periods (tummy time on a protected surface) allows air-drying of the skin and helps prevent rash</li>
+      </ul>
+      <div class="field-label" style="margin-top:8px;">Diaper rash (diaper dermatitis)</div>
+      <ul>
+        <li><b>Common (irritant) diaper rash:</b> redness, scaling, or small bumps from prolonged wet/soiled contact, infrequent changes, diarrhea, or plastic pants that trap moisture. Prevention: frequent changes, gentle cleaning, thorough drying, and diaper-free air time. Treatment: a barrier ointment such as <b>zinc oxide or petrolatum</b> at each change to protect skin from urine/stool contact; most cases resolve within a few days</li>
+        <li><b>Candidal (yeast) diaper rash:</b> intensely red rash with <b>sharply demarcated, scalloped borders</b> and characteristic <b>satellite lesions</b> extending beyond the main rash, often in skin folds &mdash; thrives in the warm, moist diaper environment. Requires an antifungal ointment (e.g., clotrimazole, miconazole) with each diaper change rather than a simple barrier cream; distinguishing this pattern from ordinary irritant rash is a common exam point</li>
+      </ul>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Diaper rash persists despite home treatment, shows the scalloped/satellite pattern suggestive of a yeast infection, or is accompanied by fever, blistering, or skin breakdown.</span></div>
+      </div>
+
+      <div class="field"><div class="field-label">Additional standard discharge topics</div><ul>
+        <li>Newborn hearing screen and universal metabolic screen results/follow-up (see Feeding &amp; Medications tab)</li>
+        <li>Hepatitis B vaccination status (first dose typically given before discharge)</li>
+        <li>Safe sleep/SIDS prevention (see full card, Unit 10)</li>
+        <li>Infant abduction prevention: verify ID band matching, know facility security protocols, never hand the infant to unidentified staff</li>
+        <li>Diaper type preferences: disposable diapers may cause skin reactions from added fragrance in sensitive infants (switching brands often resolves this); cloth diapers should be laundered separately using a small amount of detergent, with presoaking often needed for stains; exclusively breastfed stool is typically odorless and does not stain as much as formula stool</li>
+        <li>Nail care: newborn nails are rarely trimmed in the first days (injury/infection risk); filing or use of infant mittens is preferred initially, with careful trimming once nails separate from the skin after about a week, often while the infant sleeps</li>
+      </ul></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Before you leave, make sure you feel confident with: installing the car seat correctly (rear-facing, snug harness), cleaning the cord stump with water only and folding the diaper below it, giving a sponge bath 2-3 times a week, safely offering a pacifier once breastfeeding is going well, and knowing your follow-up appointment date (usually within 3-5 days). We strongly recommend completing an infant CPR class before or soon after you go home.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you'll be caring for this baby, you should also know infant CPR and how to respond to choking, since emergencies don't wait for the parents to be present. Ask the parents to walk you through their car seat, cord care, and bathing routine so you're following the same approach consistently.</div>
+      </div>
     </div>
   </div>
 </div>
