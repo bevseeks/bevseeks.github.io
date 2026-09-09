@@ -228,7 +228,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-bolt"></i>Quick Jump</h2>
   <div class="toc-grid">
     <div class="toc-item" data-jump="u9-adapt"><i class="ti ti-lungs"></i>Transition + CaMeTS</div>
-    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Apgar + Ballard + Growth</div>
+    <div class="toc-item" data-jump="u9-assess"><i class="ti ti-clipboard-check"></i>Apgar, Ballard, Vitals, Head-to-Toe</div>
     <div class="toc-item" data-jump="u9-care"><i class="ti ti-heart-handshake"></i>Vit K, Thermoreg, Feeding</div>
     <div class="toc-item" data-jump="u9-pain"><i class="ti ti-injection"></i>Pain + Circumcision</div>
     <div class="toc-item" data-jump="u9-conditions"><i class="ti ti-droplet"></i>Jaundice, Hypoglycemia, Hypocalcemia</div>
@@ -366,77 +366,463 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 <div class="panel" id="u9-assess">
   <h2 class="section-title"><i class="ti ti-clipboard-check"></i>Newborn Assessment</h2>
   <div class="uslo-tag">USLO 4</div>
-  <p class="lead">Apgar, gestational age assessment, growth classification, and normal parameters.</p>
+  <p class="lead">Apgar, New Ballard gestational age scoring, growth classification, vital sign parameters with causes of deviation, and full head-to-toe assessment (integumentary/head, HEENT, musculoskeletal/reflexes/hips, GI, GU, cardiovascular/peripheral vascular) with expected vs. unexpected findings, plus required discharge education content.</p>
 
   <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-list-numbers"></i></span><span>APGAR Scoring</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-    <p style="font-size:13px; color:var(--sub); margin-bottom:8px;">Scored at 1 and 5 minutes; repeat at 10 min if 5-min score &lt;7.</p>
+    <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Purpose &amp; what it does NOT tell you</div><p>The Apgar score summarizes the newborn's transition to extrauterine life at fixed time points, based on five physiologic/behavioral signs. <b>It does not predict long-term neurologic outcome</b> &mdash; it is a snapshot of immediate status and response to resuscitation, not a prognosis tool. This is a frequently tested distinction.</p></div>
+    <div class="field"><div class="field-label">Timing</div><ul>
+      <li>Scored at <b>1 minute</b> and <b>5 minutes</b> after birth</li>
+      <li>If the 5-minute score is <b>&lt;7</b>, repeat scoring every 5 minutes for up to 20 minutes total</li>
+      <li><b>If resuscitation is needed, it is initiated before the 1-minute score is even calculated</b> &mdash; scoring never delays intervention</li>
+    </ul></div>
+    <p style="font-size:13px; color:var(--sub); margin-bottom:8px;">Each of the five categories is scored 0, 1, or 2, for a maximum total of 10.</p>
     <div class="tbl-wrap">
     <table class="compare">
       <tr><th></th><th>0</th><th>1</th><th>2</th></tr>
-      <tr><td><b>A</b>ppearance/Color</td><td>Blue, pale</td><td>Acrocyanosis</td><td>Pink</td></tr>
-      <tr><td><b>P</b>ulse</td><td>0</td><td>&lt;100</td><td>&gt;100</td></tr>
-      <tr><td><b>G</b>rimace/Irritability</td><td>No response</td><td>Grimace</td><td>Full cry</td></tr>
-      <tr><td><b>A</b>ctivity/Tone</td><td>Limp</td><td>Some flexion</td><td>Well flexed</td></tr>
-      <tr><td><b>R</b>espiration</td><td>0</td><td>Weak/sporadic/gasping</td><td>Easy, irregular OK, or strong cry</td></tr>
+      <tr><td><b>A</b>ppearance/Color</td><td>Blue, pale (central cyanosis or pallor)</td><td>Body pink, extremities blue (acrocyanosis)</td><td>Completely pink</td></tr>
+      <tr><td><b>P</b>ulse (heart rate)</td><td>Absent</td><td>&lt;100 bpm</td><td>&gt;100 bpm</td></tr>
+      <tr><td><b>G</b>rimace (reflex irritability)</td><td>No response to stimulation</td><td>Grimace only</td><td>Grimace + cough, sneeze, or vigorous cry</td></tr>
+      <tr><td><b>A</b>ctivity (muscle tone)</td><td>Limp, flaccid</td><td>Some flexion of extremities</td><td>Active motion, well flexed</td></tr>
+      <tr><td><b>R</b>espiration</td><td>Absent</td><td>Slow, weak, irregular, or gasping</td><td>Good, strong cry</td></tr>
     </table>
     </div>
-    <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Priority sequencing</b></span>Newborn resuscitation always precedes Apgar scoring.</span></div>
+    <div class="field"><div class="field-label">Interpreting the total score</div><ul>
+      <li><b>0-3:</b> Severe distress &mdash; requires immediate resuscitation</li>
+      <li><b>4-6:</b> Moderate difficulty adjusting to extrauterine life</li>
+      <li><b>7-10:</b> Minimal or no difficulty; normal transition</li>
+    </ul></div>
+    <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Priority sequencing</b></span>Newborn resuscitation always precedes Apgar scoring &mdash; you treat what you see, you don't wait for or calculate a score before acting on a compromised infant.</span></div>
+    <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> A newborn requiring active resuscitation at 1 minute can still have a normal 5-minute score if the resuscitation worked &mdash; always check BOTH scores and the trend between them, not just one value in isolation.</span></div>
   </div>
   </div>
 
   <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-ruler-2"></i></span><span>Gestational Age &amp; Growth Assessment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-ruler-2"></i></span><span>New Ballard Score &mdash; Gestational Age Assessment</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-    <ul>
-      <li>Gestational age (New Ballard Score) assessed within <b>first 2 hours</b> of age.</li>
-      <li><b>AGA:</b> 10th-90th percentile &nbsp; <b>LGA:</b> &gt;90th percentile &nbsp; <b>SGA:</b> &lt;10th percentile</li>
-    </ul>
-  </div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Purpose &amp; overview</div><p>The New Ballard Score is the most commonly used tool for determining a newborn's gestational age by physical examination &mdash; useful both to confirm dating from the last menstrual period/ultrasound and as the primary method when gestational age is otherwise unknown. It can assess gestational ages as young as <b>20 weeks</b>. The exam yields two subscores &mdash; <b>neuromuscular maturity</b> and <b>physical maturity</b> &mdash; each covering six characteristics, for 12 total scored items.</p></div>
+
+      <div class="field"><div class="field-label">Timing</div><ul>
+        <li>Best performed within the <b>first 2 hours</b> of life per Perry Ch. 23 nursing guidance; more broadly, experts recommend the initial exam within the <b>first 48 hours</b> of life for accuracy</li>
+        <li>For infants &le;26 weeks gestation: exam should occur at <b>&lt;12 hours</b> of postnatal age</li>
+        <li>For infants &ge;26 weeks gestation: exam can be performed up to <b>96 hours</b> after birth</li>
+        <li>The scoring system is most accurate when performed on term infants between <b>10 and 36 hours</b> of life</li>
+        <li>Extremely immature neonates may need a <b>follow-up exam</b> since neuromuscular tone adjusts after birth</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label">How scoring works</div><p>Each of the 12 characteristics is scored individually (most range from <b>-1 or -2 up through 4 or 5</b>, depending on the characteristic). The 12 scores are summed into a single total, which is then plotted on a maturity rating scale to yield the estimated gestational age in weeks. <b>Half-scores</b> are recorded when a characteristic falls between two options. The order in which items are assessed does not matter.</p>
+      <div class="flag" style="margin-top:6px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Key conceptual point</b></span>Maturity does not have to progress uniformly across categories &mdash; an infant can score full maturity (e.g., a 4) on one item without every other item also scoring a 4. The infant's total maturity score does not directly equal gestational age in weeks; it must be extrapolated using the maturity rating scale.</span></div></div>
+
+      <div class="field"><div class="field-label">Neuromuscular Maturity &mdash; the six maneuvers</div>
+        <div class="tbl-wrap">
+        <table class="labs">
+          <tr><th>Maneuver</th><th>Technique</th><th>Full-maturity (high score) finding</th></tr>
+          <tr><td><b>Posture</b></td><td>Infant quiet, supine; observe resting degree of flexion in arms and legs</td><td>Full flexion of arms AND legs = highest score. Muscle tone/flexion increases with maturity &mdash; a preterm infant lies more extended/flaccid</td></tr>
+          <tr><td><b>Square Window (wrist)</b></td><td>Support the arm below the wrist; gently flex the hand toward the forearm without rotating the wrist; measure the angle between the hand and forearm</td><td>Full flexion (hand lies flat against the forearm, 0&deg; angle) = highest score. A larger residual angle = less mature</td></tr>
+          <tr><td><b>Arm Recoil</b></td><td>Infant supine; fully flex both forearms onto the upper arms for 5 seconds, then pull down to fully extend and rapidly release</td><td>A brisk, immediate return to full flexion = highest score. Slow or absent recoil = less mature</td></tr>
+          <tr><td><b>Popliteal Angle</b></td><td>Infant supine, pelvis flat; flex the thigh onto the abdomen, then extend the lower leg while holding the knee; measure the angle behind the knee</td><td>An angle &lt;90&deg; = highest score (tighter angle = more mature, more resistance to extension)</td></tr>
+          <tr><td><b>Scarf Sign</b></td><td>Support the head in midline; pull the infant's arm across the chest toward the opposite shoulder; note where the elbow ends up relative to midline</td><td>Elbow does NOT reach midline = highest score. An elbow that crosses further past midline = less mature (looser muscle tone)</td></tr>
+          <tr><td><b>Heel to Ear</b></td><td>Infant supine, pelvis flat; pull the foot up toward the ear on the same side without using force; note the resistance and the popliteal angle produced</td><td>Significant resistance, knees stay flexed with a popliteal angle &lt;10&deg; = highest score. A foot that reaches the ear easily = less mature</td></tr>
+        </table>
+        </div>
+      </div>
+
+      <div class="field"><div class="field-label">Physical Maturity &mdash; the six characteristics</div>
+        <div class="tbl-wrap">
+        <table class="labs">
+          <tr><th>Characteristic</th><th>Immature (low score)</th><th>Mature (high score)</th></tr>
+          <tr><td><b>Skin</b></td><td>Sticky, friable, transparent; gelatinous and red</td><td>Leathery, cracked, wrinkled (post-term extreme); mature term skin is smooth pink with visible veins, progressing toward cracking/peeling as term approaches</td></tr>
+          <tr><td><b>Lanugo</b></td><td>None (extremely preterm) OR sparse</td><td>Abundant lanugo appears mid-gestation, then thins and gives way to bald areas/mostly bald skin as term approaches</td></tr>
+          <tr><td><b>Plantar Surface</b></td><td>Heel-to-toe measurement &lt;40-50mm with no crease</td><td>Creases progress from anterior transverse crease only &rarr; creases over anterior 2/3 &rarr; creases over the entire sole (full maturity)</td></tr>
+          <tr><td><b>Breast</b></td><td>Imperceptible or barely perceptible, flat areola with no bud</td><td>Progresses through stippled areola with a small bud &rarr; raised areola &rarr; full areola with a 5-10mm bud at full maturity</td></tr>
+          <tr><td><b>Eye/Ear</b></td><td>Lids fused (loosely -1, tightly -2); pinna flat, stays folded when bent</td><td>Progresses through slightly curved pinna with slow recoil &rarr; well-curved with ready recoil &rarr; formed, firm pinna with instant recoil &rarr; thick cartilage, stiff ear at full maturity</td></tr>
+          <tr><td><b>Genitals (male)</b></td><td>Scrotum flat and smooth, testes not yet descended</td><td>Progresses through testes in upper canal (rare rugae) &rarr; testes descending (few rugae) &rarr; testes down with good rugae &rarr; testes pendulous with deep rugae at full maturity</td></tr>
+          <tr><td><b>Genitals (female)</b></td><td>Prominent clitoris, flat labia</td><td>Progresses through enlarging labia minora &rarr; labia majora and minora equally prominent &rarr; majora large/minora small &rarr; majora completely cover the clitoris and minora at full maturity</td></tr>
+        </table>
+        </div>
+      </div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>How the nurse uses this in practice</b></span><ol>
+        <li>Perform the assessment within the recommended timing window for the infant's apparent gestational age &mdash; earlier for suspected extreme prematurity.</li>
+        <li>Score all 12 items (6 neuromuscular + 6 physical), using half-scores where a finding falls between two options.</li>
+        <li>Sum the total score and plot it on the maturity rating scale to obtain the estimated gestational age in weeks.</li>
+        <li>Compare this exam-derived gestational age against the dating from LMP/ultrasound &mdash; a significant discrepancy should be reported, since it affects risk stratification for conditions covered throughout this guide (RDS, hypoglycemia, hyperbilirubinemia, etc. in the High-Risk Unit 10 guide).</li>
+      </ol></span></div>
+
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Ballard = Neuromuscular (posture, square window, arm recoil, popliteal angle, scarf sign, heel-to-ear) + Physical (skin, lanugo, plantar surface, breast, eye/ear, genitals). Twelve items, two categories, one combined score extrapolated to weeks.</span></div>
+    </div>
   </div>
 
   <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-chart-line"></i></span><span>Normal Newborn Parameters</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-chart-line"></i></span><span>Growth Classification: AGA, SGA, LGA</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-    <ul>
-      <li><b>Weight:</b> average 2500-4000 g (5 lb 8 oz &ndash; 8 lb 8 oz)</li>
-      <li><b>Length:</b> average 50 cm (45-55 cm)</li>
-      <li><b>Head circumference:</b> 33-35 cm</li>
-      <li><b>Temperature:</b> 36.5-37.5&deg;C (97.6-99.5&deg;F) axillary</li>
-      <li><b>Sleep:</b> 16-18 hrs/day; ~50% REM</li>
-    </ul>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>How classification works</div><p>Separate from the Ballard gestational-age exam, the newborn's <b>weight is plotted against gestational age</b> on a standardized intrauterine growth chart to classify growth status. This is a second, independent axis of risk classification (see Unit 10 for the full discussion of why both gestational age AND growth status matter together).</p></div>
+      <ul>
+        <li><b>AGA (Appropriate for Gestational Age):</b> weight falls between the 10th and 90th percentile for gestational age</li>
+        <li><b>SGA (Small for Gestational Age):</b> weight falls below the 10th percentile for gestational age</li>
+        <li><b>LGA (Large for Gestational Age):</b> weight falls above the 90th percentile for gestational age</li>
+      </ul>
+      <div class="field"><div class="field-label">Example reference range (40 weeks gestation)</div><p>The 10th-90th percentile range at 40 weeks is approximately <b>2700-3850 g (6-8.5 lb) for females</b> and <b>2800-4000 g (6.2-8.8 lb) for males</b> &mdash; illustrating that percentile cutoffs are gestational-age- and sex-specific, not a single fixed number.</p></div>
+      <div class="field"><div class="field-label">Other methods to estimate/confirm gestational age</div><p>Fundal height measurement before birth, ultrasonography, eye lens vascularity, and calculation from the mother's last normal menstrual period all supplement or cross-check the Ballard exam findings.</p></div>
+    </div>
   </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-chart-line"></i></span><span>Normal Newborn Parameters &amp; Deviations</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">General technique</div><p>Assess heart rate and respiratory rate first, while the infant is quiet/at rest, before disturbing the infant to check other vitals. Count both heart rate and respirations for a <b>full 60 seconds</b> given normal newborn irregularity.</p></div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Parameter</th><th>Expected/Normal</th><th>Unexpected Finding</th><th>Possible Cause</th></tr>
+        <tr><td><b>Temperature</b> (axillary &mdash; site of choice)</td><td class="normal">36.5-37.5&deg;C (97.7-99.5&deg;F); stabilizes by 8-10 hrs of age</td><td class="abnormal">Subnormal</td><td>Preterm birth, infection, low environmental temperature, inadequate clothing, dehydration, cold stress</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Elevated</td><td>Infection, high environmental temperature, excessive clothing/bundling, proximity to a heat source, chemical/substance dependence, diarrhea/dehydration</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Not stabilized by 6-8 hrs</td><td>Maternal magnesium sulfate (impairs infant vasoconstriction) or maternal analgesics reducing thermal stability</td></tr>
+        <tr><td><b>Heart rate</b> (apical, 4th ICS, full 60 sec)</td><td class="normal">120-160 bpm awake; 80-100 in deep sleep; up to 180 with crying</td><td class="abnormal">Persistent tachycardia &gt;160-180</td><td>RDS, pneumonia, sepsis, pain/fever</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Persistent bradycardia &lt;80-100</td><td>Congenital heart block, maternal lupus, hypoxia</td></tr>
+        <tr><td><b>Respirations</b> (full 60 sec, observe abdominal movement)</td><td class="normal">30-60/min; shallow, irregular; periodic breathing pauses &lt;20 sec are normal</td><td class="abnormal">Tachypnea, persistent &gt;60/min</td><td>RDS, TTN, congenital diaphragmatic hernia, sepsis. <b>Withhold oral feeding if RR &gt;60</b> &mdash; aspiration risk</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Bradypnea &lt;30/min</td><td>Maternal narcosis from analgesics/anesthesia, birth trauma</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Apnea &gt;20 sec, or any duration with cyanosis/bradycardia</td><td>True apnea (vs. normal periodic breathing, which self-resolves in &lt;20 sec) &mdash; requires prompt evaluation</td></tr>
+        <tr><td><b>Blood pressure</b> (not routine unless cardiac concern)</td><td class="normal">~60-80/40-50 mmHg at birth</td><td class="abnormal">Difference between upper/lower extremities</td><td>Coarctation of the aorta</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Hypotension</td><td>Sepsis, hypovolemia</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Hypertension</td><td>Coarctation of the aorta, renal involvement, thrombus</td></tr>
+        <tr><td><b>Weight</b></td><td class="normal">Female term ~3400g (7.5 lb); Male term ~3500g (7.7 lb); range 2700-4000g (6-9 lb); acceptable loss 5-10% in first 3-5 days, regained by 2 weeks</td><td class="abnormal">&le;2700g</td><td>Preterm, SGA, congenital rubella syndrome</td></tr>
+        <tr><td></td><td></td><td class="abnormal">&gt;4000g</td><td>LGA, maternal diabetes, or simply familial/heredity</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Weight loss &gt;10%</td><td>Growth failure, breastfeeding difficulty, dehydration &mdash; requires prompt evaluation</td></tr>
+        <tr><td><b>Length</b></td><td class="normal">45-55 cm (18-22 in)</td><td class="abnormal">Outside this range</td><td>Correlate with gestational age and growth classification (SGA/LGA)</td></tr>
+        <tr><td><b>Head circumference</b></td><td class="normal">33-38 cm (13-15 in); head is ~1/4 of body length</td><td class="abnormal">Small (microcephaly, &ge;2 SD below mean)</td><td>Genetic/chromosomal disorder, congenital infection (e.g., Zika, CMV), teratogen exposure</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Large (macrocephaly)</td><td>Hydrocephalus, familial variant</td></tr>
+      </table>
+      </div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Safety alert</b></span>Rectal temperatures should NOT be routinely performed on a newborn due to perforation risk and vagal stimulation. Temporal and tympanic thermometers are not effective for newborns &mdash; axillary is the site of choice.</span></div>
+      <div class="field"><div class="field-label">Additional expected findings</div><ul>
+        <li><b>Sleep:</b> 16-18 hrs/day; approximately 50% REM sleep</li>
+        <li><b>Heart sounds:</b> S1 louder/duller than S2 (sharp); S3/S4 not audible in newborns. A soft murmur in the first few days is common and usually resolves by 6 months &mdash; but any murmur WITH poor feeding, apnea, cyanosis, or pallor is abnormal and requires investigation</li>
+        <li><b>Peripheral pulses:</b> should be equal and strong bilaterally (brachial, femoral); weak/absent or unequal pulses suggest decreased cardiac output, thrombus, or coarctation of the aorta</li>
+      </ul></div>
+    </div>
   </div>
 
   <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-fingerprint"></i></span><span>Integumentary &amp; Head Findings</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Normal transient findings</div><ul>
-        <li><b>Vernix caseosa:</b> protective white/cheesy coating</li>
-        <li><b>Lanugo:</b> fine downy hair</li>
-        <li><b>Milia:</b> firm white papules, usually facial</li>
-        <li><b>Erythema toxicum:</b> rash with eosinophils in lesions &mdash; benign</li>
-        <li><b>Congenital Dermal Melanocytosis (Slate Gray Nevi)</b> &mdash; current terminology</li>
-        <li><b>Port wine stain (Nevus flammeus)</b> &mdash; does not fade</li>
+      <div class="field"><div class="field-label">Assessment technique</div><p>Inspect and palpate skin for intactness, smoothness, and texture. Check turgor by gently pinching skin over the abdomen/inner thigh &mdash; it should return to its original position immediately upon release.</p></div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause of Deviation</th></tr>
+        <tr><td>Skin texture/turgor</td><td class="normal">Smooth, dry, soft; immediate recoil after pinch</td><td class="abnormal">Loose, wrinkled, tenting after pinch</td><td>Prematurity, postmaturity, or dehydration</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Tense, tight, shiny</td><td>Edema, extreme cold, shock, infection</td></tr>
+        <tr><td>Vernix caseosa</td><td class="normal">Whitish, cheesy, odorless; more in creases/folds</td><td class="abnormal">Absent/minimal</td><td>Postmature infant</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Abundant</td><td>Preterm infant (more vernix = earlier gestational age)</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Green-tinged, or odor present</td><td>In-utero meconium release or bilirubin presence (green); intrauterine infection (odor)</td></tr>
+        <tr><td>Lanugo (fine downy hair)</td><td class="normal">Present over shoulders, ear pinnae, forehead; varies in amount</td><td class="abnormal">Absent</td><td>Postmature infant</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Abundant, thick, long over the back</td><td>Preterm infant</td></tr>
+        <tr><td>Subcutaneous fat</td><td class="normal">Adipose pads present over cheeks, buttocks</td><td class="abnormal">Lack of fat, prominent clavicle/ribs</td><td>Preterm birth, malnutrition</td></tr>
+      </table>
+      </div>
+
+      <div class="field"><div class="field-label">Common benign skin findings (know these are NORMAL)</div><ul>
+        <li><b>Milia:</b> small white papules/sebaceous cysts on the face, resembling pimples; resolves spontaneously within the first month</li>
+        <li><b>Erythema toxicum ("newborn rash," "flea-bite dermatitis"):</b> small irregular flat red patches &rarr; small yellow pimples on chest/abdomen/extremities; cause unknown, resolves spontaneously, up to 1 month</li>
+        <li><b>Congenital Dermal Melanocytosis (Slate Gray Nevi, formerly "Mongolian spots"):</b> bluish-black pigmented areas, most common on back/buttocks; more frequent in infants of Latin American, Asian, African, or Mediterranean descent; fades over months to years. <b>Document carefully</b> &mdash; can be mistaken for bruising/abuse after discharge</li>
+        <li><b>Nevus simplex ("stork bite," "salmon patch," "angel kiss"):</b> superficial capillary defect, small flat pink patches that blanch; seen in up to 80% of newborns; most common on eyelids, nose, upper lip, nape of neck; facial lesions fade by age 1-2, neck lesions may persist into adulthood</li>
+        <li><b>Cutis marmorata (mottling):</b> vasomotor response to cooler environmental temperature; resolves as the infant adjusts to extrauterine life</li>
+        <li><b>Pustular melanosis:</b> small pustules present before birth that leave a residual "scale" as they disintegrate &mdash; benign</li>
       </ul></div>
-      <div class="field"><div class="field-label">Caput succedaneum vs. Cephalhematoma</div><p>Caput: edema crosses suture lines, resolves in days. Cephalhematoma: subperiosteal bleeding, does NOT cross suture lines, resolves in weeks, increases jaundice risk.</p></div>
+
+      <div class="field"><div class="field-label">Findings that DO require further evaluation</div><ul>
+        <li><b>Port-wine stain (nevus flammeus):</b> flat, pink at birth, darkens to red/purple over time, does NOT blanch or fade &mdash; permanent vascular malformation</li>
+        <li><b>Infantile hemangioma:</b> raised, sharply demarcated, bright/dark red swelling; may be present at birth or appear in early weeks; superficial lesions typically peak around 6 months then involute; deeper ones may keep growing for a year+</li>
+        <li><b>Periauricular skin tags:</b> often benign/familial, but since ears and kidneys develop simultaneously in utero, these warrant additional renal assessment</li>
+        <li><b>Papules, pustules, vesicles, ulcers, or maceration:</b> suggest impetigo, candidiasis, herpes, or diaper dermatitis rather than a benign newborn variant</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label">Head &mdash; assessment technique</div><p>Assess for swelling/edema, then palpate for fontanels, suture lines, and any birth-related trauma.</p></div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause of Deviation</th></tr>
+        <tr><td>Shape/molding</td><td class="normal">Slight asymmetry from intrauterine position; molding resolves in ~72 hrs</td><td class="abnormal">Lack of molding</td><td>Preterm birth, breech presentation, cesarean birth (no vaginal passage pressure)</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Severe molding, or indentation</td><td>Birth trauma; indentation suggests possible skull fracture</td></tr>
+        <tr><td>Anterior fontanel</td><td class="normal">Diamond-shaped, 1-7 cm (typically ~5cm), soft and flat</td><td class="abnormal">Full, bulging</td><td>Tumor, hemorrhage, infection (bulging when NOT crying is concerning)</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Large, flat, soft</td><td>Malnutrition, hydrocephaly, delayed bone age, hypothyroidism</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Depressed/sunken</td><td>Dehydration</td></tr>
+        <tr><td>Posterior fontanel</td><td class="normal">Small, triangular, &le;1cm, may be closed at birth</td><td class="abnormal">&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Suture lines</td><td class="normal">Palpable, separated; may overlap slightly with molding</td><td class="abnormal">Widely spaced</td><td>Hydrocephaly</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Prematurely fused</td><td>Craniosynostosis</td></tr>
+      </table>
+      </div>
+
+      <div class="field"><div class="field-label">Caput Succedaneum vs. Cephalhematoma vs. Subgaleal Hemorrhage</div>
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Feature</th><th>Caput Succedaneum</th><th>Cephalhematoma</th><th>Subgaleal Hemorrhage</th></tr>
+        <tr><td>Location of fluid</td><td>Edema, above the periosteum (scalp tissue)</td><td>Blood, below the periosteum</td><td>Bleeding into the subgaleal compartment (below the galea, above periosteum) &mdash; can be extensive/dangerous</td></tr>
+        <tr><td>Crosses suture lines?</td><td>Yes &mdash; generalized, extends across sutures</td><td>No &mdash; confined by suture lines</td><td>Yes &mdash; can spread across the whole scalp</td></tr>
+        <tr><td>Onset</td><td>Present at birth</td><td>May not be visible until hours after birth</td><td>Can progress rapidly after birth</td></tr>
+        <tr><td>Resolution / risk</td><td>3-4 days</td><td>2-8 weeks; hemolysis during resolution &uarr;jaundice/hyperbilirubinemia risk</td><td>Can be life-threatening due to blood loss volume &mdash; requires close monitoring</td></tr>
+        <tr><td>Associated with</td><td>Vacuum-assisted delivery (caput at the cup site), prolonged pressure against the cervix</td><td>Often co-occurs with caput succedaneum</td><td>Vacuum extraction, coagulopathy</td></tr>
+      </table>
+      </div></div>
     </div>
   </div>
 
   <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-activity"></i></span><span>Reflexes, Hips, GI/GU Progression</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-face-id"></i></span><span>HEENT Assessment (Head/Eyes/Ears/Nose/Throat)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Newborn reflexes</div><p>Rooting, sucking, Moro (startle), tonic neck, plantar, Babinski</p></div>
-      <div class="field"><div class="field-label">Hip assessment</div><p>Screen for developmental dysplasia of the hip (DDH); asymmetric thigh/gluteal folds, limited abduction warrant further evaluation.</p></div>
-      <div class="field"><div class="field-label">Stomach capacity</div><ul><li>Day 1: 5-7 mL</li><li>Day 3: 22-27 mL</li><li>Week 1: 45-60 mL</li><li>Week 2: 80-150 mL</li></ul></div>
-      <div class="field"><div class="field-label">Stool progression</div><p>Meconium (dark green-black, thick, sticky, first ~24 hrs) &rarr; Transitional stool &rarr; Yellow, seedy breastfed stool. <b>Meconium ileus is suggestive of cystic fibrosis.</b></p></div>
-      <div class="field"><div class="field-label">Urogenital</div><ul>
-        <li>"Brick dust" urine (uric acid crystals) &mdash; normal</li>
-        <li>1 wet diaper/day through day 4, then 6-8 wet/day</li>
-        <li>Males: ~90% testicles descended at birth</li>
-        <li>Females: thick mucous vaginal discharge, may be pink/bloody (pseudomenstruation)</li>
+      <div class="field"><div class="field-label">Facial symmetry</div><p>Face should appear rounded and symmetric at rest AND during crying. Assess movement specifically <b>while crying</b>, since this is when subtle asymmetry becomes visible. <b>Birth-related damage to the 7th cranial (facial) nerve</b> can cause unilateral drooping of the mouth/tongue, unequal cheek muscle movement, or abnormal eyelid movement on the affected side &mdash; asymmetry that shows up specifically with crying/movement, not at rest.</p></div>
+
+      <div class="field"><div class="field-label">Ear placement &mdash; the technique that's actually graded</div><p>Draw an imaginary line from the <b>inner canthus to the outer canthus of the eye</b> and extend it toward the ear. The top of the ear pinna (where it meets the scalp) should be at or above this line. <b>Low-set ears</b> (falling below this line) are a red flag for chromosomal abnormalities (trisomy 21, trisomy 18), renal anomalies, or intellectual disability. Ears should also be soft/pliable with easy recoil when folded and released; firm, well-formed cartilage suggests more advanced gestational maturity.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Structure</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Eyes &mdash; sclera</td><td class="normal">White</td><td class="abnormal">Blue-tinged sclera</td><td>Osteogenesis imperfecta (handle infant with extreme gentleness &mdash; fracture risk)</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Yellow/icteric sclera</td><td>Hyperbilirubinemia (a LATE sign of jaundice &mdash; skin changes color first)</td></tr>
+        <tr><td>Eyes &mdash; red reflex</td><td class="normal">Present bilaterally, symmetric</td><td class="abnormal">Absent (unilateral or bilateral)</td><td><b>Medical emergency</b> &mdash; may indicate congenital cataracts or retinoblastoma</td></tr>
+        <tr><td>Eyes &mdash; movement</td><td class="normal">Transient strabismus/nystagmus normal until 3-4 months</td><td class="abnormal">Persistent strabismus beyond that window</td><td>Warrants ophthalmologic evaluation</td></tr>
+        <tr><td>Nose</td><td class="normal">Midline placement, patent bilaterally, obligate nose breather</td><td class="abnormal">Nasal flaring</td><td>Sign of respiratory distress</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Cyanosis with mouth closed that resolves when crying/mouth opens</td><td>Choanal atresia &mdash; confirm by attempting to pass a small catheter through each naris; see full card in Unit 10</td></tr>
+        <tr><td>Palate</td><td class="normal">Hard and soft palate fully intact, uvula midline</td><td class="abnormal">Open space/notched ridge felt on palpation, or bivalve/double-lobed uvula</td><td>Cleft palate &mdash; assess by running a gloved finger along the palate</td></tr>
+        <tr><td>Gums/mouth</td><td class="normal">Pink gums; Epstein pearls (small whitish hardened nodules on gums/roof of mouth) are a normal, benign finding that resolves within a few weeks</td><td class="abnormal">Natal teeth (pre-deciduous teeth present at birth)</td><td>Usually a benign familial/hereditary variant, but should be documented and may need dental referral if loose (aspiration risk)</td></tr>
+        <tr><td></td><td></td><td class="abnormal">White plaques on tongue/cheeks that bleed if wiped</td><td>Thrush (Candida albicans), often acquired during vaginal birth</td></tr>
+        <tr><td>Trachea</td><td class="normal">Midline placement</td><td class="abnormal">Deviated from midline</td><td>Possible pneumothorax or mass effect &mdash; warrants prompt evaluation</td></tr>
+        <tr><td>Neck</td><td class="normal">Short, thick, symmetric skin folds; moves freely side-to-side; no webbing</td><td class="abnormal">Webbing</td><td>Turner syndrome or other genetic syndrome</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Torticollis (head tilted to one side, chin pointing opposite)</td><td>Spasmodic neck muscle contraction; report immediately along with any suspected congenital cervical spine defect</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Pattern recognition: Down syndrome facies</b></span>Several HEENT findings cluster together in trisomy 21: flattened occiput, broad nasal bridge, upward-slanted eyes with epicanthal folds, low-set ears, enlarged/protruding tongue, high-arched palate, and a small chin. No single finding confirms the diagnosis, but the combination should raise clinical suspicion and prompt further genetic evaluation.</span></div>
+
+      <div class="field"><div class="field-label">Hearing</div><p>Newborns respond to voice/sound shortly after birth, though the behavioral state (asleep vs. alert) affects the response &mdash; lack of response to a loud noise does NOT necessarily mean deafness on its own. Universal newborn hearing screening (OAE and/or ABR, covered in the Immediate Care tab) is the definitive screening method and should be completed before discharge whenever possible.</p></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>We check your baby's face, ears, eyes, mouth, and neck closely because these areas can give early clues about how your baby is developing. Small findings like little white bumps on the gums (Epstein pearls) are completely normal and go away on their own within a few weeks.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you notice your baby's face looks uneven when crying, or anything unusual about the eyes, ears, or breathing through the nose, let the parents and care team know so it can be evaluated.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-bone"></i></span><span>Musculoskeletal Assessment: Reflexes &amp; Hips</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">General technique</div><p>Evaluate symmetrical movement, muscle tone, neck rotation, and clavicles for signs of birth trauma. The normal resting posture of a term newborn is one of general flexion (arms/legs flexed, hips abducted and partially flexed, fists often clenched).</p></div>
+
+      <div class="field"><div class="field-label">Newborn Reflex Assessment &mdash; full table</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Reflex</th><th>How to Elicit</th><th>Expected Response</th><th>Notes / Duration</th></tr>
+        <tr><td><b>Rooting</b></td><td>Stroke the infant's cheek near the mouth</td><td>Infant turns head toward the touch, opens mouth</td><td>Disappears ~3-4 months</td></tr>
+        <tr><td><b>Sucking</b></td><td>Place an object (nipple/gloved finger) in the mouth</td><td>Rhythmic sucking</td><td>Present through infancy</td></tr>
+        <tr><td><b>Palmar grasp</b></td><td>Place finger/object in the infant's palm</td><td>Fingers curl around it</td><td>Disappears ~3-4 months</td></tr>
+        <tr><td><b>Plantar grasp</b></td><td>Place finger against the sole at the base of the toes</td><td>Toes curl downward</td><td>Disappears ~8-9 months</td></tr>
+        <tr><td><b>Babinski (plantar reflex)</b></td><td>Stroke upward along the lateral sole from heel, then across the ball of the foot</td><td>All toes hyperextend with dorsiflexion of the great toe (positive sign)</td><td>Should disappear after age 1; absence requires neurologic evaluation</td></tr>
+        <tr><td><b>Moro (startle)</b></td><td>Sudden change in position/loud noise/jarring the flat surface</td><td>Symmetric abduction/extension of arms, then adduction back ("embrace")</td><td>Disappears ~4-6 months. <b>Asymmetric response is a hallmark of Erb's palsy/brachial plexus injury</b> &mdash; see Unit 10</td></tr>
+        <tr><td><b>Tonic neck (fencing reflex)</b></td><td>Turn the infant's head to one side while supine</td><td>Arm/leg extend on the face side, flex on the occiput side ("fencer" position)</td><td>Disappears ~3-4 months</td></tr>
+        <tr><td><b>Stepping/walking</b></td><td>Hold infant upright with feet touching a flat surface</td><td>Alternating stepping motion</td><td>Disappears ~3-4 weeks. Term infants step on soles; preterm infants step on toes</td></tr>
+        <tr><td><b>Crawling</b></td><td>Place infant prone</td><td>Crawling movements of arms/legs</td><td>Disappears ~6 weeks</td></tr>
+        <tr><td><b>Crossed extension</b></td><td>With infant supine, extend one leg and press the knee down; stimulate the sole of that foot</td><td>The OTHER leg flexes, adducts, then extends</td><td>Present throughout the newborn period</td></tr>
+        <tr><td><b>Pull-to-sit (traction response)</b></td><td>Pull the infant up by the wrists from supine, head in midline</td><td>Head lags initially, then infant attempts to right the head briefly before it falls forward</td><td>Depends on muscle tone/maturity/condition</td></tr>
+      </table>
+      </div></div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Differentiating normal tremors from pathology</b></span>Transient tremors of the mouth/chin/extremities are normal, especially during crying, and should resolve by 1 month of age. To differentiate benign tremor/jitteriness from seizure: <b>tremors are elicited by motion/voice and STOP with gentle restraint</b> of the limb; seizure activity continues despite restraint and is often accompanied by eye deviation/staring and autonomic changes (apnea, tachycardia, pupil changes). Persistent tremors, or tremors of the WHOLE body, may indicate hypoglycemia, hypocalcemia, or drug withdrawal and warrant evaluation.</span></div>
+
+      <div class="field"><div class="field-label">Hip Assessment for Developmental Dysplasia of the Hip (DDH)</div>
+      <p>Risk factors: breech presentation, first-born infants, female sex, family history of DDH.</p>
+      <p><b>Inspection:</b> gluteal and thigh skin folds should be symmetric; leg lengths equal; knee height equal when hips/knees are flexed (asymmetry = positive <b>Galeazzi/Allis sign</b>).</p>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Maneuver</th><th>Technique</th><th>Positive Finding (Concerning)</th></tr>
+        <tr><td><b>Barlow test</b></td><td>Hip flexed to 90&deg; and adducted; gentle downward pressure applied to the femoral head, attempting to dislocate it posteriorly out of the acetabulum</td><td>A palpable "clunk" as the femoral head moves OUT of the socket = unstable/dislocatable hip</td></tr>
+        <tr><td><b>Ortolani maneuver</b></td><td>Hip abducted with gentle upward/inward leverage, attempting to reduce a dislocated hip back into place</td><td>A palpable "clunk" as the femoral head moves BACK INTO the socket = confirms the hip was dislocated</td></tr>
+        <tr><td><b>Galeazzi (Allis) sign</b></td><td>Infant supine, both knees bent with feet flat on the surface; compare knee heights</td><td>One knee visibly higher/lower than the other = apparent femoral shortening on the affected side</td></tr>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:8px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Safety alert</b></span>Only expert examiners (physicians, NPs) should perform the Barlow test and Ortolani maneuver &mdash; an unskilled examiner can injure the newborn. In a newborn with DDH, the hip is usually NOT dislocated at birth but is <b>easily dislocatable</b>; whether it progresses to true dislocation depends on postnatal factors.</span></div>
+      <div class="field" style="margin-top:8px;"><div class="field-label">Treatment if DDH confirmed</div><p>Ultrasound or CT confirms diagnosis. The <b>Pavlik harness</b> is the most common treatment &mdash; it does not rigidly immobilize but prevents hip extension/adduction, worn continuously for approximately 3-6 months until a normal joint forms.</p></div>
+      </div>
+
+      <div class="field"><div class="field-label">Other musculoskeletal findings to assess</div><ul>
+        <li><b>Clavicles:</b> palpate for crepitus or unequal movement of the upper extremities &mdash; suggests fracture, common with large infants or shoulder dystocia</li>
+        <li><b>Feet:</b> clubfoot (talipes equinovarus) is fixed and will NOT correct with gentle repositioning; positional foot deformity from in-utero crowding WILL correct with gentle manipulation and resolves on its own</li>
+        <li><b>Digits:</b> should be 5 fingers/5 toes each, with nails present. Extra digits = polydactyly; fused digits = syndactyly; missing digits = oligodactyly</li>
+        <li><b>Palmar creases:</b> normal newborns have 3-4 curved palmar creases; a single straight <b>simian crease</b> can be an isolated normal variant OR, combined with other findings, may be associated with Down syndrome</li>
+        <li><b>Spine:</b> should be straight, flexible; a pilonidal dimple with a sinus or hairy nevus (nevus pilosis) over the lower spine warrants further evaluation for spina bifida occulta</li>
       </ul></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--green)"><i class="ti ti-stomach"></i></span><span>Gastrointestinal Assessment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Assessment sequence</div><p>Place the infant supine. <b>Inspect</b> first (shape, symmetry, cord), then <b>auscultate</b> bowel sounds in all 4 quadrants, then <b>palpate</b> last (palpation can stimulate bowel activity and alter what you hear on auscultation if done first).</p></div>
+
+      <div class="field"><div class="field-label">Umbilical cord assessment</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Vessel count</td><td class="normal">2 arteries + 1 vein (vein larger, thinner-walled; arteries whitish, constricted)</td><td class="abnormal">Single umbilical artery</td><td>Associated with renal anomalies &mdash; warrants further renal evaluation</td></tr>
+        <tr><td>Color</td><td class="normal">Whitish-gray, drying; pale yellow if treated with a cord dye</td><td class="abnormal">Meconium-stained (gray-green)</td><td>In-utero fetal distress with meconium passage</td></tr>
+        <tr><td>Cord site</td><td class="normal">Dry around the base, odorless</td><td class="abnormal">Bleeding/oozing</td><td>Hemorrhagic disease of the newborn (vitamin K deficiency)</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Redness or drainage around the base</td><td>Omphalitis (cord infection) &mdash; readily treated with antibiotics but must be caught early</td></tr>
+      </table>
+      </div></div>
+
+      <div class="field"><div class="field-label">Abdominal shape &amp; palpation</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Shape</td><td class="normal">Round, prominent, dome-shaped (abdominal musculature not fully developed); liver edge may be palpable 1-2cm below the right costal margin</td><td class="abnormal">Scaphoid (sunken), WITH bowel sounds heard in the chest and respiratory distress</td><td>Congenital diaphragmatic hernia &mdash; classic combination finding</td></tr>
+        <tr><td>Distention</td><td class="normal">None; some visible veins/mild diastasis recti (midline muscle separation) is a normal variant</td><td class="abnormal">Distention at birth</td><td>Ruptured viscus, genitourinary masses/malformations (hydronephrosis, tumors)</td></tr>
+        <tr><td>Umbilical area</td><td class="normal">Small, reducible umbilical hernia is common and usually closes on its own</td><td class="abnormal">Herniation of contents through the cord itself, covered by thin membrane</td><td>Omphalocele</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Herniation to the side of the cord, uncovered, may include liver</td><td>Gastroschisis</td></tr>
+        <tr><td>Bowel sounds</td><td class="normal">Present within minutes after birth in a healthy term infant, all 4 quadrants</td><td class="abnormal">Absent</td><td>Indicates non-functioning bowel &mdash; must be reported immediately</td></tr>
+        <tr><td>Masses</td><td class="normal">None palpable</td><td class="abnormal">Palpable mass</td><td>Neuroblastoma (most common), or enlarged kidney/liver/spleen from obstruction or congenital malformation &mdash; confirm with ultrasound</td></tr>
+      </table>
+      </div></div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Signs of acute abdomen &mdash; report immediately</b></span>Rigid, boardlike abdomen; inability to palpate abdominal organs; and pain indicators (continuous crying, facial grimacing, gross motor movements) together suggest an acute abdominal emergency requiring immediate provider notification.</span></div>
+
+      <div class="field"><div class="field-label">Vomiting/emesis &mdash; what the pattern suggests</div><ul>
+        <li><b>Mild/intermittent regurgitation:</b> overfeeding (usually benign)</li>
+        <li><b>Marked, often with bilious (green) emesis:</b> lower GI obstruction, anorectal malformation, anal stenosis</li>
+        <li><b>Projectile vomiting:</b> suggests pyloric stenosis</li>
+        <li><b>Color change, gagging with feeds:</b> suggests esophageal atresia/tracheoesophageal anomalies &mdash; see full TEF card in Unit 10</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label">Stool progression &amp; stomach capacity</div><ul>
+        <li><b>Meconium:</b> dark green-black, thick, sticky; should pass within 24-48 hrs after birth. <b>Failure to pass meconium</b> can indicate bowel obstruction, Hirschsprung disease, imperforate anus, or an inborn error like cystic fibrosis (meconium ileus)</li>
+        <li><b>Transitional stool</b> follows, then <b>yellow, seedy breastfed stool</b> (or firmer, tan formula-fed stool)</li>
+        <li><b>Diarrhea vs. transitional stool:</b> a distinct water ring around the stool on the diaper suggests true diarrhea/formula intolerance rather than normal transitional stooling &mdash; don't confuse the two</li>
+        <li><b>Stomach capacity</b> increases progressively: Day 1: 5-7 mL &middot; Day 3: 22-27 mL &middot; Week 1: 45-60 mL &middot; Week 2: 80-150 mL</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label">Anal patency</div><p>Passage of meconium confirms patency, but directly witnessing the stool pass is the most reliable confirmation. The <b>anal wink reflex</b> (gently stroke the buttocks; the anal sphincter should visibly contract/"wink") confirms correct anatomic position and good sphincter tone.</p></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-droplet"></i></span><span>Genitourinary Assessment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">General protocol</div><p>Position the infant supine with hips abducted for genital exam. Confirm voiding pattern, inspect/palpate genitalia specific to sex, and assess the anus.</p></div>
+
+      <div class="field"><div class="field-label">Voiding &amp; urine</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>First void</td><td class="normal">Within 24 hours of birth</td><td class="abnormal">No void by 24-48 hrs</td><td>Warrants evaluation for urinary tract obstruction/renal anomaly</td></tr>
+        <tr><td>Wet diaper frequency</td><td class="normal">1/day through day 4, then 6-8/day after day 3-4</td><td class="abnormal">Persistently fewer wet diapers than expected</td><td>Inadequate feeding intake or dehydration</td></tr>
+        <tr><td>Urine appearance</td><td class="normal">"Brick dust" (orange, uric acid crystals) is a normal early finding</td><td class="abnormal">Persists beyond first few days, or blood-tinged (not pseudomenstruation-related)</td><td>Should resolve quickly with adequate hydration &mdash; persistence warrants follow-up</td></tr>
+      </table>
+      </div></div>
+
+      <div class="field"><div class="field-label">Male genitalia &mdash; assessment technique &amp; findings</div>
+      <p><b>Technique:</b> Palpate the scrotum with the second finger at the posterior midline and thumb at the anterior midline; palpate the left side with index finger/thumb, then the right side with third finger/thumb (prevents double-counting one testis). Gently retract the foreskin to inspect the urethral meatus location.</p>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Testes</td><td class="normal">Both descended into the scrotum; ~90% descended at birth in term infants</td><td class="abnormal">Undescended (cryptorchidism) beyond 35 weeks corrected gestational age</td><td>Refer for urology consultation</td></tr>
+        <tr><td>Scrotum</td><td class="normal">Pendulous, covered with rugae (term); may be edematous after breech birth</td><td class="abnormal">Swelling that doesn't transilluminate</td><td>Possible hernia with entrapped bowel &mdash; auscultate for bowel sounds in the scrotum; report immediately if suspected</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Swelling that DOES transilluminate (reddish-yellow glow)</td><td>Hydrocele &mdash; benign, fluid reabsorbs over the first weeks of life, no treatment needed</td></tr>
+        <tr><td>Penis</td><td class="normal">~2cm length at term; foreskin covers the glans; meatus centered at the tip</td><td class="abnormal">Meatus on the ventral (underside) surface</td><td>Hypospadias &mdash; do NOT circumcise, foreskin needed for repair</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Meatus on the dorsal (top) surface</td><td>Epispadias &mdash; same circumcision precaution applies</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Penis &lt;2cm (micropenis)</td><td>May be associated with a pituitary tumor/endocrine disorder</td></tr>
+      </table>
+      </div></div>
+
+      <div class="field"><div class="field-label">Female genitalia &mdash; assessment technique &amp; findings</div>
+      <p><b>Technique:</b> Gently separate the labia to inspect the location of the urethral and vaginal openings.</p>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Labia</td><td class="normal">In term infants, labia majora borders touch and fully cover the clitoris</td><td class="abnormal">Labia minora/clitoris clearly visible/exposed</td><td>Delayed genital development (can be a normal variant in an otherwise term infant, or suggest earlier gestational age)</td></tr>
+        <tr><td>Clitoris</td><td class="normal">Slight enlargement from maternal hormone exposure is normal</td><td class="abnormal">Grossly enlarged, hood-shaped</td><td>Possible excessive androgen exposure &mdash; evaluate for congenital adrenal hyperplasia</td></tr>
+        <tr><td>Vaginal discharge</td><td class="normal">Thick mucous discharge; may be blood-tinged (pseudomenstruation from maternal estrogen withdrawal); smegma (thick white discharge) also normal</td><td class="abnormal">&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>Hymen</td><td class="normal">Hymenal tag may be visible &mdash; normal variant</td><td class="abnormal">Imperforate hymen (tissue fully obstructs the vaginal opening)</td><td>Requires later surgical correction to allow menstrual flow</td></tr>
+      </table>
+      </div></div>
+
+      <div class="field"><div class="field-label">Anus &amp; circumcision site</div><ul>
+        <li><b>Anal patency:</b> confirmed by meconium passage and a positive anal wink reflex (see GI card). Anal ring skin tags are common, benign, hemorrhoid-like tissue</li>
+        <li><b>Circumcision site (if performed):</b> assess for bleeding, signs of infection, and confirm voiding after the procedure &mdash; see the full Circumcision card in the Pain &amp; Circumcision tab for detailed post-procedure monitoring</li>
+      </ul></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Key reportable findings across GU exam</b></span><ol>
+        <li>No void within 24 hours of birth</li>
+        <li>Ambiguous genitalia or findings suggesting congenital adrenal hyperplasia</li>
+        <li>Undescended testes beyond the expected corrected gestational age window</li>
+        <li>Any scrotal mass that does not transilluminate (possible incarcerated hernia &mdash; urgent)</li>
+      </ol></span></div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-heartbeat"></i></span><span>Cardiovascular &amp; Peripheral Vascular Assessment</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Skin color/perfusion</div><p>At rest, skin should be pink, progressing to redder with crying/activity. Assess perfusion most reliably at the lips, gums, and buccal mucosa. <b>Cyanosis anywhere other than the hands/feet</b> (i.e., central cyanosis), with or without increased work of breathing, suggests a respiratory and/or cardiac problem and should be reported.</p></div>
+
+      <div class="field"><div class="field-label">Capillary refill &mdash; technique</div><p>Gently pinch the end of a finger or toe, then count the seconds until color returns. <b>Average/expected refill time is &le;3 seconds.</b> A refill time greater than 3 seconds suggests blood is being shunted from the periphery toward the trunk (poor perfusion).</p></div>
+
+      <div class="field"><div class="field-label">Peripheral pulses &mdash; technique</div><p>Palpate all peripheral pulses (brachial, femoral, popliteal, posterior tibial) for bilateral symmetry, strength, and rate. <b>Specifically compare the femoral pulses to the brachial pulses side-by-side.</b></p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Cause</th></tr>
+        <tr><td>Heart rate</td><td class="normal">120-160 bpm; up to 180 with crying, as low as 80-100 in deep sleep</td><td class="abnormal">Persistent tachycardia &gt;160-180</td><td>Anemia, hypovolemia, hyperthermia, sepsis, RDS, pneumonia</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Persistent bradycardia &lt;80</td><td>Congenital heart block, maternal lupus, hypoxemia</td></tr>
+        <tr><td>Heart sounds</td><td class="normal">S1/S2 sharp and clear; S1 louder/duller than S2</td><td class="abnormal">Murmur persisting beyond early transition, or with other symptoms</td><td>A soft, isolated murmur in the first few days is often benign (patent foramen ovale/ductus arteriosus closing) and often resolves by 6 months. A murmur WITH poor feeding, apnea, cyanosis, or pallor requires cardiac evaluation</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Distant or muffled sounds</td><td>Pneumopericardium</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Heart sounds heard on the right side of the chest</td><td>Dextrocardia, often accompanied by reversed/malpositioned intestines</td></tr>
+        <tr><td>Capillary refill</td><td class="normal">&le;3 seconds</td><td class="abnormal">&gt;3 seconds</td><td>Peripheral shunting/poor perfusion &mdash; correlate with other perfusion signs</td></tr>
+        <tr><td>Peripheral pulses</td><td class="normal">Equal, strong bilaterally, brachial = femoral strength</td><td class="abnormal">Femoral pulses weaker than brachial, or pulses unequal side-to-side</td><td><b>Coarctation of the aorta</b> &mdash; a narrowing of the aortic arch that compromises blood flow to the lower body; this is a genuine clinical hypothesis to prioritize, not just a checklist line</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Weak or absent pulses generally</td><td>Decreased cardiac output, thrombus</td></tr>
+        <tr><td></td><td></td><td class="abnormal">Bounding pulses</td><td>Patent ductus arteriosus (wide pulse pressure)</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>High-acuity pattern: Tetralogy of Fallot</b></span>Some critical congenital heart defects (including tetralogy of Fallot, and infants with trisomy 13/18/21) show NO difficulty in the first 24 hours of life. Instability and central cyanosis appear specifically <b>once the ductus arteriosus begins to close</b> after the first day &mdash; a normal initial exam does not rule out a critical cardiac defect that hasn't declared itself yet. This is exactly why CCHD pulse oximetry screening (covered in the Immediate Care tab) is performed at 24-48 hours rather than immediately at birth.</span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing sequence for cardiovascular assessment</b></span><ol>
+        <li>Keep the newborn warm during the exam &mdash; cold stress can itself alter heart rate and perfusion findings.</li>
+        <li>Measure apical heart rate for a full 60 seconds.</li>
+        <li>Listen for murmurs; if one is heard, assess oxygen saturation via pulse oximetry.</li>
+        <li>Palpate pulses (brachial and femoral at minimum) and compare strength/symmetry.</li>
+        <li>Assess for cyanosis by blanching the skin on the trunk and extremities.</li>
+        <li>Observe for cardiac distress specifically DURING feeding &mdash; increased work or fatigue with feeding can be an early sign of cardiac compromise not otherwise visible at rest.</li>
+      </ol></span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>We check your baby's heart rate, heart sounds, and pulses in the arms and legs as part of every exam. A soft heart murmur in the first few days is common and often goes away on its own, but we'll keep monitoring it. Let us know if your baby seems to struggle or tire out during feeding.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Watch for blue coloring anywhere other than the hands and feet, or if the baby seems unusually tired or sweaty during feeding &mdash; these are reasons to contact the parents and care team promptly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-school"></i></span><span>Educational Needs Assessment (Discharge Teaching)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Required safety topics</div><p>Every newborn assessment/discharge encounter should cover these four safety topics with the family:</p>
+      <ul>
+        <li><b>Car seat safety:</b> rear-facing, correct harness positioning, correctly installed base</li>
+        <li><b>Back to Sleep:</b> supine sleep position reduces SIDS risk (see full SIDS card, Unit 10)</li>
+        <li><b>Shaken baby syndrome prevention:</b> never shake an infant; teach safe ways to manage frustration when the baby won't stop crying (e.g., placing baby safely in the crib and stepping away briefly)</li>
+        <li><b>Bulb syringe use:</b> demonstrate/reinforce proper technique &mdash; mouth before nose, compress before inserting (see full technique card, Immediate Care tab)</li>
+      </ul></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Warning signs to report to the RN or provider &mdash; name at least three</b></span><ol>
+        <li>Temperature greater than 100.4&deg;F axillary</li>
+        <li>Refusal of two consecutive feedings</li>
+        <li>Two green, watery stools</li>
+        <li>Frequent or forceful (projectile) vomiting</li>
+        <li>Lack of voiding or stooling</li>
+      </ol></span></div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Teaching technique note</b></span>When teaching warning signs, use the family's own words back to confirm understanding (teach-back method) rather than just asking "any questions?" &mdash; e.g., have the parent restate when they would call versus when they would simply monitor at home.</span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Before you go home, please make sure you feel confident installing the car seat correctly, always placing baby on the back to sleep, never shaking your baby even when frustrated, and using the bulb syringe if needed. Call us if your baby's temperature is over 100.4 under the arm, refuses two feedings in a row, has watery green stools, is vomiting forcefully, or isn't having wet or dirty diapers.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Know these same safety basics if you'll be caring for this baby: correct car seat use, back-to-sleep positioning, never shaking the baby under any circumstances, and how to use a bulb syringe. Ask the parents which warning signs they want you to call them about immediately.</div>
+      </div>
     </div>
   </div>
 </div>
