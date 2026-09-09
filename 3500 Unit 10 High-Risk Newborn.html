@@ -186,7 +186,8 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <button class="active" data-tab="overview"><i class="ti ti-layout-grid"></i>Overview</button>
   <button data-tab="u10-risk"><i class="ti ti-shield-exclamation"></i>High-Risk</button>
   <button data-tab="u10-preterm"><i class="ti ti-lungs-off"></i>Prematurity/RDS</button>
-  <button data-tab="u10-conditions"><i class="ti ti-dna-2"></i>Hemolytic/IDM</button>
+  <button data-tab="u10-hemo"><i class="ti ti-blood"></i>Hemolytic/IDM</button>
+  <button data-tab="u10-anomalies"><i class="ti ti-dna-2"></i>Screening/Anomalies</button>
   <button data-tab="u10-loss"><i class="ti ti-heart"></i>Loss &amp; SIDS</button>
   <button data-tab="compare"><i class="ti ti-columns-3"></i>Compare</button>
   <button data-tab="quiz"><i class="ti ti-checkbox"></i>Quiz</button>
@@ -228,7 +229,8 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <div class="toc-grid">
     <div class="toc-item" data-jump="u10-risk"><i class="ti ti-shield-exclamation"></i>Birth Trauma + Sepsis + TORCH + NAS</div>
     <div class="toc-item" data-jump="u10-preterm"><i class="ti ti-lungs-off"></i>RDS + Late Preterm + Post-term</div>
-    <div class="toc-item" data-jump="u10-conditions"><i class="ti ti-dna-2"></i>Rh/ABO, IDM, PKU, Galactosemia, Anomalies</div>
+    <div class="toc-item" data-jump="u10-hemo"><i class="ti ti-blood"></i>Rh/ABO, IDM, Dextrose</div>
+    <div class="toc-item" data-jump="u10-anomalies"><i class="ti ti-dna-2"></i>PKU, Galactosemia, Anomalies</div>
     <div class="toc-item" data-jump="u10-loss"><i class="ti ti-heart"></i>SIDS + Palliative Care</div>
     <div class="toc-item" data-jump="quiz"><i class="ti ti-checkbox"></i>Practice Questions</div>
   </div>
@@ -714,12 +716,12 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 </div>
 
 <!-- HEMOLYTIC/IDM/ANOMALIES -->
-<div class="panel" id="u10-conditions">
-  <h2 class="section-title"><i class="ti ti-dna-2"></i>Hemolytic Disorders, IDM &amp; Congenital Anomalies</h2>
+<div class="panel" id="u10-hemo">
+  <h2 class="section-title"><i class="ti ti-blood"></i>Hemolytic Disorders &amp; IDM</h2>
   <div class="uslo-tag">USLO 3</div><div class="uslo-tag">USLO 4</div>
-  <p class="lead">Perry Ch. 25. Includes maternal-side prevention (RhoGAM) and infant-side management.</p>
+  <p class="lead">Rh incompatibility, ABO incompatibility, infant of diabetic mother, and IV dextrose treatment. See the Screening &amp; Anomalies tab for newborn metabolic screening, PKU, galactosemia, and congenital anomalies.</p>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-blood"></i></span><span>Rh Incompatibility (Isoimmunization)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Rh-negative mother carries Rh-positive fetus. Fetal RBCs enter maternal circulation (usually at birth) &rarr; mother produces anti-Rh antibodies (sensitization). In a subsequent Rh-positive pregnancy, these antibodies cross the placenta and attack fetal RBCs &rarr; hemolysis &rarr; fetus compensates with accelerated erythropoiesis, releasing immature RBCs (erythroblasts) &mdash; "erythroblastosis fetalis."</p></div>
@@ -795,7 +797,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-blood"></i></span><span>ABO Incompatibility</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Maternal blood type O with fetal blood type A, B, or AB. Naturally-occurring anti-A/anti-B antibodies cross the placenta and attack fetal RBCs.</p></div>
@@ -809,7 +811,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-chart-arrows"></i></span><span>Infant of Diabetic Mother (IDM)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Chronic maternal hyperglycemia crosses the placenta; fetal pancreas responds with hyperinsulinemia (insulin acts as a growth hormone in the fetus). After birth, maternal glucose supply stops abruptly but fetal insulin production continues at a high rate &rarr; rapid, significant hypoglycemia.</p></div>
@@ -875,8 +877,15 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Cold stress increases glucose consumption &rarr; hypoglycemia. Connect thermoregulation problems directly to glucose problems on any NGN scenario.</span></div>
     </div>
   </div>
+</div>
 
-  <div class="cond">
+<!-- SCREENING & ANOMALIES -->
+<div class="panel" id="u10-anomalies">
+  <h2 class="section-title"><i class="ti ti-dna-2"></i>Screening &amp; Congenital Anomalies</h2>
+  <div class="uslo-tag">USLO 3</div><div class="uslo-tag">USLO 4</div>
+  <p class="lead">Newborn metabolic screening, PKU/galactosemia dietary management, and the major congenital anomalies: DDH/clubfoot, TEF/esophageal atresia, CDH/choanal atresia, omphalocele/gastroschisis, neural tube defects, and genitourinary anomalies.</p>
+
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-microscope"></i></span><span>Newborn Screening for Disease</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
     <ul>
@@ -888,7 +897,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-apple"></i></span><span>PAH Deficiency (formerly PKU) &mdash; Dietary Management</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Genetic deficiency of phenylalanine hydroxylase enzyme &rarr; inability to metabolize phenylalanine (an amino acid) &rarr; toxic accumulation &rarr; brain damage if untreated.</p></div>
@@ -917,7 +926,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-milk"></i></span><span>Galactosemia &mdash; Dietary Management</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Genetic deficiency in an enzyme needed to metabolize galactose (a sugar from lactose breakdown) &rarr; toxic accumulation &rarr; liver damage, cataracts, developmental delay if untreated.</p></div>
@@ -943,7 +952,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-bone"></i></span><span>Developmental Dysplasia of the Hip (DDH) &amp; Clubfoot</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>DDH &mdash; Pathophysiology</div><p>Abnormal development of the hip joint ranging from mild instability to full dislocation of the femoral head from the acetabulum.</p></div>
@@ -958,7 +967,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-lungs"></i></span><span>Tracheoesophageal Fistula (TEF) &amp; Esophageal Atresia</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Incomplete separation of the esophagus and trachea during embryonic development; the esophagus may end in a blind pouch (atresia) and/or an abnormal connection (fistula) may exist between the esophagus and trachea, allowing secretions/feeds to pass into the lungs.</p></div>
@@ -982,7 +991,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-lungs-off"></i></span><span>Congenital Diaphragmatic Hernia (CDH) &amp; Choanal Atresia</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>CDH &mdash; Pathophysiology</div><p>The diaphragm fails to form completely, allowing abdominal organs to herniate into the thoracic cavity, compressing the developing lung(s) and impairing normal lung development. Occurs in about 1 in 2,200 births; survival rate ~50%.</p></div>
@@ -1008,7 +1017,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-stomach"></i></span><span>Abdominal Wall Defects: Omphalocele &amp; Gastroschisis</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><ul>
@@ -1032,7 +1041,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--gray)"><i class="ti ti-brain"></i></span><span>Neural Tube Defects (Spina Bifida Spectrum)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Failure of the primitive neural tube to close completely during the first 30 days of gestation. "Spina bifida" is the umbrella term; the location and completeness of closure failure determines severity.</p></div>
@@ -1064,7 +1073,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-droplet"></i></span><span>Hypospadias, Epispadias &amp; Bladder Exstrophy</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Hypospadias / Epispadias</div><ul>
