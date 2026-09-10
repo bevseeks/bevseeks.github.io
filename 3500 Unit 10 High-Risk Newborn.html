@@ -202,6 +202,8 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   padding:4px 10px; border-radius:999px; margin-bottom:10px;
 }
 .chapter-tag i{font-size:13px;}
+.subsection-heading{display:flex; align-items:center; gap:8px; font-size:17px; font-weight:800; color:var(--purple-dark); margin:26px 0 10px; padding-top:16px; border-top:2px solid var(--purple-light);}
+.subsection-heading i{font-size:19px; color:var(--purple);}
 
 /* Mobile hamburger */
 .mobile-topbar{display:none; position:sticky; top:0; z-index:60; background:linear-gradient(120deg,var(--purple-dark),var(--purple)); border-bottom:1px solid var(--line); padding:12px 14px; align-items:center; gap:10px; box-shadow:0 2px 10px rgba(0,0,0,.15);}
@@ -982,14 +984,76 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
 <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-blood"></i></span><span>ABO Incompatibility</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Maternal blood type O with fetal blood type A, B, or AB. Naturally-occurring anti-A/anti-B antibodies cross the placenta and attack fetal RBCs.</p></div>
-      <div class="field"><div class="field-label">Key distinction from Rh</div><p><b>Can occur in the first pregnancy</b> (unlike Rh). Hemolytic reaction is usually less severe.</p></div>
-      <div class="field"><div class="field-label">Signs &amp; symptoms</div><p>Jaundice can appear within first 24 hours. Exchange transfusion rare.</p></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Jaundice in the first 24 hours of life in an O-type mother with A/B/AB-type infant.</span></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Human blood cell membranes carry antigens; the plasma of one blood group contains antibodies against the antigens of a <i>different</i> group (except type AB, which has no antibodies at all). In the ABO system specifically, these antibodies occur <b>naturally</b> &mdash; unlike the Rh system, where the mother must first be exposed/sensitized to the antigen before antibodies form. The most common incompatibility is a <b>type O mother with a type A, B, or AB infant</b>. The mother's naturally-occurring anti-A and/or anti-B antibodies cross the placenta and attack fetal RBCs, causing hemolysis.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-columns-3"></i>Key distinctions from Rh incompatibility</div>
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Feature</th><th>ABO Incompatibility</th><th>Rh Incompatibility</th></tr>
+        <tr><td>Antibody origin</td><td><b>Naturally occurring</b> &mdash; no prior sensitization needed</td><td>Requires prior exposure/sensitization to Rh antigen</td></tr>
+        <tr><td>Can affect the first pregnancy?</td><td><b>Yes</b></td><td>Usually no &mdash; first Rh+ pregnancy typically unaffected</td></tr>
+        <tr><td>Severity</td><td><b>Usually milder</b> hemolytic reaction</td><td>Can be severe, progressive, worsens with each subsequent pregnancy</td></tr>
+        <tr><td>Exchange transfusion need</td><td>Rare</td><td>More common in severe cases</td></tr>
+      </table>
+      </div></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Risk factors for resulting hyperbilirubinemia to be severe</div><ul>
+        <li>Preterm birth</li>
+        <li>Breastfeeding, especially if exclusively breastfeeding with excessive weight loss</li>
+        <li>Other known hemolytic disease coexisting (e.g., G6PD deficiency)</li>
+        <li>Polycythemia</li>
+        <li>East Asian, Native American, or Mediterranean descent</li>
+        <li>Bruising related to birth trauma, cephalohematoma</li>
+        <li>A previous sibling who required phototherapy for jaundice</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-stethoscope"></i>Signs &amp; symptoms</div><ul>
+        <li><b>Jaundice appearing within the first 24 hours of life</b> &mdash; the hallmark finding, since this timing itself signals a hemolytic (not physiologic) process</li>
+        <li>Serum unconjugated bilirubin rises rapidly</li>
+        <li>Anemia from the ongoing hemolysis of RBCs</li>
+        <li>Hepatosplenomegaly may be present, though typically less pronounced than in severe Rh disease</li>
+        <li>Hypoglycemia can occur secondary to pancreatic cell hyperplasia</li>
+      </ul></div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>This is pathologic jaundice, not physiologic</b></span>Jaundice appearing &lt;24 hours after birth is <b>always considered pathologic</b> and requires workup &mdash; contrast with physiologic jaundice, which appears &gt;24 hours and peaks day 3-5 (see full Jaundice card, Vitals &amp; Scoring, Unit 9). Other markers of a pathologic process: total serum bilirubin (TSB) rising &gt;0.2 mg/dL/hour, TSB above the 95th percentile for age in hours, direct serum bilirubin &gt;1.5-2 mg/dL, or jaundice persisting beyond 2 weeks.</span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><ul>
+        <li>Untreated/severe hyperbilirubinemia can progress toward kernicterus (bilirubin-induced neurologic damage) &mdash; though this is a rarer outcome with ABO incompatibility than with severe Rh disease</li>
+        <li>Anemia from ongoing hemolysis</li>
+        <li>Hypoglycemia from pancreatic cell hyperplasia</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Test</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Nursing action</th></tr>
+        <tr><td>Maternal/infant blood typing</td><td class="normal">Compatible types</td><td class="abnormal">Maternal type O, infant type A/B/AB</td><td>Flags the infant for closer bilirubin monitoring even before symptoms appear</td></tr>
+        <tr><td>Direct antiglobulin test (DAT / direct Coombs), cord blood</td><td class="normal">Negative</td><td class="abnormal">Positive &mdash; confirms antibodies are attached to circulating fetal RBCs</td><td>Confirms the hemolytic process; can be performed on cord blood at delivery when incompatibility is suspected</td></tr>
+        <tr><td>Total serum/transcutaneous bilirubin, serial</td><td class="normal">Tracks below the low-risk zone on the hour-specific nomogram</td><td class="abnormal">Rising faster than 0.2 mg/dL/hr, or above the 95th percentile for age in hours</td><td>Plot on the hour-specific bilirubin nomogram; treat per phototherapy threshold</td></tr>
+        <tr><td>Hemoglobin/hematocrit</td><td class="normal">Normal for age</td><td class="abnormal">Low &mdash; reflects ongoing hemolytic anemia</td><td>Monitor trend; correlates with hemolysis severity</td></tr>
+        <tr><td>Blood glucose</td><td class="normal">Normal range</td><td class="abnormal">Low &mdash; from pancreatic cell hyperplasia</td><td>Monitor per hypoglycemia protocol (see full card, Unit 9)</td></tr>
+      </table>
+      </div></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked)</b></span><ol>
+        <li><b>Monitor bilirubin trend closely from birth</b> in any O-type mother/A-B-AB infant pairing, even before jaundice is visually apparent &mdash; early identification allows treatment before levels reach a dangerous range.</li>
+        <li>Initiate phototherapy promptly per the facility's bilirubin nomogram threshold once ordered (see full Phototherapy/Jaundice card, Unit 9, for technique).</li>
+        <li>Support frequent feeding (breast or formula) to promote stooling and bilirubin excretion &mdash; inadequate intake allows bilirubin reabsorption from the GI tract.</li>
+        <li>Monitor for anemia and hypoglycemia alongside bilirubin, since both can develop from the same hemolytic process.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Jaundice visible in the first 24 hours of life in an O-type mother with an A/B/AB-type infant; TSB rising faster than 0.2 mg/dL/hour or crossing into the high-risk zone on the nomogram; signs of anemia (pallor, tachycardia); signs of hypoglycemia; jaundice persisting beyond 2 weeks.</span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Treatment</div><p>Primarily <b>phototherapy</b> to manage rising bilirubin (see full technique card, Unit 9). Exchange transfusion is rare, reserved for severe cases not responding to phototherapy. In some institutions, a <b>metalloporphyrin</b> may be administered intramuscularly to decrease bilirubin formation in ABO-incompatible neonates specifically.</p></div>
+
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care note</b></span>Being type O and having a baby with jaundice from blood type differences is common and usually straightforward to manage &mdash; this is not something you caused or could have prevented, and most cases resolve well with monitoring and, if needed, phototherapy.</span></div>
+
       <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your blood type combination with your baby's can cause mild jaundice, usually milder than what's seen with Rh incompatibility. We'll monitor bilirubin levels and treat with phototherapy if needed.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Watch for yellowing of the skin or eyes and report it, especially if it seems to be spreading or worsening.</div>
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your blood type combination with your baby's can cause mild jaundice, usually milder than what's seen with Rh incompatibility, and it can happen even with a first pregnancy. We'll monitor bilirubin levels closely and treat with phototherapy if needed. Feeding your baby frequently helps their body clear the bilirubin faster.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Watch for yellowing of the skin or eyes and report it, especially if it seems to be spreading (starting at the head and moving down the body) or worsening. Encourage frequent feeding, which helps the baby clear bilirubin.</div>
       </div>
+
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> ABO incompatibility = "can happen the FIRST time, usually MILD." Rh incompatibility = "needs sensitization FIRST, gets WORSE each time." If a question describes hemolytic jaundice in a first-time mother, think ABO before Rh.</span></div>
     </div>
   </div>
 </section>
@@ -1429,11 +1493,46 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   <div class="chapter-tag"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
   <h2 class="section-title"><i class="ti ti-pill"></i>Substance-Exposed Infants (NAS)</h2>
 
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-vial"></i></span><span>Types of Substance Exposure &mdash; Differentiated by Class</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Why differentiation matters</div><p>"Substance-exposed infant" is not one uniform presentation &mdash; different drug classes cross the placenta by different mechanisms, cause harm through different pathways (withdrawal vs. direct teratogenic/vascular injury vs. both), and produce withdrawal on very different timelines. Identifying which class(es) an infant was exposed to changes what you watch for and when.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Substance Class</th><th>Mechanism of Fetal/Neonatal Harm</th><th>Withdrawal Onset</th><th>Distinguishing Signs</th></tr>
+        <tr><td><b>Opioids</b> (heroin, methadone, oxycodone, morphine, codeine, fentanyl, buprenorphine)</td><td>Chronic exposure &rarr; fetal physiologic dependence; drug abruptly stops at birth &rarr; true withdrawal (NAS). Low molecular weight crosses the placenta easily</td><td>Can appear hours after birth up to 2 weeks later; <b>most infants show symptoms within 72 hours</b>. The closer to delivery the mother last used, the LONGER it takes withdrawal to appear and the MORE severe it tends to be</td><td>Classic NAS picture: irritability, high-pitched cry, tremors, hypertonicity, poor feeding, loose stools, sweating, nasal stuffiness &mdash; see full Finnegan-scored presentation below</td></tr>
+        <tr><td><b>Cocaine</b></td><td>Potent CNS stimulant AND vasoconstrictor &mdash; direct vascular injury to the placenta and fetal circulation, not primarily a withdrawal mechanism</td><td>Not a true withdrawal syndrome in the same sense as opioids; effects are more directly toxic/vascular</td><td>IUGR, low birth weight, SGA; maternal risks include preterm labor, PROM, placental abruption, preeclampsia</td></tr>
+        <tr><td><b>Methamphetamine</b></td><td>CNS stimulant with vasoconstrictive effects similar to cocaine</td><td>Can show withdrawal-type signs, though less standardized than opioid NAS</td><td>Agitation, tremors, hypertonia, poor feeding; low birth weight, microcephaly, decreased length; long-term math/language difficulties reported at school age</td></tr>
+        <tr><td><b>Alcohol</b></td><td>Both a withdrawal syndrome AND a teratogen &mdash; two separate mechanisms in the same substance</td><td>Withdrawal signs especially prominent when maternal ingestion occurred near the time of birth</td><td><b>Withdrawal:</b> jitteriness, increased tone/reflexes, irritability, seizures are common. <b>Teratogenic (FAS/FASD):</b> see dedicated comparison below &mdash; a completely separate set of findings from withdrawal</td></tr>
+        <tr><td><b>Marijuana (THC)</b></td><td>THC crosses the placenta easily; can remain in maternal tissue up to 30 days in chronic users, prolonging fetal exposure</td><td>Not a classic withdrawal syndrome</td><td>Associated with preterm birth, IUGR, possible growth restriction; no clear teratogenic pattern identified, but long-term cognitive/behavioral effects remain under study</td></tr>
+        <tr><td><b>Tobacco/Nicotine</b></td><td>Vasoconstrictive effects of nicotine + carbon monoxide crossing the placenta &rarr; fetal hypoxemia</td><td>Not a classic withdrawal syndrome</td><td>Low birth weight is the most recognized effect; associated with miscarriage, placental abruption, placenta previa, preterm birth</td></tr>
+        <tr><td><b>SSRIs</b> (antidepressants)</td><td>Prescribed, therapeutic exposure &mdash; not illicit, but still produces neonatal signs in a significant minority</td><td>Present in up to <b>1/3</b> of exposed infants</td><td>Hypertonia, tremulousness, wakefulness, high-pitched crying, feeding problems; late-pregnancy exposure carries increased risk of persistent pulmonary hypertension of the newborn (PPHN)</td></tr>
+        <tr><td><b>Benzodiazepines &amp; Barbiturates</b> (lorazepam, diazepam)</td><td>CNS depressant dependence, similar concept to opioid NAS but different receptor pathway</td><td><b>Delayed &mdash; often not seen until 7-21 days of age</b>, well after typical discharge; benzodiazepines cause more severe/prolonged withdrawal than barbiturates due to longer half-life</td><td>Hypotonia, hypertonia, excessive or poor suck, emesis; may require phenobarbital for management</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>The late-discharge danger &mdash; a critical timing pearl</b></span>Some substances (especially benzodiazepines/barbiturates, and opioids used close to delivery) don't produce visible withdrawal until <b>7-10+ days after birth</b> &mdash; by which point most healthy-appearing newborns have already been discharged home. Caregivers unaware of the exposure history may not recognize irritability or poor feeding as withdrawal, which increases risk of unrecognized neglect or failure to thrive. This is exactly why maternal history and prenatal record review are so critical &mdash; the newborn exam alone cannot always catch a delayed-onset case.</span></div>
+
+      <div class="field"><div class="field-label">Polysubstance use complicates the picture</div><p>Many women who use one substance use more than one. Because presentation can be a confusing complex of overlapping signs, the nurse must help differentiate true substance withdrawal from other conditions that can look similar or coexist: <b>hypoglycemia, hypocalcemia, sepsis, and CNS disorders</b>. The nurse is often the first to observe withdrawal signs and plays a key role in this differential process, not just in scoring severity.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Confirming exposure &mdash; testing methods</div>
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Specimen</th><th>Detection Window</th><th>Practical Tradeoff</th></tr>
+        <tr><td>Urine</td><td>Only the last few days of in-utero exposure</td><td>Most commonly used; limited sensitivity; must collect the FIRST urine specimen for best accuracy</td></tr>
+        <tr><td>Meconium</td><td>Longer window than urine</td><td>More sensitive/reliable but costly, limited availability, and results take 1-2 weeks; requires collecting as much meconium as possible before transitional stooling begins</td></tr>
+        <tr><td>Umbilical cord tissue</td><td>Reflects broader exposure window</td><td>Newer method; tests for more substances than urine; tissue is immediately available so results return faster than meconium testing</td></tr>
+      </table>
+      </div></div>
+    </div>
+  </div>
+
 <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-pill"></i></span><span>Neonatal Abstinence Syndrome (NAS) / Substance-Exposed Infants</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Chronic in-utero exposure to opioids/other substances leads to physiologic dependence. After birth, the substance supply stops abruptly &rarr; withdrawal syndrome affecting CNS, GI, and autonomic nervous system.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology</div><p>Maternal use of narcotics (heroin, methadone), other illicit substances, smoking, alcohol during pregnancy.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology</div><p>Maternal use of narcotics (heroin, methadone), other illicit substances, smoking, alcohol during pregnancy. See the full Types of Substance Exposure card above for how these differ by class.</p></div>
       <div class="field"><div class="field-label">Signs &amp; symptoms</div><ul>
         <li>CNS: irritability, high-pitched cry, tremors, hypertonicity, poor sleep, seizures (severe)</li>
         <li>GI: poor feeding, vomiting, diarrhea, poor weight gain</li>
@@ -1518,7 +1617,103 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Phenobarbital = CNS depressant &rarr; monitor respiratory status and sedation, same priority logic as the opioids it's often paired with.</span></div>
     </div>
   </div>
+
+  <h3 class="subsection-heading"><i class="ti ti-clipboard-heart"></i>Nursing Care for Substance-Exposed Infants</h3>
+  <p class="lead" style="margin-top:-4px;">The full assessment-to-treatment pathway: Finnegan scoring, NNNS, nonpharmacologic care, and pharmacologic treatment modalities.</p>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-clipboard-list"></i></span><span>The Finnegan Neonatal Abstinence Scoring System</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Purpose</div><p>Developed by Dr. Loretta Finnegan (1985) to monitor withdrawal <b>objectively</b> and evaluate the infant's response to both clinical care and pharmacologic intervention. This is the standard, most widely used scoring tool for opioid-exposed infants specifically.</p></div>
+      <div class="field"><div class="field-label">How it's organized &amp; used</div><p>The tool scores signs across three physiologic categories &mdash; <b>CNS disturbances, metabolic/vasomotor/respiratory disturbances, and GI disturbances</b> &mdash; with each sign assigned point values reflecting severity. Scoring is typically done <b>every 3-4 hours</b>, and daily weight is tracked alongside the score. The total score at each assessment drives the treatment decision: nonpharmacologic care alone, or escalation to pharmacologic therapy once a facility-defined threshold is reached.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Category</th><th>Sign</th><th>Points</th></tr>
+        <tr><td rowspan="8"><b>CNS Disturbances</b></td><td>Excessive high-pitched cry / continuous high-pitched cry</td><td>2 / 3</td></tr>
+        <tr><td>Sleeps &lt;1 hr after feeding / &lt;2 hrs / &lt;3 hrs</td><td>3 / 2 / 1</td></tr>
+        <tr><td>Hyperactive Moro / markedly hyperactive Moro</td><td>2 / 3</td></tr>
+        <tr><td>Mild tremors disturbed / moderate-severe disturbed</td><td>1 / 2</td></tr>
+        <tr><td>Mild tremors undisturbed / moderate-severe undisturbed</td><td>3 / 4</td></tr>
+        <tr><td>Increased muscle tone</td><td>2</td></tr>
+        <tr><td>Excoriation (specific area)</td><td>1</td></tr>
+        <tr><td>Myoclonic jerks / generalized convulsions</td><td>3 / 5</td></tr>
+        <tr><td rowspan="7"><b>Metabolic/Vasomotor/Respiratory</b></td><td>Sweating</td><td>1</td></tr>
+        <tr><td>Fever 99-100.8&deg;F (37.2-38.2&deg;C) / &gt;101&deg;F (38.4&deg;C+)</td><td>1 / 2</td></tr>
+        <tr><td>Frequent yawning (&gt;3-4x/interval)</td><td>1</td></tr>
+        <tr><td>Mottling</td><td>1</td></tr>
+        <tr><td>Nasal stuffiness / sneezing (&gt;3-4x) / nasal flaring</td><td>1 / 1 / 2</td></tr>
+        <tr><td>Respiratory rate &gt;60/min / &gt;60/min with retractions</td><td>1 / 2</td></tr>
+        <tr><td rowspan="4"><b>GI Disturbances</b></td><td>Excessive sucking / poor feeding</td><td>1 / 2</td></tr>
+        <tr><td>Regurgitation / projectile vomiting</td><td>2 / 3</td></tr>
+        <tr><td>Loose stools / watery stools</td><td>2 / 3</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Scoring technique tip</b></span>Assess the infant <b>after</b> breastfeeding and skin-to-skin contact when possible, since this promotes consistent, accurate scoring conditions across assessments (an agitated infant scored right after an unrelated disturbance may not reflect their true baseline). Nurses build scoring competency through training videos and practice sessions with colleagues.</span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>How the score drives care</b></span>Facilities set a specific score threshold (commonly &ge;8 on two consecutive scores, or per local protocol) that triggers escalation from nonpharmacologic-only management to pharmacologic treatment. The Finnegan score is reassessed regularly throughout treatment to guide <b>dose titration and eventual tapering</b>, not just the initial decision to start medication.</span></div>
+    </div>
+  </div>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-brain"></i></span><span>NNNS (NICU Network Neurobehavioral Scale)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>What it is &amp; how it differs from Finnegan</div><p>The NNNS is a <b>comprehensive neurologic and behavioral</b> assessment &mdash; broader in scope than the Finnegan tool, which focuses specifically on withdrawal signs. The NNNS measures <b>stress/abstinence signs, behavioral state, neurologic status, and muscle tone</b>, all interpreted in the context of the infant's overall medical condition at the time of exam.</p></div>
+      <div class="field"><div class="field-label">Eligibility</div><p>Used for <b>medically stable</b> newborns who are <b>at least 34 weeks gestation</b>, up to <b>48 weeks corrected/conceptional age</b>. It is not a bedside tool used in the first hours of an unstable infant &mdash; it requires the infant to be stable enough to tolerate a full neurobehavioral exam.</p></div>
+      <div class="field"><div class="field-label">When it's used</div><p>Identifies newborns at risk as a <b>result</b> of intrauterine drug exposure &mdash; complementary to Finnegan rather than a replacement for it. Where Finnegan tracks acute withdrawal severity moment to moment, NNNS gives a fuller picture of the infant's neurobehavioral functioning, useful for broader risk identification and follow-up planning.</p></div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Finnegan = withdrawal severity, scored frequently, drives medication decisions. NNNS = broader neurobehavioral picture, requires stability + minimum gestational age, used for risk identification. Don't confuse the two if a question asks which tool to use in a specific scenario.</span></div>
+    </div>
+  </div>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-moon-stars"></i></span><span>Nonpharmacologic Nursing Care</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Core environmental/comfort measures</div><ul>
+        <li><b>Low light, quiet environment, minimal handling</b> &mdash; long-accepted interventions, though not all are equally evidence-based; still form the foundation of care</li>
+        <li><b>Swaddling</b> &mdash; limits self-stimulation and provides containment</li>
+        <li><b>Pacifier/nonnutritive sucking</b> &mdash; helps with the frantic, uncoordinated sucking pattern common in NAS</li>
+        <li><b>Skin-to-skin contact and rooming-in</b> &mdash; institutional commitment to keeping mother and infant together is emphasized as especially important for NAS infants, not just a nice-to-have</li>
+        <li><b>Breastfeeding</b> encouraged unless contraindicated (see Treatment Modalities card for exceptions) &mdash; can itself help offset withdrawal symptoms</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Emerging evidence-based additions</div><ul>
+        <li>Vibrotactile stimulation shows promise; acupuncture evidence is mixed/inconclusive &mdash; not all "alternative" nonpharmacologic methods are equally supported</li>
+        <li><b>Multidisciplinary, integrated family therapy</b> for substance-affected mothers is associated with better neonatal outcomes: greater gestational age at birth, higher birth weight, shorter length of stay, lower NAS scores, and higher rates of discharge home with the mother</li>
+      </ul></div>
+      <div class="field"><div class="field-label">The Eat, Sleep, Console (ESC) model</div><p>A newer, family-centered care approach that shifts the focus away from a pure numeric Finnegan score toward three functional questions: <b>Is the infant eating normally? Can the infant sleep? Can the infant be consoled within 10 minutes when crying?</b> This model maximizes nonpharmacologic therapies, increases family involvement, and uses medication (typically morphine) on an as-needed basis rather than a fixed schedule. ESC has been shown to <b>decrease length of stay, decrease pharmacologic exposure, and decrease overall cost of care</b> compared to Finnegan-driven management alone.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Positioning caveat</b></span>Prone positioning is sometimes used briefly to help settle a severely irritable NAS infant, but this <b>directly contradicts standard SIDS-prevention teaching</b> (back to sleep). If used, it must be explained to the family as a <b>temporary measure only, used until symptoms improve</b>, with pulse and oxygen levels monitored &mdash; and the family should be clearly taught to return to supine sleep positioning once symptoms resolve.</span></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing priorities in nonpharmacologic care</b></span><ol>
+        <li>Score consistently and accurately &mdash; this is the foundation every other decision builds on.</li>
+        <li>Begin family-centered education <b>prenatally</b> when possible, covering expected newborn symptoms and coping/comfort strategies, not just after birth.</li>
+        <li>Advocate for rooming-in and breastfeeding support as an interdisciplinary institutional priority for this population.</li>
+        <li>Know your state's specific laws regarding maternal substance use disorder reporting &mdash; the threat of incarceration is documented as ineffective and counterproductive to getting mothers the treatment/support they need.</li>
+      </ol></span></div>
+    </div>
+  </div>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-pill"></i></span><span>Pharmacologic Treatment Modalities</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">When pharmacologic treatment is indicated</div><p>Reserved for severe withdrawal signs and to prevent serious complications such as seizures &mdash; not a first-line response to any positive Finnegan score. Nonpharmacologic measures are used with <b>all</b> infants experiencing NAS, whether or not medication is also needed.</p></div>
+      <div class="field"><div class="field-label">Standard regimen for opioid exposure</div><p>An opioid (typically <b>morphine</b>, sometimes methadone), <b>followed by phenobarbital or clonidine</b> if withdrawal remains inadequately controlled &mdash; this is the typical combination/escalation pattern for in-utero opioid exposure specifically. See full individual medication cards (Morphine &amp; Methadone, Phenobarbital) elsewhere in this section for dosing philosophy, monitoring, and tapering detail.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Critical safety alert &mdash; naloxone contraindication</b></span><b>Naloxone (Narcan) is contraindicated in infants born to opioid-using mothers.</b> Reversing opioid effects abruptly in an opioid-dependent newborn can precipitate severe, acute withdrawal symptoms and even seizures. If an opioid-exposed infant needs respiratory support at delivery, use <b>positive pressure ventilation</b>, not naloxone.</span></div>
+      <div class="field"><div class="field-label">Breastfeeding &amp; substance use &mdash; when it's safe vs. contraindicated</div><ul>
+        <li><b>Generally safe:</b> mothers in a structured methadone treatment program who test negative for HIV and are not using illicit drugs can safely breastfeed</li>
+        <li><b>Contraindicated/discouraged:</b> illicit street drug use (e.g., PCP) &mdash; do not breastfeed or feed expressed milk; cocaine use/smoking is contraindicated, and infants should not be near anyone smoking cocaine; marijuana use during breastfeeding should be discouraged given insufficient safety data, and infants should not be exposed to cannabis smoke (possible SIDS association)</li>
+      </ul></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing actions during pharmacologic treatment</b></span><ol>
+        <li>Continue Finnegan scoring throughout treatment to guide dose titration and eventual tapering &mdash; medication decisions are ongoing, not a one-time order.</li>
+        <li>Monitor closely for respiratory depression and excessive sedation with any opioid or phenobarbital therapy.</li>
+        <li><b>Never use naloxone</b> in a known or suspected opioid-exposed infant.</li>
+        <li>Taper medication gradually as withdrawal comes under control &mdash; never discontinue abruptly.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Finnegan score rises despite current pharmacologic dosing; any sign of respiratory depression or excessive sedation; seizure activity at any point in the treatment course.</span></div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> "No Narcan for NAS" &mdash; naloxone in an opioid-exposed infant can trigger severe withdrawal/seizures instead of helping. This is one of the most consistently tested safety points in this topic.</span></div>
+    </div>
+  </div>
 </section>
+
+
 
 <section class="content-section" id="risk2-anomalies">
   <div class="chapter-tag"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
