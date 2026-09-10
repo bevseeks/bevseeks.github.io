@@ -162,7 +162,67 @@ td.normal{color:var(--teal-dark);}
 .edu-col.caregiver b{color:var(--pink-dark);}
 
 footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
+
+/* SIDEBAR LAYOUT */
+.app-shell{display:flex; min-height:100vh;}
+.sidebar{
+  width:290px; flex:0 0 290px; background:linear-gradient(180deg,var(--purple-dark),#1c1850);
+  padding:18px 12px; position:sticky; top:0; height:100vh; overflow-y:auto;
+  box-shadow:3px 0 16px rgba(0,0,0,.12);
+}
+.sidebar-title{
+  color:#fff; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+  padding:4px 10px 14px; display:flex; align-items:center; gap:8px; border-bottom:1px solid rgba(255,255,255,.18); margin-bottom:8px;
+}
+.sidebar-title i{font-size:17px;}
+.side-chapter{
+  font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.05em;
+  color:#C9C4F5; margin:20px 0 8px 10px; display:flex; align-items:center; gap:7px;
+  padding-bottom:6px; border-bottom:1px solid rgba(255,255,255,.12);
+}
+.side-chapter:first-of-type{margin-top:6px;}
+.side-chapter i{font-size:15px; color:#fff;}
+.side-link{
+  display:flex; align-items:center; gap:10px; width:100%; text-align:left; padding:10px 12px;
+  border:none; background:none; border-radius:9px; font-size:14px; font-weight:600;
+  color:#EDECFA; cursor:pointer; margin-bottom:3px;
+}
+.side-link i{font-size:17px; color:#B7B1EC; flex:0 0 auto;}
+.side-link.sub{padding-left:20px; font-size:13.5px; font-weight:600;}
+.side-link:hover{background:rgba(255,255,255,.12);}
+.side-link.active{background:#fff; color:var(--purple-dark); box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.side-link.active i{color:var(--purple);}
+
+.main-content{flex:1; min-width:0; max-width:900px; margin:0 auto; padding:0 0 60px;}
+.content-section{display:none; padding:18px 16px 8px;}
+.content-section.active{display:block;}
+.chapter-tag{
+  display:inline-flex; align-items:center; gap:6px; background:var(--purple-light); color:var(--purple-dark);
+  font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.03em;
+  padding:4px 10px; border-radius:999px; margin-bottom:10px;
+}
+.chapter-tag i{font-size:13px;}
+
+/* Mobile hamburger */
+.mobile-topbar{display:none; position:sticky; top:0; z-index:60; background:linear-gradient(120deg,var(--purple-dark),var(--purple)); border-bottom:1px solid var(--line); padding:12px 14px; align-items:center; gap:10px; box-shadow:0 2px 10px rgba(0,0,0,.15);}
+.mobile-topbar button{background:rgba(255,255,255,.2); border:2px solid rgba(255,255,255,.4); border-radius:9px; width:42px; height:42px; display:flex; align-items:center; justify-content:center; font-size:21px; color:#fff; cursor:pointer; flex:0 0 auto;}
+.mobile-topbar .current-label{font-size:14.5px; font-weight:700; color:#fff; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.mobile-topbar .menu-hint{font-size:10.5px; color:rgba(255,255,255,.85); font-weight:600; text-transform:uppercase; letter-spacing:.04em; display:block; margin-top:1px;}
+.sidebar-overlay{display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:70;}
+
+@media (max-width: 860px){
+  .app-shell{display:block;}
+  .mobile-topbar{display:flex;}
+  .sidebar{
+    position:fixed; left:0; top:0; height:100vh; z-index:80; box-shadow:4px 0 20px rgba(0,0,0,.15);
+    transform:translateX(-100%); transition:transform .25s ease; width:290px;
+  }
+  .sidebar.open{transform:translateX(0);}
+  .sidebar-overlay.open{display:block;}
+  .main-content{max-width:100%; padding-top:4px;}
+}
 </style>
+
 </head>
 <body>
 
@@ -182,69 +242,91 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   </div>
 </header>
 
-<nav class="tabs" id="tabs">
-  <button class="active" data-tab="overview"><i class="ti ti-layout-grid"></i>Overview</button>
-  <button data-tab="u10-risk"><i class="ti ti-shield-exclamation"></i>High-Risk</button>
-  <button data-tab="u10-preterm"><i class="ti ti-lungs-off"></i>Prematurity/RDS</button>
-  <button data-tab="u10-hemo"><i class="ti ti-blood"></i>Hemolytic/IDM</button>
-  <button data-tab="u10-anomalies"><i class="ti ti-dna-2"></i>Screening/Anomalies</button>
-  <button data-tab="u10-loss"><i class="ti ti-heart"></i>Loss &amp; SIDS</button>
-  <button data-tab="compare"><i class="ti ti-columns-3"></i>Compare</button>
-  <button data-tab="quiz"><i class="ti ti-checkbox"></i>Quiz</button>
-</nav>
+<div class="mobile-topbar">
+  <button id="hamburgerBtn"><i class="ti ti-menu-2"></i></button>
+  <div>
+    <span class="current-label" id="currentLabel">Overview</span>
+    <span class="menu-hint">Tap to open contents</span>
+  </div>
+</div>
 
-<div class="wrap">
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-<!-- OVERVIEW -->
-<div class="panel active" id="overview">
+<div class="app-shell">
+  <nav class="sidebar" id="sidebar">
+<div class="sidebar-title"><i class="ti ti-list-details"></i>Contents</div>
+<button class="side-link active" data-target="overview"><i class="ti ti-layout-grid"></i>Overview</button>
+<div class="side-chapter"><i class="ti ti-shield-exclamation"></i>Classification of High-Risk Newborns</div>
+  <button class="side-link sub active" data-target="classify-main"><i class="ti ti-list-numbers"></i>Defining &amp; Classifying High-Risk</button>
+<div class="side-chapter"><i class="ti ti-users"></i>Care of the High-Risk Newborn &amp; Family</div>
+  <button class="side-link sub" data-target="carehr-nicu"><i class="ti ti-building-hospital"></i>NICU Levels &amp; Developmental Care</button>
+  <button class="side-link sub" data-target="carehr-physical"><i class="ti ti-droplet-half-2"></i>Skin, Nutrition &amp; Pain Management</button>
+  <button class="side-link sub" data-target="carehr-family"><i class="ti ti-heart-handshake"></i>Kangaroo Care &amp; Family Partnership</button>
+<div class="side-chapter"><i class="ti ti-baby"></i>Complications of Preterm &amp; Post-Term Birth</div>
+  <button class="side-link sub" data-target="preterm-char"><i class="ti ti-hourglass"></i>Preterm &amp; Late Preterm Infant</button>
+  <button class="side-link sub" data-target="preterm-rds"><i class="ti ti-lungs-off"></i>Respiratory Distress Syndrome</button>
+  <button class="side-link sub" data-target="preterm-other"><i class="ti ti-alert-circle"></i>Other Complications of Prematurity</button>
+  <button class="side-link sub" data-target="preterm-postterm"><i class="ti ti-calendar-time"></i>Post-Term Infant</button>
+<div class="side-chapter"><i class="ti ti-blood"></i>Hemolytic Disease, IDM &amp; Metabolic Screening</div>
+  <button class="side-link sub" data-target="hemo-disease"><i class="ti ti-blood"></i>Hemolytic Disease</button>
+  <button class="side-link sub" data-target="hemo-idm"><i class="ti ti-chart-arrows"></i>Infant of Diabetic Mother</button>
+  <button class="side-link sub" data-target="hemo-screen"><i class="ti ti-microscope"></i>Metabolic &amp; Genetic Screening</button>
+<div class="side-chapter"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
+  <button class="side-link sub" data-target="risk2-trauma"><i class="ti ti-first-aid-kit"></i>Birth Trauma</button>
+  <button class="side-link sub" data-target="risk2-infect"><i class="ti ti-virus"></i>Infection: Sepsis &amp; TORCH</button>
+  <button class="side-link sub" data-target="risk2-nas"><i class="ti ti-pill"></i>Substance-Exposed Infants (NAS)</button>
+  <button class="side-link sub" data-target="risk2-anomalies"><i class="ti ti-dna-2"></i>Congenital Anomalies</button>
+<div class="side-chapter"><i class="ti ti-heart"></i>Loss &amp; Palliative Care</div>
+  <button class="side-link sub" data-target="loss-family"><i class="ti ti-users"></i>Neonatal Loss &amp; Family Support</button>
+  <button class="side-link sub" data-target="loss-palliative"><i class="ti ti-hand-heart"></i>Palliative Care</button>
+  <button class="side-link sub" data-target="loss-sids"><i class="ti ti-moon-stars"></i>SIDS</button>
+  <button class="side-link sub" data-target="loss-casestudy"><i class="ti ti-clipboard-text"></i>NGN Case Study</button>
+<div class="side-chapter"><i class="ti ti-columns-3"></i>Reference</div>
+  <button class="side-link sub" data-target="compare"><i class="ti ti-columns-3"></i>Compare Tables</button>
+  <button class="side-link sub" data-target="quiz"><i class="ti ti-checkbox"></i>Quiz</button>
+  </nav>
+
+  <main class="main-content" id="mainContent">
+<section class="content-section active" id="overview">
   <h2 class="section-title"><i class="ti ti-map-2"></i>Unit 10 Roadmap</h2>
-  <p class="lead">Every condition below follows the full 9-field format: pathophysiology, etiology, S/S, risk factors, complications, labs/diagnostics, priority nursing interventions, treatment, and patient/family education.</p>
+  <p class="lead">Organized to mirror Perry Ch. 25 (The High-Risk Newborn) and Ch. 31 (The Infant and Family, pp. 834-837). Use the sidebar to navigate; each sub-section holds a focused set of condition cards.</p>
 
   <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-alert-triangle"></i></span><span>Unit 10 &mdash; High-Risk Newborn</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-shield-exclamation"></i></span><span>Unit 10 &mdash; High-Risk Newborn</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-    <p style="color:var(--sub); font-size:13px; margin-bottom:8px;">Perry Ch. 25 (High-Risk Newborn), Ch. 31 pp. 834-837 (Infant &amp; Family)</p>
+    <p style="color:var(--sub); font-size:13px; margin-bottom:8px;">Perry Ch. 25 (The High-Risk Newborn), Ch. 31 pp. 834-837 (The Infant and Family)</p>
     <ul>
-      <li><b>USLO 1:</b> Classify high-risk newborns via screening tools (CSLO 4)</li>
-      <li><b>USLO 2:</b> Complications of premature/post-term newborn (CSLO 4)</li>
-      <li><b>USLO 3:</b> Other conditions placing newborns at risk (CSLO 4,1)</li>
-      <li><b>USLO 4:</b> Discharge criteria &amp; teaching for high-risk conditions (CSLO 4)</li>
-      <li><b>USLO 5:</b> Professional values in palliative/end-of-life care (CSLO 2,4,1)</li>
+      <li><b>USLO 1:</b> Classify high-risk newborns using screening tools (CSLO 4)</li>
+      <li><b>USLO 2:</b> Explain common complications affecting the premature and post-term newborn (CSLO 4)</li>
+      <li><b>USLO 3:</b> Distinguish additional conditions that place all newborns at high risk for alterations in health (CSLO 4, 1)</li>
+      <li><b>USLO 4:</b> Identify components of discharge criteria and teaching plans for newborns with various high-risk conditions (CSLO 4)</li>
+      <li><b>USLO 5:</b> Describe professional values and behaviors used when providing palliative or end-of-life care (CSLO 2, 4, 1)</li>
     </ul>
   </div>
   </div>
 
   <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-help-circle"></i>How to Read a Condition Card</h2>
-  <div class="card">
+  <div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--gray)"><i class="ti ti-info-circle"></i></span><span>Color Key</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
     <ul>
       <li><span class="priority-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-flag-3"></i><b>Coral box</b></span> = priority nursing interventions, ranked by what will harm the patient FASTEST if missed</li>
       <li><span class="notify-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-phone-call"></i><b>Pink box</b></span> = specific findings/lab changes that require immediate provider notification</li>
       <li><span class="selfcare-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-heart"></i><b>Green box</b></span> = maternal/postpartum self-care strategies tied to this condition</li>
       <li><span class="teach-box" style="display:inline-flex; padding:4px 8px;"><i class="ti ti-message-2"></i><b>Blue box</b></span> = parent/primary caregiver education (plain language, health-literacy adjusted)</li>
     </ul>
-    <p style="margin-top:8px; font-size:13px; color:var(--sub);">Education sections are split into <b>Parent/Primary Caregiver</b> and <b>Other Caregiver</b> (grandparents, daycare, babysitters) columns where the information a secondary caregiver needs differs from what a parent needs long-term.</p>
+    <p style="margin-top:8px; font-size:13px; color:var(--sub);">Education sections are split into <b>Parent/Primary Caregiver</b> and <b>Other Caregiver</b> columns where the information a secondary caregiver needs differs from what a parent needs long-term.</p>
+  </div>
   </div>
 
-  <h2 class="section-title" style="margin-top:20px;"><i class="ti ti-bolt"></i>Quick Jump</h2>
-  <div class="toc-grid">
-    <div class="toc-item" data-jump="u10-risk"><i class="ti ti-shield-exclamation"></i>Birth Trauma + Sepsis + TORCH + NAS</div>
-    <div class="toc-item" data-jump="u10-preterm"><i class="ti ti-lungs-off"></i>RDS + Late Preterm + Post-term</div>
-    <div class="toc-item" data-jump="u10-hemo"><i class="ti ti-blood"></i>Rh/ABO, IDM, Dextrose</div>
-    <div class="toc-item" data-jump="u10-anomalies"><i class="ti ti-dna-2"></i>PKU, Galactosemia, Anomalies</div>
-    <div class="toc-item" data-jump="u10-loss"><i class="ti ti-heart"></i>SIDS + Palliative Care</div>
-    <div class="toc-item" data-jump="quiz"><i class="ti ti-checkbox"></i>Practice Questions</div>
-  </div>
+  <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>NCJMM applied to every high-risk scenario:</b> Recognize Cues &rarr; Analyze Cues &rarr; Prioritize Hypotheses &rarr; Generate Solutions &rarr; Take Action &rarr; Evaluate Outcomes.</span></div>
+</section>
 
-  <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>NCJMM applied to every newborn scenario:</b> Recognize Cues &rarr; Analyze Cues &rarr; Prioritize Hypotheses &rarr; Generate Solutions &rarr; Take Action &rarr; Evaluate Outcomes.</span></div>
-</div>
+<section class="content-section" id="classify-main">
+  <div class="chapter-tag"><i class="ti ti-shield-exclamation"></i>Classification of High-Risk Newborns</div>
+  <h2 class="section-title"><i class="ti ti-list-numbers"></i>Defining &amp; Classifying High-Risk</h2>
 
-<!-- HIGH RISK -->
-<div class="panel" id="u10-risk">
-  <h2 class="section-title"><i class="ti ti-shield-exclamation"></i>High-Risk Newborn &mdash; Classification &amp; Risk Sources</h2>
-  <div class="uslo-tag">USLO 1</div><div class="uslo-tag">USLO 3</div>
-  <p class="lead">Perry Ch. 25. What "high-risk" means and the major non-prematurity risk categories.</p>
-
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-alert-octagon"></i></span><span>Defining "High-Risk"</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
     <p><b>High-risk neonate:</b> regardless of gestational age or birth weight, has a greater chance of morbidity/mortality. Period of viability = 20 weeks gestation through 28 days after birth.</p>
@@ -252,7 +334,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-ruler-2"></i></span><span>Classifying High-Risk Newborns via Screening Tools (USLO 1)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
     <p style="font-size:13px; color:var(--sub); margin-bottom:8px;">Every high-risk newborn is classified along TWO independent axes: gestational age AND growth/weight for that gestational age. Both must be assessed together &mdash; an infant can be preterm AND large for gestational age, for example (as with many IDM infants).</p>
@@ -271,228 +353,160 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Why both axes matter</b></span>Gestational age alone doesn't predict risk completely &mdash; an SGA term infant and an AGA preterm infant face very different complication profiles, even though neither is "premature" in the same sense. Always classify using both axes together when analyzing an NGN scenario.</span></div>
   </div>
   </div>
+</section>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-first-aid-kit"></i></span><span>Birth Trauma</span></div><span class="arrow">&#9656;</span></div>
+<section class="content-section" id="carehr-nicu">
+  <div class="chapter-tag"><i class="ti ti-users"></i>Care of the High-Risk Newborn &amp; Family</div>
+  <h2 class="section-title"><i class="ti ti-building-hospital"></i>NICU Levels &amp; Developmental Care</h2>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-building-hospital"></i></span><span>NICU Levels of Care</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology/Etiology</div><p>Many birth injuries are avoidable (ultrasound can diagnose macrosomia, malpresentation, hydrocephalus antenatally, allowing planned cesarean). Some are unavoidable: difficult/prolonged labor, precipitous ("explosive") labor.</p></div>
-      <div class="field"><div class="field-label">Fractured Clavicle &mdash; S/S</div><p>Palpable crepitus at fracture site.</p></div>
-      <div class="field"><div class="field-label">Fractured Clavicle &mdash; priority interventions</div><p>Do not lay infant on affected side. No other treatment typically needed &mdash; heals well on its own.</p></div>
-      <div class="field"><div class="field-label">Erb-Duchenne Paralysis (Erb's Palsy) &mdash; pathophysiology</div><p>Brachial plexus injury from lateral head/neck traction (classically shoulder dystocia).</p></div>
-      <div class="field"><div class="field-label">Erb's Palsy &mdash; S/S</div><p><b>Moro reflex absent on the affected side</b> &mdash; hallmark finding. Arm typically held in adduction/internal rotation ("waiter's tip" positioning).</p></div>
-      <div class="field"><div class="field-label">Erb's Palsy &mdash; complications</div><p>Partial separation may heal or require surgery around 3 months. Complete separation is permanent.</p></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Asymmetric Moro reflex is noted &mdash; requires evaluation to grade the degree of nerve injury and plan follow-up.</span></div>
-      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care note</b></span>If your birth was complicated by shoulder dystocia or a difficult delivery, it's normal to have questions or feelings about it &mdash; ask your provider for a clear explanation of what happened at your postpartum visit, and don't hesitate to seek support if you're processing a difficult birth experience.</span></div>
-      <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby has some weakness in one arm from pressure on nerves during birth. Many babies improve on their own over the first few months. We'll show you how to gently position the arm and you'll follow up with a specialist to track progress.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Handle the affected arm gently during dressing/diapering; avoid pulling on it. Know which arm is affected and follow any positioning instructions the parents give you. Report any new swelling, color change, or the baby appearing to be in pain.</div>
-      </div>
+      <div class="field"><div class="field-label">Classification</div><ul>
+        <li><b>Level I:</b> well-newborn nursery; can stabilize a high-risk newborn for transport but does not manage ongoing high-risk care</li>
+        <li><b>Level II:</b> everything Level I provides, plus care for premature infants, oxygen via hood, and IV therapy initiation</li>
+        <li><b>Level III (NICU):</b> the most sophisticated level &mdash; provides mechanical ventilation and comprehensive intensive care</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Why this matters clinically</div><p>Recognizing which level of care an infant needs (and whether the current facility can provide it) drives transport decisions. An infant requiring ventilation at a Level I or II facility needs transfer to a Level III NICU.</p></div>
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-virus"></i></span><span>Neonatal Sepsis</span></div><span class="arrow">&#9656;</span></div>
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-moon-stars"></i></span><span>Developmental &amp; Environmental Care</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Overwhelming infection with inability to clear toxins. Newborn immune system is immature (low IgM, delayed neutrophil function) and cannot localize infection &mdash; systemic spread is common and rapid.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology / patterns</div><ul><li><b>Early onset:</b> congenital/prenatal exposure, often group B strep or gram-negative organisms acquired during labor/delivery</li><li><b>Late onset:</b> nosocomial (hospital-acquired)</li></ul></div>
-      <div class="field"><div class="field-label">Signs &amp; symptoms by system</div><ul>
-        <li>Respiratory: apnea, distress, &darr;SaO2</li>
-        <li>Cardiovascular: &darr;perfusion, HR changes, hypotension</li>
-        <li>CNS: lethargy OR irritability (either direction is concerning), hypotonia, temperature instability</li>
-        <li>GI: poor feeding, vomiting, diarrhea</li>
-        <li>Integument: jaundice, pallor, petechiae, mottling</li>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Why this matters</div><p>The NICU environment is inherently overstimulating compared to the intrauterine environment the infant left. Excessive noise, uncontrolled lighting, and frequent handling are linked to real physiologic harm &mdash; including a correlation between noise/overstimulation and <b>intracranial hemorrhage risk in ELBW/VLBW infants</b>. Developmental care aims to make the NICU environment as close to a smooth continuation of intrauterine conditions as possible.</p></div>
+
+      <div class="field"><div class="field-label">Protected sleep</div><ul>
+        <li>Newborns should <b>not be awakened</b> for routine care &mdash; care is timed around natural wake periods whenever possible</li>
+        <li>Sleep periods should remain <b>undisturbed for at least 50 minutes</b> to allow a complete sleep cycle</li>
+        <li>Sleep is essential for brain development and recovery/growth in a fragile, immature newborn</li>
       </ul></div>
-      <div class="field"><div class="field-label"><i class="ti ti-alert-circle"></i>Risk factors</div><p>Prematurity (greatest risk), PROM, chorioamnionitis, maternal fever, antenatal/intrapartal asphyxia, invasive procedures.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><p>Septic shock, meningitis, DIC, death &mdash; sepsis can progress to hemodynamic collapse faster in neonates than in older children/adults.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics &mdash; expected vs. unexpected</div>
-        <div class="tbl-wrap">
-        <table class="labs">
-          <tr><th>Test</th><th>Expected</th><th>Unexpected/Concerning</th><th>Nursing action</th></tr>
-          <tr><td>WBC count</td><td class="normal">Normal range for age</td><td class="abnormal">Markedly elevated OR low (neutropenia is especially ominous in a neonate)</td><td>Trend serially; correlate with clinical exam, not the number alone</td></tr>
-          <tr><td>Blood culture</td><td class="normal">No growth</td><td class="abnormal">Positive &mdash; identifies organism</td><td>Obtain before first antibiotic dose whenever feasible without delaying treatment</td></tr>
-          <tr><td>C-reactive protein (CRP)</td><td class="normal">Low/normal</td><td class="abnormal">Rising trend supports infection</td><td>Trend over time rather than a single value</td></tr>
-          <tr><td>Glucose</td><td class="normal">&gt;45 mg/dL</td><td class="abnormal">Hypoglycemia can accompany sepsis</td><td>Check glucose alongside sepsis workup</td></tr>
-        </table>
-        </div>
-      </div>
-      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked by what kills fastest)</b></span><ol>
-        <li><b>Airway/breathing/circulation</b> &mdash; apnea, poor perfusion, and hypotension are what will kill the infant fastest; continuous cardiorespiratory and SaO2 monitoring is essential and outranks every other action.</li>
-        <li>Obtain cultures BEFORE first antibiotic dose if it will not meaningfully delay treatment.</li>
-        <li>Administer IV antibiotics as ordered &mdash; timing significantly affects neonatal sepsis outcomes; don't let culture collection meaningfully delay this.</li>
-        <li>Strict hand hygiene/infection control to prevent nosocomial spread to other infants.</li>
-        <li>Supportive care: thermoregulation, glucose monitoring, fluid/electrolyte balance.</li>
+
+      <div class="field"><div class="field-label">Cluster care</div><p>All nursing care tasks for a given time period (vitals, diaper change, feeding, assessment) are grouped together and performed at once, rather than disturbing the infant repeatedly throughout the shift. This minimizes the number of stimulation/wake episodes and reduces the cumulative stress burden on an infant who has limited ability to self-regulate.</p></div>
+
+      <div class="field"><div class="field-label">Noise &amp; lighting control</div><ul>
+        <li>Reduce noise-generating activity: close incubator portholes gently, avoid loud talking/radios near the bedside, handle equipment quietly</li>
+        <li>Establish a day-night cycle: dim/darken the room at night, cover incubators with blankets, use eye shields as appropriate to protect from bright procedure lighting</li>
+        <li>Recommended ambient lighting is generally <b>10-600 lux</b>, with brief exceptions up to 2,000 lux for specific procedures</li>
+        <li>The parent's face is considered one of the best visual stimuli for a developing infant &mdash; other visual stimulation should be minimized, especially before 33 weeks gestation</li>
+      </ul></div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Gestational-age-specific tolerance</b></span>The more immature the infant, the less able they are to tolerate even a single routine procedure (like repositioning) without becoming overstimulated. Before ~33 weeks gestation, external stimulation can produce disorganized, uncoordinated responses: jerky limb extension, hyperflexion, and irregular vital signs &mdash; this is a sign the nervous system is overwhelmed, not a normal response to be pushed through.</span></div>
+
+      <div class="field"><div class="field-label">Reading behavioral cues</div><p>Nurses and parents learn to read infant cues in two categories:</p>
+      <ul>
+        <li><b>Approach/engagement behaviors</b> (support and encourage these): tongue extension, hand clasping, hand-to-mouth movements, sucking, looking, cooing</li>
+        <li><b>Avoidance/stress behaviors</b> (signal need for a "time-out" from stimulation): gaze aversion, splayed fingers, grimacing, color changes, apnea/bradycardia &mdash; see the full stability-vs-distress cue table in the Transition tab, Unit 9, for the complete list</li>
+      </ul></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>How to introduce developmental interventions</b></span><ol>
+        <li>Only begin structured developmental stimulation once the infant is medically stable, off significant support, and able to self-regulate.</li>
+        <li>Introduce <b>one type of stimulation at a time</b> (e.g., 5 minutes of quiet music OR gentle voice, not both at once) to clearly observe tolerance.</li>
+        <li>Hearing and vestibular (movement/positioning) stimulation are generally introduced before visual stimulation.</li>
+        <li>Keep intervention periods brief (2-5 minutes) and stop immediately if stress cues appear.</li>
+        <li>Softly say the infant's name and place a hand gently on the body before beginning any care &mdash; this signals the start of handling and reduces the startle of abrupt contact.</li>
       </ol></span></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider immediately if</b></span><ul>
-        <li>Apnea episode</li>
-        <li>New lethargy/decreased responsiveness</li>
-        <li>Temperature instability not responding to warming</li>
-        <li>Petechiae or mottling (may signal DIC/septic shock)</li>
-        <li>Any drop in perfusion (cap refill &gt;3 sec, cool extremities)</li>
-      </ul></span></div>
-      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Treatment</div><p>Empiric broad-spectrum IV antibiotics pending culture results, then narrowed per organism sensitivity. Supportive respiratory/cardiovascular care as needed.</p></div>
-      <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>We're treating your baby for a possible infection with antibiotics through an IV. We're watching breathing, heart rate, and temperature very closely. Early treatment gives your baby the best chance, and we'll update you regularly.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If caring for this baby after discharge with any lingering monitoring needs, know the warning signs to watch for (poor feeding, unusual sleepiness, fever or low temperature, breathing changes) and who to call immediately if you see them.</div>
-      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="carehr-physical">
+  <div class="chapter-tag"><i class="ti ti-users"></i>Care of the High-Risk Newborn &amp; Family</div>
+  <h2 class="section-title"><i class="ti ti-droplet-half-2"></i>Skin, Nutrition &amp; Pain Management</h2>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-droplet-half-2"></i></span><span>Skin Care</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Key principles</div><ul>
+        <li>Reposition frequently to reduce pressure injury/skin breakdown risk; gel pads can relieve pressure on the head specifically</li>
+        <li>Remove tape/adhesive carefully using warm water &mdash; avoid solvents, which dry and burn fragile preterm skin</li>
+        <li>Use emollients cautiously: they can reduce transepidermal water loss, but some studies link them to increased coagulase-negative infection risk in preterm infants, so use per unit protocol rather than routinely</li>
+      </ul></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Watch for zinc deficiency</b></span>Subtle skin breakdown around the mouth, buttocks, fingers/toes (or in preterm/VLBW infants, the neck creases, wrists, ankles, and around wounds) can indicate <b>zinc deficiency</b> &mdash; more likely with inadequate zinc intake, an ileostomy, short-bowel syndrome, or chronic diarrhea. Report suspicious lesions so zinc supplementation can be considered.</span></div>
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-virus-search"></i></span><span>TORCH Complex Infections</span></div><span class="arrow">&#9656;</span></div>
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--green)"><i class="ti ti-apple"></i></span><span>Nutrition &amp; Metabolic Support</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>TORCH:</b> <b>T</b>oxoplasmosis, <b>O</b>ther (syphilis, Hepatitis B, HIV, Parvovirus B19, West Nile, Zika, Group B Strep, Chlamydia, Gonorrhea, Listeria), <b>R</b>ubella, <b>C</b>ytomegalovirus, <b>H</b>erpes Simplex Virus</span></div>
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Why these are grouped together</div><p>All are organisms capable of crossing the placenta (transplacental transmission) and/or infecting the newborn during birth. They tend to produce overlapping, nonspecific findings in the newborn (rash, hepatosplenomegaly, jaundice, growth restriction, CNS involvement) &mdash; which is exactly why they're tested as a panel/"TORCH workup" rather than one at a time when congenital infection is suspected. Note: common bacterial infections (like typical neonatal sepsis organisms) are usually diagnosed by clinical picture and routine cultures instead, not the TORCH panel.</p></div>
-
-      <div class="field"><div class="field-label">Common maternal presentation across TORCH organisms</div><p>Generally produce mild, influenza-like symptoms in the pregnant woman (or she may be entirely asymptomatic) &mdash; but fetal/neonatal effects can be severe. This mismatch (mild maternal illness, severe fetal consequences) is a key teaching point and a common NCLEX trap.</p></div>
-
-      <div class="tbl-wrap">
-      <table class="labs">
-        <tr><th>Organism</th><th>Transmission / Timing</th><th>Classic Newborn Findings</th><th>Key Nursing Considerations</th></tr>
-        <tr><td><b>Toxoplasmosis</b> (<i>Toxoplasma gondii</i>)</td><td>Transplacental, throughout pregnancy. Source: cat feces, undercooked/raw meat</td><td>70-90% asymptomatic at birth. If symptomatic: maculopapular rash, hepatosplenomegaly, jaundice, thrombocytopenia. <b>Classic triad (later):</b> hydrocephalus, cerebral calcifications, chorioretinitis. Also: microcephaly, seizures, cognitive impairment, deafness</td><td>Prevention is maternal: avoid cat litter/gardening without gloves, avoid rare/undercooked meat. Newborn treatment: sulfadiazine + pyrimethamine + folinic acid</td></tr>
-        <tr><td><b>Other &mdash; Syphilis</b> (<i>Treponema pallidum</i>)</td><td>Transplacental, any time in pregnancy or at birth</td><td>Stillbirth, prematurity, hydrops fetalis. May be asymptomatic initially or show hepatosplenomegaly, lymphadenopathy, hemolytic anemia, pneumonia. <b>Copper-colored maculopapular rash</b> (after first few weeks), snuffles (syphilitic rhinitis), pseudoparalysis of a limb</td><td>Treatment: IV aqueous penicillin or IM procaine penicillin. Diagnosis relies on maternal serology + infant serologic titers + physical exam (including long-bone x-rays)</td></tr>
-        <tr><td><b>Other &mdash; Hepatitis B</b></td><td>Transplacental; contaminated maternal fluids/secretions at birth</td><td>May be asymptomatic at birth, but &gt;90% of perinatally infected infants develop <b>chronic</b> Hepatitis B. Clinical hepatitis, jaundice, abnormal LFTs</td><td>Give HBIG + HepB vaccine (separate sites) within 12 hrs of birth if mother is HBsAg-positive. All infants get the HepB vaccine series regardless as routine prevention</td></tr>
-        <tr><td><b>Other &mdash; Group B Streptococcus</b></td><td>Acquired perinatally</td><td>Early-onset (birth-6 days): pneumonia, respiratory distress, shock, apnea, meningitis. Late-onset (7 days-3 months): bacteremia or meningitis</td><td>Intrapartum maternal antibiotics reduce early-onset but NOT late-onset disease. Treat infant with ampicillin + gentamicin (presumptive) or penicillin G (confirmed)</td></tr>
-        <tr><td><b>Other &mdash; Parvovirus B19</b></td><td>Transplacental</td><td>First-trimester exposure has the most serious effects: fetal hydrops and death from severe anemia/heart failure. Later exposure: anemia. No established teratogenic/malformation effects</td><td>Newborns with hydrops need aggressive cardiovascular/respiratory support. Pregnant healthcare workers should avoid caring for high-risk exposure patients</td></tr>
-        <tr><td><b>Rubella</b> (Congenital Rubella Syndrome)</td><td>Transplacental; highest risk in <b>1st trimester</b>, early 2nd trimester</td><td><b>Eyes:</b> cataracts, retinopathy, glaucoma. <b>CNS:</b> microcephaly, seizures, severe cognitive impairment. <b>Heart:</b> PDA. <b>Hearing:</b> sensorineural hearing loss. <b>Skin:</b> "blueberry muffin" lesions (dermal erythropoiesis). IUGR, hepatomegaly, thrombocytopenia</td><td>No treatment for the infected newborn &mdash; entirely prevention-focused. Vaccinate susceptible women pre-conception; MMR is contraindicated in pregnancy (live vaccine) &mdash; wait 28 days to 3 months post-vaccination before conceiving</td></tr>
-        <tr><td><b>Cytomegalovirus (CMV)</b></td><td>Transplacental, throughout pregnancy; also via birth canal, breast milk, or transfusion</td><td><b>95% asymptomatic</b> at birth. If symptomatic: microcephaly, cerebral calcifications, chorioretinitis, jaundice, hepatosplenomegaly, petechial/purpuric rash ("blueberry muffin" appearance possible here too). Neurologic sequelae develop later: seizures, <b>sensorineural hearing loss</b>, cognitive impairment</td><td>Most common congenital viral infection overall, but most infected infants look normal at birth &mdash; hearing loss can emerge later, reinforcing the importance of ongoing hearing surveillance. Treatment: IV ganciclovir or oral valganciclovir x 6 weeks for symptomatic infants</td></tr>
-        <tr><td><b>Herpes Simplex Virus (HSV)</b></td><td>Most often transmitted <b>at the time of birth</b> (vaginal delivery through infected genital tract); can also ascend after ROM</td><td>Presents in 1 of 3 patterns: (1) <b>SEM</b> = skin/eye/mouth disease &mdash; vesicular rash clusters that ulcerate/crust rapidly; (2) localized <b>CNS disease</b>; (3) <b>disseminated disease</b> across multiple organs (liver, adrenals, lungs) &mdash; highest mortality. Presenting symptoms (2nd-4th week of life): lethargy, poor feeding, irritability, seizures</td><td><b>Absence of visible skin lesions does NOT rule out HSV disease</b> &mdash; a critical point. Contact precautions plus universal precautions required. IV acyclovir started on strong suspicion, not only confirmed culture. Ophthalmic antiviral treatment added if ocular involvement present</td></tr>
-      </table>
-      </div>
-
-      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>High-yield distinguishing points</b></span>
-        <ul style="margin:6px 0 0 18px; padding:0;">
-          <li><b>Toxoplasmosis vs. CMV:</b> both can cause the classic triad-like picture (chorioretinitis + intracranial calcifications), but toxoplasmosis calcifications are typically diffuse/scattered while CMV calcifications are classically periventricular. Both are usually asymptomatic at birth in the majority of cases.</li>
-          <li><b>Rubella vs. CMV "blueberry muffin" rash:</b> both can produce this dermal erythropoiesis finding &mdash; it is not specific to one organism, so it does not rule either in or out alone.</li>
-          <li><b>HSV timing distinction:</b> HSV is the one TORCH organism transmitted overwhelmingly at the time of birth rather than transplacentally throughout pregnancy &mdash; this is why cesarean delivery is recommended for mothers with active genital lesions at the onset of labor.</li>
-        </ul>
-      </span></div>
-
-      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked by acuity)</b></span><ol>
-        <li><b>For any suspected HSV exposure: initiate contact precautions and notify provider immediately</b> &mdash; disseminated HSV has the highest mortality of the TORCH organisms and can progress within days; do not wait for visible lesions.</li>
-        <li>Obtain the appropriate cultures/specimens per suspected organism (swabs of mouth/nasopharynx/conjunctivae/skin vesicles for HSV; serology for toxoplasmosis/syphilis/rubella; urine for CMV) before or concurrent with starting empiric treatment.</li>
-        <li>Implement standard + organism-specific isolation precautions to prevent nosocomial spread to other infants.</li>
-        <li>Monitor for the specific organ systems each organism targets (eyes, hearing, CNS, liver) since many TORCH infections are initially asymptomatic and complications emerge over the following weeks to years.</li>
+      <div class="field"><div class="field-label">Increased metabolic demand</div><p>High-risk newborns have elevated metabolic needs that must be met through enteral and/or parenteral feeding as appropriate to the infant's condition and gestational age.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority monitoring</b></span><ol>
+        <li>Frequent temperature and blood glucose checks &mdash; both directly affect the infant's physiologic stress load, so keeping them in normal range reduces overall stress burden.</li>
+        <li>Daily weight monitoring to confirm adequate growth/weight gain trend.</li>
+        <li>Advance feeding method (parenteral &rarr; gavage &rarr; oral) as tolerated and as the infant's condition allows.</li>
       </ol></span></div>
-
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
-        <li>Vesicular skin lesions, seizure activity, or lethargy/poor feeding in an infant with known maternal HSV history &mdash; HSV can progress to disseminated disease rapidly</li>
-        <li>"Blueberry muffin" rash, petechiae, or purpura in any newborn (nonspecific but concerning for several TORCH organisms)</li>
-        <li>Failed newborn hearing screen in an infant with any TORCH risk factor &mdash; CMV-related hearing loss can be progressive and may not be present at the initial screen</li>
-        <li>New-onset jaundice, hepatosplenomegaly, or abnormal growth pattern in an infant with known maternal TORCH exposure during pregnancy</li>
-      </ul></span></div>
-
-      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care / prevention strategies</b></span><ul>
-        <li><b>Toxoplasmosis:</b> avoid changing cat litter (or wear gloves + wash hands immediately if unavoidable), cook meat thoroughly, wash produce well</li>
-        <li><b>CMV:</b> practice careful hand hygiene, especially after contact with young children's saliva/urine (daycare workers and mothers of toddlers are at higher exposure risk); avoid sharing food/utensils with young children</li>
-        <li><b>Rubella:</b> confirm immunity status pre-conception when possible; if non-immune and postpartum, get vaccinated before leaving the hospital and use reliable contraception for the recommended waiting period before attempting another pregnancy</li>
-        <li><b>HSV:</b> disclose any history of genital herpes to your obstetric provider early in pregnancy so a delivery plan (including possible cesarean birth for active lesions at labor onset) can be made in advance</li>
-      </ul></span></div>
-
-      <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Because of [specific exposure] during pregnancy, we're monitoring your baby closely for signs of infection, which can include skin changes, feeding problems, jaundice, or unusual sleepiness. Some of these infections don't cause obvious problems right away, so your baby may need follow-up hearing and vision checks even if they look completely healthy today. Please tell us right away if you notice anything different.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Know the specific exposure this baby had and the signs the parents/care team asked you to watch for. Report skin lesions, fever, feeding changes, or unusual sleepiness immediately &mdash; don't wait to mention it at pickup. If told this baby needs follow-up hearing or eye exams, help keep track of those appointments since some effects don't show up until later.</div>
-      </div>
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-pill"></i></span><span>Neonatal Abstinence Syndrome (NAS) / Substance-Exposed Infants</span></div><span class="arrow">&#9656;</span></div>
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-mood-cry"></i></span><span>Pain &amp; Stress Management</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Chronic in-utero exposure to opioids/other substances leads to physiologic dependence. After birth, the substance supply stops abruptly &rarr; withdrawal syndrome affecting CNS, GI, and autonomic nervous system.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology</div><p>Maternal use of narcotics (heroin, methadone), other illicit substances, smoking, alcohol during pregnancy.</p></div>
-      <div class="field"><div class="field-label">Signs &amp; symptoms</div><ul>
-        <li>CNS: irritability, high-pitched cry, tremors, hypertonicity, poor sleep, seizures (severe)</li>
-        <li>GI: poor feeding, vomiting, diarrhea, poor weight gain</li>
-        <li>Autonomic: sweating, temperature instability, nasal stuffiness, sneezing, yawning</li>
+      <div class="field"><div class="field-label">Why this is a priority, not an extra</div><p>High-risk newborns are unable to tolerate high amounts of stress &mdash; unmanaged pain/stress has real physiologic cost (see the full Neonatal Pain Response card, Unit 9). Frequent, structured pain/stress assessment is essential, not optional, in this population.</p></div>
+      <div class="field"><div class="field-label">PIPP in practice</div><p>Many NICUs use the <b>Premature Infant Pain Profile (PIPP)</b> as their primary tool for this population (see full Pain Assessment Tools card, Unit 9) and have protocols that trigger intervention at a PIPP score above 6-7; a score of <b>12 indicates severe pain requiring immediate attention</b>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="carehr-family">
+  <div class="chapter-tag"><i class="ti ti-users"></i>Care of the High-Risk Newborn &amp; Family</div>
+  <h2 class="section-title"><i class="ti ti-heart-handshake"></i>Kangaroo Care &amp; Family Partnership</h2>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-heart"></i></span><span>Kangaroo Care</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Technique</div><p>Skin-to-skin holding of the newborn, dressed only in a diaper, held upright against the parent's bare chest &mdash; ideally positioned so the infant's ear rests over the parent's heart to hear the familiar heartbeat. Appropriate once the infant is stable enough to tolerate time out of the incubator.</p></div>
+      <div class="field"><div class="field-label">Documented benefits</div><ul>
+        <li>Effective for maintaining newborn temperature</li>
+        <li>Strong analgesic effect during painful procedures such as heel lance</li>
+        <li>Improved oxygen saturation, feeding vigor, and growth</li>
+        <li>Infants of breastfeeding mothers who received skin-to-skin contact maintained higher O2 saturation and had fewer desaturations below 90%</li>
+        <li>Supports continued breastfeeding both during hospitalization and for at least 1 month after discharge</li>
+        <li>Reduces stress, improves quality of movement and self-regulation, and enhances maternal-infant bonding</li>
       </ul></div>
-      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Clinical picture caution</b></span>A drug-exposed newborn is typically <i>irritable</i> and overloaded by stimulation &mdash; hyperextends/postures rather than cuddles when held. This is the opposite presentation of a lethargic/sleepy infant; don't confuse the two on an NGN item.</span></div>
-      <div class="field"><div class="field-label">Assessment tools</div><div class="pill-row"><span class="pill"><i class="ti ti-list"></i>Finnegan Tool</span><span class="pill"><i class="ti ti-list"></i>NNNS</span></div></div>
-      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><p>Poor weight gain/failure to thrive if feeding is severely disrupted; seizures in severe untreated withdrawal; long-term neurodevelopmental risk correlates with exposure severity.</p></div>
-      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked)</b></span><ol>
-        <li><b>Score withdrawal severity on a validated tool (Finnegan) at regular intervals</b> &mdash; this drives the decision for pharmacologic treatment before seizures or severe dehydration develop, so it outranks comfort measures alone.</li>
-        <li>Minimize environmental stimulation: low light, quiet, limit unnecessary handling.</li>
-        <li>Swaddle, offer non-nutritive sucking, and support small/frequent feedings to protect nutritional status.</li>
-        <li>Administer pharmacologic treatment (methadone, phenobarbital, morphine) as ordered if scores indicate need.</li>
-      </ol></span></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
-        <li>Finnegan score reaches the facility's treatment threshold</li>
-        <li>Seizure activity</li>
-        <li>Feeding intolerance leading to weight loss beyond expected parameters</li>
-        <li>Signs of dehydration</li>
-      </ul></span></div>
-      <div class="field"><div class="field-label">Fetal Alcohol Syndrome (FAS) &mdash; distinct condition</div><ul>
-        <li>Microcephaly</li>
-        <li>Small eyes, thin upper lip, flat mid-face</li>
-        <li>Growth restriction, neurodevelopmental deficits (fine motor, IQ, speech)</li>
-      </ul></div>
-      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care strategies</b></span><ul>
-        <li>Connect with substance use treatment/recovery resources and postpartum follow-up &mdash; this is a health condition, not a moral failing, and ongoing support improves outcomes for both mother and baby</li>
-        <li>Ask about rooming-in and skin-to-skin opportunities, which can help both maternal bonding and infant withdrawal symptoms</li>
-        <li>Seek nonjudgmental care coordination (social work, case management) for housing, custody, or legal questions rather than navigating alone</li>
-      </ul></span></div>
       <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby may be extra fussy, have trouble sleeping, or need extra help feeding for a while because of substance exposure before birth. We use a scoring tool to track how your baby is doing and decide if any medicine is needed. Swaddling, a quiet room, and skin-to-skin time can really help calm your baby.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby may be more sensitive to noise, light, and handling than a typical newborn. Keep the environment calm and quiet, swaddle snugly, and avoid unnecessary stimulation. Report increasing fussiness, feeding refusal, or any shaking/seizure-like movement immediately.</div>
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Kangaroo care means holding your baby skin-to-skin against your bare chest, wearing only a diaper. This is one of the most powerful things you can do for your baby's temperature stability, breathing, and growth &mdash; and it helps you bond even while your baby is still in the NICU. Ask your nurse when your baby is ready to try it.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If invited to do skin-to-skin care by the parents and care team, follow the same positioning guidance (baby upright, ear over your heart) and don't attempt it without nursing supervision the first few times.</div>
       </div>
     </div>
   </div>
 
 <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-pill"></i></span><span>Morphine Sulfate &amp; Methadone (NAS Treatment)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-heart-handshake"></i></span><span>Family Partnership &amp; Support</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Classification</div><p>Opioid agonists.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Pharmacologic management of significant <b>Neonatal Abstinence Syndrome (NAS)</b> when nonpharmacologic measures (swaddling, low stimulation, frequent small feeds) are insufficient, per Finnegan scoring. Morphine and methadone are the two opioids specifically used for this indication; both replace the withdrawal substance temporarily and are then gradually tapered.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Route</div><p>Typically PO for NAS treatment; weight-based, titrated/weaned per institutional protocol based on withdrawal scoring &mdash; no single dose to memorize for this exam.</p></div>
-      <div class="field"><div class="field-label">Expected/common effects</div><p>Sedation, constipation, nausea, decreased GI motility.</p></div>
-      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Priority adverse effect &mdash; ANY opioid</b></span><b>Respiratory depression</b> is the adverse effect that outranks all others in priority for monitoring. Also watch for bradycardia, hypotension, and profound CNS depression. Methadone specifically carries QT-prolongation/dysrhythmia risk.</span></div>
-      <div class="field"><div class="field-label">Contraindications/precautions</div><p>Significant respiratory depression; hypersensitivity; caution with other CNS depressants or cardiac conduction abnormalities (methadone).</p></div>
-      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations (ranked)</b></span><ol>
-        <li><b>Monitor respiratory rate, apnea, HR, and O2 saturation continuously</b> &mdash; respiratory depression is the life-threatening risk with any opioid, so this outranks comfort/GI monitoring.</li>
-        <li>Continue using the validated withdrawal scoring tool (Finnegan) throughout treatment to guide dose titration.</li>
-        <li>Assess sedation level/LOC, feeding tolerance, and weight gain trends.</li>
-        <li><b>Taper gradually as withdrawal is controlled &mdash; never discontinue abruptly</b> after sustained treatment.</li>
+      <div class="field"><div class="field-label">The parent's NICU journey</div><p>Parents typically move through recognizable phases: initially the NICU environment feels overwhelming, but most parents are able to shift focus onto their infant and push environmental distractions into the background; they then begin actively building a relationship with the infant and taking ownership of care. Family-centered care philosophy treats parents as genuine partners &mdash; not visitors &mdash; and positions them as "the voice of the newborn."</p></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing measures that facilitate parent partnership</b></span><ol>
+        <li>Orient parents thoroughly to the NICU environment, policies, and relevant privacy regulations.</li>
+        <li>Assign one <b>primary care nurse</b> as a consistent main contact point for the family.</li>
+        <li>Explain the rationale behind policies/procedures rather than just stating rules.</li>
+        <li>Actively listen to parents' expectations for their own role in care, and incorporate their preferences into the care routine where possible.</li>
+        <li>Use a bedside whiteboard for ongoing communication between shifts/family.</li>
+        <li>Encourage parents to call the unit 24/7 for updates, and encourage them to bring in the infant's own clothing when allowed.</li>
+        <li>Create space for parents to voice dissatisfaction with care without it damaging the relationship &mdash; this is a sign of engagement, not a problem to manage away.</li>
+        <li>Encourage touch from the very first visit onward, and offer kangaroo care as soon as the infant is stable enough.</li>
+        <li>Include fathers/partners explicitly in both education and hands-on care, not just the mother.</li>
       </ol></span></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Apnea, significant bradycardia, excessive sedation/unresponsiveness, or Finnegan score rising despite current dosing.</span></div>
+
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal/parental self-care strategies</b></span><ul>
+        <li>Accept that the NICU environment feels overwhelming at first &mdash; this is a normal phase, not a sign you aren't coping well</li>
+        <li>Use the primary nurse relationship to avoid having to re-explain your questions/preferences to a new person every shift</li>
+        <li>Participate in developmental care and kangaroo care as soon as you're able &mdash; this benefits your own psychological adjustment as much as the infant's physiology</li>
+        <li>Bring your own emotional needs to social work, chaplaincy, or a NICU parent support group rather than only focusing outward on the infant</li>
+      </ul></span></div>
+
       <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby is receiving a small, carefully controlled dose of medication to ease withdrawal symptoms from substance exposure before birth. This isn't the same as ongoing opioid use &mdash; the goal is to control symptoms now and slowly taper the dose down as your baby's body adjusts.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby may seem sedated or sleepy while on this medication &mdash; that's expected. Report any pauses in breathing, unusual limpness, or difficulty waking the baby immediately.</div>
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>You are a partner in your baby's care, not just a visitor &mdash; tell us your preferences and don't hesitate to ask questions or voice concerns, even repeatedly. You'll have one main nurse to help coordinate your baby's care and answer questions. Touching, holding, and kangaroo care are encouraged as soon as your baby is ready.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you're supporting the family of a NICU infant, understand that the environment can feel intense at first for everyone involved. Follow the parents' lead on how they want to be supported, and respect the care team's guidance on when/how you can interact with the infant.</div>
       </div>
-      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> NAS nursing care isn't just medication: low stimuli + swaddle + frequent small feeds + scoring tool + medication only if severe, then taper.</span></div>
     </div>
   </div>
+</section>
+
+<section class="content-section" id="preterm-char">
+  <div class="chapter-tag"><i class="ti ti-baby"></i>Complications of Preterm &amp; Post-Term Birth</div>
+  <h2 class="section-title"><i class="ti ti-hourglass"></i>Preterm &amp; Late Preterm Infant</h2>
 
 <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--gray)"><i class="ti ti-moon"></i></span><span>Phenobarbital</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-      <div class="field"><div class="field-label">Classification</div><p>Barbiturate; anticonvulsant/sedative-hypnotic.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Adjunctive pharmacologic therapy for NAS when withdrawal remains significant or involves polysubstance exposure, especially alongside an opioid. Also used as an anticonvulsant for neonatal seizures when relevant.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Route</div><p>PO or IV; weight-based and protocol-dependent &mdash; not a number to memorize for this exam.</p></div>
-      <div class="field"><div class="field-label">Expected/common effects</div><p>Sedation, drowsiness, poor feeding, lethargy.</p></div>
-      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Serious adverse effects</b></span>Respiratory depression, hypotension, bradycardia, excessive CNS depression.</span></div>
-      <div class="field"><div class="field-label">Contraindications/precautions</div><p>Severe respiratory depression; hypersensitivity to barbiturates; significant hepatic impairment; certain porphyrias.</p></div>
-      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations</b></span><ol>
-        <li>Monitor respiratory status and O2 saturation closely &mdash; combined with an opioid (common in polysubstance NAS), the respiratory depression risk compounds.</li>
-        <li>Monitor HR/BP and level of sedation.</li>
-        <li>Track feeding tolerance and withdrawal symptoms/seizure activity as applicable.</li>
-        <li>Avoid abrupt discontinuation after prolonged treatment &mdash; taper per protocol.</li>
-      </ol></span></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Signs of respiratory depression, excessive sedation, or any seizure activity while on treatment.</span></div>
-      <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>This medication helps calm your baby's nervous system while it recovers from withdrawal or manages seizure risk. Your baby will be watched closely for breathing and alertness while on this medication.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Expect this baby to be more sedated than usual while on this medication. Report slow or irregular breathing, extreme difficulty waking the baby, or any seizure-like movements right away.</div>
-      </div>
-      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Phenobarbital = CNS depressant &rarr; monitor respiratory status and sedation, same priority logic as the opioids it's often paired with.</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- PRETERM/RDS -->
-<div class="panel" id="u10-preterm">
-  <h2 class="section-title"><i class="ti ti-lungs-off"></i>Prematurity &amp; Post-Term Complications</h2>
-  <div class="uslo-tag">USLO 2</div>
-  <p class="lead">Perry Ch. 25. The highest-yield section of Unit 10.</p>
-
-  <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-baby"></i></span><span>Preterm Infant &mdash; Physical Characteristics &amp; Organ Immaturity</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
     <p style="font-size:13px; color:var(--sub); margin-bottom:8px;"><b>Preterm = &lt;37 weeks gestation.</b> These exam findings reflect organ systems caught mid-development.</p>
@@ -521,7 +535,7 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
   </div>
   </div>
 
-  <div class="cond">
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-hourglass"></i></span><span>Late Preterm Infant</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Definition</div><p>Born 34-36 6/7 weeks gestation. Termed "preterm," not "near-term" &mdash; often mistakenly cared for like healthy term infants, and risks are overlooked.</p></div>
@@ -533,8 +547,13 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       </div>
     </div>
   </div>
+</section>
 
-  <div class="cond">
+<section class="content-section" id="preterm-rds">
+  <div class="chapter-tag"><i class="ti ti-baby"></i>Complications of Preterm &amp; Post-Term Birth</div>
+  <h2 class="section-title"><i class="ti ti-lungs-off"></i>Respiratory Distress Syndrome</h2>
+
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-lungs-off"></i></span><span>Respiratory Distress Syndrome (RDS)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Surfactant deficiency (hyaline membrane disease). Deficient surfactant &rarr; unequal alveolar inflation + collapse on expiration &rarr; widespread atelectasis &rarr; infant works harder each breath &rarr; exhaustion. Inadequate perfusion/ventilation &rarr; hypoxemia + hypercapnia &rarr; pulmonary vasoconstriction (worsening cycle). Prolonged hypoxemia &rarr; anaerobic glycolysis &rarr; metabolic acidosis, plus respiratory acidosis from CO2 retention.</p></div>
@@ -640,8 +659,13 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Preterm + grunting + retractions + RDS &rarr; surfactant deficiency &rarr; exogenous surfactant.</span></div>
     </div>
   </div>
+</section>
 
-  <div class="cond">
+<section class="content-section" id="preterm-other">
+  <div class="chapter-tag"><i class="ti ti-baby"></i>Complications of Preterm &amp; Post-Term Birth</div>
+  <h2 class="section-title"><i class="ti ti-alert-circle"></i>Other Complications of Prematurity</h2>
+
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-alert-circle"></i></span><span>Complications Associated With Preterm Birth</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Pulmonary</div><ul>
@@ -682,44 +706,87 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+
+</section>
+
+<section class="content-section" id="preterm-postterm">
+  <div class="chapter-tag"><i class="ti ti-baby"></i>Complications of Preterm &amp; Post-Term Birth</div>
+  <h2 class="section-title"><i class="ti ti-calendar-time"></i>Post-Term Infant</h2>
+
+<div class="cond open">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-calendar-time"></i></span><span>Post-Term (Postdates) Infant</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Definition/Incidence</div><p>Gestation extending beyond 42 weeks; occurs in 3.5-15% of pregnancies. Cause of delayed labor onset is unknown; placental dysfunction is implicated.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Definition &amp; key distinction</div><p><b>Post-term:</b> gestation of <b>42 0/7 weeks or beyond</b>, regardless of birth weight &mdash; a dating category alone. This accounts for only about 0.25% of all U.S. births, since most pregnancies now end earlier via elective induction. <b>Not every post-term infant is compromised</b> &mdash; some are simply AGA and continued growing normally past 40 weeks.</p>
+      <p><b>Postmature infant / dysmaturity syndrome:</b> a <b>subset</b> of post-term infants (occurring in ~10-20% of post-term pregnancies) who show the actual physical signs of <b>progressive placental insufficiency</b> &mdash; the placenta has aged past its functional capacity and can no longer adequately support the fetus. This is the clinically important distinction: "post-term" describes timing, "postmature/dysmaturity" describes an infant actually harmed by an aging placenta.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Pathophysiology &mdash; why placental aging causes problems</div><p>As the placenta ages beyond term, its ability to transport oxygen and nutrients declines. Depending on how the fetus responds, this produces one of two very different outcomes:</p>
+      <ul>
+        <li><b>If the placenta continues functioning adequately:</b> fetal growth continues past 40 weeks, producing a <b>macrosomic</b> infant &mdash; at increased risk for birth injury, shoulder dystocia, and operative delivery, similar to an LGA infant</li>
+        <li><b>If placental function progressively declines (placental insufficiency):</b> the fetus is deprived of adequate nutrients/oxygen despite ongoing gestation, and may actually <b>lose weight in utero</b> &mdash; this produces the classic wasted, "old-man" postmature appearance from depleted subcutaneous fat</li>
+      </ul>
+      <p>A post-term infant can therefore be macrosomic, appropriately grown, OR growth-restricted &mdash; gestational age alone doesn't predict which.</p></div>
+
       <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><ul>
-        <li>Significant increase in fetal/neonatal mortality</li>
-        <li>Fetal distress, placental insufficiency</li>
-        <li>Increased risk for birth injuries</li>
-        <li>High incidence of meconium release prior to delivery &mdash; risk for meconium aspiration syndrome</li>
+        <li><b>Significant increase in fetal and neonatal mortality</b> compared to term infants &mdash; this is true across post-term infants generally, not just the postmature subset</li>
+        <li><b>Oligohydramnios</b> (decreased amniotic fluid) &mdash; common in postterm pregnancy, creates risk for <b>umbilical cord compression and hypoxemia</b> during labor</li>
+        <li><b>Meconium-stained amniotic fluid</b> and <b>meconium aspiration syndrome (MAS)</b> &mdash; the greatest single respiratory risk, from fetal distress causing in-utero meconium passage</li>
+        <li><b>Persistent pulmonary hypertension of the newborn (PPHN)</b> &mdash; right-to-left shunting through the foramen ovale/ductus arteriosus; can be triggered by MAS or other causes of fetal distress</li>
+        <li><b>Birth injury and neurologic damage</b> &mdash; particularly for macrosomic post-term infants, from shoulder dystocia and a difficult delivery</li>
+        <li><b>Hypoglycemia</b> &mdash; from depleted glycogen stores in the growth-restricted/postmature subset</li>
+        <li>Increased maternal risk as well: severe perineal injury, chorioamnionitis, postpartum hemorrhage, and increased cesarean birth rate</li>
       </ul></div>
-      <div class="field"><div class="field-label">Assessment findings</div><ul>
-        <li>Dry, cracked, peeling skin</li>
-        <li>Well-formed ears with instant recoil</li>
-        <li>Loss of subcutaneous tissue (wasted appearance)</li>
-        <li>Well-developed genitalia</li>
-      </ul></div>
-      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Meconium-stained fluid noted at birth with respiratory distress (possible meconium aspiration syndrome); any signs of hypoglycemia.</span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-stethoscope"></i>Assessment findings &mdash; expected vs. unexpected</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Finding</th><th>Post-term, otherwise well-grown</th><th>Postmature / Dysmaturity Syndrome</th></tr>
+        <tr><td>Skin</td><td class="normal">May appear slightly dry</td><td class="abnormal">Dry, cracked, parchment-like, peeling (desquamation), especially over the abdomen and extremities</td></tr>
+        <tr><td>Vernix/lanugo</td><td class="normal">May have reduced amounts, as expected near/past term</td><td class="abnormal">Little to no vernix caseosa; absent lanugo</td></tr>
+        <tr><td>Subcutaneous fat</td><td class="normal">Normal or increased (if macrosomic)</td><td class="abnormal">Depleted &mdash; produces a thin, elongated, "wasted" appearance</td></tr>
+        <tr><td>Nails/hair</td><td class="normal">Normal</td><td class="abnormal">Long fingernails; abundant scalp hair</td></tr>
+        <tr><td>Ears</td><td class="normal">Well-formed, instant recoil (expected at this gestational age)</td><td class="abnormal">Same finding, but combined with the above signs of wasting</td></tr>
+        <tr><td>Staining</td><td class="normal">None</td><td class="abnormal">Skin, nails, and umbilical cord stained deep yellow or green &mdash; indicates meconium was present in the amniotic fluid</td></tr>
+        <tr><td>Umbilical cord</td><td class="normal">Normal appearance</td><td class="abnormal">Meconium-stained cord</td></tr>
+      </table>
+      </div></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Test/Assessment</th><th>Purpose</th><th>Nursing action</th></tr>
+        <tr><td>Antepartum fetal surveillance (NST, contraction stress test, BPP, modified BPP)</td><td>Initiated at 41 0/7 weeks given increased stillbirth risk; performed 1-2x/week for the remainder of the pregnancy</td><td>Support maternal understanding of why frequent monitoring is needed; no single test/frequency has been shown superior</td></tr>
+        <tr><td>Serum glucose (newborn)</td><td>Screen for hypoglycemia from depleted glycogen stores, especially in the growth-restricted/postmature subset</td><td>Early feeding, monitor per facility hypoglycemia protocol</td></tr>
+        <tr><td>Continuous pulse oximetry / ABG (if respiratory distress)</td><td>Detect hypoxemia from MAS or PPHN</td><td>Notify provider promptly; prepare for possible NICU-level respiratory support</td></tr>
+        <tr><td>New Ballard Score</td><td>Confirms/clarifies gestational age when dating is uncertain</td><td>See full Ballard card, Unit 9</td></tr>
+      </table>
+      </div></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked)</b></span><ol>
+        <li><b>Anticipate and prepare for possible meconium aspiration at delivery</b> &mdash; have resuscitation equipment ready; this is the single highest-acuity risk given how commonly post-term infants pass meconium in utero.</li>
+        <li>Assess respiratory status closely and continuously in the immediate newborn period &mdash; watch specifically for signs of MAS or PPHN (tachypnea, grunting, retractions, cyanosis, poor perfusion).</li>
+        <li>Screen for and treat hypoglycemia early, especially if the infant shows postmature/wasted features suggesting depleted glycogen stores.</li>
+        <li>Assess for birth injury if the infant is macrosomic (clavicle fracture, brachial plexus injury &mdash; see full Birth Trauma card).</li>
+        <li>Maintain thermoregulation &mdash; depleted subcutaneous fat in the postmature subset increases heat-loss vulnerability similarly to a preterm infant.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Meconium-stained fluid noted at birth combined with respiratory distress (possible MAS); tachypnea, grunting, retractions, or cyanosis in a post-term infant; signs of hypoglycemia (jitteriness, poor feeding, lethargy); signs of birth injury in a macrosomic infant; poor perfusion or capillary refill &gt;3 seconds (possible PPHN).</span></div>
+
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care note</b></span>Going past your due date can bring real anxiety, frustration, and even feelings of inadequacy as the pregnancy continues &mdash; these feelings are normal and common, not a sign anything is wrong with you or your judgment. Frequent fetal monitoring visits after 41 weeks are a routine precaution, not necessarily a sign of a developing problem. It's okay to lean on your support system during this waiting period.</span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Because your baby was born after 42 weeks, we're watching closely for a few specific things: breathing difficulty, blood sugar levels, and skin/feeding issues. Some post-term babies have dry, peeling skin or look a little thin — this is common and related to how the placenta was working near the end of pregnancy, not something you did wrong. We'll monitor your baby closely in the first hours and days.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby may have drier or peeling skin than a typical newborn, which is expected and not a rash needing treatment. Watch closely for and report any fast or labored breathing, blue coloring, or signs of low blood sugar (shakiness, poor feeding, excess sleepiness) right away.</div>
+      </div>
+
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> "Post-term" = timing (&ge;42 weeks); "Postmature/dysmaturity" = an appearance (wasted, peeling, meconium-stained) caused by placental insufficiency. Not every post-term infant is postmature, and not every postmature-appearing infant needs to be exactly 42+ weeks to show placental insufficiency signs &mdash; know the difference between the label and the syndrome.</span></div>
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-users"></i></span><span>Care of the High-Risk Newborn &amp; Family</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-    <ul>
-      <li><b>Nutrition:</b> breastfeeding, transition to oral feedings, bottle feeding, gavage feeding, enteral feeding (G-tube)</li>
-      <li><b>Kangaroo care:</b> skin-to-skin contact promotes bonding, thermoregulation, and physiologic stability</li>
-      <li><b>Respiratory support:</b> CPAP, bag &amp; mask resuscitation</li>
-      <li><b>Family support:</b> encourage bonding/relationships through touch and skin-to-skin contact</li>
-    </ul>
-  </div>
-  </div>
-</div>
+</section>
 
-<!-- HEMOLYTIC/IDM/ANOMALIES -->
-<div class="panel" id="u10-hemo">
-  <h2 class="section-title"><i class="ti ti-blood"></i>Hemolytic Disorders &amp; IDM</h2>
-  <div class="uslo-tag">USLO 3</div><div class="uslo-tag">USLO 4</div>
-  <p class="lead">Rh incompatibility, ABO incompatibility, infant of diabetic mother, and IV dextrose treatment. See the Screening &amp; Anomalies tab for newborn metabolic screening, PKU, galactosemia, and congenital anomalies.</p>
+<section class="content-section" id="hemo-disease">
+  <div class="chapter-tag"><i class="ti ti-blood"></i>Hemolytic Disease, IDM &amp; Metabolic Screening</div>
+  <h2 class="section-title"><i class="ti ti-blood"></i>Hemolytic Disease</h2>
 
 <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-blood"></i></span><span>Rh Incompatibility (Isoimmunization)</span></div><span class="arrow">&#9656;</span></div>
@@ -810,6 +877,11 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       </div>
     </div>
   </div>
+</section>
+
+<section class="content-section" id="hemo-idm">
+  <div class="chapter-tag"><i class="ti ti-blood"></i>Hemolytic Disease, IDM &amp; Metabolic Screening</div>
+  <h2 class="section-title"><i class="ti ti-chart-arrows"></i>Infant of Diabetic Mother</h2>
 
 <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-chart-arrows"></i></span><span>Infant of Diabetic Mother (IDM)</span></div><span class="arrow">&#9656;</span></div>
@@ -877,23 +949,108 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Cold stress increases glucose consumption &rarr; hypoglycemia. Connect thermoregulation problems directly to glucose problems on any NGN scenario.</span></div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- SCREENING & ANOMALIES -->
-<div class="panel" id="u10-anomalies">
-  <h2 class="section-title"><i class="ti ti-dna-2"></i>Screening &amp; Congenital Anomalies</h2>
-  <div class="uslo-tag">USLO 3</div><div class="uslo-tag">USLO 4</div>
-  <p class="lead">Newborn metabolic screening, PKU/galactosemia dietary management, and the major congenital anomalies: DDH/clubfoot, TEF/esophageal atresia, CDH/choanal atresia, omphalocele/gastroschisis, neural tube defects, and genitourinary anomalies.</p>
+<section class="content-section" id="hemo-screen">
+  <div class="chapter-tag"><i class="ti ti-blood"></i>Hemolytic Disease, IDM &amp; Metabolic Screening</div>
+  <h2 class="section-title"><i class="ti ti-microscope"></i>Metabolic &amp; Genetic Screening</h2>
 
 <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-microscope"></i></span><span>Newborn Screening for Disease</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-microscope"></i></span><span>Universal Newborn Screening (Guthrie Test)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-    <ul>
-      <li><b>Inborn errors of metabolism:</b> Guthrie paper (heel-stick blood spot)</li>
-      <li><b>Congenital hypothyroidism</b></li>
-      <li><b>Phenylalanine hydroxylase (PAH) deficiency</b> &mdash; formerly called phenylketonuria (PKU)</li>
-      <li><b>Galactosemia</b></li>
-    </ul>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Purpose &amp; scope</div><p>Universal newborn screening is a <b>state-mandated</b> public health program aimed at early detection of genetic, metabolic, and endocrine diseases that cause severe, often irreversible health problems if not caught and treated early &mdash; before symptoms appear. Most disorders included in the panel are <b>not symptomatic at birth</b>, which is exactly why screening (rather than waiting for clinical signs) is essential. Roughly 4 million babies are screened annually in the U.S.</p></div>
+
+      <div class="field"><div class="field-label">The three categories of disorders screened</div><ul>
+        <li><b>Metabolic disorders</b> &mdash; e.g., PAH deficiency (formerly PKU)</li>
+        <li><b>Genetic/hematologic disorders</b> &mdash; e.g., sickle cell disease, other hemoglobinopathies</li>
+        <li><b>Endocrinopathies</b> &mdash; e.g., congenital hypothyroidism</li>
+      </ul>
+      <p style="font-size:13px; color:var(--sub);">The federal Health Resources and Services Administration recommends screening for 35 core disorders plus 26 secondary disorders; individual states can add more. <b>All 50 states screen for PKU and congenital hypothyroidism</b>; about 46 states screen for galactosemia and 45 for hemoglobinopathies. Nurses should know their specific state's panel.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>The Guthrie test &mdash; technique</div><ul>
+        <li>A <b>heel stick (heel puncture)</b> obtains a capillary blood sample from the newborn</li>
+        <li>Apply a <b>heel warmer before the puncture</b> &mdash; a cool extremity has diminished blood flow, making the sample harder to obtain and potentially causing a <b>falsely low</b> result</li>
+        <li>Blood is collected directly onto a <b>special absorbent filter paper</b> ("Guthrie card"), filling each designated circle completely</li>
+        <li>The card is air-dried, then mailed to a designated state laboratory</li>
+        <li>Analysis uses <b>tandem mass spectrometry</b>, which can screen for dozens of disorders from this single dried blood spot</li>
+      </ul></div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Critical timing rule</b></span>The heel stick must be performed <b>after the newborn is 24 hours old</b> &mdash; this allows enough time for the infant to have ingested formula or breast milk, which is necessary for an accurate PKU result specifically (phenylalanine only accumulates to detectable levels after protein intake begins). Samples are typically collected after 24 hours of age and before hospital discharge. <b>If the infant was NPO for any reason, or discharged before 24 hours, the test must be repeated</b> at a follow-up visit, usually by <b>2 weeks of age</b> at the latest. Some conditions are only caught on this second screening.</span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing responsibility &mdash; why this is a genuine priority, not paperwork</b></span><ol>
+        <li><b>Ensure screening is actually performed</b> before discharge &mdash; this is the single most important nursing objective for this topic. Infants discharged early, born preterm, or born outside the hospital are at highest risk of being missed.</li>
+        <li>If a repeat/follow-up screen is needed (early discharge, NPO status, or a borderline initial result), <b>ensure a specific follow-up appointment is arranged</b> before the family leaves &mdash; don't just tell them to "get it done eventually."</li>
+        <li>Document the exact time of the heel stick relative to birth and feeding status, since this affects result interpretation.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider / escalate if</b></span>Screening was not completed before discharge for any reason; the infant was NPO at the time of the intended screen; any abnormal/out-of-range result returns from the lab (requires prompt confirmatory testing and specialist referral, not a "wait and see" approach given how time-sensitive conditions like PKU and congenital hypothyroidism are).</span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Before you go home, your baby will have a simple heel-stick blood test that checks for several rare but serious conditions that don't show any symptoms at birth. This test only works accurately after your baby has fed for at least 24 hours, so if you're discharged early, we'll schedule a follow-up test. Catching these conditions early &mdash; often before any symptoms appear &mdash; makes a huge difference in your baby's long-term health.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If you're told this baby needs a repeat newborn screening test, help make sure that follow-up appointment actually happens &mdash; it's easy to overlook once everyone is home and adjusting, but these results matter for lifelong health.</div>
+      </div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-activity"></i></span><span>Congenital Hypothyroidism</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>An endocrine disorder producing a deficiency of thyroid hormone (T3/T4). Thyroid hormone is essential for normal brain development and growth &mdash; without adequate levels, the infant develops permanent intellectual disability and growth delay if treatment is delayed. Congenital hypothyroidism is one of the most common <b>preventable</b> causes of cognitive impairment, which is exactly why universal screening exists for it.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology &amp; epidemiology</div><ul>
+        <li>May be primary (thyroid gland itself) or secondary (pituitary-based)</li>
+        <li>Affects approximately <b>1 in 2,000-4,000</b> newborns (some sources cite 6 per 10,000); more than twice as common in females</li>
+        <li>More prevalent among Hispanic and Native American/Alaskan Native populations; less prevalent among Black Americans</li>
+        <li><b>Infants with Down syndrome have a much higher rate</b> of both permanent and transient forms</li>
+        <li>Preterm infants, especially born <b>before 28 weeks</b>, may have transient hypothyroidism from hypothalamic/pituitary immaturity and may need temporary thyroid hormone replacement</li>
+      </ul></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-stethoscope"></i>Signs &amp; symptoms &mdash; why this is easy to miss</div><p>Clinical manifestations are often <b>NOT obvious at birth</b>, likely because maternal thyroid hormone crosses the placenta and temporarily masks the deficiency. This is precisely why screening (rather than physical exam alone) is essential &mdash; by the time symptoms are obvious, treatment is already delayed.</p>
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>At Birth (often subtle)</th><th>By 6-9 Weeks if Untreated (classic features)</th></tr>
+        <tr><td>Poor feeding, lethargy</td><td>Depressed nasal bridge, short forehead, puffy eyelids</td></tr>
+        <tr><td>Prolonged jaundice (&gt;2 weeks)</td><td>Large, protruding tongue</td></tr>
+        <tr><td>Respiratory difficulty, cyanosis</td><td>Thick, dry, mottled skin; coarse dry hair</td></tr>
+        <tr><td>Constipation, hoarse cry</td><td>Abdominal distention, umbilical hernia</td></tr>
+        <tr><td>Bradycardia</td><td>Hyporeflexia, hypotonia, bradycardia, hypothermia, hypotension</td></tr>
+        <tr><td>Large anterior AND posterior fontanels</td><td>Widely patent cranial sutures, anemia</td></tr>
+        <tr><td>Post-term birth; birth weight &gt;4000g (8 lb 13 oz)</td><td>Delayed linear growth and neurodevelopment</td></tr>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:8px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Parent-reported clue</b></span>Parents describing an unusually <b>"quiet and good" baby</b> &mdash; one who rarely cries or demands attention &mdash; combined with prolonged jaundice, constipation, or an umbilical hernia should raise suspicion for congenital hypothyroidism. This is a classic exam pearl: the "good baby" is not actually thriving, they're hypothyroid.</span></div></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications if untreated</div><p>Permanent intellectual disability, severe growth delay &mdash; this is why early identification and immediate treatment are the central nursing priorities for this condition, more so than for almost any other newborn screening target.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics &mdash; expected vs. unexpected</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Test</th><th>Expected/Normal</th><th>Unexpected &mdash; Congenital Hypothyroidism</th><th>Nursing action</th></tr>
+        <tr><td>TSH (thyroid-stimulating hormone)</td><td class="normal">Within normal newborn range (higher than older-child norms; timing must be documented)</td><td class="abnormal"><b>Elevated</b> &mdash; the primary initial screening marker</td><td>Confirm with follow-up T4/free T4; refer to pediatric endocrinology promptly</td></tr>
+        <tr><td>T4 / Free T4</td><td class="normal">Normal range for age</td><td class="abnormal">Low or low-normal</td><td>Some screening programs test T4 first, then reflex to TSH if abnormal (protocol varies by state/lab)</td></tr>
+        <tr><td>T3, thyroid-binding globulin (TBG)</td><td class="normal">Normal</td><td class="abnormal">May be abnormal; used as additional diagnostic clarification</td><td>Send if initial screen is abnormal, per specialist guidance</td></tr>
+        <tr><td>Bone age radiography (knee/foot), thyroid ultrasound/scan</td><td class="normal">Age-appropriate bone maturation</td><td class="abnormal">Delayed bone age; structural thyroid abnormality on imaging</td><td>Confirms diagnosis and helps distinguish primary vs. secondary/structural causes</td></tr>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:8px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Interpretation caution</b></span>Newborn thyroid values run higher than in older children by default &mdash; always document exact timing of the test. In preterm or sick full-term infants, thyroid levels are often lower than in healthy term infants; consider repeating T4/TSH after 30 weeks corrected gestational age, or after the acute illness resolves, before concluding a preterm infant is truly hypothyroid.</span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked)</b></span><ol>
+        <li><b>Ensure the initial and any repeat screening actually happens</b> &mdash; this is the single highest-leverage action, since the disease is silent at birth and irreversible cognitive damage accumulates the longer treatment is delayed.</li>
+        <li>Recognize and act on subtle early clues (the "quiet, good baby," prolonged jaundice, constipation, umbilical hernia) rather than waiting for classic 6-9 week features to appear.</li>
+        <li>Facilitate prompt referral to pediatric endocrinology once an abnormal screen returns &mdash; treatment should begin <b>as soon as possible after diagnosis</b>, not on a routine follow-up timeline.</li>
+        <li>Reinforce medication compliance teaching at every subsequent visit, since lifelong daily treatment is required and gaps in dosing directly risk developmental outcomes.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Abnormal newborn screen for TSH/T4; parent reports an unusually quiet/undemanding baby with any of the early clinical clues; jaundice persisting beyond 2 weeks; feeding difficulty with lethargy and constipation together.</span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Treatment</div><p><b>Lifelong thyroid hormone replacement</b> with synthetic <b>levothyroxine sodium</b> (Synthroid, Levothroid), started as soon as possible after diagnosis to prevent/reverse signs of hypothyroidism and support normal physical and mental development. Target: maintain TSH between <b>0.5-2 mU/L</b>. Regular T4 monitoring and periodic bone age surveys confirm adequate treatment and growth.</p>
+      <div class="flag" style="margin-top:6px;"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Practical medication administration tip</b></span>Levothyroxine is tasteless and can be crushed and mixed into formula, water, or food to improve compliance. <b>If a dose is missed, give double the dose the following day</b> rather than skipping it entirely &mdash; consistent daily dosing is essential for this lifelong therapy.</span></div></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby's screening showed low thyroid hormone, which is very treatable but needs daily medication for life, starting right away. This medicine has no taste and can be mixed into formula or food. If you ever miss a dose, give double the next day rather than skipping it. Your baby will need regular blood tests and follow-up with a specialist (pediatric endocrinologist) to make sure growth and development stay on track &mdash; sticking with this treatment is what prevents the intellectual and growth problems this condition can cause if untreated.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby takes a daily thyroid medication that cannot be skipped &mdash; ask the parents for the exact dosing schedule and what to do if a dose is missed while in your care (give double the next day, per the parents'/provider's instruction). Report any return of poor feeding, unusual sleepiness, or constipation, since this can signal the dose needs adjustment.</div>
+      </div>
+    </div>
   </div>
   </div>
 
@@ -951,18 +1108,359 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       </div>
     </div>
   </div>
+</section>
+
+<section class="content-section" id="risk2-trauma">
+  <div class="chapter-tag"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
+  <h2 class="section-title"><i class="ti ti-first-aid-kit"></i>Birth Trauma</h2>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-first-aid-kit"></i></span><span>Birth Trauma</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology/Etiology</div><p>Many birth injuries are avoidable (ultrasound can diagnose macrosomia, malpresentation, hydrocephalus antenatally, allowing planned cesarean). Some are unavoidable: difficult/prolonged labor, precipitous ("explosive") labor, shoulder dystocia, forceps/vacuum-assisted delivery. Birth injuries are broadly categorized as <b>bone fractures</b> or <b>neurological injuries</b> (peripheral nerve/plexus injuries, cranial nerve injuries, or intracranial/spinal injuries), and diagnosis relies on thorough nursing assessment plus x-ray or other imaging as indicated.</p></div>
+
+      <div class="field"><div class="field-label">Overview of injury sites (for orientation)</div><p>Common birth trauma spans scalp (caput/cephalhematoma/subgaleal hemorrhage &mdash; see Head-to-Toe Exam tab, Unit 9), skull fractures, intracranial hemorrhage, spinal cord injury, brachial/lumbosacral plexus injuries, and cranial/peripheral nerve palsies (facial, phrenic, radial, laryngeal). This card focuses on the most common and most testable: clavicle fracture, brachial plexus injuries (Erb's and Klumpke's palsy), facial nerve palsy, and phrenic nerve palsy.</p></div>
+
+      <div class="field"><div class="field-label">Fractured Clavicle &mdash; Etiology</div><p>The clavicle is the bone most commonly fractured during birth, typically at the middle third of the bone. Shoulder dystocia is the classic predisposing factor; can also occur with forceps use.</p></div>
+      <div class="field"><div class="field-label">Fractured Clavicle &mdash; Key assessment cues</div><ul>
+        <li>Palpable <b>crepitus</b> at the fracture site</li>
+        <li><b>Limited arm motion</b> on the affected side</li>
+        <li><b>Absent Moro reflex on the affected side</b> &mdash; the same hallmark finding seen in brachial plexus injury, so both should be considered together on assessment</li>
+      </ul></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing interventions &amp; care</b></span><ol>
+        <li>Gentle handling of the affected arm; avoid pulling or lifting the infant from under the axillae on that side.</li>
+        <li>Containment of the limb against the chest (e.g., pinning the sleeve to the shirt, or a figure-8 splint per provider order) may be used for comfort, though often no device is needed at all.</li>
+        <li>No specific treatment is typically required &mdash; newborn fractures heal rapidly and the prognosis is excellent.</li>
+        <li>Support parents, who are often afraid of hurting the infant; encourage and supervise their practice with handling, changing, and feeding to build confidence and support attachment.</li>
+      </ol></span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Brachial Plexus Injuries &mdash; Pathophysiology</div><p>Results from forces that stretch or alter the normal position/relationship of the arm, shoulder, and neck during birth &mdash; classically shoulder dystocia or a difficult vertex/breech delivery. Nerve roots C5-T1 make up the brachial plexus; which roots are affected determines which type of palsy results.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Type</th><th>Nerve Roots</th><th>Key Assessment Findings</th></tr>
+        <tr><td><b>Erb-Duchenne Paralysis (Erb's Palsy)</b> &mdash; upper plexus, most common</td><td>C5-C7</td><td>Arm hangs limp alongside the body; shoulder and arm <b>adducted and internally rotated</b>; elbow extended; forearm pronated; wrist and fingers flexed. A grasp reflex may still be present. Classically called the <b>"waiter's tip" position</b>. <b>Moro reflex absent on the affected side</b> &mdash; the hallmark finding</td></tr>
+        <tr><td><b>Klumpke Paralysis</b> &mdash; lower plexus, rare in newborns</td><td>C8-T1</td><td>Muscles of the <b>hand</b> are paralyzed, resulting in <b>wrist drop</b> and relaxed/flaccid fingers</td></tr>
+        <tr><td><b>Total (mixed) brachial plexus injury</b> &mdash; most severe form</td><td>C5-T1 (entire plexus)</td><td>The <b>entire arm</b> is paralyzed and hangs limp and motionless at the side</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Differentiating from shoulder dystocia itself</b></span>The nurse must distinguish a true brachial plexus injury from the transient decreased movement/tone of a shoulder and upper arm that can follow shoulder dystocia alone without nerve injury &mdash; the latter improves rapidly after birth, while a genuine plexus injury persists and shows the specific positioning and absent-Moro findings above.</span></div>
+
+      <div class="field"><div class="field-label">Brachial Plexus Injuries &mdash; Diagnostics</div><p>Complete neurologic assessment to determine the type/degree/extent of nerve impairment; assess Moro, biceps, and radial reflexes specifically. Imaging (myelography, CT myelography, MRI) can confirm and characterize the injury when needed.</p></div>
+
+      <div class="field"><div class="field-label">Brachial Plexus Injuries &mdash; Complications</div><p><b>Approximately 93-95% of infants recover with conservative management alone.</b> Complete recovery from a stretched-nerve injury typically takes 3-6 months. However, <b>avulsion</b> (complete disconnection of the nerve roots/ganglia from the spinal cord) results in permanent damage. Injuries not improving by 3 months should be evaluated for possible surgical intervention (nerve decompression or grafting).</p></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing interventions &amp; care &mdash; brachial plexus injury</b></span><ol>
+        <li><b>Initially, rest the arm</b> to allow any swelling to decrease before starting range-of-motion work.</li>
+        <li><b>Positioning:</b> the affected arm should be positioned <b>abducted 90&deg;</b> with external shoulder rotation, forearm supination, and wrist extension with the palm facing the infant's face &mdash; this protects correct placement of the humeral head in the glenoid fossa and helps prevent contractures.</li>
+        <li><b>Passive range-of-motion exercises</b> of the shoulder, wrist, elbow, and fingers, typically initiated around <b>5-10 days</b> of age (per Perry) or "the latter part of the first week," performed multiple times daily in consultation with physical therapy.</li>
+        <li>A <b>wrist splint with padding in the fist</b> may be used to prevent wrist flexion contractures.</li>
+        <li><b>Dressing technique:</b> when dressing, start with the affected arm first; when undressing, start with the unaffected arm first &mdash; this minimizes unnecessary manipulation and stress on the paralyzed muscles.</li>
+        <li><b>Handling/positioning teaching for parents:</b> use the <b>football hold</b> when carrying the infant; avoid lifting or pulling the infant up from under the axillae or by the arms, which can worsen the injury.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Asymmetric Moro reflex is noted (requires evaluation to grade the degree of nerve injury and plan follow-up); no improvement in movement/tone by 3 months (surgical evaluation candidate); new swelling, color change, or signs of pain in the affected limb.</span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Facial Nerve Palsy (7th Cranial Nerve) &mdash; Pathophysiology</div><p>Pressure on the facial nerve during birth, often from forceps application, causing loss of movement on the affected side.</p></div>
+      <div class="field"><div class="field-label">Facial Nerve Palsy &mdash; Key assessment cues</div><ul>
+        <li>Inability to <b>completely close the eye</b> on the affected side</li>
+        <li><b>Drooping of the corner of the mouth</b></li>
+        <li><b>Absence of forehead wrinkling and nasolabial fold</b> on the affected side</li>
+        <li><b>Most noticeable when the infant cries</b>: mouth is drawn toward the UNAFFECTED side, wrinkles are deeper on the normal side, and the eye on the involved side stays open &mdash; this asymmetry-with-crying pattern is the same principle used for general facial symmetry assessment (see HEENT card, Unit 9)</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Facial Nerve Palsy &mdash; Complications</div><p>Often temporary, resolving within hours to days. Permanent paralysis is rare and occurs only if the nerve fibers were actually torn, in which case surgical intervention may be necessary.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing interventions &amp; care &mdash; facial nerve palsy</b></span><ol>
+        <li><b>Assist with feeding technique</b> &mdash; the infant's ability to suck effectively can be impaired and drooling is common; gavage feeding may be required to prevent aspiration if sucking is significantly affected.</li>
+        <li>Breastfeeding is <b>not contraindicated</b>, but the mother may need additional lactation consultant support to help the infant achieve an effective latch/areolar compression.</li>
+        <li><b>Eye protection:</b> if the eyelid on the affected side doesn't close completely, instill artificial tears to prevent drying/injury to the conjunctiva, sclera, and cornea; the eyelid may be taped shut for protection. Teach parents how to administer eyedrops if eye care is still needed at discharge.</li>
+      </ol></span></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Phrenic Nerve Paralysis &mdash; Pathophysiology</div><p>Usually unilateral injury resulting in diaphragmatic paralysis; the affected side's diaphragm cannot contract normally, so that lung fails to expand fully. Sometimes occurs together with brachial plexus injury (given their anatomic proximity).</p></div>
+      <div class="field"><div class="field-label">Phrenic Nerve Paralysis &mdash; Key assessment cues</div><ul>
+        <li><b>Respiratory distress is the most common and most important sign</b> &mdash; this is fundamentally a respiratory injury, not primarily a motor one</li>
+        <li>Paradoxical/asymmetric chest movement; breathing is primarily thoracic rather than the normal newborn abdominal pattern</li>
+        <li>Cyanosis, tachypnea, or in severe cases complete respiratory failure</li>
+        <li>Confirmed via ultrasonography showing paradoxical chest movement and an elevated diaphragm on the affected side (chest x-ray may be falsely reassuring if the infant is on positive-pressure ventilation, since PPV can mask the elevated diaphragm)</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Phrenic Nerve Paralysis &mdash; Complications</div><p>Pneumonia and atelectasis on the affected side can develop given the persistently under-expanded lung.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing interventions &amp; care &mdash; phrenic nerve paralysis</b></span><ol>
+        <li>Manage exactly as any infant in respiratory distress (see full Respiratory Assessment card, Unit 9) &mdash; this outranks any other consideration since ineffective respiratory effort is the acute threat.</li>
+        <li><b>Position the infant on the affected side</b> to allow maximum expansion of the uninvolved (healthy) lung.</li>
+        <li>Anticipate an extended recovery course; ongoing follow-up is essential.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Any signs of respiratory distress in an infant with known/suspected brachial plexus injury (phrenic nerve involvement should be suspected); asymmetric chest movement; cyanosis or worsening tachypnea.</span></div>
+
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care note</b></span>If your birth was complicated by shoulder dystocia or a difficult delivery, it's normal to have questions or feelings about it &mdash; ask your provider for a clear explanation of what happened at your postpartum visit, and don't hesitate to seek support if you're processing a difficult birth experience.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby has some weakness from pressure on nerves during birth. Many babies improve substantially on their own over the first few months, and we'll show you exactly how to position, dress, and hold your baby to protect the area while it heals. You'll follow up with a specialist to track progress and catch early if any additional treatment is needed.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Handle the affected arm or side gently during dressing/diapering; avoid pulling on it, and follow the specific dressing order (affected side first when dressing, unaffected side first when undressing) the parents show you. Know which side is affected and report any new swelling, color change, breathing difficulty, or the baby appearing to be in pain.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="risk2-infect">
+  <div class="chapter-tag"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
+  <h2 class="section-title"><i class="ti ti-virus"></i>Infection: Sepsis &amp; TORCH</h2>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-virus"></i></span><span>Neonatal Sepsis</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Overwhelming infection with inability to clear toxins. Newborn immune system is immature (low IgM, delayed neutrophil function) and cannot localize infection &mdash; systemic spread is common and rapid.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology / patterns</div><ul><li><b>Early onset:</b> congenital/prenatal exposure, often group B strep or gram-negative organisms acquired during labor/delivery</li><li><b>Late onset:</b> nosocomial (hospital-acquired)</li></ul></div>
+      <div class="field"><div class="field-label">Signs &amp; symptoms by system</div><ul>
+        <li>Respiratory: apnea, distress, &darr;SaO2</li>
+        <li>Cardiovascular: &darr;perfusion, HR changes, hypotension</li>
+        <li>CNS: lethargy OR irritability (either direction is concerning), hypotonia, temperature instability</li>
+        <li>GI: poor feeding, vomiting, diarrhea</li>
+        <li>Integument: jaundice, pallor, petechiae, mottling</li>
+      </ul></div>
+      <div class="field"><div class="field-label"><i class="ti ti-alert-circle"></i>Risk factors</div><p>Prematurity (greatest risk), PROM, chorioamnionitis, maternal fever, antenatal/intrapartal asphyxia, invasive procedures.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><p>Septic shock, meningitis, DIC, death &mdash; sepsis can progress to hemodynamic collapse faster in neonates than in older children/adults.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>Labs/diagnostics &mdash; expected vs. unexpected</div>
+        <div class="tbl-wrap">
+        <table class="labs">
+          <tr><th>Test</th><th>Expected</th><th>Unexpected/Concerning</th><th>Nursing action</th></tr>
+          <tr><td>WBC count</td><td class="normal">Normal range for age</td><td class="abnormal">Markedly elevated OR low (neutropenia is especially ominous in a neonate)</td><td>Trend serially; correlate with clinical exam, not the number alone</td></tr>
+          <tr><td>Blood culture</td><td class="normal">No growth</td><td class="abnormal">Positive &mdash; identifies organism</td><td>Obtain before first antibiotic dose whenever feasible without delaying treatment</td></tr>
+          <tr><td>C-reactive protein (CRP)</td><td class="normal">Low/normal</td><td class="abnormal">Rising trend supports infection</td><td>Trend over time rather than a single value</td></tr>
+          <tr><td>Glucose</td><td class="normal">&gt;45 mg/dL</td><td class="abnormal">Hypoglycemia can accompany sepsis</td><td>Check glucose alongside sepsis workup</td></tr>
+        </table>
+        </div>
+      </div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked by what kills fastest)</b></span><ol>
+        <li><b>Airway/breathing/circulation</b> &mdash; apnea, poor perfusion, and hypotension are what will kill the infant fastest; continuous cardiorespiratory and SaO2 monitoring is essential and outranks every other action.</li>
+        <li>Obtain cultures BEFORE first antibiotic dose if it will not meaningfully delay treatment.</li>
+        <li>Administer IV antibiotics as ordered &mdash; timing significantly affects neonatal sepsis outcomes; don't let culture collection meaningfully delay this.</li>
+        <li>Strict hand hygiene/infection control to prevent nosocomial spread to other infants.</li>
+        <li>Supportive care: thermoregulation, glucose monitoring, fluid/electrolyte balance.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider immediately if</b></span><ul>
+        <li>Apnea episode</li>
+        <li>New lethargy/decreased responsiveness</li>
+        <li>Temperature instability not responding to warming</li>
+        <li>Petechiae or mottling (may signal DIC/septic shock)</li>
+        <li>Any drop in perfusion (cap refill &gt;3 sec, cool extremities)</li>
+      </ul></span></div>
+      <div class="field"><div class="field-label"><i class="ti ti-pill"></i>Treatment</div><p>Empiric broad-spectrum IV antibiotics pending culture results, then narrowed per organism sensitivity. Supportive respiratory/cardiovascular care as needed.</p></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>We're treating your baby for a possible infection with antibiotics through an IV. We're watching breathing, heart rate, and temperature very closely. Early treatment gives your baby the best chance, and we'll update you regularly.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If caring for this baby after discharge with any lingering monitoring needs, know the warning signs to watch for (poor feeding, unusual sleepiness, fever or low temperature, breathing changes) and who to call immediately if you see them.</div>
+      </div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-virus-search"></i></span><span>TORCH Complex Infections</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>TORCH:</b> <b>T</b>oxoplasmosis, <b>O</b>ther (syphilis, Hepatitis B, HIV, Parvovirus B19, West Nile, Zika, Group B Strep, Chlamydia, Gonorrhea, Listeria), <b>R</b>ubella, <b>C</b>ytomegalovirus, <b>H</b>erpes Simplex Virus</span></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Why these are grouped together</div><p>All are organisms capable of crossing the placenta (transplacental transmission) and/or infecting the newborn during birth. They tend to produce overlapping, nonspecific findings in the newborn (rash, hepatosplenomegaly, jaundice, growth restriction, CNS involvement) &mdash; which is exactly why they're tested as a panel/"TORCH workup" rather than one at a time when congenital infection is suspected. Note: common bacterial infections (like typical neonatal sepsis organisms) are usually diagnosed by clinical picture and routine cultures instead, not the TORCH panel.</p></div>
+
+      <div class="field"><div class="field-label">Common maternal presentation across TORCH organisms</div><p>Generally produce mild, influenza-like symptoms in the pregnant woman (or she may be entirely asymptomatic) &mdash; but fetal/neonatal effects can be severe. This mismatch (mild maternal illness, severe fetal consequences) is a key teaching point and a common NCLEX trap.</p></div>
+
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Organism</th><th>Transmission / Timing</th><th>Classic Newborn Findings</th><th>Key Nursing Considerations</th></tr>
+        <tr><td><b>Toxoplasmosis</b> (<i>Toxoplasma gondii</i>)</td><td>Transplacental, throughout pregnancy. Source: cat feces, undercooked/raw meat</td><td>70-90% asymptomatic at birth. If symptomatic: maculopapular rash, hepatosplenomegaly, jaundice, thrombocytopenia. <b>Classic triad (later):</b> hydrocephalus, cerebral calcifications, chorioretinitis. Also: microcephaly, seizures, cognitive impairment, deafness</td><td>Prevention is maternal: avoid cat litter/gardening without gloves, avoid rare/undercooked meat. Newborn treatment: sulfadiazine + pyrimethamine + folinic acid</td></tr>
+        <tr><td><b>Other &mdash; Syphilis</b> (<i>Treponema pallidum</i>)</td><td>Transplacental, any time in pregnancy or at birth</td><td>Stillbirth, prematurity, hydrops fetalis. May be asymptomatic initially or show hepatosplenomegaly, lymphadenopathy, hemolytic anemia, pneumonia. <b>Copper-colored maculopapular rash</b> (after first few weeks), snuffles (syphilitic rhinitis), pseudoparalysis of a limb</td><td>Treatment: IV aqueous penicillin or IM procaine penicillin. Diagnosis relies on maternal serology + infant serologic titers + physical exam (including long-bone x-rays)</td></tr>
+        <tr><td><b>Other &mdash; Hepatitis B</b></td><td>Transplacental; contaminated maternal fluids/secretions at birth</td><td>May be asymptomatic at birth, but &gt;90% of perinatally infected infants develop <b>chronic</b> Hepatitis B. Clinical hepatitis, jaundice, abnormal LFTs</td><td>Give HBIG + HepB vaccine (separate sites) within 12 hrs of birth if mother is HBsAg-positive. All infants get the HepB vaccine series regardless as routine prevention</td></tr>
+        <tr><td><b>Other &mdash; Group B Streptococcus</b></td><td>Acquired perinatally</td><td>Early-onset (birth-6 days): pneumonia, respiratory distress, shock, apnea, meningitis. Late-onset (7 days-3 months): bacteremia or meningitis</td><td>Intrapartum maternal antibiotics reduce early-onset but NOT late-onset disease. Treat infant with ampicillin + gentamicin (presumptive) or penicillin G (confirmed)</td></tr>
+        <tr><td><b>Other &mdash; Parvovirus B19</b></td><td>Transplacental</td><td>First-trimester exposure has the most serious effects: fetal hydrops and death from severe anemia/heart failure. Later exposure: anemia. No established teratogenic/malformation effects</td><td>Newborns with hydrops need aggressive cardiovascular/respiratory support. Pregnant healthcare workers should avoid caring for high-risk exposure patients</td></tr>
+        <tr><td><b>Rubella</b> (Congenital Rubella Syndrome)</td><td>Transplacental; highest risk in <b>1st trimester</b>, early 2nd trimester</td><td><b>Eyes:</b> cataracts, retinopathy, glaucoma. <b>CNS:</b> microcephaly, seizures, severe cognitive impairment. <b>Heart:</b> PDA. <b>Hearing:</b> sensorineural hearing loss. <b>Skin:</b> "blueberry muffin" lesions (dermal erythropoiesis). IUGR, hepatomegaly, thrombocytopenia</td><td>No treatment for the infected newborn &mdash; entirely prevention-focused. Vaccinate susceptible women pre-conception; MMR is contraindicated in pregnancy (live vaccine) &mdash; wait 28 days to 3 months post-vaccination before conceiving</td></tr>
+        <tr><td><b>Cytomegalovirus (CMV)</b></td><td>Transplacental, throughout pregnancy; also via birth canal, breast milk, or transfusion</td><td><b>95% asymptomatic</b> at birth. If symptomatic: microcephaly, cerebral calcifications, chorioretinitis, jaundice, hepatosplenomegaly, petechial/purpuric rash ("blueberry muffin" appearance possible here too). Neurologic sequelae develop later: seizures, <b>sensorineural hearing loss</b>, cognitive impairment</td><td>Most common congenital viral infection overall, but most infected infants look normal at birth &mdash; hearing loss can emerge later, reinforcing the importance of ongoing hearing surveillance. Treatment: IV ganciclovir or oral valganciclovir x 6 weeks for symptomatic infants</td></tr>
+        <tr><td><b>Herpes Simplex Virus (HSV)</b></td><td>Most often transmitted <b>at the time of birth</b> (vaginal delivery through infected genital tract); can also ascend after ROM</td><td>Presents in 1 of 3 patterns: (1) <b>SEM</b> = skin/eye/mouth disease &mdash; vesicular rash clusters that ulcerate/crust rapidly; (2) localized <b>CNS disease</b>; (3) <b>disseminated disease</b> across multiple organs (liver, adrenals, lungs) &mdash; highest mortality. Presenting symptoms (2nd-4th week of life): lethargy, poor feeding, irritability, seizures</td><td><b>Absence of visible skin lesions does NOT rule out HSV disease</b> &mdash; a critical point. Contact precautions plus universal precautions required. IV acyclovir started on strong suspicion, not only confirmed culture. Ophthalmic antiviral treatment added if ocular involvement present</td></tr>
+      </table>
+      </div>
+
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>High-yield distinguishing points</b></span>
+        <ul style="margin:6px 0 0 18px; padding:0;">
+          <li><b>Toxoplasmosis vs. CMV:</b> both can cause the classic triad-like picture (chorioretinitis + intracranial calcifications), but toxoplasmosis calcifications are typically diffuse/scattered while CMV calcifications are classically periventricular. Both are usually asymptomatic at birth in the majority of cases.</li>
+          <li><b>Rubella vs. CMV "blueberry muffin" rash:</b> both can produce this dermal erythropoiesis finding &mdash; it is not specific to one organism, so it does not rule either in or out alone.</li>
+          <li><b>HSV timing distinction:</b> HSV is the one TORCH organism transmitted overwhelmingly at the time of birth rather than transplacentally throughout pregnancy &mdash; this is why cesarean delivery is recommended for mothers with active genital lesions at the onset of labor.</li>
+        </ul>
+      </span></div>
+
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked by acuity)</b></span><ol>
+        <li><b>For any suspected HSV exposure: initiate contact precautions and notify provider immediately</b> &mdash; disseminated HSV has the highest mortality of the TORCH organisms and can progress within days; do not wait for visible lesions.</li>
+        <li>Obtain the appropriate cultures/specimens per suspected organism (swabs of mouth/nasopharynx/conjunctivae/skin vesicles for HSV; serology for toxoplasmosis/syphilis/rubella; urine for CMV) before or concurrent with starting empiric treatment.</li>
+        <li>Implement standard + organism-specific isolation precautions to prevent nosocomial spread to other infants.</li>
+        <li>Monitor for the specific organ systems each organism targets (eyes, hearing, CNS, liver) since many TORCH infections are initially asymptomatic and complications emerge over the following weeks to years.</li>
+      </ol></span></div>
+
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+        <li>Vesicular skin lesions, seizure activity, or lethargy/poor feeding in an infant with known maternal HSV history &mdash; HSV can progress to disseminated disease rapidly</li>
+        <li>"Blueberry muffin" rash, petechiae, or purpura in any newborn (nonspecific but concerning for several TORCH organisms)</li>
+        <li>Failed newborn hearing screen in an infant with any TORCH risk factor &mdash; CMV-related hearing loss can be progressive and may not be present at the initial screen</li>
+        <li>New-onset jaundice, hepatosplenomegaly, or abnormal growth pattern in an infant with known maternal TORCH exposure during pregnancy</li>
+      </ul></span></div>
+
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care / prevention strategies</b></span><ul>
+        <li><b>Toxoplasmosis:</b> avoid changing cat litter (or wear gloves + wash hands immediately if unavoidable), cook meat thoroughly, wash produce well</li>
+        <li><b>CMV:</b> practice careful hand hygiene, especially after contact with young children's saliva/urine (daycare workers and mothers of toddlers are at higher exposure risk); avoid sharing food/utensils with young children</li>
+        <li><b>Rubella:</b> confirm immunity status pre-conception when possible; if non-immune and postpartum, get vaccinated before leaving the hospital and use reliable contraception for the recommended waiting period before attempting another pregnancy</li>
+        <li><b>HSV:</b> disclose any history of genital herpes to your obstetric provider early in pregnancy so a delivery plan (including possible cesarean birth for active lesions at labor onset) can be made in advance</li>
+      </ul></span></div>
+
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Because of [specific exposure] during pregnancy, we're monitoring your baby closely for signs of infection, which can include skin changes, feeding problems, jaundice, or unusual sleepiness. Some of these infections don't cause obvious problems right away, so your baby may need follow-up hearing and vision checks even if they look completely healthy today. Please tell us right away if you notice anything different.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Know the specific exposure this baby had and the signs the parents/care team asked you to watch for. Report skin lesions, fever, feeding changes, or unusual sleepiness immediately &mdash; don't wait to mention it at pickup. If told this baby needs follow-up hearing or eye exams, help keep track of those appointments since some effects don't show up until later.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="risk2-nas">
+  <div class="chapter-tag"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
+  <h2 class="section-title"><i class="ti ti-pill"></i>Substance-Exposed Infants (NAS)</h2>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--amber)"><i class="ti ti-pill"></i></span><span>Neonatal Abstinence Syndrome (NAS) / Substance-Exposed Infants</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Pathophysiology</div><p>Chronic in-utero exposure to opioids/other substances leads to physiologic dependence. After birth, the substance supply stops abruptly &rarr; withdrawal syndrome affecting CNS, GI, and autonomic nervous system.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology</div><p>Maternal use of narcotics (heroin, methadone), other illicit substances, smoking, alcohol during pregnancy.</p></div>
+      <div class="field"><div class="field-label">Signs &amp; symptoms</div><ul>
+        <li>CNS: irritability, high-pitched cry, tremors, hypertonicity, poor sleep, seizures (severe)</li>
+        <li>GI: poor feeding, vomiting, diarrhea, poor weight gain</li>
+        <li>Autonomic: sweating, temperature instability, nasal stuffiness, sneezing, yawning</li>
+      </ul></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Clinical picture caution</b></span>A drug-exposed newborn is typically <i>irritable</i> and overloaded by stimulation &mdash; hyperextends/postures rather than cuddles when held. This is the opposite presentation of a lethargic/sleepy infant; don't confuse the two on an NGN item.</span></div>
+      <div class="field"><div class="field-label">Assessment tools</div><div class="pill-row"><span class="pill"><i class="ti ti-list"></i>Finnegan Tool</span><span class="pill"><i class="ti ti-list"></i>NNNS</span></div></div>
+      <div class="field"><div class="field-label"><i class="ti ti-alert-hexagon"></i>Complications</div><p>Poor weight gain/failure to thrive if feeding is severely disrupted; seizures in severe untreated withdrawal; long-term neurodevelopmental risk correlates with exposure severity.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions (ranked)</b></span><ol>
+        <li><b>Score withdrawal severity on a validated tool (Finnegan) at regular intervals</b> &mdash; this drives the decision for pharmacologic treatment before seizures or severe dehydration develop, so it outranks comfort measures alone.</li>
+        <li>Minimize environmental stimulation: low light, quiet, limit unnecessary handling.</li>
+        <li>Swaddle, offer non-nutritive sucking, and support small/frequent feedings to protect nutritional status.</li>
+        <li>Administer pharmacologic treatment (methadone, phenobarbital, morphine) as ordered if scores indicate need.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span><ul>
+        <li>Finnegan score reaches the facility's treatment threshold</li>
+        <li>Seizure activity</li>
+        <li>Feeding intolerance leading to weight loss beyond expected parameters</li>
+        <li>Signs of dehydration</li>
+      </ul></span></div>
+      <div class="field"><div class="field-label">Fetal Alcohol Syndrome (FAS) &mdash; distinct condition</div><ul>
+        <li>Microcephaly</li>
+        <li>Small eyes, thin upper lip, flat mid-face</li>
+        <li>Growth restriction, neurodevelopmental deficits (fine motor, IQ, speech)</li>
+      </ul></div>
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care strategies</b></span><ul>
+        <li>Connect with substance use treatment/recovery resources and postpartum follow-up &mdash; this is a health condition, not a moral failing, and ongoing support improves outcomes for both mother and baby</li>
+        <li>Ask about rooming-in and skin-to-skin opportunities, which can help both maternal bonding and infant withdrawal symptoms</li>
+        <li>Seek nonjudgmental care coordination (social work, case management) for housing, custody, or legal questions rather than navigating alone</li>
+      </ul></span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby may be extra fussy, have trouble sleeping, or need extra help feeding for a while because of substance exposure before birth. We use a scoring tool to track how your baby is doing and decide if any medicine is needed. Swaddling, a quiet room, and skin-to-skin time can really help calm your baby.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby may be more sensitive to noise, light, and handling than a typical newborn. Keep the environment calm and quiet, swaddle snugly, and avoid unnecessary stimulation. Report increasing fussiness, feeding refusal, or any shaking/seizure-like movement immediately.</div>
+      </div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-pill"></i></span><span>Morphine Sulfate &amp; Methadone (NAS Treatment)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Opioid agonists.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Pharmacologic management of significant <b>Neonatal Abstinence Syndrome (NAS)</b> when nonpharmacologic measures (swaddling, low stimulation, frequent small feeds) are insufficient, per Finnegan scoring. Morphine and methadone are the two opioids specifically used for this indication; both replace the withdrawal substance temporarily and are then gradually tapered.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Route</div><p>Typically PO for NAS treatment; weight-based, titrated/weaned per institutional protocol based on withdrawal scoring &mdash; no single dose to memorize for this exam.</p></div>
+      <div class="field"><div class="field-label">Expected/common effects</div><p>Sedation, constipation, nausea, decreased GI motility.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Priority adverse effect &mdash; ANY opioid</b></span><b>Respiratory depression</b> is the adverse effect that outranks all others in priority for monitoring. Also watch for bradycardia, hypotension, and profound CNS depression. Methadone specifically carries QT-prolongation/dysrhythmia risk.</span></div>
+      <div class="field"><div class="field-label">Contraindications/precautions</div><p>Significant respiratory depression; hypersensitivity; caution with other CNS depressants or cardiac conduction abnormalities (methadone).</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations (ranked)</b></span><ol>
+        <li><b>Monitor respiratory rate, apnea, HR, and O2 saturation continuously</b> &mdash; respiratory depression is the life-threatening risk with any opioid, so this outranks comfort/GI monitoring.</li>
+        <li>Continue using the validated withdrawal scoring tool (Finnegan) throughout treatment to guide dose titration.</li>
+        <li>Assess sedation level/LOC, feeding tolerance, and weight gain trends.</li>
+        <li><b>Taper gradually as withdrawal is controlled &mdash; never discontinue abruptly</b> after sustained treatment.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Apnea, significant bradycardia, excessive sedation/unresponsiveness, or Finnegan score rising despite current dosing.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby is receiving a small, carefully controlled dose of medication to ease withdrawal symptoms from substance exposure before birth. This isn't the same as ongoing opioid use &mdash; the goal is to control symptoms now and slowly taper the dose down as your baby's body adjusts.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>This baby may seem sedated or sleepy while on this medication &mdash; that's expected. Report any pauses in breathing, unusual limpness, or difficulty waking the baby immediately.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> NAS nursing care isn't just medication: low stimuli + swaddle + frequent small feeds + scoring tool + medication only if severe, then taper.</span></div>
+    </div>
+  </div>
+
+<div class="cond">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--gray)"><i class="ti ti-moon"></i></span><span>Phenobarbital</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label">Classification</div><p>Barbiturate; anticonvulsant/sedative-hypnotic.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Action / Indication</div><p>Adjunctive pharmacologic therapy for NAS when withdrawal remains significant or involves polysubstance exposure, especially alongside an opioid. Also used as an anticonvulsant for neonatal seizures when relevant.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-syringe"></i>Route</div><p>PO or IV; weight-based and protocol-dependent &mdash; not a number to memorize for this exam.</p></div>
+      <div class="field"><div class="field-label">Expected/common effects</div><p>Sedation, drowsiness, poor feeding, lethargy.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Serious adverse effects</b></span>Respiratory depression, hypotension, bradycardia, excessive CNS depression.</span></div>
+      <div class="field"><div class="field-label">Contraindications/precautions</div><p>Severe respiratory depression; hypersensitivity to barbiturates; significant hepatic impairment; certain porphyrias.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing considerations</b></span><ol>
+        <li>Monitor respiratory status and O2 saturation closely &mdash; combined with an opioid (common in polysubstance NAS), the respiratory depression risk compounds.</li>
+        <li>Monitor HR/BP and level of sedation.</li>
+        <li>Track feeding tolerance and withdrawal symptoms/seizure activity as applicable.</li>
+        <li>Avoid abrupt discontinuation after prolonged treatment &mdash; taper per protocol.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Signs of respiratory depression, excessive sedation, or any seizure activity while on treatment.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>This medication helps calm your baby's nervous system while it recovers from withdrawal or manages seizure risk. Your baby will be watched closely for breathing and alertness while on this medication.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>Expect this baby to be more sedated than usual while on this medication. Report slow or irregular breathing, extreme difficulty waking the baby, or any seizure-like movements right away.</div>
+      </div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Phenobarbital = CNS depressant &rarr; monitor respiratory status and sedation, same priority logic as the opioids it's often paired with.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="risk2-anomalies">
+  <div class="chapter-tag"><i class="ti ti-alert-hexagon"></i>Additional Conditions at Risk</div>
+  <h2 class="section-title"><i class="ti ti-dna-2"></i>Congenital Anomalies</h2>
 
 <div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-bone"></i></span><span>Developmental Dysplasia of the Hip (DDH) &amp; Clubfoot</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>DDH &mdash; Pathophysiology</div><p>Abnormal development of the hip joint ranging from mild instability to full dislocation of the femoral head from the acetabulum.</p></div>
-      <div class="field"><div class="field-label">DDH &mdash; Signs &amp; assessment</div><p>Asymmetric thigh/gluteal skin folds, limited hip abduction, palpable "clunk" with Ortolani (reducing a dislocated hip) or Barlow (dislocating an unstable hip) maneuvers.</p></div>
-      <div class="field"><div class="field-label">DDH &mdash; Treatment</div><p>Pavlik harness for infants diagnosed early (holds hips flexed/abducted); may require surgical reduction and casting if diagnosed later or if harness treatment fails.</p></div>
-      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Clubfoot (Talipes) &mdash; Pathophysiology</div><p>Congenital deformity in which the foot is twisted out of its normal position, most commonly turned inward and downward (talipes equinovarus).</p></div>
-      <div class="field"><div class="field-label">Clubfoot &mdash; Treatment</div><p>Serial casting (Ponseti method) starting shortly after birth, often followed by a bracing phase; surgery reserved for cases not responsive to casting.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>DDH &mdash; Pathophysiology</div><p>Abnormal development of the hip joint ranging from mild instability to full dislocation of the femoral head from the acetabulum. The acetabulum is flat rather than its normal round, cup-like shape. <b>The affected hip is usually NOT dislocated at birth</b> &mdash; it is easily dislocatable, and postnatal factors determine whether it progresses to true dislocation, subluxation, or resolves/remains stable.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-search"></i>DDH &mdash; Etiology / risk factors</div><ul>
+        <li>Breech presentation (especially frank breech with extended legs, which restricts hip movement during the period of active bone growth)</li>
+        <li>First-born infants</li>
+        <li>Female sex</li>
+        <li>Family history of DDH</li>
+      </ul></div>
+      <div class="field"><div class="field-label">DDH &mdash; Expected findings</div><p>Symmetric gluteal and thigh skin folds; equal leg length; equal knee height when hips/knees are flexed; hips move easily and smoothly through range of motion.</p></div>
+      <div class="field"><div class="field-label">DDH &mdash; Unexpected/key assessment findings</div><ul>
+        <li><b>Asymmetric gluteal/thigh skin folds</b> and unequal leg length</li>
+        <li><b>Uneven knee height</b> when hips/knees are flexed (positive Galeazzi/Allis sign)</li>
+        <li><b>Positive Barlow test:</b> hip flexed to 90&deg;, adducted, with gentle downward pressure on the femoral head &mdash; a palpable/audible "clunk" as the femoral head dislocates OUT of the acetabulum is a positive result</li>
+        <li><b>Positive Ortolani maneuver:</b> hip abducted with gentle upward leverage &mdash; a "clunk" as a dislocated femoral head returns INTO the acetabulum confirms the hip was dislocated</li>
+        <li>A simple "hip click" without a true clunk can indicate ligamentous laxity alone (sometimes from maternal hormones) rather than true DDH, but should still be documented and monitored</li>
+      </ul></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Breech positioning look-alike</b></span>Infants who were breech in utero often have hyperextended knee joints that can visually resemble hip dysplasia. On exam, however, the femoral head remains firmly seated in the acetabulum in these infants &mdash; true DDH is confirmed by the actual clunk sign, not just an unusual resting leg position. Reassure families that positional leg appearance from breech positioning resolves on its own over time.</span></div>
+      <div class="field"><div class="field-label">DDH &mdash; Complications if untreated</div><p>Chronic hip instability, abnormal gait, early-onset osteoarthritis, and long-term impairment of the ability to walk and maintain balance &mdash; this is why even a subtle positive finding warrants prompt referral rather than a "wait and see" approach.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-flask"></i>DDH &mdash; Labs/diagnostics</div>
+      <div class="tbl-wrap">
+      <table class="labs">
+        <tr><th>Test</th><th>Expected/Normal</th><th>Unexpected/Concerning</th><th>Nursing action</th></tr>
+        <tr><td>Hip ultrasound (preferred before ~4-6 months, while cartilage is still radiolucent)</td><td class="normal">Femoral head well-seated in a properly formed acetabulum</td><td class="abnormal">Shallow acetabulum, subluxation, or dislocation visualized</td><td>Confirms diagnosis and severity; guides harness vs. surgical decision</td></tr>
+        <tr><td>Hip x-ray (used later, once ossification has progressed)</td><td class="normal">Normal femoral head position and acetabular angle</td><td class="abnormal">Abnormal acetabular index, femoral head displacement</td><td>Used for older infants or to confirm ultrasound findings</td></tr>
+      </table>
+      </div></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions &amp; considerations &mdash; DDH</b></span><ol>
+        <li><b>Only an experienced examiner (physician/NP) should perform the Barlow and Ortolani maneuvers</b> &mdash; an unskilled attempt can injure the hip; the bedside nurse's role is careful observation of skin folds/leg length and reporting asymmetry, not performing the provocative maneuvers themselves.</li>
+        <li>Document and report any asymmetric fold pattern, leg length discrepancy, or suspected clunk promptly rather than waiting for the next scheduled exam.</li>
+        <li>Once a Pavlik harness is applied, teach correct diapering technique (diapers go on underneath/around the harness straps, not by removing the harness) and skin checks under the straps to prevent breakdown.</li>
+        <li>Reinforce that the harness must be worn continuously per the treatment plan &mdash; inconsistent use undermines the whole treatment course.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>New asymmetry in skin folds or leg length noted on any exam; a palpable clunk; skin breakdown or redness under harness straps; harness straps that appear loosened or displaced from the correct position.</span></div>
+      <div class="field"><div class="field-label">DDH &mdash; Treatment</div><p>Pavlik harness for infants diagnosed early &mdash; does not rigidly immobilize but holds the hips flexed/abducted, preventing extension/adduction; worn continuously for approximately 3-6 months until a normal cup-shaped joint forms. Diagnosis is confirmed by ultrasound or CT before treatment begins. May require surgical reduction and casting (spica cast) if diagnosed later or if harness treatment fails.</p></div>
+
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Clubfoot (Talipes) &mdash; Pathophysiology</div><p>Congenital deformity in which the foot is twisted out of its normal position, most commonly turned inward and fixed in a plantar-flexion position (talipes equinovarus).</p></div>
+      <div class="field"><div class="field-label">Clubfoot &mdash; Key assessment distinction</div><p>A TRUE clubfoot is <b>fixed and rigid</b> &mdash; it will NOT correct with gentle manual repositioning. A <b>positional foot deformity</b> from in-utero crowding looks similar but WILL correct easily with gentle manipulation and typically resolves on its own without treatment. This distinction is a common and testable assessment point.</p></div>
+      <div class="field"><div class="field-label">Clubfoot &mdash; Complications if untreated</div><p>Permanent gait abnormality, chronic pain, and significant mobility impairment if the deformity is not corrected during the window when bones/ligaments remain most malleable in infancy.</p></div>
+      <div class="field"><div class="field-label">Clubfoot &mdash; Diagnostics</div><p>Primarily a clinical/visual diagnosis on physical exam; x-ray may be used to assess bone alignment and confirm severity or monitor correction progress during treatment.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Priority nursing interventions &amp; considerations &mdash; Clubfoot</b></span><ol>
+        <li>Attempt gentle repositioning on initial assessment to help distinguish true clubfoot from positional deformity &mdash; document whether the foot corrects easily or resists.</li>
+        <li>Support early referral to orthopedics, since Ponseti casting works best when started shortly after birth while tissues are most malleable.</li>
+        <li>Teach parents cast care: keep the cast dry, monitor toes for color/temperature/swelling with each cast change, and report any sign of impaired circulation immediately.</li>
+      </ol></span></div>
+      <div class="notify-box"><i class="ti ti-phone-call"></i><span><span class="box-heading"><b>Notify provider if</b></span>Toes appear dusky, cold, or significantly swollen after cast application (possible circulatory compromise); the cast becomes wet, cracked, or visibly loose; the foot does not appear to be progressively correcting over successive cast changes.</span></div>
+      <div class="field"><div class="field-label">Clubfoot &mdash; Treatment</div><p>Serial casting (<b>Ponseti method</b>) starting shortly after birth &mdash; the foot is gradually repositioned with weekly cast changes, often followed by a bracing phase to maintain correction. Surgery is reserved for cases not responsive to casting.</p></div>
+
       <div class="edu-grid">
-        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby's hip exam showed some looseness in the hip joint. We'll place a soft harness called a Pavlik harness that holds the hip in the right position while it develops normally over the next several weeks. For clubfoot, casting starts early and is changed weekly to gradually correct the foot's position &mdash; this is a gradual process, not a single fix.</div>
-        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If this baby is in a Pavlik harness or cast, do not remove it unless specifically instructed by the parents/provider. Ask the parents to show you diapering and positioning technique before you're left alone with the baby.</div>
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Your baby's hip exam showed some looseness in the hip joint. We'll place a soft harness called a Pavlik harness that holds the hip in the right position while it develops normally over the next several weeks — we'll show you exactly how to diaper and check skin without removing it. For clubfoot, casting starts early and is changed weekly to gradually correct the foot's position — this is a gradual process, not a single fix, and getting to every cast-change appointment matters for the outcome.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If this baby is in a Pavlik harness or cast, do not remove it unless specifically instructed by the parents/provider. Ask the parents to show you diapering and positioning technique before you're left alone with the baby, and report any toe color change, swelling, or the harness/cast looking loose or displaced.</div>
       </div>
     </div>
   </div>
@@ -1090,70 +1588,70 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- LOSS/SIDS -->
-<div class="panel" id="u10-loss">
-  <h2 class="section-title"><i class="ti ti-heart"></i>Neonatal Loss, SIDS &amp; Palliative Care</h2>
-  <div class="uslo-tag">USLO 5</div>
-  <p class="lead">Perry Ch. 31, pp. 834-837. Professional values and family-centered care at end of life.</p>
+<section class="content-section" id="loss-family">
+  <div class="chapter-tag"><i class="ti ti-heart"></i>Loss &amp; Palliative Care</div>
+  <h2 class="section-title"><i class="ti ti-users"></i>Neonatal Loss &amp; Family Support</h2>
+  <p class="lead">Perry Ch. 31, pp. 834-837. Covers the meaning of infant loss, care setting choices, tangible mementos, sensitive discussions, maternal death, and the nurse's own grief &mdash; USLO 5's professional values in palliative/end-of-life care.</p>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--gray)"><i class="ti ti-heart-broken"></i></span><span>Neonatal Loss &mdash; Nursing Role</span></div><span class="arrow">&#9656;</span></div>
-    <div class="cond-body">
-    <ul>
-      <li>Meaning of infant loss for parents</li>
-      <li>Supporting parenting roles at the end of life</li>
-      <li>Hospice &amp; palliative options: NICU vs. home</li>
-      <li>Tangible mementos: photos, naming, keepsakes</li>
-      <li>Facilitating sensitive discussions</li>
-      <li>Ongoing family support after discharge</li>
-      <li>Acknowledging the <b>nurse's own grief and coping</b> &mdash; a professional value explicitly named in this USLO</li>
-    </ul>
-  </div>
-  </div>
-
-  <div class="cond">
+<div class="cond open">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--gray)"><i class="ti ti-heart-broken"></i></span><span>The Meaning of Infant Loss for Parents</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Perry Ch. 31, p. 834</div><p>Loss of an infant represents: loss of a part of themselves (especially for mothers), loss of the potential for immortality that offspring represent, and loss of the "dream child" fantasized about throughout pregnancy. Parents may experience a sense of emptiness and failure.</p></div>
-      <div class="field"><div class="field-label">A unique grief challenge</div><p>When an infant has lived only a short time, parents may have <b>few or no pleasant memories</b> to draw on for the identification/idealization process that is normally part of grief resolution.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Why this loss is unique</div><p>The loss of an infant represents three overlapping losses: <b>loss of a part of themselves</b> (especially for mothers), <b>loss of the potential for immortality</b> that offspring represent, and loss of the <b>"dream child"</b> fantasized about throughout pregnancy. Parents may experience a profound sense of emptiness and failure that differs from grief for an older family member.</p></div>
+      <div class="field"><div class="field-label">A unique grief challenge</div><p>When an infant has lived only a short time, parents may have <b>few or no pleasant memories</b> to draw on for the identification/idealization process that is normally part of grief resolution &mdash; this is part of why creating tangible mementos (covered below) matters so much in this specific context.</p></div>
+      <div class="field"><div class="field-label">Scope of perinatal loss</div><p>Perinatal loss is not limited to neonatal death &mdash; it also encompasses miscarriage, stillbirth, and therapeutic abortion. Loss and grief responses can also occur with the birth of a preterm infant, a newborn with birth complications, a newborn with congenital anomalies, or when a birthing parent is placing a child for adoption. The grief-support principles in this section apply across this full range, not only to infant death after birth.</p></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Individual variation</b></span>Grief responses vary by gender, culture, and religious belief, and grief does <b>not</b> proceed in a predictable, linear sequence. Not every intervention below is appropriate for every family &mdash; always assess and ask rather than assuming.</span></div>
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-home-heart"></i></span><span>Hospice, Palliative Options &amp; Family Time</span></div><span class="arrow">&#9656;</span></div>
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-home-heart"></i></span><span>Care Setting &amp; Time With the Infant</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Care setting options</div><p>Families may choose the NICU/nursery, or take the infant home with hospice services, until death occurs &mdash; parents can view/hold the baby as they wish.</p></div>
-      <div class="field"><div class="field-label">Time with the infant after death</div><p>Some families need only a few minutes; others want hours. Individual grief responses vary by gender, culture, and religious belief.</p></div>
-      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care during this time</b></span>It's okay to ask for what you need &mdash; more time, less time, privacy, or company. There is no "right" way to grieve, and staff can help arrange the environment (lighting, visitors, quiet) to match what feels right for you.</span></div>
+      <div class="field"><div class="field-label">Care setting options</div><p>Families may choose the NICU/nursery, or take the infant home with <b>hospice services</b> until death occurs. Parents can view, hold, bathe, or dress the infant as they wish; some also want a member of the clergy present for baptism.</p></div>
+      <div class="field"><div class="field-label">Postpartum unit placement</div><p>After the birth, the woman should be given the choice of staying on the maternity unit or moving to another unit &mdash; she may want distance from the sound of crying babies and other families with healthy infants. However, staff on a general unit are typically less experienced in bereavement care, so this is a genuine tradeoff to discuss with the family, not an automatic transfer.</p></div>
+      <div class="field"><div class="field-label">Time with the infant after death</div><p>Some families need only a few minutes; others want hours. The nurse watches for verbal and nonverbal cues that the family is ready to say goodbye before taking the infant from the room.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing interventions to support this time</b></span><ol>
+        <li>Communicate therapeutically and actively listen &mdash; give parents uninterrupted time to grieve rather than filling silence.</li>
+        <li>Offer to notify the hospital chaplain or another religious/spiritual support person, as the family wishes.</li>
+        <li>Discuss options concretely: seeing, holding, bathing, or dressing the infant; visitation by other family or friends; religious/spiritual/cultural rituals; funeral arrangements.</li>
+        <li>If possible, mark the door per agency procedure (while maintaining confidentiality) so staff entering the room know this family has experienced a loss.</li>
+      </ol></span></div>
+      <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care during this time</b></span>It's okay to ask for what you need &mdash; more time, less time, privacy, or company. There is no "right" way to grieve, and staff can help arrange the environment (lighting, visitors, quiet, unit placement) to match what feels right for you.</span></div>
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond open">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-photo"></i></span><span>Tangible Mementos</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label">Bereavement/memory packet may include</div><ul>
-        <li>Photographs &mdash; ideally showing the infant being held/touched by an adult</li>
-        <li>Handprints and footprints, lock of hair</li>
+        <li>Photographs &mdash; ideally showing the infant being held or touched by an adult, <b>not</b> a morgue-style image; some hospitals take digital photos and give parents the memory card to view whenever they feel ready, since parents may not want to see photos immediately at the time of death</li>
+        <li>Handprints and footprints, a lock of hair</li>
         <li>Bedside name card, ID bracelet/armbands</li>
-        <li>Certificate of baptism, if aligned with family's beliefs</li>
+        <li>Certificate of baptism, if aligned with the family's beliefs</li>
+        <li>A special memories box to hold these keepsakes together</li>
       </ul></div>
-      <div class="field"><div class="field-label">Naming the infant</div><p>An important grieving step; having a tangible person to grieve for is important, even if the name was originally picked for a "special baby."</p></div>
+      <div class="field"><div class="field-label">Naming the infant</div><p>An important grieving step. Some parents may hesitate to use a name chosen during pregnancy for their "special baby" &mdash; but having a tangible, named person to grieve for is an important part of the grieving process, and the nurse can gently encourage this rather than avoiding the topic.</p></div>
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond open">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--blue)"><i class="ti ti-message-circle"></i></span><span>Sensitive Discussions &amp; Ongoing Support</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Continuity of care</div><p>A nurse familiar to the family should be present for discussions of autopsy, organ donation, and disposition of the body.</p></div>
+      <div class="field"><div class="field-label">Continuity of care</div><p>A nurse familiar to the family should be present for discussions of <b>autopsy, organ donation, and disposition of the body</b>. These conversations should be approached with respect, sensitivity to cultural/religious beliefs, tact, and consideration of the family's wishes.</p></div>
+      <div class="field"><div class="field-label">Funeral arrangements</div><p>The nurse should talk with parents openly and honestly about funeral arrangements, since few parents have prior experience with this. It's often helpful for the unit to maintain a list of local funeral homes, services offered, and prices &mdash; a funeral/memorial ritual is generally preferable to no service at all, since it provides an opportunity for parents to feel the support of friends and family.</p></div>
       <div class="field"><div class="field-label">Support organizations</div><ul>
-        <li>Compassionate Friends</li>
-        <li>AMEND (Aiding Mothers and Fathers Experiencing Neonatal Death)</li>
-        <li>Share Pregnancy and Infant Loss Support, Inc.</li>
-        <li>Now I Lay Me Down to Sleep (bereavement photography)</li>
+        <li><b>Compassionate Friends</b></li>
+        <li><b>AMEND</b> (Aiding Mothers and Fathers Experiencing Neonatal Death)</li>
+        <li><b>Share Pregnancy and Infant Loss Support, Inc.</b></li>
+        <li><b>Now I Lay Me Down to Sleep</b> (bereavement photography)</li>
       </ul></div>
-      <div class="field"><div class="field-label">Follow-up</div><p>Many NICUs contact parents several weeks after a neonatal death to assess coping and provide additional support.</p></div>
+      <div class="field"><div class="field-label">Follow-up after discharge</div><p>Before leaving the hospital, parents should be given the unit's phone number and invited to call anytime with questions. Many NICUs contact parents <b>several weeks after</b> a neonatal death specifically to assess coping mechanisms, evaluate the grieving process, and provide additional support/referrals as needed.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Additional nursing interventions</b></span><ol>
+        <li>Admit the birthing parent to a private room when possible.</li>
+        <li>Provide information about support groups and refer to other healthcare professionals (counseling, social work) as appropriate.</li>
+        <li>Recognize and refer for <b>complicated bereavement</b> risk &mdash; families experiencing perinatal loss are at increased risk, and early social work involvement can help mobilize support before problems compound.</li>
+      </ol></span></div>
       <div class="selfcare-box"><i class="ti ti-heart"></i><span><span class="box-heading"><b>Maternal self-care strategies</b></span><ul>
         <li>Accept help from support organizations and follow-up calls rather than declining out of a sense that you should be "managing fine"</li>
         <li>Allow physical postpartum recovery needs (rest, nutrition, incision/perineal care) to continue even while grieving &mdash; your body still needs care during this time</li>
@@ -1162,15 +1660,99 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
-    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-mood-sad"></i></span><span>The Nurse's Own Grief &amp; Coping</span></div><span class="arrow">&#9656;</span></div>
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--coral)"><i class="ti ti-user-x"></i></span><span>Maternal Death</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
-      <div class="field"><div class="field-label">Perry Ch. 31 (explicitly named in USLO 5)</div><p>NICU nurses experience real grief. It is important that this grief be <b>allowed</b>, and attending the funeral/memorial service is a legitimate part of working through it.</p></div>
-      <div class="field"><div class="field-label">Common misconception to correct</div><p>Fear that showing emotion is unprofessional is <b>unfounded</b> &mdash; nurses must be allowed to grieve to continue being effective care providers.</p></div>
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Overview</div><p>Maternal death can result from hemorrhage, infection, pulmonary embolism, hypertension, cardiomyopathy, or trauma &mdash; and is often sudden and unexpected. This compounds grief significantly beyond a single loss: the partner, children, and extended family experience loss <b>simultaneously</b> with (or shortly after) any loss of the infant, and if the infant survives, the partner is suddenly faced with parenting a newborn without the mother present.</p></div>
+      <div class="field"><div class="field-label">Family context to consider</div><ul>
+        <li>Young parents may never have experienced significant personal loss or tragedy before &mdash; their own parents/grandparents may still be living, leaving them without a frame of reference</li>
+        <li>Cultural beliefs and customs surrounding death strongly influence the family's response</li>
+        <li>Each family member's grief response will vary; there is no single predictable pattern</li>
+        <li>If other children are in the household, the family faces greater practical challenges adjusting to life without the mother</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Hospital protocol &amp; nursing role</div><p>The hospital chaplain and social worker often provide the initial contact with the family in a private room. As soon as possible, they're joined by the obstetrician, perinatologist, and nurse. The first meeting is typically brief, focused on <b>offering empathy and compassion</b> and assuring the family of updates as information becomes available &mdash; not on delivering exhaustive clinical detail immediately. If the infant survived and is in the NICU, the family can be escorted to the bedside.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Nursing interventions</b></span><ol>
+        <li>Assist the family with "next steps" for funeral arrangements, alongside the chaplain/social worker.</li>
+        <li>Refer to social services to help the family mobilize support systems and access counseling &mdash; families experiencing maternal death are at risk for <b>complicated bereavement and altered parenting</b> of the surviving infant and other children.</li>
+        <li>Provide follow-up care as the family progresses through grief and adjusts to life without the mother; this is an ongoing need, not a one-time intervention.</li>
+      </ol></span></div>
+      <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Staff impact &mdash; this is explicitly part of professional practice, not incidental</b></span>Guilt, anger, fear, sadness, and depression are all common staff responses to a maternal death. Staff may participate in a <b>debriefing session</b> to review the events, their own participation in care, and their emotional response. Attending the memorial or funeral service can benefit both staff and family, and follow-up conferences with a social worker/grief counselor can help staff process their own grief.</span></div>
     </div>
   </div>
 
-  <div class="cond">
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-mood-sad"></i></span><span>The Nurse's Own Grief &amp; Coping</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>Professional value explicitly named in USLO 5</div><p>NICU nurses experience real grief when caring for critically ill or dying infants &mdash; they may feel helpless and sorrowful. It is important that this grief be <b>allowed</b>, not suppressed in the name of professionalism.</p></div>
+      <div class="field"><div class="field-label">Common misconception to correct</div><p>Fear that showing emotion is unprofessional, or that expressing grief signals "loss of control," is <b>unfounded</b>. Research demonstrates that to continue functioning as effective managers and providers of care, nurses <b>must be allowed to grieve and support each other</b> through the process &mdash; suppressing it does not preserve professionalism, it undermines sustainable practice.</p></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Healthy coping practices for the nurse</b></span><ol>
+        <li>Attend the funeral or memorial service when possible &mdash; this is a legitimate, supported part of working through grief, not an overstep of professional boundaries.</li>
+        <li>Participate in unit debriefing sessions after a difficult loss.</li>
+        <li>Lean on peer support among colleagues who understand the specific nature of NICU/perinatal loss.</li>
+        <li>Seek follow-up support (counseling, chaplaincy, employee assistance) when a loss affects you personally &mdash; this is a sign of sustainable professional practice, not weakness.</li>
+      </ol></span></div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> A question describing a nurse who cried after a patient's death, or who wants to attend the funeral, is testing whether you recognize this as a <b>healthy, supported professional response</b> &mdash; not something requiring correction or a sign of poor boundaries.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="loss-palliative">
+  <div class="chapter-tag"><i class="ti ti-heart"></i>Loss &amp; Palliative Care</div>
+  <h2 class="section-title"><i class="ti ti-hand-heart"></i>Palliative Care</h2>
+  <p class="lead">USLO 5: professional values and behaviors when providing palliative or end-of-life care &mdash; distinct from, but closely tied to, the loss/bereavement content in this chapter.</p>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--teal)"><i class="ti ti-hand-heart"></i></span><span>Palliative Care Philosophy &amp; Decision-Making</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>What palliative care means for a neonate</div><p>Palliative care is implemented when the decision has been made <b>not to prolong life</b> through aggressive intervention, and the goal of care shifts from cure to <b>comfort</b>. This is distinct from grief support after death has already occurred &mdash; palliative care is active care <b>while the infant is still alive</b>, focused on minimizing suffering and maximizing meaningful time for the family.</p></div>
+      <div class="field"><div class="field-label">When this decision arises</div><ul>
+        <li>A condition incompatible with life is identified prenatally or at birth (e.g., anencephaly &mdash; see full card, Screening/Anomalies)</li>
+        <li>A high-risk infant's condition is determined to be unsurvivable despite maximal intervention</li>
+        <li>Parents, in partnership with the care team, choose to prioritize comfort over continued aggressive treatment for an infant with a poor prognosis</li>
+      </ul></div>
+      <div class="field"><div class="field-label">Two care-setting models</div>
+      <div class="tbl-wrap">
+      <table class="compare">
+        <tr><th>Hospital-Based Palliative/Hospice Approach</th><th>Home-Based Hospice</th></tr>
+        <tr><td>Infant remains in the NICU/nursery; only palliative (comfort) measures are provided, aggressive/curative treatment is stopped</td><td>Family takes the infant home with hospice services supporting them until death occurs</td></tr>
+        <tr><td>Full clinical support and staff experienced in neonatal comfort care remain immediately available</td><td>Some families find this less restrictive and more family-oriented than remaining in the hospital setting</td></tr>
+        <tr><td>Parents can hold, bathe, and spend time with the infant in a familiar clinical environment</td><td>Allows the family to be together in their own space, away from a hospital environment, for whatever time remains</td></tr>
+      </table>
+      </div>
+      <p style="font-size:13px; color:var(--sub); margin-top:6px;">Neither option is inherently superior &mdash; the choice depends on the family's preferences, the infant's specific clinical needs, and what feels right to them. The nurse's role is to present both options clearly and support whichever the family chooses.</p></div>
+    </div>
+  </div>
+
+<div class="cond open">
+    <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--purple)"><i class="ti ti-scale"></i></span><span>Professional Values &amp; Ethical Framework (USLO 5)</span></div><span class="arrow">&#9656;</span></div>
+    <div class="cond-body">
+      <div class="field"><div class="field-label"><i class="ti ti-atom-2"></i>The nursing process still applies</div><p>Even in palliative/end-of-life care, the nurse's professional standards remain the same nursing process used everywhere else: <b>assessment</b> (collecting data on the infant's comfort/symptoms and the family's needs), <b>diagnosis</b>, <b>outcome identification</b> (individualized &mdash; comfort and family support, not cure), <b>planning</b>, <b>implementation</b>, and <b>evaluation</b>. Palliative care is not "doing less nursing" &mdash; it's applying the same rigorous process toward a different goal.</p></div>
+      <div class="field"><div class="field-label">Professional performance standards relevant here</div><ul>
+        <li><b>Ethics:</b> use the ANA Code of Ethics for Nurses to guide practice, and involve the patient's family and other providers in care decisions collaboratively rather than unilaterally</li>
+        <li><b>Advocacy:</b> the nurse advocates for the infant and family's wishes as they navigate a difficult decision, ensuring their values &mdash; not just clinical protocol &mdash; shape the plan of care</li>
+        <li><b>Collegiality/collaboration:</b> palliative decisions are made by an interprofessional team (neonatologist, nurse, chaplain, social worker) in partnership with the family, not by any single provider alone</li>
+      </ul></div>
+      <div class="priority-box"><i class="ti ti-flag-3"></i><span><span class="box-heading"><b>Core nursing behaviors in palliative/end-of-life care</b></span><ol>
+        <li>Communicate honestly and compassionately about prognosis &mdash; avoid false reassurance, but deliver information with genuine empathy (see the Indicated vs. Contraindicated communication table in the NGN Case Study card).</li>
+        <li>Prioritize the infant's comfort: pain/symptom management remains an active nursing responsibility throughout, not something that stops once curative treatment stops.</li>
+        <li>Support the family's presence and involvement &mdash; holding, bathing, and spending time with the infant are part of the care plan, not an afterthought.</li>
+        <li>Respect cultural, spiritual, and religious practices in the plan of care (e.g., baptism, specific rituals) as the family defines them.</li>
+        <li>Recognize your own emotional response as a legitimate part of professional practice (see The Nurse's Own Grief &amp; Coping card) &mdash; sustainable palliative care requires nurses supporting each other, not suppressing their reactions.</li>
+      </ol></span></div>
+      <div class="mnemonic"><i class="ti ti-bulb"></i><span><b>Exam pearl:</b> Palliative care = comfort-focused, active care for a living infant; bereavement/grief support = care for the family after death. They're related but not the same thing &mdash; a question about "professional values in palliative care" is asking about care <b>before</b> death, even though the surrounding content in this chapter mostly covers <b>after</b>.</span></div>
+      <div class="edu-grid">
+        <div class="edu-col parent"><b><i class="ti ti-users"></i>Parent / Primary Caregiver Education</b>Choosing palliative or comfort-focused care for your baby doesn't mean choosing to "do nothing" &mdash; it means our whole team continues actively caring for your baby, focused specifically on comfort, dignity, and time together, rather than aggressive treatments unlikely to change the outcome. You can choose to spend this time here with us or, if you prefer, take your baby home with hospice support.</div>
+        <div class="edu-col caregiver"><b><i class="ti ti-user-heart"></i>Other Caregiver Education</b>If supporting a family who has chosen palliative or hospice care for an infant, follow the family's lead on how involved they want you to be, and understand that this is an active, caring choice the family and care team made together &mdash; not a withdrawal of care.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="loss-sids">
+  <div class="chapter-tag"><i class="ti ti-heart"></i>Loss &amp; Palliative Care</div>
+  <h2 class="section-title"><i class="ti ti-moon-stars"></i>Sudden Infant Death Syndrome (SIDS)</h2>
+
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--red)"><i class="ti ti-moon-stars"></i></span><span>Sudden Infant Death Syndrome (SIDS)</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
       <div class="field"><div class="field-label"><i class="ti ti-search"></i>Etiology</div><p>Cause remains unknown; multiple theories exist. Peak age reported 2-3 months, up to 1 year.</p></div>
@@ -1195,7 +1777,15 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </div>
   </div>
 
-  <div class="cond">
+</section>
+
+<section class="content-section" id="loss-casestudy">
+  <div class="chapter-tag"><i class="ti ti-heart"></i>Loss &amp; Palliative Care</div>
+  <h2 class="section-title"><i class="ti ti-clipboard-text"></i>NGN Case Study</h2>
+
+
+
+<div class="cond">
     <div class="cond-head" onclick="toggleCond(this)"><div class="htitle"><span class="cicon" style="background:var(--pink)"><i class="ti ti-message-heart"></i></span><span>NGN Case Study Format &mdash; Perinatal Loss Example</span></div><span class="arrow">&#9656;</span></div>
     <div class="cond-body">
     <p style="font-size:13.5px;">Perry's own NGN-style case study format: given a scenario, mark each possible nurse response as <b>Indicated</b> or <b>Contraindicated</b>.</p>
@@ -1214,10 +1804,9 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     <div class="flag"><i class="ti ti-alert-triangle"></i><span><span class="box-heading"><b>Pattern to notice</b></span>Contraindicated responses share a theme: minimizing the loss, offering silver linings, or imposing the nurse's own beliefs. Indicated responses validate feelings, offer presence, and keep control with the parent.</span></div>
   </div>
   </div>
-</div>
+</section>
 
-<!-- COMPARE -->
-<div class="panel" id="compare">
+<section class="content-section" id="compare">
   <h2 class="section-title"><i class="ti ti-columns-3"></i>Compare &amp; Contrast Tables</h2>
   <p class="lead">Side-by-side distinctions that show up frequently as NGN "select the correct pairing" items.</p>
 
@@ -1271,10 +1860,9 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
     </table>
     </div>
   </div>
-</div>
+</section>
 
-<!-- QUIZ -->
-<div class="panel" id="quiz">
+<section class="content-section" id="quiz">
   <h2 class="section-title"><i class="ti ti-checkbox"></i>NCLEX-Style Practice Questions</h2>
   <p class="lead">Modeled on your instructor's NGN format. Tap an answer to see if you're correct, then read the rationale.</p>
 
@@ -1342,34 +1930,15 @@ footer{text-align:center; padding:24px 16px; color:var(--sub); font-size:12px;}
       <b>Correct (needs further teaching): "We'll let the baby sleep on her side..."</b> Supine positioning should be maintained consistently throughout infancy, not switched at any age.
     </div>
   </div>
-
+</section>
+  </main>
 </div>
 
-</div>
 <footer>NSG 3500 Final Exam Prep &middot; Unit 10: High-Risk Newborn &middot; Perry et al. (2023) &amp; Galen Lecture Content &middot; Always verify source conflicts with Professor Morris</footer>
+
 <script>
-document.getElementById('tabs').addEventListener('click', function(e){
-  var btn = e.target.closest('button');
-  if(!btn) return;
-  var tab = btn.getAttribute('data-tab');
-  document.querySelectorAll('nav.tabs button').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');
-  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
-  document.getElementById(tab).classList.add('active');
-  window.scrollTo(0,0);
-});
-document.querySelectorAll('.toc-item').forEach(function(item){
-  item.addEventListener('click', function(){
-    var tab = item.getAttribute('data-jump');
-    document.querySelectorAll('nav.tabs button').forEach(function(b){
-      b.classList.toggle('active', b.getAttribute('data-tab')===tab);
-    });
-    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
-    document.getElementById(tab).classList.add('active');
-    window.scrollTo(0,0);
-  });
-});
 function toggleCond(headEl){ headEl.parentElement.classList.toggle('open'); }
+
 document.querySelectorAll('.quiz-opts').forEach(function(group){
   var correctIdx = parseInt(group.getAttribute('data-answer'), 10);
   var buttons = group.querySelectorAll('.quiz-opt');
@@ -1384,6 +1953,32 @@ document.querySelectorAll('.quiz-opts').forEach(function(group){
       });
       rationale.classList.add('show');
     });
+  });
+});
+
+// Sidebar navigation
+var sidebar = document.getElementById('sidebar');
+var overlay = document.getElementById('sidebarOverlay');
+var hamburger = document.getElementById('hamburgerBtn');
+var currentLabel = document.getElementById('currentLabel');
+
+function openSidebar(){ sidebar.classList.add('open'); overlay.classList.add('open'); }
+function closeSidebar(){ sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+
+hamburger.addEventListener('click', openSidebar);
+overlay.addEventListener('click', closeSidebar);
+
+document.querySelectorAll('.side-link').forEach(function(link){
+  link.addEventListener('click', function(){
+    var target = link.getAttribute('data-target');
+    document.querySelectorAll('.side-link').forEach(function(l){ l.classList.remove('active'); });
+    link.classList.add('active');
+    document.querySelectorAll('.content-section').forEach(function(s){ s.classList.remove('active'); });
+    var targetEl = document.getElementById(target);
+    if(targetEl) targetEl.classList.add('active');
+    currentLabel.textContent = link.textContent.trim();
+    window.scrollTo(0,0);
+    closeSidebar();
   });
 });
 </script>
