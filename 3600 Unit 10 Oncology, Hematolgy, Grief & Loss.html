@@ -49,21 +49,131 @@
   }
   header h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: 0.2px; }
   header .sub { font-family: Arial, sans-serif; font-size: 14.5px; color: #dbe3f2; max-width: 900px; }
-  nav {
-    position: sticky; top: 0; z-index: 20;
+  body.has-sidebar { display: flex; min-height: 100vh; }
+  .page-content { flex: 1; min-width: 0; }
+  aside.sidebar {
+    width: 250px;
+    flex-shrink: 0;
     background: var(--navy-deep);
-    display: flex; flex-wrap: wrap; gap: 0;
-    font-family: Arial, sans-serif; font-size: 11.5px;
-    border-bottom: 3px solid var(--gold);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    border-right: 3px solid var(--gold);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 20;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
   }
-  nav a {
-    color: #dbe3f2; text-decoration: none; padding: 9px 11px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    white-space: nowrap;
-    transition: background 0.15s, color 0.15s;
+  .sidebar-title {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold-light);
+    padding: 18px 18px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
-  nav a:hover { background: rgba(255,255,255,0.08); }
+  .sidebar nav { display: flex; flex-direction: column; }
+  .sidebar nav a {
+    color: #dbe3f2;
+    text-decoration: none;
+    padding: 11px 18px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-left-color 0.15s;
+    cursor: pointer;
+    background: none;
+    text-align: left;
+    width: 100%;
+    display: block;
+  }
+  .sidebar nav a:hover {
+    background: rgba(255,255,255,0.06);
+    border-left-color: var(--gold);
+  }
+  .sidebar nav a.active {
+    background: rgba(212,167,44,0.15);
+    border-left-color: var(--gold);
+    font-weight: 700;
+    color: white;
+  }
+  .nav-group { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-group-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 18px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #dbe3f2;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-left-color 0.15s;
+  }
+  .nav-group-toggle:hover { background: rgba(255,255,255,0.06); }
+  .nav-group-toggle.active-parent {
+    border-left-color: var(--gold);
+    background: rgba(212,167,44,0.1);
+  }
+  .nav-group-toggle .chevron {
+    font-size: 10px;
+    color: var(--gold-light);
+    transition: transform 0.2s;
+  }
+  .nav-group.open .chevron { transform: rotate(90deg); }
+  .nav-subnav {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.2);
+  }
+  .nav-group.open .nav-subnav { display: flex; }
+  .nav-subnav a {
+    padding: 9px 18px 9px 34px;
+    font-size: 12.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .page-section { display: none; }
+  .page-section.active-page { display: block; }
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 30;
+    background: var(--navy-deep);
+    color: white;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 860px) {
+    body.has-sidebar { display: block; }
+    aside.sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 260px;
+      height: 100vh;
+      transform: translateX(-100%);
+      transition: transform 0.2s ease;
+    }
+    aside.sidebar.open { transform: translateX(0); }
+    .sidebar-toggle { display: block; }
+    .sidebar-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 19;
+    }
+    .sidebar-backdrop.open { display: block; }
+    header { padding-left: 64px; }
+  }
   main { max-width: 1040px; margin: 0 auto; padding: 30px 20px 90px; }
   section.unit-block { margin-bottom: 54px; }
   h2.section-title {
@@ -205,7 +315,7 @@
   .crisis-card h5 { margin: 0 0 7px; font-family: Arial, sans-serif; font-size: 13px; }
   .med-table th { background: linear-gradient(135deg, var(--navy-light), var(--navy-deep)); }
   .stages-grief { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 16px 0; }
-  .stage-pill { color: white; font-family: Arial, sans-serif; font-weight: bold; padding: 11px 20px; border-radius: 22px; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  .stage-pill { background: linear-gradient(135deg, var(--navy-light), var(--navy-deep)); color: white; font-family: Arial, sans-serif; font-weight: bold; padding: 11px 20px; border-radius: 22px; font-size: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
   .age-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   @media (max-width: 700px) { .age-grid { grid-template-columns: 1fr 1fr; } }
   .age-card { background: var(--paper-card); border: 1px solid #e4e0d6; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(11,37,69,0.06); }
@@ -233,70 +343,89 @@
   .med-drug-name .generic { font-size: 12px; color: var(--muted); font-weight: normal; }
   .med-drug-body { padding: 14px 16px; }
 
-  .card > summary {
-    list-style: none;
-    cursor: pointer;
-    display: block;
-  }
-  .card > summary::-webkit-details-marker { display: none; }
-  .card > summary::marker { content: ""; }
-  .card > summary .card-header {
-    position: relative;
-    margin: -1px -1px 0 -1px;
-  }
-  .card > summary .card-header::before {
-    content: "+";
-    position: absolute;
-    top: 50%;
-    right: 22px;
-    transform: translateY(-50%);
-    font-size: 22px;
-    font-weight: 700;
-    color: white;
-    z-index: 2;
-    width: 32px;
-    height: 32px;
-    text-align: center;
-    line-height: 29px;
-    border: 2px solid rgba(255,255,255,0.65);
-    border-radius: 50%;
-  }
-  .card[open] > summary .card-header::before {
-    content: "\2212";
-  }
-  .card > summary .card-header:hover::before {
-    background: rgba(255,255,255,0.18);
-  }
-  .card > summary .card-header .tag {
-    padding-right: 46px;
-  }
+  
+  
+  
+  
+  
+  
+  
+  
 </style>
 </head>
-<body>
+<body class="has-sidebar">
+<button aria-label="Toggle menu" class="sidebar-toggle" id="sidebarToggle">☰</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-title">Jump to Section</div>
+<nav id="sideNav">
+<a class="nav-link" data-page="uslos" href="#">USLOs</a>
+<div class="nav-group" id="anemiaGroup">
+<div class="nav-group-toggle" id="anemiaToggle">
+<span>Anemia</span>
+<span class="chevron">▸</span>
+</div>
+<div class="nav-subnav">
+<a class="nav-link" data-page="anemia" href="#">General</a>
+<a class="nav-link" data-page="ida" href="#">Iron-Deficiency</a>
+</div>
+</div>
+<a class="nav-link" data-page="sickle" href="#">Sickle Cell Disease</a>
+<a class="nav-link" data-page="hemophilia" href="#">Hemophilia</a>
+<a class="nav-link" data-page="neutropenia" href="#">Neutropenia</a>
+<a class="nav-link" data-page="transfusion" href="#">Blood Transfusions</a>
+<a class="nav-link" data-page="cancer-overview" href="#">Cancer Overview</a>
+<a class="nav-link" data-page="leukemia" href="#">Leukemia (ALL)</a>
+<div class="nav-group" id="tumorsGroup">
+<div class="nav-group-toggle" id="tumorsToggle">
+<span>Solid Tumors</span>
+<span class="chevron">▸</span>
+</div>
+<div class="nav-subnav">
+<a class="nav-link" data-page="neuroblastoma" href="#">Neuroblastoma</a>
+<a class="nav-link" data-page="wilms" href="#">Wilms Tumor</a>
+<a class="nav-link" data-page="retinoblastoma" href="#">Retinoblastoma</a>
+<a class="nav-link" data-page="osteosarcoma" href="#">Osteosarcoma</a>
+<a class="nav-link" data-page="ewings" href="#">Ewing's Sarcoma</a>
+</div>
+</div>
+<div class="nav-group" id="lymphomaGroup">
+<div class="nav-group-toggle" id="lymphomaToggle">
+<span>Lymphoma</span>
+<span class="chevron">▸</span>
+</div>
+<div class="nav-subnav">
+<a class="nav-link" data-page="hodgkin" href="#">Hodgkin's</a>
+<a class="nav-link" data-page="non-hodgkin" href="#">Non-Hodgkin's</a>
+</div>
+</div>
+<div class="nav-group" id="griefGroup">
+<div class="nav-group-toggle" id="griefToggle">
+<span>Grief &amp; Loss</span>
+<span class="chevron">▸</span>
+</div>
+<div class="nav-subnav">
+<a class="nav-link" data-page="grief-death-by-age" href="#">Causes of Death by Age</a>
+<a class="nav-link" data-page="grief-palliative-hospice" href="#">Palliative Care vs. Hospice</a>
+<a class="nav-link" data-page="grief-dying-child" href="#">The Dying Child</a>
+<a class="nav-link" data-page="grief-perceptions-death" href="#">Perceptions of Death by Stage</a>
+<a class="nav-link" data-page="grief-impending-death" href="#">Signs of Impending Death</a>
+<a class="nav-link" data-page="grief-nursing-care" href="#">Nursing Care of the Dying Child</a>
+<a class="nav-link" data-page="grief-communication" href="#">Communication Strategies</a>
+<a class="nav-link" data-page="grief-kubler-ross" href="#">Stages of Grief</a>
+<a class="nav-link" data-page="grief-education" href="#">Patient &amp; Family Education</a>
+</div>
+</div>
+</nav>
+</aside>
+<div class="page-content">
 <header>
 <div class="kicker">Galen College of Nursing · NSG 3600 · Exam 4 Prep</div>
 <h1>Unit 10 — The Child With Oncology/Hematology Dysfunction &amp; Grief and Loss</h1>
 <div class="sub">Anemias · Sickle Cell Disease · Hemophilia · Neutropenia · Blood Transfusions · Leukemia · Solid Tumors · Lymphomas · Grief &amp; Loss — NCJMM-Framed Comprehensive Atlas</div>
 </header>
-<nav>
-<a href="#uslos">USLOs</a>
-<a href="#anemia">Anemia</a>
-<a href="#ida">Iron-Deficiency Anemia</a>
-<a href="#sickle">Sickle Cell Disease</a>
-<a href="#hemophilia">Hemophilia</a>
-<a href="#neutropenia">Neutropenia</a>
-<a href="#transfusion">Blood Transfusions</a>
-<a href="#leukemia">Leukemia (ALL)</a>
-<a href="#neuroblastoma">Neuroblastoma</a>
-<a href="#wilms">Wilms Tumor</a>
-<a href="#retinoblastoma">Retinoblastoma</a>
-<a href="#osteosarcoma">Osteosarcoma</a>
-<a href="#ewings">Ewing's Sarcoma</a>
-<a href="#hodgkin">Hodgkin/Non-Hodgkin</a>
-<a href="#grief">Grief &amp; Loss</a>
-</nav>
 <main>
-<section class="unit-block" id="uslos">
+<section class="unit-block page-section" id="uslos">
 <div class="toc-legend">
 <strong>How priority acuity tags work in this guide:</strong>
 <span class="acuity-tag acuity-kill">Will Kill First</span> = airway/breathing/circulation or brain-threatening — act immediately, no delay.
@@ -306,13 +435,12 @@
   </div>
 </section>
 <!-- ========================= ANEMIA (GENERAL) ========================= -->
-<section class="unit-block" id="anemia">
+<section class="unit-block page-section" id="anemia">
 <h2 class="section-title">Anemia (General)</h2>
-<details class="card heme"><summary><div class="card-header">
+<div class="card heme"><div class="card-header">
 <h3>Anemia — General Concept</h3>
 <div class="tag">The most common hematologic disorder of childhood</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Anemia is a reduction in circulating red blood cells (RBCs) or hemoglobin, which decreases the oxygen-carrying capacity of the blood. It is <strong>not a disease itself but an indication of an underlying pathologic process</strong> — nutritional deficiency, blood loss, hemolysis, or bone marrow failure. It is the most common hematologic disorder of childhood. <span class="lecture-tag">Lecture</span></p>
 <h5>Risk Factors</h5>
@@ -367,7 +495,6 @@
 <li>Diet or vitamin supplementation depending on underlying cause</li>
 <li>Supportive care</li>
 </ul>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Epoetin Alfa <span class="generic">— Epogen / Procrit</span></h4></div>
 <div class="med-spotlight-body">
@@ -393,7 +520,6 @@
 <p class="source-tag">Source: Unit 10 lecture — Epoetin Alpha/Epogen listed under anemia management.</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -424,16 +550,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 2–3; general hematology principles cross-referenced with Perry Ch. 43 and Saunders Ch. 31.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= IRON DEFICIENCY ANEMIA ========================= -->
-<section class="unit-block" id="ida">
+<section class="unit-block page-section" id="ida">
 <h2 class="section-title">Iron-Deficiency Anemia</h2>
-<details class="card heme"><summary><div class="card-header">
+<div class="card heme"><div class="card-header">
 <h3>Iron-Deficiency Anemia (IDA)</h3>
 <div class="tag">Most prevalent nutritional disorder worldwide</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Iron is essential for hemoglobin synthesis. When iron stores are depleted, hemoglobin production falls, reducing the oxygen-carrying capacity of RBCs. IDA is the <strong>most prevalent nutritional disorder worldwide</strong>. <span class="lecture-tag">Lecture</span></p>
 <h5>Causes / Risk Factors</h5>
@@ -520,7 +645,6 @@
 <span class="label">Medication Administration Safety Point</span>
       Oral iron supplements should be administered through a <strong>straw or medicine dropper placed at the back of the mouth</strong> because liquid iron stains the teeth. This is a classic NCLEX administration detail — but remember, missing this step affects cosmetic staining only, not treatment efficacy.
     </div>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Ferrous Sulfate <span class="generic">— Oral Iron</span></h4></div>
 <div class="med-spotlight-body">
@@ -551,7 +675,6 @@
 <p class="source-tag">Source: Saunders 9th ed. (iron administration technique, tooth-staining precaution); Unit 10 lecture (iron-deficiency anemia content).</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -585,16 +708,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 4–5; Saunders 9th ed. Ch. 31 (iron administration teaching, iron toxicity nursing alert).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= SICKLE CELL DISEASE ========================= -->
-<section class="unit-block" id="sickle">
+<section class="unit-block page-section" id="sickle">
 <h2 class="section-title">Sickle Cell Disease (SCD)</h2>
-<details class="card sickle"><summary><div class="card-header">
+<div class="card sickle"><div class="card-header">
 <h3>Sickle Cell Disease</h3>
 <div class="tag">Autosomal recessive hemoglobinopathy — chronic disease with acute life-threatening crises</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>SCD is an <strong>autosomal recessive</strong> hemoglobinopathy in which normal hemoglobin A is partly or completely replaced by abnormal hemoglobin S (HbS). When both parents carry the sickle cell trait (heterozygous, HbAS), there is a 25% chance per pregnancy of a child with sickle cell anemia (homozygous, HbSS). HbS is sensitive to <strong>deoxygenation</strong> — under low-oxygen conditions, RBCs assume a rigid, sickle (C- or S-shaped) shape rather than their normal flexible biconcave disc shape. These sickled cells clump together and obstruct capillary blood flow (vaso-occlusion), causing local hypoxia, tissue ischemia, and infarction. Repeated sickling eventually causes cells to become permanently sickled. Newborns are largely asymptomatic due to protective fetal hemoglobin (HbF), but as HbF declines over the first year of life, sickle-related complications emerge.</p>
 <h5>Risk Factors</h5>
@@ -623,13 +745,14 @@
 <li>Retinopathy, potential blindness</li>
 <li>Stroke, paralysis</li>
 <li>Chronic leg ulcers (rare in children, more common in adults)</li>
-<li>Dactylitis (hand-foot syndrome) — often an early presenting sign in infants</li>
+<li>Dactylitis (hand-foot syndrome) — often the <strong>first painful manifestation</strong> of vaso-occlusive crisis, typically occurring between 6 months and 2 years of age</li>
 <li>Pulmonary hypertension</li>
 <li>Heart failure from chronic anemia burden</li>
 </ul>
 <h4>Labs &amp; Diagnostics</h4>
 <table class="lab-table">
 <tr><th>Test</th><th class="hi">Purpose / Findings</th></tr>
+<tr><td>Chronic baseline hemoglobin</td><td>6–9 g/dL — chronically low but relatively stable baseline anemia, distinct from an acute crisis-related drop</td></tr>
 <tr><td>Sickle turbidity test (Sickledex)</td><td>Rapid fingerstick/heelstick screening test (~3 minutes); <strong>cannot distinguish trait from disease</strong></td></tr>
 <tr><td>Hemoglobin electrophoresis</td><td>Confirmatory test — required after a positive Sickledex to distinguish sickle cell trait from sickle cell disease and identify the specific hemoglobin pattern</td></tr>
 <tr><td>In utero diagnosis</td><td>Chorionic villus biopsy <span class="lecture-tag">Lecture</span></td></tr>
@@ -684,7 +807,7 @@
 <li>Signs of splenic sequestration: sudden pallor, lethargy, abdominal fullness/pain with signs of hypovolemia or shock</li>
 <li>Signs of acute chest syndrome: chest pain, tachypnea, wheezing, new hypoxia — this can progress rapidly to respiratory failure</li>
 <li>Any neurologic change (possible stroke — children with HbSS have elevated stroke risk and are monitored with annual transcranial doppler)</li>
-<li>Temperature elevation in a child with SCD — infection risk is markedly increased due to progressive loss of splenic function (autosplenectomy)</li>
+<li><strong>Fever of 38.5°C (101.3°F) or greater</strong> — Perry identifies this as the specific threshold requiring early intervention in a child with SCD, given markedly increased infection risk from progressive loss of splenic function (autosplenectomy)</li>
 <li>Priapism lasting longer than a brief episode</li>
 </ul>
 </div>
@@ -699,6 +822,8 @@
       <span class="why">Why: Severe hypoxia can cause massive systemic sickling that can be fatal; oxygen alone often can't reverse sickling once vessels are clogged, but it prevents worsening.</span></li>
 <li><span class="acuity-tag acuity-important">Important</span><br/><strong>Pain control</strong> — administer analgesics around the clock (not PRN alone); PCA pumps commonly used. Position for comfort with extremities extended to promote venous return; avoid raising the knee gatch or straining painful joints; keep head of bed ≤30 degrees.
       <span class="why">Why: Pain is the most common crisis presentation, but comes after establishing hydration and oxygenation because pain control is far less effective without those first two measures in place.</span></li>
+<li><span class="acuity-tag acuity-important">Important</span><br/><strong>Antibiotic therapy</strong> if any infection is present or suspected — a documented crisis trigger and independently life-threatening given functional asplenia.
+      <span class="why">Why: Infection both precipitates and complicates sickle cell crises, and functional asplenia leaves these children at markedly increased risk of overwhelming sepsis, particularly from encapsulated organisms.</span></li>
 </ol>
 <div class="danger-box">
 <span class="label">Nursing Alert — Oxygen Therapy Nuance</span>
@@ -714,7 +839,7 @@
 <li>Oxygen (if hypoxic) and blood/exchange transfusions</li>
 <li>Around-the-clock analgesia; PCA pumps for significant pain <span class="lecture-tag">Lecture</span></li>
 <li>High-calorie, high-protein diet with folic acid supplementation (supports the high RBC turnover demand)</li>
-<li>Hydroxyurea may be used to reduce crisis frequency (increases HbF production)</li>
+<li>Hydroxyurea may be used to reduce crisis frequency — increases fetal hemoglobin (HbF) production, reduces sickle cell adhesion to blood vessel walls, improves cell hydration and size, increases nitric oxide (a vasodilator), and lowers white blood cell and reticulocyte counts; long-term use is associated with at least a <strong>40% reduction in mortality</strong> and decreased frequency of vaso-occlusive crisis, acute chest syndrome, hospitalizations, and need for transfusions</li>
 <li><strong>Penicillin prophylaxis beginning at 2 months of age</strong> to decrease the risk of pneumococcal sepsis — an exact, testable age from lecture <span class="lecture-tag">Lecture</span></li>
 </ul>
 <div class="alert-box">
@@ -767,16 +892,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 6–9 (HOP mnemonic, crisis types, precipitating factors); Perry Ch. 43; Saunders 9th ed. Ch. 31 (Box 31.1, Fig. 31.1, pathophysiology, prevention, and management).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= HEMOPHILIA ========================= -->
-<section class="unit-block" id="hemophilia">
+<section class="unit-block page-section" id="hemophilia">
 <h2 class="section-title">Hemophilia</h2>
-<details class="card heme"><summary><div class="card-header">
+<div class="card heme"><div class="card-header">
 <h3>Hemophilia</h3>
 <div class="tag">X-linked recessive coagulation factor deficiency</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Hemophilia refers to a group of bleeding disorders resulting from a deficiency of specific coagulation proteins, so the coagulation process cannot be completed and bleeding is prolonged (not faster bleeding — <strong>longer</strong> bleeding). Bleeding tendencies range from mild to severe. Transmitted as an <strong>X-linked recessive</strong> disorder (can also arise from spontaneous gene mutation). The two most common types are <strong>Hemophilia A</strong> (Factor VIII deficiency, "classic hemophilia") and <strong>Hemophilia B</strong> (Factor IX deficiency, "Christmas disease").</p>
 <h5>Risk Factors</h5>
@@ -868,12 +992,10 @@
 <p><strong>Avoid (high contact/collision risk):</strong> Soccer, basketball, wrestling, jogging, and tennis (running/pivoting sports still carry meaningful joint-trauma risk) — these carry significant risk of trauma and joint injury that could precipitate bleeding or hemarthrosis.</p>
 <p>This reflects the broader teaching point: encourage activity and normal childhood participation, but steer toward non-contact, lower-trauma-risk options.</p>
 </div>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Factor VIII &amp; Factor IX Replacement</h4></div>
 <div class="med-spotlight-body">
 <p>Hemophilia A (Factor VIII deficiency) and Hemophilia B (Factor IX deficiency) are both treated with replacement of the missing clotting factor.</p>
-
 <div class="med-drug">
 <div class="med-drug-name"><h5>Factor VIII</h5></div>
 <div class="med-drug-body">
@@ -901,7 +1023,6 @@
 </div>
 </div>
 </div>
-
 <div class="med-drug">
 <div class="med-drug-name"><h5>Factor IX</h5></div>
 <div class="med-drug-body">
@@ -924,11 +1045,9 @@
 </div>
 </div>
 </div>
-
 <p class="source-tag">Source: Unit 10 lecture — factor VIII/IX deficiency and replacement identified directly as treatment for Hemophilia A/B.</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -967,16 +1086,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 10–13; Saunders 9th ed. Ch. 31 (hemophilia description, assessment, treatment).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= NEUTROPENIA ========================= -->
-<section class="unit-block" id="neutropenia">
+<section class="unit-block page-section" id="neutropenia">
 <h2 class="section-title">Neutropenia</h2>
-<details class="card heme"><summary><div class="card-header">
+<div class="card heme"><div class="card-header">
 <h3>Neutropenia</h3>
 <div class="tag">Low absolute neutrophil count — infection risk defined by a number</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Neutropenia is defined by the <strong>absolute neutrophil count (ANC)</strong>: <span class="lecture-tag">Lecture</span></p>
 <table>
@@ -1041,7 +1159,6 @@
 <li>Bone marrow transplant in select cases <span class="lecture-tag">Lecture</span></li>
 <li>Prompt antibiotic administration for any febrile episode</li>
 </ul>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Filgrastim <span class="generic">— Neupogen</span></h4></div>
 <div class="med-spotlight-body">
@@ -1070,7 +1187,6 @@
 <p class="source-tag">Source: Unit 10 lecture — filgrastim/Neupogen identified specifically, with fever-as-emergency and no-rectal-temps emphasized directly.</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -1105,16 +1221,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 14–15; general pediatric hematology/oncology principles cross-referenced with Perry Ch. 43–44 and Saunders Ch. 32.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= BLOOD TRANSFUSIONS ========================= -->
-<section class="unit-block" id="transfusion">
+<section class="unit-block page-section" id="transfusion">
 <h2 class="section-title">Blood Transfusions &amp; Bone Marrow/Stem Cell Transplant</h2>
-<details class="card heme"><summary><div class="card-header">
+<div class="card heme"><div class="card-header">
 <h3>Blood Transfusions</h3>
 <div class="tag">Most delivered in hospitals; consent required</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Overview <span class="lecture-tag">Lecture</span></h4>
 <p>Most transfusions are delivered in the hospital setting. <strong>Consent must be obtained before administration.</strong></p>
 <h4>Blood Product Types &amp; Indications <span class="lecture-tag">Lecture</span></h4>
@@ -1207,16 +1322,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 16–18. Cross-reference with facility-specific policy and Perry/Saunders general transfusion safety principles.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= CANCER OVERVIEW ========================= -->
-<section class="unit-block" id="cancer-overview">
+<section class="unit-block page-section" id="cancer-overview">
 <h2 class="section-title">Childhood Cancer — General Concepts</h2>
-<details class="card onc"><summary><div class="card-header">
+<div class="card onc"><div class="card-header">
 <h3>Cancer — General Pathophysiology</h3>
 <div class="tag">Rapid, uncontrolled growth of abnormal cells</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Cancer involves rapid growth and spread of abnormal cells (<strong>anaplasia</strong>) — anaplastic cells resist normal growth controls. Caused by one or a combination of three factors: <span class="lecture-tag">Lecture</span></p>
 <ul>
@@ -1273,7 +1387,6 @@
 </ul>
 </div>
 </div>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Cisplatin</h4></div>
 <div class="med-spotlight-body">
@@ -1302,19 +1415,17 @@
 <p class="source-tag">Source: Unit 10 lecture — high-tone hearing loss and kidney/tubular injury listed among cisplatin-associated treatment complications.</p>
 </div>
 </div>
-
 <p class="source-tag">Source: Unit 10 lecture slides 19–23.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= LEUKEMIA ========================= -->
-<section class="unit-block" id="leukemia">
+<section class="unit-block page-section" id="leukemia">
 <h2 class="section-title">Acute Lymphoblastic Leukemia (ALL)</h2>
-<details class="card onc"><summary><div class="card-header">
+<div class="card onc"><div class="card-header">
 <h3>Acute Lymphoblastic Leukemia</h3>
 <div class="tag">Most common cancer in children — overproduction of immature WBCs</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Leukemia is a malignant increase in leukocytes, usually at an immature stage (<strong>blast cells</strong>), that infiltrate and depress the bone marrow. This bone marrow suppression causes the classic triad of consequences: <strong>anemia</strong> (decreased erythrocyte production), <strong>infection risk</strong> (neutropenia), and <strong>bleeding</strong> (thrombocytopenia from decreased platelet production). ALL is the <strong>most common cancer in children</strong>, affects mostly immature, undifferentiated cells, and is an overproduction of WBCs. Peak age of onset is 2–3 years old. The exact cause is unknown, involving genetic damage transforming normal cells to a malignant state.</p>
 <h5>Risk Factors</h5>
@@ -1330,12 +1441,12 @@
 <span class="label">Classic presentation</span>
 <ul>
 <li>Vague, flu-like feelings</li>
-<li>Fever</li>
+<li>Fever (61% of patients)</li>
 <li>Pallor, fatigue, anorexia</li>
-<li>Bone and joint pain (bone marrow infiltration); pathological fractures possible</li>
-<li>Hepatosplenomegaly, lymphadenopathy</li>
-<li>Easy bruising, petechiae</li>
-<li>Abnormal blood counts</li>
+<li>Bone and joint pain (23% of patients; from bone marrow infiltration); pathological fractures possible</li>
+<li>Hepatosplenomegaly (68%), splenomegaly (63%), lymphadenopathy (50%)</li>
+<li>Easy bruising, petechiae, or purpura (48%)</li>
+<li>Abnormal blood counts — approximately half of patients have an elevated WBC count (&gt;10,000/mm³) at presentation</li>
 </ul>
 </div>
 <div class="unexpected">
@@ -1392,6 +1503,10 @@
 <tr><td><strong>3. Maintenance</strong></td><td>Control leukemia and sustain remission long-term</td><td>Can last <strong>2–3 years after diagnosis</strong>; usually carried out entirely in the <strong>outpatient</strong> setting</td></tr>
 </table>
 <p>Treatment begins promptly after diagnosis. Current long-term disease-free survival rates for ALL approach 90% in major pediatric cancer centers.</p>
+<div class="alert-box">
+<span class="label">Critical adherence fact — maintenance phase</span>
+During maintenance therapy, <strong>medication adherence below 95% significantly increases the risk of relapse</strong>. This is a major nursing teaching point: daily oral chemotherapy (mercaptopurine) and weekly methotrexate must be taken essentially every single dose, even though the child looks and feels well during this phase — complacency during maintenance is a real clinical risk.
+</div>
 <h4>Foods Patients Can and Cannot Eat — Neutropenic Precautions <span class="lecture-tag">Lecture</span> + Saunders</h4>
 <div class="food-grid">
 <div class="food-avoid">
@@ -1465,36 +1580,46 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 24–26; Perry Ch. 44; Saunders 9th ed. Ch. 32 (leukemia description, DIC, tumor lysis syndrome, neutropenic precautions, NGN case study).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= NEUROBLASTOMA ========================= -->
-<section class="unit-block" id="neuroblastoma">
+<section class="unit-block page-section" id="neuroblastoma">
 <h2 class="section-title">Neuroblastoma</h2>
-<details class="card tumor"><summary><div class="card-header">
+<div class="card tumor"><div class="card-header">
 <h3>Neuroblastoma</h3>
 <div class="tag">Tumor of sympathetic nervous system origin — average age 2 years</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
-<p>A tumor arising from nerve tissue that forms the sympathetic nervous system. Average age at diagnosis is 2 years. Most commonly develops in the <strong>abdomen</strong> (often originating in the adrenal medulla), but can occur anywhere sympathetic nervous tissue is present. <span class="lecture-tag">Lecture</span></p>
+<p>The <strong>most common extracranial solid tumor of childhood</strong>, arising from embryonic neural crest cells (neuroblasts) that normally give rise to the adrenal medulla and sympathetic nervous system. A disease of infancy and early childhood — median age at diagnosis is approximately 19 months. Most commonly develops in the <strong>abdomen</strong> (often originating in the adrenal medulla), but can also arise in the neck, chest, or pelvis wherever sympathetic nervous tissue is present. <span class="lecture-tag">Lecture</span></p>
+<div class="danger-box">
+<span class="label">Neuroblastoma is a "silent" tumor</span>
+In <strong>more than 70% of cases, diagnosis is not made until after metastasis has already occurred</strong> — the first signs are often caused by involvement at a distant site (lymph nodes, bone marrow, skeletal system, liver) rather than the primary tumor itself. This "silent" behavior is a major reason neuroblastoma can carry a poor prognosis despite aggressive treatment, and explains why a seemingly unrelated presenting complaint (bone pain, anemia, a skin nodule) can be the first clue.
+</div>
 <h4>Signs &amp; Symptoms</h4>
 <div class="expected">
-<span class="label">Clinical manifestations</span>
+<span class="label">Clinical manifestations — vary by location</span>
 <ul>
-<li>Palpable abdominal mass — a key distinguishing feature: this mass <strong>crosses the midline</strong> (unlike Wilms tumor, below)</li>
+<li>Palpable abdominal mass — a key distinguishing feature: this mass is firm, nontender, irregular, and <strong>crosses the midline</strong> (unlike Wilms tumor, below)</li>
+<li>Abdominal pain/discomfort, vomiting, anorexia; urinary frequency or retention if the kidney/ureter/bladder is compressed</li>
+<li><strong>Thoracic/cervical tumors:</strong> dyspnea, Horner syndrome (ptosis, miosis, anhidrosis), neck mass, stridor, dysphagia</li>
+<li><strong>Spinal/brain involvement:</strong> neurologic deficits, bladder/bowel dysfunction, paraparesis, paraplegia, seizures</li>
+<li><strong>Bone marrow infiltration:</strong> anemia, thrombocytopenia, neutropenia</li>
+<li><strong>Orbital/optic nerve involvement:</strong> exophthalmos, periorbital ecchymosis, impaired vision</li>
+<li><strong>"Blueberry muffin" skin lesions</strong> — bluish subcutaneous nodules from skin metastases, seen almost exclusively in infants</li>
+<li>Bone pain or limping if skeletal metastasis is present</li>
 <li>Edema of lower extremities if the tumor is severe/compressing venous or lymphatic return</li>
 </ul>
 </div>
 <div class="mnemonic">
 <strong>Neuroblastoma vs. Wilms tumor — the defining exam distinction:</strong> Neuroblastoma mass <strong>crosses the midline</strong>. Wilms tumor mass <strong>does NOT cross the midline</strong> (it originates in one kidney). This single detail is a classic NCLEX discriminator between the two most common pediatric abdominal tumors.
-    </div>
+</div>
 <h4>Labs &amp; Diagnostics</h4>
 <table>
 <tr><th>Test</th><th>Purpose</th></tr>
 <tr><td>CT/MRI</td><td>Characterize the mass and extent of involvement <span class="lecture-tag">Lecture</span></td></tr>
-<tr><td>Biopsy of tumor</td><td>Definitive tissue diagnosis <span class="lecture-tag">Lecture</span></td></tr>
-<tr><td>Bone marrow aspiration</td><td>Assess for metastatic spread <span class="lecture-tag">Lecture</span></td></tr>
-<tr><td>Lab studies (including urine catecholamines)</td><td>Elevated vanillylmandelic acid (VMA) in urine is classically associated with neuroblastoma <span class="lecture-tag">Lecture</span></td></tr>
+<tr><td>Biopsy of tumor</td><td>Definitive tissue diagnosis; also used for MYCN oncogene amplification testing, a key prognostic marker associated with high-risk disease <span class="lecture-tag">Lecture</span></td></tr>
+<tr><td>Bone marrow aspiration (bilateral)</td><td>Assess for metastatic spread <span class="lecture-tag">Lecture</span></td></tr>
+<tr><td>Urine catecholamine metabolites — VMA and HVA</td><td><strong>Elevated vanillylmandelic acid (VMA) and homovanillic acid (HVA)</strong> in urine are classically associated with neuroblastoma; measured before therapy and used to monitor treatment response and detect relapse <span class="lecture-tag">Lecture</span></td></tr>
 </table>
 <div class="call-provider">
 <span class="label">Notify the Provider If</span>
@@ -1544,26 +1669,33 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 27–28; cross-referenced with general pediatric oncology principles (Perry Ch. 44).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= WILMS TUMOR ========================= -->
-<section class="unit-block" id="wilms">
+<section class="unit-block page-section" id="wilms">
 <h2 class="section-title">Wilms Tumor</h2>
-<details class="card tumor"><summary><div class="card-header">
+<div class="card tumor"><div class="card-header">
 <h3>Wilms Tumor (Nephroblastoma)</h3>
 <div class="tag">Kidney-origin tumor — favorable prognosis</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Originates in one or both kidneys. Average age at diagnosis is between 2 and 5 years. Both sexes are equally affected. <strong>5-year survival rate is approximately 90%</strong> — one of the more favorable pediatric solid tumor prognoses. <span class="lecture-tag">Lecture</span></p>
 <h4>Signs &amp; Symptoms</h4>
 <div class="expected">
 <span class="label">Clinical manifestations</span>
 <ul>
-<li><strong>Palpable abdominal mass</strong> that does <strong>NOT cross the midline</strong> (contrast with neuroblastoma above)</li>
-<li><strong>Painless</strong> — the mass itself typically does not cause pain</li>
-<li>Hematuria, hypertension occur infrequently but can be present</li>
+<li><strong>Palpable abdominal mass</strong> that does <strong>NOT cross the midline</strong> (contrast with neuroblastoma above) — firm, nontender, confined to one side, deep within the flank; often first discovered incidentally during routine bathing or dressing</li>
+<li><strong>Painless</strong> in most cases — abdominal pain is present in only about 40% of patients</li>
+<li>Hematuria — occurs in less than 25% of children</li>
+<li>Hypertension — occurs in about 25% of children, likely from excess renin secretion by the tumor</li>
+<li>Anemia (from hemorrhage within the tumor) causing pallor, anorexia, lethargy</li>
+<li>Fever in about 10% of cases</li>
+<li>Respiratory symptoms (dyspnea, cough, chest pain) if pulmonary metastasis has occurred</li>
 </ul>
+</div>
+<div class="alert-box">
+<span class="label">Associated congenital anomalies to ask about</span>
+When Wilms tumor is suspected, history and physical exam should specifically screen for aniridia (absence of the iris), hemihypertrophy, developmental delay, hypospadias, and cryptorchidism, along with any family history of cancer — several genetic syndromes carry increased Wilms tumor risk.
 </div>
 <div class="danger-box">
 <span class="label">The single most important safety instruction for this diagnosis</span>
@@ -1588,11 +1720,13 @@
 </div>
 <h4>Priority Nursing Interventions — Acuity Order</h4>
 <ol class="priority-steps">
-<li><span class="acuity-tag acuity-kill">Will Kill First (long-term prognosis)</span><br/>Post a "No abdominal palpation" sign above the bed and ensure every caregiver and staff member is aware before any physical assessment.
-      <span class="why">Why: Tumor rupture from palpation can spread malignant cells intra-abdominally, converting a highly curable localized cancer into a much higher-stage, harder-to-treat disease — this single nursing action has an outsized impact on long-term survival.</span></li>
-<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Monitor strict intake and output of urine, given renal involvement.
-      <span class="why">Why: Tracks renal function and any post-surgical changes in the remaining kidney tissue/function.</span></li>
-<li><span class="acuity-tag acuity-important">Important</span><br/>Support chemotherapy, post-radiation care, and surgical recovery; monitor for infection.</li>
+<li><span class="acuity-tag acuity-kill">Will Kill First (long-term prognosis)</span><br/>Post a "No abdominal palpation" sign above the bed and ensure every caregiver and staff member is aware before any physical assessment; use caution when bathing, moving, or handling the child to avoid pressure on the abdomen.
+      <span class="why">Why: Tumor rupture from palpation (or rough handling) can spread malignant cells intra-abdominally, converting a highly curable localized cancer into a much higher-stage, harder-to-treat disease — this single nursing action has an outsized impact on long-term survival.</span></li>
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Monitor blood pressure closely (tumor may secrete excess renin); measure abdominal girth at least once daily preoperatively to track any change in mass size.
+      <span class="why">Why: Both hypertension and a rapidly enlarging mass can signal disease progression or an impending complication that needs prompt provider notification.</span></li>
+<li><span class="acuity-tag acuity-urgent">Urgent</span><br/>Postoperatively: monitor temperature and blood pressure closely; watch for signs of hemorrhage and infection; monitor strict intake and urine output.
+      <span class="why">Why: Tracks renal function and any post-surgical changes in the remaining kidney tissue/function, and catches early signs of surgical complications.</span></li>
+<li><span class="acuity-tag acuity-important">Important</span><br/>Monitor for abdominal distention, bowel sounds, and other signs of GI activity given the risk of postoperative intestinal obstruction; support chemotherapy, post-radiation care, and surgical recovery.</li>
 </ol>
 <h4>Treatment</h4>
 <ul>
@@ -1631,37 +1765,52 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 29–30; cross-referenced with Perry Ch. 44 general pediatric oncology principles.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= RETINOBLASTOMA ========================= -->
-<section class="unit-block" id="retinoblastoma">
+<section class="unit-block page-section" id="retinoblastoma">
 <h2 class="section-title">Retinoblastoma</h2>
-<details class="card tumor"><summary><div class="card-header">
+<div class="card tumor"><div class="card-header">
 <h3>Retinoblastoma</h3>
 <div class="tag">Malignant retinal tumor — vision- and life-threatening</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
-<p>A malignant tumor arising from the retina. Can grow rapidly or slowly depending on the specific tumor biology. <span class="lecture-tag">Lecture</span></p>
+<p>The most common intraocular malignancy of childhood, arising from the retina. Approximately 300 new cases are diagnosed annually in the United States. Most cases are diagnosed before age 2. <span class="lecture-tag">Lecture</span></p>
+<h5>Hereditary vs. Sporadic Forms — Know the Breakdown</h5>
+<table>
+<tr><th>Form</th><th>Percentage of Cases</th><th>Notes</th></tr>
+<tr><td>Unilateral, nonhereditary (sporadic)</td><td>60%</td><td>Both mutation "hits" occur somatically, not in the germline</td></tr>
+<tr><td>Bilateral, hereditary</td><td>25%</td><td>Germline mutation of the <strong>RB1 gene</strong> — may be inherited, or arise in a germ cell/in utero; children with the hereditary form tend to be diagnosed younger</td></tr>
+<tr><td>Unilateral, hereditary</td><td>15%</td><td>Still carries the germline mutation despite only one eye being affected at diagnosis</td></tr>
+</table>
+<div class="alert-box">
+<span class="label">Why the hereditary/sporadic distinction matters clinically</span>
+Children with the <strong>bilateral (hereditary) form</strong> are at higher risk for developing second malignancies later in life, and radiation therapy further increases that risk. This is also why genetic counseling is so important for families — siblings and future children of an affected child, and the survivor's own future children, may carry meaningful recurrence risk.
+</div>
 <h4>Signs &amp; Symptoms</h4>
 <div class="expected">
 <span class="label">Clinical manifestations</span>
 <ul>
-<li><strong>Whitish glow in the pupil (leukocoria)</strong> — the classic presenting sign, often first noticed by a parent in a photograph</li>
-<li>Strabismus</li>
+<li><strong>Whitish glow in the pupil (leukocoria, or "cat's eye reflex")</strong> — the classic presenting sign, often first noticed by a parent in a flash photograph, since bright light striking the tumor produces the reflex</li>
+<li>Strabismus — the next most common sign, from poor fixation of the visually impaired eye</li>
 <li>Red, painful eyes</li>
 <li>Inward or outward turning of the eye</li>
-<li>Visual impairment/blindness</li>
-<li>Abnormal appearance of the eye</li>
+<li>Visual impairment/blindness — usually a late sign; may show as bumping into objects or head-turning to see</li>
+<li>Late signs: pain, orbital cellulitis, glaucoma</li>
 </ul>
 </div>
 <h4>Labs &amp; Diagnostics</h4>
 <table>
 <tr><th>Test</th><th>Purpose</th></tr>
-<tr><td>Examination using an ophthalmoscope</td><td>Direct visualization of the retinal mass</td></tr>
+<tr><td>Indirect ophthalmoscopy (under anesthesia)</td><td>Primary diagnostic and staging tool — determines tumor size (disc diameters) and location</td></tr>
 <tr><td>Orbital ultrasound</td><td>Characterize tumor extent</td></tr>
 <tr><td>CT or MRI</td><td>Assess for extraocular spread</td></tr>
+<tr><td>RB1 gene testing (blood/tumor sample)</td><td>Identifies germline mutation — confirms hereditary form and informs genetic counseling</td></tr>
 </table>
+<div class="alert-box">
+<span class="label">Prognosis</span>
+The overall 10-year survival rate is <strong>nearly 90%</strong> for both unilateral and bilateral disease. Like neuroblastoma, retinoblastoma can occasionally spontaneously regress.
+</div>
 <div class="call-provider">
 <span class="label">Notify the Provider If</span>
 <ul>
@@ -1705,20 +1854,20 @@
 <li>Follow eye socket care instructions precisely to prevent infection during healing</li>
 <li>Keep the 3-week follow-up for prosthetic eye fitting</li>
 <li>Continue regular ophthalmologic surveillance, especially important if the retinoblastoma has a heritable component (risk to the other eye or future offspring)</li>
+<li><strong>Protect the unaffected/remaining eye</strong> — avoid rough contact sports or wear protective eyewear during play, since safety of the remaining vision is now a lifelong priority</li>
 </ul>
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 31–32; cross-referenced with Perry Ch. 44.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= OSTEOSARCOMA ========================= -->
-<section class="unit-block" id="osteosarcoma">
+<section class="unit-block page-section" id="osteosarcoma">
 <h2 class="section-title">Osteosarcoma</h2>
-<details class="card tumor"><summary><div class="card-header">
+<div class="card tumor"><div class="card-header">
 <h3>Osteosarcoma</h3>
 <div class="tag">Most common bone tumor — long bones, metaphysis</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>A bone tumor usually occurring in the metaphysis (growth plate region), more common in the long bones. <span class="lecture-tag">Lecture</span></p>
 <h4>Signs &amp; Symptoms</h4>
@@ -1806,16 +1955,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 33–35; cross-referenced with Perry Ch. 44 general pediatric oncology principles.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= EWING'S SARCOMA ========================= -->
-<section class="unit-block" id="ewings">
+<section class="unit-block page-section" id="ewings">
 <h2 class="section-title">Ewing's Sarcoma</h2>
-<details class="card tumor"><summary><div class="card-header">
+<div class="card tumor"><div class="card-header">
 <h3>Ewing's Sarcoma</h3>
 <div class="tag">Bone and soft tissue tumor — femur, pelvis, ribs, upper arms</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>A malignant tumor of bone and soft tissue, typically arising in the <strong>middle of long bones</strong>, most often the femur, pelvis, ribs, and upper arms. More often seen in males. Affects children between approximately <strong>10 and 20 years old</strong>. <span class="lecture-tag">Lecture</span></p>
 <h5>Risk Factors</h5>
@@ -1900,16 +2048,15 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slides 36–37; cross-referenced with Perry Ch. 44.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= HODGKIN / NON-HODGKIN LYMPHOMA ========================= -->
-<section class="unit-block" id="hodgkin">
+<section class="unit-block page-section" id="hodgkin">
 <h2 class="section-title">Hodgkin's &amp; Non-Hodgkin's Lymphoma</h2>
-<details class="card tumor"><summary><div class="card-header">
+<div class="card tumor"><div class="card-header">
 <h3>Hodgkin's Lymphoma</h3>
 <div class="tag">Cancer of the lymph system — Reed-Sternberg cells</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Cancer of the lymph system, classically presenting with painless, firm cervical or supraclavicular lymphadenopathy. <span class="lecture-tag">Lecture</span></p>
 <h4>Signs &amp; Symptoms</h4>
@@ -1968,12 +2115,14 @@
 </div>
 <p class="source-tag">Source: Unit 10 lecture slide 38; cross-referenced with Saunders 9th ed. Ch. 32 (Reed-Sternberg cells).</p>
 </div>
-</details>
-<details class="card tumor"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="non-hodgkin">
+<h2 class="section-title">Non-Hodgkin's Lymphoma</h2>
+<div class="card tumor"><div class="card-header">
 <h3>Non-Hodgkin's Lymphoma (NHL)</h3>
 <div class="tag">Different from Hodgkin's — no single focal origin, rapid onset</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Also a cancer of the lymph system, but <strong>different from Hodgkin's lymphoma</strong> in that there is <strong>no single focal origin</strong> — NHL has rapid onset with widespread involvement at presentation, rather than the more localized, orderly nodal spread typical of Hodgkin's. <span class="lecture-tag">Lecture</span></p>
 <h4>Signs &amp; Symptoms</h4>
@@ -2060,16 +2209,15 @@
 <p>This is the single most efficient way to hold both diseases in your head for the exam: Hodgkin is the "orderly, single-origin, better-prognosis" lymphoma; Non-Hodgkin is the "disorderly, widespread, needs-spinal-chemo" lymphoma.</p>
 <p class="source-tag">Source: Unit 10 lecture slides 39, 70, 74 (2026 deck); cross-referenced with Perry Ch. 44 (NHL staging, mediastinal mass emergencies).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= GRIEF AND LOSS ========================= -->
-<section class="unit-block" id="grief">
-<h2 class="section-title">Grief and Loss</h2>
-<details class="card grief"><summary><div class="card-header">
+<section class="unit-block page-section" id="grief-death-by-age">
+<h2 class="section-title">Grief &amp; Loss — Causes of Death by Age</h2>
+<div class="card grief"><div class="card-header">
 <h3>Common Causes of Pediatric Death by Age</h3>
 <div class="tag">Context for family-centered end-of-life care</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Common Causes of Death <span class="lecture-tag">Lecture</span></h4>
 <div class="age-grid">
 <div class="age-card"><div class="age-head">Newborns/Infants</div><div class="age-body">Prematurity, congenital defects, infection</div></div>
@@ -2079,12 +2227,14 @@
 </div>
 <p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 2.</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-palliative-hospice">
+<h2 class="section-title">Grief &amp; Loss — Palliative Care vs. Hospice</h2>
+<div class="card grief"><div class="card-header">
 <h3>Palliative Care vs. Hospice</h3>
 <div class="tag">Two distinct but related philosophies of care</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Principles of Palliative Care <span class="lecture-tag">Lecture</span></h4>
 <ul>
 <li>Multidisciplinary team involved</li>
@@ -2117,12 +2267,14 @@
 </div>
 <p class="source-tag">Source: Unit 10 Grief and Loss lecture slides 3–4, 78 (2026 deck).</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-dying-child">
+<h2 class="section-title">Grief &amp; Loss — The Dying Child</h2>
+<div class="card grief"><div class="card-header">
 <h3>The Dying Child — Honesty &amp; Communication</h3>
 <div class="tag">Children are perceptive — they know something is different</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Core Principle <span class="lecture-tag">Lecture</span></h4>
 <ul>
 <li>Children need <strong>honest and accurate information</strong> about their illness, treatment, and prognosis</li>
@@ -2137,12 +2289,14 @@
     </div>
 <p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 5.</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-perceptions-death">
+<h2 class="section-title">Grief &amp; Loss — Perceptions of Death by Stage</h2>
+<div class="card grief"><div class="card-header">
 <h3>Perceptions of Death by Developmental Stage &amp; Interventions</h3>
 <div class="tag">The single most testable content block in this unit</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Infant <span class="lecture-tag">Lecture</span></h4>
 <ul>
 <li>Minimal impact of death concept before 6 months of age</li>
@@ -2202,18 +2356,24 @@
     </div>
 <p class="source-tag">Source: Unit 10 Grief and Loss lecture slides 6–8.</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-impending-death">
+<h2 class="section-title">Grief &amp; Loss — Signs of Impending Death</h2>
+<div class="card grief"><div class="card-header">
 <h3>Signs of Impending Death</h3>
 <div class="tag">Physical changes in the actively dying child</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Signs <span class="lecture-tag">Lecture</span></h4>
 <div class="four-col">
-<div class="crisis-card"><h5>Circulatory/Skin</h5><p>Loss of sensation to the body and thermoregulation; cool, pale skin, may become cyanotic</p></div>
-<div class="crisis-card"><h5>Elimination</h5><p>Loss of bowel and bladder function; decreased oral intake</p></div>
-<div class="crisis-card"><h5>Respiratory</h5><p>Cheyne-Stokes respirations</p></div>
-<div class="crisis-card"><h5>Neurologic</h5><p>Changes in LOC; weakness, slurred speech; changes in vital signs and pain perception</p></div>
+<div class="crisis-card"><h5>Circulatory/Skin</h5><p>Loss of sensation and movement in the lower extremities, progressing toward the upper body; skin feels cool, but the child may report a <strong>sensation of heat</strong>; cyanosis possible; weak, slow pulse; decreased blood pressure</p></div>
+<div class="crisis-card"><h5>Elimination/Intake</h5><p>Loss of bowel and bladder control; decreased appetite and thirst; difficulty swallowing</p></div>
+<div class="crisis-card"><h5>Respiratory</h5><p>Cheyne-Stokes respirations (waxing/waning depth of breathing with regular apnea periods); "<strong>death rattle</strong>" — noisy chest sounds from accumulated pulmonary/pharyngeal secretions</p></div>
+<div class="crisis-card"><h5>Neurologic/Sensory</h5><p>Confusion, loss of consciousness, slurred speech, muscle weakness; senses fail in order — tactile sensation and light sensitivity decrease first, with <strong>hearing being the last sense to fail</strong>; changes in pain perception</p></div>
+</div>
+<div class="alert-box">
+<span class="label">Clinical takeaway — why hearing matters most here</span>
+Because hearing is believed to be the last sense to fail, <strong>continue talking to the child and encourage the family to do the same</strong>, even once the child appears unresponsive to touch or sight. This directly supports the "encourage talking with the child" nursing principle in the next section.
 </div>
 <h4>Priority Nursing Interventions</h4>
 <ol class="priority-steps">
@@ -2223,12 +2383,14 @@
 </ol>
 <p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 9.</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-nursing-care">
+<h2 class="section-title">Grief &amp; Loss — Nursing Care of the Dying Child</h2>
+<div class="card grief"><div class="card-header">
 <h3>Nursing Care of the Dying Child &amp; Family</h3>
 <div class="tag">Before, during, and after death</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>General Nursing Care Principles <span class="lecture-tag">Lecture</span></h4>
 <ul>
 <li>Allow parents to hold and visit as long as possible</li>
@@ -2271,12 +2433,14 @@
 </ol>
 <p class="source-tag">Source: Unit 10 Grief and Loss lecture slides 10, 12.</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-communication">
+<h2 class="section-title">Grief &amp; Loss — Communication Strategies</h2>
+<div class="card grief"><div class="card-header">
 <h3>Communication Strategies</h3>
 <div class="tag">What to say and what never to say</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Saying Goodbye <span class="lecture-tag">Lecture</span></h4>
 <ul>
 <li>Allow time</li>
@@ -2290,8 +2454,11 @@
 <li>"You can have another child"</li>
 <li>"It could have been worse" or "I have seen worse"</li>
 <li>"You don't want him to live like that"</li>
+<li>"You should be feeling better by now"</li>
+<li>"I know how you feel"</li>
+<li>"Your child isn't suffering anymore" (offering rationalizations for the death)</li>
 </ul>
-<p>These minimize the loss and impose the speaker's judgment onto the family's grief.</p>
+<p>These minimize the loss, offer artificial consolation, or impose the speaker's judgment onto the family's grief.</p>
 </div>
 <div class="selfcare-box">
 <span class="label">Do Say</span>
@@ -2299,18 +2466,53 @@
 <li>"I'm sorry"</li>
 <li>"Is there someone I can call for you?"</li>
 <li>"Do you want me to stay with you?"</li>
+<li>"You're still feeling all the pain of losing a child" (focus on feelings by naming the feeling directly)</li>
+<li>"We will miss him so much" / "We tried everything; we feel so sorry we couldn't save her" (expressing genuine personal feelings of loss is appropriate and human)</li>
 </ul>
-<p>These validate the loss and offer concrete, actionable support without minimizing.</p>
+<p>These validate the loss and offer concrete, actionable support without minimizing. Perry emphasizes that the single most valuable thing a nurse can do is <strong>listen</strong> — families understand no words will relieve their pain; they want acceptance, understanding, and respect for their grief.</p>
 </div>
 </div>
-<p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 11.</p>
+<h4>Perry's Nursing Care Guidelines — By Timing</h4>
+<div class="edu-grid">
+<div class="edu-parent">
+<span class="label">At the Time of Death</span>
+<ul>
+<li>Reassure the family that everything possible is being done, if they want life-saving interventions</li>
+<li>Do everything possible to ensure the child's comfort, especially relieving pain</li>
+<li>Provide the opportunity to review special memories</li>
+<li>Provide honest information the family requests</li>
+<li>Respect the emotional needs of siblings, who may need brief respite from the dying child</li>
+<li>Arrange for family, especially parents, to be present at the moment of death if desired</li>
+<li>Allow the family to stay with the child as long as they wish, and to rock, hold, or bathe the child</li>
+<li>Arrange spiritual support based on the family's beliefs</li>
+</ul>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+<div class="edu-child">
+<span class="label">After Death (Post-Death Follow-Up)</span>
+<ul>
+<li>Attend the funeral or visitation if there was a special closeness with the family</li>
+<li>Initiate and maintain contact afterward — cards, calls, inviting them back to the unit, a home visit</li>
+<li>Refer to the child by name; discuss shared memories</li>
+<li>Discourage using drugs/alcohol to escape grief</li>
+<li>Encourage every family member to communicate their feelings rather than staying silent to protect others</li>
+<li>Emphasize that grieving is a painful process that often takes <strong>years</strong>, not weeks, to resolve</li>
+</ul>
+</div>
+</div>
+<div class="alert-box">
+<span class="label">Complicated grief — know the definition</span>
+Grief reactions persisting <strong>more than 1 year</strong> after the loss — including intense intrusive thoughts, severe emotional pangs, distressing yearning, excessive loneliness/emptiness, unusual sleep disturbance, and maladaptive loss of interest in personal activities — are considered <strong>complicated grief</strong> and warrant referral to a grief/bereavement counseling specialist.
+</div>
+<p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 11; Perry Ch. 36 (Nursing Care Guidelines: Supporting Grieving Families; complicated grief definition).</p>
+</div>
+</div>
+</section>
+<section class="unit-block page-section" id="grief-kubler-ross">
+<h2 class="section-title">Grief &amp; Loss — Stages of Grief (Kubler-Ross)</h2>
+<div class="card grief"><div class="card-header">
 <h3>Stages of Grief — Kubler-Ross</h3>
 <div class="tag">The five stages, 1983</div>
-</div></summary>
-
+</div>
 <div class="card-body">
 <div class="stages-grief">
 <div class="stage-pill">Denial &amp; Isolation</div>
@@ -2319,18 +2521,29 @@
 <div class="stage-pill">Depression</div>
 <div class="stage-pill">Acceptance</div>
 </div>
+<h4>What Each Stage Actually Looks Like</h4>
+<table>
+<tr><th>Stage</th><th>What You'll See</th></tr>
+<tr><td><strong>Denial &amp; Isolation</strong></td><td>Shock, disbelief; may include physician shopping, attributing symptoms to a minor condition, refusing to believe test results, delaying consent for treatment, acting optimistic despite the diagnosis, or asking no questions at all about diagnosis/treatment/prognosis. This is a <strong>necessary, adaptive cushion</strong> against being overwhelmed — not automatically a problem to "fix." It only becomes maladaptive when it prevents necessary treatment or rehabilitation decisions.</td></tr>
+<tr><td><strong>Anger</strong></td><td>May be directed at staff (complaints about nursing care, physicians "not spending enough time," perceived lack of skill during procedures) or at other family members. Affected children and well siblings can also show anger — siblings especially may resent the loss of routine/parental attention.</td></tr>
+<tr><td><strong>Bargaining</strong></td><td>Attempts to negotiate more time or a better outcome, often through promises (to God, to oneself) in exchange for a different result.</td></tr>
+<tr><td><strong>Depression</strong></td><td>Sadness, withdrawal, hopelessness as the reality of the loss sets in.</td></tr>
+<tr><td><strong>Acceptance</strong></td><td>Open acknowledgment that the condition/loss exists; for families of a chronically ill child, this often looks like <strong>gradual acceptance</strong> — placing realistic restrictions on the child, encouraging self-care, and promoting reasonable physical/social participation, rather than a single dramatic moment of "being okay."</td></tr>
+</table>
 <div class="alert-box">
 <span class="label">Important nuance for exam application</span>
-      These stages are <strong>not strictly linear</strong> — people (both dying patients and grieving family members) can move back and forth between stages, skip stages, or experience more than one simultaneously. Nursing care should meet the person wherever they currently are, rather than expecting or pushing progression through the stages in order.
+      These stages are <strong>not strictly linear</strong> — people (both dying patients and grieving family members) can move back and forth between stages, skip stages, or experience more than one simultaneously. Nursing care should meet the person wherever they currently are, rather than expecting or pushing progression through the stages in order. Note also that <strong>guilt and self-accusation</strong> are described separately by Perry as nearly universal accompanying reactions, especially when a parent feels any traceable responsibility (e.g., a genetic condition or an accidental injury) — even when no realistic basis for that responsibility exists.
     </div>
-<p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 13 (Kubler-Ross, 1983).</p>
+<p class="source-tag">Source: Unit 10 Grief and Loss lecture slide 13 (Kubler-Ross, 1983); Perry Ch. 36 (Shock and Denial, Adjustment sections).</p>
 </div>
-</details>
-<details class="card grief"><summary><div class="card-header">
+</div>
+</section>
+<section class="unit-block page-section" id="grief-education">
+<h2 class="section-title">Grief &amp; Loss — Patient &amp; Family Education</h2>
+<div class="card grief"><div class="card-header">
 <h3>Patient &amp; Family Education — Grief and Loss</h3>
 <div class="tag">Split by audience and developmental stage</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -2368,12 +2581,85 @@
 </div>
 <p class="source-tag">Source: Synthesized from Unit 10 Grief and Loss lecture slides 3–13 and Perry Ch. 36 (impact of chronic illness/disability/end-of-life care on the child and family).</p>
 </div>
-</details>
+</div>
 </section>
-
 </main>
 <footer>
   Built from Perry et al., <em>Maternal Child Nursing Care</em> 7th ed. (Ch. 36, Ch. 43, Ch. 44) · Saunders NCLEX Pediatric 9th ed. (Ch. 31 Hematological Problems, Ch. 32 Oncological Problems) · Unit 10 instructor lecture slides ("Caring for the Child with an Oncology or Hematology Condition" and "Grief and Loss," student decks) · NSG 3600 Syllabus v8.9 — all content grounded in Galen College of Nursing project materials and your uploaded course files. Content sourced from the lecture decks is marked <span class="lecture-tag">Lecture</span> throughout so you can tell textbook-grounded vs. instructor-added material apart. Verify against live class discussion; textbook page ranges reflect syllabus-assigned readings only.
 </footer>
+</div>
+<script>
+  (function() {
+    var toggle = document.getElementById('sidebarToggle');
+    var sidebar = document.getElementById('sidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('open');
+    }
+    function openSidebar() {
+      sidebar.classList.add('open');
+      backdrop.classList.add('open');
+    }
+    if (toggle && sidebar && backdrop) {
+      toggle.addEventListener('click', function() {
+        if (sidebar.classList.contains('open')) { closeSidebar(); } else { openSidebar(); }
+      });
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    // ---- Page switching (single-page-app style tabs) ----
+    var navLinks = document.querySelectorAll('.nav-link');
+    var pages = document.querySelectorAll('.page-section');
+    var mainEl = document.querySelector('main');
+
+    var navGroups = [
+      { toggleId: 'anemiaToggle', groupId: 'anemiaGroup', pages: ['anemia', 'ida'] },
+      { toggleId: 'tumorsToggle', groupId: 'tumorsGroup', pages: ['neuroblastoma', 'wilms', 'retinoblastoma', 'osteosarcoma', 'ewings'] },
+      { toggleId: 'lymphomaToggle', groupId: 'lymphomaGroup', pages: ['hodgkin', 'non-hodgkin'] },
+      { toggleId: 'griefToggle', groupId: 'griefGroup', pages: ['grief-death-by-age', 'grief-palliative-hospice', 'grief-dying-child', 'grief-perceptions-death', 'grief-impending-death', 'grief-nursing-care', 'grief-communication', 'grief-kubler-ross', 'grief-education'] }
+    ];
+
+    function showPage(pageId) {
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.toggle('active-page', pages[i].id === pageId);
+      }
+      for (var j = 0; j < navLinks.length; j++) {
+        navLinks[j].classList.toggle('active', navLinks[j].getAttribute('data-page') === pageId);
+      }
+      for (var g = 0; g < navGroups.length; g++) {
+        var grp = navGroups[g];
+        var toggleEl = document.getElementById(grp.toggleId);
+        var groupEl = document.getElementById(grp.groupId);
+        var isGroupPage = grp.pages.indexOf(pageId) !== -1;
+        toggleEl.classList.toggle('active-parent', isGroupPage);
+        if (isGroupPage) { groupEl.classList.add('open'); }
+      }
+      if (mainEl) { mainEl.scrollTop = 0; }
+      window.scrollTo(0, 0);
+      closeSidebar();
+    }
+
+    for (var k = 0; k < navLinks.length; k++) {
+      navLinks[k].addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage(this.getAttribute('data-page'));
+      });
+    }
+
+    for (var g2 = 0; g2 < navGroups.length; g2++) {
+      (function(grp) {
+        var toggleEl = document.getElementById(grp.toggleId);
+        var groupEl = document.getElementById(grp.groupId);
+        toggleEl.addEventListener('click', function() {
+          groupEl.classList.toggle('open');
+        });
+      })(navGroups[g2]);
+    }
+
+    // Default view on load
+    showPage('uslos');
+  })();
+</script>
 </body>
 </html>
