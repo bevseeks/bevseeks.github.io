@@ -49,21 +49,131 @@
   }
   header h1 { margin: 0 0 8px; font-size: 28px; letter-spacing: 0.2px; }
   header .sub { font-family: Arial, sans-serif; font-size: 14.5px; color: #dbe3f2; max-width: 900px; }
-  nav {
-    position: sticky; top: 0; z-index: 20;
+  body.has-sidebar { display: flex; min-height: 100vh; }
+  .page-content { flex: 1; min-width: 0; }
+  aside.sidebar {
+    width: 250px;
+    flex-shrink: 0;
     background: var(--navy-deep);
-    display: flex; flex-wrap: wrap; gap: 0;
-    font-family: Arial, sans-serif; font-size: 11.5px;
-    border-bottom: 3px solid var(--gold);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    border-right: 3px solid var(--gold);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 20;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.2);
   }
-  nav a {
-    color: #dbe3f2; text-decoration: none; padding: 9px 11px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    white-space: nowrap;
-    transition: background 0.15s, color 0.15s;
+  .sidebar-title {
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold-light);
+    padding: 18px 18px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
-  nav a:hover { background: rgba(255,255,255,0.08); }
+  .sidebar nav { display: flex; flex-direction: column; }
+  .sidebar nav a {
+    color: #dbe3f2;
+    text-decoration: none;
+    padding: 11px 18px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-left-color 0.15s;
+    cursor: pointer;
+    background: none;
+    text-align: left;
+    width: 100%;
+    display: block;
+  }
+  .sidebar nav a:hover {
+    background: rgba(255,255,255,0.06);
+    border-left-color: var(--gold);
+  }
+  .sidebar nav a.active {
+    background: rgba(212,167,44,0.15);
+    border-left-color: var(--gold);
+    font-weight: 700;
+    color: white;
+  }
+  .nav-group { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-group-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 18px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #dbe3f2;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-left-color 0.15s;
+  }
+  .nav-group-toggle:hover { background: rgba(255,255,255,0.06); }
+  .nav-group-toggle.active-parent {
+    border-left-color: var(--gold);
+    background: rgba(212,167,44,0.1);
+  }
+  .nav-group-toggle .chevron {
+    font-size: 10px;
+    color: var(--gold-light);
+    transition: transform 0.2s;
+  }
+  .nav-group.open .chevron { transform: rotate(90deg); }
+  .nav-subnav {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.2);
+  }
+  .nav-group.open .nav-subnav { display: flex; }
+  .nav-subnav a {
+    padding: 9px 18px 9px 34px;
+    font-size: 12.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .page-section { display: none; }
+  .page-section.active-page { display: block; }
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 30;
+    background: var(--navy-deep);
+    color: white;
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 860px) {
+    body.has-sidebar { display: block; }
+    aside.sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 260px;
+      height: 100vh;
+      transform: translateX(-100%);
+      transition: transform 0.2s ease;
+    }
+    aside.sidebar.open { transform: translateX(0); }
+    .sidebar-toggle { display: block; }
+    .sidebar-backdrop {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 19;
+    }
+    .sidebar-backdrop.open { display: block; }
+    header { padding-left: 64px; }
+  }
   main { max-width: 1040px; margin: 0 auto; padding: 30px 20px 90px; }
   section.unit-block { margin-bottom: 54px; }
   h2.section-title {
@@ -237,64 +347,57 @@
   .med-spotlight-header .generic { font-size: 12px; opacity: 0.9; font-weight: normal; }
   .med-spotlight-body { padding: 16px 18px; }
 
-  .card > summary {
-    list-style: none;
-    cursor: pointer;
-    display: block;
-  }
-  .card > summary::-webkit-details-marker { display: none; }
-  .card > summary::marker { content: ""; }
-  .card > summary .card-header {
-    position: relative;
-    margin: -1px -1px 0 -1px;
-  }
-  .card > summary .card-header::before {
-    content: "+";
-    position: absolute;
-    top: 50%;
-    right: 22px;
-    transform: translateY(-50%);
-    font-size: 22px;
-    font-weight: 700;
-    color: white;
-    z-index: 2;
-    width: 32px;
-    height: 32px;
-    text-align: center;
-    line-height: 29px;
-    border: 2px solid rgba(255,255,255,0.65);
-    border-radius: 50%;
-  }
-  .card[open] > summary .card-header::before {
-    content: "\2212";
-  }
-  .card > summary .card-header:hover::before {
-    background: rgba(255,255,255,0.18);
-  }
-  .card > summary .card-header .tag {
-    padding-right: 46px;
-  }
+  
+  
+  
+  
+  
+  
+  
+  
 </style>
 </head>
-<body>
+<body class="has-sidebar">
+<button aria-label="Toggle menu" class="sidebar-toggle" id="sidebarToggle">☰</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar">
+<div class="sidebar-title">Jump to Section</div>
+<nav id="sideNav">
+<a class="nav-link" data-page="uslos" href="#">USLOs</a>
+<div class="nav-group" id="diabetesGroup">
+<div class="nav-group-toggle" id="diabetesToggle">
+<span>Diabetes</span>
+<span class="chevron">▸</span>
+</div>
+<div class="nav-subnav">
+<a class="nav-link" data-page="dm" href="#">Type 1 DM</a>
+<a class="nav-link" data-page="dka" href="#">DKA</a>
+<a class="nav-link" data-page="t2dm" href="#">Type 2 DM</a>
+</div>
+</div>
+<a class="nav-link" data-page="puberty" href="#">Precocious Puberty</a>
+<div class="nav-group" id="thyroidGroup">
+<div class="nav-group-toggle" id="thyroidToggle">
+<span>Hypothyroidism</span>
+<span class="chevron">▸</span>
+</div>
+<div class="nav-subnav">
+<a class="nav-link" data-page="thyroid-cong" href="#">Congenital</a>
+<a class="nav-link" data-page="thyroid-juv" href="#">Juvenile (Acquired)</a>
+</div>
+</div>
+<a class="nav-link" data-page="pku" href="#">PKU</a>
+<a class="nav-link" data-page="calc" href="#">Med Math</a>
+</nav>
+</aside>
+<div class="page-content">
 <header>
 <div class="kicker">Galen College of Nursing · NSG 3600 · Exam 4 Prep</div>
 <h1>Unit 9 — The Child With Endocrine Dysfunction</h1>
 <div class="sub">Diabetes Mellitus (Type 1 &amp; DKA) · Precocious Puberty · Hypothyroidism (Congenital &amp; Juvenile) · PKU — NCJMM-Framed Comprehensive Atlas</div>
 </header>
-<nav>
-<a href="#uslos">USLOs</a>
-<a href="#dm">Type 1 DM</a>
-<a href="#dka">DKA</a>
-<a href="#t2dm">Type 2 DM</a>
-<a href="#puberty">Precocious Puberty</a>
-<a href="#thyroid-cong">Hypothyroidism (Congenital)</a>
-<a href="#thyroid-juv">Hypothyroidism (Juvenile)</a>
-<a href="#pku">PKU</a>
-<a href="#calc">Med Math</a>
-</nav>
 <main>
-<section class="unit-block" id="uslos">
+<section class="unit-block page-section" id="uslos">
 <div class="toc-legend">
 <strong>How priority acuity tags work in this guide:</strong>
 <span class="acuity-tag acuity-kill">Will Kill First</span> = airway/breathing/circulation or brain-threatening — act immediately, no delay.
@@ -304,13 +407,12 @@
   </div>
 </section>
 <!-- ========================= TYPE 1 DM ========================= -->
-<section class="unit-block" id="dm">
+<section class="unit-block page-section" id="dm">
 <h2 class="section-title">Type 1 Diabetes Mellitus</h2>
-<details class="card diabetes"><summary><div class="card-header">
+<div class="card diabetes"><div class="card-header">
 <h3>Type 1 Diabetes Mellitus</h3>
 <div class="tag">Absolute insulin deficiency — autoimmune beta-cell destruction</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Autoimmune destruction of pancreatic beta cells → <strong>absolute</strong> insulin deficiency. Without insulin, glucose can't enter cells → hyperglycemia. Once blood glucose exceeds the renal threshold (~180 mg/dL), glucose spills into urine (glycosuria), dragging water with it osmotically (polyuria) → compensatory polydipsia. Cells are starved despite hyperglycemia, so the body breaks down fat and protein for fuel — weight loss occurs despite polyphagia. Etiology is autoimmune, with genetic predisposition (family history is a recognized risk factor) triggered by an environmental factor (often viral) in genetically susceptible children.</p>
 <h5>Risk Factors</h5>
@@ -318,7 +420,7 @@
 <li>Family history of Type 1 DM (genetic susceptibility)</li>
 <li>Autoimmune disease history in the child or family</li>
 <li>Certain viral infections proposed as environmental triggers</li>
-<li>Peak onset ages: 5–7 years and again at puberty</li>
+<li>Peak onset ages: <strong>4–6 years and again at 10–14 years</strong> — approximately 45% of children diagnosed will present before their tenth birthday</li>
 </ul>
 <div class="mnemonic">
 <strong>The 3 P's + 1:</strong> Polyuria · Polydipsia · Polyphagia · Weight loss (despite eating more). Add: enuresis in a previously toilet-trained child, fatigue, blurred vision, slow wound healing, frequent infections (esp. Candida vaginitis in adolescent girls — hyperglycemic tissue is a great yeast environment).
@@ -501,10 +603,8 @@
 <span class="label">Medication Safety Alert</span>
       Insulin is a <strong>high-alert medication</strong>. Independent double-check of dose before administration. Rotate injection sites to prevent lipohypertrophy, which alters absorption.
     </div>
-
 <h4>Medications for Type 1 DM — Insulin, All Types</h4>
 <p>Teaching is split into <strong>Parent/Caregiver Teaching</strong> and <strong>Pediatric Patient Teaching</strong> for each insulin type, with the patient side further broken out by developmental stage.</p>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Insulin Lispro <span class="generic">— Humalog</span></h4></div>
 <div class="med-spotlight-body">
@@ -535,7 +635,6 @@
 </div>
 </div>
 </div>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Insulin Aspart <span class="generic">— NovoLog</span></h4></div>
 <div class="med-spotlight-body">
@@ -558,7 +657,6 @@
 </div>
 </div>
 </div>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>NPH <span class="generic">— Humulin N / Novolin N</span></h4></div>
 <div class="med-spotlight-body">
@@ -582,7 +680,6 @@
 </div>
 </div>
 </div>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Insulin Glargine <span class="generic">— Lantus</span></h4></div>
 <div class="med-spotlight-body">
@@ -607,7 +704,6 @@
 <p class="source-tag">Source: Davis's Drug Guide for Nurses — insulin technique, injection-site rotation, storage/disposal, glucose/ketone monitoring, and hypo/hyperglycemia recognition.</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -645,16 +741,15 @@
 </div>
 <p class="source-tag">Sources: Perry Ch. 47 (pp. 1435–1447), Box 47.13; Saunders 9th ed. Ch. 33.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= DKA ========================= -->
-<section class="unit-block" id="dka">
+<section class="unit-block page-section" id="dka">
 <h2 class="section-title">Diabetic Ketoacidosis (DKA)</h2>
-<details class="card diabetes"><summary><div class="card-header">
+<div class="card diabetes"><div class="card-header">
 <h3>Diabetic Ketoacidosis</h3>
 <div class="tag">Medical emergency — insulin insufficiency, ketosis, and acidosis</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Without insulin, cells can't use glucose, so the body burns fat for fuel. Fat breakdown produces ketone bodies (beta-hydroxybutyric acid, acetoacetic acid, acetone) — strong acids that lower serum pH → ketoacidosis. The respiratory system compensates with Kussmaul respirations to blow off CO₂. Osmotic diuresis causes severe dehydration and depletes total body potassium — even though <strong>serum</strong> potassium may look normal or high initially (acidosis shifts K+ out of cells), total body K+ is low. As insulin corrects acidosis, potassium shifts back into cells and serum levels can crash — a major reason for close monitoring during treatment. Untreated, this progresses to dehydration, electrolyte imbalance, acidosis, coma, and death.</p>
 <h5>Risk Factors / Common Precipitants</h5>
@@ -771,7 +866,6 @@
 <li>Cautious sodium bicarbonate only for severe acidosis/hyperkalemia/cardiac instability</li>
 <li>Electrolyte replacement — potassium typically 20–40 mEq/L, with continuous EKG monitoring, guided by frequent labs</li>
 </ol>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Regular Insulin <span class="generic">— Novolin R</span></h4></div>
 <div class="med-spotlight-body">
@@ -795,7 +889,6 @@
 </div>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -827,16 +920,15 @@
 </div>
 <p class="source-tag">Sources: Perry Ch. 47 (DKA pathophysiology, hospital management); Saunders 9th ed. Ch. 33 (diagnostic criteria, complications).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= TYPE 2 DM ========================= -->
-<section class="unit-block" id="t2dm">
+<section class="unit-block page-section" id="t2dm">
 <h2 class="section-title">Type 2 Diabetes Mellitus <span class="lecture-tag">Lecture</span></h2>
-<details class="card diabetes"><summary><div class="card-header">
+<div class="card diabetes"><div class="card-header">
 <h3>Type 2 Diabetes Mellitus</h3>
 <div class="tag">Insulin resistance, not absolute deficiency — not in your syllabus reading list, but covered live in lecture</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>The body's cells become <strong>resistant</strong> to insulin and fail to use it properly, rather than the pancreas failing to produce it (as in Type 1). This is a <strong>relative</strong>, not absolute, insulin deficiency. <span class="lecture-tag">Lecture</span></p>
 <h4>Type 1 vs. Type 2 — Quick Comparison</h4>
@@ -891,7 +983,6 @@
 <li>Family-centered approach is essential — habits usually need to change household-wide, not just for the affected child</li>
 <li>Screen for and address comorbidities (hypertension, dyslipidemia, PCOS) as part of the full picture</li>
 </ul>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Metformin <span class="generic">— Glucophage</span></h4></div>
 <div class="med-spotlight-body">
@@ -919,19 +1010,17 @@
 <p class="source-tag">Source: Davis's Drug Guide for Nurses (Metformin — lactic acidosis precautions, hold-for-contrast teaching).</p>
 </div>
 </div>
-
 <p class="source-tag">Source: Unit 9 instructor lecture slides (2026 student deck, slides 16–18); cross-referenced with Perry/Saunders general DM content for supporting pathophysiology.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= PRECOCIOUS PUBERTY ========================= -->
-<section class="unit-block" id="puberty">
+<section class="unit-block page-section" id="puberty">
 <h2 class="section-title">Precocious Puberty</h2>
-<details class="card puberty"><summary><div class="card-header">
+<div class="card puberty"><div class="card-header">
 <h3>Precocious Puberty (Central &amp; Peripheral)</h3>
 <div class="tag">Premature activation of the hypothalamic-pituitary-gonadal axis</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Puberty before <strong>8 years old in girls</strong> or <strong>9 years old in boys</strong> is precocious (newer guidelines: before 7 in Caucasian girls, before 6 in African-American girls).</p>
 <ul>
@@ -1037,7 +1126,6 @@
 <tr><td>Histrelin implant (Supprelin LA)</td><td>GnRH analog</td><td><strong>Permanent implant device</strong> that automatically releases the inhibitor continuously over the course of a year; the child returns annually for a new implant <span class="lecture-tag">Lecture</span></td><td>Same class effects as above</td></tr>
 </table>
 <p>~50% of cases regress or stop progressing without treatment. Treatment targets the underlying cause when identified and is discontinued at a chronologically appropriate time to allow normal puberty to resume. Ongoing management includes tracking growth charts, monitoring hormone blood levels, and follow-up with a pediatric endocrinologist. <span class="lecture-tag">Lecture</span></p>
-
 <div class="med-spotlight">
 <div class="med-spotlight-header"><h4>Medication Spotlight: Histrelin <span class="generic">— Supprelin LA / GnRH Therapy</span></h4></div>
 <div class="med-spotlight-body">
@@ -1065,7 +1153,6 @@
 <p class="source-tag">Source: Unit 9 lecture — psychosocial/body-image emphasis, chronological-vs-developmental-age teaching point.</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -1099,16 +1186,15 @@
 </div>
 <p class="source-tag">Source: Perry Ch. 47, "Precocious Puberty" section (pp. 1423–1424 range).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= CONGENITAL HYPOTHYROIDISM ========================= -->
-<section class="unit-block" id="thyroid-cong">
+<section class="unit-block page-section" id="thyroid-cong">
 <h2 class="section-title">Hypothyroidism — Congenital</h2>
-<details class="card thyroid"><summary><div class="card-header">
+<div class="card thyroid"><div class="card-header">
 <h3>Congenital Hypothyroidism</h3>
 <div class="tag">Present at birth — time-critical for neurodevelopment</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Low circulating thyroid hormone (T4/T3) with elevated TSH at birth, from thyroid gland dysgenesis, hormone synthesis defects, or (rarely) maternal factors. TH regulates basal metabolic rate and is essential for growth and tissue differentiation — deficiency has a <strong>more profound effect on growth than GH deficiency</strong> because TH touches more systems. <strong>Untreated congenital hypothyroidism causes severe, irreversible neurocognitive dysfunction</strong> because brain growth is nearly complete by age 2–3 — this is why newborn screening exists and treatment cannot wait.</p>
 <h5>Risk Factors</h5>
@@ -1240,16 +1326,15 @@ See the <strong>Medication Spotlight: Levothyroxine</strong> in the Juvenile Hyp
 </div>
 <p class="source-tag">Source: Perry Ch. 47, congenital hypothyroidism section (cross-referenced with Ch. 25/46, newborn screening).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= JUVENILE HYPOTHYROIDISM ========================= -->
-<section class="unit-block" id="thyroid-juv">
+<section class="unit-block page-section" id="thyroid-juv">
 <h2 class="section-title">Hypothyroidism — Juvenile (Acquired)</h2>
-<details class="card thyroid"><summary><div class="card-header">
+<div class="card thyroid"><div class="card-header">
 <h3>Juvenile (Acquired) Hypothyroidism</h3>
 <div class="tag">Onset after the newborn period — less neuro-urgent, still needs treatment</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>Occurs after infancy from: congenital hypoplastic thyroid becoming inadequate with growth demands, thyroidectomy, radiotherapy (e.g., after Hodgkin lymphoma treatment), infectious/autoimmune processes (Hashimoto/lymphocytic thyroiditis is the most common cause), or iodine deficiency (rare in the U.S. due to iodized salt). Because brain growth is nearly complete by age 2–3, <strong>intellectual disability and neurologic sequelae are NOT associated with juvenile-onset hypothyroidism</strong> — the key distinction from the congenital form and a favorite NCLEX contrast point.</p>
 <h5>Risk Factors</h5>
@@ -1349,7 +1434,6 @@ See the <strong>Medication Spotlight: Levothyroxine</strong> in the Juvenile Hyp
 <p class="source-tag">Source: Unit 9 lecture NGN practice question; Abrams Ch. 42.</p>
 </div>
 </div>
-
 <h4>Patient Education — Split by Audience &amp; Developmental Stage</h4>
 <div class="edu-grid">
 <div class="edu-parent">
@@ -1389,16 +1473,15 @@ See the <strong>Medication Spotlight: Levothyroxine</strong> in the Juvenile Hyp
 </div>
 <p class="source-tag">Source: Perry Ch. 47, Juvenile Hypothyroidism &amp; Box 47.5; Abrams Ch. 42, Levothyroxine nursing implications; Unit 9 lecture slides 11–12, 17–18.</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= PKU ========================= -->
-<section class="unit-block" id="pku">
+<section class="unit-block page-section" id="pku">
 <h2 class="section-title">Phenylketonuria (PKU) / Phenylalanine Hydroxylase Deficiency</h2>
-<details class="card pku"><summary><div class="card-header">
+<div class="card pku"><div class="card-header">
 <h3>PKU (PAH Deficiency)</h3>
 <div class="tag">Autosomal recessive metabolic disorder — dietary management is treatment</div>
-</div></summary>
-
+</div>
 <div class="card-body"><h4>Pathophysiology &amp; Etiology</h4>
 <p>PKU/PAH deficiency is an <strong>autosomal recessive</strong> disorder — an inherited error of metabolism resulting from absence/deficiency of the enzyme (phenylalanine hydroxylase) that metabolizes the amino acid phenylalanine, an amino acid found in proteins. Without this enzyme, phenylalanine accumulates to toxic levels in the blood, causing <strong>central nervous system damage</strong>. Classic example of gene-environment interaction: the enzyme defect is genetic, but damage only occurs after the infant ingests phenylalanine-containing substances (breast milk or standard formula) — the "environmental trigger." <strong>There is no prevention</strong> for the underlying genetic defect itself <span class="lecture-tag">Lecture</span> — the only intervention is early detection and dietary management to prevent the toxic buildup.</p>
 <h5>Risk Factors</h5>
@@ -1540,10 +1623,10 @@ See the <strong>Medication Spotlight: Levothyroxine</strong> in the Juvenile Hyp
     </div>
 <p class="source-tag">Source: Saunders 9th ed., Ch. 33 "Metabolic and Endocrine Problems," PKU section, including the Evaluate Outcomes clinical judgment box. Cross-referenced with Unit 9 lecture slide 10 (PAH deficiency terminology, no-S/S-at-birth point, no-prevention point).</p>
 </div>
-</details>
+</div>
 </section>
 <!-- ========================= MED MATH ========================= -->
-<section class="unit-block" id="calc">
+<section class="unit-block page-section" id="calc">
 <h2 class="section-title">Medication Math You Must Be Able to Do Cold</h2>
 <div class="calc-box">
 <strong>DKA Insulin Drip Rate</strong>
@@ -1561,10 +1644,81 @@ See the <strong>Medication Spotlight: Levothyroxine</strong> in the Juvenile Hyp
 <p><strong>0.1 mg is 10x the dose of 0.01 mg.</strong> Always have insulin doses independently double-checked — a decimal error here is catastrophic given insulin's narrow safety margin.</p>
 </div>
 </section>
-
 </main>
 <footer>
   Built from Perry et al., <em>Maternal Child Nursing Care</em> 7th ed. (Ch. 47, Ch. 25/46, Ch. 28/34/35 growth &amp; development) · Saunders NCLEX Pediatric 9th ed. (Ch. 33) · Abrams' <em>Clinical Drug Therapy</em> (Ch. 42) · Unit 9 instructor lecture slides ("Caring for the Child with an Endocrine Condition," student deck) · NSG 3600 Syllabus v8.9 — all content grounded in Galen College of Nursing project materials and your uploaded course files. Content sourced from the lecture deck is marked <span class="lecture-tag">Lecture</span> throughout so you can tell textbook-grounded vs. instructor-added material apart. Verify against live class discussion; textbook page ranges reflect syllabus-assigned readings only. Dietary lists reflect general categories — individualized meal planning should always involve the metabolic dietitian/care team.
 </footer>
+</div>
+<script>
+  (function() {
+    var toggle = document.getElementById('sidebarToggle');
+    var sidebar = document.getElementById('sidebar');
+    var backdrop = document.getElementById('sidebarBackdrop');
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('open');
+    }
+    function openSidebar() {
+      sidebar.classList.add('open');
+      backdrop.classList.add('open');
+    }
+    if (toggle && sidebar && backdrop) {
+      toggle.addEventListener('click', function() {
+        if (sidebar.classList.contains('open')) { closeSidebar(); } else { openSidebar(); }
+      });
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    // ---- Page switching (single-page-app style tabs) ----
+    var navLinks = document.querySelectorAll('.nav-link');
+    var pages = document.querySelectorAll('.page-section');
+    var mainEl = document.querySelector('main');
+
+    var navGroups = [
+      { toggleId: 'diabetesToggle', groupId: 'diabetesGroup', pages: ['dm', 'dka', 't2dm'] },
+      { toggleId: 'thyroidToggle', groupId: 'thyroidGroup', pages: ['thyroid-cong', 'thyroid-juv'] }
+    ];
+
+    function showPage(pageId) {
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.toggle('active-page', pages[i].id === pageId);
+      }
+      for (var j = 0; j < navLinks.length; j++) {
+        navLinks[j].classList.toggle('active', navLinks[j].getAttribute('data-page') === pageId);
+      }
+      for (var g = 0; g < navGroups.length; g++) {
+        var grp = navGroups[g];
+        var toggleEl = document.getElementById(grp.toggleId);
+        var groupEl = document.getElementById(grp.groupId);
+        var isGroupPage = grp.pages.indexOf(pageId) !== -1;
+        toggleEl.classList.toggle('active-parent', isGroupPage);
+        if (isGroupPage) { groupEl.classList.add('open'); }
+      }
+      if (mainEl) { mainEl.scrollTop = 0; }
+      window.scrollTo(0, 0);
+      closeSidebar();
+    }
+
+    for (var k = 0; k < navLinks.length; k++) {
+      navLinks[k].addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage(this.getAttribute('data-page'));
+      });
+    }
+
+    for (var g2 = 0; g2 < navGroups.length; g2++) {
+      (function(grp) {
+        var toggleEl = document.getElementById(grp.toggleId);
+        var groupEl = document.getElementById(grp.groupId);
+        toggleEl.addEventListener('click', function() {
+          groupEl.classList.toggle('open');
+        });
+      })(navGroups[g2]);
+    }
+
+    // Default view on load
+    showPage('uslos');
+  })();
+</script>
 </body>
 </html>
