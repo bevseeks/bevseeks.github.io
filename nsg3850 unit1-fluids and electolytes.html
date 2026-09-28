@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NSG 3850 · Unit 1 Interactive Concept Maps</title>
+<meta name="description" content="Interactive concept maps for Fluid and Electrolyte Homeostasis and Imbalances: NSG 3850 Pathophysiology II, Unit 1.">
+<style>
+:root{
+  --bg:#f4f6fb;--surface:#ffffff;--surface2:#eef1f8;--text:#161b27;--muted:#566079;--border:#dfe3ee;
+  --hypo:#1d4ed8;--hyper:#b91c1c;--ok:#15803d;--bad:#b91c1c;
+  --shadow:0 1px 2px rgba(20,30,60,.06),0 4px 14px rgba(20,30,60,.05);
+  --ac:#2563eb;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1420;--surface:#171e2e;--surface2:#1e2638;--text:#e8ecf6;--muted:#9aa5bf;--border:#2a3550;
+    --hypo:#8fb0ff;--hyper:#ff9a9a;--ok:#4ade80;--bad:#ff9a9a;--shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1420;--surface:#171e2e;--surface2:#1e2638;--text:#e8ecf6;--muted:#9aa5bf;--border:#2a3550;
+  --hypo:#8fb0ff;--hyper:#ff9a9a;--ok:#4ade80;--bad:#ff9a9a;--shadow:0 1px 2px rgba(0,0,0,.4);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5;font-size:16px;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 0 10px}
+.top .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.eyebrow{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1{margin:0;font-size:1.25rem;line-height:1.2}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.tab{border:1px solid var(--border);background:var(--surface);padding:7px 12px;border-radius:999px;font-weight:600;font-size:.9rem}
+.tab[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.spacer{flex:1}
+.iconbtn{border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:6px 11px;font-size:.9rem}
+.prog{display:flex;align-items:center;gap:10px;margin-top:9px;font-size:.8rem;color:var(--muted)}
+.bar{flex:1;height:8px;background:var(--surface2);border-radius:99px;overflow:hidden;border:1px solid var(--border)}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,#7c3aed,#16a34a,#ea580c);border-radius:99px;transition:width .3s}
+
+/* chips */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:14px 0 6px;scrollbar-width:thin}
+.chip{flex:0 0 auto;display:flex;align-items:center;gap:8px;border:2px solid var(--border);background:var(--surface);border-radius:14px;padding:8px 12px;font-weight:700;font-size:.92rem;box-shadow:var(--shadow)}
+.chip .dot{width:12px;height:12px;border-radius:50%;background:var(--ac)}
+.chip[aria-pressed="true"]{border-color:var(--ac);background:color-mix(in srgb,var(--ac) 14%,var(--surface))}
+.chip small{color:var(--muted);font-weight:600}
+
+/* banner */
+.banner{margin:10px 0 14px;border:1px solid var(--border);border-radius:16px;padding:14px 16px;background:var(--surface);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 20%,var(--surface)),var(--surface) 70%);box-shadow:var(--shadow)}
+.banner h2{margin:0 0 2px;font-size:1.3rem;color:color-mix(in srgb,var(--ac) 70%,var(--text))}
+.normal{display:inline-block;margin:4px 0 6px;padding:3px 10px;border-radius:99px;background:var(--ac);color:#fff;font-weight:700;font-size:.85rem}
+.hook{margin:4px 0 0;color:var(--text)}
+
+/* layout */
+.grid{display:grid;grid-template-columns:1fr;gap:16px;align-items:start}
+@media (min-width:900px){.grid{grid-template-columns:400px 1fr}.hubcard{position:sticky;top:calc(env(safe-area-inset-top,0px) + 132px)}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+.hubcard{padding:10px}
+.hubcard svg{width:100%;height:auto;max-width:420px;display:block;margin:0 auto}
+.hubnote{text-align:center;font-size:.8rem;color:var(--muted);margin:2px 0 6px}
+.hubbtns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:4px 0 6px}
+
+/* svg hub */
+.spoke{stroke:var(--ac);stroke-width:2.5;opacity:.45}
+.center{fill:var(--ac)}
+.ctext{fill:#fff;font-weight:800;text-anchor:middle}
+.node{cursor:pointer;outline:none}
+.node circle.n{fill:var(--surface);stroke:var(--ac);stroke-width:3.5;transition:all .15s}
+.node:hover circle.n{fill:color-mix(in srgb,var(--ac) 18%,var(--surface))}
+.node.active circle.n{fill:var(--ac)}
+.node:focus-visible circle.n{stroke-width:6}
+.node text.emo{font-size:23px;text-anchor:middle;dominant-baseline:central}
+.node text.lbl{fill:var(--text);font-size:12.5px;font-weight:700;text-anchor:middle}
+.node.active text.lbl{fill:color-mix(in srgb,var(--ac) 75%,var(--text))}
+.node circle.ck{fill:#16a34a;stroke:var(--surface);stroke-width:2}
+.node text.ckt{fill:#fff;font-size:11px;font-weight:800;text-anchor:middle;dominant-baseline:central}
+
+/* panel */
+.panelwrap{display:flex;flex-direction:column;gap:16px;min-width:0}
+.panel{padding:14px 14px 16px;scroll-margin-top:150px;min-width:0}
+.phead{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.pnum{width:34px;height:34px;border-radius:50%;background:var(--ac);color:#fff;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+.phead h3{margin:0;font-size:1.1rem;flex:1;min-width:160px}
+.btn{border:1px solid var(--border);background:var(--surface2);padding:6px 11px;border-radius:10px;font-weight:600;font-size:.85rem}
+.btn:hover{border-color:var(--ac)}
+.btn.done{background:#16a34a;border-color:#16a34a;color:#fff}
+.btn.primary{background:var(--ac);border-color:var(--ac);color:#fff}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface2)}
+.seg button{border:0;background:transparent;padding:7px 13px;font-weight:700;font-size:.85rem}
+.seg button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+.seg button.sh[aria-pressed="true"]{background:var(--hypo);color:#fff}
+.seg button.sy[aria-pressed="true"]{background:var(--hyper);color:#fff}
+:root[data-theme="dark"] .seg button.sh[aria-pressed="true"],:root[data-theme="dark"] .seg button.sy[aria-pressed="true"]{color:#0f1420}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button.sh[aria-pressed="true"],:root:not([data-theme="light"]) .seg button.sy[aria-pressed="true"]{color:#0f1420}}
+.filterrow{display:flex;align-items:center;gap:10px;margin:0 0 12px;flex-wrap:wrap}
+.filterrow span{font-size:.8rem;color:var(--muted);font-weight:600}
+
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}
+.group{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:12px;min-width:0}
+.group.span{grid-column:1/-1}
+.group h4{margin:0 0 8px;font-size:.95rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:color-mix(in srgb,var(--ac) 70%,var(--text))}
+.badge{font-size:.7rem;padding:2px 9px;border-radius:99px;font-weight:800;color:#fff;letter-spacing:.02em}
+.badge.hypo{background:#1d4ed8}.badge.hyper{background:#b91c1c}
+.list{margin:0;padding-left:20px}.list li{margin:4px 0}
+.flow{margin:0;padding:0;list-style:none}
+.flow li::after{content:"↓";display:block;text-align:center;color:var(--ac);font-weight:800;line-height:1.1;margin:3px 0}
+.flow li:last-child::after{display:none}
+.step{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+.step .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--ac);color:#fff;font-size:.75rem;font-weight:800;display:grid;place-items:center;margin-top:1px}
+.pairs{display:flex;flex-direction:column;gap:8px}
+.pair{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 11px}
+.pa{font-weight:700}
+.mech{margin-top:3px;color:var(--muted);font-size:.93rem}
+.mech .lab{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--ac);margin-right:4px}
+.hint{display:none;margin-top:3px;font-size:.82rem;color:var(--ac);font-weight:700}
+.recall .pair{cursor:pointer}
+.recall .pair:not(.shown) .mech{display:none}
+.recall .pair:not(.shown) .hint{display:block}
+.recall .pair:not(.shown){border-style:dashed}
+.recall .pair:hover{border-color:var(--ac)}
+.pnav{display:flex;justify-content:space-between;gap:8px;margin-top:14px}
+
+/* self-test */
+.quiz{max-width:760px;margin:16px auto}
+.qhead{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin:14px 0}
+.score{display:flex;gap:14px;font-weight:700}
+.score b{font-size:1.1rem}
+.qcard{padding:18px}
+.qtag{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:99px;background:var(--ac);color:#fff;margin-bottom:8px}
+.qtext{font-size:1.08rem;font-weight:700;margin:0 0 12px}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:11px 13px;border-radius:12px;border:2px solid var(--border);background:var(--surface2);font-size:.95rem}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--surface))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--surface))}
+.fb{margin-top:10px;font-weight:700}
+.fb.good{color:var(--ok)}.fb.bad{color:var(--bad)}
+
+/* quick ref */
+.tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:12px;background:var(--surface);margin:10px 0 22px}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:.9rem}
+th,td{padding:9px 11px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{background:var(--surface2);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:800;white-space:nowrap}
+.refh{margin:20px 0 0;font-size:1.1rem}
+.star{color:#d97706;font-weight:800}
+.facbadge{font-size:.66rem;padding:2px 8px;border-radius:99px;background:#d97706;color:#fff;font-weight:800;letter-spacing:.02em}
+.legend{font-size:.82rem;color:var(--muted);margin:6px 0 0}
+.note{font-size:.9rem;color:var(--muted);margin:6px 0 12px}
+td.w{font-weight:700}
+.bl{margin:6px 0 4px;padding-left:20px}.bl li{margin:4px 0}
+footer{color:var(--muted);font-size:.78rem;text-align:center;padding:26px 0 30px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript><p style="padding:20px">This study tool needs JavaScript enabled.</p></noscript>
+
+<script>
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md=s=>{s=String(s);let pre='';if(s.charAt(0)==='★'){pre='<span class="star" title="Added in the faculty deck">★</span> ';s=s.replace(/^★\s*/,'')}return pre+esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')};
+const store={
+  get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+  set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const G=(side,title,items,t,fac)=>({side,title,items,t,fac});
+const P=(a,b,fac)=>({a,b,fac});
+
+/* ---------- block metadata ---------- */
+const BL=[
+  {n:'Core Pathophysiology',short:'Core Patho',icon:'🧬',def:'flow'},
+  {n:'Expected Clinical Manifestations',short:'Signs & Sx',icon:'🩺',def:'pairs',lab:'Mechanism'},
+  {n:'Labs & Diagnostic Parameters',short:'Labs / Dx',icon:'🧪',def:'list'},
+  {n:'Risk Factors & Causes',short:'Risk Factors',icon:'⚠️',def:'list'},
+  {n:'Priority Nursing Interventions',short:'Nursing Rx',icon:'💉',def:'pairs',lab:'Rationale'},
+  {n:'Complications / Late-Stage',short:'Complications',icon:'🚨',def:'list'}
+];
+
+/* ---------- content (built from the Unit 1 slides) ---------- */
+const MAPS=[
+/* 0 — FVD */
+{sym:'FVD',short:'Volume Deficit',title:'Fluid Volume Deficit (Hypovolemia)',color:'#2563eb',split:false,
+ normal:'Isotonic loss → serum Na⁺ stays 135–145 mEq/L',
+ hook:'Water AND sodium leave together. Acute weight loss is the most sensitive indicator (1 L of saline = 1 kg); the body defends perfusion with SNS, RAAS and ADH.',
+ blocks:[
+  [G('both','Etiology → Pathogenesis → Resulting state',[
+     'Loss of a **sodium-containing (isotonic) fluid** through GI, renal, or "other" routes',
+     'Water and sodium lost together → serum Na⁺ stays normal, but total **ECF volume shrinks**',
+     'Plasma volume ↓ → venous return ↓ → stroke volume ↓ → **cardiac output ↓**',
+     'Tissue/organ perfusion ↓ (kidneys, brain, skin are hit first)'],'flow'),
+   G('both','Compensatory mechanisms',[
+     '**SNS activation:** baroreceptors sense ↓BP → ↑ heart rate + vasoconstriction to protect perfusion',
+     '**RAAS:** ↓ renal perfusion → renin → angiotensin II → aldosterone → renal Na⁺ and water retention',
+     '**ADH release:** ↓ volume / ↑ osmolality → renal water reabsorption → oliguria (a compensation, not the primary problem)'],'list'),
+   G('both','Faculty pearls',[
+     '**1 L of saline weighs 1 kg.** Losing 1 kg in 24 h = 1 L excreted or lost abnormally (you cannot lose 1 kg of fat overnight)',
+     'Two categories of fluid imbalance: **ECF volume (saline) imbalances** vs **body fluid concentration (water) imbalances**',
+     'Too much ECV deficit → **hypovolemic shock**, fatal without immediate volume replacement'],'list',true)],
+  [G('both','Signs & symptoms',[
+     P('Acute weight loss — MOST SENSITIVE measure','Direct reflection of fluid lost: 1 L of saline = 1 kg (you cannot lose 1 kg of fat overnight)',true),
+     P('Furrows in the tongue','↓ interstitial / mucosal fluid content'),
+     P('Postural hypotension','Circulating volume too low to hold BP against gravity when position changes'),
+     P('↑ Heart rate','Compensatory SNS response keeping cardiac output up despite ↓ stroke volume'),
+     P('Flat neck veins','↓ central venous / vascular volume → ↓ jugular venous pressure'),
+     P('Lightheaded, dizziness or syncope','Cerebral hypoperfusion from ↓ circulating volume and BP'),
+     P('Oliguria','RAAS + ADH conserving sodium and water to restore volume'),
+     P('Poor skin turgor','Loss of the interstitial fluid reservoir')])],
+  [G('both','Key parameters',[
+     'Serum Na⁺ usually **normal (135–145 mEq/L)**: isotonic loss',
+     '**BUN : creatinine > 20:1**: prerenal azotemia',
+     '**↑ Hematocrit**: hemoconcentration from plasma loss',
+     '**↑ Urine specific gravity**: ADH-driven concentration',
+     '**Daily weights**: best trending tool'])],
+  [G('both','GI loss',['Emesis','GI suction','Fistulas','Diarrhea']),
+   G('both','Renal excretion',['Adrenal insufficiency','Diuretic use','Bed rest']),
+   G('both','Other causes',['Paracentesis','Hemorrhage','Third spacing','Burns','Massive diaphoresis'])],
+  [G('both','Priority interventions',[
+     P('Daily weights + strict I&O','Weight is the most sensitive indicator; a 1 kg change ≈ 1 L of fluid'),
+     P('Orthostatic vital signs before ambulation','Detects volume-dependent BP drop and prevents syncope or falls'),
+     P('Isotonic IV fluids as ordered (0.9% NS, LR)','Replaces lost isotonic fluid in the vascular space without causing osmotic fluid shifts'),
+     P('Monitor urine output closely','Oliguria reflects severity plus RAAS/ADH activity; guides resuscitation')])],
+  [G('both','If compensation fails',[
+     '**Hypovolemic shock** when SNS / RAAS / ADH are overwhelmed: fatal if volume is not replaced immediately',
+     '**Prerenal AKI** from sustained renal hypoperfusion',
+     'Cerebral hypoperfusion (altered LOC) and myocardial ischemia'])]
+ ]},
+
+/* 1 — FVE */
+{sym:'FVE',short:'Volume Excess',title:'Fluid Volume Excess (Hypervolemia) & Edema',color:'#0891b2',split:false,
+ normal:'Isotonic expansion → Na⁺ usually normal; weight ↑',
+ hook:'Retained sodium holds water. Weight gain comes first; crackles + JVD + bounding pulses mean the volume has reached lungs and vessels.',
+ blocks:[
+  [G('both','Etiology → Pathogenesis → Resulting state',[
+     'Sodium and water **added or retained** → isotonic expansion of the ECF',
+     'Plasma volume ↑ → **capillary hydrostatic pressure ↑**',
+     'Fluid filters out of capillaries faster than lymphatics / oncotic pressure can return it',
+     'Interstitial fluid accumulates → **edema** (local or generalized)',
+     'Lungs: fluid crosses into interstitium and alveoli → **pulmonary edema**'],'flow'),
+   G('both','Edema: 3 root mechanisms',[
+     '**↑ Capillary hydrostatic pressure:** ↑ ECV, ↑ local capillary flow with inflammation, venous congestion → pushes fluid out',
+     '**↑ Interstitial oncotic pressure:** inflammation ↑ vascular permeability → proteins leak into the interstitium and pull fluid out',
+     '**Blocked lymphatic drainage:** tumor or surgical removal of lymph nodes → lymphedema',
+     'Related: ↓ plasma oncotic pressure (hypoalbuminemia) has the same net effect. **Hydrostatic pushes; oncotic pulls.**'],'list'),
+   G('both','Compensatory mechanisms',[
+     '**ANP / BNP** released from stretched atria and ventricles → natriuresis and diuresis',
+     'Baroreceptors try to suppress RAAS and ADH, but in HF, cirrhosis and renal disease RAAS stays pathologically activated and worsens retention'],'list'),
+   G('both','Faculty: why each cause retains fluid',[
+     '**Hyperaldosteronism:** excess aldosterone → Na⁺ and water retention, hypertension, low K⁺',
+     '**Chronic HF:** heart cannot pump effectively. Left-sided is most common: systolic (HFrEF, EF ≤ 40%) or diastolic (HFpEF, EF ≥ 50%)',
+     "**Cushing's:** prolonged excess cortisol → Na⁺/water retention (HTN, edema) and ↑ K⁺ excretion (hypokalemia)",
+     '**Glomerulonephritis:** inflamed, damaged glomeruli → excess fluid is not filtered into the urine',
+     '**Renal disease:** kidneys cannot remove excess fluid as they should',
+     '**Steroid therapy (prednisone):** retain Na⁺, lose K⁺ → fluid retention, weight gain, bloating'],'list',true)],
+  [G('both','Signs & symptoms',[
+     P('Weight gain — MOST SENSITIVE indicator','Direct reflection of retained fluid'),
+     P('Edema','↑ hydrostatic pressure pushes fluid into the interstitium faster than lymphatics can clear it'),
+     P('Bounding pulses','Expanded intravascular volume ↑ stroke volume against the arterial wall'),
+     P('Neck vein distention','↑ central venous volume and pressure'),
+     P('Crackles, dyspnea, orthopnea','Fluid in the pulmonary interstitium/alveoli; worse supine because venous return ↑'),
+     P('Severe pulmonary edema: SOA, accessory muscle use, cyanosis, ↓ capillary refill','Pulmonary capillary hydrostatic pressure exceeds oncotic/lymphatic capacity → alveolar flooding → impaired gas exchange (cyanosis, ↑ work of breathing, poor perfusion)',true)])],
+  [G('both','Key parameters',[
+     '**↓ Hematocrit**: hemodilution (opposite of FVD)',
+     '**↓ BUN**: dilutional',
+     '**↑ BNP**: ventricular stretch, especially in heart failure',
+     '**Chest X-ray:** pulmonary vascular congestion, interstitial edema, pleural effusion',
+     '**Lung auscultation:** crackles',
+     '**Daily weight:** most sensitive trend'])],
+  [G('both','Addition / retention of sodium',['Excessive infusion of isotonic solutions']),
+   G('both','Renal retention',['Hyperaldosteronism','Chronic heart failure','Cirrhosis',"Cushing's disease",'Glomerulonephritis','Renal disease','Steroid therapy'])],
+  [G('both','Priority interventions',[
+     P('Daily weights (same time, scale, clothing)','Most sensitive trend for ongoing retention'),
+     P('Auscultate lungs; monitor dyspnea and orthopnea each shift','Catches fluid entering the pulmonary interstitium before frank pulmonary edema'),
+     P('Semi-Fowler\'s / high-Fowler\'s position','↓ venous return to heart and lungs; eases dyspnea and orthopnea'),
+     P('Restrict sodium and fluid; give diuretics as ordered','Removes the volume driving ↑ hydrostatic pressure at the capillary')])],
+  [G('both','If untreated',[
+     '**Acute pulmonary edema** → impaired oxygenation → respiratory failure',
+     '**HF exacerbation:** ↑ preload / afterload burden',
+     '**Anasarca** (generalized edema)'])]
+ ]},
+
+/* 2 — Sodium */
+{sym:'Na⁺',short:'Sodium',title:'Sodium Imbalances',color:'#7c3aed',split:true,hypoName:'Hyponatremia',hyperName:'Hypernatremia',
+ normal:'Na⁺ 135–145 mEq/L',
+ hook:'THINK BRAIN. Sodium problems are WATER problems: hypo → brain cells swell, hyper → brain cells shrink. Too much Na⁺ = flooding (edema, HTN); too little = drought (confusion, seizures, cerebral edema, hypotension).',
+ blocks:[
+  [G('hypo','Water shifts INTO cells',[
+     'Relatively more water than salt gained (dilutional) OR more salt than water lost (depletional)',
+     'Serum Na⁺ falls → **ECF osmolality ↓**',
+     'Water moves **INTO cells** by osmosis (ICF is now relatively hypertonic)',
+     '**Cells swell**; brain neurons are the dangerous ones',
+     'Cerebral edema → ↑ ICP → seizures, coma, herniation'],'flow'),
+   G('hyper','Water shifts OUT of cells',[
+     'Relatively more salt than water gained, OR more water than salt lost, OR no water access',
+     'Serum Na⁺ rises → **ECF osmolality ↑**',
+     'Water pulled **OUT of cells** by osmosis',
+     '**Cells shrink**; neurons shrivel and thirst centers fire',
+     'CNS dysfunction: confusion, lethargy, seizures, coma'],'flow'),
+   G('hypo','Compensation',['↓ ADH release → kidneys excrete free water','↑ Aldosterone (RAAS) → renal Na⁺ retention'],'list'),
+   G('hyper','Compensation',['**Thirst:** hypothalamic osmoreceptors drive water intake','**ADH** release → renal water conservation (oliguria, concentrated urine)'],'list'),
+   G('both','Faculty: THINK BRAIN',[
+     '**Any sodium imbalance needs neuro monitoring.** Headache, dizziness, confusion, seizures, coma = fluid balance is off in the brain',
+     'Treatment must be considered **slowly, not fast** (e.g., 3% NaCl is used cautiously)',
+     'GI tract is salty: **diarrhea** often → hyponatremia, especially if replaced with plain water',
+     '**Severe dehydration** → hypernatremia when water loss exceeds sodium loss'],'list',true)],
+  [G('hypo','Hyponatremia: cell swelling',[
+     P('Malaise and weakness','Osmotic cell swelling disrupts cellular and muscle function'),
+     P('Anorexia, nausea, vomiting','CNS / GI regulatory disruption from cerebral swelling'),
+     P('Headache','Cerebral edema stretching pain-sensitive structures'),
+     P('Confusion, lethargy','Neuronal swelling impairs cortical function'),
+     P('Seizures, coma','Severe cerebral edema → neuronal irritability then depression'),
+     P('Cerebral herniation','Brain swells inside a fixed skull → ↑ ICP forces brain tissue downward')]),
+   G('hyper','Hypernatremia: cell shrinkage',[
+     P('Thirst, dry mouth','Hypothalamic osmoreceptors sense ↑ osmolality; water loss dries mucous membranes',true),
+     P('Oliguria','ADH conserving water to dilute the ECF'),
+     P('Confusion, lethargy','Neuronal shrinkage impairs cortical function'),
+     P('Seizures, coma','Severe cell shrinkage → CNS dysfunction (brain pulling away from the skull can tear vessels)')])],
+  [G('both','Reference',['**Normal Na⁺: 135–145 mEq/L**']),
+   G('hypo','Hyponatremia',['Na⁺ **< 135 mEq/L**','Serum osmolality separates dilutional from depletional causes']),
+   G('hyper','Hypernatremia',['Na⁺ **> 145 mEq/L**','Urine specific gravity / osmolality: diabetes insipidus = dilute urine despite high serum Na⁺'])],
+  [G('hypo','Dilutional (more water than salt)',['Excessive ADH','Excessive D5W infusions','Hypotonic irrigations','Excessive water intake']),
+   G('hypo','Depletional (more salt lost than water)',['Diuretic use (thiazides)','Salt-wasting renal disease','GI loss: NG to suction, emesis, diarrhea','Burns']),
+   G('hyper','More salt than water gained',['IV infusion of hypertonic saline','Hypertonic enteral feeding','Overuse of salt tablets','Food intake with reduced fluid intake']),
+   G('hyper','No access / can\'t respond to thirst',['No access to water','Inability to respond to thirst','Difficulty swallowing']),
+   G('hyper','More water than salt lost',['Diabetes insipidus','Tube feeding','Osmotic diuresis','Prolonged emesis, diarrhea or diaphoresis without water replacement'])],
+  [G('both','Priority interventions',[
+     P('Neuro checks (LOC, orientation) frequently','Both extremes cause CNS dysfunction from cellular water shifts; early detection prevents seizure and coma'),
+     P('Correct sodium gradually, not rapidly','Rapid correction risks osmotic demyelination (hypo) or cerebral edema (hyper); slow correction lets cells re-equilibrate'),
+     P('Seizure precautions for severe imbalance','Cerebral edema or cellular shrinkage lowers the seizure threshold'),
+     P('Monitor I&O and ensure free-water access','Hypernatremic patients who can\'t respond to thirst rely on the nurse for water replacement')])],
+  [G('hypo','Hyponatremia',['Cerebral edema → **herniation** → death','Seizures / coma','Osmotic demyelination if corrected too fast']),
+   G('hyper','Hypernatremia',['Neuronal shrinkage → intracranial bleeding','Seizures / coma','Cerebral edema if corrected too fast'])]
+ ]},
+
+/* 3 — Potassium */
+{sym:'K⁺',short:'Potassium',title:'Potassium Imbalances',color:'#16a34a',split:true,hypoName:'Hypokalemia',hyperName:'Hyperkalemia',
+ normal:'K⁺ 3.5–5.0 mEq/L',
+ hook:'K⁺ = heart + muscle. Hypokalemia = "no action" (hyperpolarized); hyperkalemia = "too much action." First check the EKG T waves: low K⁺ = inverted T, high K⁺ = peaked T.',
+ blocks:[
+  [G('hypo','Hyperpolarization → ↓ excitability',[
+     '↓ intake, shift into cells, ↑ normal-route excretion, abnormal loss, or K⁺-wasting diuretics',
+     'Extracellular K⁺ ↓ → K⁺ gradient across membrane ↑',
+     'Resting potential more negative (**hyperpolarized**)',
+     'Cells are harder to depolarize → **↓ excitability** of muscle and cardiac tissue',
+     'Weakness, ileus, dysrhythmias'],'flow'),
+   G('hyper','Partial depolarization → impaired repolarization',[
+     '↑ intake, shift out of cells, ↓ excretion, or K⁺-sparing diuretics',
+     'Extracellular K⁺ ↑ → resting potential less negative (**partially depolarized**)',
+     'Early ↑ excitability, then Na⁺ channels inactivate → **impaired repolarization**',
+     'Conduction slows and blocks → flaccid paralysis and dangerous dysrhythmias',
+     '**Cardiac arrest**'],'flow'),
+   G('hypo','Compensation',['Kidneys conserve K⁺ when intake is low','K⁺ moves out of cells to buffer the ECF (ICF slowly depletes)'],'list'),
+   G('hyper','Compensation',['**Aldosterone** ↑ → renal K⁺ excretion','**Insulin / catecholamines** drive K⁺ back into cells'],'list'),
+   G('both','Faculty: potassium facts',[
+     '**Most K⁺ is inside cells**, so shifts in and out of cells change serum K⁺',
+     '**Both** hypo- and hyperkalemia cause weakness: hyper by **depolarizing** (↓ excitability), hypo by **hyperpolarizing** (↓ excitability)',
+     '**First check the EKG:** focus on the T waves',
+     '**Hypomagnesemia can cause hypokalemia** (more urinary K⁺ excretion), so correct Mg²⁺ first'],'list',true)],
+  [G('hypo','Hypokalemia: ↓ excitability',[
+     P('Abdominal distension','GI smooth muscle hypoexcitability'),
+     P('Paralytic ileus','Gut smooth muscle can\'t contract → peristalsis stops'),
+     P('Decreased bowel sounds','Reduced peristalsis'),
+     P('Postural hypotension','Vascular smooth muscle can\'t vasoconstrict normally'),
+     P('Skeletal muscle weakness & paralysis; ↓ DTRs','Hyperpolarized muscle can\'t depolarize normally, so reflexes blunt too',true),
+     P('Dysrhythmias, ectopic beats, weak irregular pulse','Altered cardiac repolarization and automaticity'),
+     P('Polyuria','Impaired renal concentrating ability')]),
+   G('hyper','Hyperkalemia: depolarization block',[
+     P('Mild intestinal cramping','Early smooth muscle hyperexcitability'),
+     P('Skeletal muscle weakness','Sustained depolarization makes membranes refractory'),
+     P('Flaccid paralysis','Progressive block of excitation'),
+     P('Diarrhea','↑ GI smooth muscle excitability and motility',true),
+     P('Muscle twitching','Early membrane depolarization ↑ excitability',true),
+     P('Dysrhythmia: elevated (peaked) T wave','Abnormal ventricular repolarization'),
+     P('Cardiac arrest','Conduction block → asystole or V-fib')])],
+  [G('both','Reference',['**Normal K⁺: 3.5–5.0 mEq/L**']),
+   G('hypo','Hypokalemia',['K⁺ **< 3.5 mEq/L**','★ ECG: **inverted T wave** (faculty). Textbooks also list flattened T, U waves, ST depression']),
+   G('hyper','Hyperkalemia',['K⁺ **> 5.0 mEq/L**','ECG: **elevated / peaked T waves** → widened QRS → sine wave'])],
+  [G('hypo','Causes',['Decreased potassium intake','Extracellular shift into cells','Increased excretion by normal routes','K⁺ loss through abnormal routes (vomiting, NG suction)','K⁺-wasting diuretics']),
+   G('hypo','Faculty: drugs and foods that lower K⁺',['**Corticosteroids / aldosterone:** Na⁺ absorbed, K⁺ excreted in urine','**Black licorice** (glycyrrhizin) → ↓ K⁺','**Laxatives** → more K⁺ lost in stool (diarrhea)','**Loop diuretics and HCTZ** waste K⁺. The K⁺-sparing diuretic to know is **spironolactone (Aldactone)**'],'list',true),
+   G('hyper','Causes',['Increased potassium intake','Shift of K⁺ from cells to extracellular fluid','Decreased potassium excretion (e.g., oliguric CKD with normal dietary K⁺ intake)','Use of potassium-sparing diuretics (spironolactone)'])],
+  [G('both','Priority interventions',[
+     P('Continuous cardiac monitoring in severe imbalance','Both extremes are lethal mainly through cardiac conduction disturbance'),
+     P('12-lead ECG / watch for peaked T waves in hyperkalemia','Peaked T is the earliest, most reliable marker of cardiac risk before arrest'),
+     P('NEVER IV push potassium; dilute and use a pump','Rapid IV K⁺ acutely depolarizes the myocardium → fatal dysrhythmia'),
+     P('Assess bowel sounds and respiratory effort in hypokalemia','Detects smooth and skeletal muscle hypoexcitability (ileus, respiratory weakness) before it becomes critical')])],
+  [G('hypo','Hypokalemia',['Respiratory muscle weakness / paralysis','Life-threatening dysrhythmias','Paralytic ileus']),
+   G('hyper','Hyperkalemia',['V-fib / asystole → **cardiac arrest**','Flaccid paralysis'])]
+ ]},
+
+/* 4 — Calcium */
+{sym:'Ca²⁺',short:'Calcium',title:'Calcium Imbalances',color:'#ea580c',split:true,hypoName:'Hypocalcemia',hyperName:'Hypercalcemia',
+ normal:'Ca²⁺ 9–10.5 mg/dL',
+ hook:'Ca²⁺ works mostly on muscle and a little on the heart. Low Ca²⁺ = nerves too excitable (Chvostek, Trousseau = latent tetany). High Ca²⁺ = everything slows (constipation, bradycardia, stones). All electrolyte imbalances can cause dysrhythmias.',
+ blocks:[
+  [G('hypo','↓ threshold → hyperexcitable nerves',[
+     '↓ intake (vitamin D deficiency), CKD, transfusion, ↓ absorption, stool loss, **hypoparathyroidism**, pancreatitis',
+     'ECF Ca²⁺ ↓ → nerve membrane threshold potential drops',
+     'Nerves fire spontaneously → **neuromuscular irritability**',
+     'Tetany, paresthesia, seizures, laryngospasm; delayed repolarization → prolonged Q-T'],'flow'),
+   G('hyper','↑ threshold → depressed excitability',[
+     '↑ intake / absorption, bone → ECF shift (**immobility**), ↓ excretion (thiazides), **hyperparathyroidism**',
+     'ECF Ca²⁺ ↑ → membrane threshold potential rises',
+     'Nerve and muscle harder to excite → **depressed neuromuscular activity**',
+     'Slowed GI, heart, CNS; excess Ca²⁺ in urine and bone loss → stones and fractures'],'flow'),
+   G('hypo','Compensation',['**PTH** ↑ → bone resorption, ↑ renal Ca²⁺ reabsorption, ↑ activated vitamin D (gut absorption)'],'list'),
+   G('hyper','Compensation',['PTH suppressed; **calcitonin** ↑ (bone deposition); kidneys excrete more Ca²⁺'],'list'),
+   G('hypo','Faculty: why these causes lower Ca²⁺',[
+     '**Blood transfusions:** each bag contains citrate, normally cleared by the liver in minutes. In sick patients getting many products it builds up and **binds Ca²⁺**, lowering free calcium',
+     '**Decreased absorption:** from ↓ intake and ↑ urinary excretion',
+     '**Pancreatitis:** impaired fat digestion',
+     '**Hypoparathyroidism** (↓ PTH) → hypocalcemia. All lead to impaired neuromuscular excitability'],'list',true),
+   G('hyper','Faculty: why these causes raise Ca²⁺',[
+     '**PTH shifts Ca²⁺ out of bone**',
+     '**Hyperparathyroidism** is associated with hypercalcemia',
+     '**Immobility:** Ca²⁺ shifts from bone to ECF'],'list',true)],
+  [G('hypo','Hypocalcemia: hyperexcitability',[
+     P('Hyperactive reflexes (↑ DTRs)','↓ threshold: nerves fire with less stimulus'),
+     P('Paresthesia / tingling of extremities','Sensory nerve hyperexcitability'),
+     P('Muscle cramps','Motor nerve and muscle irritability'),
+     P('Tight muscles, muscle spasms','Spontaneous motor unit firing at a lowered threshold',true),
+     P('Tetany (latent)','Sustained involuntary muscle contraction'),
+     P('Fatigue','Neuromuscular dysfunction'),
+     P('Neuromuscular irritability','Threshold potential lowered'),
+     P('Seizures','CNS neuron hyperexcitability'),
+     P('Prolonged Q-T interval on EKG','Delayed ventricular repolarization'),
+     P('Laryngospasm','Airway muscle hyperexcitability: life threat'),
+     P('Positive Chvostek sign','Latent tetany sign: tapping the facial nerve → twitch from a hyperexcitable nerve',true),
+     P('Positive Trousseau sign','Latent tetany sign: BP-cuff ischemia → carpal spasm from hyperexcitable nerves',true)]),
+   G('hyper','Hypercalcemia: everything slows',[
+     P('Polyuria','Ca²⁺ impairs renal concentrating ability'),
+     P('Dehydration','Ongoing polyuria'),
+     P('Anorexia, nausea, vomiting','↓ GI smooth muscle excitability'),
+     P('Constipation','Slowed peristalsis'),
+     P('Bradycardia','Depressed cardiac conduction'),
+     P('Heart block','Slowed AV conduction'),
+     P('Cardiac arrest','Severe conduction depression'),
+     P('Renal calculi','Excess filtered Ca²⁺ precipitates in the urinary tract'),
+     P('Pathologic fractures','Bone resorption weakens the bone matrix'),
+     P('Lethargy, coma','Depressed neuronal excitability')])],
+  [G('both','Reference',['**Normal Ca²⁺: 9–10.5 mg/dL**']),
+   G('hypo','Hypocalcemia',['Ca²⁺ **< 9 mg/dL**','EKG: **prolonged Q-T**','Bedside: **Chvostek** + **Trousseau**']),
+   G('hyper','Hypercalcemia',['Ca²⁺ **> 10.5 mg/dL**','EKG: shortened Q-T (beyond slides)','PTH level helps identify hyperparathyroidism'])],
+  [G('hypo','Causes',['Vitamin D deficiency (↓ intake)','Chronic kidney disease','Blood product transfusion','Decreased calcium absorption / stool losses','**Hypoparathyroidism** (↓ PTH)','Pancreatitis']),
+   G('hyper','Causes',['Increased calcium intake or absorption','Shift from bone to ECF: **immobility**','Decreased excretion: thiazides (hydrochlorothiazide)','**Hyperparathyroidism**'])],
+  [G('both','Priority interventions',[
+     P('Assess Chvostek and Trousseau signs','Bedside detection of neuromuscular hyperexcitability before tetany or seizure develops'),
+     P('Seizure and airway precautions in severe hypocalcemia','Laryngospasm and seizures are acute life threats from hyperexcitable tissue'),
+     P('Encourage mobility / weight-bearing when able','↓ bone-to-ECF calcium shift that drives immobility-related hypercalcemia'),
+     P('Monitor EKG (Q-T interval) in severe imbalance','Q-T changes predict dysrhythmia risk in both directions')])],
+  [G('hypo','Hypocalcemia',['Laryngospasm / airway obstruction','Tetanic seizures','Cardiac dysrhythmia → arrest']),
+   G('hyper','Hypercalcemia',['Nephrolithiasis → renal damage','Pathologic fractures','Coma','Heart block → cardiac arrest'])]
+ ]},
+
+/* 5 — Magnesium */
+{sym:'Mg²⁺',short:'Magnesium',title:'Magnesium Imbalances',color:'#b45309',split:true,hypoName:'Hypomagnesemia',hyperName:'Hypermagnesemia',
+ normal:'Mg²⁺ 1.5–2.5 mEq/L',
+ hook:'Mg²⁺ mirrors Ca²⁺ and works with K⁺ and Ca²⁺ to keep heart and muscle "traffic signals" in sync. Low Mg = ↑ reflexes, tetany, seizures. High Mg = ↓ DTRs, respiratory depression, hypotension. Correct Mg before K⁺ or Ca²⁺.',
+ blocks:[
+  [G('hypo','Loss of membrane stabilization',[
+     '↓ intake / absorption (**chronic alcoholism**), ↑ excretion, pancreatitis, emesis or gastric suction',
+     'ECF Mg²⁺ ↓ → loss of Mg²⁺\'s membrane-stabilizing effect',
+     '**↑ neuromuscular irritability** (same pattern as hypocalcemia)',
+     'Tetany, seizures, cardiac dysrhythmias'],'flow'),
+   G('hyper','Neuromuscular blockade',[
+     '↑ intake / absorption OR ↓ excretion (renal impairment)',
+     'ECF Mg²⁺ ↑ → blocks neuromuscular transmission and depresses the CNS',
+     '↓ DTRs, hypotension, bradycardia',
+     'Flaccid paralysis, respiratory depression, cardiac arrest'],'flow'),
+   G('hypo','Compensation',['Kidneys reduce Mg²⁺ excretion while stores are mobilized (limited capacity)'],'list'),
+   G('hyper','Compensation',['Kidneys excrete excess Mg²⁺, which fails in renal impairment'],'list'),
+   G('both','Faculty: what to remember',[
+     '**Hypomagnesemia can cause hypokalemia** (more urinary K⁺ excretion) and **hypocalcemia**. **Correct the Mg²⁺ before correcting K⁺ or Ca²⁺**',
+     'Magnesium is **similar to calcium** (mirrors calcium)',
+     'Role: neuromuscular transmission and cardiac stability. Imbalances → reflex changes and cardiac effects'],'list',true)],
+  [G('hypo','Hypomagnesemia: hyperexcitability',[
+     P('Insomnia','CNS hyperexcitability'),
+     P('Hyperactive reflexes','Low threshold for nerve firing'),
+     P('Muscle cramps','Motor nerve irritability'),
+     P('Muscle twitching','Spontaneous firing of motor units'),
+     P('Tremors','Hyperexcitable motor neurons fire out of sync',true),
+     P('Paresthesias','Sensory nerve hyperexcitability',true),
+     P('Grimacing','Facial muscle irritability'),
+     P('Positive Chvostek sign','Facial nerve hyperexcitability'),
+     P('Positive Trousseau sign','Carpal spasm: same mechanism as hypocalcemia'),
+     P('Nystagmus','Cranial nerve / cerebellar hyperexcitability'),
+     P('Dysphagia','Pharyngeal muscle spasm'),
+     P('Ataxia','Cerebellar dysfunction'),
+     P('Tetany','Sustained muscle contraction'),
+     P('Seizures','CNS irritability'),
+     P('Cardiac dysrhythmias','Myocardial membrane instability')]),
+   G('hyper','Hypermagnesemia: depression',[
+     P('Decreased deep tendon reflexes','Mg²⁺ blocks neuromuscular transmission: earliest bedside sign'),
+     P('Lethargy','CNS depression'),
+     P('Hypotension','Vasodilation from smooth muscle relaxation'),
+     P('Bradycardia','Cardiac conduction depression'),
+     P('Flushing','Peripheral vasodilation'),
+     P('Diaphoresis','Vasodilation / autonomic effects'),
+     P('Flaccid paralysis','Progressive neuromuscular blockade'),
+     P('Respiratory depression','Diaphragm and CNS depression'),
+     P('Cardiac dysrhythmias','Conduction depression'),
+     P('Cardiac arrest','Severe conduction block')])],
+  [G('both','Reference',['**Normal Mg²⁺: 1.5–2.5 mEq/L**']),
+   G('hypo','Hypomagnesemia',['Mg²⁺ **< 1.5 mEq/L**','Check K⁺ and Ca²⁺: often low together','Positive Chvostek / Trousseau']),
+   G('hyper','Hypermagnesemia',['Mg²⁺ **> 2.5 mEq/L**','**DTRs** (patellar) = key bedside monitor','Respiratory rate and depth'])],
+  [G('hypo','Causes',['Decreased Mg intake or absorption (**chronic alcoholism**)','Increased Mg excretion','Pancreatitis','Loss through abnormal routes (emesis, gastric suction, chronic diarrhea, poor absorption)']),
+   G('hyper','Causes',['Increased Mg intake or absorption','Decreased Mg excretion (renal impairment)'])],
+  [G('both','Priority interventions',[
+     P('Assess DTRs (patellar) before and during Mg²⁺ therapy','Loss of DTRs is the earliest sign of toxicity and precedes respiratory depression'),
+     P('Monitor respiratory rate and depth closely with high Mg²⁺','Respiratory depression is a late but life-threatening sign of neuromuscular blockade'),
+     P('Seizure precautions in severe hypomagnesemia','Neuromuscular hyperexcitability progresses to tetany and seizures'),
+     P('Keep calcium gluconate available for severe hypermagnesemia','Calcium antagonizes magnesium at the neuromuscular junction')])],
+  [G('hypo','Hypomagnesemia',['Refractory seizures','Life-threatening dysrhythmias (often with low K⁺ / Ca²⁺)']),
+   G('hyper','Hypermagnesemia',['Respiratory arrest','Cardiac arrest'])]
+ ]},
+
+/* 6 — Phosphate */
+{sym:'PO₄',short:'Phosphate',title:'Phosphate Imbalances',color:'#dc2626',split:true,hypoName:'Hypophosphatemia',hyperName:'Hyperphosphatemia',
+ normal:'PO₄ 2.5–4.5 mg/dL (slide prints mEq/dL)',
+ hook:'Low phosphate = low ATP ("rolling blackouts": weakness, impaired O₂ delivery). High phosphate = "pollution backup": binds Ca²⁺ → hypocalcemia, tetany. Phosphate and calcium are inversely related.',
+ blocks:[
+  [G('hypo','ATP failure',[
+     '↓ intake, ECF → cell shift, ↑ renal excretion, abnormal loss (chronic alcoholism, chronic diarrhea)',
+     'ECF phosphate ↓',
+     'Less substrate for **ATP** synthesis',
+     'Cellular energy failure in muscle, RBCs, neurons, myocardium',
+     'Weakness, hemolysis, respiratory failure, confusion, dysrhythmias'],'flow'),
+   G('hyper','Reciprocal calcium depletion',[
+     '↑ intake / absorption, cell → ECF shift, ↓ excretion (**chronic renal failure**)',
+     'ECF phosphate ↑ → **binds calcium**',
+     'Serum Ca²⁺ ↓ (reciprocal relationship)',
+     'Hypocalcemia-type neuromuscular excitability; Ca-phosphate crystals deposit in tissues'],'flow'),
+   G('hypo','Compensation',['Kidneys conserve phosphate when renal function is intact'],'list'),
+   G('hyper','Compensation',['Kidneys excrete excess phosphate, which fails in CKD','↓ Ca²⁺ triggers PTH ↑ → phosphaturia (long-term cost: bone loss)'],'list'),
+   G('hyper','Faculty: the calcium connection',[
+     'Ca²⁺ and phosphate are **inversely related**: phosphate binds calcium, reducing free Ca²⁺ in the blood',
+     'The body responds with **PTH**: bones release Ca²⁺ and kidneys excrete phosphorus',
+     'Balance is regulated by **PTH, vitamin D and calcitonin**',
+     'A Ca × PO₄ product above normal raises the risk of **calciphylaxis** (Ca-phosphate precipitates in tissue → necrotizing skin ulceration)'],'list',true)],
+  [G('hypo','Hypophosphatemia: ATP deficit',[
+     P('Anorexia, malaise','Cellular energy (ATP) deficit'),
+     P('Paresthesia','Neuronal ATP depletion'),
+     P('Hemolysis','↓ ATP weakens RBC membranes → RBC destruction',true),
+     P('Diminished reflexes','Impaired neuromuscular energy supply'),
+     P('Muscle aches and weakness','Skeletal muscle ATP depletion'),
+     P('Respiratory failure','Diaphragm ATP failure'),
+     P('Confusion, stupor, seizures, coma','Neuronal ATP failure'),
+     P('Cardiac dysrhythmia, ↓ left heart function','Myocardial ATP depletion / muscle damage',true),
+     P('Symptoms similar to hypercalcemia','Reciprocal ↑ Ca²⁺ when phosphate is low')]),
+   G('hyper','Hyperphosphatemia: calcium relationship',[
+     P('↑ Neuromuscular excitability','Phosphate binds Ca²⁺ → functional hypocalcemia'),
+     P('Depletion of calcium','Ca-phosphate binding and deposition'),
+     P('Aching and stiff joints','Ca-phosphate crystal deposition'),
+     P('Pruritus','Phosphate binds Ca²⁺ → sharp, itchy crystals and dry skin',true),
+     P('Conjunctivitis','Phosphate settles in the eyes and irritates the conjunctiva (inner eyelid and white of the eye)',true),
+     P('Symptoms similar to hypocalcemia','Tetany pattern from ↓ Ca²⁺')])],
+  [G('both','Reference',['**Normal phosphate: 2.5–4.5 mg/dL** (slide lists mEq/dL)','Always check **calcium** with phosphate: they move in opposite directions']),
+   G('hypo','Hypophosphatemia',['PO₄ **< 2.5 mg/dL**']),
+   G('hyper','Hyperphosphatemia',['PO₄ **> 4.5 mg/dL**','Creatinine / GFR: CKD is the primary driver'])],
+  [G('hypo','Causes',['Decreased phosphate intake','Shift from ECF into cells','Increased excretion through normal renal route','Loss through abnormal route','**Chronic alcoholism**','**Chronic diarrhea**','★ Refeeding after starvation']),
+   G('hyper','Causes',['Increased intake or absorption','Shift from cells to ECF','Decreased excretion','**Chronic renal failure**'])],
+  [G('both','Priority interventions',[
+     P('Monitor respiratory status closely in severe hypophosphatemia','Diaphragmatic ATP depletion can precipitate acute respiratory failure'),
+     P('Assess neuromuscular and cardiac status with both extremes','Reflects downstream ATP failure (hypo) or Ca²⁺ depletion (hyper)'),
+     P('Monitor calcium alongside phosphate','The two are reciprocally linked; correcting one affects the other'),
+     P('Renal diet / phosphate-binder teaching in CKD','↓ GI phosphate absorption when renal excretion is impaired')])],
+  [G('hypo','Hypophosphatemia',['Respiratory failure','Severe cardiac dysfunction','Coma']),
+   G('hyper','Hyperphosphatemia',['Metastatic calcification (soft tissue and vessels)','Tetany from reciprocal hypocalcemia','★ **Calciphylaxis:** Ca-phosphate precipitates in tissue → necrotizing skin ulceration'])]
+ ]},
+
+/* 7 — Clinical Dehydration (faculty-added) */
+{sym:'DEHY',short:'Clinical Dehydration',title:'Clinical Dehydration (ECV Deficit + Hypernatremia)',color:'#0d9488',split:false,
+ normal:'ECV deficit + Na⁺ > 145 mEq/L',
+ hook:'Too little volume AND too-concentrated body fluids. \"Dry mouth, less urine, faster pulse, lower pressure.\"',
+ blocks:[
+  [G('both','Etiology → Pathogenesis → Resulting state',[
+     'Vomiting or diarrhea plus normal daily respiratory, skin and urine losses remove **hypotonic sodium-containing fluid** (isotonic saline with extra water)',
+     'Removing the **saline portion** → **ECV deficit** (vascular and interstitial volume ↓)',
+     'Removing the **extra water** → body fluids too concentrated → **hypernatremia**',
+     'Together = **clinical dehydration**: too small a volume AND too concentrated',
+     'If salt and water are not replaced → ↓ perfusion → possible **hypovolemic shock**'],'flow',true),
+   G('both','Compensatory mechanisms',[
+     '**Thirst:** ↑ osmolality stimulates hypothalamic osmoreceptors (blunted in older adults)',
+     '**ADH:** water conservation → concentrated urine, ↓ output',
+     '**RAAS + SNS:** Na⁺/water retention, ↑ heart rate, vasoconstriction'],'list'),
+   G('both','Faculty pearls',[
+     'Occurs commonly in people with vomiting and diarrhea who **cannot or do not know how to replace salt and water**',
+     '**Skin turgor is less reliable in older adults** (aging itself reduces skin elasticity)'],'list',true)],
+  [G('both','Signs & symptoms',[
+     P('Thirst, dry mouth, dry mucous membranes','↑ osmolality stimulates osmoreceptors; ↓ fluid dries the mucosa',true),
+     P('Decreased urine output; darker, concentrated urine','ADH and RAAS conserve water and Na⁺',true),
+     P('Decreased skin turgor','Loss of interstitial fluid (less reliable in older adults)',true),
+     P('Sunken eyes','ECF / interstitial volume loss',true),
+     P('Fatigue, weakness, dizziness','↓ circulating volume and perfusion; cellular dehydration',true),
+     P('Faster pulse, lower BP, orthostatic hypotension','↓ circulating volume → SNS ↑ HR; BP cannot hold on standing',true),
+     P('Confusion as severity increases','Cerebral hypoperfusion plus neuronal shrinkage from hypernatremia',true),
+     P('Severe: persistent hypotension, rapid breathing, delayed cap refill, altered mental status','Failing compensation → signs of hypovolemic shock: urgent treatment',true)])],
+  [G('both','Key parameters',[
+     'Na⁺ **> 145 mEq/L** (hypernatremia component)',
+     '**↑ Hematocrit; BUN:creatinine > 20:1** (ECV-deficit component)',
+     '**↑ Urine specific gravity / dark, concentrated urine**',
+     'Trend **daily weights** and **orthostatic vital signs**'])],
+  [G('both','Loss of fluid',['Vomiting','Diarrhea','Normal daily respiratory, skin and urine losses','Diaphoresis']),
+   G('both','Cannot replace salt AND water',['Unable to drink, or does not know how to replace losses','Older adults (thirst response decreases with age)','Infants and dependent patients'])],
+  [G('both','Priority interventions',[
+     P('Replace salt AND water (oral or IV) as ordered','Fixes the ECV deficit (saline) and dilutes the concentrated fluids (water); water alone does not restore volume'),
+     P('Orthostatic vitals, HR, cap refill, mental status','Early detection of falling perfusion and progression to shock'),
+     P('Strict I&O and daily weights','Tracks the 1 L = 1 kg loss and response to replacement'),
+     P('Escalate persistent hypotension, rapid breathing, delayed cap refill or altered LOC','These are signs of possible hypovolemic shock requiring urgent treatment')])],
+  [G('both','If untreated',[
+     '**Hypovolemic shock** (fatal without immediate volume replacement)',
+     '**Prerenal AKI** from sustained hypoperfusion',
+     'Seizures / coma from severe hypernatremia'])]
+ ]},
+
+/* 8 — NG Suction (faculty-added) */
+{sym:'NG',short:'NG Suction',title:'NG Suction: Na⁺ & K⁺ Imbalance (Metabolic Alkalosis)',color:'#4f46e5',split:false,
+ normal:'Classic triad: ↓ K⁺ + ↓ Cl⁻ + metabolic alkalosis',
+ hook:'\"Suctioning out stomach acid and salt water.\" NG on suction → hypokalemia + hypochloremia + metabolic alkalosis. Na⁺ can be low or high depending on replacement.',
+ blocks:[
+  [G('both','Etiology → Pathogenesis → Resulting state',[
+     'NG tube to low intermittent suction removes **gastric secretions** (acid, chloride, potassium, sodium-rich fluid, water)',
+     'Loss of **H⁺ (acid)** → **metabolic alkalosis**; loss of **Cl⁻** (from HCl) → **hypochloremia**',
+     '**K⁺ loss** → **hypokalemia** (weakness, dysrhythmias)',
+     'Loss of **Na⁺ and water** → ↓ circulating volume → **RAAS and ADH** activate to conserve water and sodium',
+     'Serum Na⁺ may end up **low or high** depending on the patient\'s fluid replacement'],'flow',true),
+   G('both','Compensatory mechanisms',[
+     '**RAAS + ADH:** conserve sodium and water',
+     'Respiratory compensation for alkalosis: ↓ ventilation retains CO₂ (Exam 1 acid-base link)'],'list'),
+   G('both','Faculty NCLEX clue',[
+     'NG on suction → suspect **K⁺ and Cl⁻ abnormalities first**; sodium may be low or high',
+     '**H⁺ lost → alkalosis; Cl⁻ lost → hypochloremia; K⁺ lost → hypokalemia; Na⁺ + water lost → volume depletion**'],'list',true)],
+  [G('both','Signs & symptoms',[
+     P('Weakness (hypokalemia)','K⁺ loss → hyperpolarized muscle cells cannot depolarize normally',true),
+     P('Dysrhythmias (hypokalemia)','Altered cardiac repolarization; low K⁺ shows as inverted T wave',true),
+     P('Hypochloremia','Cl⁻ is lost with HCl from the stomach',true),
+     P('Metabolic alkalosis','H⁺ (acid) lost in gastric fluid → ↑ pH and ↑ HCO₃⁻',true),
+     P('Signs of volume depletion (↓ BP, ↑ HR, ↓ urine output)','Large volumes removed → ↓ circulating volume → RAAS and ADH',true)])],
+  [G('both','Key parameters',[
+     'K⁺ **< 3.5 mEq/L**',
+     'Chloride **low**',
+     'ABG: pH **> 7.45** with **↑ HCO₃⁻** (metabolic alkalosis)',
+     'Na⁺: **variable**, low or high depending on fluid replacement',
+     'ECG: T-wave changes (low K⁺ = inverted T)'])],
+  [G('both','Causes',['NG tube to low intermittent suction','Prolonged vomiting (same losses)','Replacement with plain water or without electrolytes (worsens the Na⁺ imbalance)'])],
+  [G('both','Priority interventions',[
+     P('Monitor K⁺, Cl⁻, Na⁺ and ABGs; replace as ordered','Suction removes K⁺, Cl⁻, H⁺ and Na⁺, so expect hypokalemia, hypochloremia and alkalosis'),
+     P('Cardiac monitoring; assess muscle strength','Hypokalemia causes dysrhythmias and weakness'),
+     P('Strict I&O, daily weight, assess volume status','Large fluid volumes are removed → hypovolemia'),
+     P('Review what fluid replaces suction losses','Replacement (electrolyte-containing vs plain water) decides whether serum Na⁺ ends up low or high')])],
+  [G('both','If untreated',[
+     'Life-threatening dysrhythmias from hypokalemia',
+     'Worsening metabolic alkalosis',
+     'Hypovolemia → prerenal AKI',
+     'Neuro complications from a sodium imbalance'])]
+ ]}
+];
+
+/* ---------- quick reference data ---------- */
+const REF=[
+ ['Na⁺','135–145 mEq/L','Cells SWELL → headache, confusion, seizures, herniation','Cells SHRINK → thirst, dry mouth, oliguria, confusion, seizures','THINK BRAIN; correct slowly'],
+ ['K⁺','3.5–5.0 mEq/L','Weakness, ileus, postural hypotension, dysrhythmia, polyuria','Cramping, flaccid paralysis, arrest','Peaked T = HYPER; inverted T = HYPO'],
+ ['Ca²⁺','9–10.5 mg/dL','↑ excitability: tetany, cramps, seizures, laryngospasm, ↑ Q-T','↓ excitability: constipation, bradycardia, stones, fractures, coma','Chvostek + Trousseau = HYPOcalcemia'],
+ ['Mg²⁺','1.5–2.5 mEq/L','Mimics low Ca²⁺: ↑ DTRs, twitching, tremors, tetany, seizures','↓ DTRs, hypotension, flushing, respiratory depression, arrest','DTR changes; correct Mg²⁺ before K⁺/Ca²⁺'],
+ ['PO₄','2.5–4.5 mg/dL','ATP failure: weakness, hemolysis, respiratory failure','Mimics low Ca²⁺: excitability, pruritus, stiff joints','Always check Ca²⁺ with phosphate']
+];
+const VOL=[
+ ['Weight','↓ Acute loss (most sensitive)','↑ Gain (most sensitive)'],
+ ['Pulse / heart','↑ Rate; postural BP drop','Bounding pulses'],
+ ['Neck veins','Flat','Distended'],
+ ['Lungs','Clear','Crackles, dyspnea, orthopnea → pulmonary edema'],
+ ['Tissues','Furrowed tongue, poor turgor','Edema (interstitial fluid)'],
+ ['Urine','Oliguria (RAAS + ADH)','Depends on cause (HF, cirrhosis, renal disease)'],
+ ['Hematocrit','↑ Hemoconcentration','↓ Hemodilution'],
+ ['Priority Rx','Isotonic IV fluids, orthostatics','Restrict Na⁺ / fluid, diuretics, HOB elevated']
+];
+
+/* ---------- foundations (faculty deck) ---------- */
+const THIRST=[
+ ['Osmoreceptor-mediated thirst','↑ osmolality of ECF (this response decreases in older adults)'],
+ ['Baroreceptor + angiotensin II-mediated thirst','↓ circulating blood volume'],
+ ['Dryness of mucous membranes','Local dry-mouth trigger']
+];
+const ICFECF=[
+ ['Location','Inside the cells','Outside the cells (interstitial, intravascular, transcellular)'],
+ ['Share of body water','2/3','1/3'],
+ ['Major cations','K⁺, Mg²⁺','Na⁺'],
+ ['Major anions','PO₄³⁻, proteins','Cl⁻, HCO₃⁻'],
+ ['Primary roles','Cell shape, metabolism, enzyme activity','Transports nutrients, O₂ and waste; supports circulation'],
+ ['Clinical red flags','K⁺ imbalance → arrhythmias, muscle weakness. Mg²⁺ imbalance → neuromuscular changes','Na⁺ imbalance → confusion, seizures. Cl⁻/HCO₃⁻ imbalance → acid–base disturbances']
+];
+const CAP=[
+ ['Hydrostatic pressure','Vascular → interstitial (filtration)','Pushes fluid OUT'],
+ ['Oncotic (colloid osmotic) pressure','Interstitial → vascular (reabsorption)','Pulls fluid IN (plasma proteins, especially albumin)']
+];
+const HORM=[
+ ['ADH (anti-diuretic hormone)','↑ BP by regulating fluid loss (water reabsorption)'],
+ ['Aldosterone','Adrenal steroid: conserves Na⁺ in the kidney (K⁺ excreted)'],
+ ['ANP (atrial natriuretic peptide)','Promotes renal excretion of water and Na⁺; helps regulate BP'],
+ ['BNP (brain natriuretic peptide)','Marker of fluid overload; secreted by stretched cardiomyocytes'],
+ ['Renal prostaglandins','↑ renal blood flow and filtration'],
+ ['Renal sympathetic nerves','Play a role in blood pressure']
+];
+const IVF=[
+ ['Hypotonic','Lower than plasma','Water shifts INTO cells (swelling, possible hemolysis)','Cellular dehydration, hypernatremia'],
+ ['Isotonic','≈ plasma (275–295 mOsm/kg)','No significant shift; expands volume','0.9% NS, Lactated Ringer\'s'],
+ ['Hypertonic','Higher than plasma','Pulls water OUT of cells','Severe conditions like cerebral edema; risky, often central line']
+];
+const IVNOTES=[
+ 'Normal serum osmolality: **275–295 mOsm/kg**',
+ '**D5W** is initially isotonic but becomes functionally **hypotonic** in the body as dextrose is metabolized, leaving free water',
+ 'IV fluids above **600–900 mOsm/L** raise the risk of **phlebitis**; give via a central line',
+ 'Safety: inappropriate hypotonic fluids → cerebral edema; normal saline → hyperchloremic metabolic acidosis'
+];
+const CITY=[
+ ['Na⁺','Water Department','Flooding (edema, hypertension)','Drought (confusion, seizures, cerebral edema, hypotension)'],
+ ['K⁺','Electricity Grid','Power surge (arrhythmias, cardiac arrest)','Brownout (muscle weakness, irregular heartbeats)'],
+ ['Ca²⁺','Construction Company','Sidewalks too rigid (kidney stones, lethargy)','Crumbling foundations (tetany, fractures)'],
+ ['Mg²⁺','Traffic Control','Traffic jams (respiratory depression, hypotension, ↓ DTRs)','Chaotic intersections (seizures, tremors, ↑ DTRs, tetany, paresthesias)'],
+ ['PO₄³⁻','Power Plant (fuel)','Pollution backup (hypocalcemia, tetany)','Rolling blackouts (weakness, impaired O₂ delivery)']
+];
+const CLINCLUE=[
+ ['Confusion or altered mental status','Sodium','Na⁺ imbalances affect brain-cell water balance. K⁺ is more tied to muscle and cardiac changes'],
+ ['Tetany or muscle spasms','Low calcium; also low magnesium','Tetany is a classic manifestation of hypocalcemia'],
+ ['Heart rhythm changes','Potassium, magnesium and calcium','All three influence cardiac electrical activity'],
+ ['Deep tendon reflex changes','Magnesium; also calcium','Low Mg²⁺ → ↑ reflexes; high Mg²⁺ → ↓ reflexes. Low Ca²⁺ can also ↑ reflexes'],
+ ['Low energy and muscle weakness','Low phosphate','Phosphate supports ATP; severe deficiency can weaken respiratory muscles']
+];
+const SUMMARY=[['Sodium','affects the brain'],['Potassium','affects the heart and muscles'],['Calcium','affects contraction and nerves'],['Phosphorus','affects energy'],['Magnesium','affects stability and rhythm']];
+const CJM=[
+ ['Recognize cues','Gather relevant data','Identify signs of altered physiology','Crackles = pulmonary congestion'],
+ ['Analyze cues','Interpret meaning','Link findings to disease mechanisms','Low CO → decreased perfusion'],
+ ['Prioritize hypotheses','Determine likely problems','Rank by severity of dysfunction','Sepsis > dehydration'],
+ ['Generate solutions','Plan interventions','Target the pathophysiologic cause','Give insulin for DKA'],
+ ['Take action','Implement care','Apply interventions safely','Monitor K⁺ with furosemide'],
+ ['Evaluate outcomes','Assess effectiveness','Determine physiologic improvement','Normal BP = improved perfusion']
+];
+const CLUES=[
+ ['Confusion or altered mental status','Sodium','Na⁺ imbalances change brain-cell water balance. K⁺ is more tied to muscle and cardiac changes.'],
+ ['Tetany or muscle spasms','Calcium','Tetany is the classic manifestation of hypocalcemia (low Mg²⁺ can also cause it).'],
+ ['Peaked T wave on the ECG','Potassium','Hyperkalemia. T-wave changes are the K⁺ hallmark (low K⁺ = inverted T).'],
+ ['Patellar reflex disappears, then respiratory depression','Magnesium','High Mg²⁺ blocks neuromuscular transmission: ↓ DTRs first, then respiratory depression.'],
+ ['Low energy, muscle weakness, respiratory muscle weakness','Phosphate','Phosphate supports ATP production; severe deficiency weakens respiratory muscles.'],
+ ['Inverse (reciprocal) relationship with calcium','Phosphate','Phosphate binds calcium, so ↑ PO₄ lowers free Ca²⁺.'],
+ ['Positive Chvostek and Trousseau signs','Calcium','Latent tetany signs of hypocalcemia (low Mg²⁺ mirrors this).'],
+ ['Headache, seizures, cerebral edema from fluid shifts','Sodium','THINK BRAIN: Na⁺ moves water into or out of neurons.'],
+ ['Kidney stones, constipation, lethargy','Calcium','Hypercalcemia slows neuromuscular activity; excess Ca²⁺ precipitates in urine.'],
+ ['Hemolysis with ATP depletion','Phosphate','Low phosphate → ↓ ATP → fragile RBC membranes.']
+];
+
+/* ---------- state ---------- */
+const S={
+  view:'maps',map:0,block:0,side:'both',all:false,
+  recall:store.get('recall',false),
+  done:store.get('done',{}),
+  theme:store.get('theme','auto'),
+  quiz:{scope:'map',q:null,score:0,total:0,streak:0,answered:false,pick:-1}
+};
+const doneKey=(m,b)=>m+':'+b;
+const isDone=(m,b)=>!!S.done[doneKey(m,b)];
+
+/* ---------- views ---------- */
+function headerHTML(n,total){
+  const pct=Math.round(n/total*100);
+  const ti=S.theme==='auto'?'🌓':S.theme==='light'?'☀️':'🌙';
+  return `<header class="top"><div class="wrap">
+    <div class="row"><div><div class="eyebrow">NSG 3850 · Pathophysiology II · Exam 1</div><h1>Unit 1 · Fluid &amp; Electrolyte Concept Maps</h1></div>
+    <button class="iconbtn" data-a="theme" aria-label="Change theme" title="Theme: ${S.theme}">${ti}</button></div>
+    <div class="tabs">
+      <button class="tab" data-a="view" data-v="maps" aria-pressed="${S.view==='maps'}">🗺️ Concept Maps</button>
+      <button class="tab" data-a="view" data-v="quiz" aria-pressed="${S.view==='quiz'}">🎯 Self-Test</button>
+      <button class="tab" data-a="view" data-v="found" aria-pressed="${S.view==='found'}">🧱 Foundations</button>
+      <button class="tab" data-a="view" data-v="ref" aria-pressed="${S.view==='ref'}">📋 Quick Ref</button>
+      <span class="spacer"></span>
+      ${S.view==='maps'?`<button class="tab" data-a="recall" aria-pressed="${S.recall}" title="Hides mechanisms and rationales so you can test yourself">🧠 Recall mode: ${S.recall?'ON':'OFF'}</button>`:''}
+    </div>
+    <div class="prog"><span>${n} / ${total} blocks reviewed</span><div class="bar"><i style="width:${pct}%"></i></div><span>${pct}%</span></div>
+  </div></header>`;
+}
+
+function chipsHTML(){
+  return `<div class="chips" role="tablist">${MAPS.map((m,i)=>{
+    const c=[0,1,2,3,4,5].filter(b=>isDone(i,b)).length;
+    return `<button class="chip" style="--ac:${m.color}" data-a="map" data-i="${i}" aria-pressed="${i===S.map}"><span class="dot"></span>${esc(m.sym)} <small>${esc(m.short)}${c?` · ${c}/6`:''}</small></button>`;
+  }).join('')}</div>`;
+}
+
+function hubHTML(m){
+  const cx=180,cy=180,R=105,LR=157;
+  let s=`<svg viewBox="0 0 360 360" role="group" aria-label="Concept map hub for ${esc(m.title)}">`;
+  for(let i=0;i<6;i++){
+    const a=(-90+60*i)*Math.PI/180;
+    s+=`<line class="spoke" x1="${cx}" y1="${cy}" x2="${(cx+R*Math.cos(a)).toFixed(1)}" y2="${(cy+R*Math.sin(a)).toFixed(1)}"/>`;
+  }
+  s+=`<circle class="center" cx="${cx}" cy="${cy}" r="50"/><text class="ctext" x="${cx}" y="${cy+6}" style="font-size:${m.sym.length>3?26:32}px">${esc(m.sym)}</text>`;
+  for(let i=0;i<6;i++){
+    const a=(-90+60*i)*Math.PI/180,x=cx+R*Math.cos(a),y=cy+R*Math.sin(a);
+    const lx=cx+LR*Math.cos(a),ly=cy+LR*Math.sin(a)+4;
+    const act=(!S.all&&i===S.block);
+    s+=`<g class="node ${act?'active':''}" data-a="block" data-i="${i}" tabindex="0" role="button" aria-label="${i+1}. ${esc(BL[i].n)}${isDone(S.map,i)?' (reviewed)':''}">
+      <circle class="n" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="29"/>
+      <text class="emo" x="${x.toFixed(1)}" y="${y.toFixed(1)}">${BL[i].icon}</text>
+      <text class="lbl" x="${lx.toFixed(1)}" y="${ly.toFixed(1)}">${esc(BL[i].short)}</text>
+      ${isDone(S.map,i)?`<circle class="ck" cx="${(x+21).toFixed(1)}" cy="${(y-21).toFixed(1)}" r="10"/><text class="ckt" x="${(x+21).toFixed(1)}" y="${(y-21).toFixed(1)}">✓</text>`:''}
+    </g>`;
+  }
+  return s+'</svg>';
+}
+
+function groupHTML(m,g,bi){
+  const t=g.t||BL[bi].def;
+  const badge=(m.split&&g.side!=='both')?`<span class="badge ${g.side}">${esc(g.side==='hypo'?m.hypoName:m.hyperName)}</span>`:'';
+  let body;
+  if(t==='flow'){
+    body=`<ol class="flow">${g.items.map((x,i)=>`<li><div class="step"><span class="n">${i+1}</span><div>${md(x)}</div></div></li>`).join('')}</ol>`;
+  }else if(t==='pairs'){
+    const lab=BL[bi].lab||'Why';
+    body=`<div class="pairs">${g.items.map(p=>`<div class="pair" data-a="reveal" tabindex="0"><div class="pa">${p.fac?'<span class="star">★</span> ':''}${md(p.a)}</div><div class="hint">👆 Tap to reveal ${lab.toLowerCase()}</div><div class="mech"><span class="lab">${lab}</span>${md(p.b)}</div></div>`).join('')}</div>`;
+  }else{
+    body=`<ul class="list">${g.items.map(x=>`<li>${md(x)}</li>`).join('')}</ul>`;
+  }
+  return `<section class="group ${(m.split&&g.side==='both')?'span':''}"><h4>${g.fac?'<span class="star">★</span> ':''}${esc(g.title)} ${badge}${g.fac?'<span class="facbadge">Faculty</span>':''}</h4>${body}</section>`;
+}
+
+function panelHTML(m,bi){
+  const b=BL[bi];
+  const groups=m.blocks[bi].filter(g=>!m.split||S.side==='both'||g.side==='both'||g.side===S.side);
+  const pairsBlock=(b.def==='pairs');
+  const d=isDone(S.map,bi);
+  return `<article class="card panel" id="panel-${bi}">
+    <div class="phead"><span class="pnum">${bi+1}</span><h3>${b.icon} ${esc(b.n)}</h3>
+      ${(S.recall&&pairsBlock)?`<button class="btn" data-a="revealall">Reveal / hide all</button>`:''}
+      <button class="btn ${d?'done':''}" data-a="done" data-i="${bi}">${d?'✓ Reviewed':'Mark reviewed'}</button></div>
+    ${groups.map(g=>groupHTML(m,g,bi)).join('')?`<div class="groups">${groups.map(g=>groupHTML(m,g,bi)).join('')}</div>`:''}
+    ${S.all?'':`<div class="pnav"><button class="btn" data-a="step" data-d="-1">← Previous</button><button class="btn primary" data-a="step" data-d="1">Next →</button></div>`}
+  </article>`;
+}
+
+function mapsView(){
+  const m=MAPS[S.map];
+  const filter=m.split?`<div class="filterrow"><span>Show:</span><div class="seg" role="group" aria-label="Filter imbalance">
+      <button data-a="side" data-s="both" aria-pressed="${S.side==='both'}">Both</button>
+      <button class="sh" data-a="side" data-s="hypo" aria-pressed="${S.side==='hypo'}">${esc(m.hypoName)}</button>
+      <button class="sy" data-a="side" data-s="hyper" aria-pressed="${S.side==='hyper'}">${esc(m.hyperName)}</button></div></div>`:'';
+  const blocks=S.all?[0,1,2,3,4,5]:[S.block];
+  return `${chipsHTML()}
+  <section class="banner" style="--ac:${m.color}"><h2>${esc(m.title)}</h2><span class="normal">${esc(m.normal)}</span><p class="hook">💡 ${esc(m.hook)}</p><p class="legend"><span class="star">★</span> = added or stressed in the faculty deck (W26)</p></section>
+  <div class="grid" style="--ac:${m.color}">
+    <aside class="card hubcard">
+      ${hubHTML(m)}
+      <p class="hubnote">Tap a branch to open that block${S.recall?' · Recall mode is on':''}</p>
+      <div class="hubbtns"><button class="btn" data-a="all">${S.all?'Show one block':'Show all 6 blocks'}</button></div>
+    </aside>
+    <div class="panelwrap">${filter}${blocks.map(b=>panelHTML(m,b)).join('')}</div>
+  </div>`;
+}
+
+/* ---------- self-test ---------- */
+function pool(scope){
+  const maps=scope==='all'?MAPS:[MAPS[S.map]];
+  const out=[];
+  maps.forEach(m=>[1,4].forEach(bi=>m.blocks[bi].forEach(g=>g.items.forEach(it=>{
+    const ctx=g.side==='hypo'?m.hypoName:g.side==='hyper'?m.hyperName:m.title;
+    out.push({m,bi,ctx,a:it.a,b:it.b});
+  }))));
+  return out;
+}
+function nextQ(){
+  if(S.quiz.scope==='all'&&Math.random()<0.18){
+    const c=CLUES[Math.floor(Math.random()*CLUES.length)];
+    S.quiz.q={clue:true,a:c[0],b:c[1],why:c[2],m:{color:'#334155',sym:'Clue'},opts:shuffle(['Sodium','Potassium','Calcium','Magnesium','Phosphate'])};
+    S.quiz.answered=false;S.quiz.pick=-1;return;
+  }
+  const p=pool(S.quiz.scope);
+  const q=Object.assign({},p[Math.floor(Math.random()*p.length)]);
+  const opts=[q.b];
+  const add=list=>{for(const x of shuffle(list)){if(opts.length>=4)break;if(x.bi===q.bi&&!opts.includes(x.b))opts.push(x.b)}};
+  add(p);add(pool('all'));
+  q.opts=shuffle(opts);
+  S.quiz.q=q;S.quiz.answered=false;S.quiz.pick=-1;
+}
+function quizView(){
+  const Q=S.quiz;if(!Q.q)nextQ();
+  const q=Q.q,m=MAPS[S.map];
+  const acc=Q.total?Math.round(Q.score/Q.total*100):0;
+  const text=q.clue?`Clinical clue: “${esc(q.a)}”. Which electrolyte should you think of first?`:(q.bi===1?`${esc(q.ctx)}: which mechanism explains “${esc(q.a)}”?`:`Nursing action for ${esc(q.ctx)}: “${esc(q.a)}”. What is the pathophysiologic rationale?`);
+  return `<div class="quiz" style="--ac:${q.m.color}">
+    <div class="qhead"><div class="seg" role="group">
+      <button data-a="qscope" data-s="map" aria-pressed="${Q.scope==='map'}">This map: ${esc(m.sym)}</button>
+      <button data-a="qscope" data-s="all" aria-pressed="${Q.scope==='all'}">All Unit 1</button></div>
+      <div class="score"><span>✅ <b>${Q.score}</b>/${Q.total}</span><span>🎯 <b>${acc}%</b></span><span>🔥 <b>${Q.streak}</b></span></div></div>
+    ${Q.scope==='map'?chipsHTML():''}
+    <div class="card qcard"><span class="qtag">${q.clue?'Clinical Clue':((q.bi===1?'Signs & Symptoms':'Nursing Rx')+' · '+esc(q.m.sym))}</span>
+      <p class="qtext">${text}</p>
+      ${q.opts.map((o,i)=>{
+        let cls='';if(Q.answered){if(o===q.b)cls='right';else if(i===Q.pick)cls='wrong'}
+        return `<button class="opt ${cls}" data-a="opt" data-i="${i}" ${Q.answered?'disabled':''}>${esc(o)}</button>`;
+      }).join('')}
+      ${Q.answered?`<div class="fb ${q.opts[Q.pick]===q.b?'good':'bad'}">${q.opts[Q.pick]===q.b?'Correct!':'Not quite. The highlighted answer is correct.'}</div>
+      ${q.why?`<p class="note">${esc(q.why)}</p>`:''}<div style="margin-top:12px"><button class="btn primary" data-a="qnext">Next question →</button> <button class="btn" data-a="qreset">Reset score</button></div>`:''}
+    </div></div>`;
+}
+
+/* ---------- foundations view ---------- */
+function tbl(h,rows,minw){
+  return `<div class="tablewrap"><table ${minw?`style="min-width:${minw}px"`:''}><thead><tr>${h.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>`<td class="${i===0?'w':''}">${md(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+}
+function foundView(){
+  const basics=[
+   'Body fluid = water in the body plus the particles dissolved in it (**intracellular** and **extracellular**)',
+   'Except in infants, about **2/3 is intracellular** and **1/3 extracellular**',
+   'Body water is about **60%** of body weight in a standard adult man vs **50%** in women. It varies with age and body fat and **decreases with aging**',
+   'Extracellular subdivisions: **interstitial**, **intravascular** (plasma) and **transcellular** (CSF, pleural, peritoneal, synovial)',
+   '**Osmolality** = concentration of dissolved particles per kg of fluid (Na⁺, K⁺, Cl⁻, glucose, urea): shows water balance and kidney function',
+   'Vascular ↔ interstitial movement = **filtration**; ICF ↔ ECF movement = **osmosis**',
+   'Two kinds of fluid imbalance: ECF **volume** (saline) and body fluid **concentration** (water)',
+   'Normal excretion: urinary tract, bowels, lungs, skin (controlled by hormones). Abnormal: wounds, GI (diarrhea, vomiting), paracentesis, open skin areas, hemorrhage, GI tubes (NG suction), other body cavities'
+  ];
+  return `<p class="note"><span class="star">★</span> Everything on this tab comes from the faculty-added deck (W26). Use it to understand <i>why</i> the maps work.</p>
+  <h3 class="refh">Body fluid basics</h3>
+  <div class="card" style="padding:12px 16px"><ul class="bl">${basics.map(x=>`<li>${md(x)}</li>`).join('')}</ul></div>
+  <h3 class="refh">What triggers thirst?</h3>${tbl(['Trigger','Stimulus'],THIRST,520)}
+  <h3 class="refh">Intracellular vs extracellular fluid</h3>${tbl(['Feature','Intracellular (ICF)','Extracellular (ECF)'],ICFECF,640)}
+  <h3 class="refh">Normal fluid movement across the capillary</h3>${tbl(['Force','Direction','Effect'],CAP,560)}
+  <p class="note"><b>Hydrostatic pushes; oncotic pulls.</b> With hypoalbuminemia, hydrostatic pressure leaks fluid out; with normal albumin, water is pulled back into the vascular space.</p>
+  <h3 class="refh">Hormones that control fluid excretion</h3>${tbl(['Hormone','What it does'],HORM,560)}
+  <h3 class="refh">IV fluid tonicity</h3>${tbl(['Type','Osmolality vs plasma','Water movement','Used for'],IVF,700)}
+  <div class="card" style="padding:12px 16px"><ul class="bl">${IVNOTES.map(x=>`<li>${md(x)}</li>`).join('')}</ul></div>
+  <h3 class="refh">The body as a city: electrolyte utilities</h3>${tbl(['Ion','City role','Too much =','Too little ='],CITY,760)}
+  <h3 class="refh">Clinical clues: which electrolyte?</h3>${tbl(['Clinical clue','Think…','Teaching point'],CLINCLUE,680)}
+  <div class="card" style="padding:12px 16px"><b>In summary:</b><ul class="bl">${SUMMARY.map(r=>`<li><b>${esc(r[0])}</b> problems ${esc(r[1])}</li>`).join('')}</ul></div>
+  <h3 class="refh">Clinical judgment model and pathophysiology (NGN)</h3>${tbl(['CJM step','Process','Pathophysiology connection','Example'],CJM,720)}`;
+}
+
+/* ---------- quick reference ---------- */
+function refView(){
+  return `<h3 class="refh">Electrolytes at a glance</h3>
+  <div class="tablewrap"><table><thead><tr><th>Ion</th><th>Normal</th><th>LOW →</th><th>HIGH →</th><th>Exam clue</th></tr></thead><tbody>
+  ${REF.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td><td><b>${esc(r[4])}</b></td></tr>`).join('')}
+  </tbody></table></div>
+  <h3 class="refh">Fluid volume deficit vs excess</h3>
+  <div class="tablewrap"><table style="min-width:520px"><thead><tr><th></th><th>Deficit (FVD)</th><th>Excess (FVE)</th></tr></thead><tbody>
+  ${VOL.map(r=>`<tr><td class="k">${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('')}
+  </tbody></table></div>
+  <h3 class="refh">Patterns to memorize</h3>
+  <div class="tablewrap"><table style="min-width:520px"><tbody>
+  <tr><td class="k">Excitability</td><td><b>Low</b> Ca²⁺ and <b>low</b> Mg²⁺ → nerves hyperexcitable (Chvostek, Trousseau, tetany). <b>High</b> Ca²⁺ / Mg²⁺ → depressed (↓ DTRs, constipation, bradycardia).</td></tr>
+  <tr><td class="k">Membrane potential</td><td>K⁺ is the resting-potential ion: low K⁺ hyperpolarizes (weak, ileus); high K⁺ depolarizes (peaked T, arrest).</td></tr>
+  <tr><td class="k">Water shifts</td><td>Hyponatremia: water moves <b>into</b> cells (swell). Hypernatremia: water moves <b>out</b> (shrink).</td></tr>
+  <tr><td class="k">Reciprocal pair</td><td>Phosphate ↑ ↔ calcium ↓ (and the reverse). Low phosphate also means low ATP.</td></tr>
+  <tr><td class="k">Most sensitive</td><td>Weight change is the most sensitive indicator for both fluid deficit and excess.</td></tr>
+  </tbody></table></div>`;
+}
+
+/* ---------- render ---------- */
+function applyTheme(){
+  const r=document.documentElement;
+  if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);
+}
+function render(keepScroll=true){
+  const y=window.scrollY;
+  document.documentElement.classList.toggle('recall',S.recall);
+  applyTheme();
+  const total=MAPS.length*6;
+  const n=Object.keys(S.done).filter(k=>S.done[k]).length;
+  $('#app').innerHTML=headerHTML(n,total)+`<main class="wrap">${S.view==='maps'?mapsView():S.view==='quiz'?quizView():S.view==='found'?foundView():refView()}<footer>Built from the NSG 3850 Unit 1 student slides + faculty-added content (W26) · study aid, not clinical advice</footer></main>`;
+  if(keepScroll)window.scrollTo(0,y);
+}
+function scrollToPanel(){
+  if(window.matchMedia('(max-width:899px)').matches){
+    const el=document.querySelector('.panel');
+    if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+function step(d){
+  if(S.all)return;
+  let b=S.block+d,m=S.map;
+  if(b>5){if(m<MAPS.length-1){m++;b=0}else b=5}
+  if(b<0){if(m>0){m--;b=5}else b=0}
+  if(m!==S.map){S.map=m;S.side='both'}
+  S.block=b;render(false);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-a]');if(!t)return;
+  const a=t.dataset.a;
+  if(a==='reveal'){t.classList.toggle('shown');return}
+  if(a==='revealall'){
+    const ps=[...document.querySelectorAll('.pair')];
+    const allShown=ps.every(p=>p.classList.contains('shown'));
+    ps.forEach(p=>p.classList.toggle('shown',!allShown));return;
+  }
+  if(a==='view'){S.view=t.dataset.v;if(S.view==='quiz')S.quiz.q=null;render(false);window.scrollTo(0,0)}
+  else if(a==='map'){S.map=+t.dataset.i;S.block=0;S.side='both';S.quiz.q=null;render(false);}
+  else if(a==='block'){S.block=+t.dataset.i;S.all=false;render(false);scrollToPanel()}
+  else if(a==='side'){S.side=t.dataset.s;render()}
+  else if(a==='all'){S.all=!S.all;render(false)}
+  else if(a==='done'){const k=doneKey(S.map,+t.dataset.i);S.done[k]=!S.done[k];store.set('done',S.done);render()}
+  else if(a==='step'){step(+t.dataset.d)}
+  else if(a==='recall'){S.recall=!S.recall;store.set('recall',S.recall);render()}
+  else if(a==='theme'){S.theme=S.theme==='auto'?'light':S.theme==='light'?'dark':'auto';store.set('theme',S.theme);render()}
+  else if(a==='qscope'){S.quiz.scope=t.dataset.s;S.quiz.q=null;render()}
+  else if(a==='opt'){
+    const Q=S.quiz;if(Q.answered)return;
+    Q.answered=true;Q.pick=+t.dataset.i;Q.total++;
+    if(Q.q.opts[Q.pick]===Q.q.b){Q.score++;Q.streak++}else Q.streak=0;
+    render();
+  }
+  else if(a==='qnext'){nextQ();render()}
+  else if(a==='qreset'){Object.assign(S.quiz,{score:0,total:0,streak:0});nextQ();render()}
+});
+document.addEventListener('keydown',e=>{
+  const el=e.target;
+  if(el&&el.matches&&el.matches('.pair,.node')&&(e.key==='Enter'||e.key===' ')){
+    e.preventDefault();el.dispatchEvent(new MouseEvent('click',{bubbles:true}));return;
+  }
+  if(S.view==='maps'&&!(el&&el.matches&&el.matches('input,textarea,select'))){
+    if(e.key==='ArrowRight')step(1);
+    else if(e.key==='ArrowLeft')step(-1);
+  }
+});
+
+render(false);
+</script>
+</body>
+</html>
